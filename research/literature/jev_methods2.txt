@@ -1,0 +1,312 @@
+AnyJev Technical Report (https://arxiv.org/html/2610.00831v1)
+【turn66view0】 [wordlim: 200] Crawled: today; Content type: text/html; Source: open({"ref_id":"turn63view1","lineno":120}); Total lines: 555
+L117: Every benchmark row here has median $m\geq 0.995$ (Table 【97†2】). On the 20-option sweep three rows fall below 0.99, all on the binary injection task: 0.408 on SmolLM2-1.7B, 0.710 on OLMo-2-7B and 0.976 on Granite-3.3-8B. We exclude those three from every statistic for that task. Appendix 【47†A】 prints $m$ for every row.
+L118: #### Two defects.
+L119: 
+L120: The model assigns higher probability to some labels whatever the state says, higher to Yes than to No and to earlier letters than to later ones. It also assigns higher probability to some positions in the printed list, so the decision depends on the order the caller wrote the options in. Averaged over eleven models, reversing the option list changes the argmax on 32.8% of banking20 items and on 33.4% of newsgroups items.
+L121: 
+L122: ## 4 Correcting the two defects
+L123: ### 4.1 The label prior
+L124: 
+L125: The label prior is a distribution $\hat{q}$ over positions that the model applies regardless of the state. We estimate it from unlabelled inputs and divide it out:
+L126: 
+L127:  | $$p^{\mathrm{dbs}}\;\propto\;\tilde{p}\,/\,\hat{q}^{\,\alpha},$$  |  | (2)
+L128: renormalised over the $K$ options, with $\alpha\in[0,1]$ setting how much of the prior we remove. We take $\hat{q}$ to be the running mean of $\tilde{p}$ over the inputs the system has already scored, which is batch calibration [【76†58】], held per question and per layout. The estimate uses the model’s own outputs and no gold label. A second estimator computes $\hat{q}$ from content-free probes instead [【75†55】]; AnyJev offers it and we do not use it here.
+L129: We set $\alpha=0.75$, taken from a separate sweep over 230 (model, question) pairs scored against gold labels, so $\alpha$ is the second place a label enters this system, alongside the temperature of Section 【20†4.3】. Eq. (【98†2】) also assumes the label marginal of the inputs is not extreme, and it lowers accuracy where that assumption fails.
+L130: ### 4.2 Position bias
+L131: 
+L132: Position bias needs no estimator, because the layout is ours to choose. We read the same decision under the $K$ cyclic rotations $\pi_{t}(j)=(j+t)\bmod K$, so that every option occupies every position once, and we average in log space [【74†56】]:
+L133: 
+L134:  | $$\bar{z}_{i}\;=\;\frac{1}{K}\sum_{t=0}^{K-1}\log q_{t}(i),\qquad p^{L0}\;=\;\operatorname{softmax}(\bar{z}),$$  |  | (3)
+
+--------------------------------------------------------------------------------
+Evaluating and Benchmarking the System One Model Jev (https://arxiv.org/html/2609.37647v1)
+【turn66view1】 [wordlim: 200] Crawled: today; Content type: text/html; Source: open({"ref_id":"turn61view1","lineno":350}); Total lines: 575
+L345: Multi-label Noul probabilities over-predict yes. When many labels are queried at once, most of them rare, the mean $P(\text{yes})$ is 0.209 against an observed rate of 0.041 (ECE 0.168). Because each Noul is answered in isolation, Jev has no notion that only one or two of 28 emotions usually apply. Ranking remains good: the mean per-label AUROC is 0.873 on GoEmotions and 0.994 on UNFAIR-ToS.
+L346: Threshold-based metrics, however, suffer (macro-F${}_{\text{1}}$ 0.243 and micro-F${}_{\text{1}}$ 0.499, respectively). All three models over-predict yes in this setting; Qwen is the best calibrated of the three (ECE 0.119, against 0.168 for Jev and 0.161 for Gemma).
+L347: Table 4: F${}_{\text{1}}$ with the fixed 0.5 threshold vs. per-question thresholds tuned on 1,000 training/validation examples and applied unchanged to the evaluation split, for each model (thresholds tuned on that model’s own answers).
+L348:  |  | Jev  | Qwen3.8-27B  | Gemma-4-E4B
+L349: Dataset  | Metric  | 0.5  | tuned  | 0.5  | tuned  | 0.5  | tuned
+L350: GoEmotions  | Macro-F${}_{\text{1}}$  | 0.243  | 0.353  | 0.255  | 0.323  | 0.211  | 0.267
+L351:  | Micro-F${}_{\text{1}}$  | 0.239  | 0.387  | 0.236  | 0.317  | 0.207  | 0.268
+L352: UNFAIR-ToS  | Micro-F${}_{\text{1}}$  | 0.499  | 0.748  | 0.582  | 0.757  | 0.302  | 0.510
+L353:  | Macro-F${}_{\text{1}}$  | 0.577  | 0.739  | 0.682  | 0.768  | 0.492  | 0.614
+L354: AGB-DE  | F${}_{\text{1}}$  | 0.204  | 0.204  | 0.000  | 0.179  | 0.066  | 0.142
+L355: ToxicChat  | F${}_{\text{1}}$ (toxicity)  | 0.786  | 0.793  | 0.779  | 0.793  | 0.703  | 0.735
+L356:  | F${}_{\text{1}}$ (jailbreaking)  | 0.717  | 0.833  | 0.743  | 0.726  | 0.542  | 0.680
+L357: Tuned thresholds recover much of the gap. The vendor describes thresholds as application-specific [【42†6】]. 【146†Table 4】 shows what choosing them on training data achieves. For multi-label requests the gains are large: micro-F${}_{\text{1}}$ rises from 0.499 to 0.748 on UNFAIR-ToS and macro-F${}_{\text{1}}$ from 0.243 to 0.353 on GoEmotions. The tuned thresholds are mostly high (median 0.86 over the 28 GoEmotions labels), consistent with the over-prediction in 【147†Figure 2】.
+L358: For ToxicChat, the jailbreak threshold rises to 0.85 and F${}_{\text{1}}$ improves from 0.717 to 0.833, while toxicity barely changes. AGB-DE does not improve at all: 0.5 is already the best threshold on the training sample, so its low F${}_{\text{1}}$ reflects weak separation of void and valid clauses (AUROC 0.784), not a misplaced threshold. Tuning helps the open models in the same way: Qwen’s micro-F${}_{\text{1}}$ on UNFAIR-ToS rises from 0.582 to 0.757 and Gemma’s from 0.302 to 0.510.
+
+--------------------------------------------------------------------------------
+AnyJev Technical Report (https://arxiv.org/html/2610.00831v1)
+【turn66view2】 [wordlim: 200] Crawled: today; Content type: text/html; Source: find({"ref_id":"turn63view1","pattern":"Reusing the question block"}); Total lines: 555
+L31:   6. 【21†5 Reading fewer rotations】
+L32:     1. 【22†Reading order.】
+L33:     2. 【23†When to stop.】
+L34:     3. 【24†Choosing the threshold without labels.】
+L35:     4. 【25†The cost of a round.】
+L36:   7. 【26†6 Experimental setup】
+L37:     1. 【27†Models.】
+L38:     2. 【28†Tasks.】
+L39:     3. 【29†Benchmark.】
+L40:     4. 【30†What is fitted on what.】
+L41:     5. 【31†Settings and hardware.】
+L42:     6. 【32†Additional full-split evaluation.】
+L43:   8. 【33†7 Results】
+L44:     1. 【34†7.1 Order dependence falls on every model tested】
+L45:     2. 【35†7.2 The benchmark】
+L46:     3. 【36†7.3 Full BEV Decision Mix evaluation】
+L47:     4. 【37†7.4 Serving cost】
+L48:   9. 【38†8 What did not work】
+L49:     1. 【39†A question-agnostic head.】
+L50:     2. 【40†Reusing the question block’s cache.】
+L51:     3. 【41†Making the options a set.】
+L52:     4. 【42†Packing the rotations into one forward.】
+L53:   10. 【43†9 Limitations】
+L54:   11. 【44†10 Conclusion】
+L55:     1. 【45†Status.】
+L56:   12. 【46†References】
+L57:   13. 【47†A Per-model results on the 20-option tasks】
+L58:   14. 【48†B Benchmark detail】
+L59:   15. 【49†C Rotations and the certificate】
+L60:   16. 【50†D Reading a truncated forward】
+L61:   17. 【51†E Full BEV Decision Mix results】
+L62:     1. 【52†Readout protocol.】
+L63:     2. 【53†Systems and interpretation.】
+L64:     3. 【54†The evaluated L2-mono variant.】
+L65:     4. 【55†Scope.】
+L66: 【56†License: CC BY 4.0†info.arxiv.org】
+L67: 
+L68: arXiv:2610.00831v1 [cs.LG] 30 Sep 2026
+L69: 
+L70: \reportname
+L71: 
+L72: AnyJev \team Nokia Applied Research \affiliations^{1}Nokia, Sunnyvale, CA, USA  ^{2}Tencent Hunyuan
+L73: ^{3}The Hong Kong Polytechnic University \links\githublink https://github.com/nokia-applied-research/AnyJevnokia-applied-research/AnyJev \reportstatus Early report on work in development {reportcover}
+L74: # AnyJev Technical Report
+L75: 
+L76: Typed Decisions from One Prefill of Any Open LLM
+L77: 
+L78: Jiamu Zhang^{1} Tianze Yang^{1} Yucheng Shi^{2} Evan Chen^{1}
+L79: Zixiang Nie^{1} Kelly Wan^{1} Liangjie Hong^{1} Ninghao Liu^{3} Liang Wu^{1}
+L80: ###### Abstract
+L81: A typed decision is a choice among a fixed set of options, returned as a probability rather than as text. Systems that need typed decisions today use models trained for that purpose. This report describes AnyJev, which reads a typed decision from one prefill of a pretrained instruction-tuned language model. The readout restricts the next-token distribution at the answer position to the option tokens.
+L90: This report takes a different position (Figure 【57†1】). The capability is already present in the pretrained instruction-tuned models we tested, and what needs correcting is the readout rather than the model. AnyJev builds one prompt from the state and the question, runs a single prefill, and reads the decision from the next-token distribution at the answer position, restricted to the tokens that name the options. No parameter changes, no generated tokens, and no second model.
+L106: A decision has a state $s$ and a question with $K$ options $o_{1},\dots,o_{K}$. AnyJev gives each position in the printed list a single-token label $\ell_{1},\dots,\ell_{K}$: letters for a choice, Yes and No for a binary question, digits for an ordinal score. A layout $\pi$ maps positions to options, so position $j$ shows option $\pi(j)$. The prompt $x(s,\pi)$ places a fixed instruction and the state, then the question, then one line $\ell_{j}$.
+L161: Given $n$ unlabelled states we read every rotation of each once. For a candidate $\tau$ let $d(\tau)$ count the states whose stopped decision differs from the full-rotation decision, and take the smallest $\tau$ on a grid for which
+L162: 
+L163:  | $$U\bigl(d(\tau),\,n,\,\delta\bigr)\;\leq\;\varepsilon,$$  |  | (5)
+L164: 
+L165: where $U$ is the Clopper–Pearson upper confidence bound [【102†10】] at confidence $1-\delta$, with $\delta=0.05$. If no $\tau$ satisfies Eq. (【103†5】), the question reads every rotation.
+L256: ## 8 What did not work
+L257: 
+L258: Each mechanism below does what its design says, to the precision quoted, and a measurement rather than a fault stopped each one.
+L259: #### A question-agnostic head.
+L260: A closed-form head fitted on one question’s gold labels against the model’s hidden states scores 0.13 above the debiased readout at the same depth, and it is fitted per question. Leaving out one of twenty questions at a time and fitting on the other nineteen, four extraction variants, five depths and four functional forms all score below the raw readout on the held-out question.
+L261: The best reaches 0.580, against 0.635 for the debiased readout and 0.628 for the raw one, and its flip rate under reversal is 0.17 to 0.30, against 0.07 for the raw readout on the same questions. The signal is present per question; a shared linear rule that reaches an unseen question is not.
+L262: #### Reusing the question block’s cache.
+L263: The question and its options are identical across requests to a given endpoint, but they follow the state, so no prefix cache reaches them. On a short state they are most of the prompt: 159 fixed tokens of which 42 precede the state, against a median routing utterance of 7 tokens. Splicing the cached block into a new request and rotating its positions is exact to $7.0\times 10^{-5}$ in fp32 across all 28 layers. The reused block then reproduces the previous state’s decision in the new request.
+L264: #### Making the options a set.
+L265: The $K$ rotations exist because the options are written in sequence, so option 5 attends to options 1 through 4 and option 1 to none of them. A mask in which every option span sees the prefix and itself, each starting at the same position index, makes the options exchangeable by construction: shuffling the spans moves the output by $3.7\times 10^{-6}$ under it, against $2.2\times 10^{-3}$ under the causal mask. Accuracy then falls to chance.
+L266: On Qwen2.5-7B and the 18-option routing question it scores 0.042 against 0.633 for the rotation average, where chance is 0.056. Masking the options from each other while leaving their positions alone already scores 0.092, so the loss comes from the blinding rather than the shared positions. The model uses the other options when it selects among them.
+L267: #### Packing the rotations into one forward.
+L268: Laying the $K$ option blocks end to end, each at the same starting position index and masked to see only the prefix and itself, reproduces $K$ independent prefills to $2.2\times 10^{-5}$ and returns an identical decision. It runs 5.9 times as fast as $K$ independent prefills, and 1.20 times as fast as the shared-prefix path an engine already provides on a 10-token state, 1.11 times on a 200-token state. This is why Section 【21†5】 reduces the number of rotations instead of their unit cost.
+L269: ## 9 Limitations
+L270: 
+L271:   * •
+L272: 
+L273: One prefill sets a ceiling. The readout generates nothing, so it cannot reason. On the hardest tier of the JevBench subset the eight models span 0.343 to 0.590.
+L274: 
+L275:   * •
+L276: 
+L277: JevBench has few options. Its scored items average 3.6 options, the range where the rotation average has least to remove. We do not have a public many-option benchmark, and one would test the mechanism where it operates.
+L278: 
+L279:   * •
+L528: Raw reads the listed order once. L0 with the prior off averages every cyclic rotation in log space; ordered score levels retain their original order, so their raw and rotation results coincide. The batch prior subtracts the question-wise mean option log-score within each evaluation shard at the displayed strength, for groups of at least 20 items; it uses test inputs but no test labels. The content-free alternative subtracts scores from three neutral inputs (empty text, N/A, and [MASK]).
+
+--------------------------------------------------------------------------------
+Jev-Mem: System-One-Controlled Agentic Memory for Efficient AI Agents (https://arxiv.org/html/2609.23986v1)
+【turn66view3】 [wordlim: 200] Crawled: today; Content type: text/html; Source: find({"ref_id":"turn64view2","pattern":"3.3"}); Total lines: 536
+L0: ##### Report GitHub Issue
+L1: 
+L2: [Button: ×]
+L3: 
+L4: Title: [Input: Enter title]
+L5: 
+L6: Content selection saved. Describe the issue below:
+L7: 
+L8: Description:
+L9: 
+L10: [Button: Submit without GitHub] [Button: Submit in GitHub]
+L11: 
+L12: 【0†Back to arXiv】
+L13: 
+L14: 【1†Why HTML?†info.arxiv.org】 【2†Report Issue】 【3†Back to Abstract】 【4†Download PDF】
+L15:   1. 【5†Abstract】
+L16:   2. 【6†1 Introduction】
+L17:   3. 【7†2 Background and Motivation】
+L18:     1. 【8†2.1 Agentic Memory】
+L19:     2. 【9†2.2 The Opportunity for System-One Memory Control】
+L20:   4. 【10†3 Jev-Mem Algorithm Design】
+L21:     1. 【11†3.1 Typed System-One Memory Control】
+L22:     2. 【12†3.2 System-One-Guided Memory Construction】
+L23:     3. 【13†3.3 Adaptive System-One Retrieval】
+L24:       1. 【14†Anchor retrieval.】
+L25:       2. 【15†Evidence-guided expansion.】
+L26:   5. 【16†4 Experiments】
+L27:     1. 【17†4.1 Experimental Setup】
+L28:     2. 【18†4.2 Overall Performance】
+L29:     3. 【19†4.3 Efficiency of System-One Memory Control】
+L30:   6. 【20†5 Conclusion】
+L31:   7. 【21†References】
+L32:   8. 【22†A Appendix】
+L33:     1. 【23†A.1 Related Work】
+L34:   9. 【24†B Jev Prompts for Memory Writing and Retrieval】
+L35:     1. 【25†B.1 Typed interface and request state】
+L36:     2. 【26†B.2 Memory writing】
+L37:       1. 【27†Event typing】
+L38:       2. 【28†Preference typing】
+L39:       3. 【29†Semantic relation】
+L40:       4. 【30†Directed causal relation】
+L41:     3. 【31†B.3 Periodic consolidation】
+L42:       1. 【32†Representation choice】
+L43:     4. 【33†B.4 Retrieval routing and candidate scoring】
+L44:       1. 【34†Temporal routing】
+L45:       2. 【35†Causal routing】
+L46:       3. 【36†Candidate relevance】
+L47:       4. 【37†Additional evidence】
+L48:     5. 【38†B.5 Evidence-based stopping】
+L49:       1. 【39†Answer sufficiency】
+L50:       2. 【40†Value of continued retrieval】
+L51: 【41†License: CC BY 4.0†info.arxiv.org】
+L52: 
+L53: arXiv:2609.23986v1 [cs.AI] 21 Sep 2026
+L54: # Jev-Mem: System-One-Controlled Agentic Memory for Efficient AI Agents
+L55: 
+L56: Dongming Jiang    Yi Li    Bingzhe Li ^{†}^{†}thanks: Corresponding author Affiliation: Department of Computer Science, The University of Texas at Dallas Affiliation: {dongming.jiang, yi.li3, bingzhe.li}@utdallas.edu
+L167:  | $$o_{t}\rightarrow\mathrm{type}\rightarrow\mathrm{candidates}\rightarrow\mathrm{relations}\rightarrow\mathcal{M}_{t}$$  |  | (10)
+L168: 
+L169: This design improves memory quality in two ways. First, preserving canonical observations avoids premature information loss. Second, selective relation construction suppresses unnecessary graph connectivity while retaining relations that can later support semantic, temporal, causal, or entity-based reasoning.
+L170: Periodic maintenance further examines a bounded neighborhood for redundancy, contradiction, obsolescence, and useful additional links. These decisions enrich the memory structure without removing the original evidence. If a higher-level textual abstraction is required, the control plane may explicitly escalate an approved merge or promotion to System Two; generation is therefore an optional consequence of a structured control decision rather than the default mechanism for memory maintenance.
+L171: ### 3.3 Adaptive System-One Retrieval
+L172: 
+L173: Jev-Mem treats retrieval as a closed-loop control process rather than a single top-$k$ search. Given a query $q$, the controller first predicts the relevance of each relational view,
+L174: 
+L175:  | $$\mathbf{p}(q)=\{p_{g}(q)\}_{g\in\mathcal{G}}$$  |  | (11)
+L176: together with a multi-hop requirement $h(q)$ and a recency importance score $r(q)$. Because these probabilities are evaluated independently, a query may activate several graph views simultaneously instead of being assigned to one discrete retrieval intent.
+L177: 
+L178: A relation type is active when
+L179: 
+L180:  | $$p_{g}(q)\geq\theta_{\mathrm{act}}$$  |  | (12)
+L181: 
+L182: Given a total graph-expansion budget $B$, Jev-Mem distributes search effort according to the predicted graph needs:
+L183:  | $$w_{g}(q)=\frac{p_{g}(q)^{\gamma}}{\sum_{j\in\mathcal{A}(q)}p_{j}(q)^{\gamma}}$$  |  | (13)
+L184: 
+L185: where $\mathcal{A}(q)$ denotes the active graphs and $\gamma$ controls the concentration of the allocation. After assigning a feasible minimum budget $m$ to active graphs, the remaining budget is distributed proportionally:
+L186: 
+L187:  | $$b_{g}=m+\operatorname{LRound}_{g}\left[(B-m|\mathcal{A}(q)|)w_{g}(q)\right]$$  |  | (14)
+L188: 
+L189: The multi-hop prediction further determines the allowed traversal depth,
+L190:  | $$D(q)=\min\left\{D_{\max},\max\left(1,\left\lceil D_{\max}h(q)\right\rceil\right)\right\}$$  |  | (15)
+L191: 
+L192: This probabilistic routing mechanism serves two purposes. It avoids spending equal retrieval effort on relations that are unlikely to help the current query, while still allowing multiple forms of evidence to be explored when a question requires them.
+
+--------------------------------------------------------------------------------
+OpenJev-RLCD: A Working RLCD Implementation (https://arxiv.org/html/2609.38850v1)
+【turn66view4】 [wordlim: 200] Crawled: today; Content type: text/html; Source: find({"ref_id":"turn64view3","pattern":"3.3 The recipe"}); Total lines: 323
+L0: ##### Report GitHub Issue
+L1: 
+L2: [Button: ×]
+L3: 
+L4: Title: [Input: Enter title]
+L5: 
+L6: Content selection saved. Describe the issue below:
+L7: 
+L8: Description:
+L9: 
+L10: [Button: Submit without GitHub] [Button: Submit in GitHub]
+L11: 
+L12: 【0†Back to arXiv】
+L13: 
+L14: 【1†Why HTML?†info.arxiv.org】 【2†Report Issue】 【3†Back to Abstract】 【4†Download PDF】
+L15:   1. 【5†Abstract】
+L16:   2. 【6†1 Introduction】
+L17:     1. 【7†Contributions.】
+L18:   3. 【8†2 Setting】
+L19:   4. 【9†3 Method】
+L20:     1. 【10†3.1 What to score: the mixture or each rationale】
+L21:       1. 【11†Estimator.】
+L22:     2. 【12†3.2 Two ways the per-rationale objective fails】
+L23:       1. 【13†It switches reasoning off.】
+L24:       2. 【14†It is drowned by the policy gradient.】
+L25:     3. 【15†3.3 The recipe: calibrate, then reinforce】
+L26:   5. 【16†4 Experimental setup】
+L27:     1. 【17†Tasks.】
+L28:     2. 【18†Model and methods.】
+L29:     3. 【19†Metrics and statistics.】
+L30:   6. 【20†5 Results】
+L31:     1. 【21†5.1 Main comparison】
+L32:     2. 【22†5.2 What reinforcing the reasoning adds】
+L33:     3. 【23†5.3 Aleatoric uncertainty: when RL cannot help】
+L34:     4. 【24†5.4 Ablations】
+L35:       1. 【25†Score-function weight.】
+L36:       2. 【26†Readout warm-up alone is not enough.】
+L37:       3. 【27†Who scores the rationale.】
+L38:       4. 【28†No KL anchor in stage 2.】
+L39:       5. 【29†Explicit-probability RLCD.】
+L40:   7. 【30†6 Related work】
+L41:     1. 【31†Calibration of language models.】
+L42:     2. 【32†RL for reasoning and calibration.】
+L43:     3. 【33†Rationales as latent variables.】
+L44:   8. 【34†7 Limitations】
+L45:   9. 【35†8 Conclusion】
+L46:   10. 【36†References】
+L47:   11. 【37†A Estimators and their exact checks】
+L48:     1. 【38†Per-rationale objective with shaping.】
+L49:     2. 【39†Mixture objective.】
+L50:     3. 【40†Checks.】
+L51:   12. 【41†B Hyperparameters】
+L52:   13. 【42†C Mixture readout】
+L53: 【43†License: CC BY 4.0†info.arxiv.org】
+L54: 
+L55: arXiv:2609.38850v1 [cs.AI] 30 Sep 2026
+L56: # OpenJev-RLCD: A Working RLCD Implementation
+L57: 
+L58: Zhimin Gao    Pichao Wang Affiliation: zhimingao113@gmail.com; pichaowang@gmail.com
+L59: ###### Abstract
+L60: Decision models such as Jev answer questions about an agent’s state with probabilities, and those probabilities are only useful if they are calibrated: a system that automates the decisions it is confident about must be right when it says it is. The open-source reproductions of this idea are trained by supervised fine-tuning and repaired with temperature scaling, while standard reinforcement learning from verifiable rewards makes reasoning models sharply overconfident.
+L76:   * •
+L77: 
+L78: Two failure modes and the recipe that avoids them (§【12†3.2】). Optimized end to end, the per-rationale objective either abandons reasoning (the “System-One” collapse; prevented by a KL anchor) or is drowned by the policy-gradient term, whose gradient is 7–12$\times$ larger than the readout’s and dominates the optimizer. Calibrate, then reinforce: train the readout first, then reinforce the reasoning with the proper score as reward, anchored at the calibrated model.
+L79: 
+L80:   * •
+L127: Its direction is also unhelpful early on: while the readout is still miscalibrated, the reward mostly teaches rationales to sound certain.
+L128: Figure 1: The System-One collapse (MMLU-Pro, per-rationale objective, trained end to end). Without a KL anchor the four rationales per question become identical and empty after $\sim$100 steps (left: variance of $u$ across rationales) while the readout learns to hedge (right). With a KL anchor the model keeps reasoning and learns to hedge after it. The no-KL run was stopped at step 150, after the collapse.
+L129: ### 3.3 The recipe: calibrate, then reinforce
+L130: 
+L131: Algorithm 1 RLCD for a reasoning model (one step; $M$ rationales for each question in the batch)
+L132: 
+L133: 1: sample $r_{1},\dots,r_{M}\sim\pi_{\theta}(\cdot\mid x)$ until Answer:; read $u_{i}=u_{\theta}(x,r_{i})$; observe $Y$
+L134: 
+L135: 2: $R_{i}\leftarrow J(u_{i},Y)$ $\triangleright$ any strictly proper score of the read-out distribution
+L136: 
+L137: 3: if stage 1 (calibrate the decision) then
+L138: 4:   $\mathcal{L}\leftarrow-\frac{1}{M}\sum_{i}R_{i}$ $\triangleright$ pathwise only: rationales are sampled on-policy but not reinforced
+L139: 
+L140: 5: else stage 2 (reinforce the reasoning), starting from the stage-1 model $\theta_{1}$
+L141: 
+L142: 6:   $A_{i}\leftarrow\frac{1}{M}\big(R_{i}-\beta\log\frac{\pi_{\theta}(r_{i})}{\pi_{\theta_{1}}(r_{i})}\big)-\text{leave-one-out mean}$
+L143: 7:   $\mathcal{L}\leftarrow-\frac{1}{M}\sum_{i}R_{i}-c\sum_{i}\mathrm{sg}(A_{i})\log\pi_{\theta}(r_{i}\mid x)$ $\triangleright$ $c=0.3$, $\beta=0.04$
+L144: 
+L145: 8: end if
+L146: 
+L147: 9: update $\theta$ with Adam on $\mathcal{L}$
+L148: Algorithm 【55†1】 separates the two roles. Stage 1 trains the decision the model reports after its own reasoning with a proper score; it is the pathwise half of the RLCD gradient, i.e. the deterministic policy gradient of the proper-score reward with respect to the reported distribution, with the rationale treated as an on-policy latent variable.
+L149: Stage 2 then reinforces the reasoning with the same proper score as reward, a down-weighted score-function term, and a KL anchor at the calibrated model, so that the reward is informative and the anchor protects what stage 1 learned. Both stages observe exactly the outcome $Y$ of each question, like every baseline.
+L171: RLCD two-stage (stage 1 + RLCD-RL)  | 92.2$\pm$0.7  | 0.135$\pm$0.009  | 0.034$\pm$0.001  | 81.1$\pm$7.2  | 1.4  |  | 47.7$\pm$2.0  | 0.658$\pm$0.015  | 0.304$\pm$0.022  | 27.6$\pm$3.3  | 1.6
+L208: If $q(x)$ is spread because annotators disagree, reasoning cannot reduce the uncertainty, and with an explicit readout the RLCD gradient equals the Brier gradient in expectation, so it cannot beat supervised training on the same labels. ChaosNLI confirms both halves (Table 【66†3】). The mixture objective ($\lambda=1$) calibrates its 16-sample mixture (JSD 0.121) by making the rationales random—they run to the length limit and a single rationale is badly calibrated—as Proposition 【49†1】 predicts.
+
+--------------------------------------------------------------------------------
+GitHub - HITsz-TMG/JevEmbed: Meet JevEmbed — turn embeddings into decisions. Choose, score, and judge with your choice of embedding model. · GitHub (https://github.com/HITsz-TMG/JevEmbed)
+【turn66view5】 [wordlim: 200] Crawled: today; Content type: text/html; Source: find({"ref_id":"turn63view3","pattern":"cosine"}); Total lines: 460
+No matching text found for "cosine"

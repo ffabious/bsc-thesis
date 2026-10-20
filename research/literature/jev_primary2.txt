@@ -1,0 +1,490 @@
+AnyJev Technical Report (https://arxiv.org/abs/2610.00831)
+【turn61academia12】 [wordlim: 200] Published: last week; Title: AnyJev Technical Report ... AnyJev corrects both with no gradient steps and no parameter changes: it divides out a label prior estimated from unlabelled inputs, and it averages log-probabilities over the K cyclic rotations of the option list.
+Title: AnyJev Technical Report
+Authors: Jiamu Zhang, Tianze Yang, Yucheng Shi, Evan Chen, Zixiang Nie, Kelly Wan, Liangjie Hong, Ninghao Liu, Liang Wu
+Date: Wed Sep 30 23:43:04 2026
+
+A typed decision is a choice among a fixed set of options, returned as a probability rather than as text. Systems that need typed decisions today use models trained for that purpose. This report describes AnyJev, which reads a typed decision from one prefill of a pretrained instruction-tuned language model. The readout restricts the next-token distribution at the answer position to the option tokens. It has two defects: the model assigns higher probability to some labels whatever the input, and to some positions in the option list. AnyJev corrects both with no gradient steps and no parameter changes: it divides out a label prior estimated from unlabelled inputs, and it averages log-probabilities over the K cyclic rotations of the option list. On two 20-option tasks the rotations lower the order-flip rate from 0.33 to 0.14 and from 0.33 to 0.18, and raise accuracy on 11 of 11 models on both. Reading every rotation requires K prefills. A stopping rule selected against the full-rotation decision on unlabelled states cuts that. Selecting the threshold on one unlabelled split and bounding its disagreement on a second, it reads 10.6 rotations of 18 at a verified 0.008 bound on two of four cells; selected and bounded on one split, as our serving run did, it reads 7.3 and serves 2.2 times as many decisions per second on vLLM. The code is open source.
+--------------------------------------------------------------------------------
+TypeSafe - ReDoc (https://api.typesafe.ai/redoc)
+【turn61search0】 [wordlim: 200] Crawled: last week; Answer one or more questions about the content supplied in `state`. ... Answers use the same names as the questions, so you can match each result to its question.The response also includes the model used and token usage. ...       * "name": "jev-latest",
+
+# TypeSafe (0.2.0)
+
+Download OpenAPI specification:Download
+
+Ask yes/no questions, evaluate statements, select choices, or assign ratings to your content. Send your API key in the Authorization header as `Bearer <API_KEY>`. Use GET /v1/models to discover available model names.
+
+## Systemone
+
+Answer one or more questions about the content supplied in `state`.
+
+You can mix question types in one request. Answers use the same names as the questions, so you can match each result to its question. The response also includes the model used and token usage.
+
+##### Authorizations:
+
+HTTPBearer
+
+##### Request Body schema: application/json
+
+required
+
+state required  | State (string) or State (object) or Array of State (any) (State) The content all questions in this request refer to.
+model required  | string (Model) Name or alias of the model to use. Available names are returned by GET /v1/models.
+questions required  | object (Questions) non-empty Questions to ask about the content, each with a name you choose. The response uses those names to identify the answers.
+
+### Responses
+
+200
+
+Successful Response
+
+422
+
+Validation Error
+
+post/v1/systemone
+
+https://api.typesafe.ai/v1/systemone
+
+## Models V1
+
+List the models and aliases available to the authenticated account.
+
+Pass a returned model name as `model` in a POST /v1/systemone request.
+
+##### Authorizations:
+
+HTTPBearer
+
+### Responses
+
+200
+
+Successful Response
+
+422
+
+Validation Error
+
+get/v1/models
+
+https://api.typesafe.ai/v1/models
+
+`{
+
+  * "models": [
+    * {
+      * "description": "General-purpose system one model.",
+
+      * "name": "jev-latest",
+
+      * "release_date": "2026-09-15"
+
+}
+
+]
+
+--------------------------------------------------------------------------------
+Agent Trace Observability (https://evals.typesafe.ai/agent_trace_observability)
+【turn61search1】 [wordlim: 200] Crawled: last week; Each asks one further question and then ends the review: close the run, queue it, file a bug, or send it to a person. ... Where paths share a stretch, the lines run side by side. ... Underlined questions open below with every model's answer and the state it read.Email update already on file Opus differs from the other two Frozen schedule board cache purge Sol differs from the other two Stale database grant cleanup request TypeSafe differs from the other two Referral booking with cost discrepancy All three miss the reference Duplicate shifts prompt cache purge All three agree
+
+2
+
+Task completion and user satisfaction
+
+Did the task get done, and was the user satisfied? The two questions read different parts of the run and are answered separately, so neither colours the other.
+
+3
+
+Healthy, expectation gap, or failure
+
+The two answers select one of four outcomes: healthy, an expectation gap, an overt failure, or a silent failure. Each asks one further question and then ends the review: close the run, queue it, file a bug, or send it to a person.
+
+A handful of cases: for each model, one where it alone differs from the other two; one where all three miss the reference; one where all three agree. Each model's path is drawn on the chart in its own colour and line style. Where paths share a stretch, the lines run side by side. What no model reached is faded. Underlined questions open below with every model's answer and the state it read.
+
+Email update already on file Opus differs from the other two Frozen schedule board cache purge Sol differs from the other two Stale database grant cleanup request TypeSafe differs from the other two Referral booking with cost discrepancy All three miss the reference Duplicate shifts prompt cache purge All three agree
+
+Models Opus Sol TypeSafe
+
+Cost Page Priority queue Queue No human
+
+Questions Noul Score Choice
+
+[Button: View examples]
+
+[Button: ← all questions]
+--------------------------------------------------------------------------------
+Introducing System One Models & Jev - TypeSafe AI Blog (https://typesafe.ai/blog/introducing-system-one-models-and-jev?trk=article-ssr-frontend-pulse_little-text-block)
+【turn61search2】 [wordlim: 200] Published: 3 weeks ago; Crawled: 2 days ago; Our side-by-side demo shows a key difference between our models and LLMs: Jev outputs all probabilities in parallel instead of autoregressively generating by token. ...     * The query is highly simplified and `questions` were chosen to have descriptive, human-readable keys so that the output on the screen is understandable. ...   * The demo is on structured state as a data structure with text, not on images (yet…)  * A non-AI doom bot could play better, but we wanted a bot that was reactive to different representations of game state, and most importantly… following instructions was cool as heck!
+
+  * For people with early access to TypeSafe, here is the actual query.
+
+    * The query is highly simplified and `questions` were chosen to have descriptive, human-readable keys so that the output on the screen is understandable.
+
+    * The `state` is also a short, dense, and detailed paragraph, to emphasize the difference in sampling methodology. The relatively shorter input paints our model in an advantageous light.
+
+  * For the keen eyed, for the recorded run, the only disagreement with GPT-5.6 Terra is on “Churn likelihood level”. The actual answer seems genuinely ambiguous to us.
+
+  * We used GPT-5.6 Terra with default reasoning for this example, because we’ve found it to be the most comparable at intelligence to Jev on average.
+
+  * Fun fact: a similar demo was what convinced us to go all-in in the direction of System One Models!
+
+### Workflow evals
+
+We made a new type of evaluation to measure how well AI works within code. We don’t optimize for a ground truth classification or allow the harness and model to change (potentially allowing for overfitting via harness engineering). 
+--------------------------------------------------------------------------------
+Home - TypeSafe AI (https://typesafe.ai/?via=aigregator)
+【turn61search3】 [wordlim: 200] Crawled: today; Jev produces typed decisions and is more like code: reliable, fast, self-consistent, and type-safe. ... Send Jev structured questions and get typed decisions with probabilities and confidence that your software can act on. ... How do I get started or ask a question?
+
+Jev.Cost
+
+Image
+
+Image
+
+Jev.Cost
+
+Image
+
+## $42
+
+Per Billion input tokens.
+
+## 238x
+
+Lower input price than Claude Fable 5.1
+
+## Come Build With Us
+
+Open roles
+
+TypeSafeAI Blog
+
+Company News TypeSafe A raises Series AI Company News TypeSafe A raises Series AI TL;DR raised a lot of money, and we’re going to make sure it shows up as benefits to y’all 🫶
+
+Company News Introducing System One Models & Jev After two years in stealth, we’re excited to finally introduce a new intelligence primitive for software.Thoughts Lies, Damned Lies, and Benchmarks As the famously misattributed quote goes: “There are three kinds of lies: lies, damned lies, and statistics.” There is now a fourth kind: AI benchmarks.
+
+## We give a FAQ
+
+What are System One Models? What is Jev?
+
+System One Models are a new class of AI model built for decisions inside software. Jev is TypeSafe’s first public System One Model, optimized for automation. Send Jev structured questions and get typed decisions with probabilities and confidence that your software can act on.
+
+Is Jev just a smaller LLM?
+
+How is this different from JSON mode or structured outputs?
+
+How can Jev be so fast and inexpensive?
+
+Can you make Jev even faster?
+
+Are these prices temporary or subsidized?
+
+What is Jev good at? Where does it struggle?
+
+Can Jev still get things wrong?
+
+Is Jev deterministic?
+
+How do I get started or ask a question?
+--------------------------------------------------------------------------------
+TypeSafe (https://console.typesafe.ai/login)
+【turn61search4】 [wordlim: 200] Crawled: today; [Input: jev@intelligence.ai][Button: Continue]By continuing, you agree to the terms of use and the privacy policy
+# Welcome to TypeSafe
+
+Continue with Google
+
+or
+
+[Input: jev@intelligence.ai][Button: Continue]
+
+By continuing, you agree to the terms of use and the privacy policy
+--------------------------------------------------------------------------------
+Security Incidents (https://evals.typesafe.ai/security_incidents)
+【turn61search5】 [wordlim: 200] Crawled: last week; Three questions about the alert and the records joined to it: was the activity unauthorized, does a record explain it, and how strong is the evidence? ... Where paths share a stretch, the lines run side by side. ... Underlined questions open below with every model's answer and the state it read.
+Borderline identity alerts also notify the user.
+
+3
+
+The state of the incident
+
+Acting opens eleven more questions: credentials, live sessions, mail, anything left behind to run later, processes, network traffic, and how far the activity spread.
+
+4
+
+Choose the response
+
+The playbook takes the first group whose conditions are met, then the strongest step in it that still applies. When no group applies, the alert is escalated.
+
+A handful of cases: for each model, one where it alone differs from the other two; one where all three miss the reference; one where all three agree. Each model's path is drawn on the chart in its own colour and line style. Where paths share a stretch, the lines run side by side. What no model reached is faded. Underlined questions open below with every model's answer and the state it read.
+
+Network sniffing while badge onsite Opus differs from the other two WinRM access on production server Sol differs from the other two LSASS memory dump via comsvcs TypeSafe differs from the other two Amsi.dll renamed as WinAppXRT All three miss the reference Python startup hook via calc.exe All three agree
+
+Models Opus Sol TypeSafe
+
+Action Queue Page Light containment Heavy containment
+
+Questions Noul Score Choice
+--------------------------------------------------------------------------------
+TypeSafe AI (https://typesafe.ai/enterprise)
+【turn61search6】 [wordlim: 200] Crawled: 2 days ago; Classify, score, and route quickly, at low cost. ... Can we run Jev in our own VPC or on-premises?
+
+Trust Center
+
+Image
+
+zero data retention
+
+Zero data retention is available for enterprise customers. Ask about the setup for your account.
+
+Data Handling & Privacy
+
+Image
+
+No training on your inputs
+
+We don’t use your prompts or other inputs to train or fine-tune models.
+
+Our Privacy Policy
+
+# For teams and high volume
+
+capacity
+
+##### Higher Rate Limits
+
+Need more throughput? Tell us how much you plan to run.
+
+Talk to Sales
+
+Talk to Sales
+
+## We give a FAQ
+
+Do you train on our inputs or outputs?
+
+No. We don’t use your inputs or outputs to train our models.
+
+Do you offer zero data retention?
+
+Where is our data processed?
+
+Can we run Jev in our own VPC or on-premises?
+
+Do you have a SOC 2 report?
+
+Will you sign a BAA?
+
+How much does Jev cost?
+
+# let’s talk business
+
+How can we help?
+
+Enterprise
+
+Partnerships
+
+Support
+
+Individual Builders
+
+How can we help?
+
+Enterprise
+
+Partnerships
+
+Support
+
+Individual Builders
+--------------------------------------------------------------------------------
+Building containers - uv — Dagger module (https://daggerverse.docs.typesafe.ai/uv/building/)
+【turn61search7】 [wordlim: 200] Crawled: 2 weeks ago; The module reads `uv.lock`, works out exactly which local members the target needs, makes them available, and installs everything in a cache-friendly order — so you don't hand-curate the build context yourself. ... It exposes the individual pipeline steps so you can splice your own work in between them, and can export the result as a container or a `UvVenv`. ... By default, the module mounts a Dagger cache volume at `/mnt/cache/uv` and sets `UV_CACHE_DIR` to point there. ... This module also needs to know their import layout so it can create valid stubs and copy the right source files.
+
+### Choosing a base image¶
+
+If you don't provide a base container, the module starts from a Debian-based `uv` image pinned to the workspace's `uv` version, and `uv` provisions a managed Python on demand. Provide your own base when you need system packages, private registry auth, or a specific platform — for example a musl/Alpine base. Whatever you pass determines the platform and libc of the resulting environment.
+
+Tip
+
+If your custom base doesn't ship `uv`, the module auto-installs it from the official image (`auto_install_uv=True` by default) — or call `with_uv` explicitly in the pipeline.
+
+### Caching¶
+
+By default, the module mounts a Dagger cache volume at `/mnt/cache/uv` and sets `UV_CACHE_DIR` to point there. This means both Python downloads and package downloads are cached across builds — so a second `uv sync` or `uv python install` that hits the same versions skips the network entirely.
+
+If your `base_container` already sets `UV_CACHE_DIR` and doesn't have a directory there, the module mounts the cache volume at that path instead of the default.
+
+The cache may be recycled with `uv cache prune --ci` if grown too large. This is enabled by default and the threshold is set to 100 GiB.
+
+
+--------------------------------------------------------------------------------
+Invoice Processing (https://evals.typesafe.ai/invoice_processing)
+【turn61search8】 [wordlim: 200] Crawled: last week; The vendor record bank details on file, tier, and how long they have billed us ... Four conditions end the review immediately: a fraud pattern, an invoice already paid, the wrong vendor or company, or a document that is not an invoice. ... Where paths share a stretch, the lines run side by side. ... Underlined questions open below with every model's answer and the state it read.
+
+--------------------------------------------------------------------------------
+Introducing System One Models & Jev - TypeSafe AI Blog (https://typesafe.ai/blog/introducing-system-one-models-and-jev?render=full)
+【turn61search9】 [wordlim: 200] Crawled: today; This has been my driving question for the last four years. ... Jev achieves similar levels of intelligence on System One tasks compared to existing LLMs, while being two orders of magnitude faster and more efficient. ... Think of Jev as a frontier-intelligence function call: unstructured state in, typed probabilistic decisions out. ... | Unstructured data (e.g. text) with an emphasis on structured program state.
+
+--------------------------------------------------------------------------------
+TypeSafe - Swagger UI (https://api.typesafe.ai/docs)
+【turn61search10】 [wordlim: 200] Crawled: 2 weeks ago; Ask yes/no questions, evaluate statements, select choices, or assign ratings to your content. ... ChoiceQuestion
+
+--------------------------------------------------------------------------------
+Jack & Jill & Jev: Cutting candidate screening costs by 88% - TypeSafe AI Blog (https://typesafe.ai/blog/jack-jill-jev-case-study)
+【turn61search11】 [wordlim: 200] Published: 4 days ago; Crawled: 2 days ago;  | Keeps 94.6% of the candidates hiring managers went on to request, vs 93.9% baseline before ... Jev's input price is a sixth of Gemini's and its output is free.As a result, the cost per 1,000 candidates with Jev is just 9 cents - compared with 76 cents with Gemini.
+
+--------------------------------------------------------------------------------
+Internal Error ()
+【turn61view0】 [wordlim: 200] Source: open({"ref_id":"https://arxiv.org/html/2609.40241v1","lineno":null}); Total lines: 1
+L0: Failed to fetch https://arxiv.org/html/2609.40241v1: DisabledError
+
+--------------------------------------------------------------------------------
+Evaluating and Benchmarking the System One Model Jev (https://arxiv.org/html/2609.37647v1)
+【turn61view1】 [wordlim: 200] Crawled: today; Content type: text/html; Source: open({"ref_id":"https://arxiv.org/html/2609.37647v1","lineno":null}); Total lines: 575
+L0: ##### Report GitHub Issue
+L1: 
+L2: [Button: ×]
+L3: 
+L4: Title: [Input: Enter title]
+L5: 
+L6: Content selection saved. Describe the issue below:
+L7: 
+L8: Description:
+L9: 
+L10: [Button: Submit without GitHub] [Button: Submit in GitHub]
+L11: 
+L12: 【0†Back to arXiv】
+L13: 
+L14: 【1†Why HTML?†info.arxiv.org】 【2†Report Issue】 【3†Back to Abstract】 【4†Download PDF】
+L15:   1. 【5†Abstract】
+L16:   2. 【6†1 Introduction】
+L17:   3. 【7†2 Related Work】
+L18:     1. 【8†2.1 Zero-shot classification with pretrained models】
+L19:     2. 【9†2.2 Calibration and selective prediction】
+L20:     3. 【10†2.3 LLMs as judges】
+L21:     4. 【11†2.4 Contamination】
+L22:   4. 【12†3 Methodology】
+L23:     1. 【13†3.1 Jev and its question primitives】
+L24:     2. 【14†3.2 Benchmark suite】
+L25:     3. 【15†3.3 Request construction】
+L26:     4. 【16†3.4 Metrics】
+L27:     5. 【17†3.5 Execution】
+L28:     6. 【18†3.6 Open-weight reference models】
+L29:     7. 【19†3.7 Publication of code & responses】
+L30:   5. 【20†4 Experiments】
+L31:     1. 【21†4.1 Overall results】
+L32:       1. 【22†4.1.1 Routing】
+L33:       2. 【23†4.1.2 Inference and grounding】
+L34:       3. 【24†4.1.3 Moderation and legal text】
+L35:       4. 【25†4.1.4 Weak spots】
+L36:     2. 【26†4.2 Comparison with open-weight LLMs】
+L37:     3. 【27†4.3 Calibration and selective prediction】
+L38:     4. 【28†4.4 Rubric scoring】
+L39:     5. 【29†4.5 Multilinguality】
+L40:     6. 【30†4.6 Documented weak spots and an unexplained MMLU result】
+L41:     7. 【31†4.7 Cost and throughput】
+L42:   6. 【32†5 Limitations】
+L43:   7. 【33†6 Conclusion】
+L44:   8. 【34†References】
+L45:   9. 【35†A Calibration and selective prediction per dataset】
+L46: 【36†License: arXiv.org perpetual non-exclusive license†info.arxiv.org】
+L47: 
+L48: arXiv:2609.37647v1 [cs.CL] 29 Sep 2026
+L49: # Evaluating and Benchmarking the System One Model Jev
+L50: Tobias Deußer ^{†}^{†}thanks: tdeusser@uni-bonn.de, ORCID-ID: 0000-0003-4685-0847 Affiliation: University of Bonn, Bonn, Germany Affiliation: Lamarr-Institute for Machine Learning and Artificial Intelligence, Bonn, Germany    Lorenz Sparrenberg Affiliation: University of Bonn, Bonn, Germany Affiliation: Lamarr-Institute for Machine Learning and Artificial Intelligence, Bonn, Germany    Rafet Sifa Affiliation: University of Bonn, Bonn, Germany Affiliation: Lamarr-Institute for Machine Learning and Artificial Intelligence, Bonn, Germany Affiliation: Fraunhofer IAIS, Sankt Augustin, Germany
+L51: ###### Abstract
+L52: Jev is a commercial “System One” model from TypeSafe AI that does not generate text: given a state and typed questions, it returns a choice from fixed options, a position on a rubric, or the probability that a statement is true, with probabilities the vendor describes as calibrated. Such models target small decisions in information access pipelines, such as routing queries, checking grounding, moderating content, or rating against a rubric.
+L53: We evaluate Jev (jev-1.13.0) zero-shot on 37 datasets spanning classification, routing, natural language inference, reading comprehension, commonsense reasoning, moderation, legal clause analysis and rubric scoring, with one frozen template per dataset and full evaluation splits: 346,009 requests for under US$10. For reference, we score Qwen3.8-27B and Gemma-4-E4B on identical requests via their exact next-token probabilities over the options.
+L54: Jev reaches 95–99% accuracy on IMDB, SST-2, HellaSwag and ARC and 86.7% on Belebele across 122 languages. It beats Qwen on 27 of 37 datasets, with none of Qwen’s nine leads outside the bootstrap intervals, and Gemma on all 37. All three models degrade on low-resource languages, fine-grained or noisy labels, and rubric-based quality judgments. Jev’s choice probabilities are well calibrated and support selective prediction.
+L55: Binary probabilities rank well but are poorly placed relative to a fixed 0.5 threshold; thresholds tuned on training data raise micro-F${}_{\text{1}}$ on UNFAIR-ToS from 0.50 to 0.75. Jev answers MMLU’s calculation-heavy questions more accurately than other MMLU questions (94% vs. 91%), whereas both open models, and all three on C-Eval, find them harder.
+L56: Rotating the options leaves Jev’s accuracy unchanged and withholding the question drops it to near chance, ruling out shallow memorization but not memorized question-answer pairs. We release the code, harness and all raw responses.
+L57: 
+L58: 
+L59: Keywords Jev $\cdot$ System One Model $\cdot$ Benchmark $\cdot$ Calibration $\cdot$ Selective Prediction $\cdot$ Evaluation Resource $\cdot$ Natural Language Processing
+L60: ## 1 Introduction
+L61: Large language models (LLMs) are increasingly used not to write text but to make small, well-scoped decisions inside software and information access systems, such as routing a support request or a query to the right handler [【37†1】], flagging a harmful message [【38†2】], checking whether a claim is supported by a retrieved document [【39†3】], finding contradictions in written text [【40†4】], or rating a response against a rubric [【41†5】].
+L62: Using a generative/autoregressive model for such decisions is quite indirect. The decision has to be phrased as a prompt, the answer has to be parsed out of generated text, the model’s probability for the answer is usually unavailable or unreliable, and every generated token is paid for (see 【18†Section 3.6】 for such an implementation).
+L63: TypeSafe AI’s Jev [【42†6】] takes a different route. Borrowing the distinction between fast, intuitive “System 1” and slow, deliberate “System 2” thinking [【43†7】], it is marketed as a System One model: it never generates text but answers typed questions about a given state with structured outputs, namely a choice from a set of options, a score on an ordered rubric, or the probability that a statement is true.
+L64: All questions about one state are answered in parallel in a single request and the returned probabilities are meant to be calibrated. TypeSafe AI documents example use cases and a list of known failure modes in their documentation^{1}^{1} 1 【44†docs.typesafe.ai/model-jaggedness/jev-1.13†docs.typesafe.ai】, accessed 2026-09-29. but, to our knowledge and at the time of writing, no systematic evaluation on public benchmarks exists.
+L65: This paper provides such an evaluation together with the resources needed to reuse it. Our contributions are:
+L66: 
+L67:   * •
+L68: 
+L69: A benchmark suite of 37 public datasets mapped onto Jev’s three question primitives, covering seven task families and over 200 language varieties, with one frozen template per dataset.
+L70: 
+L71:   * •
+L72: An evaluation harness and all 346,009 raw responses, stored in a content-addressed cache so that every table and figure can be recomputed offline, and so that other models can be evaluated on identical requests; the harness includes a backend that scores open-weight LLMs this way (【19†Section 3.7】).
+L73: 
+L74:   * •
+L75: 
+L76: A zero-shot evaluation on the full evaluation splits (346,009 requests), reporting task performance with bootstrap confidence intervals, calibration, selective prediction and cost.
+L77: 
+L78:   * •
+L79: A comparison with two open-weight LLMs, Qwen3.8-27B and Gemma-4-E4B, scored on identical requests through their exact option probabilities, which puts Jev’s accuracy and calibration in context and serves as a control for its MMLU result.
+L80: 
+L81:   * •
+L82: 
+L83: An analysis of where Jev fails, compared against the vendor’s own list of weak spots, including a steep gradient across languages and an unexplained result on MMLU mathematics, which we probe for signs of memorization.
+L84: ## 2 Related Work
+L85: ### 2.1 Zero-shot classification with pretrained models
+L86: Framing classification as natural language inference [【45†8】] and prompting generative LLMs [【46†9】] made it possible to solve many classification and multiple-choice tasks without task-specific training, a setting known as “zero-shot”. Multi-task benchmark suites such as GLUE [【47†10】], MMLU [【48†11】], BIG-bench [【49†12】] and HELM [【50†13】] measure this ability across many tasks at once, and evaluation harnesses [【51†14】] standardize how multiple-choice questions are posed and scored.
+L87: Jev is evaluated in the same zero-shot regime, but its interface replaces prompting and answer parsing with typed questions.
+L88: ### 2.2 Calibration and selective prediction
+L89: Modern neural networks are often miscalibrated [【52†15】], which also holds for many LLMs: while pretrained language models can be reasonably well calibrated [【53†16】], instruction tuning and RLHF tend to degrade calibration [【54†17】, 【55†18】]. For such a calibration, the expected calibration error (ECE) [【56†19】] and the Brier score [【57†20】] are standard summaries of calibration.
+L90: Calibrated confidence enables selective classification, where a model abstains on uncertain inputs to trade coverage for accuracy [【58†21】]. Jev exposes probabilities and a confidence score for every answer, which makes both properties directly measurable.
+L91: ### 2.3 LLMs as judges
+L92: 
+L93: LLMs are increasingly used to label and rate content, from relevance judgments for retrieval evaluation [【59†22】, 【60†23】] to summary quality on SummEval [【61†24】, 【62†25】] and response helpfulness [【63†26】]. Jev’s Score primitive is designed for this kind of rubric-based judgment.
+L94: ### 2.4 Contamination
+L95: 
+L96: Public benchmarks may have leaked into the training data of the models evaluated on them, which inflates reported performance [【64†27】]. Because Jev’s training data are not public, we cannot rule out contamination, and we therefore look for indirect evidence of it (【30†Section 4.6】).
+L97: 
+L98: ## 3 Methodology
+L99: ### 3.1 Jev and its question primitives
+L100: 
+L101: A Jev request consists of a state (a string or a JSON object or array) and a map of named questions [【42†6】]. Each question is one of three primitives:
+L102: 
+L103:   * •
+L104: 
+L105: Choice selects one option from up to 255 options, each given as a key with an optional description. It returns the selected option, a probability for every option, and a confidence value derived from that distribution.
+L106: 
+L107:   * •
+L108: Score places the state on an ordered rubric of 2 to 10 described levels. It returns the probability of each level, the probability-weighted level (the score) and a confidence value.
+L109: 
+L110:   * •
+L111: 
+L112: Noul asks a yes/no question and returns the probability that the answer is yes.
+L113: All questions in a request share the state but are answered independently. Instructions and state fields can be linked by referring to a field name in backticks. We pinned the model version jev-1.13.0 for all requests. At the time of writing, Jev is priced at US$0.042 per million input tokens (output tokens are free) and accepts up to 32k tokens for the state plus the longest question.
+L114: ### 3.2 Benchmark suite
+L115: 【65†Table 1】 lists the 37 datasets we evaluate Jev on. We started from a list of commonly used classification and multiple-choice datasets and extended it so that (i) all three primitives are exercised, including multi-question requests, (ii) the use cases Jev is marketed for (routing, guardrails, grounding checks, rubric scoring) are covered, and (iii) the datasets are small enough to be evaluated in full. All datasets were loaded from the Hugging Face Hub with the datasets library [【66†28】].
+L116: We made the following adjustments:
+L117:   * •
+L118: 
+L119: Where test labels are not public (SST-2, HellaSwag, WinoGrande, CommonsenseQA, $\alpha$NLI, BoolQ), we evaluate on the validation split. SMS Spam, the OpenAI moderation set and PubMedQA’s 1,000 expert-labeled questions are evaluated in full.
+L120: 
+L121:   * •
+L122: From BIG-bench [【49†12】] we keep the multiple-choice tasks, remove tasks tagged with mathematics, arithmetic, algebra, code, numerical responses, non-language inputs, tokenization or games in BIG-bench’s keyword index, and remove three date- and number-heavy tasks. This follows TypeSafe AI’s own advice to keep arithmetic in code [【42†6】]. The result is 93 tasks, capped at 500 examples each (13,228 examples).
+L123: 
+L124:   * •
+L125: One SIB-200 configuration entry (nqo_Nkoo.zip, a broken duplicate of the N’Ko configuration) cannot be loaded from Hugging Face and is skipped.
+L126: Table 1: Benchmark suite: 37 datasets in seven categories, the split we evaluate, the number of evaluated examples $n$, the number of languages for multilingual datasets, and the Jev primitive used (number of options or levels in parentheses; $\times k$: $k$ questions per request).
+L127: Dataset  | Hugging Face source  | Split  | $n$  | Lang.  | Primitive
+L128: Text classification
+L129: AG News [【67†29】]  | 【68†fancyzhx/ag_news†huggingface.co】  | test  | 7,600  |  | Choice (4)
+L130: IMDB [【69†30】]  | 【70†stanfordnlp/imdb†huggingface.co】  | test  | 25,000  |  | Choice (2)
+L131: Rotten Tomatoes [【71†31】]  | 【72†cornell-movie-review-data/rotten_tomatoes†huggingface.co】  | test  | 1,066  |  | Choice (2)
+L132: SST-2 [【73†32】]  | 【74†stanfordnlp/sst2†huggingface.co】  | val.  | 872  |  | Choice (2)
+L133: Emotion [【75†33】]  | 【76†dair-ai/emotion†huggingface.co】  | test  | 2,000  |  | Choice (6)
+L134: Financial PhraseBank [【77†34】, 【78†35】]  | 【79†atrost/financial_phrasebank†huggingface.co】  | test  | 970  |  | Choice (3)
+
+--------------------------------------------------------------------------------
+Visual Jev: Accurate and Efficient Decisionsfrom Shared Visual Context (https://arxiv.org/html/2609.25845v1)
+【turn61view2】 [wordlim: 200] Crawled: today; Content type: text/html; Source: open({"ref_id":"https://arxiv.org/html/2609.25845v1","lineno":null}); Total lines: 433
+
+--------------------------------------------------------------------------------
+Introducing System One Models & Jev - TypeSafe AI Blog (https://typesafe.ai/blog/introducing-system-one-models-and-jev)
+【turn61view3】 [wordlim: 200] Crawled: today; Content type: text/html; Source: open({"ref_id":"https://typesafe.ai/blog/introducing-system-one-models-and-jev","lineno":null}); Total lines: 191
+

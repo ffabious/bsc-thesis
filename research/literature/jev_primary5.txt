@@ -1,0 +1,293 @@
+[2609.38850] OpenJev-RLCD: A Working RLCD Implementation (https://arxiv.org/abs/2609.38850)
+【turn64view0】 [wordlim: 200] Crawled: today; Content type: text/html; Source: open({"ref_id":"turn63view4","lineno":6}); Total lines: 161
+L0: 【0†Search】 【1†Submit】 【2†Donate†info.arxiv.org】 【3†Log in】
+L1: 
+L2: Search arXiv [Input: Search papers by title, author, abstract, or ID...] [Input] [Input]
+L3: 
+L4: Press Enter to search · 【4†Advanced search】
+L5: 
+L6: # Computer Science > Artificial Intelligence
+L7: 
+L8: [Submitted on 30 Sep 2026]
+L9: # Title:OpenJev-RLCD: A Working RLCD Implementation
+L10: 
+L11: Authors:【5†Zhimin Gao】, 【6†Pichao Wang】
+L12: 
+L13: View a PDF of the paper titled OpenJev-RLCD: A Working RLCD Implementation, by Zhimin Gao and Pichao Wang
+L14: 
+L15: 【7†View PDF】 【8†HTML (experimental)】
+L16: > Abstract:Decision models such as Jev answer questions with probabilities, which are only useful if they are calibrated. Open-source reproductions rely on supervised fine-tuning plus temperature scaling, while reinforcement learning from verifiable rewards (RLVR) makes reasoning models overconfident.
+L17: We present a working implementation of reinforcement learning for calibrated decisions (RLCD) for reasoning models: the model samples a rationale, and we score the answer distribution it commits to afterwards with a strictly proper scoring rule. A variance identity shows that scoring the mixture of several samples rewards disagreeing rationales, and that RLVR is exactly this mixture objective without its diversity term.
+
+--------------------------------------------------------------------------------
+[2609.23986] Jev-Mem: System-One-Controlled Agentic Memory for Efficient AI Agents (https://arxiv.org/abs/2609.23986)
+【turn64view1】 [wordlim: 200] Crawled: today; Content type: text/html; Source: open({"ref_id":"turn63view2","lineno":6}); Total lines: 160
+L0: 【0†Search】 【1†Submit】 【2†Donate†info.arxiv.org】 【3†Log in】
+L1: 
+L2: Search arXiv [Input: Search papers by title, author, abstract, or ID...] [Input] [Input]
+L3: 
+L4: Press Enter to search · 【4†Advanced search】
+L5: 
+L6: # Computer Science > Artificial Intelligence
+L7: 
+L8: [Submitted on 21 Sep 2026]
+L9: # Title:Jev-Mem: System-One-Controlled Agentic Memory for Efficient AI Agents
+L10: 
+L11: Authors:【5†Dongming Jiang】, 【6†Yi Li】, 【7†Bingzhe Li】
+L12: 
+L13: View a PDF of the paper titled Jev-Mem: System-One-Controlled Agentic Memory for Efficient AI Agents, by Dongming Jiang and 2 other authors
+L14: 
+L15: 【8†View PDF】 【9†HTML (experimental)】
+L16: > Abstract:Agentic memory is becoming essential for long-horizon AI agents, yet many existing systems rely on autoregressive LLMs to control how memories are organized, retrieved, and used, placing expensive generation on the critical path of memory operations. We introduce \textbf{\method}, a new agentic memory architecture inspired by System-One/System-Two cognition. System One captures fast, lightweight decision-making, whereas System Two performs slower, deliberative reasoning.
+
+--------------------------------------------------------------------------------
+Jev-Mem: System-One-Controlled Agentic Memory for Efficient AI Agents (https://arxiv.org/html/2609.23986v1)
+【turn64view2】 [wordlim: 200] Crawled: today; Content type: text/html; Source: open({"ref_id":"https://arxiv.org/html/2609.23986v1","lineno":null}); Total lines: 536
+
+--------------------------------------------------------------------------------
+OpenJev-RLCD: A Working RLCD Implementation (https://arxiv.org/html/2609.38850v1)
+【turn64view3】 [wordlim: 200] Crawled: today; Content type: text/html; Source: open({"ref_id":"https://arxiv.org/html/2609.38850v1","lineno":null}); Total lines: 323
+
+--------------------------------------------------------------------------------
+Decision-Oriented Recommendation Reranking: An Empirical Study of Jev (https://arxiv.org/html/2609.40241v1)
+【turn64view4】 [wordlim: 200] Crawled: today; Content type: text/html; Source: find({"ref_id":"turn63view0","pattern":"4.5 Latency"}); Total lines: 473
+L27:   5. 【17†4 Experimental Framework】
+L28:     1. 【18†4.1 Datasets and Preprocessing】
+L29:     2. 【19†4.2 Candidate Retrieval and Controlled Hard Candidate Construction】
+L30:     3. 【20†4.3 Compared Methods】
+L31:       1. 【21†SASRec】
+L32:       2. 【22†DCNv2】
+L33:       3. 【23†Qwen Pointwise Reranking】
+L34:       4. 【24†Qwen Listwise Reranking】
+L35:       5. 【25†Jev】
+L36:     4. 【26†4.4 Evaluation Metrics】
+L37:     5. 【27†4.5 Latency Measurement】
+L38:     6. 【28†4.6 Experimental Questions】
+L39:   6. 【29†5 Results】
+L40:     1. 【30†5.1 Recommendation Effectiveness】
+L41:     2. 【31†5.2 Effect of Candidate-Set Size】
+L42:     3. 【32†5.3 Pointwise and Listwise Qwen Reranking】
+L43:     4. 【33†5.4 Latency and Scalability】
+L44:     5. 【34†5.5 Quality–Latency Tradeoff】
+L45:   7. 【35†6 Discussion】
+L46:     1. 【36†6.1 Decision-Oriented Models for Recommendation Reranking】
+L47:     2. 【37†6.2 Implications for LLM-Based Recommendation】
+L48:     3. 【38†6.3 Limitations】
+L49:   8. 【39†7 Conclusion】
+L50:   9. 【40†References】
+L51:   10. 【41†A Prompt and Input Templates】
+L52:     1. 【42†A.1 Pointwise Qwen Prompt】
+L221: which captures the overall position of the ground-truth item.
+L222: ### 4.5 Latency Measurement
+L223: 
+L224: In addition to recommendation quality, we evaluate the serving efficiency of each reranker.
+L225: 
+L226: For locally executed methods, latency measures the wall-clock time from transferring preconstructed model inputs to the GPU through producing the final ranked candidate list, including model inference, score extraction, and ranking. Data loading, metadata construction, prompt construction, and item-ID preprocessing are excluded.
+L227: All local latency experiments are conducted on a single NVIDIA A800-SXM4-80GB GPU. The same hardware is used for SASRec, DCNv2, and Qwen-based rerankers to ensure consistent measurement across locally executed methods. Jev is evaluated using observed hosted API latency and is therefore not hardware normalized with the locally executed models.
+L228: For SASRec, latency includes transferring the preconstructed inputs to the GPU, encoding the user history, scoring the $K$ candidate items, ranking the resulting scores, and transferring the final ranking back to the CPU. For DCNv2, latency similarly includes input transfer, candidate scoring, ranking, and result transfer. Input construction, item-ID conversion, disk I/O, and metric computation are excluded from the timed region.
+L372: ## Appendix B Implementation Details
+L373: 
+L374: This section provides additional implementation details for the evaluated methods. Unless otherwise stated, models are trained separately for each recommendation domain. All locally executed inference experiments are conducted on a single NVIDIA A800-SXM4-80GB GPU. Latency is measured according to the protocol described in Section 【27†4.5】.
+L399: Because Jev is accessed through a hosted service, its underlying hardware, numerical precision, batching strategy, and serving configuration are not available to us. We therefore report observed serving latency rather than intrinsic model inference time, following the protocol described in Section 【27†4.5】.
+
+--------------------------------------------------------------------------------
+AnyJev Technical Report (https://arxiv.org/html/2610.00831v1)
+【turn64view5】 [wordlim: 200] Crawled: today; Content type: text/html; Source: find({"ref_id":"turn63view1","pattern":"3 Method"}); Total lines: 555
+No matching text found for "3 Method"
+--------------------------------------------------------------------------------
+Visual Jev: Accurate and Efficient Decisionsfrom Shared Visual Context (https://arxiv.org/html/2609.25845v1)
+【turn64view6】 [wordlim: 200] Crawled: today; Content type: text/html; Source: find({"ref_id":"turn61view2","pattern":"prefix"}); Total lines: 433
+L73: At $N{=}32{}$ questions per image, shared batched execution is 8.9$\times$ faster in warm amortized time than independent serial execution and remains 3.4$\times$ faster than an already-batched baseline that recomputes the prefix, at the cost of higher peak memory. A matched typed-head control offers no consistent accuracy advantage over the LM-head readout. The supported design is therefore simple: adapt the backbone for quality, retain the existing readout, and share execution for efficiency.
+L77: Visual Jev is the system that exploits this structure. Its default configuration post-trains the backbone with ordinary answer supervision, reads candidate-token probabilities from the existing LM head, and executes the isolated question suffixes as one batch over a shared visual prefix. Separate batch rows and masks preserve question isolation. Typed decision and evidence-sufficiency heads are controls, not parts of the recommended system.
+L78: Thus post-training is the quality intervention and shared batched execution is the serving intervention. 【57†Figure 1】 makes this boundary explicit.
+L79: Figure 1: Visual Jev. The image and public context form one cached prefix; each isolated question contributes a suffix, and the suffixes run as a batch. The default readout uses the backbone’s LM head and normalizes candidate-token logits over the valid options. Typed decision and sufficiency heads are matched experimental controls, shown separately because they are not required by the recommended system.
+L80: Four benchmarks cover two task families represented in post-training and two held out from it. A matched readout comparison and a crossed reuse–batching experiment keep the quality and serving interventions separate. Answer SFT raises the macro average from 0.706 to 0.761, but the gain is concentrated on the training families; the held-out tasks do not establish broad transfer. The typed head has no consistent advantage over the LM head.
+L81: At $N{=}32{}$, shared batched execution is 8.9$\times$ faster than independent serial execution and 3.4$\times$ faster than the already-batched no-reuse path, with a measurable memory cost. 【58†Figure 2】 shows how the execution benefit changes with the number of questions, while 【59†Figure 3】 places quality and execution cost on separate axes.
+L82: #### Contributions.
+L83: 
+L84:   1. 1.
+L85: 
+L86: We formulate shared visual decision making as a many-questions-per-image workload with runtime candidate sets, probabilistic outputs and explicit question isolation.
+L87: 
+L88:   2. 2.
+L89: 
+L90: We present Visual Jev and a crossed reuse–batching analysis that separates task adaptation and LM-head readout from the serving effects of prefix sharing and batched suffix execution.
+L91: 
+L92:   3. 3.
+L93: Controlled experiments show where each choice helps: adaptation improves the trained task families, a specialized head adds no consistent accuracy benefit, and shared batched execution improves efficiency subject to memory and numerical trade-offs.
+L105: Prefix reuse, paged key–value memory and continuous batching are the standard levers for throughput (【83†Yu et al., 2022】; 【84†Kwon et al., 2023】; 【85†Pope et al., 2023】), with structured-program runtimes making shared prefixes explicit (【86†Zheng et al., 2024b】), and kernel- and attention-level work reducing the constant factors (【87†Dao et al., 2022】; 【88†Shazeer, 2019】; 【89†Ainslie et al., 2023】).
+L106: Our experiment crosses reuse and batching so their contributions can be reported separately, and traces the remaining numerical deviation to mixed precision (【90†Micikevicius et al., 2018】).
+L108: Confidence calibration (【91†Guo et al., 2017】) and selective prediction (【92†El-Yaniv and Wiener, 2010】; 【93†Geifman and El-Yaniv, 2017】) are the standard tools, and both language and vision–language work has asked whether models know what they know (【94†Kadavath et al., 2022】; 【95†Rajpurkar et al., 2018】; 【96†Whitehead et al., 2022】). We built an evidence-sufficiency output in that spirit and report in 【45†Appendix A】 that it detects missing evidence well and still does not improve decisions.
+L109: ## 3 Visual Jev
+L110: 
+L111: An instance is an image $I$, a public text context $S$, and a set of questions $Q$. Each question is answered independently: it may read $I$, $S$ and its own text, and may not read the other questions or their answers. That isolation is what licenses the shared execution of 【27†Section 5.2】.
+L112: #### Prompt and output.
+L113: 
+L114: The shared prefix contains the system turn, image and public context. Each suffix contains one question, its candidates, and a fixed Answer: readout position. Choice accepts a runtime-supplied set of $K\leq 16{}$ candidates; Claim uses the three candidates supported, contradicted and not determined. Larger sets are rejected rather than truncated. Candidate $j$ is represented by the verified single token for its option letter. If $z_{j}$ is that token’s LM logit, Visual Jev returns
+L115:  | $$p(c_{j}\mid I,S,q)=\frac{\exp z_{j}}{\sum_{\ell=1}^{K}\exp z_{\ell}}.$$  |  | (1)
+L116: 
+L117: The normalization therefore covers only the candidates supplied for that question, while training remains ordinary next-token cross entropy over the full vocabulary.
+L118: #### Isolation and shared execution.
+L119: Prefix tokenization is verified to be identical for every question. The prefix is prefilled once, its KV state is expanded across question branches, and the right-padded suffixes run as a single batch. Separate batch rows isolate the suffixes from one another, while attention masks exclude padding. Qwen3-VL re-injects visual features only at image-token positions in its first three text layers; all such positions lie in the cached prefix, so suffix execution requires no additional visual features.
+L120: #### Default and diagnostic readouts.
+L121: 
+L122: The default system is answer-supervised LoRA with the LM-head readout above. For the matched head control, a layer-normalized hidden state at the same Answer: position feeds either a 16-slot Choice head or a three-way Claim head, trained by cross entropy over valid slots. An additional scalar evidence-sufficiency head is evaluated only in the appendix. These heads share the backbone, data, prompts and step budget with the default system.
+L123: 
+L124: ## 4 Experimental setup
+L125: #### Benchmarks.
+L126: We use four benchmarks, two of which post-training never sees. GQA supplies object, attribute and relation questions and is the main source of naturally co-occurring questions per image. SNLI-VE supplies Claim. TextVQA supplies text-in-image reading and TallyQA supplies counting; neither enters training. Open answers are converted to Choice-format candidate sets and are never compared against open-ended leaderboard numbers.
+L165:  |  |  | Decision quality  | Amortized time / question (ms)  |  |
+L166: Path  | Reuses  | Batches  | Accuracy  | $\Delta$  | disagree  | $N{=}1$  | $N{=}8$  | $N{=}32$  | Q/s  | GiB
+L167: independent  | —  | —  | 0.9104  | —  | —  | 48.1  | 48.9  | 50.7  | 20  | 8.40
+L168: independent  | —  | yes  | 0.9104  | +0.0000  | 18/7,532  | 51.3  | 20.2  | 19.3  | 52  | 9.73
+L169: vision cache  | vision  | —  | 0.9104  | +0.0000  | 0/7,532  | 49.9  | 31.2  | 28.8  | 35  | 8.40
+L170: vision cache  | vision  | yes  | 0.9100  | -0.0004  | 17/7,532  | 61.8  | 18.0  | 15.1  | 66  | 9.32
+L171: prefix share  | prefix  | —  | 0.9104  | +0.0000  | 20/7,532  | 95.0  | 42.8  | 37.5  | 27  | 8.48
+L172: prefix share  | prefix  | yes  | 0.9104  | +0.0000  | 14/7,532  | 82.9  | 12.4  | 5.7  | 176  | 10.10
+L173: generate, 1 token/q  | —  | —  | –  | –  | –  | 57.3  | 60.7  | 58.8  | 17  | 8.44
+L174: generate, joint  | —  | —  | –  | –  | –  | 141.1  | 93.7  | 133.3  | 8  | 8.63
+L175: Table 3: What sharing buys, what batching buys, and what either costs. Reuses and Batches say what each row shares across the $N$ questions and whether it runs them together. $\Delta$ and the disagreement count are against the independent path on the same items. The generation rows answer by emitting a token, so their accuracy is a different measurement. Times are synchronized warm wall-clock group intervals divided by $N$.
+L176: They start from an in-memory decoded image and extracted records, include processor/tokenization, transfers and path execution, and exclude image decode, record construction, disk, network and queueing; they are not independent-request response latencies. Figure 2: Warm amortized time per question against the number of questions on one image, log on both axes.
+L177: Hue is what a path reuses, dash is whether it batches, so the decomposition reads off the figure: the vertical gap within a hue is batching, the gap between hues at one dash is sharing. The metric is group time divided by $N$, not single-request response latency.
+L178: 【99†Table 3】 crosses two factors: whether computation is reused across the $N$ questions and whether the questions run together. Its accuracy column is computed on 7,532 GQA execution-test questions; it is distinct from the four-benchmark macro accuracy in 【97†Table 2】. 【58†Figure 2】 plots the same execution paths across the tested concurrency levels.
+L179: #### Batching and sharing both contribute.
+L180: 
+L181: At $N{=}32{}$, independent serial execution takes 50.7 ms per question after amortization. Batching the full sequences without reuse reduces this to 19.3 ms, a 2.6$\times$ gain. Reusing the prefix at the same batching level reduces it further to 5.7 ms, a 3.4$\times$ gain. Together they yield 8.9$\times$ and 176 questions/s instead of 20. The two factors are standard, but the crossed comparison shows how much each contributes on this workload.
+L182: #### The throughput gain has latency and memory conditions.
+L183: The reported per-question number is total group time divided by $N$: all 32 answers in the shared batched run complete in about 182 ms, rather than each independently receiving a 5.7 ms response. At $N{=}1$, prefix sharing is slower (82.9 ms versus 48.1 ms) because cache construction and expansion have no other question over which to amortize. At $N{=}32$, peak allocated memory rises from 8.40 GiB to 10.10 GiB.
+L184: Shared batched execution is consequently appropriate when several questions about one image are known together and the additional memory is acceptable.
+L185: #### Aggregate accuracy is stable, but predictions are not identical.
+L186: 
+L187: Five of the six decision paths score 0.9104 and the vision-cache batched path scores 0.9100. Depending on the path, 0–20 of 7,532 argmax predictions differ from independent execution. These are close aggregate accuracies, not sample-wise equivalence; 【32†Section 6】 analyzes the numerical source.
+L188: #### Skipping token generation is not the main saving.
+L189: 
+L190: Generating one token independently per question costs 58.8 ms at $N{=}32$, close to the 50.7 ms independent direct-readout path. Generating all answers in one sequence is slower still because the output tokens are decoded serially. The principal advantage comes from reusing the fixed visual context and batching the independent suffixes.
+L193: ## 6 Analysis
+L194: 
+L195: #### Why the head control favors the LM readout.
+L196: 
+L197: The matched comparison in 【97†Table 2】 assigns the quality improvement to post-training rather than to the output parameterization: answer SFT and decision CE have overlapping seed ranges and neither wins consistently by benchmark. This conclusion is limited to the tested training budget and seeds, but it removes the typed head from the default Visual Jev configuration.
+L199: The final row of 【97†Table 2】 uses an earlier training construction in which Choice examples had at most four options. The 16-slot head therefore received no gradient for later slots. On held-out eight-option TextVQA, it scores 0.639 rather than 0.973 after option counts are varied from 2 to 8 during training. This failure is specific to the slot-indexed control—the LM-head readout uses pretrained candidate tokens—and motivates matching option-count coverage whenever a fixed-slot head is used.
+L200: #### Mixed-precision execution explains the path differences.
+L201: Vision caching without batching is bitwise identical to independent execution, but the deviations are not confined to batched paths: serial prefix sharing also changes a small number of predictions (【99†Tables 3】 and 【100†11】). Batching without sharing likewise introduces differences, so both batched kernels and the prefix-prefill/cache-fork path can change the numerical trajectory.
+L202: In float32, the largest probability difference on the shared batched path falls from $1.8\times 10^{-1}$ to $1.4\times 10^{-5}$ and no argmax flips remain. The largest differences occur on examples with very small top-two margins. The evidence therefore supports mixed-precision execution effects, not an exclusive attribution to batching and not sample-wise identity.
+L203: Backbone  | Macro  | amort. ms/q  | Q/s  | GiB
+L204: --- | --- | --- | --- | ---
+L205: Qwen3-VL-4B  | 0.761  | 5.7  | 176  | 10.1
+L206: Qwen3-VL-8B  | 0.780  | 7.3  | 136  | 18.1
+L207: Table 4: What the larger backbone costs, both answer-SFT, both on the shared batched path at $N{=}32$ on the same GPU at the same precision and visual budget. Macro accuracy is the mean over three seeds.
+L208: #### Scaling helps, with a separate resource tradeoff.
+L209: Under the same answer-SFT recipe, the 8B model improves mean macro accuracy by +0.018. Its observed seed range (0.771–0.790) does not overlap the 4B range (0.758–0.764), although three seeds per model do not establish a general scaling law. On the shared batched path, 8B increases amortized time by 29% and peak memory by 80%. Model scale and execution optimization therefore address different axes and are reported separately rather than compared on a common “value” scale.
+L214: ## 7 Conclusion
+L215: 
+L216: Visual Jev treats multiple questions about one image as a shared-context workload. Answer-supervised post-training improves the four-benchmark macro average from 0.706 to 0.761, with the gain concentrated on the two training families. Shared batched execution then raises throughput from 20 to 176 questions/s at $N{=}32$; its 5.7 ms per-question figure is amortized, and its peak-memory cost is 10.10 GiB rather than 8.40 GiB.
+L217: The controls favor the simpler system definition used throughout the paper. Under the tested data, budgets and seeds, a typed decision head shows no consistent advantage over the LM head, while prefix reuse and batching retain their efficiency benefit regardless of readout. Thus the supported design is task adaptation for quality and shared batched execution for efficiency, with specialized heads reserved for applications that demonstrate an independent need for them.
+L218: ## Limitations
+L219: #### The workload requires co-available questions.
+L220: The serving gain assumes that several questions about one image are known together. At $N{=}1$, prefix construction and cache expansion add overhead rather than save work (【58†Figure 2】). For independently arriving requests, forming a batch would introduce queueing latency that our benchmark excludes. The reported 5.7 ms is therefore an amortized throughput measure: the 32-question shared batch completes in about 182 ms, not 5.7 ms per independently arriving request.
+
+--------------------------------------------------------------------------------
+GitHub - HITsz-TMG/JevEmbed: Meet JevEmbed — turn embeddings into decisions. Choose, score, and judge with your choice of embedding model. · GitHub (https://github.com/HITsz-TMG/JevEmbed)
+【turn64view7】 [wordlim: 200] Crawled: today; Content type: text/html; Source: find({"ref_id":"turn63view3","pattern":"arxiv"}); Total lines: 460
+L393: If you find this repository useful, please consider giving it a star ⭐ and citing the following papers:
+L394: 
+L395:     @misc{zhao2025kalmembeddingv2,
+L396:           title={KaLM-Embedding-V2: Superior Training Techniques and Data Inspire A Versatile Embedding Model},
+L397:           author={Xinping Zhao and Xinshuo Hu and Zifei Shan and Shouzheng Huang and Yao Zhou and Xin Zhang and Zetian Sun and Zhenyu Liu and Dongfang Li and Xinyuan Wei and Youcheng Pan and Yang Xiang and Meishan Zhang and Haofen Wang and Jun Yu and Baotian Hu and Min Zhang},
+L398:           year={2025},
+L399:           eprint={2506.20923},
+L400:           archivePrefix={arXiv},
+L401:           primaryClass={cs.CL},
+L402:           url={https://arxiv.org/abs/2506.20923},
+L403:     }
+L404: 
+L405:     @misc{hu2025kalmembedding,
+L406:           title={KaLM-Embedding: Superior Training Data Brings A Stronger Embedding Model},
+L407:           author={Xinshuo Hu and Zifei Shan and Xinping Zhao and Zetian Sun and Zhenyu Liu and Dongfang Li and Shaolin Ye and Xinyuan Wei and Qian Chen and Baotian Hu and Haofen Wang and Jun Yu and Min Zhang},
+L408:           year={2025},
+L409:           eprint={2501.01028},
+L410:           archivePrefix={arXiv},
+L411:           primaryClass={cs.CL},
+L412:           url={https://arxiv.org/abs/2501.01028},
+L413:     }
+L414: ## About
+L415: 
+L416: Meet JevEmbed — turn embeddings into decisions. Choose, score, and judge with your choice of embedding model.
+L417: 
+L418: 【62†github.com/HITsz-TMG/JevEmbed】
+L419: 
+L420: ### Topics
+L421: 
+L422: 【71†embeddings】【72†jev】【73†jev-api】【74†llm】【75†structured-decisions】【76†system-one】【77†typed-decisions】
+L423: 
+L424: ### Resources
+L425: 
+L426: 【78†Readme】
+L427: 
+L428: 【79†Apache-2.0 license】
+L429: 
+L430: ### Contributing
+L431: 
+L432: 【80†Contributing】
+L433: 
+L434: 【81†Activity】
+L435: 
+L436: 【82†Custom properties】
+L437: 
+L438: ### Stars
+L439: 
+L440: 70 stars
+L441: 
+L442: ### Watchers
+L443: 
+L444: 0 watching
+L445: 
+L446: ### Forks
+L447: 
+L448: 【83†5 forks】
+L449: 
+L450: 【84†Report repository】
+L451: 
+L452: ## Releases
+L453: ## Packages
+L454: 
+L455: ## Contributors
+L456: 
+L457: ## Languages
+L458: 
+L459: You can’t perform that action at this time.
+
+--------------------------------------------------------------------------------
+Evaluating and Benchmarking the System One Model Jev (https://arxiv.org/html/2609.37647v1)
+【turn64view8】 [wordlim: 200] Crawled: today; Content type: text/html; Source: find({"ref_id":"turn61view1","pattern":"5 Limitations"}); Total lines: 575
+L29:     7. 【19†3.7 Publication of code & responses】
+L30:   5. 【20†4 Experiments】
+L31:     1. 【21†4.1 Overall results】
+L32:       1. 【22†4.1.1 Routing】
+L33:       2. 【23†4.1.2 Inference and grounding】
+L34:       3. 【24†4.1.3 Moderation and legal text】
+L35:       4. 【25†4.1.4 Weak spots】
+L36:     2. 【26†4.2 Comparison with open-weight LLMs】
+L37:     3. 【27†4.3 Calibration and selective prediction】
+L38:     4. 【28†4.4 Rubric scoring】
+L39:     5. 【29†4.5 Multilinguality】
+L40:     6. 【30†4.6 Documented weak spots and an unexplained MMLU result】
+L41:     7. 【31†4.7 Cost and throughput】
+L42:   6. 【32†5 Limitations】
+L43:   7. 【33†6 Conclusion】
+L44:   8. 【34†References】
+L45:   9. 【35†A Calibration and selective prediction per dataset】
+L46: 【36†License: arXiv.org perpetual non-exclusive license†info.arxiv.org】
+L47: 
+L48: arXiv:2609.37647v1 [cs.CL] 29 Sep 2026
+L49: # Evaluating and Benchmarking the System One Model Jev
+L50: Tobias Deußer ^{†}^{†}thanks: tdeusser@uni-bonn.de, ORCID-ID: 0000-0003-4685-0847 Affiliation: University of Bonn, Bonn, Germany Affiliation: Lamarr-Institute for Machine Learning and Artificial Intelligence, Bonn, Germany    Lorenz Sparrenberg Affiliation: University of Bonn, Bonn, Germany Affiliation: Lamarr-Institute for Machine Learning and Artificial Intelligence, Bonn, Germany    Rafet Sifa Affiliation: University of Bonn, Bonn, Germany Affiliation: Lamarr-Institute for Machine Learning and Artificial Intelligence, Bonn, Germany Affiliation: Fraunhofer IAIS, Sankt Augustin, Germany
+L51: ###### Abstract
+L52: Jev is a commercial “System One” model from TypeSafe AI that does not generate text: given a state and typed questions, it returns a choice from fixed options, a position on a rubric, or the probability that a statement is true, with probabilities the vendor describes as calibrated. Such models target small decisions in information access pipelines, such as routing queries, checking grounding, moderating content, or rating against a rubric.
+L420: The main evaluation consumed 217.9 million input tokens (630 per request on average, including all questions and option descriptions) and cost US$9.15 (【136†Table 7】). The mean latency per request was 0.36 s, and throughput was limited by the rate limit rather than by the service. Multi-question requests cost little extra: a GoEmotions request with 28 Noul questions used 765 input tokens on average, compared with 559 for a single-question text-classification request.
+L421: Including the development pilot (US$0.01) and the additional analyses in 【146†Tables 4】 and 【154†6】 (US$0.23), the entire study cost US$9.40. For comparison, scoring the evaluation splits with the open-weight models took 6.4 A40 GPU-hours for Gemma-4-E4B (126M prompt tokens) and 17.4 A100 GPU-hours for Qwen3.8-27B (135M prompt tokens) on a GPU cluster. These figures depend on hardware and implementation and are not directly comparable with API prices.
+L422: ## 5 Limitations
+L423: We evaluate one prompt template per dataset without tuning. Other phrasings could change results, in either direction, and some of our weaker results (e.g. AGB-DE, HelpSteer2) may partly reflect our wording. Our reference points are two open-weight models scored with the same prompts, which were written for Jev rather than tuned for these models, and scored in a single forward pass without thinking. Allowing these reasoning LLMs to reason before answering would likely raise their accuracy at a higher cost.
+L424: Generative proprietary models, which would typically answer in text rather than through option probabilities, are not included, and comparisons with published results remain complicated by differing prompts, splits and in-context examples.
+L425: Binary decisions use a fixed 0.5 threshold except in 【146†Table 4】, where thresholds are tuned on only 1,000 training examples per dataset. Our memorization probes cover only two shallow forms of memorization; they cannot detect memorized question-answer pairs. Several datasets are evaluated on validation rather than test splits because test labels are not public.
+

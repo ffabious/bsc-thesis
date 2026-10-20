@@ -1,0 +1,340 @@
+Internal Error ()
+【turn60view0】 [wordlim: 200] Source: open({"ref_id":"https://arxiv.org/abs/2609.40241","lineno":null}); Total lines: 1
+L0: Failed to fetch https://arxiv.org/abs/2609.40241: DisabledError
+
+--------------------------------------------------------------------------------
+[2609.37647] Evaluating and Benchmarking the System One Model Jev (https://arxiv.org/abs/2609.37647)
+【turn60view1】 [wordlim: 200] Crawled: today; Content type: text/html; Source: open({"ref_id":"https://arxiv.org/abs/2609.37647","lineno":null}); Total lines: 163
+L0: 【0†Search】 【1†Submit】 【2†Donate†info.arxiv.org】 【3†Log in】
+L1: 
+L2: Search arXiv [Input: Search papers by title, author, abstract, or ID...] [Input] [Input]
+L3: 
+L4: Press Enter to search · 【4†Advanced search】
+L5: 
+L6: # Computer Science > Computation and Language
+L7: 
+L8: [Submitted on 29 Sep 2026]
+L9: # Title:Evaluating and Benchmarking the System One Model Jev
+L10: 
+L11: Authors:【5†Tobias Deußer】, 【6†Lorenz Sparrenberg】, 【7†Rafet Sifa】
+L12: 
+L13: View a PDF of the paper titled Evaluating and Benchmarking the System One Model Jev, by Tobias Deu{\ss}er and 2 other authors
+L14: 
+L15: 【8†View PDF】 【9†HTML (experimental)】
+L16: > Abstract:Jev is a commercial System One model from TypeSafe AI that does not generate text: given a state and typed questions, it returns a choice from fixed options, a position on a rubric, or the probability that a statement is true, with probabilities the vendor describes as calibrated. Such models target small decisions in information access pipelines, such as routing queries, checking grounding, moderating content, or rating against a rubric.
+L17: We evaluate Jev (jev-1.13.0) zero-shot on 37 datasets spanning classification, routing, natural language inference, reading comprehension, commonsense reasoning, moderation, legal clause analysis and rubric scoring, with one frozen template per dataset and full evaluation splits: 346,009 requests for under USD 10. For reference, we score Qwen3.8-27B and Gemma-4-E4B on identical requests via their exact next-token probabilities over the options.
+L18: Jev reaches 95-99% accuracy on IMDB, SST-2, HellaSwag and ARC and 86.7% on Belebele across 122 languages. It beats Qwen on 27 of 37 datasets, with none of Qwen's nine leads outside the bootstrap intervals, and Gemma on all 37. All three models degrade on low-resource languages, fine-grained or noisy labels, and rubric-based quality judgments. Jev's choice probabilities are well calibrated and support selective prediction.
+L19: Binary probabilities rank well but are poorly placed relative to a fixed 0.5 threshold; thresholds tuned on training data raise micro-F1 on UNFAIR-ToS from 0.50 to 0.75. Jev answers MMLU's calculation-heavy questions more accurately than other MMLU questions (94% vs. 91%), whereas both open models, and all three on C-Eval, find them harder.
+L20: Rotating the options leaves Jev's accuracy unchanged and withholding the question drops it to near chance, ruling out shallow memorization but not memorized question-answer pairs. We release the code, harness and all raw responses.
+L21: Comments:  | Code available at 【10†this http URL†github.com】, model responses at 【11†this http URL†doi.org】
+L22: Subjects:  | Computation and Language (cs.CL); Artificial Intelligence (cs.AI)
+L23: Cite as:  | 【12†arXiv:2609.37647】 [cs.CL]
+L24:    | (or 【13†arXiv:2609.37647v1】 [cs.CL] for this version)
+L25:    | 【14†https://doi.org/10.48550/arXiv.2609.37647†doi.org】 arXiv-issued DOI via DataCite (pending registration)
+L26: ## Submission history
+L27: 
+L28: From: Tobias Deußer [【15†view email】]
+L29: [v1] Tue, 29 Sep 2026 14:15:04 UTC (174 KB)
+L30: 
+L31: Full-text links:
+L32: 
+L33: ## Access Paper:
+L34: 
+L35: View a PDF of the paper titled Evaluating and Benchmarking the System One Model Jev, by Tobias Deu{\ss}er and 2 other authors
+L36: 
+L37:   * 【8†View PDF】
+L38:   * 【9†HTML (experimental)】
+L39:   * 【16†TeX Source】
+L40: 
+L41: 【17†view license】
+L42: 
+L43: ### Current browse context:
+L44: 
+L45: cs.CL
+L46: 
+L47: 【18†< prev】   |   【19†next >】
+L48: 
+L49: 【20†new】 | 【21†recent】 | 【22†2026-09】
+L50: 
+L51: Change to browse by:
+L52: 
+L53: 【23†cs】
+L54: 【24†cs.AI】
+L55: ### References & Citations
+L56: 
+L57:   * 【25†NASA ADS†ui.adsabs.harvard.edu】
+L58:   * 【26†Google Scholar†scholar.google.com】
+L59:   * 【27†Semantic Scholar†api.semanticscholar.org】
+L60: 
+L61: [Button: export BibTeX citation] Loading...
+L62: 
+L63: ## BibTeX formatted citation
+L64: 
+L65: [Button: ×]
+L66: 
+L67: loading...
+L68: 
+L69: Data provided by:
+L70: 
+L71: ### Bookmark
+L72: 
+L73: [Input] Bibliographic Tools
+L74: # Bibliographic and Citation Tools
+L75: 
+L76: [Input] Bibliographic Explorer Toggle
+L77: 
+L78: Bibliographic Explorer (【28†What is the Explorer?†info.arxiv.org】)
+L79: 
+L80: [Input] Connected Papers Toggle
+L81: 
+L82: Connected Papers (【29†What is Connected Papers?†www.connectedpapers.com】)
+L83: 
+L84: [Input] Litmaps Toggle
+L85: 
+L86: Litmaps (【30†What is Litmaps?†www.litmaps.co】)
+L87: 
+L88: [Input] scite.ai Toggle
+L89: 
+L90: scite Smart Citations (【31†What are Smart Citations?†www.scite.ai】)
+L91: 
+L92: [Input] Code, Data, Media
+L93: # Code, Data and Media Associated with this Article
+L94: 
+L95: [Input] alphaXiv Toggle
+L96: 
+L97: alphaXiv (【32†What is alphaXiv?†alphaxiv.org】)
+L98: 
+L99: [Input] Links to Code Toggle
+L100: 
+L101: CatalyzeX Code Finder for Papers (【33†What is CatalyzeX?†www.catalyzex.com】)
+L102: 
+L103: [Input] DagsHub Toggle
+L104: 
+L105: DagsHub (【34†What is DagsHub?†dagshub.com】)
+L106: 
+L107: [Input] GotitPub Toggle
+L108: 
+L109: Gotit.pub (【35†What is GotitPub?†gotit.pub】)
+L110: 
+L111: [Input] Huggingface Toggle
+L112: 
+L113: Hugging Face (【36†What is Huggingface?†huggingface.co】)
+L114: 
+L115: [Input] ScienceCast Toggle
+L116: ScienceCast (【37†What is ScienceCast?†sciencecast.org】)
+L117: 
+L118: [Input] Demos
+L119: # Demos
+L120: 
+L121: [Input] Replicate Toggle
+L122: 
+L123: Replicate (【38†What is Replicate?†replicate.com】)
+L124: 
+L125: [Input] Spaces Toggle
+L126: 
+L127: Hugging Face Spaces (【39†What is Spaces?†huggingface.co】)
+L128: 
+L129: [Input] Spaces Toggle
+L130: 
+L131: TXYZ.AI (【40†What is TXYZ.AI?†txyz.ai】)
+L132: 
+L133: [Input] Related Papers
+L134: # Recommenders and Search Tools
+L135: 
+L136: [Input] Link to Influence Flower
+L137: 
+L138: Influence Flower (【41†What are Influence Flowers?†influencemap.cmlab.dev】)
+L139: 
+L140: [Input] Core recommender toggle
+L141: 
+L142: CORE Recommender (【42†What is CORE?†core.ac.uk】)
+L143: 
+L144:   * Author
+L145:   * Venue
+L146:   * Institution
+L147:   * Topic
+L148: 
+L149: [Input] About arXivLabs
+L150: # arXivLabs: experimental projects with community collaborators
+L151: 
+L152: arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+L153: 
+L154: Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+L155: Have an idea for a project that will add value for arXiv's community? 【43†Learn more about arXivLabs†info.arxiv.org】.
+L156: 
+L157: 【44†Which authors of this paper are endorsers?】 | Disable MathJax (【45†What is MathJax?†info.arxiv.org】)
+L158: 
+L159: We gratefully acknowledge support from our major funders, 【46†member institutions†info.arxiv.org】, , and all contributors.
+L160: 【47†About†info.arxiv.org】 · 【48†Help†info.arxiv.org】 · 【49†Contact†info.arxiv.org】 · 【50†Subscribe†info.arxiv.org】 · 【51†Copyright†info.arxiv.org】 · 【52†Privacy†info.arxiv.org】 · 【53†Accessibility†info.arxiv.org】 · 【54†Operational Status (opens in new tab)†status.arxiv.org】
+L161: 
+L162: Major funding support from
+
+--------------------------------------------------------------------------------
+Internal Error ()
+【turn60view2】 [wordlim: 200] Source: open({"ref_id":"https://typesafe.ai/blog/introducing-system-one-models-and-jev?render=full","lineno":null}); Total lines: 1
+L0: URL https://typesafe.ai/blog/introducing-system-one-models-and-jev?render=full is not accessible via this tool.
+
+--------------------------------------------------------------------------------
+[2609.25845] Visual Jev: Accurate and Efficient Decisions from Shared Visual Context (https://arxiv.org/abs/2609.25845)
+【turn60view3】 [wordlim: 200] Crawled: today; Content type: text/html; Source: open({"ref_id":"https://arxiv.org/abs/2609.25845","lineno":null}); Total lines: 160
+L0: 【0†Search】 【1†Submit】 【2†Donate†info.arxiv.org】 【3†Log in】
+L1: 
+L2: Search arXiv [Input: Search papers by title, author, abstract, or ID...] [Input] [Input]
+L3: 
+L4: Press Enter to search · 【4†Advanced search】
+L5: 
+L6: # Computer Science > Computer Vision and Pattern Recognition
+L7: 
+L8: [Submitted on 22 Sep 2026]
+L9: # Title:Visual Jev: Accurate and Efficient Decisions from Shared Visual Context
+L10: 
+L11: Authors:【5†Guanxu Yu】, 【6†Yuhang Yao】
+L12: 
+L13: View a PDF of the paper titled Visual Jev: Accurate and Efficient Decisions from Shared Visual Context, by Guanxu Yu and 1 other authors
+L14: 
+L15: 【7†View PDF】 【8†HTML (experimental)】
+L16: > Abstract:Many vision applications ask several independent, forced-choice questions about the same image. Visual Jev encodes the image and public context once, executes isolated question suffixes as a batch, and reads candidate probabilities from the backbone's language-model head. Across four benchmarks, answer-supervised post-training raises equal-weight macro accuracy from 70.6% to 76.1%, with the gain concentrated on the two task families represented in training.
+L17: At N=32 questions per image, shared batched execution is 8.9x faster in warm amortized time than independent serial execution and remains 3.4x faster than an already-batched baseline that recomputes the prefix, at the cost of higher peak memory. A matched typed-head control offers no consistent accuracy advantage over the language-model-head readout. The supported design is therefore simple: adapt the backbone for quality, retain the existing readout, and share execution for efficiency.
+L18: Comments:  | Code: 【9†this https URL†github.com】
+L19: Subjects:  | Computer Vision and Pattern Recognition (cs.CV); Machine Learning (cs.LG)
+L20: Cite as:  | 【10†arXiv:2609.25845】 [cs.CV]
+L21:    | (or 【11†arXiv:2609.25845v1】 [cs.CV] for this version)
+L22:    | 【12†https://doi.org/10.48550/arXiv.2609.25845†doi.org】 arXiv-issued DOI via DataCite (pending registration)
+L23: ## Submission history
+L24: 
+L25: From: Yuhang Yao [【13†view email】]
+L26: [v1] Tue, 22 Sep 2026 08:12:29 UTC (127 KB)
+L27: 
+L28: Full-text links:
+L29: 
+L30: ## Access Paper:
+L31: 
+L32: View a PDF of the paper titled Visual Jev: Accurate and Efficient Decisions from Shared Visual Context, by Guanxu Yu and 1 other authors
+L33: 
+L34:   * 【7†View PDF】
+L35:   * 【8†HTML (experimental)】
+L36:   * 【14†TeX Source】
+L37: 
+L38: 【15†view license†creativecommons.org】
+L39: ### Current browse context:
+L40: 
+L41: cs.CV
+L42: 
+L43: 【16†< prev】   |   【17†next >】
+L44: 
+L45: 【18†new】 | 【19†recent】 | 【20†2026-09】
+L46: 
+L47: Change to browse by:
+L48: 
+L49: 【21†cs】
+L50: 【22†cs.LG】
+L51: 
+L52: ### References & Citations
+L53: 
+L54:   * 【23†NASA ADS†ui.adsabs.harvard.edu】
+L55:   * 【24†Google Scholar†scholar.google.com】
+L56:   * 【25†Semantic Scholar†api.semanticscholar.org】
+L57: 
+L58: [Button: export BibTeX citation] Loading...
+L59: 
+L60: ## BibTeX formatted citation
+L61: 
+L62: [Button: ×]
+L63: 
+L64: loading...
+L65: 
+L66: Data provided by:
+L67: 
+L68: ### Bookmark
+L69: 
+L70: [Input] Bibliographic Tools
+L71: # Bibliographic and Citation Tools
+L72: 
+L73: [Input] Bibliographic Explorer Toggle
+L74: 
+L75: Bibliographic Explorer (【26†What is the Explorer?†info.arxiv.org】)
+L76: 
+L77: [Input] Connected Papers Toggle
+L78: 
+L79: Connected Papers (【27†What is Connected Papers?†www.connectedpapers.com】)
+L80: 
+L81: [Input] Litmaps Toggle
+L82: 
+L83: Litmaps (【28†What is Litmaps?†www.litmaps.co】)
+L84: 
+L85: [Input] scite.ai Toggle
+L86: 
+L87: scite Smart Citations (【29†What are Smart Citations?†www.scite.ai】)
+L88: 
+L89: [Input] Code, Data, Media
+L90: # Code, Data and Media Associated with this Article
+L91: 
+L92: [Input] alphaXiv Toggle
+L93: 
+L94: alphaXiv (【30†What is alphaXiv?†alphaxiv.org】)
+L95: 
+L96: [Input] Links to Code Toggle
+L97: 
+L98: CatalyzeX Code Finder for Papers (【31†What is CatalyzeX?†www.catalyzex.com】)
+L99: 
+L100: [Input] DagsHub Toggle
+L101: 
+L102: DagsHub (【32†What is DagsHub?†dagshub.com】)
+L103: 
+L104: [Input] GotitPub Toggle
+L105: 
+L106: Gotit.pub (【33†What is GotitPub?†gotit.pub】)
+L107: 
+L108: [Input] Huggingface Toggle
+L109: 
+L110: Hugging Face (【34†What is Huggingface?†huggingface.co】)
+L111: 
+L112: [Input] ScienceCast Toggle
+L113: ScienceCast (【35†What is ScienceCast?†sciencecast.org】)
+L114: 
+L115: [Input] Demos
+L116: # Demos
+L117: 
+L118: [Input] Replicate Toggle
+L119: 
+L120: Replicate (【36†What is Replicate?†replicate.com】)
+L121: 
+L122: [Input] Spaces Toggle
+L123: 
+L124: Hugging Face Spaces (【37†What is Spaces?†huggingface.co】)
+L125: 
+L126: [Input] Spaces Toggle
+L127: 
+L128: TXYZ.AI (【38†What is TXYZ.AI?†txyz.ai】)
+L129: 
+L130: [Input] Related Papers
+L131: # Recommenders and Search Tools
+L132: 
+L133: [Input] Link to Influence Flower
+L134: 
+L135: Influence Flower (【39†What are Influence Flowers?†influencemap.cmlab.dev】)
+L136: 
+L137: [Input] Core recommender toggle
+L138: 
+L139: CORE Recommender (【40†What is CORE?†core.ac.uk】)
+L140: 
+L141:   * Author
+L142:   * Venue
+L143:   * Institution
+L144:   * Topic
+L145: 
+L146: [Input] About arXivLabs
+L147: # arXivLabs: experimental projects with community collaborators
+L148: 
+L149: arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+L150: 
+L151: Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+L152: Have an idea for a project that will add value for arXiv's community? 【41†Learn more about arXivLabs†info.arxiv.org】.
+L153: 
+L154: 【42†Which authors of this paper are endorsers?】 | Disable MathJax (【43†What is MathJax?†info.arxiv.org】)
+L155: 
+L156: We gratefully acknowledge support from our major funders, 【44†member institutions†info.arxiv.org】, , and all contributors.
+L157: 【45†About†info.arxiv.org】 · 【46†Help†info.arxiv.org】 · 【47†Contact†info.arxiv.org】 · 【48†Subscribe†info.arxiv.org】 · 【49†Copyright†info.arxiv.org】 · 【50†Privacy†info.arxiv.org】 · 【51†Accessibility†info.arxiv.org】 · 【52†Operational Status (opens in new tab)†status.arxiv.org】
+L158: 
+L159: Major funding support from
+

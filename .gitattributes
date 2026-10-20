@@ -1,0 +1,7 @@
+# Preserve imported file bytes, including CSV line endings and source hashes.
+* -text
+
+*.pdf binary
+*.png binary
+*.xlsx binary
+*.zip binary

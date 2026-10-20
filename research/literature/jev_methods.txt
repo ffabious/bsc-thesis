@@ -1,0 +1,407 @@
+Decision-Oriented Recommendation Reranking: An Empirical Study of Jev (https://arxiv.org/html/2609.40241v1)
+【turn65view0】 [wordlim: 200] Crawled: today; Content type: text/html; Source: open({"ref_id":"turn63view0","lineno":169}); Total lines: 473
+L160: ### 3.5 Study Objective
+L161: Our objective is to characterize how the evaluated recommendation-specific, Qwen-based, and decision-oriented approaches behave under the same controlled candidate reranking setting. We examine this question along three dimensions: effectiveness, measured by the quality of the resulting candidate ranking; efficiency, measured by observed serving latency; and scalability, measured by how both quality and latency change as the candidate-set size increases from $K=20$ to $K=200$.
+L162: Together, these dimensions characterize the quality–latency tradeoffs of the different reranking paradigms under the same setting.
+L163: ## 4 Experimental Framework
+L164: 
+L165: We design a controlled empirical evaluation to characterize how Jev, recommendation-specific models, and Qwen-based LLM rerankers behave under the same candidate reranking setting.
+L166: 
+L167: Table 1: Statistics of the Amazon Reviews 2023 datasets used in our experiments. The table reports the number of users, items, and interactions in each domain before constructing the controlled reranking evaluation set.
+L168: Domain # Users # Items # Interactions Movies and TV 657,203 197,943 7,441,129 Video Games 94,762 25,612 814,586 Books 776,370 495,063 9,488,297
+L169: ### 4.1 Datasets and Preprocessing
+L170: 
+L171: We conduct experiments on three domains from the Amazon Reviews 2023 benchmark 【63†Hou et al. (2026)】: Movies and TV, Video Games, and Books. We use the 5-core leave-last-out configurations, 5core_last_out_w_his_{domain}, which retain users and items with at least five interactions and provide temporally ordered user histories together with held-out next-item interactions. We use the predefined dataset splits without further resplitting.
+L172: For each user, the held-out item in the test split is treated as the ground-truth next interaction $i_{u}^{+}$. Recommendation-specific models operate on item identifiers and behavioral histories. For language-based methods, each item is represented using available textual metadata, including the title, main category, category information, and up to the first 250 characters of the item description.
+L173: We expose the 10 most recent historical interactions to Jev and the Qwen rerankers and use the same textual representation procedure across these methods.
+L174: We use the same preprocessing and evaluation protocol across all domains. Dataset-specific statistics, including the number of users, items, and interactions, are reported in Table 【73†1】.
+L175: ### 4.2 Candidate Retrieval and Controlled Hard Candidate Construction
+L176: 
+L177: We adopt SASRec as the first-stage retrieval model. SASRec is trained independently for each domain using the corresponding training split and produces a relevance score over the item catalog for each test user. Implementation details are in Appendix 【46†B.1】.
+L178: To separate reranking performance from retrieval failure, we restrict the controlled reranking evaluation to users whose ground-truth next item is retrieved within the top 200 SASRec predictions, as shown in Equation 【74†5】. After applying this eligibility criterion, we evaluate 954 users for Movies and TV, 1,000 users for Video Games, and 626 users for Books. For Video Games, where more than 1,000 eligible users are available, we cap the evaluation at 1,000 users for computational efficiency.
+L179: All methods are evaluated on the same selected users within each domain. We then construct candidate sets with $K\in\{20,50,100,200\}$. For each eligible user and candidate size $K$, the candidate set consists of the ground-truth next item together with $K-1$ highly ranked non-target items from SASRec, as shown in Equation 【75†6】. The negative candidates are therefore behaviorally plausible alternatives rather than randomly sampled items.
+L180: Candidate membership is fixed before evaluating any reranker, and all methods operate over exactly the same candidate set for a given user and $K$. Candidate order is randomized deterministically so that the input does not reveal the SASRec ranking.
+L181: ### 4.3 Compared Methods
+L182: 
+L183: We compare Jev with recommendation-specific models and two Qwen-based LLM reranking formulations. The evaluated LLM configurations are intended to provide representative pointwise and listwise reference points rather than an exhaustive characterization of LLM-based reranking.
+L184: #### SASRec
+L185: 
+L186: SASRec 【55†Kang and McAuley (2018)】 serves both as the first-stage retriever and as a conventional behavioral recommendation baseline. For the reranking evaluation, we preserve the original SASRec scores of the items in each controlled candidate set and rank the candidates according to these scores. This baseline measures how much reranking changes recommendation quality relative to the behavioral model used to construct the hard candidates.
+
+--------------------------------------------------------------------------------
+AnyJev Technical Report (https://arxiv.org/html/2610.00831v1)
+【turn65view1】 [wordlim: 200] Crawled: today; Content type: text/html; Source: open({"ref_id":"turn63view1","lineno":60}); Total lines: 555
+L15:   1. 【5†Abstract】
+L16:   2. 【6†1 Introduction】
+L17:   3. 【7†2 Related Work】
+L18:     1. 【8†2.1 Typed decision models and open implementations】
+L19:     2. 【9†2.2 Probability readouts and calibration】
+L20:     3. 【10†2.3 Decision components in agent systems】
+L21:   4. 【11†3 The readout】
+L22:     1. 【12†Prompt.】
+L23:     2. 【13†Decision.】
+L24:     3. 【14†Answer mass.】
+L25:     4. 【15†Two defects.】
+L26:   5. 【16†4 Correcting the two defects】
+L27:     1. 【17†4.1 The label prior】
+L28:     2. 【18†4.2 Position bias】
+L29:       1. 【19†Canonical order.】
+L30:     3. 【20†4.3 Confidence】
+L31:   6. 【21†5 Reading fewer rotations】
+L32:     1. 【22†Reading order.】
+L33:     2. 【23†When to stop.】
+L34:     3. 【24†Choosing the threshold without labels.】
+L35:     4. 【25†The cost of a round.】
+L36:   7. 【26†6 Experimental setup】
+L37:     1. 【27†Models.】
+L38:     2. 【28†Tasks.】
+L39:     3. 【29†Benchmark.】
+L40:     4. 【30†What is fitted on what.】
+L41:     5. 【31†Settings and hardware.】
+L42:     6. 【32†Additional full-split evaluation.】
+L43:   8. 【33†7 Results】
+L44:     1. 【34†7.1 Order dependence falls on every model tested】
+L45:     2. 【35†7.2 The benchmark】
+L46:     3. 【36†7.3 Full BEV Decision Mix evaluation】
+L47:     4. 【37†7.4 Serving cost】
+L48:   9. 【38†8 What did not work】
+L49:     1. 【39†A question-agnostic head.】
+L50:     2. 【40†Reusing the question block’s cache.】
+L51:     3. 【41†Making the options a set.】
+L52:     4. 【42†Packing the rotations into one forward.】
+L53:   10. 【43†9 Limitations】
+L54:   11. 【44†10 Conclusion】
+L55:     1. 【45†Status.】
+L56:   12. 【46†References】
+L57:   13. 【47†A Per-model results on the 20-option tasks】
+L58:   14. 【48†B Benchmark detail】
+L59:   15. 【49†C Rotations and the certificate】
+L60:   16. 【50†D Reading a truncated forward】
+L61:   17. 【51†E Full BEV Decision Mix results】
+L62:     1. 【52†Readout protocol.】
+L63:     2. 【53†Systems and interpretation.】
+L64:     3. 【54†The evaluated L2-mono variant.】
+L65:     4. 【55†Scope.】
+L66: 【56†License: CC BY 4.0†info.arxiv.org】
+L67: 
+L68: arXiv:2610.00831v1 [cs.LG] 30 Sep 2026
+L69: 
+L70: \reportname
+L71: 
+L72: AnyJev \team Nokia Applied Research \affiliations^{1}Nokia, Sunnyvale, CA, USA  ^{2}Tencent Hunyuan
+L73: ^{3}The Hong Kong Polytechnic University \links\githublink https://github.com/nokia-applied-research/AnyJevnokia-applied-research/AnyJev \reportstatus Early report on work in development {reportcover}
+L74: # AnyJev Technical Report
+L75: 
+L76: Typed Decisions from One Prefill of Any Open LLM
+L77: 
+L78: Jiamu Zhang^{1} Tianze Yang^{1} Yucheng Shi^{2} Evan Chen^{1}
+L79: Zixiang Nie^{1} Kelly Wan^{1} Liangjie Hong^{1} Ninghao Liu^{3} Liang Wu^{1}
+L80: ###### Abstract
+L81: A typed decision is a choice among a fixed set of options, returned as a probability rather than as text. Systems that need typed decisions today use models trained for that purpose. This report describes AnyJev, which reads a typed decision from one prefill of a pretrained instruction-tuned language model. The readout restricts the next-token distribution at the answer position to the option tokens.
+L82: It has two defects: the model assigns higher probability to some labels whatever the input, and to some positions in the option list. AnyJev corrects both with no gradient steps and no parameter changes: it divides out a label prior estimated from unlabelled inputs, and it averages log-probabilities over the $K$ cyclic rotations of the option list. On two 20-option tasks the rotations lower the order-flip rate from 0.33 to 0.14 and from 0.33 to 0.18, and raise accuracy on 11 of 11 models on both.
+L83: Reading every rotation requires $K$ prefills. A stopping rule selected against the full-rotation decision on unlabelled states cuts that. Selecting the threshold on one unlabelled split and bounding its disagreement on a second, it reads 10.6 rotations of 18 at a verified 0.008 bound on two of four cells; selected and bounded on one split, as our serving run did, it reads 7.3 and serves 2.2 times as many decisions per second on vLLM. The code is open source.
+L84: ## 1 Introduction
+L85: An agent system has to make many small decisions that are not text: route this request to one of twenty skills, decide whether this input is an injection attempt, score this answer from one to five. A language model can be asked for these in prose, but the caller then has to parse the reply, and gets no probability it can threshold. A typed decision fixes the interface instead. The caller supplies a state and a question with a fixed set of options, and the system returns a distribution over those options.
+L86: The interface was made popular by a hosted service, and open implementations now include both trained decision models and frozen-model readouts (Section 【7†2】).
+L87: Figure 1: The same base model, three decision paths. (a) Asking for the answer in text costs one forward pass per generated token and returns prose the caller has to parse, with no probability attached. (b) AnyJev L0 runs one prefill per cyclic rotation. It restricts the next-token distribution to the option-label tokens and renormalises, corrects the label prior, maps each position back to its option, and averages in log space across the $K$ rotations before renormalising.
+
+--------------------------------------------------------------------------------
+Jev-Mem: System-One-Controlled Agentic Memory for Efficient AI Agents (https://arxiv.org/html/2609.23986v1)
+【turn65view2】 [wordlim: 200] Crawled: today; Content type: text/html; Source: open({"ref_id":"turn64view2","lineno":110}); Total lines: 536
+L77: We make four main contributions.
+L78: 
+L79:   * •
+L80: 
+L81: We identify an opportunity to leverage System-One-style lightweight decision-making to enable more efficient agentic memory.
+L82: 
+L83:   * •
+L84: 
+L85: We introduce Jev-Mem, a System-One/System-Two architecture that separates lightweight structured memory control from expensive generative reasoning.
+L86: 
+L87:   * •
+L88: We develop a unified System-One control plane for both memory construction and retrieval, including multi-relational organization, query routing, adaptive graph traversal, candidate scoring, and stopping.
+L89: 
+L90:   * •
+L91: 
+L92: Jev-Mem achieves the best overall accuracy while also delivering the highest efficiency among state-of-the-art baselines.
+L93: 
+L94: 【68†Image: Refer to caption】 Figure 1: Workflow of agentic memory.
+L95: ## 2 Background and Motivation
+L96: ### 2.1 Agentic Memory
+L97: 
+L98: Figure 【69†1】 demonstrates the workflow of agnetic memory. Let an agent maintain an evolving memory $M_{t}$. At interaction step $t$, a query $q_{t}$ retrieves relevant evidence
+L99: 
+L100:  | $$E_{t}=R(q_{t},M_{t})$$  |  | (1)
+L101: 
+L102: which is then provided to a language model for reasoning and response generation:
+L103: 
+L104:  | $$o_{t}=L(q_{t},E_{t})$$  |  | (2)
+L105: 
+L106: The resulting interaction may subsequently update the memory:
+L107: 
+L108:  | $$M_{t+1}=U(M_{t},q_{t},o_{t})$$  |  | (3)
+L109: Agentic memory has evolved from simple retrieval over stored interaction histories toward increasingly active memory management. Modern systems may selectively organize observations, infer relationships among memories, consolidate information, route queries across different memory structures, and adapt retrieval based on the current query. As a result, memory is no longer only a passive store accessed by a retrieval function.
+L110: It increasingly behaves as a dynamic subsystem that continuously makes decisions about how information should be organized and accessed.
+L111: This shift introduces an important systems question that has received comparatively less attention: what computational mechanism should execute these memory-management decisions? Both memory update $U$ and retrieval $R$ contain frequent semantic decisions. During memory construction, the system must determine how new information should be characterized and connected to existing knowledge.
+L112: During retrieval, it must determine where to search, which candidates are useful, how much additional search is warranted, and when sufficient evidence has been collected.
+L113: External retrieval has long served as a mechanism for augmenting parametric language-model knowledge with non-parametric stores, through dense retrievers, retrieval-augmented pre-training, and retrieval-augmented generation (【70†Karpukhin et al., 2020】; 【71†Guu et al., 2020】; 【72†Lewis et al., 2020】; 【73†Borgeaud et al., 2022】; 【74†Izacard et al., 2022】).
+L114: Agentic memory inherits much of this machinery, but differs in that its store is written by the agent’s own interaction history and must be maintained and reorganized over time rather than fixed in advance.
+L115: A closely related line of work studies adaptive control in retrieval-augmented generation. Rather than applying the same retrieval procedure to every query, active and adaptive methods dynamically determine whether retrieval is needed, when additional evidence should be acquired, or which retrieval strategy a given query warrants (【75†Trivedi et al., 2023】; 【76†Jiang et al., 2023】; 【77†Asai et al., 2023】; 【78†Jeong et al., 2024】).
+L116: These results motivate viewing retrieval as a controlled decision process rather than a fixed top-$k$ operation. Jev-Mem builds on this view, and extends the same principle from evidence acquisition to the broader memory lifecycle, including memory construction, query routing, budget allocation, graph traversal, and stopping.
+L117: Jev-Mem focuses on this memory-control layer. Rather than treating these decisions as incidental components embedded inside prompts or fixed heuristics, we make them an explicit part of the memory architecture.
+L118: ### 2.2 The Opportunity for System-One Memory Control
+L119: 
+L120: A key observation is that many memory-control operations are semantic but not generative. During memory construction, the system may need to classify a memory or infer its relation to existing information; during retrieval, it may need to route a query, score candidates, or decide when to stop. These decisions typically produce bounded outputs such as labels, probabilities, or scores rather than free-form text.
+L121: Using an autoregressive LLM for such high-frequency decisions is therefore unnecessarily expensive: even simple judgments require token-by-token generation, formatting, and parsing. Because these operations repeatedly appear on the memory critical path, their overhead can accumulate quickly.
+L122: More broadly, cost-aware LLM inference systems have shown that different requests need not receive identical amounts of model computation. Cascading and routing approaches dynamically allocate requests across models of differing cost to improve the cost–quality tradeoff (【79†Chen et al., 2024】; 【80†Ong et al., 2025】), and speculative decoding uses a small model to draft tokens that a larger model only verifies (【81†Leviathan et al., 2023】).
+
+--------------------------------------------------------------------------------
+OpenJev-RLCD: A Working RLCD Implementation (https://arxiv.org/html/2609.38850v1)
+【turn65view3】 [wordlim: 200] Crawled: today; Content type: text/html; Source: open({"ref_id":"turn64view3","lineno":48}); Total lines: 323
+L0: ##### Report GitHub Issue
+L1: 
+L2: [Button: ×]
+L3: 
+L4: Title: [Input: Enter title]
+L5: 
+L6: Content selection saved. Describe the issue below:
+L7: 
+L8: Description:
+L9: 
+L10: [Button: Submit without GitHub] [Button: Submit in GitHub]
+L11: 
+L12: 【0†Back to arXiv】
+L13: 
+L14: 【1†Why HTML?†info.arxiv.org】 【2†Report Issue】 【3†Back to Abstract】 【4†Download PDF】
+L15:   1. 【5†Abstract】
+L16:   2. 【6†1 Introduction】
+L17:     1. 【7†Contributions.】
+L18:   3. 【8†2 Setting】
+L19:   4. 【9†3 Method】
+L20:     1. 【10†3.1 What to score: the mixture or each rationale】
+L21:       1. 【11†Estimator.】
+L22:     2. 【12†3.2 Two ways the per-rationale objective fails】
+L23:       1. 【13†It switches reasoning off.】
+L24:       2. 【14†It is drowned by the policy gradient.】
+L25:     3. 【15†3.3 The recipe: calibrate, then reinforce】
+L26:   5. 【16†4 Experimental setup】
+L27:     1. 【17†Tasks.】
+L28:     2. 【18†Model and methods.】
+L29:     3. 【19†Metrics and statistics.】
+L30:   6. 【20†5 Results】
+L31:     1. 【21†5.1 Main comparison】
+L32:     2. 【22†5.2 What reinforcing the reasoning adds】
+L33:     3. 【23†5.3 Aleatoric uncertainty: when RL cannot help】
+L34:     4. 【24†5.4 Ablations】
+L35:       1. 【25†Score-function weight.】
+L36:       2. 【26†Readout warm-up alone is not enough.】
+L37:       3. 【27†Who scores the rationale.】
+L38:       4. 【28†No KL anchor in stage 2.】
+L39:       5. 【29†Explicit-probability RLCD.】
+L40:   7. 【30†6 Related work】
+L41:     1. 【31†Calibration of language models.】
+L42:     2. 【32†RL for reasoning and calibration.】
+L43:     3. 【33†Rationales as latent variables.】
+L44:   8. 【34†7 Limitations】
+L45:   9. 【35†8 Conclusion】
+L46:   10. 【36†References】
+L47:   11. 【37†A Estimators and their exact checks】
+L48:     1. 【38†Per-rationale objective with shaping.】
+L49:     2. 【39†Mixture objective.】
+L50:     3. 【40†Checks.】
+L51:   12. 【41†B Hyperparameters】
+L52:   13. 【42†C Mixture readout】
+L53: 【43†License: CC BY 4.0†info.arxiv.org】
+L54: 
+L55: arXiv:2609.38850v1 [cs.AI] 30 Sep 2026
+L56: # OpenJev-RLCD: A Working RLCD Implementation
+L57: 
+L58: Zhimin Gao    Pichao Wang Affiliation: zhimingao113@gmail.com; pichaowang@gmail.com
+L59: ###### Abstract
+L60: Decision models such as Jev answer questions about an agent’s state with probabilities, and those probabilities are only useful if they are calibrated: a system that automates the decisions it is confident about must be right when it says it is. The open-source reproductions of this idea are trained by supervised fine-tuning and repaired with temperature scaling, while standard reinforcement learning from verifiable rewards makes reasoning models sharply overconfident.
+L61: We describe a working implementation of reinforcement learning for calibrated decisions (RLCD) for reasoning models and the analysis that led to it. The model samples a rationale and we read the answer distribution it commits to afterwards; every rationale is scored by a strictly proper scoring rule of that distribution.
+L62: A one-line variance identity explains why the popular alternative—scoring the mixture of several samples—rewards rationales for disagreeing and degenerates the reasoning, and shows that RLVR is exactly the mixture objective without its diversity term. The per-rationale objective has a calibrated optimum, but optimized naively it either switches reasoning off or is drowned out by high-variance policy gradients.
+L63: The resulting recipe is calibrate, then reinforce: first train the post-rationale decision with a proper score on the model’s own rationales, then optimize the reasoning with the same proper score as reward.
+L64: With Qwen3-1.7B on two real reasoning tasks (3 seeds, paired tests), RLCD matches or beats SFT, RFT/STaR and GRPO—each followed by temperature scaling—in accuracy and beats all of them in selective prediction (area under the risk–coverage curve); on GSM8K answer verification a single RLCD query can decide 81% of the items at $\leq$5% error, versus 19% for GRPO.
+L65: On a task whose uncertainty is annotator disagreement, the same objective provably cannot beat cross-entropy and, left alone, discovers that it should stop reasoning. We release code, all run logs and an API-compatible server. Codes are available at: https://github.com/ZimmyGao/openjev-rlcd.
+L66: ## 1 Introduction
+L67: A calibrated decision model returns, for a question about a state (“will this plan succeed?”, “is this answer correct?”, “which option is right?”), a probability distribution over answers whose confidence matches its accuracy. The value of such a model lies less in its accuracy than in what calibration enables: a downstream agent can automate the decisions the model is sure about and escalate the rest, and it can do so from the model’s own confidence, without labels.
+L68: TypeSafe AI’s Jev [【44†17】] markets exactly this capability under the name reinforcement learning for calibrated decisions (RLCD), without disclosing a training algorithm. The open-source ecosystem that followed (several hundred repositories within weeks) trains scorers by supervised fine-tuning (SFT) and fixes their confidence post hoc with temperature scaling (TS) [【45†8】].
+
+--------------------------------------------------------------------------------
+GitHub - HITsz-TMG/JevEmbed: Meet JevEmbed — turn embeddings into decisions. Choose, score, and judge with your choice of embedding model. · GitHub (https://github.com/HITsz-TMG/JevEmbed)
+【turn65view4】 [wordlim: 200] Crawled: today; Content type: text/html; Source: open({"ref_id":"turn63view3","lineno":170}); Total lines: 460
+L84:     * PROGRAMS
+L85:       * 【50†Security Lab†securitylab.github.com】
+L86:       * 【51†Maintainer Community†maintainers.github.com】
+L87:       * 【52†GitHub Stars†stars.github.com】
+L88:       * 【53†Archive Program†archiveprogram.github.com】
+L89: 
+L90:     * REPOSITORIES
+L91:       * 【54†Topics】
+L92:       * 【55†Trending】
+L93:       * 【56†Collections】
+L94: 
+L95:   * Enterprise
+L96: 
+L97:     * ENTERPRISE SOLUTIONS
+L98:       * 【19†Enterprise platformAI-powered developer platform】
+L99:     * AVAILABLE ADD-ONS
+L100:       * 【10†GitHub Advanced SecurityEnterprise-grade security features】
+L101:       * 【57†Copilot for BusinessEnterprise-grade AI features】
+L102:       * 【58†Premium SupportEnterprise-grade 24/7 support】
+L103: 
+L104:   * 【59†Pricing】
+L105: 
+L106: Search`/`
+L107: 
+L108: 【1†Sign in】
+L109: 
+L110: 【60†Sign up】
+L111: 
+L112: Appearance settings
+L113: You signed in with another tab or window. Reload to refresh your session. You signed out in another tab or window. Reload to refresh your session. You switched accounts on another tab or window. Reload to refresh your session. Dismiss alert
+L114: 
+L115:   1. 【61†HITsz-TMG】
+L116:   2. 【62†JevEmbed】
+L117: ## Repository navigation
+L118: 
+L119:   *   * 【62†Code】
+L120:   * 【63†Issues】
+L121:   * 【64†Pull requests2 (2)】
+L122:   * 【65†Actions】
+L123:   * 【66†Projects】
+L124:   * 【67†Security and quality】
+L125:   * 【68†Insights】
+L126: 
+L127: More items
+L128: 
+L129: 【69†Image: HITsz-TMG†avatars.githubusercontent.com】
+L130: 
+L131: 【62†JevEmbed】
+L132: 
+L133: Public
+L134: 
+L135:   * 【70†Notifications】You must be signed in to change notification settings
+L136:   * 【70†Fork5 (5)】
+L137:   * 【70†Star70 (70)】You must be signed in to star a repository
+L138: ## About
+L139: 
+L140: Meet JevEmbed — turn embeddings into decisions. Choose, score, and judge with your choice of embedding model.
+L141: 
+L142: 【62†github.com/HITsz-TMG/JevEmbed】
+L143: 
+L144: ### Topics
+L145: 
+L146: 【71†embeddings】【72†jev】【73†jev-api】【74†llm】【75†structured-decisions】【76†system-one】【77†typed-decisions】
+L147: 
+L148: ### Resources
+L149: 
+L150: 【78†Readme】
+L151: 
+L152: 【79†Apache-2.0 license】
+L153: 
+L154: ### Contributing
+L155: 
+L156: 【80†Contributing】
+L157: 
+L158: 【81†Activity】
+L159: 
+L160: 【82†Custom properties】
+L161: 
+L162: ### Stars
+L163: 
+L164: 70 stars
+L165: 
+L166: ### Watchers
+L167: 
+L168: 0 watching
+L169: ### Forks
+L170: 
+L171: 【83†5 forks】
+L172: 
+L173: 【84†Report repository】
+L174: 
+L175: main
+L176: 
+L177: 【85†Branches】【86†Tags】
+L178: 
+L179: [Input: Go to file]
+L180: 
+L181: Go to file
+L182: 
+L183: Code
+L184: 
+L185: Open more actions menu
+L186: 
+L187: ## Latest commit
+L188: 
+L189: 
+L190: 
+L191: ## History
+L192: 
+L193: 30 Commits
+L194: ## Folders and files
+L195: Name  | Name  | Last commit message  | Last commit date
+L196: --- | --- | --- | ---
+L197: 【87†assets】  | 【87†assets】  |    |
+L198: 【88†configs】  | 【88†configs】  |    |
+L199: 【89†docs】  | 【89†docs】  |    |
+L200: 【90†examples】  | 【90†examples】  |    |
+L201: 【91†reports】  | 【91†reports】  |    |
+L202: 【92†scripts】  | 【92†scripts】  |    |
+L203: 【93†src/jevembed】  | 【93†src/jevembed】  |    |
+L204: 【94†tests】  | 【94†tests】  |    |
+L205: 【95†.gitignore】  | 【95†.gitignore】  |    |
+L206: 【96†CONTRIBUTING.md】  | 【96†CONTRIBUTING.md】  |    |
+L207: 【97†LICENSE】  | 【97†LICENSE】  |    |
+L208: 【98†MANIFEST.in】  | 【98†MANIFEST.in】  |    |
+L209: 【99†README.md】  | 【99†README.md】  |    |
+L210: 【100†pyproject.toml】  | 【100†pyproject.toml】  |    |
+L211: 【101†requirements-dev.txt】  | 【101†requirements-dev.txt】  |    |
+L212: 【102†requirements-models-tested.txt】  | 【102†requirements-models-tested.txt】  |    |
+L213: 【103†requirements.txt】  | 【103†requirements.txt】  |    |
+L214: [Button: View all files]
+L215: ## Repository files navigation
+L216: 
+L217:   *   * 【104†README】
+L218:   * 【104†Contributing】
+L219:   * 【104†Apache-2.0 license】
+L220: 
+L221: More items
+L222: 
+L223: # 🌖 JevEmbed: Turn Embeddings into Decisions
+L224: 
+L225: One-Stop Decision Toolkit for Embedding Models: data synthesis, fine-tuning, inference, benchmarking, and interactive exploration.
+L226: ## News
+L227:   * 29/9/2026: 📏 Added a versioned 【105†benchmark module】 with multi-file JSONL cases, unified Choice/Score/Noul evaluation, and structured JSON results.
+L228:   * 28/9/2026: ✨ Released 【106†JevEmbed-Qwen3-Embedding-4B†huggingface.co】, fine-tuned on JevEmbed-Data, with merged weights and a LoRA adapter.
+L229:   * 27/9/2026: 🕹️ Added an interactive 【107†Playground】 with model comparison and Game Lab.
+L230:   * 26/9/2026: 🪄 Added 【108†supervised data synthesis】 for Choice, Score, and Noul, with configurable label quotas.
+L231:   * 26/9/2026: ⚙️ JevEmbed now includes ready-to-use configurations for 【109†JevEmbed-Qwen3-Embedding-0.6B†huggingface.co】 and 【110†JevEmbed-KaLM-Embedding-V2.5†huggingface.co】.
+L232: More
+L233:   * 25/9/2026: ✨ 【110†JevEmbed-KaLM-Embedding-V2.5†huggingface.co】 is available on Hugging Face with merged weights and a LoRA adapter.
+L234:   * 24/9/2026: 🔌 JevEmbed now supports 【111†CLM-v0.1-8B†huggingface.co】 for Choice, Score, and Noul decisions. See the 【112†CLM-v0.1-8B setup guide】.
+L235:   * 24/9/2026: 🗃️ 【113†JevEmbed-Data†huggingface.co】 is available for fine-tuning, with 1.67 million labeled Choice, Score, and Noul questions.
+L236: ## Playground
+L237: 
+L238: Explore Choice, Score, and Noul decisions in the browser, compare models, inspect JSON results, and try model-controlled pixel games in Game Lab.
+L239: 
+L240: Run `python -m jevembed --playground`, then open `http://127.0.0.1:8000/playground/`. See the 【107†Playground guide】 for model configuration and usage.
+L241: ## Installation
+L242: 
+L243: Use Python 3.10–3.12 for the tested model stack.
+L244: 
+L245: Full installation
+L246: 
+L247: Run these commands from the project root:
+L248: 
+L249:     python -m venv .venv
+L250:     source .venv/bin/activate
+L251:     # Windows PowerShell: .venv\Scripts\Activate.ps1
+L252:     python -m pip install -r requirements.txt
+L253:     python -m pip install -e . --no-deps
+L254: `requirements.txt` includes local inference and HTTP dependencies with the constraints in `requirements-models-tested.txt`. Contributors can install `requirements-dev.txt` for testing and packaging. See 【114†dependency compatibility】 for package roles and tested versions.
+L255: 
+L256: Optional installations
+

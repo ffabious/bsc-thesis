@@ -1,0 +1,236 @@
+Decision-Oriented Recommendation Reranking: An Empirical Study of Jev (https://arxiv.org/html/2609.40241v1)
+【turn63view0】 [wordlim: 200] Crawled: today; Content type: text/html; Source: open({"ref_id":"turn62search3","lineno":null}); Total lines: 473
+L0: ##### Report GitHub Issue
+L1: 
+L2: [Button: ×]
+L3: 
+L4: Title: [Input: Enter title]
+L5: 
+L6: Content selection saved. Describe the issue below:
+L7: 
+L8: Description:
+L9: 
+L10: [Button: Submit without GitHub] [Button: Submit in GitHub]
+L11: 
+L12: 【0†Back to arXiv】
+L13: 
+L14: 【1†Why HTML?†info.arxiv.org】 【2†Report Issue】 【3†Back to Abstract】 【4†Download PDF】
+L15:   1. 【5†Abstract】
+L16:   2. 【6†1 Introduction】
+L17:   3. 【7†2 Related Work】
+L18:     1. 【8†2.1 Sequential and Text-Aware Recommendation】
+L19:     2. 【9†2.2 Large Language Models for Recommendation Reranking】
+L20:     3. 【10†2.3 Structured Decision Making】
+L21:   4. 【11†3 Problem Formulation】
+L22:     1. 【12†3.1 Two-Stage Recommendation】
+L23:     2. 【13†3.2 Controlled Hard Candidate Reranking】
+L24:     3. 【14†3.3 Reranking Paradigms】
+L25:     4. 【15†3.4 Reranking as a Structured Decision Problem】
+L26:     5. 【16†3.5 Study Objective】
+L27:   5. 【17†4 Experimental Framework】
+L28:     1. 【18†4.1 Datasets and Preprocessing】
+L29:     2. 【19†4.2 Candidate Retrieval and Controlled Hard Candidate Construction】
+L30:     3. 【20†4.3 Compared Methods】
+L31:       1. 【21†SASRec】
+L32:       2. 【22†DCNv2】
+L33:       3. 【23†Qwen Pointwise Reranking】
+L34:       4. 【24†Qwen Listwise Reranking】
+L35:       5. 【25†Jev】
+L36:     4. 【26†4.4 Evaluation Metrics】
+L37:     5. 【27†4.5 Latency Measurement】
+L38:     6. 【28†4.6 Experimental Questions】
+L39:   6. 【29†5 Results】
+L40:     1. 【30†5.1 Recommendation Effectiveness】
+L41:     2. 【31†5.2 Effect of Candidate-Set Size】
+L42:     3. 【32†5.3 Pointwise and Listwise Qwen Reranking】
+L43:     4. 【33†5.4 Latency and Scalability】
+L44:     5. 【34†5.5 Quality–Latency Tradeoff】
+L45:   7. 【35†6 Discussion】
+L46:     1. 【36†6.1 Decision-Oriented Models for Recommendation Reranking】
+L47:     2. 【37†6.2 Implications for LLM-Based Recommendation】
+L48:     3. 【38†6.3 Limitations】
+L49:   8. 【39†7 Conclusion】
+L50:   9. 【40†References】
+L51:   10. 【41†A Prompt and Input Templates】
+L52:     1. 【42†A.1 Pointwise Qwen Prompt】
+L53:     2. 【43†A.2 Listwise Qwen Prompt】
+L54:     3. 【44†A.3 Jev Input Formulation】
+L55:   11. 【45†B Implementation Details】
+L56:     1. 【46†B.1 SASRec】
+L57:     2. 【47†B.2 DCNv2】
+L58:     3. 【48†B.3 Qwen Rerankers】
+L59:     4. 【49†B.4 Jev】
+L60:   12. 【50†C Additional Results】
+L61:     1. 【51†C.1 MRR and Hit Rate@10】
+L62:     2. 【52†C.2 Latency Distribution Statistics】
+L63: 【53†License: arXiv.org perpetual non-exclusive license†info.arxiv.org】
+L64: 
+L65: arXiv:2609.40241v1 [cs.IR] 30 Sep 2026
+L66: # Decision-Oriented Recommendation Reranking: An Empirical Study of Jev
+L67: 
+L68: Hanjia Lyu Affiliation: Singapore Management University Email: hjlyu@smu.edu.sg    Yinglong Xia Affiliation: Meta AI Email: yxia@meta.com
+L69: ###### Abstract
+L70: Large language models (LLMs) have shown promise for recommendation reranking, but their use introduces an important tradeoff between recommendation quality and serving efficiency. We investigate whether a decision-oriented model provides a useful alternative when the reranking task is fundamentally a structured choice among predefined candidate items.
+L71: Specifically, we conduct a controlled empirical study of Jev, described by TypeSafe AI as a “System One Model,” for personalized recommendation reranking and compare it with recommendation-specific models and pointwise and listwise Qwen rerankers across multiple Amazon Reviews domains and candidate-set sizes, evaluating both recommendation effectiveness and observed serving latency.
+L72: Our results show that Jev maintains strong recommendation effectiveness relative to the evaluated baselines while exhibiting substantially more gradual latency growth than the pointwise Qwen rerankers, although its observed serving latency remains substantially higher than that of recommendation-specific models. Together, these characteristics place Jev in a distinct quality–latency operating regime across candidate sizes and domains.
+L73: These findings motivate further investigation of decision-oriented models for recommendation and other ranking tasks with structured output spaces.
+L74: ## 1 Introduction
+L75: Recommender systems commonly adopt multi-stage architectures in which an efficient retrieval model first identifies a manageable set of candidate items and a more expressive ranking model subsequently determines their final ordering 【54†Covington et al. (2016)】. This separation allows the ranking stage to leverage richer representations and more computationally intensive models that are typically infeasible during large-scale retrieval.
+L76: Sequential recommendation models such as SASRec capture users’ evolving preferences from interaction histories 【55†Kang and McAuley (2018)】, while feature-interaction models such as DCNv2 provide efficient mechanisms for learning complex relationships among ranking features 【56†Wang et al. (2021)】. More recently, large language models (LLMs) have emerged as another approach to reranking because they can directly reason over textual representations of user histories and candidate items 【57†Hou et al.
+L77: (2024)】; 【58†Luo et al. (2025)】.
+L78: Despite their flexibility, LLM-based reranking introduces an important tension between recommendation quality and inference efficiency. Existing approaches formulate ranking in pointwise, pairwise, or listwise forms 【58†Luo et al. (2025)】; 【59†Chao et al. (2024)】. A pointwise LLM reranker independently estimates the relevance of each candidate, enabling fine-grained item-level judgments but requiring computation to grow with the number of candidates.
+L79: Listwise reranking instead evaluates multiple candidates jointly, reducing the number of model invocations but requiring the model to reason over increasingly long and complex candidate lists. Prior work has noted both the computational inefficiency of pointwise and pairwise LLM ranking and the challenges faced by listwise approaches in accurately modeling ordering relationships 【59†Chao et al. (2024)】; 【60†Qin et al. (2024)】.
+L80: These tradeoffs are particularly consequential in practical recommendation systems, where rerankers may need to process tens or hundreds of candidates under latency constraints.
+L81: The recent introduction of Jev suggests a different approach. TypeSafe AI describes Jev as its first “System One Model,” designed for fast, structured decision making rather than free-form text generation 【61†Almeida (2026)】. Instead of generating free-form text, Jev accepts contextual state and focused questions and returns typed probabilistic decisions.
+L82: This interface maps naturally onto recommendation reranking: a user’s interaction history defines the decision state, candidate items define the available alternatives, and the resulting probabilities directly serve as ranking scores. This raises a broader question: can a decision-oriented model offer a distinct quality–latency tradeoff compared with recommendation-specific models and LLM-based rerankers?
+L83: In this work, we conduct a controlled empirical investigation of Jev for personalized recommendation reranking. Rather than evaluating end-to-end retrieval, we construct hard candidate sets in which the held-out next item is paired with behaviorally plausible negatives retrieved by SASRec 【55†Kang and McAuley (2018)】. This design isolates reranking ability from retrieval failure and ensures that all methods operate on the same users and candidate items.
+L84: We vary the candidate-set size from $K=20$ to $K=200$ and evaluate recommendation quality using NDCG@10, Hit Rate@10, MRR, and observed serving latency. We compare Jev with recommendation-specific models, including SASRec 【55†Kang and McAuley (2018)】 and DCNv2 【56†Wang et al. (2021)】, as well as pointwise and listwise rerankers based on Qwen2.5 7B Instruct 【62†Qwen et al. (2025)】. We repeat the evaluation across Amazon Movies and TV, Video Games, and Books 【63†Hou et al.
+L85: (2026)】 to examine whether the observed patterns persist across domains.
+L86: Our results show that Jev consistently achieves strong recommendation quality relative to the evaluated baselines, while its observed serving latency grows substantially more gradually than that of pointwise Qwen reranking, although it remains substantially higher than that of recommendation-specific models. Across candidate sizes and domains, Jev frequently occupies a distinct region of the empirical quality–latency space among the methods considered.
+L87: It is important to note that our results do not establish that Jev universally provides a better quality–latency tradeoff than LLM-based reranking; larger or proprietary LLMs may achieve different levels of quality and serving cost.
+L88: ## 2 Related Work
+L89: ### 2.1 Sequential and Text-Aware Recommendation
+L90: Sequential recommendation models user interaction histories to predict future preferences. Transformer-based approaches such as SASRec 【55†Kang and McAuley (2018)】 and BERT4Rec 【64†Sun et al. (2019)】 capture dependencies among historical interactions and have become widely used sequential recommendation architectures. More recent text-aware methods incorporate semantic item information beyond learned item IDs. UniSRec 【65†Hou et al.
+L91: (2022)】 learns transferable item and sequence representations from textual descriptions, while RecFormer 【66†Li et al. (2023)】 represents items and interaction sequences through language representations. These methods demonstrate the value of combining behavioral and semantic information for recommendation. Our study focuses specifically on the reranking stage and uses SASRec and DCNv2 【56†Wang et al. (2021)】 as representative recommendation-specific baselines.
+L92: ### 2.2 Large Language Models for Recommendation Reranking
+L93: Large language models have increasingly been applied to recommendation because they can reason directly over textual representations of users and items 【67†Wu et al. (2024)】; 【68†Lin et al. (2025)】; 【69†Lyu et al. (2024)】. Particularly relevant to our setting, 【57†Hou et al. (2024)】 formulate recommendation as ranking a retrieved candidate set conditioned on a user’s interaction history, demonstrating the potential of LLMs for zero-shot recommendation ranking.
+L94: Subsequent work has explored pointwise, pairwise, and listwise ranking formulations, including instruction-tuned approaches such as RecRanker 【58†Luo et al. (2025)】. These formulations exhibit different computational characteristics: pointwise ranking evaluates candidates individually, whereas listwise ranking considers multiple candidates jointly.
+L95: Our study compares pointwise and listwise Qwen rerankers under identical candidate sets and examines how their recommendation quality and observed latency change as candidate-set size increases. We treat these models as representative LLM-based reranking configurations rather than as an exhaustive characterization of LLM reranking.
+L96: ### 2.3 Structured Decision Making
+L97: Recent work has explored the use of large pretrained models for structured decision making rather than only language generation. Decision Transformer 【70†Chen et al. (2021)】 formulates reinforcement learning as conditional sequence modeling. Gato 【71†Reed et al. (2022)】 similarly applies autoregressive sequence modeling to a multimodal, multitask policy that can emit both text and action tokens, while RT-2 【72†Zitkovich et al.
+L98: (2023)】 co-fine-tunes pretrained vision-language models to produce robotic actions represented as tokens. Jev 【61†Almeida (2026)】 is particularly relevant to recommendation reranking, where a user history can provide decision context and retrieved items define a finite set of alternatives.
+L99: Our work empirically investigates how this decision-oriented formulation behaves relative to recommendation-specific models and the evaluated LLM rerankers, with particular attention to recommendation quality, candidate-set scaling, and observed serving latency.
+L100: ## 3 Problem Formulation
+L101: 
+L102: We study controlled candidate reranking in a two-stage recommendation setting. Our objective is not to introduce a new recommendation architecture, but to investigate how decision-oriented, LLM-based, and recommendation-specific models compare when reranking the same behaviorally plausible candidate sets.
+L103: ### 3.1 Two-Stage Recommendation
+L104: 
+L105: Let $\mathcal{U}$ denote the set of users and $\mathcal{I}$ the item catalog. For each user $u\in\mathcal{U}$, we observe an ordered interaction history
+L106: 
+L107:  | $$H_{u}=\left[i_{u,1},i_{u,2},\ldots,i_{u,T_{u}}\right]$$  |  | (1)
+L108: 
+L109: where $i_{u,t}\in\mathcal{I}$ is an item previously interacted with by user $u$. The recommendation task is to rank candidate items according to their likelihood of being the user’s next interaction.
+L110: We adopt a two-stage pipeline. A retrieval model first produces a ranked list of candidate items from the full catalog
+L111: 
+L112:  | $$R_{u}=\left[r_{u,1},r_{u,2},\ldots\right]$$  |  | (2)
+L113: 
+L114: where items are ordered according to the retrieval score. In our experiments, SASRec serves as the retrieval model.
+L115: 
+L116: A second-stage reranker then receives a smaller candidate set
+L117: 
+L118:  | $$C_{u}^{K}=\{c_{u,1},c_{u,2},\ldots,c_{u,K}\}$$  |  | (3)
+L119: 
+L120: and produces a new ranking
+L121:  | $$\pi_{u}^{(K)}=\text{Rank}\left(C_{u}^{(K)}|H_{u}\right)$$  |  | (4)
+L122: 
+L123: Here, $K$ controls the size of the reranking problem. We study $K\in\{20,50,100,200\}$. The ground-truth next item for user $u$ is denoted by $i_{u}^{+}$. Recommendation effectiveness is determined by the position assigned to $i_{u}^{+}$ in $\pi_{u}^{(K)}$.
+L124: ### 3.2 Controlled Hard Candidate Reranking
+L125: 
+L126: Candidate construction can substantially affect the difficulty of reranking. Randomly sampled negatives can yield artificially easy ranking problems because many sampled items may be semantically unrelated to the user’s interests. We therefore focus on a controlled hard candidate setting in which negative items are drawn from highly ranked retrieval results.
+L127: We first sample a fixed set of valid test users and retain those for whom the held-out item appears within SASRec’s top 200 predictions. The eligible evaluation population is therefore
+L128: 
+L129:  | $$\mathcal{U}_{\text{eval}}=\left\{u\in\mathcal{U}:\text{rank}_{R_{u}}\left(i_{u}^{+}\right)\leq K_{\text{max}}\right\}$$  |  | (5)
+L130: 
+L131: where $K_{\text{max}}=200$. For each eligible user and candidate size $K$, we construct
+L132: 
+L133:  | $$C_{u}^{K}=\left\{i_{u}^{+}\right\}\cup N_{u}^{(K-1)}$$  |  | (6)
+L134: where $N_{u}^{(K-1)}$ contains $K-1$ highly ranked non-target items from the retrieval model. This construction ensures that every evaluated reranker receives exactly one relevant item together with behaviorally plausible competing items. It also separates the reranking problem from retrieval failure: all evaluated methods are compared only when the relevant item has already been successfully retrieved within the top 200 candidates.
+L135: It is important to note that this setting should not be interpreted as directly reranking the retriever’s top $K$ items. For some users, the ground-truth item may have an original retrieval rank larger than $K$. Our goal is instead to create a controlled candidate set containing the ground-truth item and strong behavioral negatives while keeping the candidate set identical across reranking methods.
+L136: ### 3.3 Reranking Paradigms
+L137: 
+L138: Given the same interaction history $H_{u}$ and candidate set $C_{u}^{(K)}$, different model families can produce ranking scores in different ways. Recommendation-specific models primarily rely on learned item representations and behavioral interaction patterns. In our experiments, SASRec and DCNv2 serve as representative recommendation-specific baselines.
+L139: The evaluated language-based rerankers additionally operate on textual representations of user histories and candidate items. Let $x_{i}$ denote the textual representation of item $i$, constructed from available metadata such as its title, description, and category information. The semantic user context is represented by the textual descriptions of the user’s recent interactions
+L140: 
+L141:  | $$X_{u}=\left[x_{i_{u,T_{u}-L+1}},\ldots,x_{i_{u,T_{u}}}\right]$$  |  | (7)
+L142: where $L$ denotes the number of historical interactions exposed to the semantic reranker. A pointwise reranker estimates the relevance of each candidate independently,
+L143: 
+L144:  | $$s_{u,i}=f\left(X_{u},x_{i}\right)$$  |  | (8)
+L145: 
+L146: A listwise reranker instead considers the complete candidate set jointly,
+L147: 
+L148:  | $$\mathbf{s}_{u}=f\left(X_{u},\left\{x_{i}:i\in C_{u}^{(K)}\right\}\right)$$  |  | (9)
+L149: The final ranking is obtained by sorting candidates according to the resulting relevance scores. In our experiments, these two formulations are instantiated using Qwen-based LLM rerankers. They provide reference points for examining how independently scoring candidates versus jointly reasoning over the candidate set affects both recommendation quality and serving latency.
+L150: ### 3.4 Reranking as a Structured Decision Problem
+L151: 
+L152: We additionally formulate candidate reranking as a structured decision problem. For a user $u$, we define the decision state as the user’s recent interaction history $S_{u}=X_{u}$, and treat each candidate item $i\in C_{u}^{(K)}$ as an available decision alternative. A decision-oriented model then estimates a distribution over candidate choices
+L153: 
+L154:  | $$P\left(i|S_{u},C_{u}^{(K)}\right),i\in C_{u}^{(K)}$$  |  | (10)
+L155: 
+L156: The resulting ranking is
+L157:  | $$\pi_{u}^{(K)}=\text{argsort}^{\downarrow}_{i\in C_{u}^{(K)}}P\left(i|S_{u},C_{u}^{(K)}\right)$$  |  | (11)
+L158: 
+L159: In our empirical study, we instantiate this formulation using Jev. The user’s interaction history is supplied as the state, while the candidate item descriptions are supplied as the available choices. Jev returns a probability for each candidate, which we directly use as its reranking score.
+L160: ### 3.5 Study Objective
+L161: Our objective is to characterize how the evaluated recommendation-specific, Qwen-based, and decision-oriented approaches behave under the same controlled candidate reranking setting. We examine this question along three dimensions: effectiveness, measured by the quality of the resulting candidate ranking; efficiency, measured by observed serving latency; and scalability, measured by how both quality and latency change as the candidate-set size increases from $K=20$ to $K=200$.
+L162: Together, these dimensions characterize the quality–latency tradeoffs of the different reranking paradigms under the same setting.
+L163: ## 4 Experimental Framework
+L164: 
+L165: We design a controlled empirical evaluation to characterize how Jev, recommendation-specific models, and Qwen-based LLM rerankers behave under the same candidate reranking setting.
+L166: 
+L167: Table 1: Statistics of the Amazon Reviews 2023 datasets used in our experiments. The table reports the number of users, items, and interactions in each domain before constructing the controlled reranking evaluation set.
+L168: Domain # Users # Items # Interactions Movies and TV 657,203 197,943 7,441,129 Video Games 94,762 25,612 814,586 Books 776,370 495,063 9,488,297
+L169: ### 4.1 Datasets and Preprocessing
+L170: 
+L171: We conduct experiments on three domains from the Amazon Reviews 2023 benchmark 【63†Hou et al. (2026)】: Movies and TV, Video Games, and Books. We use the 5-core leave-last-out configurations, 5core_last_out_w_his_{domain}, which retain users and items with at least five interactions and provide temporally ordered user histories together with held-out next-item interactions. We use the predefined dataset splits without further resplitting.
+L172: For each user, the held-out item in the test split is treated as the ground-truth next interaction $i_{u}^{+}$. Recommendation-specific models operate on item identifiers and behavioral histories. For language-based methods, each item is represented using available textual metadata, including the title, main category, category information, and up to the first 250 characters of the item description.
+L303: ### 5.5 Quality–Latency Tradeoff
+L304: 
+L305: Figure 【78†3】 jointly considers recommendation effectiveness and observed serving latency. Each column corresponds to a candidate-set size, while each row represents a recommendation domain. The black line connects the non-dominated methods among those evaluated, where lower latency and higher NDCG@10 are preferred.
+L306: The figure reveals several distinct operating regimes. SASRec and DCNv2 occupy the low-latency region but generally provide lower recommendation quality. Pointwise Qwen reranking achieves stronger effectiveness, particularly with Qwen2.5 7B Instruct, but requires substantially greater latency as $K$ increases. Listwise Qwen reranking reduces this latency burden but generally occupies lower-quality regions of the space, especially for larger candidate sets.
+L307: Jev frequently lies on the empirical non-dominated boundary among the evaluated methods. This pattern is particularly evident at larger $K$, where pointwise Qwen reranking incurs substantially higher latency, while lower-latency recommendation-specific and listwise approaches generally achieve lower recommendation quality.
+L308: These results position Jev at a distinct quality–latency operating point within the evaluated setting. We do not interpret this as evidence that Jev defines a global Pareto frontier for recommendation systems; rather, the observed boundary reflects its position relative to the recommendation-specific and Qwen-based baselines considered in this study.
+L309: ## 6 Discussion
+L310: Our experiments reveal a distinct quality–latency profile for Jev under controlled recommendation reranking. Across the evaluated domains and candidate-set sizes, Jev maintains strong ranking effectiveness while its observed serving latency grows substantially more gradually than the evaluated pointwise Qwen reranker. The listwise Qwen variant reduces latency further, but its recommendation quality degrades more sharply as the candidate set becomes large.
+L311: Taken together, these results show that Jev occupies a different operating region from both recommendation-specific models and the evaluated LLM rerankers, motivating further study of decision-oriented formulations for recommendation tasks whose output is a structured choice among predefined alternatives.
+L312: ### 6.1 Decision-Oriented Models for Recommendation Reranking
+L313: 
+L314: Jev represents the ranking task directly as a choice among predefined alternatives. Under our experimental setting, Jev yields both strong recommendation effectiveness and comparatively gradual growth in observed serving latency as the candidate set expands.
+L315: However, our experiments do not expose Jev’s underlying architecture, training procedure, or serving implementation and therefore cannot establish why these differences arise. The latency behavior may reflect properties of the model, its serving system, or both. We consequently interpret our results as an empirical characterization of Jev under the evaluated deployment setting rather than as evidence of an inherent architectural advantage of decision-oriented models.
+L316: ### 6.2 Implications for LLM-Based Recommendation
+L317: 
+L318: Our results also illustrate that different LLM reranking formulations can exhibit substantially different scaling behavior. Candidate-set size is therefore an important consideration when evaluating LLM-based rerankers, since conclusions drawn at small $K$ may not persist as the reranking problem becomes larger.
+L319: More broadly, the results suggest that general-purpose LLMs are not the only model family worth considering when textual understanding is used primarily to support a structured ranking decision. For applications in which the ranking itself is the primary output, decision-oriented models such as Jev may provide a useful alternative operating point.
+L320: ### 6.3 Limitations
+L321: 
+L322: Our study has several limitations that define the scope of the conclusions.
+L323: 
+L324: First, we evaluate only one decision-oriented model. Jev provides an opportunity to study this modeling paradigm, but the observed results should not be generalized to decision-oriented models as a whole. Future work should examine whether similar quality–latency patterns emerge as additional models become available.
+L325: Second, our LLM evaluation is limited to Qwen2.5 7B Instruct. These configurations provide representative pointwise and listwise reranking baselines, but they do not characterize the maximum recommendation quality achievable by substantially larger or proprietary LLMs. Larger models may achieve stronger ranking effectiveness, potentially with different serving costs. Accordingly, our conclusions concern the evaluated Qwen configurations rather than LLM-based reranking as a whole.
+L326: Similarly, we include representative sequential recommendation, and neural ranking approaches, but do not attempt to reproduce the full range of proprietary architectures and serving systems used in large-scale industrial recommender systems.
+L327: Third, the latency comparison is not hardware normalized. SASRec, DCNv2, and Qwen are evaluated locally on a single GPU, whereas Jev is accessed through a hosted API whose underlying hardware, batching strategy, and serving infrastructure are not exposed to us. Jev latency therefore includes network communication and remote-serving overhead. We interpret the reported values as observed serving latency under our experimental conditions rather than intrinsic computational cost.
+L328: ## 7 Conclusion
+L329: Overall, our study provides an initial empirical characterization of Jev for controlled recommendation reranking and highlights the distinct scaling behaviors of recommendation-specific, pointwise and listwise LLM-based, and decision-oriented approaches. Within the evaluated setting, Jev occupies a distinct quality–latency operating regime, particularly as the candidate set grows.
+L330: These findings do not establish decision-oriented models as universally preferable to general-purpose LLMs, but they suggest that structured decision formulations deserve further consideration for recommendation tasks whose primary output is a ranking over predefined alternatives. Future work should extend this investigation to larger and more diverse LLMs, additional decision-oriented models, alternative retrieval pipelines, and real-world recommendation environments.
+L331: ## References
+L332:   * Almeida (2026) D. Almeida Introducing system one models & jev. Note: TypeSafe AI Blog Cited by: 【79†§1】, 【80†§2.3】.
+L333:   * Chao et al. (2024) W. Chao, Z. Zheng, H. Zhu, and H. Liu Make large language model a better ranker. In Findings of the Association for Computational Linguistics: EMNLP 2024, pp. 918–929. Cited by: 【81†§1】.
+L334:   * Chen et al. (2021) L. Chen, K. Lu, A. Rajeswaran, K. Lee, A. Grover, M. Laskin, P. Abbeel, A. Srinivas, and I. Mordatch Decision transformer: reinforcement learning via sequence modeling. Advances in neural information processing systems 34, pp. 15084–15097. Cited by: 【80†§2.3】.
+L335:   * Covington et al. (2016) P. Covington, J. Adams, and E. Sargin Deep neural networks for youtube recommendations. In Proceedings of the 10th ACM conference on recommender systems, pp. 191–198. Cited by: 【82†§1】.
+L336:   * Hou et al. (2026) Y. Hou, J. Li, X. Fu, Z. He, A. Yan, X. Chen, and J. McAuley Bridging language and items for retrieval and recommendation: benchmarking llms as semantic encoders. In Proceedings of the 64th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), pp. 3251–3265. Cited by: 【83†§1】, 【84†§4.1】.
+L337:   * Hou et al. (2022) Y. Hou, S. Mu, W. X. Zhao, Y. Li, B. Ding, and J. Wen Towards universal sequence representation learning for recommender systems. In Proceedings of the 28th ACM SIGKDD conference on knowledge discovery and data mining, pp. 585–593. Cited by: 【85†§2.1】.
+L338:   * Hou et al. (2024) Y. Hou, J. Zhang, Z. Lin, H. Lu, R. Xie, J. McAuley, and W. X. Zhao Large language models are zero-shot rankers for recommender systems. In European conference on information retrieval, pp. 364–381. Cited by: 【82†§1】, 【86†§2.2】.
+L339:   * Kang and McAuley (2018) W. Kang and J. McAuley Self-attentive sequential recommendation. In 2018 IEEE international conference on data mining (ICDM), pp. 197–206. Cited by: 【87†§B.1】, 【82†§1】, 【83†§1】, 【85†§2.1】, 【88†§4.3】.
+L340:   * Li et al. (2023) J. Li, M. Wang, J. Li, J. Fu, X. Shen, J. Shang, and J. McAuley Text is all you need: learning language representations for sequential recommendation. In Proceedings of the 29th ACM SIGKDD conference on knowledge discovery and data mining, pp. 1258–1267. Cited by: 【85†§2.1】.
+L341:   * Lin et al. (2025) J. Lin, X. Dai, Y. Xi, W. Liu, B. Chen, H. Zhang, Y. Liu, C. Wu, X. Li, C. Zhu, et al. How can recommender systems benefit from large language models: a survey. ACM Transactions on Information Systems 43 (2), pp. 1–47. Cited by: 【86†§2.2】.
+L342:   * Luo et al. (2025) S. Luo, B. He, H. Zhao, W. Shao, Y. Qi, Y. Huang, A. Zhou, Y. Yao, Z. Li, Y. Xiao, et al. Recranker: instruction tuning large language model as ranker for top-k recommendation. ACM Transactions on Information Systems 43 (5), pp. 1–31. Cited by: 【82†§1】, 【81†§1】, 【86†§2.2】.
+L343:   * Lyu et al. (2024) H. Lyu, S. Jiang, H. Zeng, Y. Xia, Q. Wang, S. Zhang, R. Chen, C. Leung, J. Tang, and J. Luo Llm-rec: personalized recommendation via prompting large language models. In Findings of the Association for Computational Linguistics: NAACL 2024, pp. 583–612. Cited by: 【86†§2.2】.
+L395: ### B.4 Jev
+L396: 
+L397: Jev is accessed through TypeSafe AI’s hosted API using jev-latest as of September 30, 2026. For each user, the textual representation of the 10 most recent interactions is supplied as the decision state, while the $K$ candidate items are represented as alternatives in a choice-type question. The exact request structure is provided in Appendix 【44†A.3】.
+
+--------------------------------------------------------------------------------
+AnyJev Technical Report (https://arxiv.org/html/2610.00831v1)
+【turn63view1】 [wordlim: 200] Crawled: today; Content type: text/html; Source: open({"ref_id":"https://arxiv.org/html/2610.00831v1","lineno":null}); Total lines: 555
+
+--------------------------------------------------------------------------------
+[2609.23986] Jev-Mem: System-One-Controlled Agentic Memory for Efficient AI Agents (https://arxiv.org/abs/2609.23986)
+【turn63view2】 [wordlim: 200] Crawled: today; Content type: text/html; Source: open({"ref_id":"https://arxiv.org/abs/2609.23986","lineno":null}); Total lines: 160
+
+--------------------------------------------------------------------------------
+GitHub - HITsz-TMG/JevEmbed: Meet JevEmbed — turn embeddings into decisions. Choose, score, and judge with your choice of embedding model. · GitHub (https://github.com/HITsz-TMG/JevEmbed)
+【turn63view3】 [wordlim: 200] Crawled: today; Content type: text/html; Source: open({"ref_id":"https://github.com/HITsz-TMG/JevEmbed","lineno":null}); Total lines: 460
+
+--------------------------------------------------------------------------------
+[2609.38850] OpenJev-RLCD: A Working RLCD Implementation (https://arxiv.org/abs/2609.38850)
+【turn63view4】 [wordlim: 200] Crawled: today; Content type: text/html; Source: open({"ref_id":"https://arxiv.org/abs/2609.38850","lineno":null}); Total lines: 161
+

@@ -1,0 +1,106 @@
+{
+  "checked_on": "2026-10-12",
+  "scope": "Literal pseudocode diagnostic; no authors code or training reproduction",
+  "numpy_version": "2.3.5",
+  "ell": 2,
+  "rank": 1,
+  "rows": [
+    [
+      10.0,
+      0.0,
+      0.0
+    ],
+    [
+      10.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0,
+      0.0
+    ]
+  ],
+  "full_gram": [
+    [
+      200.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      2.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0
+    ]
+  ],
+  "literal_sage_gram": [
+    [
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      2.0000000000000004,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0
+    ]
+  ],
+  "reference_fd_gram": [
+    [
+      198.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0
+    ]
+  ],
+  "fd_error_bound": 2.0000000000000004,
+  "literal_spectral_error": 200.0,
+  "reference_spectral_error": 2.0,
+  "literal_violates_fd_bound": true,
+  "normalized_consensus_illustration": {
+    "gradients": [
+      [
+        1.0,
+        0.0
+      ],
+      [
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        100.0
+      ]
+    ],
+    "selected_indices": [
+      0,
+      1
+    ],
+    "selected_vs_full_raw_gradient_cosine": 0.019996001199600138,
+    "interpretation": "No guarantee of raw-mean gradient matching follows from directional agreement alone."
+  }
+}

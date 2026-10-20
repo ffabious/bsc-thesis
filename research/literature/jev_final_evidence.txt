@@ -1,0 +1,289 @@
+Jev-Mem: System-One-Controlled Agentic Memory for Efficient AI Agents (https://arxiv.org/html/2609.23986v1)
+【turn67view0】 [wordlim: 200] Crawled: today; Content type: text/html; Source: open({"ref_id":"turn64view2","lineno":126}); Total lines: 536
+L118: ### 2.2 The Opportunity for System-One Memory Control
+L119: 
+L120: A key observation is that many memory-control operations are semantic but not generative. During memory construction, the system may need to classify a memory or infer its relation to existing information; during retrieval, it may need to route a query, score candidates, or decide when to stop. These decisions typically produce bounded outputs such as labels, probabilities, or scores rather than free-form text.
+L121: Using an autoregressive LLM for such high-frequency decisions is therefore unnecessarily expensive: even simple judgments require token-by-token generation, formatting, and parsing. Because these operations repeatedly appear on the memory critical path, their overhead can accumulate quickly.
+L122: More broadly, cost-aware LLM inference systems have shown that different requests need not receive identical amounts of model computation. Cascading and routing approaches dynamically allocate requests across models of differing cost to improve the cost–quality tradeoff (【79†Chen et al., 2024】; 【80†Ong et al., 2025】), and speculative decoding uses a small model to draft tokens that a larger model only verifies (【81†Leviathan et al., 2023】).
+L123: Jev-Mem applies a related systems principle at a finer granularity: rather than routing only complete user requests between models, it separates frequent, bounded memory-control decisions from open-ended generative and deliberative reasoning.
+L124: This creates a natural opportunity for a System-One/System-Two design: use lightweight structured prediction for frequent memory-control decisions, while reserving System Two for complex reasoning and answer synthesis.
+L125: 
+L126: 【82†Image: Refer to caption】 Figure 2: Overview of Jev-Mem. A lightweight System-One control plane manages memory construction and adaptive retrieval, while System Two is reserved for complex reasoning and answer synthesis.
+L127: ## 3 Jev-Mem Algorithm Design
+L128: Jev-Mem redesigns agentic memory around a clear separation between fast memory control and deliberative reasoning. As illustrated in Figure 【83†2】, the architecture consists of three components: a System-One controller, a shared memory data plane, and a System-Two reasoning model. Rather than relying on an autoregressive LLM to manage every memory operation, the System-One controller makes lightweight, structured decisions throughout both writing and retrieval.
+L129: The memory plane maintains canonical observations together with semantic, temporal, causal, and entity relations, while System Two is reserved for answer synthesis and other operations that require open-ended generation or deeper reasoning.
+L130: This architecture unifies memory construction and retrieval under the same control mechanism. On the write path, Jev-Mem preserves observations, assigns memory types, selects candidate memories, and determines how new observations should connect to the existing multi-relational memory.
+L131: On the read path, it routes each query to the most relevant relational views, allocates retrieval effort, checks evidence sufficiency, expands the graph when necessary, and scores newly discovered candidates in an iterative feedback loop. By treating both workflows as coordinated System-One control processes, Jev-Mem replaces a collection of isolated heuristics and repeated LLM calls with a single, adaptive memory-management architecture.
+L132: Let an observation be
+L133: 
+L134:  | $$o_{t}=(x_{t},\tau_{t},\mu_{t})$$  |  | (4)
+L135: 
+L136: where $x_{t}$ denotes its content, $\tau_{t}$ an optional timestamp, and $\mu_{t}$ its provenance. Jev-Mem maintains
+L137: 
+L138:  | $$\mathcal{M}_{t}=\left(V_{t},\{E_{t}^{g}\}_{g\in\mathcal{G}},I_{t}^{\mathrm{vec}},I_{t}^{\mathrm{lex}}\right)$$  |  | (5)
+L139: 
+L140: where
+L141: 
+L142:  | $$\mathcal{G}=\{\mathrm{semantic},\mathrm{temporal},\mathrm{causal},\mathrm{entity}\}$$  |  | (6)
+L143: All relational views share the same canonical memory nodes $V_{t}$; multiple typed edges may connect the same pair of memories, while the vector and lexical indexes provide complementary entry points into the same memory space.
+L144: ### 3.1 Typed System-One Memory Control
+L145: The central abstraction of Jev-Mem is a typed System-One controller $\mathcal{J}(S,\mathcal{Q})$, where $S$ is structured state and $\mathcal{Q}$ is a batch of explicit decision questions. The controller produces either probabilities for independent propositions or a distribution over mutually exclusive alternatives. For example, it can estimate whether two memories are semantically related, whether a candidate is relevant to the current query, or whether the retrieved evidence is sufficient.
+L146: When exactly one action is required, it selects among predefined alternatives such as temporal relations.
+L147: This interface is intentionally different from free-form LLM prompting. Each decision exposes a small, known output space, allowing Jev-Mem to represent memory control directly as probabilities rather than generating intermediate natural-language reasoning and subsequently parsing it. Moreover, decisions sharing the same state can be evaluated together in a single batched invocation.
+
+--------------------------------------------------------------------------------
+Jev-Mem: System-One-Controlled Agentic Memory for Efficient AI Agents (https://arxiv.org/html/2609.23986v1)
+【turn67view1】 [wordlim: 200] Crawled: today; Content type: text/html; Source: open({"ref_id":"turn64view2","lineno":195}); Total lines: 536
+L171: ### 3.3 Adaptive System-One Retrieval
+L172: 
+L173: Jev-Mem treats retrieval as a closed-loop control process rather than a single top-$k$ search. Given a query $q$, the controller first predicts the relevance of each relational view,
+L174: 
+L175:  | $$\mathbf{p}(q)=\{p_{g}(q)\}_{g\in\mathcal{G}}$$  |  | (11)
+L176: together with a multi-hop requirement $h(q)$ and a recency importance score $r(q)$. Because these probabilities are evaluated independently, a query may activate several graph views simultaneously instead of being assigned to one discrete retrieval intent.
+L177: 
+L178: A relation type is active when
+L179: 
+L180:  | $$p_{g}(q)\geq\theta_{\mathrm{act}}$$  |  | (12)
+L181: 
+L182: Given a total graph-expansion budget $B$, Jev-Mem distributes search effort according to the predicted graph needs:
+L183:  | $$w_{g}(q)=\frac{p_{g}(q)^{\gamma}}{\sum_{j\in\mathcal{A}(q)}p_{j}(q)^{\gamma}}$$  |  | (13)
+L184: 
+L185: where $\mathcal{A}(q)$ denotes the active graphs and $\gamma$ controls the concentration of the allocation. After assigning a feasible minimum budget $m$ to active graphs, the remaining budget is distributed proportionally:
+L186: 
+L187:  | $$b_{g}=m+\operatorname{LRound}_{g}\left[(B-m|\mathcal{A}(q)|)w_{g}(q)\right]$$  |  | (14)
+L188: 
+L189: The multi-hop prediction further determines the allowed traversal depth,
+L190:  | $$D(q)=\min\left\{D_{\max},\max\left(1,\left\lceil D_{\max}h(q)\right\rceil\right)\right\}$$  |  | (15)
+L191: 
+L192: This probabilistic routing mechanism serves two purposes. It avoids spending equal retrieval effort on relations that are unlikely to help the current query, while still allowing multiple forms of evidence to be explored when a question requires them.
+L193: #### Anchor retrieval.
+L194: 
+L195: Before graph traversal, Jev-Mem identifies high-quality entry points using both semantic and lexical retrieval. Vector and keyword rankings are fused through reciprocal-rank fusion:
+L196: 
+L197:  | $$s_{\mathrm{RRF}}(v,q)=\sum_{L\in\{L_{\mathrm{vec}},L_{\mathrm{lex}}\}:v\in L}\frac{1}{\kappa+\operatorname{rank}_{L}(v)}$$  |  | (16)
+L198: where $\kappa=60$. The highest-ranked nodes initialize the visited set and search frontier. Hybrid anchors provide robust starting points before the controller begins more expensive graph reasoning.
+L199: #### Evidence-guided expansion.
+L200: 
+L201: After each retrieval round $d$, Jev-Mem evaluates the current evidence set $E_{d}$. Instead of blindly continuing until a fixed graph depth or node count is reached, the controller estimates
+L202:  | $\displaystyle s_{d}$  | $\displaystyle:\text{evidence sufficiency},$  |  | (17)
+L203:  | $\displaystyle u_{d}$  | $\displaystyle:\text{expected utility of further retrieval},$  |  | (18)
+L204:  | $\displaystyle m_{d}$  | $\displaystyle:\text{missing required evidence},$  |  | (19)
+L205:  | $\displaystyle c_{d}$  | $\displaystyle:\text{unresolved contradiction}.$  |  | (20)
+L206: 
+L207: Retrieval terminates with sufficient evidence when
+L208:  | $$s_{d}\geq\theta_{\mathrm{suff}}\land m_{d}<\theta_{\mathrm{cont}}\land c_{d}<\theta_{\mathrm{cont}}$$  |  | (21)
+L209: 
+L210: It may also terminate when
+L211: 
+L212:  | $$u_{d}<\theta_{\mathrm{cont}}$$  |  | (22)
+L213: 
+L214: indicating that additional traversal is unlikely to improve the evidence even if the current evidence is not fully sufficient.
+L215: This stopping mechanism is important for both efficiency and retrieval quality. Stopping too early risks missing necessary evidence, whereas uncontrolled expansion introduces irrelevant memories that can distract downstream reasoning. Jev-Mem therefore explicitly models both evidence completeness and the expected benefit of further search.
+L216: When additional evidence is needed, Jev-Mem expands neighboring nodes under the relation-specific budgets $b_{g}$ and global limits on nodes, edges, depth, controller calls, and latency. Each candidate $v$ is then evaluated by the System-One controller along four complementary dimensions: query relevance $a_{v}$, relation usefulness $\ell_{v}$, information novelty $n_{v}$, and support for the current evidence $c_{v}$.
+L217: These System-One predictions are combined with deterministic retrieval signals. For a candidate reached through graph type $g$, the transition score is
+L218: 
+L219:  | $$s(v\mid q,E_{d})=\frac{1}{\sum_{i=1}^{5}\lambda_{i}}\left[\begin{array}[]{l}\lambda_{1}z_{v}+\lambda_{2}a_{v}+\lambda_{3}p_{g}(q)\ell_{v}\\
+L220: +\lambda_{4}n_{v}+\lambda_{5}(\pi_{e}+c_{v})/2\end{array}\right]$$  |  | (23)
+L221: where $z_{v}$ denotes embedding similarity and $\pi_{e}$ is the stored edge weight. If timestamps are available, the score is adjusted using the query-specific recency prediction:
+L222: 
+L223:  | $$\rho_{v}=\frac{1}{1+\max(0,\tau_{*}-\tau_{v})/\mathrm{day}}$$  |  | (24)
+L224:  | $$\widetilde{s}(v)=\frac{s(v)+0.1r(q)\rho_{v}}{1+0.1r(q)}$$  |  | (25)
+L225: 
+L226: The top $W$ candidates form the next beam and are added to the accumulated evidence. Retrieval therefore follows an iterative feedback loop:
+L227:  | $$\begin{array}[]{c}\text{route}\rightarrow\text{retrieve}\rightarrow\text{assess}\\
+L228: \rightarrow\text{expand}\rightarrow\text{reassess}\end{array}$$  |  | (26)
+L229: This process differs fundamentally from fixed top-$k$ retrieval or static graph traversal. The relational views being explored, the allocation of search effort, the candidates retained at each round, and the decision to continue all depend on the query and on the evidence already collected. In this sense, retrieval itself becomes a System-One-controlled decision process.
+L230: 
+L231: Once retrieval terminates, the highest-scoring $K$ memories are passed to the System-Two LLM:
+
+--------------------------------------------------------------------------------
+OpenJev-RLCD: A Working RLCD Implementation (https://arxiv.org/html/2609.38850v1)
+【turn67view2】 [wordlim: 200] Crawled: today; Content type: text/html; Source: open({"ref_id":"turn64view3","lineno":107}); Total lines: 323
+L89: instead of sampling an answer from it. The model’s decision distribution is the mixture $p_{\theta}(x)=\mathbb{E}_{r}u_{\theta}(x,r)$; a single query returns $u_{\theta}(x,r)$ for one sampled rationale. We use the (shifted, negated) Brier score $J(u,y)=2u_{y}-\|u\|^{2}=1-\|u-e_{y}\|^{2}$, whose expectation $J(u,q)=\mathbb{E}_{Y\sim q}J(u,Y)=2u^{\top}q-\|u\|^{2}$ is uniquely maximized at $u=q$ [【47†2】, 【48†7】]; the log score behaves the same way in our experiments.
+L90: ## 3 Method
+L91: 
+L92: ### 3.1 What to score: the mixture or each rationale
+L93: 
+L94: ###### Proposition 1 (Variance decomposition).
+L95: 
+L96: For any distribution over rationales and any $q$, with $p=\mathbb{E}_{r}u(r)$,
+L97: 
+L98:  | $$J(p,q)\;=\;\mathbb{E}_{r}\,J\big(u(r),q\big)\;+\;\mathbb{E}_{r}\big\|u(r)-p\big\|^{2}.$$  |
+L99: ###### Proof.
+L100: 
+L101: $J(p,q)-\mathbb{E}_{r}J(u(r),q)=\mathbb{E}_{r}\|u(r)\|^{2}-\|p\|^{2}=\mathbb{E}_{r}\|u(r)-p\|^{2}$, since $J$ is affine in $u$ except for $-\|u\|^{2}$. ∎
+L102: 
+L103: The mixture objective $J(p,q)$—the objective behind scoring groups of samples—therefore equals the average per-rationale score plus a bonus for rationales that disagree. Nothing in the bonus asks the disagreement to be grounded: a policy can collect it by randomizing its conclusions. Two consequences follow.
+L104: ###### Corollary 1 (RLVR is the mixture objective without its diversity term).
+L105: 
+L106: If the answer is sampled, $u(r)=e_{A}$ with $A\sim p$, then $\mathbb{E}_{A}J(e_{A},q)=2p^{\top}q-1=2\Pr(A=Y)-1$ is the RLVR objective and $\mathrm{Var}=1-\|p\|^{2}$ is the Gini impurity of $p$: the calibrated group reward is “RLVR + Gini bonus”. With any coefficient $\lambda<1$ on the bonus the optimum is no longer $p=q$; with $\lambda=0$ (RLVR) it is the mode.
+L107: ###### Proposition 2 (Per-rationale objective).
+L108: 
+L109: Let $J_{\lambda}(\theta)=\mathbb{E}_{x}\mathbb{E}_{r}J(u_{\theta}(x,r),q(x))+\lambda\,\mathbb{E}_{x}\mathrm{Var}_{r}(u_{\theta})$. If the outcome is independent of the model’s own rationale given the question ($Y\perp r\mid x$, true whenever $Y$ is produced by the world), then for every $\lambda<1$ the unique maximizer over readouts is $u(x,r)=q(x)$ for every rationale $r$; for $\lambda=1$ every readout with $\mathbb{E}_{r}u(x,r)=q(x)$ is optimal.
+L110: ###### Proof.
+L111: 
+L112: $J_{\lambda}=(1-\lambda)\mathbb{E}_{r}J(u(r),q)+\lambda J(p,q)$ by Proposition 【49†1】. Both terms are maximized by $u(r)\equiv q$; the first is strictly concave in each $u(r)$, which gives uniqueness for $\lambda<1$. ∎
+L113: We therefore use the per-rationale objective ($\lambda=0$): a single query is calibrated at the optimum, and the objective no longer pays for disagreement. Rationales still matter—a better rationale lets a finite-capacity model compute $q(x)$ more accurately—but they are never rewarded for being random.
+L114: #### Estimator.
+L115: 
+L116: With $M$ rationales per question and one outcome $Y$, write $R_{i}=J(u_{\theta}(x,r_{i}),Y)$. The gradient of $\mathbb{E}_{r}J$ splits into a pathwise part through the readout and a score-function part for the rationales,
+L117: 
+L118:  | $$\widehat{\nabla}=\frac{1}{M}\sum_{i=1}^{M}\nabla_{\theta}R_{i}\;+\;\frac{1}{M}\sum_{i=1}^{M}\Big(R_{i}-\frac{1}{M-1}\sum_{j\neq i}R_{j}\Big)\nabla_{\theta}\log\pi_{\theta}(r_{i}\mid x),$$  |
+L119: with a leave-one-out baseline [【50†10】, 【51†1】]. The estimator is unbiased; so are its variants with a KL penalty or per-rationale costs added as shaping terms, and the Rao-Blackwellized estimator of the mixture objective (Appendix 【37†A】). We verified all of them against exact enumeration on tabular models (maximum error $<10^{-15}$).
+L120: Reading $u$ instead of sampling the answer is a Rao-Blackwellization of the sample-only estimator [【52†11】]; with an empty rationale it reduces to training a direct scorer with the Brier score.
+L121: ### 3.2 Two ways the per-rationale objective fails
+L122: #### It switches reasoning off.
+L123: Reasoning models conclude their rationales decisively, so $u$ after a rationale is nearly one-hot and the Brier score punishes every confident mistake. Hedging after an empty rationale is learned faster than hedging after reasoning, and the policy gradient moves all mass to the empty rationale. On MMLU-Pro this happens within about 100 steps (Figure 【53†1】, red): all four rationales become the bare marker and the model turns into a direct scorer.
+L124: A KL anchor to the reasoning model ($\beta=0.04$, blue) prevents the collapse and lets the model learn to hedge after reasoning.
+L125: #### It is drowned by the policy gradient.
+L126: Even with the anchor, adding the score-function term to training from scratch makes every metric worse than training the readout alone, monotonically in its weight (Table 【54†4】). The gradient norm of the score-function term is 7–12$\times$ that of the pathwise term (RMS over training), so it dominates Adam’s second-moment estimate: the useful, low-variance readout signal is taken in steps sized by the noise.
+L127: Its direction is also unhelpful early on: while the readout is still miscalibrated, the reward mostly teaches rationales to sound certain.
+L128: Figure 1: The System-One collapse (MMLU-Pro, per-rationale objective, trained end to end). Without a KL anchor the four rationales per question become identical and empty after $\sim$100 steps (left: variance of $u$ across rationales) while the readout learns to hedge (right). With a KL anchor the model keeps reasoning and learns to hedge after it. The no-KL run was stopped at step 150, after the collapse.
+
+--------------------------------------------------------------------------------
+GitHub - HITsz-TMG/JevEmbed: Meet JevEmbed — turn embeddings into decisions. Choose, score, and judge with your choice of embedding model. · GitHub (https://github.com/HITsz-TMG/JevEmbed)
+【turn67view3】 [wordlim: 200] Crawled: today; Content type: text/html; Source: open({"ref_id":"turn63view3","lineno":256}); Total lines: 460
+L227:   * 29/9/2026: 📏 Added a versioned 【105†benchmark module】 with multi-file JSONL cases, unified Choice/Score/Noul evaluation, and structured JSON results.
+L228:   * 28/9/2026: ✨ Released 【106†JevEmbed-Qwen3-Embedding-4B†huggingface.co】, fine-tuned on JevEmbed-Data, with merged weights and a LoRA adapter.
+L229:   * 27/9/2026: 🕹️ Added an interactive 【107†Playground】 with model comparison and Game Lab.
+L230:   * 26/9/2026: 🪄 Added 【108†supervised data synthesis】 for Choice, Score, and Noul, with configurable label quotas.
+L231:   * 26/9/2026: ⚙️ JevEmbed now includes ready-to-use configurations for 【109†JevEmbed-Qwen3-Embedding-0.6B†huggingface.co】 and 【110†JevEmbed-KaLM-Embedding-V2.5†huggingface.co】.
+L232: More
+L233:   * 25/9/2026: ✨ 【110†JevEmbed-KaLM-Embedding-V2.5†huggingface.co】 is available on Hugging Face with merged weights and a LoRA adapter.
+L234:   * 24/9/2026: 🔌 JevEmbed now supports 【111†CLM-v0.1-8B†huggingface.co】 for Choice, Score, and Noul decisions. See the 【112†CLM-v0.1-8B setup guide】.
+L235:   * 24/9/2026: 🗃️ 【113†JevEmbed-Data†huggingface.co】 is available for fine-tuning, with 1.67 million labeled Choice, Score, and Noul questions.
+L236: ## Playground
+L237: 
+L238: Explore Choice, Score, and Noul decisions in the browser, compare models, inspect JSON results, and try model-controlled pixel games in Game Lab.
+L239: 
+L240: Run `python -m jevembed --playground`, then open `http://127.0.0.1:8000/playground/`. See the 【107†Playground guide】 for model configuration and usage.
+L241: ## Installation
+L242: 
+L243: Use Python 3.10–3.12 for the tested model stack.
+L244: 
+L245: Full installation
+L246: 
+L247: Run these commands from the project root:
+L248: 
+L249:     python -m venv .venv
+L250:     source .venv/bin/activate
+L251:     # Windows PowerShell: .venv\Scripts\Activate.ps1
+L252:     python -m pip install -r requirements.txt
+L253:     python -m pip install -e . --no-deps
+L254: `requirements.txt` includes local inference and HTTP dependencies with the constraints in `requirements-models-tested.txt`. Contributors can install `requirements-dev.txt` for testing and packaging. See 【114†dependency compatibility】 for package roles and tested versions.
+L255: 
+L256: Optional installations
+L257: Install only the extras you need:
+L258: 
+L259:     python -m pip install -e .                        # Core, configuration, and explain
+L260:     python -m pip install -e '.[http,server]'          # HTTP backend and API
+L261:     python -m pip install -e '.[local]' -c requirements-models-tested.txt
+L262:     python -m pip install -r requirements-dev.txt     # Tests and builds, without model libraries
+L263: 
+L264: Core imports and `--explain` require no model weights or service.
+L265: ## Quick start
+L266: 
+L267: Run a single request from the command line:
+L268: 
+L269:     python -m jevembed --config configs/kalm-embedding-v2.5.yaml \
+L270:       --input examples/official_choice_exchange.json
+L271: 
+L272: To keep a model loaded and serve decisions over HTTP, start the server from the project root:
+L273: 
+L274:     python -m jevembed \
+L275:       --config configs/jevembed-qwen3-embedding-0.6b.yaml \
+L276:       --serve
+L277: Send a Choice request from another terminal:
+L278: 
+L279:     curl -sS http://127.0.0.1:8000/v1/systemone \
+L280:       -H 'Content-Type: application/json' \
+L281:       --data-binary @- <<'JSON'
+L282:     {
+L283:       "model": "jevembed-qwen3-embedding-0.6b",
+L284:       "state": "My running shoes arrived in the wrong size. Can I swap them for a size 10?",
+L285:       "questions": {
+L286:         "department": {
+L287:           "type": "choice",
+L288:           "instructions": "Which team should handle this?",
+L289:           "criteria": {
+L290:             "returns": "Exchanges, wrong or damaged items",
+L291:             "shipping": "Delivery status, delays, lost packages",
+L292:             "billing": "Charges, invoices, payment problems"
+L293:           }
+L294:         }
+L295:       }
+L296:     }
+L297:     JSON
+L298: See the 【115†HTTP guide】 for Python requests, multiple models, Score and Noul examples, serving options, limits, and error responses.
+L299: 
+L300: To use an external `/v1/embeddings` service as the backend, start with 【116†http-example.yaml】 and follow the 【117†external service guide】.
+L301: Use JevEmbed directly from Python:
+L302: 
+L303:     import json
+L304:     from pathlib import Path
+L305:     from jevembed import JevEmbed, ModelConfig
+L306: 
+L307:     config = ModelConfig.load("configs/kalm-embedding-v2.5.yaml")
+L308:     client = JevEmbed(config=config)
+L309:     request = json.loads(Path("examples/official_noul_escalation.json").read_text(encoding="utf-8"))
+L310:     response = client.evaluate(request)
+L311:     print(response)
+L312: See the 【118†Python API guide】 for multiple models, direct request construction, input inspection, traces, caching, and custom backends. For local model paths and offline loading, see 【119†local weights and offline use】.
+L313: ## Model list
+L314: 
+L315: Supported models are listed below. Configurations use Hugging Face repository IDs; weights download on first inference if absent from the local cache.
+L316: Weight repository  | JevEmbed ID  | Embedding dimensions  | Max tokens  | Pooling
+L317: --- | --- | --- | --- | ---
+L318: 【120†KaLM-Embedding/KaLM-embedding-multilingual-mini-instruct-v2.5†huggingface.co】  | `kalm-embedding-v2.5`  | 896  | 32,768  | Mean
+L319: 【121†Qwen/Qwen3-Embedding-0.6B†huggingface.co】  | `qwen3-embedding-0.6b`  | 1,024  | 32,768  | Last-token
+L320: 【122†Qwen/Qwen3-Embedding-4B†huggingface.co】  | `qwen3-embedding-4b`  | 2,560  | 32,768  | Last-token
+L321: 【123†Qwen/Qwen3-Embedding-8B†huggingface.co】  | `qwen3-embedding-8b`  | 4,096  | 32,768  | Last-token
+L322: 【124†intfloat/multilingual-e5-large-instruct†huggingface.co】  | `multilingual-e5-large-instruct`  | 1,024  | 512  | Mean
+L323: 【111†Contrastive-LM/CLM-v0.1-8B†huggingface.co】  | `clm-v0.1-8b`  | 512  | 2,048  | Last-token + paired heads
+L324: 【110†HIT-TMG/JevEmbed-KaLM-Embedding-V2.5†huggingface.co】  | `jevembed-kalm-embedding-v2.5`  | 896  | 1,024  | Mean
+
+--------------------------------------------------------------------------------
+Decision-Oriented Recommendation Reranking: An Empirical Study of Jev (https://arxiv.org/html/2609.40241v1)
+【turn67view4】 [wordlim: 200] Crawled: today; Content type: text/html; Source: open({"ref_id":"turn63view0","lineno":270}); Total lines: 473
+L261: ### 5.1 Recommendation Effectiveness
+L262: 
+L263: Figure 【76†1】 reports NDCG@10 as the candidate-set size increases from $K=20$ to $K=200$. Jev achieves consistently high recommendation effectiveness across all three domains. On Movies and TV, its performance is similar to the best-performing evaluated Qwen configuration at smaller candidate sizes and remains competitive as $K$ increases. On Video Games and Books, Jev generally achieves higher NDCG@10 than the other evaluated methods across candidate sizes.
+L264: Among the Qwen rerankers, pointwise Qwen2.5 7B Instruct generally provides the highest recommendation quality. The listwise variant generally achieves lower effectiveness, particularly as the candidate set becomes large. DCNv2 provides low-cost recommendation-specific reference points but typically achieves lower NDCG@10 than Jev and the better-performing pointwise Qwen configuration.
+L265: Increasing the candidate set does not affect SASRec because the candidate pool is derived from its own ranking, whereas reranking models must discriminate among an increasingly large set of plausible candidates.
+L266: Overall, the results show that Jev is not merely an efficiency-oriented alternative: under the evaluated controlled setting, it also maintains strong ranking effectiveness relative to the compared recommendation and Qwen-based methods.
+L267: ### 5.2 Effect of Candidate-Set Size
+L268: 
+L269: Recommendation quality decreases for the reranking methods other than SASRec as the candidate set grows, reflecting the increasing difficulty of identifying one relevant item among a larger set of strong behavioral negatives. However, the rate of degradation differs substantially across the evaluated approaches.
+L270: Jev exhibits comparatively gradual degradation as $K$ increases. This pattern is particularly visible on Video Games and Books, where its relative performance remains strong at $K=100$ and $K=200$. Pointwise Qwen2.5 7B Instruct also degrades relatively smoothly, whereas the listwise Qwen variant shows substantially sharper declines as the candidate space expands.
+L271: These results indicate that conclusions drawn from a single small candidate set may not generalize to larger reranking problems. Results for MRR and Hit Rate@10 are reported in Appendix 【51†C.1】 and show consistent trends. Candidate-set size therefore represents an important experimental dimension when comparing reranking paradigms.
+L272: ### 5.3 Pointwise and Listwise Qwen Reranking
+L273: 
+L274: The pointwise and listwise Qwen formulations exhibit distinct scaling behavior. Pointwise reranking produces a separate relevance score for each candidate and generally preserves recommendation quality more effectively as $K$ grows.
+L275: Listwise reranking instead evaluates all candidates jointly. Although this reduces repeated candidate-level model computation, recommendation effectiveness deteriorates more sharply as the number of alternatives increases. The difference between pointwise and listwise ranking is relatively modest at smaller $K$ but becomes much more pronounced at $K=100$ and $K=200$.
+L276: 
+L277: 2(a)
+L278: 
+L279: (a) Movies and TV
+L280: 
+L281: (b) Video Games
+L282: 
+L283: (c) Books
+L284: Figure 2: Ranking latency as a function of candidate-set size across domains. Mean observed latency per user is reported for $K\in\{20,50,100,200\}$. SASRec, DCNv2, and the Qwen models are evaluated locally on a single GPU, while Jev is accessed through a hosted API and therefore includes network and remote-serving overhead. The evaluated pointwise Qwen reranker exhibits the steepest latency growth as $K$ increases, whereas Jev, listwise Qwen, SASRec, and DCNv2 show substantially slower latency growth.
+L285: As a result, the observed latency gap between Jev and the pointwise Qwen reranker widens as the candidate set becomes larger.
+L286: The latency behavior is reversed in Figure 【77†2】. Pointwise Qwen latency increases rapidly with candidate-set size, whereas listwise reranking scales substantially more gradually. Under our experimental setting, the two formulations therefore occupy different operating regimes: pointwise reranking better preserves recommendation quality but incurs higher serving cost, while listwise reranking reduces latency at the cost of greater quality degradation.
+L287: ### 5.4 Latency and Scalability
+L288: 
+L289: Figure 【77†2】 shows substantial differences in observed serving latency across the evaluated approaches. SASRec and DCNv2 remain the lowest-latency methods as the candidate set expands, consistent with their lightweight recommendation-specific architectures.
+L290: Jev exhibits comparatively gradual latency growth. Across the three domains, its observed serving latency remains in the low-second range even at $K=200$, producing an increasingly large latency gap relative to the evaluated pointwise Qwen reranker as the candidate set expands. This comparison should be interpreted as observed deployment latency rather than intrinsic computational efficiency, since Jev is accessed through a hosted API whereas the Qwen models are executed locally on a single GPU.
+L291: The latency distribution statistics are reported in Appendix 【52†C.2】.
+L292: 3
+L293: 
+L294: $K=20$
+L295: 
+L296: $K=50$
+L297: 
+L298: $K=100$
+L299: 
+L300: $K=200$
+L301: Figure 3: Quality–latency tradeoff across domains and candidate-set sizes. Each panel plots mean observed latency per user against NDCG@10 for one domain and candidate-set size $K\in\{20,50,100,200\}$; rows correspond to Movies and TV, Video Games, and Books, and columns correspond to increasing $K$. The black line connects the non-dominated methods among those evaluated, i.e., methods for which no other evaluated method simultaneously achieves lower latency and higher NDCG@10.
+

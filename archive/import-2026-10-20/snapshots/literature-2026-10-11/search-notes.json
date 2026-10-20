@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-12",
+  "scope": "First-pass literature search for efficient user representation computation and maintenance on Yambda-50M",
+  "representative_queries": [
+    "TiSASRec paper Jiacheng Li Julian McAuley",
+    "SSE-PT arxiv Wu Li",
+    "TransAct Pinterest arxiv 2023",
+    "Factorizing personalized Markov chains Rendle pdf",
+    "STAMP Qiao Liu paper pdf",
+    "\"A Systematic Review and Replicability Study of BERT4Rec\"",
+    "\"On Sampled Metrics for Item Recommendation\" arxiv",
+    "\"Are We Really Making Much Progress\" arxiv",
+    "\"Adaptive Computation Time for Recurrent Neural Networks\"",
+    "\"Sliding-window beats linear attention\"",
+    "Jev TypeSafe AI system one model paper arxiv shared context",
+    "site:arxiv.org AnyJev",
+    "Jev recommendation sequential embedding"
+  ],
+  "inclusion": "Sequential user representation, long-history selection/compression, cached or incremental state, recommendation serving efficiency, applicable offline evaluation. Adjacent compute papers are labeled separately.",
+  "deduplication": "ArXiv preprint and conference/journal version count as one work. Stable IDs P001–P075.",
+  "limitations": "Abstract/metadata screening plus selected method sections in 16 papers (nine anchors, six Jev additions and SAGE). TransX and REPAIR only primary indexed abstracts; full page fetch unavailable. No experiments reproduced.",
+  "next_pass": "Approximately 25 additional unique papers, branching by references/citations from the seed papers; focus benefit-triggered refresh, drift, long-memory compression, incremental encoders and music-specific behavior.",
+  "jev_addition": {
+    "paper_ids": [
+      "P069",
+      "P070",
+      "P071",
+      "P072",
+      "P073",
+      "P074"
+    ],
+    "count": 6,
+    "all_arxiv_html_fetched": true,
+    "scope": "one recommendation reranking paper, one decision benchmark, four adjacent methods",
+    "software_resources": [
+      {
+        "name": "JevEmbed",
+        "url": "https://github.com/HITsz-TMG/JevEmbed",
+        "counted_as_paper": false
+      }
+    ],
+    "reading_depth": "abstract and selected method/evaluation sections; no replication",
+    "preprint_status": "peer-reviewed venue not established",
+    "primary_urls": [
+      "https://arxiv.org/html/2609.40241v1",
+      "https://arxiv.org/html/2609.37647v1",
+      "https://arxiv.org/html/2609.25845v1",
+      "https://arxiv.org/html/2610.00831v1",
+      "https://arxiv.org/html/2609.23986v1",
+      "https://arxiv.org/html/2609.38850v1"
+    ]
+  },
+  "sage_addition": {
+    "id": "P075",
+    "arxiv_id": "2510.02470",
+    "version": "v2",
+    "primary_url": "https://arxiv.org/html/2510.02470v2",
+    "date_checked": "2026-10-12",
+    "foundation_url": "https://arxiv.org/html/1501.01711v2",
+    "category": "adjacent training-data selection",
+    "review": "full SAGE v2 HTML, PDF Algorithm 1 and supplement; selected FD methods",
+    "local_diagnostic": "published pseudocode counterexample only; no author training experiment reproduction",
+    "numeric_result": {
+      "literal_algorithm_error": 200.0,
+      "correct_FD_error": 2.0,
+      "bound": 2.0
+    },
+    "followup_candidates_unreviewed": [
+      "GRAFT (2508.13653)",
+      "Market-Based Data Subset Selection (2510.02456)",
+      "GradMatch",
+      "GLISTER",
+      "CRAIG"
+    ]
+  }
+}

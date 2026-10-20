@@ -1,0 +1,428 @@
+{
+  "created_date": "2026-10-20",
+  "scope": "All available project materials in this conversation workspace",
+  "source_file_count": 84,
+  "papers_in_current_registry": 78,
+  "files": [
+    {
+      "path": "output/conferences-2026-10-14/conference-research.json",
+      "bytes": 31055,
+      "sha256": "4cf030d73007f92c5ca8ae5d2a2a11c0d2ceb224b7f360da8b468c22d88dceb1"
+    },
+    {
+      "path": "output/conferences-2026-10-14/conferences-and-workshops-2026.xlsx",
+      "bytes": 27322,
+      "sha256": "ea852d7682dd8ab2a4b07aa9d53d0466303785a1911d622e19bd775ad31d1376"
+    },
+    {
+      "path": "output/conferences-2026-10-14/conferences-preview.png",
+      "bytes": 138030,
+      "sha256": "6ff8c021ad07d9329411733e0848b3a4ea4ea5138cb373dcd6b889fc6133743b"
+    },
+    {
+      "path": "output/conferences-2026-10-14/conferences-updated-preview.png",
+      "bytes": 142461,
+      "sha256": "e442b829a6c464f1bdc2ec0b407e35c0fbaa79d24523ae43eb4c8133635d9a25"
+    },
+    {
+      "path": "output/conferences-2026-10-14/routes-preview.png",
+      "bytes": 253042,
+      "sha256": "8c21d992eea868d3b6441ec727ea7f5061e76a3adc094a8370ca4159f9c1631b"
+    },
+    {
+      "path": "output/conferences-2026-10-14/routes-updated-preview.png",
+      "bytes": 249767,
+      "sha256": "9452c7114fee98f1a56c38ef7e1c20db65eec5ffa8662aa3141fd06d2bf72439"
+    },
+    {
+      "path": "output/conferences-2026-10-14/workshops-preview.png",
+      "bytes": 135557,
+      "sha256": "94c1b76709b919e8654993c1aa0368ab58924029fa5e60941bc0507972a1c799"
+    },
+    {
+      "path": "output/conferences-2026-10-14/workshops-updated-preview.png",
+      "bytes": 123623,
+      "sha256": "c2b673f42b04743297fd465f3f3c30ecc8b5bb3fa07715ea20871fc5e5938c8f"
+    },
+    {
+      "path": "output/thesis-literature-2026-10-11.zip",
+      "bytes": 191765,
+      "sha256": "b794fc5f8ad493c48c90216e5a614a4bca7d8745b59077d8bdaa0faabc004422"
+    },
+    {
+      "path": "output/thesis-literature-2026-10-11/README.txt",
+      "bytes": 4239,
+      "sha256": "2d9240d06d6eecbcf1737e8b7ff415be0e2b50cf5d86d6ec24f271b82aafb1cf"
+    },
+    {
+      "path": "output/thesis-literature-2026-10-11/jev-brief.html",
+      "bytes": 12813,
+      "sha256": "c1285619ab3f1d9b760576ee2a3ed7c984dcf0364126976e3e0cc7990f4cc439"
+    },
+    {
+      "path": "output/thesis-literature-2026-10-11/literature-brief.html",
+      "bytes": 317980,
+      "sha256": "ccea3d4f5d70969518780963dad81633201f5179d6bff8900d90073a0f96ce6b"
+    },
+    {
+      "path": "output/thesis-literature-2026-10-11/literature-review.html",
+      "bytes": 34124,
+      "sha256": "b563c848917e773f0762a1de33a7e54b2cb97e66f8b2559dcff01482e1123c76"
+    },
+    {
+      "path": "output/thesis-literature-2026-10-11/papers.csv",
+      "bytes": 71310,
+      "sha256": "935567a430b41c34430368bfb9dc5167d2e6a376c942a85423f6f12c692798cc"
+    },
+    {
+      "path": "output/thesis-literature-2026-10-11/papers.json",
+      "bytes": 165398,
+      "sha256": "c13964e92e2b68a9bcffaee200251b88a1ed6070b60c6e9add0d6dbfb1365a4b"
+    },
+    {
+      "path": "output/thesis-literature-2026-10-11/proposal-2026-10-09.pdf",
+      "bytes": 47187,
+      "sha256": "5e5a5deb680820a10767668739fe4286ba79845983748b0b98e1c71374d2f143"
+    },
+    {
+      "path": "output/thesis-literature-2026-10-11/proposal-extracted.txt",
+      "bytes": 7457,
+      "sha256": "4e1d0d3df55ad055ef704a614b294d29518c383007e76ac4868160b752af8aa8"
+    },
+    {
+      "path": "output/thesis-literature-2026-10-11/proposal-snapshot.md",
+      "bytes": 3050,
+      "sha256": "331b6bfc7118cdfbe3440b5952b3d9e35cf1fd35d9ed7d444fd73a5da4ba3013"
+    },
+    {
+      "path": "output/thesis-literature-2026-10-11/references.bib",
+      "bytes": 39930,
+      "sha256": "3ce3b2dda309886b7a02caf615c62744fd6fa6a8ec01edeccf4815fcf69f103b"
+    },
+    {
+      "path": "output/thesis-literature-2026-10-11/sage-brief.html",
+      "bytes": 12823,
+      "sha256": "b0e14fea24c61f48bb61f07cfcde2020cbe4514cc122946ed30491a80dc9b88a"
+    },
+    {
+      "path": "output/thesis-literature-2026-10-11/sage-diagnostics.json",
+      "bytes": 1443,
+      "sha256": "b0757beacc6b7fa1bb59a1f7f2ada15eb8399cc6a3972ae125146be4157bb575"
+    },
+    {
+      "path": "output/thesis-literature-2026-10-11/sage_fd_check.py",
+      "bytes": 3152,
+      "sha256": "8385e2466a45c02f3f9c793566707f7c2003c31169d297e3c3fa683e492cd708"
+    },
+    {
+      "path": "output/thesis-literature-2026-10-11/search-notes.json",
+      "bytes": 3334,
+      "sha256": "7f9c6639fe8f00b182cab846b62ad216605375a3f24ea1a08f0de463cd1db8e8"
+    },
+    {
+      "path": "output/thesis-template/thesis-guidelines-notes.html",
+      "bytes": 10420,
+      "sha256": "f829cfc56c191b2e096bd0f2e8e71a8e0811ed608431ee4fdc767c4fc23bac73"
+    },
+    {
+      "path": "output/thesis-template/thesis-template-working.zip",
+      "bytes": 32133,
+      "sha256": "29297eac1aff4344b90f95468bd234bbfefdd0b6437499d3d3dc444bd3e86472"
+    },
+    {
+      "path": "project_sources/01-thesis-ideas.md",
+      "bytes": 1563,
+      "sha256": "a89c99e5b6f6029b4531a99f99a451d8a45f424ee81027a229f34c2e5da5d15c"
+    },
+    {
+      "path": "project_sources/02-thesis-discussion.md",
+      "bytes": 13098,
+      "sha256": "be8c2cee343cf61df11166b617e047461557948baae5197ff5aabc22d2fcc28d"
+    },
+    {
+      "path": "thesis_template/README.md",
+      "bytes": 656,
+      "sha256": "b25fa5959ddb6ae3b45d5e97dcdd341fc9e6de5bcdef281bdd0e4864d31453f4"
+    },
+    {
+      "path": "thesis_template/chapters/abstract.tex",
+      "bytes": 117,
+      "sha256": "e1f979b75d6b0295f08d7a8377eab85ebd9598ee20b34ba6bae408d9a33f399f"
+    },
+    {
+      "path": "thesis_template/chapters/appex.tex",
+      "bytes": 86,
+      "sha256": "4b1de2ef6ca7e9b31fe29832533c520393eed621e7a1e0bfa3b138a7f7635b1c"
+    },
+    {
+      "path": "thesis_template/chapters/chapter1.tex",
+      "bytes": 3814,
+      "sha256": "9197de41e43fc15b52f2a090185f01661f59bfc03e34914c0d58ccf46e159257"
+    },
+    {
+      "path": "thesis_template/chapters/chapter2.tex",
+      "bytes": 3223,
+      "sha256": "9f6a8df296e7249cb9dd750ecc483ae604a5c0d21a53f709a0e5142bff3e4c10"
+    },
+    {
+      "path": "thesis_template/chapters/chapter3.tex",
+      "bytes": 1063,
+      "sha256": "12ee1e0d230be72e18e03be2137cdb924299bcc409e0bf8cb26e0a36f4fa8724"
+    },
+    {
+      "path": "thesis_template/chapters/chapter4.tex",
+      "bytes": 50,
+      "sha256": "18dbd8755803ca98055611f1082f954fd3d60226ab7c24cf8ebd039090999eaa"
+    },
+    {
+      "path": "thesis_template/chapters/chapter5.tex",
+      "bytes": 61,
+      "sha256": "1a27921e41585b1139d48e7d03c0fc833501e7a84f7855085a141cbf14e93aaa"
+    },
+    {
+      "path": "thesis_template/chapters/chapter6.tex",
+      "bytes": 52,
+      "sha256": "e67639054fe9267298118bc8722cddf3de56a42f278e60a6472de127e68409d3"
+    },
+    {
+      "path": "thesis_template/figs/images.png",
+      "bytes": 474,
+      "sha256": "082e7243beb745d1b3ac404bb4c16bee1a5a15d5d3793dca3cb26a8a49577b41"
+    },
+    {
+      "path": "thesis_template/ref.bib",
+      "bytes": 1331,
+      "sha256": "260e5a414882879c3b13225a82b431301a971957b8c1acbcd74a5317e3745002"
+    },
+    {
+      "path": "thesis_template/thesis.tex",
+      "bytes": 4245,
+      "sha256": "aee01f48f5a3bca4ad4e1f55b8fed11b90d32dffcce862ec7581a0cd1438c605"
+    },
+    {
+      "path": "thesis_template/title.pdf",
+      "bytes": 28045,
+      "sha256": "e36e24bc0fb37a947ce9668ff54b57713387cca064d4e5fb74209bd585b66662"
+    },
+    {
+      "path": "tmp-proposal.txt",
+      "bytes": 7457,
+      "sha256": "4e1d0d3df55ad055ef704a614b294d29518c383007e76ac4868160b752af8aa8"
+    },
+    {
+      "path": "tmp/conferences/build.mjs",
+      "bytes": 32762,
+      "sha256": "011a7f3f9c60e5806807f444ddbc28398d9e5db3dff0402981e9875118a4340f"
+    },
+    {
+      "path": "tmp/conferences/refresh.mjs",
+      "bytes": 8786,
+      "sha256": "91109cfdd35379582d3d0f0bb3890e337d4f1eca02e8286185a3b5b5e317e2a8"
+    },
+    {
+      "path": "tmp/dcn-registry/added-record.png",
+      "bytes": 142020,
+      "sha256": "f400999c0892eca42f973e5b87adc0d68774f696f4bd4ed80b6803f46c287860"
+    },
+    {
+      "path": "tmp/dcn-registry/before-papers.csv",
+      "bytes": 66221,
+      "sha256": "0483d3dbd18a2f91ace0ddc5b41b4b8b2ba673a1d70c95b61bf10bf7f064abda"
+    },
+    {
+      "path": "tmp/dcn-registry/before-papers.json",
+      "bytes": 155736,
+      "sha256": "39903b96b1e63c2dfafd3a2437a396c1c59120b915c1acb8d215c69c8a7ca417"
+    },
+    {
+      "path": "tmp/dcn-registry/before-references.bib",
+      "bytes": 38216,
+      "sha256": "71eccc65dfb7ef1a59de5f18c9077eb5226ce9ad966b3ed8c4fcbf0ddc9f3cc8"
+    },
+    {
+      "path": "tmp/dcn-registry/update.mjs",
+      "bytes": 8124,
+      "sha256": "37fbd970fa7075af32dea79582b5867eaad630eb843acb260b2a02fdfd4bb6b7"
+    },
+    {
+      "path": "tmp/reinforce-registry/added-records.png",
+      "bytes": 105971,
+      "sha256": "006925e18f0f71e1fac396ca59bb88afd2045b1ca8524f8369fc0124dd5b73a4"
+    },
+    {
+      "path": "tmp/reinforce-registry/before-papers.csv",
+      "bytes": 67895,
+      "sha256": "1b1629d9415f42ce139095ff07db3f0f672f82e503a545f19f22243f417eb89e"
+    },
+    {
+      "path": "tmp/reinforce-registry/before-papers.json",
+      "bytes": 158962,
+      "sha256": "ce81467eb4a48280fdcd5c987683b62a82b6543109921e1a8f645149b2c78c25"
+    },
+    {
+      "path": "tmp/reinforce-registry/before-references.bib",
+      "bytes": 38819,
+      "sha256": "e8782814e16704275ab716f1ec8ead012f77283417573c51df6e98b34ef46a5f"
+    },
+    {
+      "path": "tmp/reinforce-registry/update.mjs",
+      "bytes": 10417,
+      "sha256": "bf0fe6b6f6642938158e20636cacb7ee4c263723b6c526ea1289282b8f5faaaa"
+    },
+    {
+      "path": "tmp/research/add_jev.py",
+      "bytes": 11091,
+      "sha256": "8fc51322274b41e7930795b0538369dee7c1ffa5e8fee156b67d1bf5d7ec2ea4"
+    },
+    {
+      "path": "tmp/research/add_sage.py",
+      "bytes": 9644,
+      "sha256": "19e09df28977ff96decf54de4b61fd4a3359e7ef9bab54e6d2d32f20a7b15d73"
+    },
+    {
+      "path": "tmp/research/build_brief.py",
+      "bytes": 26706,
+      "sha256": "7ca9c65552d7b0afc1bbcd19c8c4bf62c2127988b7196e624c6556257db83562"
+    },
+    {
+      "path": "tmp/research/build_catalog.py",
+      "bytes": 10361,
+      "sha256": "05944ac4c24b84c82be81cd94c60aba3c3136b61d2fdd23d23dccf2426d83608"
+    },
+    {
+      "path": "tmp/research/build_jev_brief.py",
+      "bytes": 9093,
+      "sha256": "a9956bf4a5f2d1ccba7271f6553ea68053883df215386e47bde67ed9c4020780"
+    },
+    {
+      "path": "tmp/research/build_review.py",
+      "bytes": 23830,
+      "sha256": "6314c1157c7ee4950d85b46aae98adc3e056c1da49c6a6676fb6fc9ca3d27e9c"
+    },
+    {
+      "path": "tmp/research/build_sage_brief.py",
+      "bytes": 13235,
+      "sha256": "958870ad34a4e9448200c70f2bdc6bd219be99f02ce24525b66f1c95190cf09e"
+    },
+    {
+      "path": "tmp/research/check_artifacts.py",
+      "bytes": 2454,
+      "sha256": "51956f964f35a8232d2d797fde0a7585fc2dbd9d4293e2f6e2f0bbb1f88c1ec4"
+    },
+    {
+      "path": "tmp/research/check_brief.mjs",
+      "bytes": 3167,
+      "sha256": "95594019f7e8bc5d561d79a7f534c1561a3a7c22a5a1908a14ae0cf156d6e160"
+    },
+    {
+      "path": "tmp/research/check_interaction.mjs",
+      "bytes": 3337,
+      "sha256": "6c5b642e3254fa78324b5f8435d2de812447b6100eeeac3c46235b3e9d01caff"
+    },
+    {
+      "path": "tmp/research/curated.tsv",
+      "bytes": 35772,
+      "sha256": "41be19ccfe0fdbb3fb7b6a60e1f71621fac260e91a1b80b446344ed5b2d1658f"
+    },
+    {
+      "path": "tmp/research/evidence-checkpoint.json",
+      "bytes": 1294742,
+      "sha256": "7e6fcc76b5c62efbf87f408c0fb8c185e53ef1319ddef80481458c2ab37a407f"
+    },
+    {
+      "path": "tmp/research/jev_final_evidence.txt",
+      "bytes": 30467,
+      "sha256": "2861d3864c9b585b6ac1a5b89a39aadafd4aa455de9ad6e50e9e5664d7c06dce"
+    },
+    {
+      "path": "tmp/research/jev_methods.txt",
+      "bytes": 30011,
+      "sha256": "2b50b35dec18ea72f2eac2318055102af568995c33288d1b079b27659a789768"
+    },
+    {
+      "path": "tmp/research/jev_methods2.txt",
+      "bytes": 26904,
+      "sha256": "7bb5632de92e6b2f90428603a11433b1d5503e55b80faa01bcddf6e6c946d442"
+    },
+    {
+      "path": "tmp/research/jev_primary1.txt",
+      "bytes": 15555,
+      "sha256": "0627326d56f5f6a8cebe2be175161909ae7a273ccf12ac0420026ddb5e52b650"
+    },
+    {
+      "path": "tmp/research/jev_primary2.txt",
+      "bytes": 33060,
+      "sha256": "e7b3b1693f44ea28e464b5789e53ea9ed1120d9282d2a1cda3f5d6e7ca477c7d"
+    },
+    {
+      "path": "tmp/research/jev_primary3.txt",
+      "bytes": 36900,
+      "sha256": "5b49d823dd67283a32723b52de55a6e6a05a210438f523161b02b4bd87751e4d"
+    },
+    {
+      "path": "tmp/research/jev_primary4.txt",
+      "bytes": 32824,
+      "sha256": "11070aa463b697b7f25bba0ca44c3c35cf3ea5b51b532235300bdf8d00d632b5"
+    },
+    {
+      "path": "tmp/research/jev_primary5.txt",
+      "bytes": 31208,
+      "sha256": "b354219fc614515613680e52a4d47cff3af001dd196f5fd354b953b1554d2468"
+    },
+    {
+      "path": "tmp/research/metadata.json",
+      "bytes": 38190,
+      "sha256": "3ea09de601c3ff8a806aa806e707417fa2d60c4503e7a61cfe5862970582ad85"
+    },
+    {
+      "path": "tmp/research/pre-sage-catalog.json",
+      "bytes": 152619,
+      "sha256": "cab3397ba97211b4c3bb8d07d2d456f74ece74c343943a85d88bcc7048f8cbd5"
+    },
+    {
+      "path": "tmp/research/sage-diagnostics.json",
+      "bytes": 1443,
+      "sha256": "b0757beacc6b7fa1bb59a1f7f2ada15eb8399cc6a3972ae125146be4157bb575"
+    },
+    {
+      "path": "tmp/research/sage_fd_check.py",
+      "bytes": 3152,
+      "sha256": "8385e2466a45c02f3f9c793566707f7c2003c31169d297e3c3fa683e492cd708"
+    },
+    {
+      "path": "tmp/research/thesis-guidelines-extracted.txt",
+      "bytes": 47969,
+      "sha256": "f5d24e3d4a236e87aed151ad931acdfaaea53f7fb90f51153764e1afdac1d34c"
+    },
+    {
+      "path": "tmp/research/thesis-template-state.json",
+      "bytes": 720,
+      "sha256": "a4d19f063148319e890924c43687616e7c49e0f7e11f6c097f270249ca61efc9"
+    },
+    {
+      "path": "upload/document.pdf",
+      "bytes": 47187,
+      "sha256": "5e5a5deb680820a10767668739fe4286ba79845983748b0b98e1c71374d2f143"
+    },
+    {
+      "path": "upload/image.png",
+      "bytes": 221723,
+      "sha256": "68d9cc03cff85fcc0ae64b28142fb64ec39259d63ec12d346e85d4298f7fcf39"
+    },
+    {
+      "path": "upload/papers.csv",
+      "bytes": 71310,
+      "sha256": "935567a430b41c34430368bfb9dc5167d2e6a376c942a85423f6f12c692798cc"
+    },
+    {
+      "path": "upload/thesis-guidelines.pdf",
+      "bytes": 987048,
+      "sha256": "22a0ff6d057f4ef8b415782d94252d0e73d0415e01efcd53319698234e4aefdf"
+    },
+    {
+      "path": "upload/thesis_template.zip",
+      "bytes": 32788,
+      "sha256": "51666ef7c80d41ee39ab907315c7e02cef19be8411b03178b36757f77dd5072a"
+    }
+  ]
+}

@@ -1,0 +1,463 @@
+Memory declines begin earlier in life than previously thought (https://www.news-medical.net/news/20260831/Memory-declines-begin-earlier-in-life-than-previously-thought.aspx)
+【turn62search0】 [wordlim: 200] Published: last month; Crawled: today; Content type: text/html; Aug 31, 2026 — New research by a team at Binghamton University reveals why memory shifts as we age – and that shift happens earlier in life than most people ... Read more
+# Memory declines begin earlier in life than previously thought
+
+  * Download PDF Copy
+
+Add News Medical on Googleas a preferred source
+
+Binghamton UniversityAug 31 2026Reviewed
+
+[Input]
+
+Memory loss is usually thought of as something to address as a person ages. Slip-ups like forgetting someone's name or recognizing a familiar face but not remembering where you know them from are often viewed as issues that arise later in life.
+
+New research by a team at Binghamton University reveals why memory shifts as we age – and that shift happens earlier in life than most people think, potentially at middle age. 
+
+"This is one of a growing list of studies highlighting that the period of middle age is really important for memory functioning and shouldn't be ignored. For a long time, most studies have been focused on young adults versus older adults," said Binghamton Associate Professor of Psychology Ian McDonough, co-author of a new study published in Cerebral Cortex.
+
+McDonough and postdoctoral associate Destaw Mekbib tested a group of approximately 60 adults ages 18 to 74 by showing them faces paired with various objects and scenes. After a five-minute rest period, participants completed a memory test where they were prompted to pick the correct object or scene for each face – all while an MRI machine took readings of their hippocampal activity.
+
+
+--------------------------------------------------------------------------------
+Decision-Oriented Recommendation Reranking: An Empirical Study of Jev (https://arxiv.org/abs/2609.40241)
+【turn62search1】 [wordlim: 200] Published: last week; 
+Title: Decision-Oriented Recommendation Reranking: An Empirical Study of Jev
+Authors: Hanjia Lyu, Yinglong Xia
+Date: Wed Sep 30 17:33:43 2026
+
+Large language models (LLMs) have shown promise for recommendation reranking, but their use introduces an important tradeoff between recommendation quality and serving efficiency. We investigate whether a decision-oriented model provides a useful alternative when the reranking task is fundamentally a structured choice among predefined candidate items. Specifically, we conduct a controlled empirical study of Jev, described by TypeSafe AI as a ``System One Model,'' for personalized recommendation reranking and compare it with recommendation-specific models and pointwise and listwise Qwen rerankers across multiple Amazon Reviews domains and candidate-set sizes, evaluating both recommendation effectiveness and observed serving latency. Our results show that Jev maintains strong recommendation effectiveness relative to the evaluated baselines while exhibiting substantially more gradual latency growth than the pointwise Qwen rerankers, although its observed serving latency remains substantially higher than that of recommendation-specific models. Together, these characteristics place Jev in a distinct quality--latency operating regime across candidate sizes and domains. These findings motivate further investigation of decision-oriented models for recommendation and other ranking tasks with structured output spaces.
+--------------------------------------------------------------------------------
+Memory (https://en.wikipedia.org/wiki/Memory)
+【turn62search2】 [wordlim: 200] Crawled: today; Content type: text/html; Memory is the faculty of the mind by which data or information is encoded, stored, and retrieved when needed. It is the retention of information over time ... Read more
+  * Download as PDF
+  * Printable version
+
+In other projects
+
+  * Wikimedia Commons
+  * Wikiquote
+  * Wikiversity
+  * Wikidata item
+
+Appearance
+
+[Button: move to sidebar] [Button: hide]
+
+This article is about human memory. For other uses, including works entitled "Memory", see Memory (disambiguation).
+
+"Memories" redirects here. For other uses, see Memories (disambiguation).
+
+Overview of the forms and functions of memory
+
+Memory is the faculty of the mind by which data or information is encoded, stored, and retrieved when needed. It is the retention of information over time for the purpose of influencing future action.^{[1]} If past events could not be remembered, it would be impossible for language, relationships, or personal identity to develop.^{[2]} Memory loss is usually described as forgetfulness or a disorder such as amnesia.^{[3]}^{[4]}^{[5]}^{[6]}^{[7]}^{[8]}
+
+Memory is often understood as an information processing system with explicit and implicit functioning that is made up of a sensory processor, short-term (or working) memory, and long-term memory.^{[9]} This can be related to the neuron. The sensory processor allows information from the outside world to be sensed in the form of chemical and physical stimuli and attended to various levels of focus and intent. Working memory serves as an encoding and retrieval processor. Information in the form of stimuli is encoded in accordance with explicit or implicit functions by the working memory processor. The working memory also retrieves information from previously stored material. Finally, the function of long-term memory is to store information through various categorical models or systems.^{[9]}
+
+Declarative, or explicit memory, is the conscious storage and recollection of data.^{[10]} Under declarative memory resides semantic and episodic memory. Semantic memory refers to memory that is encoded with specific meaning.^{[2]} Meanwhile, episodic memory refers to information that is encoded along a spatial and temporal plane.^{[11]}^{[12]}^{[13]} Declarative memory is usually the primary process thought of when referencing memory.^{[2]} Non-declarative, or implicit, memory is the unconscious storage and recollection of information.^{[14]} An example of a non-declarative process would be the unconscious learning or retrieval of information by way of procedural memory, or a priming phenomenon.^{[2]}^{[14]}^{[15]} Priming is the process of subliminally arousing specific responses from memory and shows that not all memory is consciously activated,^{[15]} whereas procedural memory is the slow and gradual learning of skills that often occurs without conscious attention to learning.^{[2]}^{[14]}
+
+Memory is not a perfect processor and is affected by many factors. The ways by which information is encoded, stored, and retrieved can all be corrupted. Pain, for example, has been identified as a physical condition that impairs memory, and has been noted in animal models as well as chronic pain patients.^{[16]}^{[17]}^{[18]}^{[19]} The amount of attention given new stimuli can diminish the amount of information that becomes encoded for storage.^{[2]} Also, the storage process can become corrupted by physical damage to areas of the brain that are associated with memory storage, such as the hippocampus.^{[20]}^{[21]} Finally, the retrieval of information from long-term memory can be disrupted because of decay within long-term memory.^{[2]} Normal functioning, decay over time, and brain damage all affect the accuracy and capacity of the memory.^{[22]}^{[23]}
+
+## Sensory memory
+
+[edit]
+
+Main article: Sensory memory
+
+Sensory memory holds information, derived from the senses, less than one second after an item is perceived. The ability to look at an item and remember what it looked like with just a split second of observation, or memorization, is an example of sensory memory. It is out of cognitive control and is an automatic response. With very short presentations, participants often report that they seem to "see" more than they can actually report. The first precise experiments exploring this form of sensory memory were conducted by George Sperling (1963)^{[24]} using the "partial report paradigm." Subjects were presented with a grid of 12 letters, arranged into three rows of four. After a brief presentation, subjects were then played either a high, medium or low tone, cuing them which of the rows to report. Based on these partial report experiments, Sperling was able to show that the capacity of sensory memory was approximately 12 items, but that it degraded very quickly (within a few hundred milliseconds). Because this form of memory degrades so quickly, participants would see the display but be unable to report all of the items (12 in the "whole report" procedure) before they decayed. This type of memory cannot be prolonged via rehearsal.
+
+
+--------------------------------------------------------------------------------
+Decision-Oriented Recommendation Reranking (https://arxiv.org/html/2609.40241v1)
+【turn62search3】 [wordlim: 200] Crawled: today; Content type: text/html; Sep 30, 2026 — Decision-Oriented Recommendation Reranking: An Empirical Study of Jev. Hanjia Lyu Affiliation: Singapore Management University Email: hjlyu ... Read more
+    2. 5.2 Effect of Candidate-Set Size
+    3. 5.3 Pointwise and Listwise Qwen Reranking
+    4. 5.4 Latency and Scalability
+    5. 5.5 Quality–Latency Tradeoff
+  7. 6 Discussion
+    1. 6.1 Decision-Oriented Models for Recommendation Reranking
+    2. 6.2 Implications for LLM-Based Recommendation
+    3. 6.3 Limitations
+  8. 7 Conclusion
+  9. References
+  10. A Prompt and Input Templates
+    1. A.1 Pointwise Qwen Prompt
+    2. A.2 Listwise Qwen Prompt
+    3. A.3 Jev Input Formulation
+  11. B Implementation Details
+    1. B.1 SASRec
+    2. B.2 DCNv2
+    3. B.3 Qwen Rerankers
+    4. B.4 Jev
+  12. C Additional Results
+    1. C.1 MRR and Hit Rate@10
+    2. C.2 Latency Distribution Statistics
+
+License: arXiv.org perpetual non-exclusive license
+
+arXiv:2609.40241v1 [cs.IR] 30 Sep 2026
+
+# Decision-Oriented Recommendation Reranking: An Empirical Study of Jev
+
+Hanjia Lyu Affiliation: Singapore Management University Email: hjlyu@smu.edu.sg    Yinglong Xia Affiliation: Meta AI Email: yxia@meta.com
+
+###### Abstract
+
+Large language models (LLMs) have shown promise for recommendation reranking, but their use introduces an important tradeoff between recommendation quality and serving efficiency. We investigate whether a decision-oriented model provides a useful alternative when the reranking task is fundamentally a structured choice among predefined candidate items. Specifically, we conduct a controlled empirical study of Jev, described by TypeSafe AI as a “System One Model,” for personalized recommendation reranking and compare it with recommendation-specific models and pointwise and listwise Qwen rerankers across multiple Amazon Reviews domains and candidate-set sizes, evaluating both recommendation effectiveness and observed serving latency. Our results show that Jev maintains strong recommendation effectiveness relative to the evaluated baselines while exhibiting substantially more gradual latency growth than the pointwise Qwen rerankers, although its observed serving latency remains substantially higher than that of recommendation-specific models. Together, these characteristics place Jev in a distinct quality–latency operating regime across candidate sizes and domains. These findings motivate further investigation of decision-oriented models for recommendation and other ranking tasks with structured output spaces.
+
+
+--------------------------------------------------------------------------------
+Memory (https://www.psychologytoday.com/us/basics/memory)
+【turn62search4】 [wordlim: 200] Crawled: today; Content type: text/html; Nov 13, 2025 — Memory is the faculty by which the brain encodes, stores, and retrieves information. It is a record of experience that guides future action.
+# What Is Memory?
+
+Reviewed by Devon Frye on November 13, 2025
+
+Memory is the faculty by which the brain encodes, stores, and retrieves information. It is a record of experience that guides future action.
+
+Memory encompasses the facts and experiential details that people consciously call to mind as well as ingrained knowledge that surface without effort or even awareness. It is both a short-term cache of information and the more permanent record of what one has learned. The types of memory described by scientists include episodic memory, semantic memory, procedural memory, working memory, sensory memory, and prospective memory.
+
+Memory loss is the unavoidable flipside of the human capacity to remember. Forgetting, of course, is normal and happens every day: The brain simply cannot retain a permanent record of everything a person experiences and learns. And with advancing age, some decline in memory ability is typical. There are strategies for coping with such loss—adopting memory aids such as calendars and reminder notes, for example, or routinizing the placement of objects at risk of getting lost.
+
+
+--------------------------------------------------------------------------------
+An Empirical Study of Jev | Andrei Lopatenko (https://www.linkedin.com/posts/lopatenko_decision-oriented-recommendation-reranking-activity-7511560704936636416-jziW)
+【turn62search5】 [wordlim: 200] Crawled: yesterday; Content type: text/html; Decision-Oriented Recommendation Reranking: An Empirical Study of Jev ... Read more
+# Decision Oriented Rerankers for Search and Recommendation Tasks
+
+Andrei Lopatenko
+
+1w
+
+Decision oriented rerankers: consistent results that decision oriented models (such as Jev System One) are very good rerankers for search/recommendation tasks Study from Meta AI https://lnkd.in/gZqZkyEb from Elastic https://lnkd.in/gxzBESr6 from Turpopuffer https://lnkd.in/gD7s2Qck https://lnkd.in/gNeK78jX https://lnkd.in/gZqZkyEb
+
+Decision-Oriented Recommendation Reranking: An Empirical Study of Jev arxiv.org
+
+`` `` ``
+
+## More Relevant Posts
+
+  * Nayan Brijpuria
+
+1mo Edited
+
+LINK: https://lnkd.in/dXRq-R24 I recently came across a research paper titled “Is Grep All You Need? How Agent Harnesses Reshape Agentic Search”, and it genuinely made me rethink how we approach search in AI systems. Before reading it, I had a fairly straightforward assumption: Semantic/vector search should generally be better than traditional keyword search, especially for AI and RAG systems. But the experiments in this paper challenged that assumption. 
+--------------------------------------------------------------------------------
+Memory (https://www.health.harvard.edu/topics/memory)
+【turn62search6】 [wordlim: 200] Published: 4.6 years ago; Crawled: today; Content type: text/html; Apr 20, 2026 — In short, our memories are crucial to the essence of who we are as human beings. That means memory loss can represent a loss of self. It also ... Read more
+# Memory
+
+April 20, 2026
+
+  * Reviewed by Lindsey Crowley, MD, Contributor
+
+In many ways, our memories shape who we are. They make up our internal biographies - the stories we tell ourselves about what we've done with our lives. They tell us who we're connected to, who we've touched during our lives, and who has touched us. In short, our memories are crucial to the essence of who we are as human beings.
+
+That means memory loss can represent a loss of self. It also affects the practical side of life, like getting around the neighborhood or remembering how to contact a loved one. It's not surprising, then, that concerns about declining thinking and memory skills rank among the top fears people have as they age.
+
+What causes some people to lose their memory while others stay sharp as a tack? Genes play a role, but so do choices. Proven ways to help protect memory include following a healthy diet, exercising regularly, not smoking, and keeping blood pressure, cholesterol, and blood sugar in check. Living a mentally active life is important, too. Just as muscles grow stronger with use, mental exercise helps keep cognitive skills and memory in tone.
+
+Image: A group of people with two men shaking hands
+
+On this page you'll discover
+
+  * What is memory?
+  * What causes memory loss and forgetfulness?
+  * What is mild cognitive impairment?
+  * What is dementia?
+  * What is the difference between dementia and Alzheimer's?
+  * How to improve memory and concentration?
+  * Is it possible to avoid memory loss?
+
+## What is memory?
+
+As we age, it's common to worry about losing our memories - partly because a certain amount of age-related memory loss is perfectly normal. In order to preserve your memory as you age, it's important to understand how memory functions. So, what is memory? Where in the brain are memories stored, and how does the brain retrieve them?
+
+Quite simply, memory is our ability to recall information. The main two categories for memories are short-term and long-term.
+
+Short-term memories involve information that you only need to recall for a few seconds or minutes. If you're turning at an intersection, the fact that there were no cars coming when you looked to the left is important, but once you've made your turn you will quickly discard the information because it is no longer relevant. Keeping it around would unnecessarily clutter your brain.
+
+
+--------------------------------------------------------------------------------
+Decision-Oriented Recommendation Reranking (https://arxiv.org/pdf/2609.40241)
+【turn62search7】 [wordlim: 200] Crawled: today; Content type: application/pdf; by H Lyu · 2026 — Decision-Oriented Recommendation Reranking: An Empirical Study of Jev. Hanjia Lyu. Singapore Management University hjlyu@smu.edu.sg. Yinglong ... Read more
+Decision-Oriented Recommendation Reranking: An Empirical Study of Jev
+Hanjia Lyu
+Singapore Management University
+hjlyu@smu.edu.sg
+Yinglong Xia
+Meta AI
+yxia@meta.com
+Abstract
+Large language models (LLMs) have shown
+promise for recommendation reranking, but
+their use introduces an important tradeoff between recommendation quality and serving efficiency. We investigate whether a decisionoriented model provides a useful alternative
+when the reranking task is fundamentally a
+structured choice among predefined candidate
+items. Specifically, we conduct a controlled
+empirical study of Jev, described by TypeSafe
+AI as a “System One Model,” for personalized
+recommendation reranking and compare it with
+recommendation-specific models and pointwise and listwise Qwen rerankers across multiple Amazon Reviews domains and candidateset sizes, evaluating both recommendation effectiveness and observed serving latency. Our
+
+--------------------------------------------------------------------------------
+Memory tool - Claude Platform Docs (https://platform.claude.com/docs/en/agents-and-tools/tool-use/memory-tool)
+【turn62search8】 [wordlim: 200] Crawled: today; Content type: text/html; The memory tool lets Claude store and retrieve information across conversations in a directory of memory files. Claude can create, read, update, and delete ... Read more
+# Memory tool
+
+Let Claude store and retrieve information across conversations by implementing the memory tool's file operations in your application.
+
+Copy page
+
+
+
+The memory tool lets Claude store and retrieve information across conversations in a directory of memory files. Claude can create, read, update, and delete files that persist between sessions, building up knowledge over time without keeping everything in the context window.
+
+Memory supports just-in-time context retrieval. Rather than loading all relevant information up front, an agent records what it learns in memory files and reads them back on demand. This keeps the active context focused on the current task, which matters for long-running sessions that would otherwise overwhelm the context window. See Effective context engineering for the broader pattern.
+
+The memory tool operates client-side: Claude requests file operations, and your application executes them. You control where and how the data is stored through your own infrastructure.
+
+
+
+Reach out through the feedback form to share your feedback on this feature.
+
+
+
+To learn how zero data retention (ZDR) applies to this feature, see API and data retention.
+
+## How it works
+
+When the memory tool is enabled, Claude automatically checks its memory directory before starting a task. As it works, Claude stores what it learns in files under `/memories` and reads them back in later conversations to continue earlier work.
+
+Because the memory tool is client-side, Claude only requests memory operations. Your application executes each request against storage you control and returns the result in a `tool_result` block (see Handle tool calls). The `/memories` path is a prefix that your handler maps onto real storage, such as a per-user directory or keys in a database. Memory lives entirely in your application. 
+--------------------------------------------------------------------------------
+Decision-Oriented Recommendation Reranking (https://www.alphaxiv.org/abs/2609.40241)
+【turn62search9】 [wordlim: 200] Crawled: today; Content type: text/html; Sep 30, 2026 — Decision-Oriented Recommendation Reranking: An Empirical Study of Jev. Singapore Management UniversityMeta AI. Hanjia Lyu · YX. Read more
+Submitted 30 Sep 2026
+
+en
+
+# Decision-Oriented Recommendation Reranking: An Empirical Study of Jev
+
+Singapore Management University Meta AIHanjia LyuYX Yinglong Xia
+
+## Abstract
+
+Large language models (LLMs) have shown promise for recommendation reranking, but their use introduces an important tradeoff between recommendation quality and serving efficiency. We investigate whether a decision-oriented model provides a useful alternative when the reranking task is fundamentally a structured choice among predefined candidate items. Specifically, we conduct a controlled empirical study of Jev, described by TypeSafe AI as a ``System One Model,'' for personalized recommendation reranking and compare it with recommendation-specific models and pointwise and listwise Qwen rerankers across multiple Amazon Reviews domains and candidate-set sizes, evaluating both recommendation effectiveness and observed serving latency. Our results show that Jev maintains strong recommendation effectiveness relative to the evaluated baselines^{[p8]} while exhibiting substantially more gradual latency growth than the pointwise Qwen rerankers,^{[p9]} although its observed serving latency remains substantially higher than that of recommendation-specific models.^{[p14]} Together, these characteristics place Jev in a distinct quality--latency operating regime across candidate sizes and domains.^{[p10]} These findings motivate further investigation of decision-oriented models for recommendation and other ranking tasks with structured output spaces.
+
+## Audio
+
+Audio summary Two hosts talking through the paper's ideas, methods and results.
+
+Generate
+
+## Similar papers
+
+## Discussion
+
+Comment
+
+Autoresearch
+
+105 views
+
+v1
+
+## BibTeX
+
+Copy
+
+@misc{lyu2026decisionorientedrecommendationrerankingempirical, title={Decision-Oriented Recommendation Reranking: An Empirical Study of Jev}, author={Hanjia Lyu and Yinglong Xia}, year={2026}, eprint={2609.40241}, archivePrefix={arXiv}, primaryClass={cs.IR}, url={https://arxiv.org/abs/2609.40241}, }
+
+
+--------------------------------------------------------------------------------
+Memory in ChatGPT (https://help.openai.com/en/articles/8590148-memory-in-chatgpt)
+【turn62search10】 [wordlim: 200] Crawled: today; Content type: text/html; When Memory is enabled , ChatGPT can remember relevant preferences and details from your chats and other available sources. This can help you pick up where you ... Read more
+# Overview
+
+When Memory is enabled, ChatGPT can remember relevant preferences and details from your chats and other available sources. This can help you pick up where you left off and spend less time repeating yourself.
+
+Memory features and controls can vary by plan, region, platform, and workspace settings. If a setting described here is not visible, it may not be available for your account yet.
+
+Depending on your plan and region, those sources can include:
+
+  * past chats
+
+  * saved memories
+
+
+--------------------------------------------------------------------------------
+Decision-Oriented Recommendation Reranking (https://www.researchgate.net/publication/415152130_Decision-Oriented_Recommendation_Reranking_An_Empirical_Study_of_Jev)
+【turn62search11】 [wordlim: 200] Crawled: 4 days ago; Content type: text/html; 7 days ago — Decision-Oriented Recommendation Reranking: An Empirical Study of Jev ... Preprints and early-stage research may not have been peer reviewed yet. Read more
+# Decision-Oriented Recommendation Reranking: An Empirical Study of Jev
+
+  * September 2026
+
+DOI:10.48550/arXiv.2609.40241
+
+Authors:
+
+Hanjia Lyu
+
+Hanjia Lyu
+
+  * This person is not on ResearchGate, or hasn't claimed this research yet.
+
+Yinglong Xia
+
+Yinglong Xia
+
+  * This person is not on ResearchGate, or hasn't claimed this research yet.
+
+Image: Request Full-text Paper PDF
+
+Request file PDF
+
+To read the file of this research, you can request a copy directly from the authors.
+
+Preprints and early-stage research may not have been peer reviewed yet.
+
+## Abstract
+
+Large language models (LLMs) have shown promise for recommendation reranking, but their use introduces an important tradeoff between recommendation quality and serving efficiency. We investigate whether a decision-oriented model provides a useful alternative when the reranking task is fundamentally a structured choice among predefined candidate items. Specifically, we conduct a controlled empirical study of Jev, described by TypeSafe AI as a ``System One Model,'' for personalized recommendation reranking and compare it with recommendation-specific models and pointwise and listwise Qwen rerankers across multiple Amazon Reviews domains and candidate-set sizes, evaluating both recommendation effectiveness and observed serving latency. Our results show that Jev maintains strong recommendation effectiveness relative to the evaluated baselines while exhibiting substantially more gradual latency growth than the pointwise Qwen rerankers, although its observed serving latency remains substantially higher than that of recommendation-specific models. Together, these characteristics place Jev in a distinct quality--latency operating regime across candidate sizes and domains. These findings motivate further investigation of decision-oriented models for recommendation and other ranking tasks with structured output spaces.
+
+
+--------------------------------------------------------------------------------
+18.3 The MEMORY Storage Engine (https://dev.mysql.com/doc/refman/9.5/en/memory-storage-engine.html)
+【turn62search12】 [wordlim: 200] Crawled: today; Content type: text/html; The MEMORY storage engine (formerly known as HEAP ) creates special-purpose tables with contents that are stored in memory. Because the data is vulnerable ... Read more
+PDF (US Ltr) - 41.9Mb
+PDF (A4) - 42.0Mb
+Man Pages (TGZ) - 272.3Kb
+Man Pages (Zip) - 378.3Kb
+Info (Gzip) - 4.2Mb
+Info (Zip) - 4.2Mb
+
+version 9.7
+
+26.7
+8.4
+8.0
+
+8.0  Japanese
+
+MySQL 9.7 Reference Manual  /  Alternative Storage Engines  /  The MEMORY Storage Engine
+
+## 18.3 The MEMORY Storage Engine
+
+The `MEMORY` storage engine (formerly known as `HEAP`) creates special-purpose tables with contents that are stored in memory. Because the data is vulnerable to crashes, hardware issues, or power outages, only use these tables as temporary work areas or read-only caches for data pulled from other tables.
+
+Table 18.4 MEMORY Storage Engine Features
+
+Feature  | Support
+--- | ---
+B-tree indexes  | Yes
+Backup/point-in-time recovery (Implemented in the server, rather than in the storage engine.)  | Yes
+Cluster database support  | No
+Clustered indexes  | No
+Compressed data  | No
+Data caches  | N/A
+Encrypted data  | Yes (Implemented in the server via encryption functions.)
+Foreign key support  | No
+Full-text search indexes  | No
+Geospatial data type support  | No
+Geospatial indexing support  | No
+Hash indexes  | Yes
+Index caches  | N/A
+Locking granularity  | Table
+MVCC  | No
+Replication support (Implemented in the server, rather than in the storage engine.)  | Limited (See the discussion later in this section.)
+Storage limits  | RAM
+T-tree indexes  | No
+Transactions  | No
+Update statistics for data dictionary  | Yes
+
+### When to Use MEMORY or NDB Cluster
+
+Developers looking to deploy applications that use the `MEMORY` storage engine for important, highly available, or frequently updated data should consider whether NDB Cluster is a better choice. A typical use case for the `MEMORY` engine involves these characteristics:
+
+  * Operations involving transient, non-critical data such as session management or caching. When the MySQL server halts or restarts, the data in `MEMORY` tables is lost.
+
+
+--------------------------------------------------------------------------------
+Paper page - Decision-Oriented Recommendation Reranking (https://huggingface.co/papers/2609.40241)
+【turn62search13】 [wordlim: 200] Crawled: yesterday; Content type: text/html; Oct 1, 2026 — Decision-Oriented Recommendation Reranking: An Empirical Study of Jev. Published on Sep 29. · Submitted by. Hanjia Lyu ... Read more
+# Decision-Oriented Recommendation Reranking: An Empirical Study of Jev
+
+Published on Sep 30
+
+· Submitted by Hanjia Lyu on Oct 1
+
+· Singapore Management University
+
+Upvote 4
+
+  *   *   *   *   * Authors:
+
+[Button: Hanjia Lyu] ,
+
+[Button: Yinglong Xia]
+
+## Abstract
+
+Large language models (LLMs) have shown promise for recommendation reranking, but their use introduces an important tradeoff between recommendation quality and serving efficiency. We investigate whether a decision-oriented model provides a useful alternative when the reranking task is fundamentally a structured choice among predefined candidate items. Specifically, we conduct a controlled empirical study of Jev, described by TypeSafe AI as a ``System One Model,'' for personalized recommendation reranking and compare it with recommendation-specific models and pointwise and listwise Qwen rerankers across multiple Amazon Reviews domains and candidate-set sizes, evaluating both recommendation effectiveness and observed serving latency. Our results show that Jev maintains strong recommendation effectiveness relative to the evaluated baselines while exhibiting substantially more gradual latency growth than the pointwise Qwen rerankers, although its observed serving latency remains substantially higher than that of recommendation-specific models. Together, these characteristics place Jev in a distinct quality--latency operating regime across candidate sizes and domains. These findings motivate further investigation of decision-oriented models for recommendation and other ranking tasks with structured output spaces.
+
+### Community
+
+Image
+
+brucelyu
+
+Paper submitter 9 days ago
+
+Can decision-oriented models be a better fit for recommendation reranking than general-purpose LLMs?
+
+In this work, we study Jev, a decision-oriented “System One Model,” for personalized recommendation reranking. Across multiple domains and candidate-set sizes, we find that Jev occupies a distinct quality–latency operating regime compared with recommendation-specific models and pointwise/listwise LLM rerankers.
+
+We hope this study sparks more discussion around decision-oriented models for recommendation and other structured ranking tasks. Would love to hear your thoughts!
+
+Reply
+
+
+--------------------------------------------------------------------------------
+Memory - Queensland Brain Institute (https://qbi.uq.edu.au/brain-basics/memory)
+【turn62search14】 [wordlim: 200] Published: 9.9 years ago; Crawled: today; Content type: text/html; What is memory? Memory is the process of encoding, storing, and retrieving experiences and knowledge, and its many guises are even more important than you ... Read more
+## What is memory?
+
+Memory is the process of encoding, storing, and retrieving experiences and knowledge, and its many guises are even more important than you think.
+
+
+--------------------------------------------------------------------------------
+Jev-Mem: System-One-Controlled Agentic Memory for Efficient AI Agents (https://arxiv.org/abs/2609.23986)
+【turn62academia17】 [wordlim: 200] Published: 2 weeks ago; 
+Title: Jev-Mem: System-One-Controlled Agentic Memory for Efficient AI Agents
+Authors: Dongming Jiang, Yi Li, Bingzhe Li
+Date: Mon Sep 21 01:43:12 2026
+
+Agentic memory is becoming essential for long-horizon AI agents, yet many existing systems rely on autoregressive LLMs to control how memories are organized, retrieved, and used, placing expensive generation on the critical path of memory operations. We introduce \textbf{\method}, a new agentic memory architecture inspired by System-One/System-Two cognition. System One captures fast, lightweight decision-making, whereas System Two performs slower, deliberative reasoning. Jev-Mem brings this division of labor to agentic memory through a dedicated System-One control plane, a structured multi-relational memory plane, and a System-Two reasoning plane. The System-One controller governs memory typing and relational organization during construction, and dynamically performs query routing, retrieval-budget allocation, graph traversal, candidate scoring, and adaptive stopping during retrieval. System Two is invoked only for complex reasoning and answer synthesis. This design improves both memory effectiveness and system efficiency: on LoCoMo Jev-Mem achieves an overall LLM-as-a-Judge score of 0.777, an 11.0\% relative improvement over the strongest baseline, while reducing memory construction time to 158\,s, a 6.6$\times$ speedup over the fastest competing memory system, and lowering average query latency to 0.93\,s, a 36.7\% reduction.
+--------------------------------------------------------------------------------
+Visual Jev: Accurate and Efficient Decisions from Shared Visual Context (https://arxiv.org/abs/2609.25845)
+【turn62academia18】 [wordlim: 200] Published: 2 weeks ago; 
+Title: Visual Jev: Accurate and Efficient Decisions from Shared Visual Context
+Authors: Guanxu Yu, Yuhang Yao
+Date: Tue Sep 22 08:12:29 2026
+
+Many vision applications ask several independent, forced-choice questions about the same image. Visual Jev encodes the image and public context once, executes isolated question suffixes as a batch, and reads candidate probabilities from the backbone's language-model head. Across four benchmarks, answer-supervised post-training raises equal-weight macro accuracy from 70.6% to 76.1%, with the gain concentrated on the two task families represented in training. At N=32 questions per image, shared batched execution is 8.9x faster in warm amortized time than independent serial execution and remains 3.4x faster than an already-batched baseline that recomputes the prefix, at the cost of higher peak memory. A matched typed-head control offers no consistent accuracy advantage over the language-model-head readout. The supported design is therefore simple: adapt the backbone for quality, retain the existing readout, and share execution for efficiency.
+--------------------------------------------------------------------------------
+What is memory? And how does it affect our perception of self? ... (https://www.facebook.com/richrollfans/videos/what-is-memory-and-how-does-it-affect-our-perception-of-selfthis-week-on-the-pod/1104502774623799/)
+【turn62search15】 [wordlim: 200] Crawled: 3 weeks ago; Content type: text/html; We discuss the surprising ways that stress, sleep, and our digital environment impact memory. His insights reveal how memories shape our ...
+
+--------------------------------------------------------------------------------
+Internal Error ()
+【turn62view0】 [wordlim: 200] Source: open({"ref_id":"https://arxiv.org/abs/2610.00831","lineno":null}); Total lines: 1
+L0: Failed to fetch https://arxiv.org/abs/2610.00831: DisabledError
+
+--------------------------------------------------------------------------------
+Internal Error ()
+【turn62view1】 [wordlim: 200] Source: open({"ref_id":"https://docs.typesafe.ai/model-spec/jev-1.13","lineno":null}); Total lines: 1
+L0: URL https://docs.typesafe.ai/model-spec/jev-1.13 is not accessible via this tool.
+
+--------------------------------------------------------------------------------
+TypeSafe - ReDoc (https://api.typesafe.ai/redoc)
+【turn62view2】 [wordlim: 200] Crawled: today; Content type: text/html; Source: open({"ref_id":"https://api.typesafe.ai/redoc","lineno":null}); Total lines: 1
+L0: ReDoc requires Javascript to function. Please enable it to browse the documentation.
+

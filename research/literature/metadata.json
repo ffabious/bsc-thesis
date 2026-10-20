@@ -1,0 +1,1100 @@
+{
+  "1706.03847": {
+    "refs": [
+      "turn14academia49",
+      "turn30view0",
+      "turn52view0"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/1706.03847v3"
+    ],
+    "title": "Recurrent Neural Networks with Top-k Gains for Session-based Recommendations",
+    "authors": "Balázs Hidasi, Alexandros Karatzoglou",
+    "comments": "CIKM'18, authors' version",
+    "version": "v3",
+    "submitted": "12 Jun 2017 (【5†v1】), last revised 28 Aug 2018 (this version, v3)]",
+    "abstract_fetched": true
+  },
+  "1706.04148": {
+    "refs": [
+      "turn14academia48",
+      "turn30view1",
+      "turn52view1"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/1706.04148v5"
+    ],
+    "title": "Personalizing Session-based Recommendations with Hierarchical Recurrent Neural Networks",
+    "authors": "Massimo Quadrana, Alexandros Karatzoglou, Balázs Hidasi, Paolo Cremonesi",
+    "version": "v5",
+    "submitted": "13 Jun 2017 (【5†v1】), last revised 23 Aug 2017 (this version, v5)]",
+    "abstract_fetched": true
+  },
+  "1809.07426": {
+    "refs": [
+      "turn9academia48",
+      "turn30view2",
+      "turn52view2"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/1809.07426v1"
+    ],
+    "title": "Personalized Top-N Sequential Recommendation via Convolutional Sequence Embedding",
+    "authors": "Jiaxi Tang, Ke Wang",
+    "comments": "Accepted at WSDM 2018",
+    "version": "v1",
+    "submitted": "19 Sep 2018]",
+    "abstract_fetched": true
+  },
+  "1906.09217": {
+    "refs": [
+      "turn9academia49",
+      "turn30view3",
+      "turn55view0",
+      "turn56view0"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/1906.09217v1"
+    ],
+    "title": "Hierarchical Gating Networks for Sequential Recommendation",
+    "authors": "Chen Ma, Peng Kang, Xue Liu",
+    "submitted": "21 Jun 2019]",
+    "abstract_fetched": true,
+    "comments": "Accepted by the 25th ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD 2019 Research Track), code available:this https URL†github.com",
+    "version": "v1"
+  },
+  "1511.06939": {
+    "refs": [
+      "turn6view1",
+      "turn30view4",
+      "turn52view3"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/1511.06939v4"
+    ],
+    "title": "Session-based Recommendations with Recurrent Neural Networks",
+    "authors": "Balázs Hidasi, Alexandros Karatzoglou, Linas Baltrunas, Domonkos Tikk",
+    "comments": "Camera ready version (17th February, 2016) Affiliation update (29th March, 2016)",
+    "version": "v4",
+    "submitted": "21 Nov 2015 (【5†v1】), last revised 29 Mar 2016 (this version, v4)]",
+    "abstract_fetched": true
+  },
+  "1711.04725": {
+    "refs": [
+      "turn6view2",
+      "turn30view5",
+      "turn52view4"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/1711.04725v1"
+    ],
+    "title": "Neural Attentive Session-based Recommendation",
+    "authors": "Jing Li, Pengjie Ren, Zhumin Chen, Zhaochun Ren, Jun Ma",
+    "comments": "Proceedings of the 2017 ACM on Conference on Information and Knowledge Management. arXiv admin note: text overlap with arXiv:1511.06939, arXiv:1606.08117 by other authors",
+    "version": "v1",
+    "submitted": "13 Nov 2017]",
+    "abstract_fetched": true
+  },
+  "1808.05163": {
+    "refs": [
+      "turn19view0",
+      "turn30view6",
+      "turn52view5"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/1808.05163v4"
+    ],
+    "title": "A Simple Convolutional Generative Network for Next Item Recommendation",
+    "authors": "Fajie Yuan, Alexandros Karatzoglou, Ioannis Arapakis, Joemon M Jose, Xiangnan He",
+    "version": "v4",
+    "submitted": "15 Aug 2018 (【5†v1】), last revised 29 Nov 2018 (this version, v4)]",
+    "abstract_fetched": true
+  },
+  "1811.00855": {
+    "refs": [
+      "turn19view1",
+      "turn30view7",
+      "turn52view6"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/1811.00855v4"
+    ],
+    "title": "Session-based Recommendation with Graph Neural Networks",
+    "authors": "Shu Wu, Yuyuan Tang, Yanqiao Zhu, Liang Wang, Xing Xie, Tieniu Tan",
+    "comments": "9 pages, 4 figures, accepted by AAAI Conference on Artificial Intelligence (AAAI-19)",
+    "version": "v4",
+    "submitted": "1 Nov 2018 (【5†v1】), last revised 24 Jan 2019 (this version, v4)]",
+    "abstract_fetched": true
+  },
+  "1808.09781": {
+    "refs": [
+      "turn6view0",
+      "turn12view0",
+      "turn29view0"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/1808.09781v1"
+    ],
+    "title": "Self-Attentive Sequential Recommendation",
+    "authors": "Wang-Cheng Kang, Julian McAuley",
+    "comments": "Accepted by ICDM'18 as a long paper",
+    "version": "v1",
+    "submitted": "20 Aug 2018]",
+    "abstract_fetched": true
+  },
+  "1904.06690": {
+    "refs": [
+      "turn7search5",
+      "turn6view3",
+      "turn29view1",
+      "turn52view7"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/1904.06690v2"
+    ],
+    "title": "BERT4Rec: Sequential Recommendation with Bidirectional Encoder Representations from Transformer",
+    "authors": "Fei Sun, Jun Liu, Jian Wu, Changhua Pei, Xiao Lin, Wenwu Ou, Peng Jiang",
+    "comments": "To appear in CIKM 2019",
+    "version": "v2",
+    "submitted": "14 Apr 2019 (【5†v1】), last revised 21 Aug 2019 (this version, v2)]",
+    "abstract_fetched": true
+  },
+  "2008.07873": {
+    "refs": [
+      "turn22search6",
+      "turn29view2",
+      "turn52view8"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/2008.07873v1"
+    ],
+    "title": "S^3-Rec: Self-Supervised Learning for Sequential Recommendation with Mutual Information Maximization",
+    "authors": "Kun Zhou, Hui Wang, Wayne Xin Zhao, Yutao Zhu, Sirui Wang, Fuzheng Zhang, Zhongyuan Wang, Ji-Rong Wen",
+    "comments": "Accepted as CIKM2020 long paper",
+    "version": "v1",
+    "submitted": "18 Aug 2020]",
+    "abstract_fetched": true
+  },
+  "2010.14395": {
+    "refs": [
+      "turn13academia48",
+      "turn29view3",
+      "turn52view9"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/2010.14395v2"
+    ],
+    "title": "Contrastive Learning for Sequential Recommendation",
+    "authors": "Xu Xie, Fei Sun, Zhaoyang Liu, Shiwen Wu, Jinyang Gao, Bolin Ding, Bin Cui",
+    "version": "v2",
+    "submitted": "27 Oct 2020 (【5†v1】), last revised 28 Feb 2021 (this version, v2)]",
+    "abstract_fetched": true
+  },
+  "2110.05730": {
+    "refs": [
+      "turn15academia50",
+      "turn29view4",
+      "turn37view0",
+      "turn51view0"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/2110.05730v2"
+    ],
+    "abstract_fetched": true,
+    "title": "Contrastive Learning for Representation Degeneration Problem in Sequential Recommendation",
+    "authors": "Ruihong Qiu, Zi Huang, Hongzhi Yin, Zijian Wang",
+    "version": "v2",
+    "submitted": "12 Oct 2021 (【5†v1】), last revised 18 Nov 2021 (this version, v2)]"
+  },
+  "2304.09184": {
+    "refs": [
+      "turn15academia48",
+      "turn29view5",
+      "turn37view1",
+      "turn51view1"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/2304.09184v3"
+    ],
+    "title": "Frequency Enhanced Hybrid Attention Network for Sequential Recommendation",
+    "authors": "Xinyu Du, Huanhuan Yuan, Pengpeng Zhao, Jianfeng Qu, Fuzhen Zhuang, Guanfeng Liu, Victor S. Sheng",
+    "abstract_fetched": true,
+    "comments": "11 pages, 7 figures, The 46th International ACM SIGIR Conference on Research and Development in Information Retrieval",
+    "version": "v3",
+    "submitted": "18 Apr 2023 (【5†v1】), last revised 17 May 2023 (this version, v3)]"
+  },
+  "2201.06035": {
+    "refs": [
+      "turn13academia49",
+      "turn22search7",
+      "turn29view6",
+      "turn37view2",
+      "turn51view2"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/2201.06035v2"
+    ],
+    "abstract_fetched": true,
+    "title": "Sequential Recommendation via Stochastic Self-Attention",
+    "authors": "Ziwei Fan, Zhiwei Liu, Alice Wang, Zahra Nazari, Lei Zheng, Hao Peng, Philip S. Yu",
+    "version": "v2",
+    "submitted": "16 Jan 2022 (【5†v1】), last revised 5 Mar 2022 (this version, v2)]"
+  },
+  "1908.05435": {
+    "refs": [
+      "turn24academia12",
+      "turn29view7",
+      "turn37view3",
+      "turn55view1",
+      "turn56view1"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/1908.05435v1"
+    ],
+    "title": "Temporal Collaborative Ranking Via Personalized Transformer",
+    "authors": "Liwei Wu, Shuqing Li, Cho-Jui Hsieh, James Sharpnack",
+    "abstract_fetched": true,
+    "submitted": "15 Aug 2019]",
+    "comments": "plan to submit for review",
+    "version": "v1"
+  },
+  "1706.06978": {
+    "refs": [
+      "turn16academia49",
+      "turn31view0",
+      "turn51view3"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/1706.06978v4"
+    ],
+    "title": "Deep Interest Network for Click-Through Rate Prediction",
+    "authors": "Guorui Zhou, Chengru Song, Xiaoqiang Zhu, Ying Fan, Han Zhu, Xiao Ma, Yanghui Yan, Junqi Jin, Han Li, Kun Gai",
+    "comments": "Accepted by KDD 2018",
+    "version": "v4",
+    "submitted": "21 Jun 2017 (【5†v1】), last revised 13 Sep 2018 (this version, v4)]",
+    "abstract_fetched": true
+  },
+  "1809.03672": {
+    "refs": [
+      "turn16academia48",
+      "turn31view1",
+      "turn51view4"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/1809.03672v5"
+    ],
+    "title": "Deep Interest Evolution Network for Click-Through Rate Prediction",
+    "authors": "Guorui Zhou, Na Mou, Ying Fan, Qi Pi, Weijie Bian, Chang Zhou, Xiaoqiang Zhu, Kun Gai",
+    "comments": "9 pages. Accepted by AAAI 2019",
+    "version": "v5",
+    "submitted": "11 Sep 2018 (【5†v1】), last revised 16 Nov 2018 (this version, v5)]",
+    "abstract_fetched": true
+  },
+  "1905.06482": {
+    "refs": [
+      "turn16academia47",
+      "turn31view2",
+      "turn51view5"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/1905.06482v1"
+    ],
+    "title": "Deep Session Interest Network for Click-Through Rate Prediction",
+    "authors": "Yufei Feng, Fuyu Lv, Weichen Shen, Menghan Wang, Fei Sun, Yu Zhu, Keping Yang",
+    "comments": "Has been accepted by IJCAI-2019, 7 pages, 3 pages, 3 pics",
+    "version": "v1",
+    "submitted": "16 May 2019]",
+    "abstract_fetched": true
+  },
+  "1905.09248": {
+    "refs": [
+      "turn11search2",
+      "turn11search6",
+      "turn31view3",
+      "turn37view4",
+      "turn49view3"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/1905.09248v3"
+    ],
+    "title": "Practice on Long Sequential User Behavior Modeling for Click-Through Rate Prediction",
+    "version": "v3",
+    "submitted": "22 May 2019 (【5†v1】), last revised 24 May 2019 (this version, v3)]",
+    "abstract_fetched": true,
+    "authors": "Qi Pi, Weijie Bian, Guorui Zhou, Xiaoqiang Zhu, Kun Gai",
+    "comments": "9 pages. Accepted by KDD 2019"
+  },
+  "2006.05639": {
+    "refs": [
+      "turn4academia48",
+      "turn7academia0",
+      "turn11search14",
+      "turn31view4",
+      "turn37view5",
+      "turn51view6"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/2006.05639v2"
+    ],
+    "title": "Search-based User Interest Modeling with Lifelong Sequential Behavior Data for Click-Through Rate Prediction",
+    "authors": "Pi Qi, Xiaoqiang Zhu, Guorui Zhou, Yujing Zhang, Zhe Wang, Lejian Ren, Ying Fan, Kun Gai",
+    "abstract_fetched": true,
+    "version": "v2",
+    "submitted": "10 Jun 2020 (【5†v1】), last revised 29 Jun 2020 (this version, v2)]"
+  },
+  "2108.04468": {
+    "refs": [
+      "turn11search3",
+      "turn11search7",
+      "turn16academia50",
+      "turn31view5",
+      "turn37view6",
+      "turn55view2",
+      "turn56view2"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/2108.04468v1"
+    ],
+    "abstract_fetched": true,
+    "title": "End-to-End User Behavior Retrieval in Click-Through RatePrediction Model",
+    "authors": "Qiwei Chen, Changhua Pei, Shanshan Lv, Chao Li, Junfeng Ge, Wenwu Ou",
+    "submitted": "10 Aug 2021]",
+    "comments": "10 pages",
+    "version": "v1"
+  },
+  "2205.10249": {
+    "refs": [
+      "turn11search23",
+      "turn17academia16",
+      "turn31view6",
+      "turn37view7",
+      "turn51view7"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/2205.10249v2"
+    ],
+    "title": "Sampling Is All You Need on Modeling Long-Term User Behaviors for CTR Prediction",
+    "authors": "Yue Cao, XiaoJiang Zhou, Jiaqi Feng, Peihao Huang, Yao Xiao, Dayao Chen, Sheng Chen",
+    "abstract_fetched": true,
+    "version": "v2",
+    "submitted": "20 May 2022 (【5†v1】), last revised 8 Aug 2022 (this version, v2)]"
+  },
+  "2302.02352": {
+    "refs": [
+      "turn11academia36",
+      "turn31view7",
+      "turn37view8",
+      "turn51view8"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/2302.02352v2"
+    ],
+    "title": "TWIN: TWo-stage Interest Network for Lifelong User Behavior Modeling in CTR Prediction at Kuaishou",
+    "authors": "Jianxin Chang, Chenbin Zhang, Zhiyi Fu, Xiaoxue Zang, Lin Guan, Jing Lu, Yiqun Hui, Dewei Leng, Yanan Niu, Yang Song, Kun Gai",
+    "abstract_fetched": true,
+    "version": "v2",
+    "submitted": "5 Feb 2023 (【5†v1】), last revised 27 Jun 2023 (this version, v2)]"
+  },
+  "2407.16357": {
+    "refs": [
+      "turn4academia49",
+      "turn11academia37",
+      "turn32view0",
+      "turn51view9"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/2407.16357v2"
+    ],
+    "title": "TWIN V2: Scaling Ultra-Long User Behavior Sequence Modeling for Enhanced CTR Prediction at Kuaishou",
+    "authors": "Zihua Si, Lin Guan, ZhongXiang Sun, Xiaoxue Zang, Jing Lu, Yiqun Hui, Xingchao Cao, Zeyu Yang, Yichen Zheng, Dewei Leng, Kai Zheng, Chenbin Zhang, Yanan Niu, Yang Song, Kun Gai",
+    "comments": "Accepted by CIKM 2024",
+    "version": "v2",
+    "submitted": "23 Jul 2024 (【5†v1】), last revised 16 Aug 2024 (this version, v2)]",
+    "abstract_fetched": true
+  },
+  "2410.02604": {
+    "refs": [
+      "turn17search2",
+      "turn32view1",
+      "turn50view0"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/2410.02604v3"
+    ],
+    "title": "Long-Sequence Recommendation Models Need Decoupled Embeddings",
+    "authors": "Ningya Feng, Junwei Pan, Jialong Wu, Baixu Chen, Ximei Wang, Qian Li, Xian Hu, Jie Jiang, Mingsheng Long",
+    "comments": "ICLR 2025. First three authors contributed equally. Code is available at this https URL†github.com",
+    "version": "v3",
+    "submitted": "3 Oct 2024 (【5†v1】), last revised 26 Mar 2025 (this version, v3)]",
+    "abstract_fetched": true
+  },
+  "2205.04507": {
+    "refs": [
+      "turn10academia1",
+      "turn32view2",
+      "turn46view5",
+      "turn50view1"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/2205.04507v1"
+    ],
+    "title": "PinnerFormer: Sequence Modeling for User Representation at Pinterest",
+    "authors": "Nikil Pancha, Andrew Zhai, Jure Leskovec, Charles Rosenberg",
+    "comments": "11 pages, 6 figures, submitted to KDD '22",
+    "version": "v1",
+    "submitted": "9 May 2022]",
+    "abstract_fetched": true
+  },
+  "2306.00248": {
+    "refs": [
+      "turn27academia12",
+      "turn32view3",
+      "turn50view2"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/2306.00248v1"
+    ],
+    "title": "TransAct: Transformer-based Realtime User Action Model for Recommendation at Pinterest",
+    "authors": "Xue Xia, Pong Eksombatchai, Nikil Pancha, Dhruvil Deven Badani, Po-Wei Wang, Neng Gu, Saurabh Vishwas Joshi, Nazanin Farahpour, Zhiyuan Zhang, Andrew Zhai",
+    "comments": "\\c{opyright} {ACM} {2023}. This is the author's version of the work. It is posted here for your personal use. Not for redistribution. The definitive Version of Record was published in KDD'23, this http URL†dx.doi.org",
+    "version": "v1",
+    "submitted": "31 May 2023]",
+    "abstract_fetched": true
+  },
+  "2506.02267": {
+    "refs": [
+      "turn11academia35",
+      "turn27academia13",
+      "turn32view4",
+      "turn49view4"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/2506.02267v1"
+    ],
+    "title": "TransAct V2: Lifelong User Action Sequence Modeling on Pinterest Recommendation",
+    "authors": "Xue Xia, Saurabh Vishwas Joshi, Kousik Rajesh, Kangnan Li, Yangyi Lu, Nikil Pancha, Dhruvil Deven Badani, Jiajing Xu, Pong Eksombatchai",
+    "version": "v1",
+    "submitted": "2 Jun 2025]",
+    "abstract_fetched": true
+  },
+  "2507.15994": {
+    "refs": [
+      "turn2academia17",
+      "turn3view0",
+      "turn32view5",
+      "turn49view0"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/2507.15994v2"
+    ],
+    "title": "Scaling Recommender Transformers to One Billion Parameters",
+    "authors": "Kirill Khrylchenko, Artem Matveev, Sergei Makeev, Vladimir Baikalov",
+    "comments": "KDD'2026",
+    "version": "v2",
+    "submitted": "21 Jul 2025 (【5†v1】), last revised 18 Feb 2026 (this version, v2)]",
+    "abstract_fetched": true
+  },
+  "2607.14331": {
+    "refs": [
+      "turn2search0",
+      "turn2search4",
+      "turn3view1",
+      "turn12view1",
+      "turn32view6",
+      "turn38view0",
+      "turn40view0",
+      "turn49view1"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/2607.14331v1"
+    ],
+    "title": "Long-History User Transformers for Real-Time Ad Ranking",
+    "authors": "Viacheslav Ovchinnikov, Georgii Smirnov, Nikolai Savushkin, Veronika Ivanova, Maksim Kuzin",
+    "version": "v1",
+    "submitted": "15 Jul 2026]",
+    "abstract_fetched": true
+  },
+  "2607.28940": {
+    "refs": [
+      "turn2academia18"
+    ],
+    "html_verified": [],
+    "title": "TransX: Scaling Transformer-based Recommendation via Behavioral and Serving Stream Crossings",
+    "authors": "Da Xu, Liyan Fang, Divya Venugopalan, Sunny Hsu, Xukai Wang, Rishav Roy Chowdhury, Cindy Liang, Nishant Satya Lakshmikanth"
+  },
+  "2402.17152": {
+    "refs": [
+      "turn3view3",
+      "turn12view3",
+      "turn33view0",
+      "turn38view4"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/2402.17152v3"
+    ],
+    "title": "Actions Speak Louder than Words: Trillion-Parameter Sequential Transducers for Generative Recommendations",
+    "authors": "Jiaqi Zhai, Lucy Liao, Xing Liu, Yueming Wang, Rui Li, Xuan Cao, Leon Gao, Zhaojie Gong, Fangda Gu, Michael He, Yinghai Lu, Yu Shi",
+    "comments": "26 pages, 13 figures. ICML'24. Code available at this https URL†github.com",
+    "version": "v3",
+    "submitted": "27 Feb 2024 (【5†v1】), last revised 6 May 2024 (this version, v3)]",
+    "abstract_fetched": true
+  },
+  "2601.01712": {
+    "refs": [
+      "turn8academia0",
+      "turn33view1",
+      "turn35view3",
+      "turn38view3"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/2601.01712v1"
+    ],
+    "title": "RelayGR: Scaling Long-Sequence Generative Recommendation via Cross-Stage Relay-Race Inference",
+    "authors": "Jiarui Wang, Huichao Chai, Yuanhang Zhang, Zongjin Zhou, Wei Guo, Xingkun Yang, Qiang Tang, Bo Pan, Jiawei Zhu, Ke Cheng, Yuting Yan, Shulan Wang, Yingjie Zhu, Zhengfan Yuan, Jiaqi Huang, Yuhan Zhang, Xiaosong Sun, Zhinan Zhang, Hong Zhu, Yongsheng Zhang, Tiantian Dong, Zhong Xiao, Deliang Liu, Chengzhou Lu, Yuan Sun, Zhiyuan Chen, Xinming Han, Zaizhu Liu, Yaoyuan Wang, Ziyang Zhang, Yong Liu, Jinxin Xu, Yajing Sun, Zhoujun Yu, Wenting Zhou, Qidong Zhang, Zhengyong Zhang, Zhonghai Gu, Yibo Jin, Yongxiang Feng, Pengfei Zuo",
+    "submitted": "5 Jan 2026]",
+    "abstract_fetched": true
+  },
+  "2510.22049": {
+    "refs": [
+      "turn11academia38",
+      "turn33view2",
+      "turn35view2",
+      "turn38view2",
+      "turn40view2"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/2510.22049v1",
+      "https://arxiv.org/html/2510.22049v3"
+    ],
+    "title": "Massive Memorization with Hundreds of Trillions of Parameters for Sequential Transducer Generative Recommenders",
+    "authors": "Zhimin Chen, Chenyu Zhao, Ka Chun Mo, Yunjiang Jiang, Jane H. Lee, Khushhall Chandra Mahajan, Ning Jiang, Kai Ren, Jinhui Li, Wen-Yun Yang",
+    "comments": "ICLR 2026",
+    "version": "v3",
+    "submitted": "24 Oct 2025 (【5†v1】), last revised 26 Mar 2026 (this version, v3)]",
+    "abstract_fetched": true
+  },
+  "2609.23677": {
+    "refs": [
+      "turn20academia50",
+      "turn21search3",
+      "turn21search7",
+      "turn21search11",
+      "turn33view3",
+      "turn35view0",
+      "turn38view1",
+      "turn40view1",
+      "turn49view2"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/2609.23677v1"
+    ],
+    "title": "MuSeR: Scalable Long-sequence Recommendation with Multi-interest Modeling",
+    "authors": "Yongkang Fu, Beining Bao, Yu Jiang, Xiangyu Zhao, Hongyang Wei, Guangxing Chen, Zuodong Yang, Shantao Li, Zonggang Wu, Yuqi Lu, Shouke Qin, Hanmeng Liu, Maolin Wang",
+    "version": "v1",
+    "submitted": "20 Sep 2026]",
+    "abstract_fetched": true
+  },
+  "2610.01270": {
+    "refs": [
+      "turn10academia3",
+      "turn20academia48"
+    ],
+    "html_verified": [],
+    "title": "Not All Is Lost: Repairing Lossy User Preference States of Personalization Encoders",
+    "authors": "Parthiv Chatterjee, Dhiraj Golhar, Ummesalma Diwan, Sourish Dasgupta, Manjunath Joshi, Tanmoy Chakraborty"
+  },
+  "2202.13556": {
+    "refs": [
+      "turn18search2",
+      "turn18search6",
+      "turn33view5",
+      "turn50view3"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/2202.13556v1"
+    ],
+    "title": "Filter-enhanced MLP is All You Need for Sequential Recommendation",
+    "authors": "Kun Zhou, Hui Yu, Wayne Xin Zhao, Ji-Rong Wen",
+    "comments": "12 pages, Accepted by WWW 2022",
+    "version": "v1",
+    "submitted": "28 Feb 2022]",
+    "abstract_fetched": true
+  },
+  "2411.01537": {
+    "refs": [
+      "turn7academia3",
+      "turn33view6",
+      "turn50view4"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/2411.01537v1"
+    ],
+    "title": "LinRec: Linear Attention Mechanism for Long-term Sequential Recommender Systems",
+    "authors": "Langming Liu, Xiangyu Zhao, Chi Zhang, Jingtong Gao, Wanyu Wang, Wenqi Fan, Yiqi Wang, Ming He, Zitao Liu, Qing Li",
+    "comments": "SIGIR 2023",
+    "version": "v1",
+    "submitted": "3 Nov 2024]",
+    "abstract_fetched": true
+  },
+  "2310.02367": {
+    "refs": [
+      "turn7academia1",
+      "turn33view7",
+      "turn49view5"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/2310.02367v2"
+    ],
+    "title": "Linear Recurrent Units for Sequential Recommendation",
+    "authors": "Zhenrui Yue, Yueqi Wang, Zhankui He, Huimin Zeng, Julian McAuley, Dong Wang",
+    "comments": "Accepted to WSDM 2024",
+    "version": "v2",
+    "submitted": "3 Oct 2023 (【5†v1】), last revised 8 Nov 2023 (this version, v2)]",
+    "abstract_fetched": true
+  },
+  "2406.12580": {
+    "refs": [
+      "turn7academia2",
+      "turn34view0",
+      "turn50view5"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/2406.12580v2"
+    ],
+    "title": "Behavior-Dependent Linear Recurrent Units for Efficient Sequential Recommendation",
+    "authors": "Chengkai Liu, Jianghao Lin, Hanzhou Liu, Jianling Wang, James Caverlee",
+    "comments": "Accepted to CIKM 2024",
+    "version": "v2",
+    "submitted": "18 Jun 2024 (【5†v1】), last revised 5 Sep 2024 (this version, v2)]",
+    "abstract_fetched": true
+  },
+  "2403.03900": {
+    "refs": [
+      "turn10academia0",
+      "turn34view1",
+      "turn50view6"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/2403.03900v2"
+    ],
+    "title": "Mamba4Rec: Towards Efficient Sequential Recommendation with Selective State Space Models",
+    "authors": "Chengkai Liu, Jianghao Lin, Jianling Wang, Hanzhou Liu, James Caverlee",
+    "version": "v2",
+    "submitted": "6 Mar 2024 (【5†v1】), last revised 29 Jun 2024 (this version, v2)]",
+    "abstract_fetched": true
+  },
+  "2409.01192": {
+    "refs": [
+      "turn10academia2",
+      "turn34view2",
+      "turn50view7"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/2409.01192v2"
+    ],
+    "title": "SSD4Rec: A Structured State Space Duality Model for Efficient Sequential Recommendation",
+    "authors": "Haohao Qu, Yifeng Zhang, Liangbo Ning, Wenqi Fan, Qing Li",
+    "comments": "Significant revisions have been implemented in our paper, particularly focusing on both the methodology and experimental sections",
+    "version": "v2",
+    "submitted": "2 Sep 2024 (【5†v1】), last revised 16 Jan 2025 (this version, v2)]",
+    "abstract_fetched": true
+  },
+  "2409.16182": {
+    "refs": [
+      "turn8academia3",
+      "turn18academia41",
+      "turn34view3",
+      "turn50view8"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/2409.16182v3"
+    ],
+    "title": "TiM4Rec: An Efficient Sequential Recommendation Model Based on Time-Aware Structured State Space Duality Model",
+    "authors": "Hao Fan, Mengyi Zhu, Yanrong Hu, Hailin Feng, Zhijie He, Hongjiu Liu, Qingyang Liu",
+    "version": "v3",
+    "submitted": "24 Sep 2024 (【5†v1】), last revised 5 Dec 2024 (this version, v3)]",
+    "abstract_fetched": true
+  },
+  "2506.13315": {
+    "refs": [
+      "turn8academia1",
+      "turn34view4",
+      "turn50view9"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/2506.13315v4"
+    ],
+    "title": "Gated Rotary-Enhanced Linear Attention with Rank Modulation for Long-term Sequential Recommendation",
+    "authors": "Juntao Hu, Wei Zhou, Haini Cai, Xiao Du, Huayi Shen, Junhao Wen",
+    "comments": "14 pages,8 figures",
+    "version": "v4",
+    "submitted": "16 Jun 2025 (【5†v1】), last revised 24 Mar 2026 (this version, v4)]",
+    "abstract_fetched": true
+  },
+  "2602.23671": {
+    "refs": [
+      "turn8academia2",
+      "turn34view5",
+      "turn53view0"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/2602.23671v1"
+    ],
+    "title": "FuXi-Linear: Unleashing the Power of Linear Attention in Long-term Time-aware Sequential Recommendation",
+    "authors": "Yufei Ye, Wei Guo, Hao Wang, Luankang Zhang, Heng Chang, Hong Zhu, Yuyang Ye, Yong Liu, Defu Lian, Enhong Chen",
+    "version": "v1",
+    "submitted": "27 Feb 2026]",
+    "abstract_fetched": true
+  },
+  "2308.06878": {
+    "refs": [
+      "turn20academia51",
+      "turn23view4",
+      "turn34view6",
+      "turn53view1"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/2308.06878v1"
+    ],
+    "title": "AutoSeqRec: Autoencoder for Efficient Sequential Recommendation",
+    "authors": "Sijia Liu, Jiahao Liu, Hansu Gu, Dongsheng Li, Tun Lu, Peng Zhang, Ning Gu",
+    "comments": "10 pages, accepted by CIKM 2023",
+    "version": "v1",
+    "submitted": "14 Aug 2023]",
+    "abstract_fetched": true
+  },
+  "2204.01839": {
+    "refs": [
+      "turn22search15",
+      "turn34view7",
+      "turn53view2"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/2204.01839v1"
+    ],
+    "title": "Coarse-to-Fine Sparse Sequential Recommendation",
+    "authors": "Jiacheng Li, Tong Zhao, Jin Li, Jim Chan, Christos Faloutsos, George Karypis, Soo-Min Pantel, Julian McAuley",
+    "comments": "Accepted as conference paper at SIGIR 2022",
+    "version": "v1",
+    "submitted": "4 Apr 2022]",
+    "abstract_fetched": true
+  },
+  "2108.01442": {
+    "refs": [
+      "turn22search17",
+      "turn37view9",
+      "turn53view3"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/2108.01442v1"
+    ],
+    "title": "Sequence Adaptation via Reinforcement Learning in Recommender Systems",
+    "authors": "Stefanos Antaris, Dimitrios Rafailidis",
+    "version": "v1",
+    "submitted": "31 Jul 2021]",
+    "abstract_fetched": true
+  },
+  "2504.09596": {
+    "refs": [
+      "turn22search5",
+      "turn37view10",
+      "turn53view4"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/2504.09596v2"
+    ],
+    "title": "Revisiting Self-Attentive Sequential Recommendation Beyond the LLM Paradigm",
+    "authors": "Zan Huang",
+    "comments": "Accepted to the BlueSky Track of ICDM 2026",
+    "version": "v2",
+    "submitted": "13 Apr 2025 (【5†v1】), last revised 15 Sep 2026 (this version, v2)]",
+    "abstract_fetched": true
+  },
+  "2409.18721": {
+    "refs": [
+      "turn39academia48",
+      "turn46view0",
+      "turn53view5"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/2409.18721v2"
+    ],
+    "title": "Scalable Cross-Entropy Loss for Sequential Recommendations with Large Item Catalogs",
+    "authors": "Gleb Mezentsev, Danil Gusak, Ivan Oseledets, Evgeny Frolov",
+    "comments": "11 pages, fixed some typos",
+    "version": "v2",
+    "submitted": "27 Sep 2024 (【5†v1】), last revised 30 Nov 2024 (this version, v2)]",
+    "abstract_fetched": true
+  },
+  "1908.01207": {
+    "refs": [
+      "turn39academia49",
+      "turn46view1",
+      "turn53view6"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/1908.01207v1"
+    ],
+    "title": "Predicting Dynamic Embedding Trajectory in Temporal Interaction Networks",
+    "authors": "Srijan Kumar, Xikun Zhang, Jure Leskovec",
+    "comments": "ACM SIGKDD 2019 research track oral paper. The code and datasets are available on the project website: this https URL†github.com arXiv admin note: substantial text overlap with arXiv:1812.02289",
+    "version": "v1",
+    "submitted": "3 Aug 2019]",
+    "abstract_fetched": true
+  },
+  "2602.08678": {
+    "refs": [
+      "turn20academia49",
+      "turn23view5",
+      "turn46view2",
+      "turn53view7"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/2602.08678v2"
+    ],
+    "title": "SA-CAISR: Stage-Adaptive and Conflict-Aware Incremental Sequential Recommendation",
+    "authors": "Xiaomeng Song, Xinru Wang, Hanbing Wang, Hongyu Lu, Yu Chen, Zhaochun Ren, Zhumin Chen",
+    "version": "v2",
+    "submitted": "9 Feb 2026 (【5†v1】), last revised 11 Feb 2026 (this version, v2)]",
+    "abstract_fetched": true
+  },
+  "2505.22238": {
+    "refs": [
+      "turn2search1",
+      "turn40view5",
+      "turn46view6",
+      "turn49view6"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/2505.22238v2"
+    ],
+    "title": "Yambda-5B -- A Large-Scale Multi-modal Dataset for Ranking And Retrieval",
+    "authors": "A. Ploshkin, V. Tytskiy, A. Pismenny, V. Baikalov, E. Taychinov, A. Permiakov, D. Burlakov, E. Krofto, N. Savushkin",
+    "version": "v2",
+    "submitted": "28 May 2025 (【5†v1】), last revised 1 Jun 2025 (this version, v2)]",
+    "abstract_fetched": true
+  },
+  "2010.11060": {
+    "refs": [
+      "turn36academia46",
+      "turn46view3",
+      "turn53view8"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/2010.11060v4"
+    ],
+    "title": "A Critical Study on Data Leakage in Recommender System Offline Evaluation",
+    "authors": "Yitong Ji, Aixin Sun, Jie Zhang, Chenliang Li",
+    "comments": "Accepted by TOIS",
+    "version": "v4",
+    "submitted": "21 Oct 2020 (【5†v1】), last revised 30 Oct 2022 (this version, v4)]",
+    "abstract_fetched": true
+  },
+  "1910.12781": {
+    "refs": [
+      "turn36academia47",
+      "turn46view4",
+      "turn53view9"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/1910.12781v2"
+    ],
+    "title": "Empirical Analysis of Session-Based Recommendation Algorithms",
+    "authors": "Malte Ludewig, Noemi Mauro, Sara Latifi, Dietmar Jannach",
+    "version": "v2",
+    "submitted": "28 Oct 2019 (【5†v1】), last revised 27 Sep 2020 (this version, v2)]",
+    "abstract_fetched": true
+  },
+  "2207.07483": {
+    "refs": [
+      "turn41academia0",
+      "turn48view0",
+      "turn54view0"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/2207.07483v1"
+    ],
+    "title": "A Systematic Review and Replicability Study of BERT4Rec for Sequential Recommendation",
+    "authors": "Aleksandr Petrov, Craig Macdonald",
+    "comments": "This paper is accepted at the Reproducibility track of the ACM RecSys '22 conference",
+    "version": "v1",
+    "submitted": "15 Jul 2022]",
+    "abstract_fetched": true
+  },
+  "1907.06902": {
+    "refs": [
+      "turn43academia0",
+      "turn48view1"
+    ],
+    "html_verified": [],
+    "title": "Are We Really Making Much Progress? A Worrying Analysis of Recent Neural Recommendation Approaches",
+    "authors": "Maurizio Ferrari Dacrema, Paolo Cremonesi, Dietmar Jannach",
+    "comments": "Source code available at: this https URL†github.com",
+    "version": "v3",
+    "submitted": "16 Jul 2019 (【5†v1】), last revised 16 Aug 2019 (this version, v3)]",
+    "abstract_fetched": true
+  },
+  "1603.08983": {
+    "refs": [
+      "turn42academia0",
+      "turn48view2",
+      "turn54view2"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/1603.08983v6"
+    ],
+    "title": "Adaptive Computation Time for Recurrent Neural Networks",
+    "authors": "Alex Graves",
+    "version": "v6",
+    "submitted": "29 Mar 2016 (【5†v1】), last revised 21 Feb 2017 (this version, v6)]",
+    "abstract_fetched": true
+  },
+  "2608.28444": {
+    "refs": [
+      "turn44academia0",
+      "turn48view3",
+      "turn54view3"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/2608.28444v2"
+    ],
+    "title": "Sliding-window beats linear attention",
+    "authors": "Alexia Jolicoeur-Martineau, Rhea Sanjay Sukthanker, Pashmina Cameron, Emy Gervais",
+    "version": "v2",
+    "submitted": "28 Aug 2026 (【5†v1】), last revised 4 Oct 2026 (this version, v2)]",
+    "abstract_fetched": true
+  },
+  "2205.14135": {
+    "refs": [
+      "turn48view4",
+      "turn54view4"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/2205.14135v2"
+    ],
+    "title": "FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness",
+    "authors": "Tri Dao, Daniel Y. Fu, Stefano Ermon, Atri Rudra, Christopher Ré",
+    "version": "v2",
+    "submitted": "27 May 2022 (【5†v1】), last revised 23 Jun 2022 (this version, v2)]",
+    "abstract_fetched": true
+  },
+  "2309.06180": {
+    "refs": [
+      "turn48view5",
+      "turn54view5"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/2309.06180v1"
+    ],
+    "title": "Efficient Memory Management for Large Language Model Serving with PagedAttention",
+    "authors": "Woosuk Kwon, Zhuohan Li, Siyuan Zhuang, Ying Sheng, Lianmin Zheng, Cody Hao Yu, Joseph E. Gonzalez, Hao Zhang, Ion Stoica",
+    "comments": "SOSP 2023",
+    "version": "v1",
+    "submitted": "12 Sep 2023]",
+    "abstract_fetched": true
+  },
+  "2309.17453": {
+    "refs": [
+      "turn48view6",
+      "turn54view6"
+    ],
+    "html_verified": [
+      "https://arxiv.org/html/2309.17453v4"
+    ],
+    "title": "Efficient Streaming Language Models with Attention Sinks",
+    "authors": "Guangxuan Xiao, Yuandong Tian, Beidi Chen, Song Han, Mike Lewis",
+    "comments": "ICLR 2024",
+    "version": "v4",
+    "submitted": "29 Sep 2023 (【5†v1】), last revised 7 Apr 2024 (this version, v4)]",
+    "abstract_fetched": true
+  },
+  "2609.40241": {
+    "title": "Decision-Oriented Recommendation Reranking: An Empirical Study of Jev",
+    "authors": "Hanjia Lyu, Yinglong Xia",
+    "comments": "Препринт; публикация на конференции не установлена",
+    "version": "v1",
+    "submitted": "Submitted on 30 Sep 2026",
+    "abstract_fetched": true,
+    "refs": [],
+    "html_verified": [
+      "https://arxiv.org/html/2609.40241v1"
+    ]
+  },
+  "2609.37647": {
+    "title": "Evaluating and Benchmarking the System One Model Jev",
+    "authors": "Tobias Deußer, Lorenz Sparrenberg, Rafet Sifa",
+    "comments": "Препринт; публикация на конференции не установлена",
+    "version": "v1",
+    "submitted": "Submitted on 29 Sep 2026",
+    "abstract_fetched": true,
+    "refs": [],
+    "html_verified": [
+      "https://arxiv.org/html/2609.37647v1"
+    ]
+  },
+  "2609.25845": {
+    "title": "Visual Jev: Accurate and Efficient Decisions from Shared Visual Context",
+    "authors": "Guanxu Yu, Yuhang Yao",
+    "comments": "Препринт; публикация на конференции не установлена",
+    "version": "v1",
+    "submitted": "Submitted on 22 Sep 2026",
+    "abstract_fetched": true,
+    "refs": [],
+    "html_verified": [
+      "https://arxiv.org/html/2609.25845v1"
+    ]
+  },
+  "2610.00831": {
+    "title": "AnyJev Technical Report",
+    "authors": "Jiamu Zhang, Tianze Yang, Yucheng Shi, Evan Chen, Zixiang Nie, Kelly Wan, Liangjie Hong, Ninghao Liu, Liang Wu",
+    "comments": "Препринт; публикация на конференции не установлена",
+    "version": "v1",
+    "submitted": "Submitted on 30 Sep 2026",
+    "abstract_fetched": true,
+    "refs": [],
+    "html_verified": [
+      "https://arxiv.org/html/2610.00831v1"
+    ]
+  },
+  "2609.23986": {
+    "title": "Jev-Mem: System-One-Controlled Agentic Memory for Efficient AI Agents",
+    "authors": "Dongming Jiang, Yi Li, Bingzhe Li",
+    "comments": "Препринт; публикация на конференции не установлена",
+    "version": "v1",
+    "submitted": "Submitted on 21 Sep 2026",
+    "abstract_fetched": true,
+    "refs": [],
+    "html_verified": [
+      "https://arxiv.org/html/2609.23986v1"
+    ]
+  },
+  "2609.38850": {
+    "title": "OpenJev-RLCD: A Working RLCD Implementation",
+    "authors": "Zhimin Gao, Pichao Wang",
+    "comments": "Препринт; публикация на конференции не установлена",
+    "version": "v1",
+    "submitted": "Submitted on 30 Sep 2026",
+    "abstract_fetched": true,
+    "refs": [],
+    "html_verified": [
+      "https://arxiv.org/html/2609.38850v1"
+    ]
+  },
+  "2510.02470": {
+    "title": "SAGE: Streaming Agreement-Driven Gradient Sketches for Representative Subset Selection",
+    "authors": "Ashish Jha, Salman Ahmadi-Asl",
+    "version": "v2",
+    "submitted": "Submitted on 2 Oct 2025; last revised 9 Oct 2025",
+    "abstract_fetched": true,
+    "html_verified": [
+      "https://arxiv.org/html/2510.02470v2"
+    ],
+    "comments": "Препринт; статус рецензируемой публикации не подтверждён",
+    "refs": [
+      "turn68view0",
+      "turn70view0",
+      "turn72view0"
+    ],
+    "checked_date": "2026-10-12"
+  }
+}

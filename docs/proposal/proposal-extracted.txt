@@ -1,0 +1,154 @@
+     A Study of Eﬃcient User Representation
+    Computation and Maintenance in Sequential
+             Recommender Systems
+                        Student: Kirill Greshnov
+                      Supervisor: Rustam Lukmanov
+                                9 October 2026
+
+                                     Abstract
+         Sequential recommender systems use interaction histories to represent
+     user interests. Recomputing these representations after every interaction
+     can be expensive, while reusing old representations may reduce recommen-
+     dation quality. This study will compare strategies for refreshing user rep-
+     resentations in music recommendation on Yambda. The model will com-
+     bine a cached long-history representation with a small encoder of recent
+     activity. Experiments will assess simple update schedules, a lightweight
+     adaptive controller, and reuse of intermediate transformer states. The
+     goal is to reduce computation while preserving recommendation quality.
+
+
+1    Introduction
+Sequential recommender systems predict future actions from past interactions.
+Transformer models such as SASRec encode an ordered item history into a user
+representation [1]. Larger models can capture longer histories, but require more
+computation [2].
+    A practical question is how often these representations should be updated.
+Frequent updates include the latest activity but repeat expensive computation.
+Less frequent updates save resources but may miss changes in user interests. A
+small encoder of recent interactions can provide current information while an
+older long-history representation supplies broader context.
+    This study will investigate three questions: how much representation fresh-
+ness improves recommendation quality, whether adaptive updates outperform
+simple schedules, and when reusing intermediate transformer states is more eﬃ-
+cient than recomputing the representation. The working hypothesis is that the
+value of an update varies across users and prediction opportunities.
+
+
+
+
+                                         1
+2     Novelty and Contributions
+The expected contributions are:
+    • A comparison of update strategies on public music data, measuring
+      both recommendation quality and resource consumption.
+
+    • An analysis of representation freshness, showing when old long-
+      history representations remain useful alongside recent activity.
+    • A lightweight adaptive update method that estimates whether an
+      update is useful from recent activity and cache age, if the initial experi-
+      ments show suﬃcient beneﬁt from freshness.
+
+   Caching and long-history/recent-history architectures are established ideas.
+The potential methodological contribution is predicting the beneﬁt of an up-
+date and using it to allocate computation. Its eﬀectiveness and novelty will be
+assessed through experiments and literature review.
+
+
+3     State-of-the-Art
+    • SASRec [1] uses self-attention for sequential recommendation and will
+      be the starting point for the implementation.
+
+    • ARGUS [2] studies large recommendation transformers and supports of-
+      ﬂine computation of user representations, motivating the need for eﬃcient
+      maintenance.
+    • Long-History User Transformers [3] combine a long-history represen-
+      tation computed asynchronously with an encoder of recent events. This
+      provides the architectural basis for the study.
+    • TransX [4] reuses behavior encodings and combines incremental updates
+      with periodic processing. It motivates activity-based scheduling as a base-
+      line.
+    • HSTU/M-FALCON [5] reuse shared history computations, including
+      key–value (KV) states, providing an alternative to caching only the ﬁnal
+      user vector.
+
+    • Yambda [6] provides public music interaction data and a recommenda-
+      tion benchmark suitable for the planned experiments.
+
+
+4     Goal of the Thesis
+The goal is to identify methods for maintaining user representations
+that reduce computation while preserving next-item recommendation
+quality.
+
+
+                                        2
+   The experiments will use Yambda-50M and a SASRec-style model with two
+branches: a long-history encoder whose output is cached, and a smaller encoder
+that processes recent interactions before every prediction. Their outputs will be
+combined to score candidate tracks.
+   The main experiments will:
+    • Measure how recommendation quality changes with cache age and com-
+      pare recent-only, long-history-only, and combined models.
+    • Compare updating at every prediction, keeping the initial cache, and
+      schedules based on time, event count, or user activity. If freshness matters,
+      evaluate a small controller that predicts the beneﬁt of updating.
+    • Test KV-state reuse, checking that it produces equivalent outputs under
+      matching history conditions and measuring update time and memory. Ac-
+      count for rebuilds when changes to the history invalidate retained states.
+
+    Evaluation will replay interactions chronologically, using only past events at
+each prediction. Update strategies will share a ﬁxed recommender; controller
+training and policy tuning will use periods preceding the ﬁnal test. Quality
+will be measured with NDCG@10 and Recall@100 on positive listening targets.
+Eﬃciency will be measured through processing time and memory, including
+recent-history encoding, candidate scoring, and cache handling. The results
+will describe oﬄine predictive performance.
+
+
+5     Work Plan and Schedule
+The work is planned for October 2026–March 2027.
+
+    • October 2026: Literature review and data preparation.
+
+    • November 2026: Model and evaluation pipeline implementation.
+    • December 2026: Initial experiments on representation freshness.
+
+    • January 2027: Update strategies and KV-state reuse experiments.
+    • February 2027: Comparative evaluation and analysis of results.
+
+    • March 2027: Thesis writing, revisions, and ﬁnalization.
+
+
+6     Conclusion
+The study will establish when user representations need to be refreshed and
+which maintenance strategies oﬀer a useful balance between quality and cost.
+The expected outcome is an experimentally supported approach to eﬃcient user-
+state maintenance on public music data. If adaptive updates provide little
+beneﬁt, the study will identify the simplest adequate strategy.
+
+
+                                         3
+References
+[1] W.-C. Kang and J. McAuley. Self-Attentive Sequential Recommendation.
+    ICDM, 2018. arXiv:1808.09781.
+
+[2] K. Khrylchenko, A. Matveev, S. Makeev, and V. Baikalov. Scaling
+    Recommender Transformers to One Billion Parameters. KDD, 2026.
+    arXiv:2507.15994v2.
+[3] V. Ovchinnikov, G. Smirnov, N. Savushkin, V. Ivanova, and M. Kuzin. Long-
+    History User Transformers for Real-Time Ad Ranking. arXiv:2607.14331v1,
+    2026.
+[4] D. Xu et al. TransX: Scaling Transformer-based Recommendation via Be-
+    havioral and Serving Stream Crossings. arXiv:2607.28940v1, 2026.
+[5] J. Zhai et al. Actions Speak Louder than Words: Trillion-Parameter Se-
+    quential Transducers for Generative Recommendations. arXiv:2402.17152v3,
+    2024.
+
+[6] A. Ploshkin et al. Yambda-5B—A Large-Scale Multi-modal Dataset for Rank-
+    ing and Retrieval. arXiv:2505.22238, 2025.
+
+
+
+
+                                     4
+

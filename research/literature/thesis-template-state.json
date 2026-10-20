@@ -1,0 +1,16 @@
+{
+  "project": "thesis",
+  "template_folder": "/workspace/scratch/bece6597f7e0/thesis_template",
+  "main_file": "thesis.tex",
+  "chapter_folder": "chapters",
+  "figures_folder": "figs",
+  "bibliography": "ref.bib",
+  "title_page": "title.pdf",
+  "original_archive_library_id": "libfile_b5a3c3666c0c8191a6c9f7244bab9081",
+  "working_archive_path": "/workspace/scratch/bece6597f7e0/output/thesis-template/thesis-template-working.zip",
+  "working_archive_library_id": "libfile_c0bca77edcdc81918b18a9731d6aec27",
+  "import_date": "2026-10-13",
+  "source_file_count": 13,
+  "original_bytes_preserved": true,
+  "next_work": "Use this LaTeX template for thesis writing; retain chapter structure unless user requests changes."
+}

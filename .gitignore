@@ -1,0 +1,46 @@
+# macOS and editors
+.DS_Store
+._*
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# Local environments, secrets and caches
+.env
+.env.*
+!.env.example
+.venv/
+venv/
+node_modules/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.cache/
+
+# Local scratch and generated builds
+/tmp/
+/build/
+/dist/
+/thesis/thesis.pdf
+
+# LaTeX intermediate files (source PDFs remain tracked)
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.lof
+*.log
+*.lot
+*.nav
+*.out
+*.run.xml
+*.snm
+*.synctex.gz
+*.toc
+*.vrb

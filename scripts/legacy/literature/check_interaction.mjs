@@ -1,0 +1,31 @@
+import fs from 'node:fs/promises';
+import vm from 'node:vm';
+const root='/workspace/scratch/bece6597f7e0';
+const source=await fs.readFile(root+'/output/thesis-literature-2026-10-11/literature-brief.html','utf8');
+const script=[...source.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)].at(-1)[1];
+new vm.Script(script);
+const d=JSON.parse(await fs.readFile(root+'/tmp/research/dom.json','utf8'));
+function classes(initial=''){const values=new Set(initial.split(/\s+/));return {remove:s=>values.delete(s),toggle:(s,on)=>on?values.add(s):values.delete(s),contains:s=>values.has(s)}}
+const els={};for(const [id,p] of Object.entries(d.elements))els[id]={...p,classList:classes(p.className),events:{},addEventListener(t,f){this.events[t]=f}};
+const slides=d.slides.map(id=>els[id]),papers=d.papers;
+const events={};let downloads=[];
+const location={hash:'#slide-3'};
+const ctx=vm.createContext({document:{documentElement:{classList:classes('no-js')},getElementById:id=>els[id],querySelectorAll:q=>q==='.slide'?slides:papers,addEventListener:(t,f)=>events[t]=f,createElement:()=>({click(){downloads.push(this.download)}})},window:{scrollTo(){}},location,history:{replaceState(a,b,hash){location.hash=hash}},URL:{createObjectURL:()=> 'blob:test',revokeObjectURL(){}},Blob,setTimeout:f=>f()});
+vm.runInContext(script,ctx);
+function assert(v,m){if(!v)throw new Error(m)}
+assert(els.progress.textContent==='3 / 13','Initial hash navigation');
+events.keydown({target:{tagName:'BODY'},key:'ArrowRight',preventDefault(){}});assert(els.progress.textContent==='4 / 13','Keyboard navigation');
+els.next.onclick();assert(els.progress.textContent==='5 / 13','Next button');
+events.keydown({target:{tagName:'BODY'},key:'End'});assert(els.next.disabled && els.progress.textContent==='13 / 13','Last slide boundary');
+events.keydown({target:{tagName:'BODY'},key:'Home'});assert(els.prev.disabled && els.progress.textContent==='1 / 13','First slide boundary');
+els.toggleCatalog.onclick();assert(els.deck.hidden && els.catalog.classList.contains('open'),'Open catalog');
+els.search.value='MuSeR';els.search.events.input();assert(papers.filter(p=>!p.hidden).length===1,'Name search');
+els.search.value='';els.tier.value='direct';els.tier.events.input();assert(papers.filter(p=>!p.hidden).length===59,'Direct corpus');
+els.tier.value='';els.group.value='LONG';els.group.events.input();assert(papers.filter(p=>!p.hidden).length===21,'Family filter');
+els.group.value='JEV';els.group.events.input();assert(papers.filter(p=>!p.hidden).length===6,'Jev family filter');
+els.group.value='TRANSFER';els.group.events.input();assert(papers.filter(p=>!p.hidden).length===6,'Adjacent compute group with SAGE');
+els.group.value='';els.priority.value='P1';els.priority.events.input();assert(papers.filter(p=>!p.hidden).length>0,'Priority filter');
+els.search.value='__no_such_paper__';els.search.events.input();assert(!els.empty.hidden && papers.every(p=>p.hidden),'Empty results');
+els.downloadJson.onclick();els.downloadCsv.onclick();assert(downloads.join(',')==='papers.json,papers.csv','Embedded downloads');
+els.toggleCatalog.onclick();assert(!els.deck.hidden && !els.catalog.classList.contains('open'),'Return to slides');
+console.log(JSON.stringify({script_parsed:true,navigation:true,filters:true,downloads:true,dom_simulation:true,browser_rendering:false}));
