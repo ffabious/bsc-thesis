@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
-  "as_of": "2026-10-17",
+  "as_of": "2026-10-20",
   "proposal_date": "2026-10-09",
   "proposal_title": "A Study of Efficient User Representation Computation and Maintenance in Sequential Recommender Systems",
   "scope": "Yambda-50M; offline-only; cached long-history + recent encoder; refresh policy; KV reuse",
   "counts": {
-    "total": 78,
-    "direct_models_systems": 59,
+    "total": 80,
+    "direct_models_systems": 60,
     "dataset": 1,
     "evaluation": 6,
-    "adjacent": 12,
-    "arxiv": 72,
+    "adjacent": 13,
+    "arxiv": 73,
     "verified_arxiv_html": 69
   },
   "groups": {
@@ -25,10 +25,11 @@
     "TRANSFER": "Смежные вычислительные методы: гипотезы переноса",
     "JEV": "Jev: structured decisions, общий контекст и управление памятью",
     "FUSION": "Взаимодействия признаков и объединение представлений",
-    "RL": "Политики принятия решений: REINFORCE и off-policy learning"
+    "RL": "Политики принятия решений: REINFORCE и off-policy learning",
+    "RETRIEVAL": "Поиск кандидатов и индексы векторов"
   },
-  "screening_note": "Это структурированный первый проход: метаданные и abstract проверены по первичным источникам, для 19 работ (9 опорных + 6 Jev + SAGE + DCN-V2 + REINFORCE + Top-K Off-Policy REINFORCE) прочитаны выбранные разделы методов/обслуживания. Полное чтение всех статей и воспроизведение авторских экспериментов не выполнены. Для SAGE проверена буквальная реализация псевдокода на локальном контрпримере. Для TransX и REPAIR доступен первичный индексированный abstract, но полная страница не загрузилась.",
-  "year_note": "display_year — год указанной публикации или актуальной версии. preprint_year и version_year хранятся отдельно. LinRec: SIGIR 2023, arXiv 2024; ARGUS: препринт 2025, KDD/v2 2026. DCN-V2: WWW 2021; arXiv/v2 2020. Top-K Off-Policy REINFORCE: WSDM 2019; первый arXiv 2018, выбранная версия v3 2021. Williams REINFORCE: журнальная публикация 1992, arXiv не указан.",
+  "screening_note": "Это структурированный первый проход: метаданные и abstract проверены по первичным источникам, для 20 работ (9 опорных + 6 Jev + SAGE + DCN-V2 + REINFORCE + Top-K Off-Policy REINFORCE + Sampling-Bias-Corrected Neural Modeling) прочитаны выбранные разделы методов/обслуживания. Полное чтение всех статей и воспроизведение авторских экспериментов не выполнены. Для SAGE проверена буквальная реализация псевдокода на локальном контрпримере. Для TransX и REPAIR доступен первичный индексированный abstract, но полная страница не загрузилась. HNSW добавлена по abstract arXiv v4 и регистрационным метаданным публикации. Для Sampling-Bias-Corrected Neural Modeling проверены Google Research, метаданные публикации и разделы 3–4 авторского PDF.",
+  "year_note": "display_year — год указанной публикации или актуальной версии. preprint_year и version_year хранятся отдельно. LinRec: SIGIR 2023, arXiv 2024; ARGUS: препринт 2025, KDD/v2 2026. DCN-V2: WWW 2021; arXiv/v2 2020. Top-K Off-Policy REINFORCE: WSDM 2019; первый arXiv 2018, выбранная версия v3 2021. Williams REINFORCE: журнальная публикация 1992, arXiv не указан. HNSW: журнальная публикация TPAMI 2020; первый arXiv 2016, выбранная версия v4 2018. Sampling-Bias-Corrected Neural Modeling: RecSys 2019; arXiv-версия не использовалась.",
   "papers": [
     {
       "key": "FPMC",
@@ -3586,6 +3587,117 @@
         "4.2 Estimating the behavior policy",
         "4.3 Top-K Off-Policy Correction",
         "4.4 Variance Reduction Techniques"
+      ]
+    },
+    {
+      "id": "P079",
+      "key": "1603.09320",
+      "short_name": "HNSW",
+      "title": "Efficient and Robust Approximate Nearest Neighbor Search Using Hierarchical Navigable Small World Graphs",
+      "authors": [
+        "Yu. A. Malkov",
+        "D. A. Yashunin"
+      ],
+      "group": "RETRIEVAL",
+      "group_name": "Поиск кандидатов и индексы векторов",
+      "display_year": 2020,
+      "preprint_year": 2016,
+      "version_year": 2018,
+      "bibliography_year": 2020,
+      "method": "Hierarchical proximity graph / approximate nearest-neighbor search",
+      "priority": "P2",
+      "priority_meaning": "Второй проход",
+      "relevance_tier": "adjacent",
+      "summary": "Многоуровневый граф близости для приближённого поиска соседей по готовым векторам. Поиск начинается на разреженных верхних уровнях и уточняется на нижнем. Иерархия и выбор соседей позволяют управлять компромиссом полноты поиска, времени и памяти.",
+      "experiment": "Если в протокол включать поиск кандидатов, сравнить HNSW с точным top-K на одинаковых item embeddings. Отдельно измерять ANN recall относительно точного поиска, NDCG@10, Recall@100, время запроса, построения индекса и память. При сравнении refresh policies фиксировать индекс и его настройки.",
+      "limitation": "Индекс предполагает готовые эмбеддинги. Ошибки приближённого поиска могут смешиваться с эффектом устаревания пользовательского представления. При изменении item embeddings требуется согласованное обновление индекса. Выигрыш и параметры для Yambda не проверены.",
+      "experiment_is_proposal": true,
+      "reading_status": "screened_not_reproduced",
+      "checked_date": "2026-10-20",
+      "review_depth": "abstract_and_metadata",
+      "arxiv_id": "1603.09320",
+      "arxiv_version": "v4",
+      "abstract_url": "https://arxiv.org/abs/1603.09320",
+      "html_url": null,
+      "preferred_url": "https://arxiv.org/abs/1603.09320v4",
+      "pdf_url": "https://arxiv.org/pdf/1603.09320v4",
+      "url_status": "primary_abstract_and_crossref_metadata_fetched",
+      "venue_as_reported": "IEEE Transactions on Pattern Analysis and Machine Intelligence 42(4), 824–836 (2020)",
+      "doi": "10.1109/TPAMI.2018.2889473",
+      "experiment_axis": "candidate retrieval / ANN accuracy-latency-memory trade-off",
+      "tags": [
+        "RETRIEVAL",
+        "HNSW",
+        "ANN",
+        "vector index",
+        "candidate generation",
+        "serving cost"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/1603.09320v4",
+        "https://doi.org/10.1109/TPAMI.2018.2889473",
+        "https://api.crossref.org/works/10.1109/TPAMI.2018.2889473"
+      ]
+    },
+    {
+      "id": "P080",
+      "key": "Yi2019SamplingBiasCorrected",
+      "short_name": "Sampling-Bias-Corrected Neural Retrieval",
+      "title": "Sampling-Bias-Corrected Neural Modeling for Large Corpus Item Recommendations",
+      "authors": [
+        "Xinyang Yi",
+        "Ji Yang",
+        "Lichan Hong",
+        "Derek Zhiyuan Cheng",
+        "Lukasz Heldt",
+        "Aditee Kumthekar",
+        "Zhe Zhao",
+        "Li Wei",
+        "Ed Chi"
+      ],
+      "group": "TRAIN",
+      "group_name": "Сильные baselines и обучение на большом каталоге",
+      "display_year": 2019,
+      "preprint_year": null,
+      "version_year": null,
+      "bibliography_year": 2019,
+      "method": "Two-tower retrieval / in-batch softmax / logQ correction / streaming frequency estimation",
+      "priority": "P1",
+      "priority_meaning": "Читать сначала",
+      "relevance_tier": "direct",
+      "summary": "Для обучения двухбашенной retrieval-модели корректирует логиты batch-softmax на минус log вероятности попадания item в batch. Вероятность оценивается по потоку взаимодействий с меняющимся каталогом. Метод уменьшает смещение, связанное с частотой появления популярных items среди in-batch negatives.",
+      "experiment": "При обучении на Yambda сравнить in-batch softmax с logQ correction и без неё при одинаковых архитектуре, batches и вычислительном бюджете. Частоты оценивать только по доступной обучающей истории. После выбора loss сравнивать refresh policies при фиксированных весах рекомендателя и одинаковом retrieval-протоколе.",
+      "limitation": "Коррекция зависит от фактической схемы сэмплирования negatives и оценки их вероятностей. Смешивание random и in-batch negatives требует соответствующей модели Q. Метод не устраняет все источники смещения логов или exposure bias; результаты YouTube не устанавливают эффект на Yambda.",
+      "experiment_is_proposal": true,
+      "reading_status": "screened_not_reproduced",
+      "checked_date": "2026-10-20",
+      "review_depth": "selected_method_sections",
+      "arxiv_id": null,
+      "arxiv_version": null,
+      "abstract_url": "https://research.google/pubs/sampling-bias-corrected-neural-modeling-for-large-corpus-item-recommendations/",
+      "html_url": null,
+      "preferred_url": "https://research.google/pubs/sampling-bias-corrected-neural-modeling-for-large-corpus-item-recommendations/",
+      "pdf_url": "https://storage.googleapis.com/gweb-research2023-media/pubtools/pdf/6417b9a68bd77033d65e431bdba855563066dc8c.pdf",
+      "url_status": "primary_metadata_and_fulltext_pdf_fetched",
+      "venue_as_reported": "Proceedings of the 13th ACM Conference on Recommender Systems (RecSys 2019), 269–277",
+      "doi": "10.1145/3298689.3346996",
+      "experiment_axis": "training objective / negative sampling bias / streaming item frequencies",
+      "tags": [
+        "TRAIN",
+        "two-tower",
+        "in-batch negatives",
+        "sampled softmax",
+        "logQ",
+        "YouTube"
+      ],
+      "source_sections": [
+        "3 Modeling Framework",
+        "4 Streaming Frequency Estimation"
+      ],
+      "source_urls": [
+        "https://research.google/pubs/sampling-bias-corrected-neural-modeling-for-large-corpus-item-recommendations/",
+        "https://storage.googleapis.com/gweb-research2023-media/pubtools/pdf/6417b9a68bd77033d65e431bdba855563066dc8c.pdf",
+        "https://doi.org/10.1145/3298689.3346996"
       ]
     }
   ]
