@@ -1,0 +1,3846 @@
+{
+  "retrieved_at_utc": "2026-11-01T16:49:42.864759+00:00",
+  "records": [
+    {
+      "doi": "10.1007/BF00992696",
+      "source_url": "https://api.crossref.org/works/10.1007%2FBF00992696",
+      "status": "retrieved",
+      "metadata": {
+        "DOI": "10.1007/bf00992696",
+        "title": [
+          "Simple statistical gradient-following algorithms for connectionist reinforcement learning"
+        ],
+        "author": [
+          {
+            "given": "Ronald J.",
+            "family": "Williams",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "type": "journal-article",
+        "publisher": "Springer Science and Business Media LLC",
+        "container-title": [
+          "Machine Learning"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              1992,
+              5
+            ]
+          ]
+        },
+        "published-print": {
+          "date-parts": [
+            [
+              1992,
+              5
+            ]
+          ]
+        },
+        "page": "229-256",
+        "volume": "8",
+        "issue": "3-4",
+        "relation": {}
+      }
+    },
+    {
+      "doi": "10.1007/s11257-020-09277-1",
+      "source_url": "https://api.crossref.org/works/10.1007%2Fs11257-020-09277-1",
+      "status": "retrieved",
+      "metadata": {
+        "DOI": "10.1007/s11257-020-09277-1",
+        "title": [
+          "Empirical analysis of session-based recommendation algorithms"
+        ],
+        "author": [
+          {
+            "ORCID": "https://orcid.org/0000-0001-9051-351X",
+            "authenticated-orcid": false,
+            "given": "Malte",
+            "family": "Ludewig",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Noemi",
+            "family": "Mauro",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Sara",
+            "family": "Latifi",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Dietmar",
+            "family": "Jannach",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "type": "journal-article",
+        "publisher": "Springer Science and Business Media LLC",
+        "container-title": [
+          "User Modeling and User-Adapted Interaction"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2020,
+              10,
+              20
+            ]
+          ]
+        },
+        "published-online": {
+          "date-parts": [
+            [
+              2020,
+              10,
+              20
+            ]
+          ]
+        },
+        "published-print": {
+          "date-parts": [
+            [
+              2021,
+              3
+            ]
+          ]
+        },
+        "page": "149-181",
+        "volume": "31",
+        "issue": "1",
+        "relation": {}
+      }
+    },
+    {
+      "doi": "10.1016/j.neucom.2025.131270",
+      "source_url": "https://api.crossref.org/works/10.1016%2Fj.neucom.2025.131270",
+      "status": "retrieved",
+      "metadata": {
+        "DOI": "10.1016/j.neucom.2025.131270",
+        "title": [
+          "TiM4Rec: An efficient sequential recommendation model based on time-aware structured state space duality model"
+        ],
+        "author": [
+          {
+            "ORCID": "https://orcid.org/0009-0004-2603-9365",
+            "authenticated-orcid": false,
+            "given": "Hao",
+            "family": "Fan",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Mengyi",
+            "family": "Zhu",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Yanrong",
+            "family": "Hu",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Hailin",
+            "family": "Feng",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0009-0002-9810-8193",
+            "authenticated-orcid": false,
+            "given": "Zhijie",
+            "family": "He",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Hongjiu",
+            "family": "Liu",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Qingyang",
+            "family": "Liu",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "type": "journal-article",
+        "publisher": "Elsevier BV",
+        "container-title": [
+          "Neurocomputing"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2025,
+              11
+            ]
+          ]
+        },
+        "published-print": {
+          "date-parts": [
+            [
+              2025,
+              11
+            ]
+          ]
+        },
+        "page": "131270",
+        "volume": "654",
+        "relation": {}
+      }
+    },
+    {
+      "doi": "10.1109/TPAMI.2018.2889473",
+      "source_url": "https://api.crossref.org/works/10.1109%2FTPAMI.2018.2889473",
+      "status": "retrieved",
+      "metadata": {
+        "DOI": "10.1109/tpami.2018.2889473",
+        "title": [
+          "Efficient and Robust Approximate Nearest Neighbor Search Using Hierarchical Navigable Small World Graphs"
+        ],
+        "author": [
+          {
+            "ORCID": "https://orcid.org/0000-0003-4324-6433",
+            "authenticated-orcid": false,
+            "given": "Yu A.",
+            "family": "Malkov",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "D. A.",
+            "family": "Yashunin",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "type": "journal-article",
+        "publisher": "Institute of Electrical and Electronics Engineers (IEEE)",
+        "container-title": [
+          "IEEE Transactions on Pattern Analysis and Machine Intelligence"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2020,
+              4,
+              1
+            ]
+          ]
+        },
+        "published-print": {
+          "date-parts": [
+            [
+              2020,
+              4,
+              1
+            ]
+          ]
+        },
+        "page": "824-836",
+        "volume": "42",
+        "issue": "4",
+        "relation": {}
+      }
+    },
+    {
+      "doi": "10.1145/1772690.1772773",
+      "source_url": "https://api.crossref.org/works/10.1145%2F1772690.1772773",
+      "status": "retrieved",
+      "metadata": {
+        "DOI": "10.1145/1772690.1772773",
+        "title": [
+          "Factorizing personalized Markov chains for next-basket recommendation"
+        ],
+        "author": [
+          {
+            "given": "Steffen",
+            "family": "Rendle",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "The Institute of Scientific and Industrial Research Osaka University, Osaka, Japan"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Christoph",
+            "family": "Freudenthaler",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Institute for Computer Science University of Hildesheim, Hildesheim, Germany"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Lars",
+            "family": "Schmidt-Thieme",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Institute for Computer Science University of Hildesheim, Hildesheim, Germany"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "type": "proceedings-article",
+        "publisher": "ACM",
+        "container-title": [
+          "Proceedings of the 19th international conference on World wide web"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2010,
+              4,
+              26
+            ]
+          ]
+        },
+        "published-online": {
+          "date-parts": [
+            [
+              2010,
+              4,
+              26
+            ]
+          ]
+        },
+        "published-print": {
+          "date-parts": [
+            [
+              2010,
+              4,
+              26
+            ]
+          ]
+        },
+        "event": {
+          "name": "WWW '10: The 19th International World Wide Web Conference",
+          "location": "Raleigh North Carolina USA",
+          "acronym": "WWW '10"
+        },
+        "page": "811-820",
+        "relation": {}
+      }
+    },
+    {
+      "doi": "10.1145/3109859.3109896",
+      "source_url": "https://api.crossref.org/works/10.1145%2F3109859.3109896",
+      "status": "retrieved",
+      "metadata": {
+        "DOI": "10.1145/3109859.3109896",
+        "title": [
+          "Personalizing Session-based Recommendations with Hierarchical Recurrent Neural Networks"
+        ],
+        "author": [
+          {
+            "given": "Massimo",
+            "family": "Quadrana",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "Politecnico di Milano, Milan, Italy"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Alexandros",
+            "family": "Karatzoglou",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Telefonica Research, Barcelona, Spain"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Balázs",
+            "family": "Hidasi",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Gravity R&amp;D, Budapest, Hungary"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Paolo",
+            "family": "Cremonesi",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Politecnico di Milano, Milan, Italy"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "type": "proceedings-article",
+        "publisher": "ACM",
+        "container-title": [
+          "Proceedings of the Eleventh ACM Conference on Recommender Systems"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2017,
+              8,
+              27
+            ]
+          ]
+        },
+        "published-online": {
+          "date-parts": [
+            [
+              2017,
+              8,
+              27
+            ]
+          ]
+        },
+        "published-print": {
+          "date-parts": [
+            [
+              2017,
+              8,
+              27
+            ]
+          ]
+        },
+        "event": {
+          "name": "RecSys '17: Eleventh ACM Conference on Recommender Systems",
+          "location": "Como Italy",
+          "acronym": "RecSys '17",
+          "sponsor": [
+            "SIGCHI ACM Special Interest Group on Computer-Human Interaction",
+            "SIGWEB ACM Special Interest Group on Hypertext, Hypermedia, and Web",
+            "SIGAI ACM Special Interest Group on Artificial Intelligence",
+            "SIGKDD ACM Special Interest Group on Knowledge Discovery in Data",
+            "SIGIR ACM Special Interest Group on Information Retrieval",
+            "SIGecom Special Interest Group on Economics and Computation"
+          ]
+        },
+        "page": "130-137",
+        "relation": {}
+      }
+    },
+    {
+      "doi": "10.1145/3269206.3271761",
+      "source_url": "https://api.crossref.org/works/10.1145%2F3269206.3271761",
+      "status": "retrieved",
+      "metadata": {
+        "DOI": "10.1145/3269206.3271761",
+        "title": [
+          "Recurrent Neural Networks with Top-k Gains for Session-based Recommendations"
+        ],
+        "author": [
+          {
+            "given": "Balázs",
+            "family": "Hidasi",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "Gravity R&amp;D, Budapest, Hungary"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Alexandros",
+            "family": "Karatzoglou",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Telefonica Research, Barcelona, Spain"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "type": "proceedings-article",
+        "publisher": "ACM",
+        "container-title": [
+          "Proceedings of the 27th ACM International Conference on Information and Knowledge Management"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2018,
+              10,
+              17
+            ]
+          ]
+        },
+        "published-online": {
+          "date-parts": [
+            [
+              2018,
+              10,
+              17
+            ]
+          ]
+        },
+        "published-print": {
+          "date-parts": [
+            [
+              2018,
+              10,
+              17
+            ]
+          ]
+        },
+        "event": {
+          "name": "CIKM '18: The 27th ACM International Conference on Information and Knowledge Management",
+          "location": "Torino Italy",
+          "acronym": "CIKM '18",
+          "sponsor": [
+            "SIGWEB ACM Special Interest Group on Hypertext, Hypermedia, and Web",
+            "SIGIR ACM Special Interest Group on Information Retrieval"
+          ]
+        },
+        "page": "843-852",
+        "relation": {}
+      }
+    },
+    {
+      "doi": "10.1145/3289600.3290999",
+      "source_url": "https://api.crossref.org/works/10.1145%2F3289600.3290999",
+      "status": "retrieved",
+      "metadata": {
+        "DOI": "10.1145/3289600.3290999",
+        "title": [
+          "Top-K Off-Policy Correction for a REINFORCE Recommender System"
+        ],
+        "author": [
+          {
+            "given": "Minmin",
+            "family": "Chen",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "Google, Mountain View, CA, USA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Alex",
+            "family": "Beutel",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Google, Mountain View, CA, USA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Paul",
+            "family": "Covington",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Google, Mountain View, CA, USA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Sagar",
+            "family": "Jain",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Google, Mountain View, CA, USA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Francois",
+            "family": "Belletti",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Google, Mountain View, CA, USA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Ed H.",
+            "family": "Chi",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Google, Mountain View, CA, USA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "type": "proceedings-article",
+        "publisher": "ACM",
+        "container-title": [
+          "Proceedings of the Twelfth ACM International Conference on Web Search and Data Mining"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2019,
+              1,
+              30
+            ]
+          ]
+        },
+        "published-online": {
+          "date-parts": [
+            [
+              2019,
+              1,
+              30
+            ]
+          ]
+        },
+        "published-print": {
+          "date-parts": [
+            [
+              2019,
+              1,
+              30
+            ]
+          ]
+        },
+        "event": {
+          "name": "WSDM '19: The Twelfth ACM International Conference on Web Search and Data Mining",
+          "location": "Melbourne VIC Australia",
+          "acronym": "WSDM '19",
+          "sponsor": [
+            "SIGMOD ACM Special Interest Group on Management of Data",
+            "SIGWEB ACM Special Interest Group on Hypertext, Hypermedia, and Web",
+            "SIGKDD ACM Special Interest Group on Knowledge Discovery in Data",
+            "SIGIR ACM Special Interest Group on Information Retrieval"
+          ]
+        },
+        "page": "456-464",
+        "relation": {}
+      }
+    },
+    {
+      "doi": "10.1145/3292500.3330666",
+      "source_url": "https://api.crossref.org/works/10.1145%2F3292500.3330666",
+      "status": "retrieved",
+      "metadata": {
+        "DOI": "10.1145/3292500.3330666",
+        "title": [
+          "Practice on Long Sequential User Behavior Modeling for Click-Through Rate Prediction"
+        ],
+        "author": [
+          {
+            "given": "Qi",
+            "family": "Pi",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "Alibaba Group, Beijing, China"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Weijie",
+            "family": "Bian",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Alibaba Group, Beijing, China"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Guorui",
+            "family": "Zhou",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Alibaba Group, Beijing, China"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Xiaoqiang",
+            "family": "Zhu",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Alibaba Group, Beijing, China"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Kun",
+            "family": "Gai",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Alibaba Group, Beijing, China"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "type": "proceedings-article",
+        "publisher": "ACM",
+        "container-title": [
+          "Proceedings of the 25th ACM SIGKDD International Conference on Knowledge Discovery &amp; Data Mining"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2019,
+              7,
+              25
+            ]
+          ]
+        },
+        "published-online": {
+          "date-parts": [
+            [
+              2019,
+              7,
+              25
+            ]
+          ]
+        },
+        "published-print": {
+          "date-parts": [
+            [
+              2019,
+              7,
+              25
+            ]
+          ]
+        },
+        "event": {
+          "name": "KDD '19: The 25th ACM SIGKDD Conference on Knowledge Discovery and Data Mining",
+          "location": "Anchorage AK USA",
+          "acronym": "KDD '19",
+          "sponsor": [
+            "SIGMOD ACM Special Interest Group on Management of Data",
+            "SIGKDD ACM Special Interest Group on Knowledge Discovery in Data"
+          ]
+        },
+        "page": "2671-2679",
+        "relation": {}
+      }
+    },
+    {
+      "doi": "10.1145/3292500.3330895",
+      "source_url": "https://api.crossref.org/works/10.1145%2F3292500.3330895",
+      "status": "retrieved",
+      "metadata": {
+        "DOI": "10.1145/3292500.3330895",
+        "title": [
+          "Predicting Dynamic Embedding Trajectory in Temporal Interaction Networks"
+        ],
+        "author": [
+          {
+            "given": "Srijan",
+            "family": "Kumar",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "Stanford University &amp; Georgia Institute of Technology, Stanford, CA, USA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Xikun",
+            "family": "Zhang",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "University of Illinois, Urbana-Champaign, IL, USA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Jure",
+            "family": "Leskovec",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Stanford University, Stanford, CA, USA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "type": "proceedings-article",
+        "publisher": "ACM",
+        "container-title": [
+          "Proceedings of the 25th ACM SIGKDD International Conference on Knowledge Discovery &amp; Data Mining"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2019,
+              7,
+              25
+            ]
+          ]
+        },
+        "published-online": {
+          "date-parts": [
+            [
+              2019,
+              7,
+              25
+            ]
+          ]
+        },
+        "published-print": {
+          "date-parts": [
+            [
+              2019,
+              7,
+              25
+            ]
+          ]
+        },
+        "event": {
+          "name": "KDD '19: The 25th ACM SIGKDD Conference on Knowledge Discovery and Data Mining",
+          "location": "Anchorage AK USA",
+          "acronym": "KDD '19",
+          "sponsor": [
+            "SIGMOD ACM Special Interest Group on Management of Data",
+            "SIGKDD ACM Special Interest Group on Knowledge Discovery in Data"
+          ]
+        },
+        "page": "1269-1278",
+        "relation": {}
+      }
+    },
+    {
+      "doi": "10.1145/3298689.3346996",
+      "source_url": "https://api.crossref.org/works/10.1145%2F3298689.3346996",
+      "status": "retrieved",
+      "metadata": {
+        "DOI": "10.1145/3298689.3346996",
+        "title": [
+          "Sampling-bias-corrected neural modeling for large corpus item recommendations"
+        ],
+        "author": [
+          {
+            "given": "Xinyang",
+            "family": "Yi",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "Google, Inc."
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Ji",
+            "family": "Yang",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Google, Inc."
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Lichan",
+            "family": "Hong",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Google, Inc."
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Derek Zhiyuan",
+            "family": "Cheng",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Google, Inc."
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Lukasz",
+            "family": "Heldt",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Google, Inc."
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Aditee",
+            "family": "Kumthekar",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Google, Inc."
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Zhe",
+            "family": "Zhao",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Google, Inc."
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Li",
+            "family": "Wei",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Google, Inc."
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Ed",
+            "family": "Chi",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Google, Inc."
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "type": "proceedings-article",
+        "publisher": "ACM",
+        "container-title": [
+          "Proceedings of the 13th ACM Conference on Recommender Systems"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2019,
+              9,
+              10
+            ]
+          ]
+        },
+        "published-online": {
+          "date-parts": [
+            [
+              2019,
+              9,
+              10
+            ]
+          ]
+        },
+        "published-print": {
+          "date-parts": [
+            [
+              2019,
+              9,
+              10
+            ]
+          ]
+        },
+        "event": {
+          "name": "RecSys '19: Thirteenth ACM Conference on Recommender Systems",
+          "location": "Copenhagen Denmark",
+          "acronym": "RecSys '19"
+        },
+        "page": "269-277",
+        "relation": {}
+      }
+    },
+    {
+      "doi": "10.1145/3298689.3347058",
+      "source_url": "https://api.crossref.org/works/10.1145%2F3298689.3347058",
+      "status": "retrieved",
+      "metadata": {
+        "DOI": "10.1145/3298689.3347058",
+        "title": [
+          "Are we really making much progress? A worrying analysis of recent neural recommendation approaches"
+        ],
+        "author": [
+          {
+            "given": "Maurizio",
+            "family": "Ferrari Dacrema",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "Politecnico di Milano, Italy"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Paolo",
+            "family": "Cremonesi",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Politecnico di Milano, Italy"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Dietmar",
+            "family": "Jannach",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "University of Klagenfurt, Austria"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "type": "proceedings-article",
+        "publisher": "ACM",
+        "container-title": [
+          "Proceedings of the 13th ACM Conference on Recommender Systems"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2019,
+              9,
+              10
+            ]
+          ]
+        },
+        "published-online": {
+          "date-parts": [
+            [
+              2019,
+              9,
+              10
+            ]
+          ]
+        },
+        "published-print": {
+          "date-parts": [
+            [
+              2019,
+              9,
+              10
+            ]
+          ]
+        },
+        "event": {
+          "name": "RecSys '19: Thirteenth ACM Conference on Recommender Systems",
+          "location": "Copenhagen Denmark",
+          "acronym": "RecSys '19"
+        },
+        "page": "101-109",
+        "relation": {}
+      }
+    },
+    {
+      "doi": "10.1145/3336191.3371786",
+      "source_url": "https://api.crossref.org/works/10.1145%2F3336191.3371786",
+      "status": "retrieved",
+      "metadata": {
+        "DOI": "10.1145/3336191.3371786",
+        "title": [
+          "Time Interval Aware Self-Attention for Sequential Recommendation"
+        ],
+        "author": [
+          {
+            "given": "Jiacheng",
+            "family": "Li",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "University of California, San Diego, La Jolla, CA, USA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Yujie",
+            "family": "Wang",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Florida State University, Tallahassee, FL, USA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Julian",
+            "family": "McAuley",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "University of California, San Diego, La Jolla, CA, USA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "type": "proceedings-article",
+        "publisher": "ACM",
+        "container-title": [
+          "Proceedings of the 13th International Conference on Web Search and Data Mining"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2020,
+              1,
+              20
+            ]
+          ]
+        },
+        "published-online": {
+          "date-parts": [
+            [
+              2020,
+              1,
+              22
+            ]
+          ]
+        },
+        "published-print": {
+          "date-parts": [
+            [
+              2020,
+              1,
+              20
+            ]
+          ]
+        },
+        "event": {
+          "name": "WSDM '20: The Thirteenth ACM International Conference on Web Search and Data Mining",
+          "location": "Houston TX USA",
+          "acronym": "WSDM '20",
+          "sponsor": [
+            "SIGMOD ACM Special Interest Group on Management of Data",
+            "SIGWEB ACM Special Interest Group on Hypertext, Hypermedia, and Web",
+            "SIGKDD ACM Special Interest Group on Knowledge Discovery in Data",
+            "SIGIR ACM Special Interest Group on Information Retrieval"
+          ]
+        },
+        "page": "322-330",
+        "relation": {}
+      }
+    },
+    {
+      "doi": "10.1145/3340531.3411954",
+      "source_url": "https://api.crossref.org/works/10.1145%2F3340531.3411954",
+      "status": "retrieved",
+      "metadata": {
+        "DOI": "10.1145/3340531.3411954",
+        "title": [
+          "S3-Rec: Self-Supervised Learning for Sequential Recommendation with Mutual Information Maximization"
+        ],
+        "author": [
+          {
+            "given": "Kun",
+            "family": "Zhou",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "Renmin University of China, Beijing, China"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Hui",
+            "family": "Wang",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Renmin University of China, Beijing, China"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Wayne Xin",
+            "family": "Zhao",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Renmin University of China &amp; Beijing Key Laboratory of Big Data Management and Analysis Methods, Beijing, China"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Yutao",
+            "family": "Zhu",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Université de Montréal, Montréal, PQ, Canada"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Sirui",
+            "family": "Wang",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Meituan-Dianping Group, Beijing, China"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Fuzheng",
+            "family": "Zhang",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Meituan-Dianping Group, Beijing, China"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Zhongyuan",
+            "family": "Wang",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Meituan-Dianping Group, Beijing, China"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Ji-Rong",
+            "family": "Wen",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Renmin University of China &amp; Beijing Key Laboratory of Big Data Management and Analysis Methods, Beijing, China"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "type": "proceedings-article",
+        "publisher": "ACM",
+        "container-title": [
+          "Proceedings of the 29th ACM International Conference on Information &amp; Knowledge Management"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2020,
+              10,
+              19
+            ]
+          ]
+        },
+        "published-online": {
+          "date-parts": [
+            [
+              2020,
+              10,
+              19
+            ]
+          ]
+        },
+        "published-print": {
+          "date-parts": [
+            [
+              2020,
+              10,
+              19
+            ]
+          ]
+        },
+        "event": {
+          "name": "CIKM '20: The 29th ACM International Conference on Information and Knowledge Management",
+          "location": "Virtual Event Ireland",
+          "acronym": "CIKM '20",
+          "sponsor": [
+            "SIGWEB ACM Special Interest Group on Hypertext, Hypermedia, and Web",
+            "SIGIR ACM Special Interest Group on Information Retrieval"
+          ]
+        },
+        "page": "1893-1902",
+        "relation": {}
+      }
+    },
+    {
+      "doi": "10.1145/3394486.3403226",
+      "source_url": "https://api.crossref.org/works/10.1145%2F3394486.3403226",
+      "status": "retrieved",
+      "metadata": {
+        "DOI": "10.1145/3394486.3403226",
+        "title": [
+          "On Sampled Metrics for Item Recommendation"
+        ],
+        "author": [
+          {
+            "given": "Walid",
+            "family": "Krichene",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "Google Research, Mountain View, CA, USA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Steffen",
+            "family": "Rendle",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Google Research, Mountain View, CA, USA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "type": "proceedings-article",
+        "publisher": "ACM",
+        "container-title": [
+          "Proceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery &amp; Data Mining"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2020,
+              8,
+              20
+            ]
+          ]
+        },
+        "published-online": {
+          "date-parts": [
+            [
+              2020,
+              8,
+              20
+            ]
+          ]
+        },
+        "published-print": {
+          "date-parts": [
+            [
+              2020,
+              8,
+              23
+            ]
+          ]
+        },
+        "event": {
+          "name": "KDD '20: The 26th ACM SIGKDD Conference on Knowledge Discovery and Data Mining",
+          "location": "Virtual Event CA USA",
+          "acronym": "KDD '20",
+          "sponsor": [
+            "SIGMOD ACM Special Interest Group on Management of Data",
+            "SIGKDD ACM Special Interest Group on Knowledge Discovery in Data"
+          ]
+        },
+        "page": "1748-1757",
+        "relation": {}
+      }
+    },
+    {
+      "doi": "10.1145/3442381.3450078",
+      "source_url": "https://api.crossref.org/works/10.1145%2F3442381.3450078",
+      "status": "retrieved",
+      "metadata": {
+        "DOI": "10.1145/3442381.3450078",
+        "title": [
+          "DCN V2: Improved Deep &amp; Cross Network and Practical Lessons for Web-scale Learning to Rank Systems"
+        ],
+        "author": [
+          {
+            "given": "Ruoxi",
+            "family": "Wang",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "Google, USA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Rakesh",
+            "family": "Shivanna",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Google, USA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Derek",
+            "family": "Cheng",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Google, USA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Sagar",
+            "family": "Jain",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Google, USA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Dong",
+            "family": "Lin",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Google, USA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Lichan",
+            "family": "Hong",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Google, USA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Ed",
+            "family": "Chi",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Google, USA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "type": "proceedings-article",
+        "publisher": "ACM",
+        "container-title": [
+          "Proceedings of the Web Conference 2021"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2021,
+              4,
+              19
+            ]
+          ]
+        },
+        "published-online": {
+          "date-parts": [
+            [
+              2021,
+              6,
+              3
+            ]
+          ]
+        },
+        "published-print": {
+          "date-parts": [
+            [
+              2021,
+              4,
+              19
+            ]
+          ]
+        },
+        "event": {
+          "name": "WWW '21: The Web Conference 2021",
+          "location": "Ljubljana Slovenia",
+          "acronym": "WWW '21",
+          "sponsor": [
+            "SIGWEB ACM Special Interest Group on Hypertext, Hypermedia, and Web"
+          ]
+        },
+        "page": "1785-1797",
+        "relation": {}
+      }
+    },
+    {
+      "doi": "10.1145/3485447.3512111",
+      "source_url": "https://api.crossref.org/works/10.1145%2F3485447.3512111",
+      "status": "retrieved",
+      "metadata": {
+        "DOI": "10.1145/3485447.3512111",
+        "title": [
+          "Filter-enhanced MLP is All You Need for Sequential Recommendation"
+        ],
+        "author": [
+          {
+            "given": "Kun",
+            "family": "Zhou",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "School of Information, Renmin University of China, China and Beijing Key Laboratory of Big Data Management and Analysis Methods, China"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Hui",
+            "family": "Yu",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "University of Chinese Academy of Sciences, China and Key Laboratory of Petroleum Resources Research, Institute of Geology and Geophysics, Chinese Academy of Sciences, China"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Wayne Xin",
+            "family": "Zhao",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Gaoling School of Artificial Intelligence, Renmin University of China, China and Beijing Key Laboratory of Big Data Management and Analysis Methods, China"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Ji-Rong",
+            "family": "Wen",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Gaoling School of Artificial Intelligence, Renmin University of China, China and Beijing Key Laboratory of Big Data Management and Analysis Methods, China"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "type": "proceedings-article",
+        "publisher": "ACM",
+        "container-title": [
+          "Proceedings of the ACM Web Conference 2022"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2022,
+              4,
+              25
+            ]
+          ]
+        },
+        "published-online": {
+          "date-parts": [
+            [
+              2022,
+              4,
+              25
+            ]
+          ]
+        },
+        "published-print": {
+          "date-parts": [
+            [
+              2022,
+              4,
+              25
+            ]
+          ]
+        },
+        "event": {
+          "name": "WWW '22: The ACM Web Conference 2022",
+          "location": "Virtual Event, Lyon France",
+          "acronym": "WWW '22",
+          "sponsor": [
+            "SIGWEB ACM Special Interest Group on Hypertext, Hypermedia, and Web"
+          ]
+        },
+        "page": "2388-2399",
+        "relation": {}
+      }
+    },
+    {
+      "doi": "10.1145/3488560.3498433",
+      "source_url": "https://api.crossref.org/works/10.1145%2F3488560.3498433",
+      "status": "retrieved",
+      "metadata": {
+        "DOI": "10.1145/3488560.3498433",
+        "title": [
+          "Contrastive Learning for Representation Degeneration Problem in Sequential Recommendation"
+        ],
+        "author": [
+          {
+            "given": "Ruihong",
+            "family": "Qiu",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "The University of Queensland, Brisbane, QLD, Australia"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Zi",
+            "family": "Huang",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "The University of Queensland, Brisbane, QLD, Australia"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Hongzhi",
+            "family": "Yin",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "The University of Queensland, Brisbane, QLD, Australia"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Zijian",
+            "family": "Wang",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "The University of Queensland, Brisbane, QLD, Australia"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "type": "proceedings-article",
+        "publisher": "ACM",
+        "container-title": [
+          "Proceedings of the Fifteenth ACM International Conference on Web Search and Data Mining"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2022,
+              2,
+              11
+            ]
+          ]
+        },
+        "published-online": {
+          "date-parts": [
+            [
+              2022,
+              2,
+              15
+            ]
+          ]
+        },
+        "published-print": {
+          "date-parts": [
+            [
+              2022,
+              2,
+              11
+            ]
+          ]
+        },
+        "event": {
+          "name": "WSDM '22: The Fifteenth ACM International Conference on Web Search and Data Mining",
+          "location": "Virtual Event AZ USA",
+          "acronym": "WSDM '22",
+          "sponsor": [
+            "SIGMOD ACM Special Interest Group on Management of Data",
+            "SIGWEB ACM Special Interest Group on Hypertext, Hypermedia, and Web",
+            "SIGKDD ACM Special Interest Group on Knowledge Discovery in Data",
+            "SIGIR ACM Special Interest Group on Information Retrieval"
+          ]
+        },
+        "page": "813-823",
+        "relation": {}
+      }
+    },
+    {
+      "doi": "10.1145/3539618.3591717",
+      "source_url": "https://api.crossref.org/works/10.1145%2F3539618.3591717",
+      "status": "retrieved",
+      "metadata": {
+        "DOI": "10.1145/3539618.3591717",
+        "title": [
+          "LinRec: Linear Attention Mechanism for Long-term Sequential Recommender Systems"
+        ],
+        "author": [
+          {
+            "ORCID": "https://orcid.org/0000-0003-1995-3381",
+            "authenticated-orcid": false,
+            "given": "Langming",
+            "family": "Liu",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "City University of Hong Kong, Hong Kong, Hong Kong"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0009-0009-2249-7613",
+            "authenticated-orcid": false,
+            "given": "Liu",
+            "family": "Cai",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Ant Group, Beijing, China"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0002-3524-6874",
+            "authenticated-orcid": false,
+            "given": "Chi",
+            "family": "Zhang",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Harbin Engineering University, Harbin, China"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0003-2926-4416",
+            "authenticated-orcid": false,
+            "given": "Xiangyu",
+            "family": "Zhao",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "City University of Hong Kong, Hong Kong, Hong Kong"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0002-4470-5972",
+            "authenticated-orcid": false,
+            "given": "Jingtong",
+            "family": "Gao",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "City University of Hong Kong, Hong Kong, Hong Kong"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0001-5976-0707",
+            "authenticated-orcid": false,
+            "given": "Wanyu",
+            "family": "Wang",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "City University of Hong Kong, Hong kong, Hong Kong"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0009-0001-3242-1438",
+            "authenticated-orcid": false,
+            "given": "Yifu",
+            "family": "Lv",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Ant Group, Beijing, China"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0002-4049-1233",
+            "authenticated-orcid": false,
+            "given": "Wenqi",
+            "family": "Fan",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "The Hong Kong Polytechnic University, Hong Kong, Hong Kong"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0001-9594-1919",
+            "authenticated-orcid": false,
+            "given": "Yiqi",
+            "family": "Wang",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "National University of Defense Technology, Changsha, China"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0002-1870-7472",
+            "authenticated-orcid": false,
+            "given": "Ming",
+            "family": "He",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "AI Lab, Lenovo Research, Beijing, China"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0003-0491-307X",
+            "authenticated-orcid": false,
+            "given": "Zitao",
+            "family": "Liu",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Guangdong Institute of Smart Education, Jinan University, Guangdong, China"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0003-3370-471X",
+            "authenticated-orcid": false,
+            "given": "Qing",
+            "family": "Li",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "The Hong Kong Polytechnic University, Hong Kong, Hong Kong"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "type": "proceedings-article",
+        "publisher": "ACM",
+        "container-title": [
+          "Proceedings of the 46th International ACM SIGIR Conference on Research and Development in Information Retrieval"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2023,
+              7,
+              18
+            ]
+          ]
+        },
+        "published-online": {
+          "date-parts": [
+            [
+              2023,
+              7,
+              18
+            ]
+          ]
+        },
+        "published-print": {
+          "date-parts": [
+            [
+              2023,
+              7,
+              19
+            ]
+          ]
+        },
+        "event": {
+          "name": "SIGIR '23: The 46th International ACM SIGIR Conference on Research and Development in Information Retrieval",
+          "location": "Taipei Taiwan",
+          "acronym": "SIGIR '23",
+          "sponsor": [
+            "SIGIR ACM Special Interest Group on Information Retrieval"
+          ]
+        },
+        "page": "289-299",
+        "relation": {}
+      }
+    },
+    {
+      "doi": "10.1145/3569930",
+      "source_url": "https://api.crossref.org/works/10.1145%2F3569930",
+      "status": "retrieved",
+      "metadata": {
+        "DOI": "10.1145/3569930",
+        "title": [
+          "A Critical Study on Data Leakage in Recommender System Offline Evaluation"
+        ],
+        "author": [
+          {
+            "ORCID": "https://orcid.org/0000-0002-3210-3595",
+            "authenticated-orcid": false,
+            "given": "Yitong",
+            "family": "Ji",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "Nanyang Technological University, Singapore"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0003-0764-4258",
+            "authenticated-orcid": false,
+            "given": "Aixin",
+            "family": "Sun",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Nanyang Technological University, Singapore"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0001-8996-7581",
+            "authenticated-orcid": false,
+            "given": "Jie",
+            "family": "Zhang",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Nanyang Technological University, Singapore"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0003-3144-6374",
+            "authenticated-orcid": false,
+            "given": "Chenliang",
+            "family": "Li",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Wuhan University, Wuhan, China"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "type": "journal-article",
+        "publisher": "Association for Computing Machinery (ACM)",
+        "container-title": [
+          "ACM Transactions on Information Systems"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2023,
+              2,
+              7
+            ]
+          ]
+        },
+        "published-online": {
+          "date-parts": [
+            [
+              2023,
+              2,
+              7
+            ]
+          ]
+        },
+        "published-print": {
+          "date-parts": [
+            [
+              2023,
+              7,
+              31
+            ]
+          ]
+        },
+        "page": "1-27",
+        "volume": "41",
+        "issue": "3",
+        "relation": {}
+      }
+    },
+    {
+      "doi": "10.1145/3580305.3599918",
+      "source_url": "https://api.crossref.org/works/10.1145%2F3580305.3599918",
+      "status": "retrieved",
+      "metadata": {
+        "DOI": "10.1145/3580305.3599918",
+        "title": [
+          "TransAct: Transformer-based Realtime User Action Model for Recommendation at Pinterest"
+        ],
+        "author": [
+          {
+            "ORCID": "https://orcid.org/0009-0008-5544-8765",
+            "authenticated-orcid": false,
+            "given": "Xue",
+            "family": "Xia",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "Pinterest, San Francisco, CA, USA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0009-0001-7855-4594",
+            "authenticated-orcid": false,
+            "given": "Pong",
+            "family": "Eksombatchai",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Pinterest, San Francisco, CA, USA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0002-1755-7601",
+            "authenticated-orcid": false,
+            "given": "Nikil",
+            "family": "Pancha",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Pinterest, San Francisco, CA, USA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0009-0001-5060-967X",
+            "authenticated-orcid": false,
+            "given": "Dhruvil Deven",
+            "family": "Badani",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Pinterest, San Francisco, CA, USA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0009-0005-0662-1312",
+            "authenticated-orcid": false,
+            "given": "Po-Wei",
+            "family": "Wang",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Pinterest, San Francisco, CA, USA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0009-0007-3059-3416",
+            "authenticated-orcid": false,
+            "given": "Neng",
+            "family": "Gu",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Pinterest, San Francisco, CA, USA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0009-0001-2414-4151",
+            "authenticated-orcid": false,
+            "given": "Saurabh Vishwas",
+            "family": "Joshi",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Pinterest, San Francisco, CA, USA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0009-0007-2124-6877",
+            "authenticated-orcid": false,
+            "given": "Nazanin",
+            "family": "Farahpour",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Pinterest, San Francisco, CA, USA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0009-0001-1798-3125",
+            "authenticated-orcid": false,
+            "given": "Zhiyuan",
+            "family": "Zhang",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Pinterest, San Francisco, CA, USA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0009-0007-6081-8727",
+            "authenticated-orcid": false,
+            "given": "Andrew",
+            "family": "Zhai",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Pinterest, San Francisco, CA, USA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "type": "proceedings-article",
+        "publisher": "ACM",
+        "container-title": [
+          "Proceedings of the 29th ACM SIGKDD Conference on Knowledge Discovery and Data Mining"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2023,
+              8,
+              4
+            ]
+          ]
+        },
+        "published-online": {
+          "date-parts": [
+            [
+              2023,
+              8,
+              4
+            ]
+          ]
+        },
+        "published-print": {
+          "date-parts": [
+            [
+              2023,
+              8,
+              6
+            ]
+          ]
+        },
+        "event": {
+          "name": "KDD '23: The 29th ACM SIGKDD Conference on Knowledge Discovery and Data Mining",
+          "location": "Long Beach CA USA",
+          "acronym": "KDD '23",
+          "sponsor": [
+            "SIGMOD ACM Special Interest Group on Management of Data",
+            "SIGKDD ACM Special Interest Group on Knowledge Discovery in Data"
+          ]
+        },
+        "page": "5249-5259",
+        "relation": {}
+      }
+    },
+    {
+      "doi": "10.1145/3627673.3680030",
+      "source_url": "https://api.crossref.org/works/10.1145%2F3627673.3680030",
+      "status": "retrieved",
+      "metadata": {
+        "DOI": "10.1145/3627673.3680030",
+        "title": [
+          "TWIN V2: Scaling Ultra-Long User Behavior Sequence Modeling for Enhanced CTR Prediction at Kuaishou"
+        ],
+        "author": [
+          {
+            "ORCID": "https://orcid.org/0000-0003-2148-9784",
+            "authenticated-orcid": false,
+            "given": "Zihua",
+            "family": "Si",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "Renmin University of China, Beijing, China"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0009-0000-3832-7154",
+            "authenticated-orcid": false,
+            "given": "Lin",
+            "family": "Guan",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Kuaishou Technology Co., Ltd., Beijing, China"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0002-6109-4704",
+            "authenticated-orcid": false,
+            "given": "Zhongxiang",
+            "family": "Sun",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Renmin University of China, Beijing, China"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0002-5923-3429",
+            "authenticated-orcid": false,
+            "given": "Xiaoxue",
+            "family": "Zang",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Kuaishou Technology Co., Ltd., Beijing, China"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0009-0000-0718-6766",
+            "authenticated-orcid": false,
+            "given": "Jing",
+            "family": "Lu",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Kuaishou Technology Co., Ltd., Beijing, China"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0009-0001-8628-8003",
+            "authenticated-orcid": false,
+            "given": "Yiqun",
+            "family": "Hui",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Kuaishou Technology Co., Ltd., Beijing, China"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0002-4139-3168",
+            "authenticated-orcid": false,
+            "given": "Xingchao",
+            "family": "Cao",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Kuaishou Technology Co., Ltd., Beijing, China"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0009-0006-5622-8604",
+            "authenticated-orcid": false,
+            "given": "Zeyu",
+            "family": "Yang",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Kuaishou Technology Co., Ltd., Beijing, China"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0009-0002-2021-0868",
+            "authenticated-orcid": false,
+            "given": "Yichen",
+            "family": "Zheng",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Kuaishou Technology Co., Ltd., Beijing, China"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0009-0002-8898-7673",
+            "authenticated-orcid": false,
+            "given": "Dewei",
+            "family": "Leng",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Kuaishou Technology Co., Ltd., Beijing, China"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0009-0006-3822-2815",
+            "authenticated-orcid": false,
+            "given": "Kai",
+            "family": "Zheng",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Kuaishou Technology Co., Ltd., Beijing, China"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0009-0005-9431-9681",
+            "authenticated-orcid": false,
+            "given": "Chenbin",
+            "family": "Zhang",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Kuaishou Technology Co., Ltd., Beijing, China"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0003-2083-518X",
+            "authenticated-orcid": false,
+            "given": "Yanan",
+            "family": "Niu",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Kuaishou Technology Co., Ltd., Beijing, China"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0002-1714-5527",
+            "authenticated-orcid": false,
+            "given": "Yang",
+            "family": "Song",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Kuaishou Technology Co., Ltd., Beijing, China"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0002-3636-3618",
+            "authenticated-orcid": false,
+            "given": "Kun",
+            "family": "Gai",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Independent, Beijing, China"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "type": "proceedings-article",
+        "publisher": "ACM",
+        "container-title": [
+          "Proceedings of the 33rd ACM International Conference on Information and Knowledge Management"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2024,
+              10,
+              21
+            ]
+          ]
+        },
+        "published-online": {
+          "date-parts": [
+            [
+              2024,
+              10,
+              21
+            ]
+          ]
+        },
+        "published-print": {
+          "date-parts": [
+            [
+              2024,
+              10,
+              21
+            ]
+          ]
+        },
+        "event": {
+          "name": "CIKM '24: The 33rd ACM International Conference on Information and Knowledge Management",
+          "location": "Boise ID USA",
+          "acronym": "CIKM '24",
+          "sponsor": [
+            "SIGIR ACM Special Interest Group on Information Retrieval"
+          ]
+        },
+        "page": "4890-4897",
+        "relation": {}
+      }
+    },
+    {
+      "doi": "10.1145/3640457.3688140",
+      "source_url": "https://api.crossref.org/works/10.1145%2F3640457.3688140",
+      "status": "retrieved",
+      "metadata": {
+        "DOI": "10.1145/3640457.3688140",
+        "title": [
+          "Scalable Cross-Entropy Loss for Sequential Recommendations with Large Item Catalogs"
+        ],
+        "author": [
+          {
+            "ORCID": "https://orcid.org/0009-0003-7591-3082",
+            "authenticated-orcid": false,
+            "given": "Gleb",
+            "family": "Mezentsev",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "Skolkovo Institute of Science and Technology, Russian Federation"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0009-0008-1238-6533",
+            "authenticated-orcid": false,
+            "given": "Danil",
+            "family": "Gusak",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Skolkovo Institute of Science and Technology, Russian Federation and HSE University, Russian Federation"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0003-2071-2163",
+            "authenticated-orcid": false,
+            "given": "Ivan",
+            "family": "Oseledets",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Artificial Intelligence Research Institute, Russian Federation and Skolkovo Institute of Science and Technology, Russian Federation"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0003-3679-5311",
+            "authenticated-orcid": false,
+            "given": "Evgeny",
+            "family": "Frolov",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Artificial Intelligence Research Institute, Russian Federation; Skolkovo Institute of Science and Technology, Russian Federation and HSE University, Russian Federation"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "type": "proceedings-article",
+        "publisher": "ACM",
+        "container-title": [
+          "18th ACM Conference on Recommender Systems"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2024,
+              10,
+              8
+            ]
+          ]
+        },
+        "published-online": {
+          "date-parts": [
+            [
+              2024,
+              10,
+              8
+            ]
+          ]
+        },
+        "published-print": {
+          "date-parts": [
+            [
+              2024,
+              10,
+              8
+            ]
+          ]
+        },
+        "event": {
+          "name": "RecSys '24: 18th ACM Conference on Recommender Systems",
+          "location": "Bari Italy",
+          "acronym": "RecSys '24",
+          "sponsor": [
+            "SIGIR ACM Special Interest Group on Information Retrieval",
+            "SIGAI ACM Special Interest Group on Artificial Intelligence",
+            "SIGWEB ACM Special Interest Group on Hypertext, Hypermedia, and Web",
+            "SIGKDD ACM Special Interest Group on Knowledge Discovery in Data",
+            "SIGCHI ACM Special Interest Group on Computer-Human Interaction"
+          ]
+        },
+        "page": "475-485",
+        "relation": {}
+      }
+    },
+    {
+      "doi": "10.1145/3770854.3783916",
+      "source_url": "https://api.crossref.org/works/10.1145%2F3770854.3783916",
+      "status": "retrieved",
+      "metadata": {
+        "DOI": "10.1145/3770854.3783916",
+        "title": [
+          "Scaling Recommender Transformers to One Billion Parameters"
+        ],
+        "author": [
+          {
+            "ORCID": "https://orcid.org/0009-0007-3640-8795",
+            "authenticated-orcid": false,
+            "given": "Kirill",
+            "family": "Khrylchenko",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "HSE University, Moscow, Russian Federation"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0009-0004-0271-221X",
+            "authenticated-orcid": false,
+            "given": "Artem",
+            "family": "Matveev",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Yandex, Moscow, Russian Federation and HSE University, Moscow, Russian Federation"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0009-0003-5451-6475",
+            "authenticated-orcid": false,
+            "given": "Sergei",
+            "family": "Makeev",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Yandex, Moscow, Russian Federation"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0009-0009-4864-2305",
+            "authenticated-orcid": false,
+            "given": "Vladimir",
+            "family": "Baikalov",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "ITMO University, Saint-Petersburg, Russian Federation"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "type": "proceedings-article",
+        "publisher": "ACM",
+        "container-title": [
+          "Proceedings of the 32nd ACM SIGKDD Conference on Knowledge Discovery and Data Mining V.1"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2026,
+              4,
+              20
+            ]
+          ]
+        },
+        "published-online": {
+          "date-parts": [
+            [
+              2026,
+              4,
+              20
+            ]
+          ]
+        },
+        "published-print": {
+          "date-parts": [
+            [
+              2026,
+              8,
+              9
+            ]
+          ]
+        },
+        "event": {
+          "name": "KDD '26: The 32nd ACM SIGKDD Conference on Knowledge Discovery and Data Mining",
+          "location": "Jeju Island Republic of Korea",
+          "sponsor": [
+            "SIGMOD ACM Special Interest Group on Management of Data",
+            "SIGKDD ACM Special Interest Group on Knowledge Discovery in Data"
+          ]
+        },
+        "page": "2255-2265",
+        "relation": {}
+      }
+    },
+    {
+      "doi": "10.1145/3770855.3818497",
+      "source_url": "https://api.crossref.org/works/10.1145%2F3770855.3818497",
+      "status": "retrieved",
+      "metadata": {
+        "DOI": "10.1145/3770855.3818497",
+        "title": [
+          "TransX: Scaling Transformer-based Recommendation via Behavioral and Serving Stream Crossings"
+        ],
+        "author": [
+          {
+            "ORCID": "https://orcid.org/0000-0001-7599-2815",
+            "authenticated-orcid": false,
+            "given": "Da",
+            "family": "Xu",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "LinkedIn, Sunnyvale, CA, USA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0009-0000-8716-067X",
+            "authenticated-orcid": false,
+            "given": "Liyan",
+            "family": "Fang",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "LinkedIn, Sunnyvale, CA, USA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0009-0004-0395-7681",
+            "authenticated-orcid": false,
+            "given": "Divya",
+            "family": "Venugopalan",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "LinkedIn, Sunnyvale, CA, USA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0009-0000-3621-2222",
+            "authenticated-orcid": false,
+            "given": "Sunny",
+            "family": "Hsu",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "LinkedIn, Sunnyvale, CA, USA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0009-0005-5322-6251",
+            "authenticated-orcid": false,
+            "given": "Xukai",
+            "family": "Wang",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "LinkedIn, Sunnyvale, CA, USA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0009-0000-1702-6037",
+            "authenticated-orcid": false,
+            "given": "Rishav Roy",
+            "family": "Chowdhury",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "LinkedIn, Sunnyvale, CA, USA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0009-0007-1458-304X",
+            "authenticated-orcid": false,
+            "given": "Cindy",
+            "family": "Liang",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "LinkedIn, Sunnyvale, CA, USA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0009-0000-6437-1642",
+            "authenticated-orcid": false,
+            "given": "Nishant",
+            "family": "Lakshmikanth",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "LinkedIn, Sunnyvale, CA, USA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "type": "proceedings-article",
+        "publisher": "ACM",
+        "container-title": [
+          "Proceedings of the 32nd ACM SIGKDD Conference on Knowledge Discovery and Data Mining V.2"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2026,
+              8,
+              8
+            ]
+          ]
+        },
+        "published-online": {
+          "date-parts": [
+            [
+              2026,
+              8,
+              8
+            ]
+          ]
+        },
+        "published-print": {
+          "date-parts": [
+            [
+              2026,
+              8,
+              9
+            ]
+          ]
+        },
+        "event": {
+          "name": "KDD '26: The 32nd ACM SIGKDD Conference on Knowledge Discovery and Data Mining",
+          "location": "Jeju Island Republic of Korea",
+          "sponsor": [
+            "SIGMOD ACM Special Interest Group on Management of Data",
+            "SIGKDD ACM Special Interest Group on Knowledge Discovery in Data"
+          ]
+        },
+        "page": "8312-8323",
+        "relation": {}
+      }
+    },
+    {
+      "doi": "10.1609/aaai.v33i01.3301346",
+      "source_url": "https://api.crossref.org/works/10.1609%2Faaai.v33i01.3301346",
+      "status": "retrieved",
+      "metadata": {
+        "DOI": "10.1609/aaai.v33i01.3301346",
+        "title": [
+          "Session-Based Recommendation with Graph Neural Networks"
+        ],
+        "author": [
+          {
+            "given": "Shu",
+            "family": "Wu",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Yuyuan",
+            "family": "Tang",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Yanqiao",
+            "family": "Zhu",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Liang",
+            "family": "Wang",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Xing",
+            "family": "Xie",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Tieniu",
+            "family": "Tan",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "type": "journal-article",
+        "publisher": "Association for the Advancement of Artificial Intelligence (AAAI)",
+        "container-title": [
+          "Proceedings of the AAAI Conference on Artificial Intelligence"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2019,
+              7,
+              17
+            ]
+          ]
+        },
+        "published-online": {
+          "date-parts": [
+            [
+              2019,
+              7,
+              17
+            ]
+          ]
+        },
+        "page": "346-353",
+        "volume": "33",
+        "issue": "01",
+        "relation": {}
+      }
+    },
+    {
+      "doi": "10.24963/ijcai.2018/546",
+      "source_url": "https://api.crossref.org/works/10.24963%2Fijcai.2018%2F546",
+      "status": "retrieved",
+      "metadata": {
+        "DOI": "10.24963/ijcai.2018/546",
+        "title": [
+          "Sequential Recommender System based on Hierarchical Attention Networks"
+        ],
+        "author": [
+          {
+            "given": "Haochao",
+            "family": "Ying",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "College of Computer Science and Technology, Zhejiang University, China"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Fuzhen",
+            "family": "Zhuang",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Key Lab of IIP of CAS, Institute of Computing Technology, CAS Beijing, China"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Fuzheng",
+            "family": "Zhang",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Microsoft Research, China"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Yanchi",
+            "family": "Liu",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Management Science & Information Systems, Rutgers University, USA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Guandong",
+            "family": "Xu",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Advanced Analytics Institute, University of Technology, Australia"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Xing",
+            "family": "Xie",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Microsoft Research, China"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Hui",
+            "family": "Xiong",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Management Science & Information Systems, Rutgers University, USA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Jian",
+            "family": "Wu",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "College of Computer Science and Technology, Zhejiang University, China"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "type": "proceedings-article",
+        "publisher": "International Joint Conferences on Artificial Intelligence Organization",
+        "container-title": [
+          "Proceedings of the Twenty-Seventh International Joint Conference on Artificial Intelligence"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2018,
+              7
+            ]
+          ]
+        },
+        "published-print": {
+          "date-parts": [
+            [
+              2018,
+              7
+            ]
+          ]
+        },
+        "event": {
+          "name": "Twenty-Seventh International Joint Conference on Artificial Intelligence {IJCAI-18}",
+          "theme": "Artificial Intelligence",
+          "location": "Stockholm, Sweden",
+          "acronym": "IJCAI-2018",
+          "number": "27",
+          "sponsor": [
+            "International Joint Conferences on Artificial Intelligence Organization (IJCAI)"
+          ],
+          "start": {
+            "date-parts": [
+              [
+                2018,
+                7,
+                13
+              ]
+            ]
+          },
+          "end": {
+            "date-parts": [
+              [
+                2018,
+                7,
+                19
+              ]
+            ]
+          }
+        },
+        "page": "3926-3932",
+        "relation": {}
+      }
+    }
+  ]
+}

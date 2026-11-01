@@ -1,0 +1,558 @@
+[
+  {
+    "id": "P031",
+    "bibtex_key": "P031_PinnerFormer",
+    "title": "PinnerFormer: Sequence Modeling for User Representation at Pinterest",
+    "source_urls": [
+      "https://arxiv.org/abs/2205.04507v1",
+      "https://arxiv.org/html/2205.04507v1",
+      "https://cs.stanford.edu/~jure/pubs/pinnerformer-kdd22.pdf"
+    ],
+    "metadata_status": "confirmed",
+    "publication_status": "KDD 2022: авторский PDF с ACM publication footer; страница издателя недоступна при проверке.",
+    "venue_evidence_url": "https://cs.stanford.edu/~jure/pubs/pinnerformer-kdd22.pdf",
+    "confidence": "established",
+    "assessment_ru": "Проверены цель dense all-action, сравнение daily/realtime и ranking A/B (§3–4); batch-представления — реальный промышленный метод.",
+    "limitations_ru": "Смена training objective и multi-day target не изолирует эффект refresh schedule; закрытые Pinterest данные.",
+    "claim_check_ru": "Поддерживает ежедневный offline user-vector и связь свежести с горизонтом цели; не подтверждает универсальную безвредность задержки.",
+    "corrections_ru": "Ссылаться на KDD 2022 при выборе опубликованной версии; arXiv v1 и четыре автора совпадают.",
+    "verification_depth": "Сверены live title/authors/selected version/year; прочитаны указанные method/experiment фрагменты и ограничения, полной независимой репликации, запуска кода и проверки закрытых логов не было."
+  },
+  {
+    "id": "P032",
+    "bibtex_key": "P032_TransAct",
+    "title": "TransAct: Transformer-based Realtime User Action Model for Recommendation at Pinterest",
+    "source_urls": [
+      "https://arxiv.org/abs/2306.00248v1",
+      "https://arxiv.org/html/2306.00248v1",
+      "https://api.crossref.org/works/10.1145%2F3580305.3599918"
+    ],
+    "metadata_status": "confirmed",
+    "publication_status": "KDD 2023: издательские Crossref metadata подтверждены в publisher-metadata.json.",
+    "venue_evidence_url": "https://api.crossref.org/works/10.1145%2F3580305.3599918",
+    "confidence": "established",
+    "assessment_ru": "В §3–4 описаны realtime TransAct, batch PinnerFormer и A/B с control без realtime sequences.",
+    "limitations_ru": "Ranking на Pinterest и несколько меняющихся компонентов; не эксперимент с одной фиксированной моделью и разными refresh policies.",
+    "claim_check_ru": "Поддерживает hybrid batch-long + realtime-short. Обучение end-to-end относится к train, не к обновлению весов на каждом запросе.",
+    "corrections_ru": "Заменить нечитаемую venue-строку на KDD 2023; добавить publication DOI отдельно от arXiv DOI.",
+    "verification_depth": "Сверены live title/authors/selected version/year; прочитаны указанные method/experiment фрагменты и ограничения, издательские метаданные Crossref использованы из снапшота координатора; полной независимой репликации, запуска кода и проверки закрытых логов не было."
+  },
+  {
+    "id": "P033",
+    "bibtex_key": "P033_TransActV2",
+    "title": "TransAct V2: Lifelong User Action Sequence Modeling on Pinterest Recommendation",
+    "source_urls": [
+      "https://arxiv.org/abs/2506.02267v1",
+      "https://arxiv.org/html/2506.02267v1"
+    ],
+    "metadata_status": "confirmed",
+    "publication_status": "arXiv v1 2025; независимый venue record не установлен.",
+    "venue_evidence_url": null,
+    "confidence": "established",
+    "assessment_ru": "В §3–4 есть lifelong sequence selection, next-action auxiliary loss, production serving и offline/online сравнения.",
+    "limitations_ru": "Данные Pinterest закрыты; качество меняется вместе с историей, loss и serving. Нельзя приписать весь lift одному caching.",
+    "claim_check_ru": "Поддерживает выбор событий длинной истории и оптимизацию обслуживания; «retrieval истории» не равен ANN retrieval объектов.",
+    "corrections_ru": "Метаданные v1 2025 совпадают; независимую venue-публикацию здесь не установлено.",
+    "verification_depth": "Сверены live title/authors/selected version/year; прочитаны указанные method/experiment фрагменты и ограничения, полной независимой репликации, запуска кода и проверки закрытых логов не было."
+  },
+  {
+    "id": "P034",
+    "bibtex_key": "P034_ARGUS",
+    "title": "Scaling Recommender Transformers to One Billion Parameters",
+    "source_urls": [
+      "https://arxiv.org/abs/2507.15994v2",
+      "https://arxiv.org/html/2507.15994v2",
+      "https://api.crossref.org/works/10.1145%2F3770854.3783916"
+    ],
+    "metadata_status": "confirmed",
+    "publication_status": "KDD 2026 V.1: издательские Crossref metadata подтверждены; arXiv v2 2026.",
+    "venue_evidence_url": "https://api.crossref.org/works/10.1145%2F3770854.3783916",
+    "confidence": "established",
+    "assessment_ru": "Проверены dual objectives, two-tower fine-tuning, daily offline embeddings и таблица online deployments (§4.5/5.1).",
+    "limitations_ru": "Online ARGUS — 126M encoder, а 1B configuration оценивалась offline; закрытая музыкальная платформа.",
+    "claim_check_ru": "Поддерживает ежедневный cached user-vector. Нельзя писать, что опубликованный online lift получен именно 1B encoder.",
+    "corrections_ru": "Указывать 2025 first preprint и 2026 v2/KDD отдельно; publication DOI подтверждён издательскими Crossref-метаданными.",
+    "verification_depth": "Сверены live title/authors/selected version/year; прочитаны указанные method/experiment фрагменты и ограничения, издательские метаданные Crossref использованы из снапшота координатора; полной независимой репликации, запуска кода и проверки закрытых логов не было."
+  },
+  {
+    "id": "P035",
+    "bibtex_key": "P035_LongHistoryUserTransformers",
+    "title": "Long-History User Transformers for Real-Time Ad Ranking",
+    "source_urls": [
+      "https://arxiv.org/abs/2607.14331v1",
+      "https://arxiv.org/html/2607.14331v1"
+    ],
+    "metadata_status": "confirmed",
+    "publication_status": "arXiv v1 2026; независимый venue record не установлен.",
+    "venue_evidence_url": null,
+    "confidence": "established",
+    "assessment_ru": "§3.3 и 4.5 прямо описывают split encoder, embedding lag, checkpoint age, ad-click trigger и weekly full batch; есть A/B.",
+    "limitations_ru": "5-day lag и 6-month checkpoint — разные воздействия; дешёвость trigger не сравнивалась с обученным benefit-controller при общем бюджете.",
+    "claim_check_ru": "Пригоден как ближайший prior art для full re-encoding cached long + recent runtime. Это не KV-incremental update.",
+    "corrections_ru": "v1 2026, название и все авторы совпадают; venue не установлен. 72–80% означает долю gain относительно baseline, а не 72–80% абсолютного качества.",
+    "verification_depth": "Сверены live title/authors/selected version/year; прочитаны указанные method/experiment фрагменты и ограничения, полной независимой репликации, запуска кода и проверки закрытых логов не было."
+  },
+  {
+    "id": "P036",
+    "bibtex_key": "P036_TransX",
+    "title": "TransX: Scaling Transformer-based Recommendation via Behavioral and Serving Stream Crossings",
+    "source_urls": [
+      "https://arxiv.org/abs/2607.28940v1",
+      "https://arxiv.org/html/2607.28940v1",
+      "https://api.crossref.org/works/10.1145%2F3770855.3818497"
+    ],
+    "metadata_status": "confirmed",
+    "publication_status": "KDD 2026 V.2: издательские Crossref metadata подтверждены; arXiv v1 2026.",
+    "venue_evidence_url": "https://api.crossref.org/works/10.1145%2F3770855.3818497",
+    "confidence": "established",
+    "assessment_ru": "§4.2–4.3 различают causal prefix-consistent behavior encoding, nearline cache и KV для candidates внутри запроса; §5 содержит LinkedIn A/B.",
+    "limitations_ru": "Частные production данные; approximate bf16 cache и sparse selection нельзя объявлять строгим exact-reuse всего исходного ranker.",
+    "claim_check_ru": "Поддерживает два отдельных механизма: incremental causal encoder и amortization candidate scoring. Не доказывает reuse после arbitrary window shift.",
+    "corrections_ru": "Полный текст доступен: добавить v1/HTML; KDD 2026 V.2 подтверждён издательскими DOI-метаданными. В proceedings последний автор сокращён до Nishant Lakshmikanth.",
+    "verification_depth": "Сверены live title/authors/selected version/year; прочитаны указанные method/experiment фрагменты и ограничения, издательские метаданные Crossref использованы из снапшота координатора; полной независимой репликации, запуска кода и проверки закрытых логов не было."
+  },
+  {
+    "id": "P037",
+    "bibtex_key": "P037_HSTUMFALCON",
+    "title": "Actions Speak Louder than Words: Trillion-Parameter Sequential Transducers for Generative Recommendations",
+    "source_urls": [
+      "https://arxiv.org/abs/2402.17152v3",
+      "https://arxiv.org/html/2402.17152v3",
+      "https://proceedings.mlr.press/v235/zhai24a.html"
+    ],
+    "metadata_status": "confirmed",
+    "publication_status": "ICML 2024: официальные PMLR proceedings.",
+    "venue_evidence_url": "https://proceedings.mlr.press/v235/zhai24a.html",
+    "confidence": "established",
+    "assessment_ru": "§3.4 и Appendix H объясняют M-FALCON masks, shared prefix, candidate microbatches и cached computation; venue подтверждён PMLR.",
+    "limitations_ru": "Общие FLOPs/throughput зависят от числа candidates и hardware; parameter total включает embedding tables.",
+    "claim_check_ru": "Поддерживает shared-prefix KV reuse в заданной causal target-aware архитектуре; не общую эквивалентность stale vector и полного пересчёта SASRec.",
+    "corrections_ru": "arXiv v3 содержит Michael He; PMLR proceedings содержит Jiayuan He. При переходе на proceedings согласовать авторов с его карточкой.",
+    "verification_depth": "Сверены live title/authors/selected version/year; прочитаны указанные method/experiment фрагменты и ограничения, полной независимой репликации, запуска кода и проверки закрытых логов не было."
+  },
+  {
+    "id": "P038",
+    "bibtex_key": "P038_RelayGR",
+    "title": "RelayGR: Scaling Long-Sequence Generative Recommendation via Cross-Stage Relay-Race Inference",
+    "source_urls": [
+      "https://arxiv.org/abs/2601.01712v1",
+      "https://arxiv.org/html/2601.01712v1"
+    ],
+    "metadata_status": "confirmed",
+    "publication_status": "arXiv v1 2026; независимый venue record не установлен.",
+    "venue_evidence_url": null,
+    "confidence": "established",
+    "assessment_ru": "§3–4 описывают admission pre-inference, routing affinity и HBM/DRAM cache; эксперимент — production-mirror с real queries и P99 SLO.",
+    "limitations_ru": "Это mirror performance test, не пользовательский online A/B и не offline predictive-quality benchmark; Ascend 910C infrastructure специфична.",
+    "claim_check_ru": "Поддерживает prefix precomputation/caching между стадиями и учёт фонового cost. Не подтверждает выигрыш refresh policy в музыкальном качестве.",
+    "corrections_ru": "Закрепить arXiv v1; venue независимо не установлен; слово production не заменять утверждением live engagement evaluation.",
+    "verification_depth": "Сверены live title/authors/selected version/year; прочитаны указанные method/experiment фрагменты и ограничения, полной независимой репликации, запуска кода и проверки закрытых логов не было."
+  },
+  {
+    "id": "P039",
+    "bibtex_key": "P039_VISTA",
+    "title": "Massive Memorization with Hundreds of Trillions of Parameters for Sequential Transducer Generative Recommenders",
+    "source_urls": [
+      "https://arxiv.org/abs/2510.22049v3",
+      "https://arxiv.org/html/2510.22049v3",
+      "https://openreview.net/pdf?id=LSHSaY4gYM"
+    ],
+    "metadata_status": "confirmed",
+    "publication_status": "ICLR 2026: официальный OpenReview camera-ready PDF; forum browser challenge.",
+    "venue_evidence_url": "https://openreview.net/pdf?id=LSHSaY4gYM",
+    "confidence": "established",
+    "assessment_ru": "§3–4 и ICLR PDF описывают VISTA: сотни summary tokens, их cache и downstream candidate attention; есть offline и industrial online оценки.",
+    "limitations_ru": "Constant downstream cost исключает стоимость получения/обновления summaries; закрытые данные затрудняют репликацию.",
+    "claim_check_ru": "Поддерживает learned multi-token compression и reuse. Не является неизменённым SASRec с другой cache policy.",
+    "corrections_ru": "Название Massive Memorization действительно относится к VISTA, это не подмена. ICLR 2026 подтверждён официальным OpenReview PDF.",
+    "verification_depth": "Сверены live title/authors/selected version/year; прочитаны указанные method/experiment фрагменты и ограничения, полной независимой репликации, запуска кода и проверки закрытых логов не было."
+  },
+  {
+    "id": "P040",
+    "bibtex_key": "P040_MuSeR",
+    "title": "MuSeR: Scalable Long-sequence Recommendation with Multi-interest Modeling",
+    "source_urls": [
+      "https://arxiv.org/abs/2609.23677v1",
+      "https://arxiv.org/html/2609.23677v1"
+    ],
+    "metadata_status": "confirmed",
+    "publication_status": "arXiv v1 2026; независимый venue record не установлен.",
+    "venue_evidence_url": null,
+    "confidence": "provisional",
+    "assessment_ru": "§II–IV описывают temporal compression, multi-interest и asynchronous refresh; III-A прямо связывает частоту и fusion с QPS/load.",
+    "limitations_ru": "Нет изолированной таблицы сравнения refresh controllers при фиксированной архитектуре; policy описана качественно, без полного алгоритма/порогов.",
+    "claim_check_ru": "Пригоден как предварительный prior art для load-adaptive cache. Online lift относится к совокупности compression, interests, multimodal и serving.",
+    "corrections_ru": "v1 от 20 сентября 2026 совпадает; venue не установлен. Не утверждать, что статья доказывает benefit-based refresh.",
+    "verification_depth": "Сверены live title/authors/selected version/year; прочитаны указанные method/experiment фрагменты и ограничения, полной независимой репликации, запуска кода и проверки закрытых логов не было."
+  },
+  {
+    "id": "P041",
+    "bibtex_key": "P041_REPAIR",
+    "title": "Not All Is Lost: Repairing Lossy User Preference States of Personalization Encoders",
+    "source_urls": [
+      "https://arxiv.org/abs/2610.01270v1",
+      "https://arxiv.org/html/2610.01270v1"
+    ],
+    "metadata_status": "confirmed",
+    "publication_status": "arXiv v1 2026; accepted NeurIPS 2026 заявлено авторами, независимый proceedings не установлен.",
+    "venue_evidence_url": null,
+    "confidence": "provisional",
+    "assessment_ru": "§4–7 подтверждают обучаемый post-compression repair по timestep representations при frozen encoder/head; прочитаны явные overheads.",
+    "limitations_ru": "Repair требует собственного обучения и cache O(Ld); §7 сообщает 31–36% memory и 38–44% latency overhead. Это не бесплатное обновление старого состояния.",
+    "claim_check_ru": "Поддерживает correction текущего compressed state из уже вычисленного evidence. Не восстанавливает события, отброшенные до encoder, и не exact reuse.",
+    "corrections_ru": "Полный HTML доступен, закрепить v1. NeurIPS 2026 пока заявление arXiv authors; независимый proceedings не найден.",
+    "verification_depth": "Сверены live title/authors/selected version/year; прочитаны указанные method/experiment фрагменты и ограничения, полной независимой репликации, запуска кода и проверки закрытых логов не было."
+  },
+  {
+    "id": "P042",
+    "bibtex_key": "P042_LightSANs",
+    "title": "Lighter and Better: Low-Rank Decomposed Self-Attention Networks for Next-Item Recommendation",
+    "source_urls": [
+      "https://www.microsoft.com/en-us/research/publication/lighter-and-better-low-rank-decomposed-self-attention-networks-for-next-item-recommendation/",
+      "https://www.microsoft.com/en-us/research/wp-content/uploads/2021/05/LighterandBetter_Low-RankDecomposedSelf-AttentionNetworksforNext-ItemRecommendation.pdf"
+    ],
+    "metadata_status": "confirmed",
+    "publication_status": "SIGIR 2021 short paper: авторская MS Research карточка и ACM publication footer PDF.",
+    "venue_evidence_url": "https://www.microsoft.com/en-us/research/publication/lighter-and-better-low-rank-decomposed-self-attention-networks-for-next-item-recommendation/",
+    "confidence": "established",
+    "assessment_ru": "В авторском PDF проверены low-rank item-to-interest aggregation и эксперименты на трёх datasets; MS Research указывает SIGIR short paper.",
+    "limitations_ru": "Offline accuracy/efficiency не исследуют staleness policy; pooled interests и global context не дают автоматического causal streaming.",
+    "claim_check_ru": "Поддерживает linear-in-length low-rank attention, не строгий incremental KV cache.",
+    "corrections_ru": "Уточнить SIGIR 2021 short paper и DOI 10.1145/3404835.3462978; авторы и год совпадают.",
+    "verification_depth": "Сверены первичные author/publication metadata и фрагменты PDF/описания экспериментов; полной независимой репликации, запуска кода и проверки закрытых логов не было."
+  },
+  {
+    "id": "P043",
+    "bibtex_key": "P043_FMLPRec",
+    "title": "Filter-enhanced MLP is All You Need for Sequential Recommendation",
+    "source_urls": [
+      "https://arxiv.org/abs/2202.13556v1",
+      "https://arxiv.org/html/2202.13556v1",
+      "https://api.crossref.org/works/10.1145%2F3485447.3512111"
+    ],
+    "metadata_status": "confirmed",
+    "publication_status": "WWW 2022: издательские Crossref metadata подтверждены.",
+    "venue_evidence_url": "https://api.crossref.org/works/10.1145%2F3485447.3512111",
+    "confidence": "established",
+    "assessment_ru": "§4–5 задают learnable frequency filtering + MLP и benchmark восьми datasets.",
+    "limitations_ru": "FFT обрабатывает окно целиком; замена его одной cached state меняет вычисления. Offline protocols не равно online refresh.",
+    "claim_check_ru": "Поддерживает альтернативный backbone/фильтрацию, а не перенос exact KV reuse с causal Transformer.",
+    "corrections_ru": "v1 2022 совпадает; WWW 2022 подтверждён издательскими DOI-метаданными.",
+    "verification_depth": "Сверены live title/authors/selected version/year; прочитаны указанные method/experiment фрагменты и ограничения, издательские метаданные Crossref использованы из снапшота координатора; полной независимой репликации, запуска кода и проверки закрытых логов не было."
+  },
+  {
+    "id": "P044",
+    "bibtex_key": "P044_LinRec",
+    "title": "LinRec: Linear Attention Mechanism for Long-term Sequential Recommender Systems",
+    "source_urls": [
+      "https://arxiv.org/abs/2411.01537v1",
+      "https://arxiv.org/html/2411.01537v1",
+      "https://api.crossref.org/works/10.1145%2F3539618.3591717"
+    ],
+    "metadata_status": "confirmed",
+    "publication_status": "SIGIR 2023: издательские Crossref metadata подтверждены; arXiv размещён в 2024.",
+    "venue_evidence_url": "https://api.crossref.org/works/10.1145%2F3539618.3591717",
+    "confidence": "established",
+    "assessment_ru": "§3 выводит L2-normalized mappings и перестановку произведений; §4 сравнивает accuracy/memory/time.",
+    "limitations_ru": "Нормализация K по колонке зависит от N и всего контекста; equivalence conditions затем ослабляются. Это не тождество softmax attention.",
+    "claim_check_ru": "Поддерживает linear attention как другую модель; неизменность старых state/точный streaming требуют отдельного разбора normalization.",
+    "corrections_ru": "arXiv 2024 корректен; опубликованная SIGIR версия — 2023 (DOI подтверждён). Не называть метод новым 2024.",
+    "verification_depth": "Сверены live title/authors/selected version/year; прочитаны указанные method/experiment фрагменты и ограничения, издательские метаданные Crossref использованы из снапшота координатора; полной независимой репликации, запуска кода и проверки закрытых логов не было."
+  },
+  {
+    "id": "P045",
+    "bibtex_key": "P045_LRURec",
+    "title": "Linear Recurrent Units for Sequential Recommendation",
+    "source_urls": [
+      "https://arxiv.org/abs/2310.02367v2",
+      "https://arxiv.org/html/2310.02367v2",
+      "https://doi.org/10.1145/3616855.3635760"
+    ],
+    "metadata_status": "confirmed",
+    "publication_status": "WSDM 2024: индексированная первичная карточка ACM; прямое открытие DOI вернуло 403.",
+    "venue_evidence_url": "https://doi.org/10.1145/3616855.3635760",
+    "confidence": "established",
+    "assessment_ru": "§3 содержит recurrence и parallel scan/recursive split; экспериментальный раздел проверяет long sequences и efficiency.",
+    "limitations_ru": "Рекуррентный append не эквивалентен пересчёту ограниченного скользящего окна после удаления префикса.",
+    "claim_check_ru": "Поддерживает incremental state собственной LRU-архитектуры при фиксированных весах; не ускорение готового SASRec заменой attention.",
+    "corrections_ru": "v2 2023 совпадает; официальная публикация WSDM 2024. Год выбранного препринта не равен venue year.",
+    "verification_depth": "Сверены live title/authors/selected version/year; прочитаны указанные method/experiment фрагменты и ограничения, полной независимой репликации, запуска кода и проверки закрытых логов не было."
+  },
+  {
+    "id": "P046",
+    "bibtex_key": "P046_RecBLR",
+    "title": "Behavior-Dependent Linear Recurrent Units for Efficient Sequential Recommendation",
+    "source_urls": [
+      "https://arxiv.org/abs/2406.12580v2",
+      "https://arxiv.org/html/2406.12580v2",
+      "https://www.sigweb.org/toc/cikm24.html"
+    ],
+    "metadata_status": "confirmed",
+    "publication_status": "CIKM 2024: первичный ACM SIGWEB proceedings index (индексированный текст); arXiv authors также сообщают acceptance.",
+    "venue_evidence_url": "https://www.sigweb.org/toc/cikm24.html",
+    "confidence": "established",
+    "assessment_ru": "§3 содержит behavior-dependent gates и custom CUDA parallel scan, §4 — benchmark пяти datasets и efficiency/scalability.",
+    "limitations_ru": "Kernel speed зависит от GPU, padding, workload; online deployment/freshness controller не измерены.",
+    "claim_check_ru": "Поддерживает recurrent architecture + hardware scan. Отдельно от политики refresh final user-vector.",
+    "corrections_ru": "v2 2024 совпадает; CIKM 2024 есть в официальном ACM SIGWEB proceedings index.",
+    "verification_depth": "Сверены live title/authors/selected version/year; прочитаны указанные method/experiment фрагменты и ограничения, полной независимой репликации, запуска кода и проверки закрытых логов не было."
+  },
+  {
+    "id": "P047",
+    "bibtex_key": "P047_Mamba4Rec",
+    "title": "Mamba4Rec: Towards Efficient Sequential Recommendation with Selective State Space Models",
+    "source_urls": [
+      "https://arxiv.org/abs/2403.03900v2",
+      "https://arxiv.org/html/2403.03900v2"
+    ],
+    "metadata_status": "confirmed",
+    "publication_status": "arXiv v2 2024; независимый venue record не установлен.",
+    "venue_evidence_url": null,
+    "confidence": "established",
+    "assessment_ru": "§3 описывает selective SSM, causal convolution и position-wise layers; §4 оценивает MovieLens-1M/Beauty/Games и efficiency.",
+    "limitations_ru": "Offline per-user benchmark и ограниченные backbones не подтверждают industrial latency или устойчивость к stale cache.",
+    "claim_check_ru": "Поддерживает альтернативный SSM backbone и recurrence; требуется хранить также convolution state и все layer states.",
+    "corrections_ru": "v2 от 29 июня 2024 и авторы совпадают; venue независимо не установлен.",
+    "verification_depth": "Сверены live title/authors/selected version/year; прочитаны указанные method/experiment фрагменты и ограничения, полной независимой репликации, запуска кода и проверки закрытых логов не было."
+  },
+  {
+    "id": "P048",
+    "bibtex_key": "P048_SSD4Rec",
+    "title": "SSD4Rec: A Structured State Space Duality Model for Efficient Sequential Recommendation",
+    "source_urls": [
+      "https://arxiv.org/abs/2409.01192v2",
+      "https://arxiv.org/html/2409.01192v2"
+    ],
+    "metadata_status": "confirmed",
+    "publication_status": "arXiv v2 2025; независимый venue record не установлен.",
+    "venue_evidence_url": null,
+    "confidence": "established",
+    "assessment_ru": "§2.4 явно использует bidirectional SSD; §3 — четыре benchmark datasets с per-user leave-one-out и efficiency.",
+    "limitations_ru": "Bidirectional history states меняются при append. Табличное O(N²) inference само по себе не доказывает сохранение полного Bi-SSD state с тем же результатом.",
+    "claim_check_ru": "Поддерживает efficient variable-length/history modeling, не строгий constant-cost streaming эквивалентного Bi-SSD.",
+    "corrections_ru": "v2 2025 при first preprint 2024 совпадает; venue не установлен. Не смешивать SSD backbone и bidirectional SSD4Rec.",
+    "verification_depth": "Сверены live title/authors/selected version/year; прочитаны указанные method/experiment фрагменты и ограничения, полной независимой репликации, запуска кода и проверки закрытых логов не было."
+  },
+  {
+    "id": "P049",
+    "bibtex_key": "P049_TiM4Rec",
+    "title": "TiM4Rec: An Efficient Sequential Recommendation Model Based on Time-Aware Structured State Space Duality Model",
+    "source_urls": [
+      "https://arxiv.org/abs/2409.16182v3",
+      "https://arxiv.org/html/2409.16182v3"
+    ],
+    "metadata_status": "confirmed",
+    "publication_status": "arXiv v3 2024; независимый venue record не установлен.",
+    "venue_evidence_url": null,
+    "confidence": "established",
+    "assessment_ru": "§3 содержит time-aware structured masked matrix, §4 — три datasets. Сравнение с SSD4Rec* оговорено самими авторами.",
+    "limitations_ru": "SSD4Rec* — собственный упрощённый baseline без bidirectionality и variable-length features, а не полная SSD4Rec. Closed-loop serving не проверен.",
+    "claim_check_ru": "Поддерживает time-aware SSD и efficiency; не утверждение о превосходстве над полной SSD4Rec либо готовой cache policy.",
+    "corrections_ru": "v3 2024 и авторы совпадают; venue не установлен; фиксировать звёздочку baseline в пересказе.",
+    "verification_depth": "Сверены live title/authors/selected version/year; прочитаны указанные method/experiment фрагменты и ограничения, полной независимой репликации, запуска кода и проверки закрытых логов не было."
+  },
+  {
+    "id": "P050",
+    "bibtex_key": "P050_RecGRELA",
+    "title": "Gated Rotary-Enhanced Linear Attention with Rank Modulation for Long-term Sequential Recommendation",
+    "source_urls": [
+      "https://arxiv.org/abs/2506.13315v4",
+      "https://arxiv.org/html/2506.13315v4"
+    ],
+    "metadata_status": "confirmed",
+    "publication_status": "arXiv v4 2026; независимый venue record не установлен.",
+    "venue_evidence_url": null,
+    "confidence": "provisional",
+    "assessment_ru": "§3 подтверждает RoPE linear attention, causal convolution rank augmentation и gates; §4 содержит four-dataset comparison.",
+    "limitations_ru": "Основной max sequence length=200; baseline hyperparameters взяты из исходных статей, не единый полный tuning. Нет промышленного refresh test.",
+    "claim_check_ru": "Поддерживает конкретную efficient attention architecture. «Adaptive rank» — token-mixing/gating, не адаптация refresh расписания.",
+    "corrections_ru": "v4 24 марта 2026 соответствует текущему названию/шести авторам. Не цитировать метаданные старой v1 как ту же неизменную редакцию.",
+    "verification_depth": "Сверены live title/authors/selected version/year; прочитаны указанные method/experiment фрагменты и ограничения, полной независимой репликации, запуска кода и проверки закрытых логов не было."
+  },
+  {
+    "id": "P051",
+    "bibtex_key": "P051_FuXiLinear",
+    "title": "FuXi-Linear: Unleashing the Power of Linear Attention in Long-term Time-aware Sequential Recommendation",
+    "source_urls": [
+      "https://arxiv.org/abs/2602.23671v1",
+      "https://arxiv.org/html/2602.23671v1"
+    ],
+    "metadata_status": "confirmed",
+    "publication_status": "arXiv v1 2026; независимый venue record не установлен.",
+    "venue_evidence_url": null,
+    "confidence": "established",
+    "assessment_ru": "§4.4/4.6 задают recurrent и chunkwise formulas; §6 отдельно сравнивает full-catalog quality и prefill/decode timing.",
+    "limitations_ru": "До 10x/21x — отдельный benchmark с фиксированными layer/width, batch sizes 64/1024; нет online A/B и cost всего serving stack.",
+    "claim_check_ru": "Поддерживает recurrence/append-state собственной multi-channel architecture и раздельный prefill/decode. Не универсальный вывод из слова linear.",
+    "corrections_ru": "v1 2026/авторы совпадают; venue не установлен. Ограничение registry «проверить причинность» можно уточнить: в тексте уже есть lower-triangular mask/recurrent derivation.",
+    "verification_depth": "Сверены live title/authors/selected version/year; прочитаны указанные method/experiment фрагменты и ограничения, полной независимой репликации, запуска кода и проверки закрытых логов не было."
+  },
+  {
+    "id": "P052",
+    "bibtex_key": "P052_AutoSeqRec",
+    "title": "AutoSeqRec: Autoencoder for Efficient Sequential Recommendation",
+    "source_urls": [
+      "https://arxiv.org/abs/2308.06878v1",
+      "https://arxiv.org/html/2308.06878v1"
+    ],
+    "metadata_status": "confirmed",
+    "publication_status": "CIKM 2023: указано в author manuscript/arXiv; независимая publisher карточка в этой части аудита не проверена.",
+    "venue_evidence_url": null,
+    "confidence": "established",
+    "assessment_ru": "§3.2 прямо сохраняет веса и обновляет user-item R и item-transition T, затем выполняет обычный inference; есть offline evaluation.",
+    "limitations_ru": "Обновление входных матриц и их forward не является O(1) обновлением скрытого состояния; есть catalog/matrix storage cost.",
+    "claim_check_ru": "Поддерживает incremental input-data update с frozen parameters; не recurrent/causal KV reuse.",
+    "corrections_ru": "v1/2023 совпадает; CIKM 2023 сообщён авторами, есть publication PDF; при канонизации проверить издательский DOI 10.1145/3583780.3614788.",
+    "verification_depth": "Сверены live title/authors/selected version/year; прочитаны указанные method/experiment фрагменты и ограничения, полной независимой репликации, запуска кода и проверки закрытых логов не было."
+  },
+  {
+    "id": "P053",
+    "bibtex_key": "P053_SequenceAdaptationviaRL",
+    "title": "Sequence Adaptation via Reinforcement Learning in Recommender Systems",
+    "source_urls": [
+      "https://arxiv.org/abs/2108.01442v1",
+      "https://arxiv.org/html/2108.01442v1"
+    ],
+    "metadata_status": "confirmed",
+    "publication_status": "arXiv v1 2021; manuscript оформлен для RecSys 2021, независимый venue record здесь не проверен.",
+    "venue_evidence_url": null,
+    "confidence": "established",
+    "assessment_ru": "§2 задаёт actor-critic action=sequence length и joint objective; §3 оценивает четыре offline datasets.",
+    "limitations_ru": "Policy меняет входную длину и обучается вместе с recommendation model; нет causal online effect или сравнения refresh budget.",
+    "claim_check_ru": "Поддерживает adaptive sequence length как аналог распределения вычислений. Нельзя приписывать выбор refresh/keep.",
+    "corrections_ru": "v1 2021/два автора совпадают; RecSys 2021 в author manuscript, независимый publication record здесь не установлен.",
+    "verification_depth": "Сверены live title/authors/selected version/year; прочитаны указанные method/experiment фрагменты и ограничения, полной независимой репликации, запуска кода и проверки закрытых логов не было."
+  },
+  {
+    "id": "P054",
+    "bibtex_key": "P054_JODIE",
+    "title": "Predicting Dynamic Embedding Trajectory in Temporal Interaction Networks",
+    "source_urls": [
+      "https://arxiv.org/abs/1908.01207v1",
+      "https://arxiv.org/html/1908.01207v1",
+      "https://api.crossref.org/works/10.1145%2F3292500.3330895"
+    ],
+    "metadata_status": "confirmed",
+    "publication_status": "KDD 2019: издательские Crossref metadata подтверждены.",
+    "venue_evidence_url": "https://api.crossref.org/works/10.1145%2F3292500.3330895",
+    "confidence": "established",
+    "assessment_ru": "§3 описывает coupled user/item recurrent trajectories и projection по времени; §4 использует temporal split и четыре datasets.",
+    "limitations_ru": "Item state тоже эволюционирует, поэтому взаимозависимости отличаются от frozen catalog/vector cache. t-Batch ускоряет train.",
+    "claim_check_ru": "Поддерживает dynamic states и time projection. Не смешивать training speed t-Batch с экономией inference refresh.",
+    "corrections_ru": "v1/2019 совпадает; KDD 2019 подтверждён издательскими DOI-метаданными.",
+    "verification_depth": "Сверены live title/authors/selected version/year; прочитаны указанные method/experiment фрагменты и ограничения, издательские метаданные Crossref использованы из снапшота координатора; полной независимой репликации, запуска кода и проверки закрытых логов не было."
+  },
+  {
+    "id": "P055",
+    "bibtex_key": "P055_SACAISR",
+    "title": "SA-CAISR: Stage-Adaptive and Conflict-Aware Incremental Sequential Recommendation",
+    "source_urls": [
+      "https://arxiv.org/abs/2602.08678v2",
+      "https://arxiv.org/html/2602.08678v2"
+    ],
+    "metadata_status": "confirmed",
+    "publication_status": "arXiv v2 2026; независимый venue record не установлен.",
+    "venue_evidence_url": null,
+    "confidence": "provisional",
+    "assessment_ru": "§3–5 описывают Fisher-guided weight conflicts, alignment и staged incremental training на четырёх datasets.",
+    "limitations_ru": "Экономия памяти/времени относится к retraining без replay buffer; новые веса нарушают fixed-checkpoint условие диплома.",
+    "claim_check_ru": "Допустим как смежный continual-learning prior art; не доказательство user-state freshness policy и не baseline при фиксированных весах.",
+    "corrections_ru": "v2 от 11 февраля 2026 совпадает; venue не установлен. В тексте явно писать «обновляет параметры модели».",
+    "verification_depth": "Сверены live title/authors/selected version/year; прочитаны указанные method/experiment фрагменты и ограничения, полной независимой репликации, запуска кода и проверки закрытых логов не было."
+  },
+  {
+    "id": "P056",
+    "bibtex_key": "P056_RevisitingSASRec",
+    "title": "Revisiting Self-Attentive Sequential Recommendation Beyond the LLM Paradigm",
+    "source_urls": [
+      "https://arxiv.org/abs/2504.09596v2",
+      "https://arxiv.org/html/2504.09596v2",
+      "https://www3.cs.stonybrook.edu/~icdm2026/BlueSkyForum/list.htm"
+    ],
+    "metadata_status": "confirmed",
+    "publication_status": "ICDM 2026 BlueSky/vision: принятие подтверждает официальный schedule, конференция 14 ноября ещё впереди.",
+    "venue_evidence_url": "https://www3.cs.stonybrook.edu/~icdm2026/BlueSkyForum/list.htm",
+    "confidence": "provisional",
+    "assessment_ru": "v2 и официальный ICDM BlueSky schedule подтверждают position/vision paper; текст обсуждает personalization, positions, leakage, tokenization.",
+    "limitations_ru": "Собственной новой модели/benchmark нет. Entropy/«casino-library» — исследовательский аргумент автора, не установленный закон scaling.",
+    "claim_check_ru": "Поддерживает критику предпосылок SASRec и программу исследований; не эмпирическое превосходство сильного SASRec baseline.",
+    "corrections_ru": "Отдельно отметить v1 2025/v2 2026 и BlueSky/vision track. На 1 ноября выступление 14 ноября ещё впереди.",
+    "verification_depth": "Сверены live title/authors/selected version/year; прочитаны указанные method/experiment фрагменты и ограничения, полной независимой репликации, запуска кода и проверки закрытых логов не было."
+  },
+  {
+    "id": "P057",
+    "bibtex_key": "P057_ScalableCrossEntropy",
+    "title": "Scalable Cross-Entropy Loss for Sequential Recommendations with Large Item Catalogs",
+    "source_urls": [
+      "https://arxiv.org/abs/2409.18721v2",
+      "https://arxiv.org/html/2409.18721v2",
+      "https://api.crossref.org/works/10.1145%2F3640457.3688140"
+    ],
+    "metadata_status": "confirmed",
+    "publication_status": "RecSys 2024: издательские Crossref metadata подтверждены.",
+    "venue_evidence_url": "https://api.crossref.org/works/10.1145%2F3640457.3688140",
+    "confidence": "established",
+    "assessment_ru": "§3–4 описывают approximate CE через selected informative outputs/MIPS и проверяют training memory/quality на нескольких datasets.",
+    "limitations_ru": "Approximation меняет обучение; up-to-100 memory factor относится к определённым конфигурациям, не инференсу всех запросов.",
+    "claim_check_ru": "Поддерживает scalable training objective при большом каталоге. Не снижение стоимости refresh уже обученного user-state.",
+    "corrections_ru": "v2/2024 совпадает; RecSys 2024 подтверждён издательскими DOI-метаданными.",
+    "verification_depth": "Сверены live title/authors/selected version/year; прочитаны указанные method/experiment фрагменты и ограничения, издательские метаданные Crossref использованы из снапшота координатора; полной независимой репликации, запуска кода и проверки закрытых логов не было."
+  },
+  {
+    "id": "P058",
+    "bibtex_key": "P058_Yambda5B",
+    "title": "Yambda-5B -- A Large-Scale Multi-modal Dataset for Ranking And Retrieval",
+    "source_urls": [
+      "https://arxiv.org/abs/2505.22238v2",
+      "https://arxiv.org/html/2505.22238v2"
+    ],
+    "metadata_status": "confirmed",
+    "publication_status": "arXiv v2 2025; независимый venue record не установлен.",
+    "venue_evidence_url": null,
+    "confidence": "established",
+    "assessment_ru": "§3–4 подтверждают music events/timestamps/is_organic, user-sampled variants, Global Temporal Split и benchmark; full author names видны в HTML.",
+    "limitations_ru": "Логи одной policy, 1M sampled users; нет propensity, рандомизации и causal policy outcomes. Публикация датасета не гарантирует качество новой модели.",
+    "claim_check_ru": "Поддерживает выбор музыкальных logs и chronological predictive evaluation; organic flag не делает off-policy оценку причинной.",
+    "corrections_ru": "v2/2025 совпадает; 5B округлённое имя (около 4.79B interactions), не ровно пять миллиардов. Развёрнутые имена можно взять из HTML.",
+    "verification_depth": "Сверены live title/authors/selected version/year; прочитаны указанные method/experiment фрагменты и ограничения, полной независимой репликации, запуска кода и проверки закрытых логов не было."
+  },
+  {
+    "id": "P059",
+    "bibtex_key": "P059_DataLeakageStudy",
+    "title": "A Critical Study on Data Leakage in Recommender System Offline Evaluation",
+    "source_urls": [
+      "https://arxiv.org/abs/2010.11060v4",
+      "https://arxiv.org/html/2010.11060v4",
+      "https://api.crossref.org/works/10.1145%2F3569930"
+    ],
+    "metadata_status": "confirmed",
+    "publication_status": "TOIS 2023: издательские Crossref metadata и journal_ref arXiv подтверждены; v4 2022.",
+    "venue_evidence_url": "https://api.crossref.org/works/10.1145%2F3569930",
+    "confidence": "established",
+    "assessment_ru": "§2–4 определяют global/local timeline; эксперименты четырёх моделей на четырёх datasets с full-catalog metrics показывают effect leakage.",
+    "limitations_ru": "Изученный per-user leave-last-one-out не объявляет любую offline оценку бессмысленной; глобальный split не устраняет все confounders.",
+    "claim_check_ru": "Поддерживает общий временной cutoff и доступность item/events на prediction time; не достаточность offline replay для причинных эффектов.",
+    "corrections_ru": "v4 2022 совпадает; опубликованная TOIS статья — 2023, volume41 issue3 article75 (publisher DOI).",
+    "verification_depth": "Сверены live title/authors/selected version/year; прочитаны указанные method/experiment фрагменты и ограничения, издательские метаданные Crossref использованы из снапшота координатора; полной независимой репликации, запуска кода и проверки закрытых логов не было."
+  },
+  {
+    "id": "P060",
+    "bibtex_key": "P060_OnSampledMetrics",
+    "title": "On Sampled Metrics for Item Recommendation",
+    "source_urls": [
+      "https://research.google/pubs/on-sampled-metrics-for-item-recommendation/",
+      "https://api.crossref.org/works/10.1145%2F3394486.3403226",
+      "https://research.google/pubs/on-sampled-metrics-for-item-recommendation/",
+      "https://www.ijcai.org/proceedings/2021/0651.pdf"
+    ],
+    "metadata_status": "confirmed",
+    "publication_status": "KDD 2020: Google Research и издательские Crossref metadata; IJCAI 2021 содержит extended abstract.",
+    "venue_evidence_url": "https://api.crossref.org/works/10.1145%2F3394486.3403226",
+    "confidence": "established",
+    "assessment_ru": "Авторская Google Research карточка и официальный IJCAI extended paper подтверждают inconsistency sampled top-K и correction bias/variance.",
+    "limitations_ru": "Не все метрики и sampling-схемы одинаковы: AUC — важное исключение в разобранном uniform setting; correction увеличивает variance.",
+    "claim_check_ru": "Поддерживает невзаимозаменяемость naive sampled top-K и full-catalog metrics; не абсолютный запрет любой sampling estimation.",
+    "corrections_ru": "KDD 2020 — исходная статья; IJCAI 2021 — extended abstract той же работы, не второй независимый эксперимент.",
+    "verification_depth": "Сверены первичные author/publication metadata и фрагменты PDF/описания экспериментов; издательские метаданные Crossref использованы из снапшота координатора; полной независимой репликации, запуска кода и проверки закрытых логов не было."
+  }
+]

@@ -26,6 +26,8 @@
 
 - [Пропозал](docs/proposal/proposal-2026-10-09.pdf) — текущая постановка; ранние заметки отражают историю обсуждения.
 - [Реестр статей](references/papers.csv) — 84 записи по состоянию на 1 ноября 2026; [JSON](references/papers.json) и [BibTeX](references/references.bib) лежат рядом. Файлы для импорта в Marginalia: [Attention Is All You Need](references/imports/attention-is-all-you-need.bib) (`P081_AttentionIsAllYouNeed`); [YouTube 2016, COLD и RecFlow](references/imports/multi-stage-recommenders.bib) (`P082_YouTubeDNN`, `P083_COLD`, `P084_RecFlow`).
+- [Аудит надёжности всех 84 источников](notes/bibliography-reliability-audit.md) — проверка первичных метаданных, публикационного статуса и допустимых выводов от 1 ноября 2026; без независимой репликации экспериментов.
+- [Черновик семи секций Literature Review](notes/literature-review-draft.md) — краткий текст со ссылками у конкретных механизмов и уточнениями по результатам аудита; [план и карта покрытия](notes/introduction-literature-review-plan.md) лежат рядом.
 - [Обзор литературы](reports/literature/literature-review.html) и [презентация](reports/literature/literature-brief.html) — открыть локально в браузере. Часть обзоров ещё описывает прежнюю подборку из 75 работ; актуальный состав находится в реестре.
 - [Конференции и воркшопы](reports/conferences/conferences-and-workshops-2026.xlsx) — сохранённый снимок, согласно исходному описанию обновлённый 19 октября 2026. Даты не обновляются автоматически.
 - [LaTeX-шаблон](thesis/thesis.tex) — содержит демонстрационные главы и титульный лист. Библиография `thesis/ref.bib` пока является частью шаблона; реестр литературы находится в `references/references.bib`.
