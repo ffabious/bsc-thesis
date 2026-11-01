@@ -36,13 +36,26 @@
 
 Главный файл — `thesis/thesis.tex`. Главы находятся в `thesis/chapters/`, изображения — в `thesis/figs/`. Шаблон можно загрузить в Overleaf целиком папкой `thesis/`; исходная [памятка шаблона](thesis/README.md) сохранена.
 
-При установленном TeX Live/MacTeX с `latexmk` и Biber локальная сборка выполняется из корня репозитория:
+На macOS локальный компилятор и обработчик библиографии устанавливаются через Homebrew:
 
 ```sh
-latexmk -pdf -cd thesis/thesis.tex
+brew install texlive biber
 ```
 
-В первый коммит импортированы существующие исходники; сборка PDF в рамках импорта не выполнялась. Служебные файлы LaTeX, локальные окружения и кэши исключены через `.gitignore`. Исходные PDF, HTML, таблицы и изображения входят в историю.
+### VS Code
+
+1. Открыть корень репозитория в VS Code и установить рекомендованное расширение **LaTeX Workshop** (`James-Yu.latex-workshop`).
+2. Открыть `thesis/thesis.tex` или файл главы из `thesis/chapters/`.
+3. Сохранение `.tex` запускает сборку. Вручную: **LaTeX Workshop: Build LaTeX project**, на macOS — **⌘⌥B**.
+4. Для PDF справа: **LaTeX Workshop: View LaTeX PDF file**, на macOS — **⌘⌥V**. Включён SyncTeX для переходов между исходником и PDF.
+
+Та же сборка из терминала:
+
+```sh
+bash scripts/build-thesis.sh
+```
+
+PDF находится в `build/latex/thesis.pdf`. `latexmk` автоматически запускает Biber и повторяет LaTeX до согласования ссылок и оглавления. Настройки VS Code и скрипт учитывают Homebrew на Apple Silicon и Intel; менять глобальные настройки редактора не требуется. Служебные файлы, PDF сборки, локальные окружения и кэши исключены через `.gitignore`. Исходные PDF, HTML, таблицы и изображения входят в историю.
 
 ## Происхождение материалов
 

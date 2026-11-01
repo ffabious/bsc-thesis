@@ -1,0 +1,28 @@
+{
+  "latex-workshop.latex.autoBuild.run": "onSave",
+  "latex-workshop.latex.outDir": "%WORKSPACE_FOLDER%/build/latex",
+  "latex-workshop.latex.search.rootFiles.include": [
+    "thesis/thesis.tex"
+  ],
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "Build thesis (latexmk + Biber)",
+      "tools": ["thesis-latexmk"]
+    }
+  ],
+  "latex-workshop.latex.tools": [
+    {
+      "name": "thesis-latexmk",
+      "command": "/bin/bash",
+      "args": [
+        "%WORKSPACE_FOLDER%/scripts/build-thesis.sh",
+        "%DOC_EXT%",
+        "%OUTDIR%"
+      ]
+    }
+  ],
+  "latex-workshop.latex.recipe.default": "first",
+  "latex-workshop.view.pdf.viewer": "tab",
+  "latex-workshop.view.pdf.tab.editorGroup": "right",
+  "latex-workshop.synctex.afterBuild.enabled": true
+}

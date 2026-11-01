@@ -5,7 +5,10 @@
 *.swo
 *~
 .idea/
-.vscode/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/tasks.json
 
 # Local environments, secrets and caches
 .env
