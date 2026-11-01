@@ -1,6 +1,6 @@
 # Источники о многостадийных промышленных рекомендательных системах
 
-Проверено 1 ноября 2026. Задача — обосновать предложение во введении о том, что production-рекомендатели используют несколько последовательных стадий отбора и ранжирования. Ниже приведены первичные источники; новые записи в общий библиографический реестр этим документом не добавляются.
+Проверено 1 ноября 2026. Задача — обосновать предложение во введении о том, что production-рекомендатели используют несколько последовательных стадий отбора и ранжирования. YouTube 2016, COLD и RecFlow добавлены в общий библиографический реестр как `P082_YouTubeDNN`, `P083_COLD` и `P084_RecFlow`; [отдельный BibTeX для Marginalia](../references/imports/multi-stage-recommenders.bib) содержит эти три записи.
 
 ## Вывод для введения
 
@@ -38,9 +38,9 @@ Introduction и Figure 1 перечисляют matching → pre-ranking → ran
 
 ## 3. RecFlow: полный шестистадийный recommendation funnel Kuaishou
 
-**Qi Liu et al. RecFlow: An Industrial Full Flow Recommendation Dataset. Препринт 2024, arXiv:2410.20868.**
+**Qi Liu et al. RecFlow: An Industrial Full Flow Recommendation Dataset. ICLR 2025; препринт 2024, arXiv:2410.20868.**
 
-Источники: [полный текст arXiv v1](https://arxiv.org/html/2410.20868v1), [официальный репозиторий авторов](https://github.com/RecFlow-ICLR/RecFlow), [страница финальной публикации OpenReview](https://openreview.net/forum?id=vVHc8bGRns). OpenReview в этом проходе потребовал browser verification; изложение проверено по arXiv, название платформы — также по репозиторию авторов.
+Источники: [полный текст arXiv v1](https://arxiv.org/html/2410.20868v1), [официальный репозиторий авторов](https://github.com/RecFlow-ICLR/RecFlow), [страница финальной публикации OpenReview](https://openreview.net/forum?id=vVHc8bGRns). Прямое открытие OpenReview потребовало browser verification; статус ICLR 2025 подтверждён индексированным текстом [официального PDF](https://openreview.net/pdf?id=vVHc8bGRns). Изложение методов проверено по arXiv, название платформы — также по репозиторию авторов.
 
 Введение:
 

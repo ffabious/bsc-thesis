@@ -5,13 +5,13 @@
   "proposal_title": "A Study of Efficient User Representation Computation and Maintenance in Sequential Recommender Systems",
   "scope": "Yambda-50M; offline-only; cached long-history + recent encoder; refresh policy; KV reuse",
   "counts": {
-    "total": 81,
-    "direct_models_systems": 60,
-    "dataset": 1,
+    "total": 84,
+    "direct_models_systems": 62,
+    "dataset": 2,
     "evaluation": 6,
     "adjacent": 14,
-    "arxiv": 74,
-    "verified_arxiv_html": 69
+    "arxiv": 76,
+    "verified_arxiv_html": 71
   },
   "groups": {
     "HIST": "До трансформеров: динамика, локальные энкодеры и память",
@@ -26,10 +26,11 @@
     "JEV": "Jev: structured decisions, общий контекст и управление памятью",
     "FUSION": "Взаимодействия признаков и объединение представлений",
     "RL": "Политики принятия решений: REINFORCE и off-policy learning",
-    "RETRIEVAL": "Поиск кандидатов и индексы векторов"
+    "RETRIEVAL": "Поиск кандидатов и индексы векторов",
+    "PIPELINE": "Многостадийные промышленные рекомендательные системы"
   },
-  "screening_note": "Это структурированный первый проход: метаданные и abstract проверены по первичным источникам, для 20 работ (9 опорных + 6 Jev + SAGE + DCN-V2 + REINFORCE + Top-K Off-Policy REINFORCE + Sampling-Bias-Corrected Neural Modeling) прочитаны выбранные разделы методов/обслуживания. Полное чтение всех статей и воспроизведение авторских экспериментов не выполнены. Для SAGE проверена буквальная реализация псевдокода на локальном контрпримере. Для TransX и REPAIR доступен первичный индексированный abstract, но полная страница не загрузилась. HNSW добавлена по abstract arXiv v4 и регистрационным метаданным публикации. Для Sampling-Bias-Corrected Neural Modeling проверены Google Research, метаданные публикации и разделы 3–4 авторского PDF. Для Attention Is All You Need проверены метаданные NIPS 2017, arXiv v5 и выбранные разделы архитектуры в тексте из официальных метаданных proceedings (1 ноября 2026).",
-  "year_note": "display_year — год указанной публикации или актуальной версии. preprint_year и version_year хранятся отдельно. LinRec: SIGIR 2023, arXiv 2024; ARGUS: препринт 2025, KDD/v2 2026. DCN-V2: WWW 2021; arXiv/v2 2020. Top-K Off-Policy REINFORCE: WSDM 2019; первый arXiv 2018, выбранная версия v3 2021. Williams REINFORCE: журнальная публикация 1992, arXiv не указан. HNSW: журнальная публикация TPAMI 2020; первый arXiv 2016, выбранная версия v4 2018. Sampling-Bias-Corrected Neural Modeling: RecSys 2019; arXiv-версия не использовалась.",
+  "screening_note": "Это структурированный первый проход: метаданные и abstract проверены по первичным источникам, для 20 работ (9 опорных + 6 Jev + SAGE + DCN-V2 + REINFORCE + Top-K Off-Policy REINFORCE + Sampling-Bias-Corrected Neural Modeling) прочитаны выбранные разделы методов/обслуживания. Полное чтение всех статей и воспроизведение авторских экспериментов не выполнены. Для SAGE проверена буквальная реализация псевдокода на локальном контрпримере. Для TransX и REPAIR доступен первичный индексированный abstract, но полная страница не загрузилась. HNSW добавлена по abstract arXiv v4 и регистрационным метаданным публикации. Для Sampling-Bias-Corrected Neural Modeling проверены Google Research, метаданные публикации и разделы 3–4 авторского PDF. Для Attention Is All You Need проверены метаданные NIPS 2017, arXiv v5 и выбранные разделы архитектуры в тексте из официальных метаданных proceedings (1 ноября 2026). Для YouTube DNN проверены метаданные и abstract Google Research; для COLD и RecFlow — метаданные и выбранные разделы arXiv HTML. Статус RecFlow ICLR 2025 подтверждён индексированным текстом официального PDF OpenReview (1 ноября 2026).",
+  "year_note": "display_year — год указанной публикации или актуальной версии. preprint_year и version_year хранятся отдельно. LinRec: SIGIR 2023, arXiv 2024; ARGUS: препринт 2025, KDD/v2 2026. DCN-V2: WWW 2021; arXiv/v2 2020. Top-K Off-Policy REINFORCE: WSDM 2019; первый arXiv 2018, выбранная версия v3 2021. Williams REINFORCE: журнальная публикация 1992, arXiv не указан. HNSW: журнальная публикация TPAMI 2020; первый arXiv 2016, выбранная версия v4 2018. Sampling-Bias-Corrected Neural Modeling: RecSys 2019; arXiv-версия не использовалась. RecFlow: препринт v1 2024; публикация ICLR 2025. COLD: workshop DLP-KDD 2020, выбранная arXiv-версия v2 2020.",
   "papers": [
     {
       "key": "FPMC",
@@ -3759,6 +3760,184 @@
         "https://papers.nips.cc/paper_files/paper/2017/hash/3f5ee243547dee91fbd053c1c4a845aa-Abstract.html",
         "https://papers.nips.cc/paper_files/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Metadata.json",
         "https://arxiv.org/abs/1706.03762v5"
+      ]
+    },
+    {
+      "group": "PIPELINE",
+      "group_name": "Многостадийные промышленные рекомендательные системы",
+      "priority": "P1",
+      "priority_meaning": "Читать сначала",
+      "relevance_tier": "direct",
+      "experiment_is_proposal": false,
+      "reading_status": "screened_not_reproduced",
+      "checked_date": "2026-11-01",
+      "experiment_axis": "multi-stage recommendation / candidate generation / ranking",
+      "id": "P082",
+      "key": "Covington2016YouTubeDNN",
+      "short_name": "YouTube DNN",
+      "title": "Deep Neural Networks for YouTube Recommendations",
+      "authors": [
+        "Paul Covington",
+        "Jay Adams",
+        "Emre Sargin"
+      ],
+      "display_year": 2016,
+      "preprint_year": null,
+      "version_year": null,
+      "bibliography_year": 2016,
+      "method": "Two-stage recommendation / deep candidate generation / deep ranking",
+      "summary": "Описывает промышленный рекомендатель YouTube с отдельными нейросетями генерации кандидатов и ранжирования. Первичный источник для обоснования многостадийной архитектуры во введении.",
+      "experiment": "Обосновывает оценку ранкера на общем наборе кандидатов и различие между качеством отдельной стадии и всего pipeline.",
+      "limitation": "Описание опубликованной системы YouTube 2016 года; не устанавливает текущее устройство сервиса и не исследует refresh policies пользовательских представлений.",
+      "arxiv_id": null,
+      "arxiv_version": null,
+      "abstract_url": "https://research.google/pubs/deep-neural-networks-for-youtube-recommendations/",
+      "html_url": null,
+      "preferred_url": "https://research.google/pubs/deep-neural-networks-for-youtube-recommendations/",
+      "pdf_url": "https://research.google.com/pubs/archive/45530.pdf",
+      "url_status": "primary_source_fetched",
+      "venue_as_reported": "Proceedings of the 10th ACM Conference on Recommender Systems (RecSys 2016)",
+      "doi": null,
+      "review_depth": "abstract_and_metadata",
+      "tags": [
+        "PIPELINE",
+        "YouTube",
+        "candidate generation",
+        "ranking"
+      ],
+      "source_sections": [
+        "Abstract"
+      ],
+      "source_urls": [
+        "https://research.google/pubs/deep-neural-networks-for-youtube-recommendations/"
+      ]
+    },
+    {
+      "group": "PIPELINE",
+      "group_name": "Многостадийные промышленные рекомендательные системы",
+      "priority": "P1",
+      "priority_meaning": "Читать сначала",
+      "relevance_tier": "direct",
+      "experiment_is_proposal": false,
+      "reading_status": "screened_not_reproduced",
+      "checked_date": "2026-11-01",
+      "experiment_axis": "multi-stage recommendation / candidate generation / ranking",
+      "id": "P083",
+      "key": "2007.16122",
+      "short_name": "COLD",
+      "title": "COLD: Towards the Next Generation of Pre-Ranking System",
+      "authors": [
+        "Zhe Wang",
+        "Liqin Zhao",
+        "Biye Jiang",
+        "Guorui Zhou",
+        "Xiaoqiang Zhu",
+        "Kun Gai"
+      ],
+      "display_year": 2020,
+      "preprint_year": 2020,
+      "version_year": 2020,
+      "bibliography_year": 2020,
+      "method": "Cost-aware deep pre-ranking / multi-stage cascade / algorithm-system co-design",
+      "summary": "Описывает каскад matching, pre-ranking, ranking и reranking и совместную оптимизацию качества и стоимости pre-ranking в рекламной системе Alibaba. Прямо указывает на распространённость многостадийных промышленных систем.",
+      "experiment": "Обосновывает мотивацию многостадийного ранжирования и необходимость учитывать вычислительную стоимость модели.",
+      "limitation": "Конкретный deployment относится к display advertising, а не музыкальной next-item рекомендации. Публикация в workshop DLP-KDD 2020, не в основной программе KDD.",
+      "arxiv_id": "2007.16122",
+      "arxiv_version": "v2",
+      "abstract_url": "https://arxiv.org/abs/2007.16122v2",
+      "html_url": "https://arxiv.org/html/2007.16122v2",
+      "preferred_url": "https://arxiv.org/html/2007.16122v2",
+      "url_status": "html_fetched",
+      "venue_as_reported": "2nd Workshop on Deep Learning Practice for High-Dimensional Sparse Data with KDD 2020 (DLP-KDD 2020)",
+      "doi": "10.48550/arXiv.2007.16122",
+      "review_depth": "selected_method_sections",
+      "tags": [
+        "PIPELINE",
+        "Alibaba",
+        "pre-ranking",
+        "cascade",
+        "compute cost"
+      ],
+      "source_sections": [
+        "Abstract",
+        "1 Introduction",
+        "Figure 1"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2007.16122v2",
+        "https://arxiv.org/html/2007.16122v2"
+      ]
+    },
+    {
+      "group": "PIPELINE",
+      "group_name": "Многостадийные промышленные рекомендательные системы",
+      "priority": "P1",
+      "priority_meaning": "Читать сначала",
+      "relevance_tier": "direct",
+      "experiment_is_proposal": false,
+      "reading_status": "screened_not_reproduced",
+      "checked_date": "2026-11-01",
+      "experiment_axis": "multi-stage recommendation / candidate generation / ranking",
+      "id": "P084",
+      "key": "2410.20868",
+      "short_name": "RecFlow",
+      "title": "RecFlow: An Industrial Full Flow Recommendation Dataset",
+      "authors": [
+        "Qi Liu",
+        "Kai Zheng",
+        "Rui Huang",
+        "Wuchao Li",
+        "Kuo Cai",
+        "Yuan Chai",
+        "Yanan Niu",
+        "Yiqun Hui",
+        "Bing Han",
+        "Na Mou",
+        "Hongning Wang",
+        "Wentian Bao",
+        "Yunen Yu",
+        "Guorui Zhou",
+        "Han Li",
+        "Yang Song",
+        "Defu Lian",
+        "Kun Gai"
+      ],
+      "display_year": 2025,
+      "preprint_year": 2024,
+      "version_year": 2024,
+      "bibliography_year": 2025,
+      "method": "Full-flow dataset / six-stage recommendation funnel / stage-specific samples",
+      "summary": "Представляет данные промышленного шестистадийного рекомендателя Kuaishou: retrieval, pre-ranking, coarse ranking, ranking, re-ranking и edge ranking. Включает показы и примеры объектов, отфильтрованных на разных стадиях.",
+      "experiment": "Источник для описания промышленного funnel и разграничения качества ранкера на фиксированных кандидатах и качества всей системы. Основным датасетом диплома остаётся Yambda-50M.",
+      "limitation": "Данные коротких видео Kuaishou; не дают прямого ответа о свежести музыкальных пользовательских представлений. Разделы методов проверены по препринту v1 2024, статус конференции — по индексированному официальному PDF ICLR 2025.",
+      "arxiv_id": "2410.20868",
+      "arxiv_version": "v1",
+      "abstract_url": "https://arxiv.org/abs/2410.20868v1",
+      "html_url": "https://arxiv.org/html/2410.20868v1",
+      "preferred_url": "https://openreview.net/forum?id=vVHc8bGRns",
+      "pdf_url": "https://openreview.net/pdf?id=vVHc8bGRns",
+      "url_status": "html_fetched",
+      "venue_as_reported": "The Thirteenth International Conference on Learning Representations (ICLR 2025)",
+      "doi": "10.48550/arXiv.2410.20868",
+      "review_depth": "selected_method_sections",
+      "tags": [
+        "PIPELINE",
+        "RecFlow",
+        "Kuaishou",
+        "dataset",
+        "retrieval",
+        "ranking"
+      ],
+      "source_sections": [
+        "Abstract",
+        "1 Introduction",
+        "2.1 Data Collection"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2410.20868v1",
+        "https://arxiv.org/html/2410.20868v1",
+        "https://openreview.net/pdf?id=vVHc8bGRns",
+        "https://github.com/RecFlow-ICLR/RecFlow"
       ]
     }
   ]

@@ -25,7 +25,7 @@
 ## С чего начать
 
 - [Пропозал](docs/proposal/proposal-2026-10-09.pdf) — текущая постановка; ранние заметки отражают историю обсуждения.
-- [Реестр статей](references/papers.csv) — 81 запись по состоянию на 1 ноября 2026; [JSON](references/papers.json) и [BibTeX](references/references.bib) лежат рядом. [Attention Is All You Need для импорта в Marginalia](references/imports/attention-is-all-you-need.bib) — отдельный BibTeX-файл с записью `P081_AttentionIsAllYouNeed`.
+- [Реестр статей](references/papers.csv) — 84 записи по состоянию на 1 ноября 2026; [JSON](references/papers.json) и [BibTeX](references/references.bib) лежат рядом. Файлы для импорта в Marginalia: [Attention Is All You Need](references/imports/attention-is-all-you-need.bib) (`P081_AttentionIsAllYouNeed`); [YouTube 2016, COLD и RecFlow](references/imports/multi-stage-recommenders.bib) (`P082_YouTubeDNN`, `P083_COLD`, `P084_RecFlow`).
 - [Обзор литературы](reports/literature/literature-review.html) и [презентация](reports/literature/literature-brief.html) — открыть локально в браузере. Часть обзоров ещё описывает прежнюю подборку из 75 работ; актуальный состав находится в реестре.
 - [Конференции и воркшопы](reports/conferences/conferences-and-workshops-2026.xlsx) — сохранённый снимок, согласно исходному описанию обновлённый 19 октября 2026. Даты не обновляются автоматически.
 - [LaTeX-шаблон](thesis/thesis.tex) — содержит демонстрационные главы и титульный лист. Библиография `thesis/ref.bib` пока является частью шаблона; реестр литературы находится в `references/references.bib`.
