@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
-  "as_of": "2026-10-20",
+  "as_of": "2026-11-01",
   "proposal_date": "2026-10-09",
   "proposal_title": "A Study of Efficient User Representation Computation and Maintenance in Sequential Recommender Systems",
   "scope": "Yambda-50M; offline-only; cached long-history + recent encoder; refresh policy; KV reuse",
   "counts": {
-    "total": 80,
+    "total": 81,
     "direct_models_systems": 60,
     "dataset": 1,
     "evaluation": 6,
-    "adjacent": 13,
-    "arxiv": 73,
+    "adjacent": 14,
+    "arxiv": 74,
     "verified_arxiv_html": 69
   },
   "groups": {
@@ -28,7 +28,7 @@
     "RL": "Политики принятия решений: REINFORCE и off-policy learning",
     "RETRIEVAL": "Поиск кандидатов и индексы векторов"
   },
-  "screening_note": "Это структурированный первый проход: метаданные и abstract проверены по первичным источникам, для 20 работ (9 опорных + 6 Jev + SAGE + DCN-V2 + REINFORCE + Top-K Off-Policy REINFORCE + Sampling-Bias-Corrected Neural Modeling) прочитаны выбранные разделы методов/обслуживания. Полное чтение всех статей и воспроизведение авторских экспериментов не выполнены. Для SAGE проверена буквальная реализация псевдокода на локальном контрпримере. Для TransX и REPAIR доступен первичный индексированный abstract, но полная страница не загрузилась. HNSW добавлена по abstract arXiv v4 и регистрационным метаданным публикации. Для Sampling-Bias-Corrected Neural Modeling проверены Google Research, метаданные публикации и разделы 3–4 авторского PDF.",
+  "screening_note": "Это структурированный первый проход: метаданные и abstract проверены по первичным источникам, для 20 работ (9 опорных + 6 Jev + SAGE + DCN-V2 + REINFORCE + Top-K Off-Policy REINFORCE + Sampling-Bias-Corrected Neural Modeling) прочитаны выбранные разделы методов/обслуживания. Полное чтение всех статей и воспроизведение авторских экспериментов не выполнены. Для SAGE проверена буквальная реализация псевдокода на локальном контрпримере. Для TransX и REPAIR доступен первичный индексированный abstract, но полная страница не загрузилась. HNSW добавлена по abstract arXiv v4 и регистрационным метаданным публикации. Для Sampling-Bias-Corrected Neural Modeling проверены Google Research, метаданные публикации и разделы 3–4 авторского PDF. Для Attention Is All You Need проверены метаданные NIPS 2017, arXiv v5 и выбранные разделы архитектуры в тексте из официальных метаданных proceedings (1 ноября 2026).",
   "year_note": "display_year — год указанной публикации или актуальной версии. preprint_year и version_year хранятся отдельно. LinRec: SIGIR 2023, arXiv 2024; ARGUS: препринт 2025, KDD/v2 2026. DCN-V2: WWW 2021; arXiv/v2 2020. Top-K Off-Policy REINFORCE: WSDM 2019; первый arXiv 2018, выбранная версия v3 2021. Williams REINFORCE: журнальная публикация 1992, arXiv не указан. HNSW: журнальная публикация TPAMI 2020; первый arXiv 2016, выбранная версия v4 2018. Sampling-Bias-Corrected Neural Modeling: RecSys 2019; arXiv-версия не использовалась.",
   "papers": [
     {
@@ -3698,6 +3698,67 @@
         "https://research.google/pubs/sampling-bias-corrected-neural-modeling-for-large-corpus-item-recommendations/",
         "https://storage.googleapis.com/gweb-research2023-media/pubtools/pdf/6417b9a68bd77033d65e431bdba855563066dc8c.pdf",
         "https://doi.org/10.1145/3298689.3346996"
+      ]
+    },
+    {
+      "id": "P081",
+      "key": "1706.03762",
+      "short_name": "Transformer / Attention Is All You Need",
+      "title": "Attention Is All You Need",
+      "authors": [
+        "Ashish Vaswani",
+        "Noam Shazeer",
+        "Niki Parmar",
+        "Jakob Uszkoreit",
+        "Llion Jones",
+        "Aidan N. Gomez",
+        "Łukasz Kaiser",
+        "Illia Polosukhin"
+      ],
+      "group": "TRANSFER",
+      "group_name": "Смежные вычислительные методы: гипотезы переноса",
+      "display_year": 2017,
+      "preprint_year": 2017,
+      "version_year": 2017,
+      "bibliography_year": 2017,
+      "method": "Transformer / scaled dot-product attention / multi-head self-attention / positional encoding",
+      "priority": "P1",
+      "priority_meaning": "Читать сначала",
+      "relevance_tier": "adjacent",
+      "summary": "Первичная работа об архитектуре Transformer: scaled dot-product и multi-head attention, причинная маска декодера и позиционные кодировки. Источник для описания архитектурной основы SASRec во введении.",
+      "experiment": "Использовать как архитектурную основу обсуждения causal attention и позиционных входов. Условия корректного KV reuse проверять отдельно для конкретной модели и построения истории.",
+      "limitation": "Работа о машинном переводе; не исследует музыкальные рекомендации, freshness user embeddings или refresh policies. Self-attention обсуждается с указанием предшествующих работ; статья не является первым применением attention вообще.",
+      "experiment_is_proposal": true,
+      "reading_status": "screened_not_reproduced",
+      "checked_date": "2026-11-01",
+      "review_depth": "selected_method_sections",
+      "arxiv_id": "1706.03762",
+      "arxiv_version": "v5",
+      "abstract_url": "https://arxiv.org/abs/1706.03762v5",
+      "html_url": null,
+      "preferred_url": "https://papers.nips.cc/paper_files/paper/2017/hash/3f5ee243547dee91fbd053c1c4a845aa-Abstract.html",
+      "url_status": "primary_metadata_and_selected_sections_fetched",
+      "venue_as_reported": "Advances in Neural Information Processing Systems 30 (NIPS 2017), 5998–6008",
+      "doi": "10.48550/arXiv.1706.03762",
+      "experiment_axis": "architecture background / causal attention / positional encoding",
+      "tags": [
+        "TRANSFER",
+        "Transformer",
+        "self-attention",
+        "multi-head attention",
+        "causal mask",
+        "positional encoding"
+      ],
+      "source_sections": [
+        "Abstract",
+        "2 Background",
+        "3.2 Attention",
+        "3.5 Positional Encoding"
+      ],
+      "source_urls": [
+        "https://papers.nips.cc/paper_files/paper/2017/hash/3f5ee243547dee91fbd053c1c4a845aa-Abstract.html",
+        "https://papers.nips.cc/paper_files/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Metadata.json",
+        "https://arxiv.org/abs/1706.03762v5"
       ]
     }
   ]
