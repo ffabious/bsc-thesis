@@ -75,7 +75,22 @@ python3 -m venv .venv
 .venv/bin/python -m unittest discover -s tests -v
 ```
 
-Первый запуск загружает закреплённый официальный файл Yambda-50M и проверяет SHA-256. Подготовка выполняется локально, по умолчанию в 4 потока с лимитом памяти DuckDB 4 GB. Существующие результаты не перезаписываются: для повторного запуска задайте новый `--output`. Разделение и словари сохраняются в `data/processed/`, параметры и определения полей описаны в [плане](notes/experiment-plan.md). Данные и `.venv` не публикуются. Обучение модели — следующий этап.
+Первый запуск загружает закреплённый официальный файл Yambda-50M и проверяет SHA-256. Подготовка выполняется локально, по умолчанию в 4 потока с лимитом памяти DuckDB 4 GB. Существующие результаты не перезаписываются: для повторного запуска задайте новый `--output`. Разделение и словари сохраняются в `data/processed/`, параметры и определения полей описаны в [плане](notes/experiment-plan.md). Данные и `.venv` не публикуются. Локальный пилот обучения описан ниже.
+
+## SASRec на пилоте
+
+Локальные CPU/MPS training-step benchmarks, обучение и полная оценка каталога (Python 3.12+):
+
+```sh
+.venv/bin/python -m pip install -r requirements-training.txt
+PYTORCH_ENABLE_MPS_FALLBACK=0 .venv/bin/python scripts/run_sasrec.py benchmark --device cpu --output data/runs/sasrec-pilot/benchmark-cpu.json
+PYTORCH_ENABLE_MPS_FALLBACK=0 .venv/bin/python scripts/run_sasrec.py benchmark --device mps --output data/runs/sasrec-pilot/benchmark-mps.json
+PYTORCH_ENABLE_MPS_FALLBACK=0 .venv/bin/python scripts/run_sasrec.py train --device mps --output data/runs/sasrec-pilot/train-mps
+PYTORCH_ENABLE_MPS_FALLBACK=0 .venv/bin/python scripts/run_sasrec.py evaluate --device cpu --checkpoint data/runs/sasrec-pilot/train-mps/best.pt --output data/runs/sasrec-pilot/evaluation-cpu.json
+PYTORCH_ENABLE_MPS_FALLBACK=0 .venv/bin/python scripts/run_sasrec.py evaluate --device mps --checkpoint data/runs/sasrec-pilot/train-mps/best.pt --output data/runs/sasrec-pilot/evaluation-mps.json
+```
+
+Настройки находятся в [sasrec-pilot.json](configs/experiments/sasrec-pilot.json), результаты — в [отчёте пилота](reports/experiments/sasrec-pilot.md). Checkpoint и предсказания остаются в локальном `data/`. Существующий training output не перезаписывается. Для сравнения устройств используются одинаковые batch/FP32-настройки и один выбранный checkpoint; MPS fallback на CPU запрещён.
 
 ## Происхождение материалов
 

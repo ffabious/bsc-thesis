@@ -1,0 +1,5 @@
+{
+  "scripts/sasrec.py": "a23fb1babf0520909950eddcbc99a4fe00ce4f40d475fadbadec4fbadfee0fc5",
+  "scripts/run_sasrec.py": "ecf9bb1c93731cf504df689d67635b1b37f7c9bc8191628f8d3b44ef0673edb7",
+  "configs/experiments/sasrec-pilot.json": "156dd9ae0f38ff8f710bcd0ad247eaa8704f6239c614081c993ebf6cca25feb6"
+}

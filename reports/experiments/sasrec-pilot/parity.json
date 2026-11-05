@@ -1,0 +1,8 @@
+{
+  "examples": 46794,
+  "different_ranks": 147,
+  "max_absolute_rank_difference": 1,
+  "identical_rank_fraction": 0.9968585716117451,
+  "same_ndcg10_membership": true,
+  "same_recall100_membership": true
+}

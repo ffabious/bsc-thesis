@@ -1,0 +1,66 @@
+{
+  "checkpoint_sha256": "ead576c9209c0ab783eafc5e5edf2afbf6743694a5d491bc719a9126e28130e5",
+  "checkpoint_epoch": 4,
+  "examples": 46794,
+  "users": 244,
+  "catalog_items": 119645,
+  "metrics": {
+    "ndcg@10": 0.019312345695478794,
+    "recall@100": 0.17252211822028465
+  },
+  "cluster_bootstrap_95ci": {
+    "ndcg@10": [
+      0.015049565536064886,
+      0.024956865812251254
+    ],
+    "recall@100": [
+      0.1487459092237118,
+      0.19994469094211506
+    ]
+  },
+  "mostpop_metrics": {
+    "ndcg@10": 0.0023746059579120987,
+    "recall@100": 0.03763302987562508
+  },
+  "mostpop_95ci": {
+    "ndcg@10": [
+      0.0017157670748801314,
+      0.003175411509042416
+    ],
+    "recall@100": [
+      0.030087210529316042,
+      0.04685822649353707
+    ]
+  },
+  "evaluation_seconds": 4.7761923330836,
+  "examples_per_second": 9797.34414710827,
+  "process_peak_rss_mib": 662.15625,
+  "mps_tensor_mib": 29.70751953125,
+  "mps_driver_mib": 1042.703125,
+  "config": {
+    "data": "data/processed/yambda50m-pilot",
+    "seed": 42,
+    "threads": 4,
+    "length": 50,
+    "dim": 64,
+    "heads": 2,
+    "blocks": 2,
+    "dropout": 0.2,
+    "batch_size": 256,
+    "negatives": 16,
+    "learning_rate": 0.001,
+    "epochs": 5,
+    "patience": 2,
+    "eval_batch_size": 256,
+    "benchmark_warmup": 10,
+    "benchmark_steps": 50,
+    "benchmark_repeats": 3
+  },
+  "device": "mps",
+  "torch": "2.15.0",
+  "numpy": "2.5.4",
+  "python": "3.14.8",
+  "macos": "26.6.2",
+  "mps_available": true,
+  "data_manifest_sha256": "8d5408941ec8383819a88a0937587968bd284d095c9adec08201876e3d3e1784"
+}

@@ -1,0 +1,15 @@
+{
+  "training_speedup_mps_over_cpu": 2.742705853703578,
+  "evaluation_speedup_mps_over_cpu": 1.39361511618249,
+  "best_epoch": 4,
+  "training_seconds": 355.159062624909,
+  "test_metrics": {
+    "ndcg@10": 0.019312345695478794,
+    "recall@100": 0.17252211822028465
+  },
+  "mostpop_metrics": {
+    "ndcg@10": 0.0023746059579120987,
+    "recall@100": 0.03763302987562508
+  },
+  "positive_test_catalog_coverage": 0.8032063715477437
+}

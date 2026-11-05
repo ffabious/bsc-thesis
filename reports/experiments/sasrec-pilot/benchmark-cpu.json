@@ -1,0 +1,45 @@
+{
+  "train_step_ms": [
+    56.16926250047982,
+    55.964686684310436,
+    54.88877084106207
+  ],
+  "train_examples_per_second": 4574.3131100521105,
+  "parameters": 7711168,
+  "process_peak_rss_mib": 1123.703125,
+  "memory_after_forward": {
+    "process_peak_rss_mib": 1123.71875
+  },
+  "memory_after_backward": {
+    "process_peak_rss_mib": 1123.71875
+  },
+  "memory_after_update": {
+    "process_peak_rss_mib": 1123.71875
+  },
+  "config": {
+    "data": "data/processed/yambda50m-pilot",
+    "seed": 42,
+    "threads": 4,
+    "length": 50,
+    "dim": 64,
+    "heads": 2,
+    "blocks": 2,
+    "dropout": 0.2,
+    "batch_size": 256,
+    "negatives": 16,
+    "learning_rate": 0.001,
+    "epochs": 5,
+    "patience": 2,
+    "eval_batch_size": 256,
+    "benchmark_warmup": 10,
+    "benchmark_steps": 50,
+    "benchmark_repeats": 3
+  },
+  "device": "cpu",
+  "torch": "2.15.0",
+  "numpy": "2.5.4",
+  "python": "3.14.8",
+  "macos": "26.6.2",
+  "mps_available": true,
+  "data_manifest_sha256": "8d5408941ec8383819a88a0937587968bd284d095c9adec08201876e3d3e1784"
+}
