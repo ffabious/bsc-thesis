@@ -1,0 +1,9 @@
+{
+  "repo": "yandex/yambda",
+  "revision": "dd6f3a19eef5866e346c3270e098baa641a44948",
+  "path": "embeddings.parquet",
+  "bytes": 13814230943,
+  "sha256": "c8959a584257473ab9f5dab7e88b05ea3d03b4daf7c16e9a617e8e216d811c83",
+  "column": "normalized_embed",
+  "dimension": 128
+}

@@ -92,6 +92,19 @@ class PrepareYambdaTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             periods(0, DAY, self.config["holdout_days"])
 
+    def test_closed_audio_catalog_filters_all_parts_and_rebuilds_history(self):
+        audio = self.root / "audio-items.parquet"
+        self.db.sql("SELECT unnest([10, 20, 30, 99])::UINTEGER AS item_id").write_parquet(str(audio))
+        output, manifest = self.run_prepare(audio_items=audio)
+        # Item 11 lacks audio; 99 has audio but first appears after train, so both are excluded.
+        events = self.db.read_parquet([str(p) for p in (output / 'events').glob('*.parquet')])
+        self.assertEqual(events.filter("item_id IN (11, 99)").count("*").fetchall()[0][0], 0)
+        self.assertEqual(events.filter("item_idx < 2").count("*").fetchall()[0][0], 0)
+        self.assertEqual(events.filter("uid = 1 AND timestamp = 172800").project("history_size").fetchall(), [(4,)])
+        self.assertTrue(manifest["closed_audio_catalog"])
+        self.assertEqual(manifest["candidate_items"], 3)
+        self.assertEqual(manifest["excluded_listens"], 3)
+
 
 if __name__ == "__main__":
     unittest.main()

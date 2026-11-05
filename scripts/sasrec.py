@@ -29,10 +29,15 @@ class Block(nn.Module):
 
 
 class SASRec(nn.Module):
-    def __init__(self, items, length=50, dim=64, heads=2, blocks=2, dropout=0.2):
+    def __init__(self, items, length=50, dim=64, heads=2, blocks=2, dropout=0.2,
+                 item_dim=None, freeze_items=False):
         super().__init__()
         self.length = length
-        self.item = nn.Embedding(items + 2, dim, padding_idx=0)
+        item_dim = item_dim or dim
+        self.item = nn.Embedding(items + 2, item_dim, padding_idx=0)
+        self.item.weight.requires_grad_(not freeze_items)
+        self.input_projection = nn.Linear(item_dim, dim, bias=False) if item_dim != dim else nn.Identity()
+        self.output_projection = nn.Linear(dim, item_dim, bias=False) if item_dim != dim else nn.Identity()
         self.position = nn.Embedding(length, dim)
         self.dropout = nn.Dropout(dropout)
         self.blocks = nn.ModuleList([Block(dim, heads, dropout) for _ in range(blocks)])
@@ -49,14 +54,14 @@ class SASRec(nn.Module):
         # Padding queries see themselves, avoiding all-masked softmax rows and NaN gradients.
         allowed = allowed | (~valid[:, :, None] & torch.eye(
             self.length, device=sequence.device, dtype=torch.bool)[None])
-        x = self.item(sequence) * math.sqrt(self.item.embedding_dim)
+        x = self.input_projection(self.item(sequence)) * math.sqrt(self.position.embedding_dim)
         x = self.dropout(x + self.position.weight[None]) * valid[:, :, None]
         for block in self.blocks:
             x = block(x, allowed) * valid[:, :, None]
         return self.norm(x) * valid[:, :, None]
 
     def forward(self, sequence):
-        return self.encode(sequence)[:, -1]
+        return self.output_projection(self.encode(sequence)[:, -1])
 
 
 def examples(data, split, length):

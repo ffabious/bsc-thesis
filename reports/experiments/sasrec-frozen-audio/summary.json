@@ -1,0 +1,27 @@
+{
+  "data": "data/processed/yambda50m-pilot-audio",
+  "catalog_items": 114125,
+  "test_targets": 45711,
+  "control": {
+    "trainable_parameters": 7357888,
+    "best_epoch": 5,
+    "metrics": {
+      "ndcg@10": 0.023582249922931647,
+      "recall@100": 0.18995427796372863
+    },
+    "training_seconds": 341.3619289579801
+  },
+  "frozen_audio": {
+    "total_parameters": 14678400,
+    "trainable_parameters": 70144,
+    "best_epoch": 2,
+    "metrics": {
+      "ndcg@10": 0.005185903809524515,
+      "recall@100": 0.0714488853886373
+    },
+    "training_seconds": 148.07151308376342
+  },
+  "relative_ndcg_change": -0.780092916219937,
+  "relative_recall_change": -0.6238627202579754,
+  "pretrained_vectors_unchanged": true
+}

@@ -54,7 +54,7 @@ def periods(start, last, holdouts):
     return result
 
 
-def prepare(source, output, config, user_limit=0, threads=4, memory="4GB"):
+def prepare(source, output, config, user_limit=0, threads=4, memory="4GB", audio_items=None):
     if output.exists():
         raise FileExistsError(f"Choose a new output directory: {output}")
     started = time.perf_counter()
@@ -106,22 +106,36 @@ def prepare(source, output, config, user_limit=0, threads=4, memory="4GB"):
         db.execute("CREATE TABLE users(uid UINTEGER, user_idx UINTEGER, train_events UBIGINT)")
         db.executemany("INSERT INTO users VALUES (?, ?, ?)",
                        [(uid, index, count) for index, (uid, count) in enumerate(selected)])
+        audio_filter = ""
+        if audio_items:
+            db.read_parquet(str(audio_items)).create_view("audio_items")
+            audio_filter = "AND item_id IN (SELECT item_id FROM audio_items)"
         db.execute("""
             CREATE TABLE items AS SELECT item_id,
                 (row_number() OVER (ORDER BY item_id) + 1)::UINTEGER AS item_idx,
                 count(*) AS train_events, min(timestamp) AS first_timestamp
-            FROM listens JOIN users USING (uid) WHERE timestamp < ? GROUP BY item_id
-        """, [train_end])
+            FROM listens JOIN users USING (uid) WHERE timestamp < ?
+        """ + audio_filter + " GROUP BY item_id", [train_end])
+        if audio_items:
+            db.execute("ALTER TABLE users ADD COLUMN selection_train_events UBIGINT")
+            db.execute("UPDATE users SET selection_train_events = train_events")
+            db.execute("""UPDATE users SET train_events = (
+                SELECT count(*) FROM listens l JOIN items USING (item_id)
+                WHERE l.uid = users.uid AND timestamp < ?)""", [train_end])
+            if db.execute("SELECT count(*) FROM users WHERE train_events = 0").fetchall()[0][0]:
+                raise ValueError("Audio filtering left a selected user without train history")
         db.execute("CREATE TABLE periods(split VARCHAR, start_ts BIGINT, end_ts BIGINT)")
         db.executemany("INSERT INTO periods VALUES (?, ?, ?)", windows)
         print(f"Preparing {len(selected)} users; train ends at relative second {train_end}", flush=True)
         # RANGE excludes the whole tied timestamp group, unlike a ROWS-based counter.
+        item_join = "JOIN" if audio_items else "LEFT JOIN"
         db.execute("""
             CREATE TABLE prepared AS SELECT l.*, u.user_idx,
                 coalesce(i.item_idx, 1)::UINTEGER AS item_idx, p.split,
                 count(*) OVER (PARTITION BY l.uid ORDER BY l.timestamp
                     RANGE BETWEEN UNBOUNDED PRECEDING AND 1 PRECEDING) AS history_size
-            FROM listens l JOIN users u USING (uid) LEFT JOIN items i USING (item_id)
+            FROM listens l JOIN users u USING (uid)
+        """ + item_join + """ items i USING (item_id)
             JOIN periods p ON l.timestamp >= p.start_ts AND l.timestamp < p.end_ts
         """)
         db.execute(f"""
@@ -149,7 +163,8 @@ def prepare(source, output, config, user_limit=0, threads=4, memory="4GB"):
             SELECT quantile_cont(n, [0.5, 0.9, 0.99]) AS user_history_quantiles
             FROM (SELECT uid, count(*) AS n FROM events GROUP BY uid)
         """)[0]
-        expected = db.execute("SELECT count(*) FROM listens JOIN users USING (uid)").fetchall()[0][0]
+        expected = db.execute("SELECT count(*) FROM listens JOIN users USING (uid)" +
+                              (" JOIN items USING (item_id)" if audio_items else "")).fetchall()[0][0]
         if sum(row["events"] for row in summary) != expected:
             raise ValueError("Split row counts do not cover all selected listening events")
         (output / "events").mkdir()
@@ -175,6 +190,10 @@ def prepare(source, output, config, user_limit=0, threads=4, memory="4GB"):
             "python": platform.python_version(), "duckdb": duckdb.__version__,
             "machine": platform.machine(), "threads": threads, "memory_limit": memory,
             "requested_users": user_limit, "selected_users": len(selected),
+            "closed_audio_catalog": bool(audio_items),
+            "audio_items": str(audio_items) if audio_items else None,
+            "audio_items_sha256": sha256(audio_items) if audio_items else None,
+            "excluded_listens": db.execute("SELECT count(*) FROM listens JOIN users USING (uid)").fetchall()[0][0] - expected,
             "train_eligible_users": len(candidates),
             "candidate_items": db.execute("SELECT count(*) FROM items").fetchall()[0][0],
             "periods": [{"split": n, "start": a, "end": b} for n, a, b in windows],
@@ -200,6 +219,7 @@ def main():
     parser.add_argument("--output", type=Path, default=ROOT / "data/processed/yambda50m")
     parser.add_argument("--threads", type=int, default=4)
     parser.add_argument("--memory", default="4GB")
+    parser.add_argument("--audio-items", type=Path, help="Keep only train-known items with published audio vectors")
     args = parser.parse_args()
     if args.users < 0 or args.threads < 1:
         parser.error("--users must be nonnegative and --threads positive")
@@ -211,7 +231,7 @@ def main():
         return
     if not source.exists() or sha256(source) != config["source"]["sha256"]:
         parser.error("Missing or mismatched source; use --download to fetch the pinned file")
-    result = prepare(source, args.output, config, args.users, args.threads, args.memory)
+    result = prepare(source, args.output, config, args.users, args.threads, args.memory, args.audio_items)
     print(f"Done: {result['selected_users']} users, {result['candidate_items']} items, "
           f"{result['elapsed_seconds']} s; {args.output}")
 

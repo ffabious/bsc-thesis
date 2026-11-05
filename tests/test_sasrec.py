@@ -59,6 +59,23 @@ class SASRecTest(unittest.TestCase):
         for y, values in zip(target, sampled):
             self.assertEqual(set(values), set(range(2, 6)) - {y})
 
+    def test_frozen_item_vectors_stay_exact_while_ranker_learns(self):
+        model = SASRec(12, length=4, dim=8, item_dim=16, freeze_items=True,
+                       heads=2, blocks=1, dropout=0)
+        before = model.item.weight.detach().clone()
+        projection = model.output_projection.weight.detach().clone()
+        optimizer = torch.optim.Adam([p for p in model.parameters() if p.requires_grad], lr=0.01)
+        for _ in range(3):
+            optimizer.zero_grad(set_to_none=True)
+            value = loss(model, torch.tensor([[0, 2, 3, 4]]), torch.tensor([5]),
+                         torch.tensor([[6, 7]]))
+            value.backward()
+            self.assertIsNone(model.item.weight.grad)
+            optimizer.step()
+        self.assertTrue(torch.equal(model.item.weight, before))
+        self.assertFalse(torch.equal(model.output_projection.weight, projection))
+        self.assertTrue(model.position.weight.requires_grad)
+
     def test_full_catalog_rank_excludes_special_tokens_and_breaks_ties(self):
         model = SASRec(4, length=3, dim=2, heads=1, blocks=1, dropout=0)
         with torch.no_grad():
@@ -82,6 +99,20 @@ class SASRecTest(unittest.TestCase):
         torch.testing.assert_close(left, right.cpu(), atol=1e-5, rtol=1e-4)
         for a, b in zip(cpu.parameters(), mps.parameters()):
             torch.testing.assert_close(a.grad, b.grad.cpu(), atol=1e-5, rtol=1e-3)
+
+    @unittest.skipUnless(torch.backends.mps.is_available(), "MPS unavailable")
+    def test_frozen_projection_cpu_mps_agree(self):
+        cpu = SASRec(12, length=4, dim=8, item_dim=16, freeze_items=True,
+                     heads=2, blocks=1, dropout=0).eval()
+        mps = copy.deepcopy(cpu).to("mps")
+        x, y, neg = torch.tensor([[0, 2, 3, 4]]), torch.tensor([5]), torch.tensor([[6, 7]])
+        torch.testing.assert_close(cpu(x), mps(x.to("mps")).cpu(), atol=1e-5, rtol=1e-4)
+        loss(cpu, x, y, neg).backward()
+        loss(mps, x.to("mps"), y.to("mps"), neg.to("mps")).backward()
+        self.assertIsNone(mps.item.weight.grad)
+        for a, b in zip(cpu.parameters(), mps.parameters()):
+            if a.grad is not None:
+                torch.testing.assert_close(a.grad, b.grad.cpu(), atol=1e-5, rtol=1e-3)
 
 
 if __name__ == "__main__":

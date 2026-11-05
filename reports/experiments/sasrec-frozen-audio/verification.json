@@ -1,0 +1,8 @@
+{
+  "frozen_tensor_sha256_before": "6b00b1159cf279779c6be6f2aed3021d887a755647d58a25f9e17e8b8c0470d2",
+  "frozen_tensor_sha256_after": "6b00b1159cf279779c6be6f2aed3021d887a755647d58a25f9e17e8b8c0470d2",
+  "best_checkpoint_equals_pretrained_table": true,
+  "same_test_targets_and_users_as_control": true,
+  "cpu_mps_different_ranks": 107,
+  "cpu_mps_max_rank_difference": 2
+}

@@ -1,0 +1,9 @@
+{
+  "scripts/sasrec.py": "0acf388707ff2f56431b3b4b542292bf5a0f204d25542b7158320457c699347e",
+  "scripts/run_sasrec.py": "96ac3601dc645e599441b073269d97de6c689a805a49ae38255f87a2c5250d4e",
+  "scripts/prepare_yambda.py": "1bc5efb7fff8e6f632cf50a9414f6d3efc1caf952e5a88cc77be69965908d169",
+  "scripts/prepare_audio_embeddings.py": "ea44936f6a685abaae0d6f4fd6b62f9e4049d7a4380ab9a53aaaf04228d11bb3",
+  "scripts/check_yambda.py": "b465725b065b02acd5a1f0799421b54ded4bf347684367ec0e66d4639d39c6a6",
+  "configs/experiments/sasrec-frozen-audio.json": "f27e0e6d6d4209727e9bb40db4446b6868b99cf1cf37f2d3f1b887adb804ad10",
+  "configs/experiments/sasrec-audio-baseline.json": "eb1ffa875565d8d983bb492aa223eb618387585357bd32a2980d0d6056dd6a86"
+}

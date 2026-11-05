@@ -1,0 +1,20 @@
+{
+  "source": {
+    "repo": "yandex/yambda",
+    "revision": "dd6f3a19eef5866e346c3270e098baa641a44948",
+    "path": "embeddings.parquet",
+    "bytes": 13814230943,
+    "sha256": "c8959a584257473ab9f5dab7e88b05ea3d03b4daf7c16e9a617e8e216d811c83",
+    "column": "normalized_embed",
+    "dimension": 128
+  },
+  "full_source_sha256_verified": true,
+  "items_sha256": "cd16fbc24772305d9c5a57bb62a02e2eb4049bb9f62ffcd446be92f76ec0c863",
+  "items": 114125,
+  "covered_items": 114125,
+  "missing_items": 0,
+  "dimension": 128,
+  "missing_policy": "not allowed; PAD/unused UNK zero",
+  "vectors_sha256": "b0ef1d874bf8589575fe5ca29e3849132bf8507c7abb8c5dbb9676d8457f8cba",
+  "elapsed_seconds": 1.6953449160791934
+}

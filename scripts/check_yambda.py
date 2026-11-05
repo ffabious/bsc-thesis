@@ -17,6 +17,30 @@ def check(root):
             digest = hashlib.file_digest(stream, "sha256").hexdigest()
         if digest != file["sha256"] or path.stat().st_size != file["bytes"]:
             raise ValueError(f"Output checksum/size mismatch: {path}")
+    audio = None
+    if manifest.get("closed_audio_catalog"):
+        audio = Path(__file__).resolve().parents[1] / manifest["audio_items"]
+        with audio.open("rb") as stream:
+            if hashlib.file_digest(stream, "sha256").hexdigest() != manifest["audio_items_sha256"]:
+                raise ValueError("Audio item index checksum mismatch")
+        import numpy as np
+        features = json.loads((root / "audio/manifest.json").read_text())
+        item_hash = next(f["sha256"] for f in manifest["files"] if f["path"] == "items.parquet")
+        if features["items_sha256"] != item_hash:
+            raise ValueError("Audio vectors use a different item vocabulary")
+        path = root / "audio/vectors.npy"
+        with path.open("rb") as stream:
+            if hashlib.file_digest(stream, "sha256").hexdigest() != features["vectors_sha256"]:
+                raise ValueError("Audio vector checksum mismatch")
+        if features["missing_items"] or features["items"] != manifest["candidate_items"]:
+            raise ValueError("Incomplete audio coverage")
+        table = np.load(path, mmap_mode="r")
+        if table.shape != (manifest["candidate_items"] + 2, features["dimension"]):
+            raise ValueError("Audio table shape does not match the vocabulary")
+        for start in range(2, len(table), 65536):
+            block = table[start:start + 65536]
+            if not np.isfinite(block).all() or not np.allclose(np.linalg.norm(block, axis=1), 1, atol=1e-5):
+                raise ValueError("Invalid or missing audio vectors")
     with duckdb.connect(config={"threads": 4, "memory_limit": "4GB",
                                "temp_directory": str(root / ".check-spill")}) as db:
         db.read_parquet([str(root / "events" / f"{p['split']}.parquet")
@@ -40,6 +64,11 @@ def check(root):
                 (e.item_idx = 1 AND i.item_idx IS NOT NULL) OR
                 (e.item_idx > 1 AND (i.item_idx IS NULL OR e.item_idx != i.item_idx))""",
         }
+        if audio:
+            db.read_parquet(str(audio)).create_view("audio_items")
+            queries["missing_audio_events"] = """SELECT count(*) FROM events
+                WHERE item_id NOT IN (SELECT item_id FROM audio_items)"""
+            queries["unknown_item_tokens"] = "SELECT count(*) FROM events WHERE item_idx < 2"
         result = {name: db.execute(sql).fetchall()[0][0] for name, sql in queries.items()}
         if any(result.values()):
             raise ValueError(f"Invalid exported data: {result}")

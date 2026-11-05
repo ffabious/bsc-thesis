@@ -92,6 +92,22 @@ PYTORCH_ENABLE_MPS_FALLBACK=0 .venv/bin/python scripts/run_sasrec.py evaluate --
 
 Настройки находятся в [sasrec-pilot.json](configs/experiments/sasrec-pilot.json), результаты — в [отчёте пилота](reports/experiments/sasrec-pilot.md). Checkpoint и предсказания остаются в локальном `data/`. Существующий training output не перезаписывается. Для сравнения устройств используются одинаковые batch/FP32-настройки и один выбранный checkpoint; MPS fallback на CPU запрещён.
 
+## Замороженные аудиовекторы
+
+Текущий вариант использует пересобранные наборы `yambda50m-audio` и `yambda50m-pilot-audio`: все пять частей содержат только train-known треки с готовыми аудиовекторами. Реальных событий с UNK и подстановок пропущенных векторов нет. [Подготовка и команды](reports/data/audio-preparation.md), [результаты обучения](reports/experiments/sasrec-frozen-audio.md).
+
+```sh
+.venv/bin/python -m pip install -r requirements-audio.txt
+HF_XET_HIGH_PERFORMANCE=1 .venv/bin/python scripts/prepare_audio_embeddings.py --download --index-only
+.venv/bin/python scripts/prepare_yambda.py --audio-items data/raw/yambda-audio/items.parquet --output data/processed/yambda50m-audio
+.venv/bin/python scripts/prepare_yambda.py --users 256 --audio-items data/raw/yambda-audio/items.parquet --output data/processed/yambda50m-pilot-audio
+.venv/bin/python scripts/prepare_audio_embeddings.py --data data/processed/yambda50m-audio
+.venv/bin/python scripts/prepare_audio_embeddings.py --data data/processed/yambda50m-pilot-audio
+PYTORCH_ENABLE_MPS_FALLBACK=0 .venv/bin/python scripts/run_sasrec.py train --device mps --config configs/experiments/sasrec-frozen-audio.json --output data/runs/sasrec-frozen-audio/train-mps
+```
+
+Frozen-аудио таблица 128D используется с обучаемыми проекциями 128→64 и 64→128; обучаются 70 144 параметра ранкера и позиций. Контрольный запуск на тех же данных: `configs/experiments/sasrec-audio-baseline.json`. Данные, исходный файл аудиовекторов и checkpoints хранятся локально и исключены из Git; публикуются код, конфигурации и агрегированные результаты.
+
 ## Происхождение материалов
 
 Импорт выполнен 20 октября 2026 из `thesis-project-2026-10-20.zip` и двух заметок, уже находившихся в этой папке. Заметки совпали с копиями в архиве и сохранены в одном экземпляре.

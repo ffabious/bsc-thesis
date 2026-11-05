@@ -1,0 +1,10 @@
+{
+  "unsorted_rows": 0,
+  "incorrect_history_groups": 0,
+  "duplicate_event_ids": 0,
+  "unmapped_known_items": 0,
+  "missing_audio_events": 0,
+  "unknown_item_tokens": 0,
+  "repeated_user_item_events": 31726521,
+  "organic_share": 0.5152123291659313
+}

@@ -6,9 +6,10 @@
 | --- | --- |
 | `build-thesis.sh` | Сборка диплома через `latexmk`, pdfLaTeX и Biber; результат — `build/latex/thesis.pdf` |
 | `prepare_yambda.py` | Проверенная загрузка Yambda-50M, аудит, глобальный chronological split и train-only словари; результаты только в локальном `data/` |
+| `prepare_audio_embeddings.py` | Загрузка закреплённых готовых аудиовекторов с SHA-256, индекс покрытия и строгие локальные таблицы без fallback; `prepare_yambda.py --audio-items` пересобирает все части |
 | `check_yambda.py` | Независимая проверка выгруженных Parquet: SHA-256, порядок, пересечение split, строгая прошлая история и соответствие словарю |
 | `sasrec.py` | SASRec, строго прошлые prefixes, negative sampling и полные ранги каталога |
-| `run_sasrec.py` | Локальные CPU/MPS benchmark, обучение с выбором по model_valid и оценка одного checkpoint на test |
+| `run_sasrec.py` | Локальные CPU/MPS benchmark, обучение с выбором по model_valid и оценка checkpoint; поддерживает frozen-таблицы и проверку их неизменности |
 | `diagnostics/sage_fd_check.py` | Самостоятельная численная диагностика опубликованного псевдокода SAGE; требует NumPy |
 | `legacy/literature/` | Сборка каталога и HTML-обзоров, добавление источников и прежние проверки |
 | `legacy/conferences/` | Первоначальная сборка и обновление таблицы конференций |

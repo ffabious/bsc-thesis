@@ -33,7 +33,39 @@ def memory(device):
 
 
 def model_args(config):
-    return {key: config[key] for key in ("length", "dim", "heads", "blocks", "dropout")}
+    return {key: config[key] for key in ("length", "dim", "heads", "blocks", "dropout",
+                                       "item_dim", "freeze_items") if key in config}
+
+
+def item_digest(model):
+    return hashlib.sha256(model.item.weight.detach().cpu().numpy().tobytes()).hexdigest()
+
+
+def make_model(config, data, items):
+    model = SASRec(items, **model_args(config))
+    if config.get("freeze_items"):
+        if not json.loads((data / "manifest.json").read_text()).get("closed_audio_catalog"):
+            raise ValueError("Frozen audio training requires rebuilt, fully covered splits")
+        folder = ROOT / config["item_features"]
+        manifest = json.loads((folder / "manifest.json").read_text())
+        if manifest["missing_items"] != 0:
+            raise ValueError("Frozen audio experiment requires complete coverage without fallbacks")
+        if manifest["items_sha256"] != hashlib.sha256((data / "items.parquet").read_bytes()).hexdigest():
+            raise ValueError("Audio vectors use a different item vocabulary")
+        path = folder / "vectors.npy"
+        if manifest["vectors_sha256"] != hashlib.sha256(path.read_bytes()).hexdigest():
+            raise ValueError("Audio vector checksum mismatch")
+        values = np.load(path)
+        if values.shape != tuple(model.item.weight.shape) or not np.isfinite(values).all():
+            raise ValueError("Audio vector shape/values do not match the model")
+        with torch.no_grad():
+            model.item.weight.copy_(torch.from_numpy(values))
+    return model
+
+
+def optimizer_for(model, config):
+    return torch.optim.Adam([p for p in model.parameters() if p.requires_grad],
+                            lr=config["learning_rate"], betas=(0.9, 0.98))
 
 
 def step(model, optimizer, sequence, target, negative):
@@ -48,8 +80,8 @@ def step(model, optimizer, sequence, target, negative):
 def benchmark(config, data, device):
     x, y, _ = examples(data, "train", config["length"])
     count = json.loads((data / "manifest.json").read_text())["candidate_items"]
-    model = SASRec(count, **model_args(config)).to(device).train()
-    optimizer = torch.optim.Adam(model.parameters(), lr=config["learning_rate"], betas=(0.9, 0.98))
+    model = make_model(config, data, count).to(device).train()
+    optimizer = optimizer_for(model, config)
     rng = np.random.default_rng(config["seed"])
     take = rng.choice(len(y), config["batch_size"], replace=False)
     sequence, target = batch(x, y, take, device)
@@ -68,7 +100,9 @@ def benchmark(config, data, device):
         raise ValueError("Non-finite benchmark loss")
     result = {"train_step_ms": (np.array(timings) * 1000).tolist(),
               "train_examples_per_second": config["batch_size"] / float(np.median(timings)),
-              "parameters": sum(p.numel() for p in model.parameters()), **memory(device)}
+              "parameters": sum(p.numel() for p in model.parameters()),
+              "trainable_parameters": sum(p.numel() for p in model.parameters() if p.requires_grad),
+              **memory(device)}
     # Memory snapshots are separate from timed trials; the allocator may retain cached blocks.
     optimizer.zero_grad(set_to_none=True)
     probe = loss(model, sequence, target, negative)
@@ -91,12 +125,15 @@ def train(config, data, device, output):
     x, y, _ = examples(data, "train", config["length"])
     vx, vy, _ = examples(data, "model_valid", config["length"])
     count = json.loads((data / "manifest.json").read_text())["candidate_items"]
-    model = SASRec(count, **model_args(config)).to(device)
-    optimizer = torch.optim.Adam(model.parameters(), lr=config["learning_rate"], betas=(0.9, 0.98))
+    model = make_model(config, data, count).to(device)
+    optimizer = optimizer_for(model, config)
+    frozen_before = item_digest(model) if config.get("freeze_items") else None
     rng = np.random.default_rng(config["seed"])
     initial = metrics(ranks(model, vx, vy, device, config["eval_batch_size"]))
     result = {"train_examples": len(y), "validation_examples": len(vy), "initial_validation": initial,
-              "mostpop_validation": metrics(most_popular(data, vy)), "epochs": []}
+              "mostpop_validation": metrics(most_popular(data, vy)), "epochs": [],
+              "parameters": sum(p.numel() for p in model.parameters()),
+              "trainable_parameters": sum(p.numel() for p in model.parameters() if p.requires_grad)}
     best, waiting = -1.0, 0
     for epoch in range(1, config["epochs"] + 1):
         model.train()
@@ -138,6 +175,10 @@ def train(config, data, device, output):
             break
     result.update(elapsed_seconds=time.perf_counter() - started,
                   checkpoint_sha256=hashlib.sha256((output / "best.pt").read_bytes()).hexdigest())
+    if frozen_before:
+        result.update(item_sha256_before=frozen_before, item_sha256_after=item_digest(model))
+        if result["item_sha256_before"] != result["item_sha256_after"]:
+            raise ValueError("Frozen item vectors changed during training")
     return result
 
 
