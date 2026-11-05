@@ -9,7 +9,7 @@
 | `prepare_audio_embeddings.py` | Загрузка закреплённых готовых аудиовекторов с SHA-256, индекс покрытия и строгие локальные таблицы без fallback; `prepare_yambda.py --audio-items` пересобирает все части |
 | `check_yambda.py` | Независимая проверка выгруженных Parquet: SHA-256, порядок, пересечение split, строгая прошлая история и соответствие словарю |
 | `sasrec.py` | SASRec, строго прошлые prefixes, negative sampling и полные ранги каталога |
-| `run_sasrec.py` | Локальные CPU/MPS benchmark, обучение с выбором по model_valid и оценка checkpoint; поддерживает frozen-таблицы и проверку их неизменности |
+| `run_sasrec.py` | Локальные CPU/MPS benchmark, обучение с выбором по model_valid и оценка checkpoint; frozen-аудио или перенос только ID-таблицы из проверенного checkpoint с новой инициализацией ранкера |
 | `diagnostics/sage_fd_check.py` | Самостоятельная численная диагностика опубликованного псевдокода SAGE; требует NumPy |
 | `legacy/literature/` | Сборка каталога и HTML-обзоров, добавление источников и прежние проверки |
 | `legacy/conferences/` | Первоначальная сборка и обновление таблицы конференций |

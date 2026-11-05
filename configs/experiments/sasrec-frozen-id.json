@@ -1,0 +1,22 @@
+{
+  "data": "data/processed/yambda50m-pilot-audio",
+  "item_checkpoint": "data/runs/sasrec-audio-baseline/train-mps/best.pt",
+  "item_checkpoint_sha256": "41225acd6fb3b8500d81985f29398b761e06f2920851f8b00caf1992abc51f1f",
+  "freeze_items": true,
+  "seed": 42,
+  "threads": 4,
+  "length": 50,
+  "dim": 64,
+  "heads": 2,
+  "blocks": 2,
+  "dropout": 0.2,
+  "batch_size": 256,
+  "negatives": 16,
+  "learning_rate": 0.001,
+  "epochs": 5,
+  "patience": 2,
+  "eval_batch_size": 256,
+  "benchmark_warmup": 10,
+  "benchmark_steps": 50,
+  "benchmark_repeats": 3
+}

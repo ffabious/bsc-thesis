@@ -1,0 +1,67 @@
+{
+  "checkpoint_sha256": "6a35e5a28348826df038350213b3dac392a157a39e80ecc4760ee2a1043e5935",
+  "checkpoint_epoch": 5,
+  "examples": 45711,
+  "users": 244,
+  "catalog_items": 114125,
+  "metrics": {
+    "ndcg@10": 0.023646055729275778,
+    "recall@100": 0.1869134344030977
+  },
+  "cluster_bootstrap_95ci": {
+    "ndcg@10": [
+      0.019056607493539202,
+      0.029480265049279256
+    ],
+    "recall@100": [
+      0.16055074048924872,
+      0.21801885470121607
+    ]
+  },
+  "mostpop_metrics": {
+    "ndcg@10": 0.00243086590086716,
+    "recall@100": 0.038524643958784535
+  },
+  "mostpop_95ci": {
+    "ndcg@10": [
+      0.00176023792132038,
+      0.00325786191934052
+    ],
+    "recall@100": [
+      0.03065632072048257,
+      0.04817228349988799
+    ]
+  },
+  "evaluation_seconds": 8.14223458385095,
+  "examples_per_second": 5614.0607998032565,
+  "process_peak_rss_mib": 834.578125,
+  "config": {
+    "data": "data/processed/yambda50m-pilot-audio",
+    "item_checkpoint": "data/runs/sasrec-audio-baseline/train-mps/best.pt",
+    "item_checkpoint_sha256": "41225acd6fb3b8500d81985f29398b761e06f2920851f8b00caf1992abc51f1f",
+    "freeze_items": true,
+    "seed": 42,
+    "threads": 4,
+    "length": 50,
+    "dim": 64,
+    "heads": 2,
+    "blocks": 2,
+    "dropout": 0.2,
+    "batch_size": 256,
+    "negatives": 16,
+    "learning_rate": 0.001,
+    "epochs": 5,
+    "patience": 2,
+    "eval_batch_size": 256,
+    "benchmark_warmup": 10,
+    "benchmark_steps": 50,
+    "benchmark_repeats": 3
+  },
+  "device": "cpu",
+  "torch": "2.15.0",
+  "numpy": "2.5.4",
+  "python": "3.14.8",
+  "macos": "26.6.2",
+  "mps_available": false,
+  "data_manifest_sha256": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c"
+}

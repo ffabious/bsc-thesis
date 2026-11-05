@@ -108,6 +108,17 @@ PYTORCH_ENABLE_MPS_FALLBACK=0 .venv/bin/python scripts/run_sasrec.py train --dev
 
 Frozen-аудио таблица 128D используется с обучаемыми проекциями 128→64 и 64→128; обучаются 70 144 параметра ранкера и позиций. Контрольный запуск на тех же данных: `configs/experiments/sasrec-audio-baseline.json`. Данные, исходный файл аудиовекторов и checkpoints хранятся локально и исключены из Git; публикуются код, конфигурации и агрегированные результаты.
 
+## Замороженные ID-векторы
+
+Отдельный запуск переносит только обученную 64D-таблицу треков из контрольного SASRec на том же пересобранном пилоте. Все остальные веса инициализируются заново; обучаются 53 760 параметров. Аудиопризнаки в модель не подаются. [Протокол и результаты](reports/experiments/sasrec-frozen-id.md).
+
+```sh
+PYTORCH_ENABLE_MPS_FALLBACK=0 .venv/bin/python scripts/run_sasrec.py train --device mps --config configs/experiments/sasrec-frozen-id.json --output data/runs/sasrec-frozen-id/train-mps
+PYTORCH_ENABLE_MPS_FALLBACK=0 .venv/bin/python scripts/run_sasrec.py evaluate --device mps --config configs/experiments/sasrec-frozen-id.json --checkpoint data/runs/sasrec-frozen-id/train-mps/best.pt --output data/runs/sasrec-frozen-id/evaluation-mps.json
+```
+
+Источник в конфиге закреплён по SHA-256 и должен соответствовать завершённому обучению и тому же manifest данных. Для воспроизведения с заново обученным источником обновите путь и `item_checkpoint_sha256` под этот checkpoint и выберите новую output-директорию. Стоимость предварительного обучения учитывается отдельно от нового запуска.
+
 ## Происхождение материалов
 
 Импорт выполнен 20 октября 2026 из `thesis-project-2026-10-20.zip` и двух заметок, уже находившихся в этой папке. Заметки совпали с копиями в архиве и сохранены в одном экземпляре.

@@ -44,22 +44,38 @@ def item_digest(model):
 def make_model(config, data, items):
     model = SASRec(items, **model_args(config))
     if config.get("freeze_items"):
-        if not json.loads((data / "manifest.json").read_text()).get("closed_audio_catalog"):
-            raise ValueError("Frozen audio training requires rebuilt, fully covered splits")
-        folder = ROOT / config["item_features"]
-        manifest = json.loads((folder / "manifest.json").read_text())
-        if manifest["missing_items"] != 0:
-            raise ValueError("Frozen audio experiment requires complete coverage without fallbacks")
-        if manifest["items_sha256"] != hashlib.sha256((data / "items.parquet").read_bytes()).hexdigest():
-            raise ValueError("Audio vectors use a different item vocabulary")
-        path = folder / "vectors.npy"
-        if manifest["vectors_sha256"] != hashlib.sha256(path.read_bytes()).hexdigest():
-            raise ValueError("Audio vector checksum mismatch")
-        values = np.load(path)
-        if values.shape != tuple(model.item.weight.shape) or not np.isfinite(values).all():
-            raise ValueError("Audio vector shape/values do not match the model")
+        if bool(config.get("item_checkpoint")) == bool(config.get("item_features")):
+            raise ValueError("Choose exactly one frozen item source: checkpoint or features")
+        if config.get("item_checkpoint"):
+            path = ROOT / config["item_checkpoint"]
+            trained = json.loads(path.with_name("training.json").read_text())
+            checksum = hashlib.sha256(path.read_bytes()).hexdigest()
+            if checksum != config["item_checkpoint_sha256"] or checksum != trained["checkpoint_sha256"]:
+                raise ValueError("Item source checkpoint checksum mismatch")
+            if trained["data_manifest_sha256"] != hashlib.sha256((data / "manifest.json").read_bytes()).hexdigest():
+                raise ValueError("Item source checkpoint uses a different dataset/vocabulary")
+            saved = torch.load(path, map_location="cpu", weights_only=True)
+            if saved["items"] != items:
+                raise ValueError("Item source checkpoint has a different catalog size")
+            # Transfer only the item table; the ranker retains its fresh initialization.
+            values = saved["weights"]["item.weight"]
+        else:
+            if not json.loads((data / "manifest.json").read_text()).get("closed_audio_catalog"):
+                raise ValueError("Frozen audio training requires rebuilt, fully covered splits")
+            folder = ROOT / config["item_features"]
+            manifest = json.loads((folder / "manifest.json").read_text())
+            if manifest["missing_items"] != 0:
+                raise ValueError("Frozen audio experiment requires complete coverage without fallbacks")
+            if manifest["items_sha256"] != hashlib.sha256((data / "items.parquet").read_bytes()).hexdigest():
+                raise ValueError("Audio vectors use a different item vocabulary")
+            path = folder / "vectors.npy"
+            if manifest["vectors_sha256"] != hashlib.sha256(path.read_bytes()).hexdigest():
+                raise ValueError("Audio vector checksum mismatch")
+            values = torch.from_numpy(np.load(path))
+        if values.shape != model.item.weight.shape or not torch.isfinite(values).all():
+            raise ValueError("Item vector shape/values do not match the model")
         with torch.no_grad():
-            model.item.weight.copy_(torch.from_numpy(values))
+            model.item.weight.copy_(values)
     return model
 
 

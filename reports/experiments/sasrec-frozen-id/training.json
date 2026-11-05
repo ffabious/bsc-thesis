@@ -1,0 +1,120 @@
+{
+  "train_examples": 739571,
+  "validation_examples": 29313,
+  "initial_validation": {
+    "ndcg@10": 0.008948321842901504,
+    "recall@100": 0.042984341418483264
+  },
+  "mostpop_validation": {
+    "ndcg@10": 0.0032306535841508687,
+    "recall@100": 0.04813563947736499
+  },
+  "epochs": [
+    {
+      "epoch": 1,
+      "loss": 0.27700279537055944,
+      "train_seconds": 41.81575495842844,
+      "train_examples_per_second": 17686.419884927393,
+      "validation_seconds": 2.8621073747053742,
+      "validation": {
+        "ndcg@10": 0.03531966423456528,
+        "recall@100": 0.2461365264558387
+      },
+      "process_peak_rss_mib": 1108.71875,
+      "mps_tensor_mib": 28.947509765625,
+      "mps_driver_mib": 1050.859375
+    },
+    {
+      "epoch": 2,
+      "loss": 0.15469456913196974,
+      "train_seconds": 42.16683495789766,
+      "train_examples_per_second": 17539.16320109014,
+      "validation_seconds": 2.8585787499323487,
+      "validation": {
+        "ndcg@10": 0.0364020699045018,
+        "recall@100": 0.24849043086685088
+      },
+      "process_peak_rss_mib": 1108.84375,
+      "mps_tensor_mib": 28.947509765625,
+      "mps_driver_mib": 1050.859375
+    },
+    {
+      "epoch": 3,
+      "loss": 0.13503716385918324,
+      "train_seconds": 41.74267100030556,
+      "train_examples_per_second": 17717.385645843944,
+      "validation_seconds": 2.8597375410608947,
+      "validation": {
+        "ndcg@10": 0.0370243328655055,
+        "recall@100": 0.2479445979599495
+      },
+      "process_peak_rss_mib": 1108.84375,
+      "mps_tensor_mib": 28.947509765625,
+      "mps_driver_mib": 1050.859375
+    },
+    {
+      "epoch": 4,
+      "loss": 0.11820565782392765,
+      "train_seconds": 41.72012645890936,
+      "train_examples_per_second": 17726.959690029034,
+      "validation_seconds": 2.8585845418274403,
+      "validation": {
+        "ndcg@10": 0.036806751175095194,
+        "recall@100": 0.24988912769078567
+      },
+      "process_peak_rss_mib": 1108.84375,
+      "mps_tensor_mib": 28.947509765625,
+      "mps_driver_mib": 1050.859375
+    },
+    {
+      "epoch": 5,
+      "loss": 0.09021239171087023,
+      "train_seconds": 41.516602833755314,
+      "train_examples_per_second": 17813.861190942327,
+      "validation_seconds": 2.8644228749908507,
+      "validation": {
+        "ndcg@10": 0.03715897504482264,
+        "recall@100": 0.2461365264558387
+      },
+      "process_peak_rss_mib": 1108.84375,
+      "mps_tensor_mib": 28.947509765625,
+      "mps_driver_mib": 1050.859375
+    }
+  ],
+  "parameters": 7357888,
+  "trainable_parameters": 53760,
+  "best_epoch": 5,
+  "elapsed_seconds": 228.07411474967375,
+  "checkpoint_sha256": "6a35e5a28348826df038350213b3dac392a157a39e80ecc4760ee2a1043e5935",
+  "item_sha256_before": "d8d051e2b23a3d39024267bb4cc7daea3b78194c92c9f4cd1cd8238f3d423f3e",
+  "item_sha256_after": "d8d051e2b23a3d39024267bb4cc7daea3b78194c92c9f4cd1cd8238f3d423f3e",
+  "config": {
+    "data": "data/processed/yambda50m-pilot-audio",
+    "item_checkpoint": "data/runs/sasrec-audio-baseline/train-mps/best.pt",
+    "item_checkpoint_sha256": "41225acd6fb3b8500d81985f29398b761e06f2920851f8b00caf1992abc51f1f",
+    "freeze_items": true,
+    "seed": 42,
+    "threads": 4,
+    "length": 50,
+    "dim": 64,
+    "heads": 2,
+    "blocks": 2,
+    "dropout": 0.2,
+    "batch_size": 256,
+    "negatives": 16,
+    "learning_rate": 0.001,
+    "epochs": 5,
+    "patience": 2,
+    "eval_batch_size": 256,
+    "benchmark_warmup": 10,
+    "benchmark_steps": 50,
+    "benchmark_repeats": 3
+  },
+  "device": "mps",
+  "torch": "2.15.0",
+  "numpy": "2.5.4",
+  "python": "3.14.8",
+  "macos": "26.6.2",
+  "mps_available": true,
+  "data_manifest_sha256": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c"
+}

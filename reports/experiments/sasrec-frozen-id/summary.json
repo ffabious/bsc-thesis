@@ -1,0 +1,40 @@
+{
+  "data": "data/processed/yambda50m-pilot-audio",
+  "source_checkpoint_sha256": "41225acd6fb3b8500d81985f29398b761e06f2920851f8b00caf1992abc51f1f",
+  "test_targets": 45711,
+  "catalog_items": 114125,
+  "control_metrics": {
+    "ndcg@10": 0.023582249922931647,
+    "recall@100": 0.18995427796372863
+  },
+  "frozen_id_metrics": {
+    "ndcg@10": 0.023646055729275778,
+    "recall@100": 0.1869134344030977
+  },
+  "frozen_audio_metrics": {
+    "ndcg@10": 0.005185903809524515,
+    "recall@100": 0.0714488853886373
+  },
+  "paired_delta_vs_control": {
+    "ndcg@10": {
+      "difference": 6.380580634413487e-05,
+      "cluster_bootstrap_95ci": [
+        -0.0006065004725756717,
+        0.0007071296945766532
+      ]
+    },
+    "recall@100": {
+      "difference": -0.0030408435606309203,
+      "cluster_bootstrap_95ci": [
+        -0.005509633870259929,
+        -0.0007246880508220223
+      ]
+    }
+  },
+  "trainable_parameters": 53760,
+  "pretraining_seconds": 341.3619289579801,
+  "new_training_seconds": 228.07411474967375,
+  "total_training_seconds": 569.4360437076539,
+  "best_epoch": 5,
+  "item_vectors_unchanged": true
+}

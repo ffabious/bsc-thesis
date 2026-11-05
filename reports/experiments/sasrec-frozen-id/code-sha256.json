@@ -1,0 +1,6 @@
+{
+  "scripts/run_sasrec.py": "0cf0bb79ed8d627e51e17ed6f996d55771cde184588dd8ff873f37b041a55b48",
+  "scripts/sasrec.py": "0acf388707ff2f56431b3b4b542292bf5a0f204d25542b7158320457c699347e",
+  "tests/test_item_checkpoint.py": "c6e6ef69971e96e6348745f2283baeecd50f138282a77111913761c8c04338e1",
+  "configs/experiments/sasrec-frozen-id.json": "6e07de24a884337d86bf0ef417952cb3a01240c42c8667a43d9f0e36e445e956"
+}

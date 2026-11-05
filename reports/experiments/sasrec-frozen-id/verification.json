@@ -1,0 +1,20 @@
+{
+  "source_checkpoint": "data/runs/sasrec-audio-baseline/train-mps/best.pt",
+  "source_checkpoint_sha256": "41225acd6fb3b8500d81985f29398b761e06f2920851f8b00caf1992abc51f1f",
+  "source_epoch": 5,
+  "source_item_tensor_sha256": "d8d051e2b23a3d39024267bb4cc7daea3b78194c92c9f4cd1cd8238f3d423f3e",
+  "only_item_table_transferred": true,
+  "ranker_matches_fresh_seed_initialization": true,
+  "item_table_excluded_from_optimizer": true,
+  "total_parameters": 7357888,
+  "trainable_parameters": 53760,
+  "data_manifest_sha256": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c",
+  "best_checkpoint_equals_source_table": true,
+  "trained_ranker_differs_from_fresh_initialization": true,
+  "frozen_tensor_sha256_before": "d8d051e2b23a3d39024267bb4cc7daea3b78194c92c9f4cd1cd8238f3d423f3e",
+  "frozen_tensor_sha256_after": "d8d051e2b23a3d39024267bb4cc7daea3b78194c92c9f4cd1cd8238f3d423f3e",
+  "same_test_targets_and_users_as_control": true,
+  "cpu_mps_metrics_equal": true,
+  "cpu_mps_different_ranks": 141,
+  "cpu_mps_max_rank_difference": 1
+}
