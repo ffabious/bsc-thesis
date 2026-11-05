@@ -18,13 +18,18 @@
 | `reports/literature/` | HTML-обзор, презентация и разборы Jev/SAGE |
 | `reports/conferences/` | Таблица конференций и воркшопов, источники и изображения предпросмотра |
 | `research/` | Собранные свидетельства, промежуточные данные и предыдущие версии реестра |
-| `scripts/` | Диагностика SAGE и исторические скрипты подготовки материалов |
+| `scripts/` | Подготовка и проверка данных, сборка диплома, диагностика и исторические скрипты |
+| `configs/data/` | Закреплённый источник Yambda и параметры хронологического split |
+| `data/` | Локальные raw и подготовленные Parquet; исключены из Git |
+| `reports/data/` | Отчёт подготовки и агрегированные manifests без исходных событий |
+| `tests/` | Проверки протокола подготовки данных |
 | `assets/` | Исходное загруженное изображение |
 | `archive/` | Оригинальные вложенные ZIP, распакованные исторические материалы и карта импорта |
 
 ## С чего начать
 
 - [Пропозал](docs/proposal/proposal-2026-10-09.pdf) — текущая постановка; ранние заметки отражают историю обсуждения.
+- [План экспериментов](notes/experiment-plan.md) — последовательность работ, критерии перехода и полностью локальные вычисления; [результаты подготовки данных](reports/data/preparation.md).
 - [Реестр статей](references/papers.csv) — 84 записи по состоянию на 1 ноября 2026; [JSON](references/papers.json) и [BibTeX](references/references.bib) лежат рядом. Файлы для импорта в Marginalia: [Attention Is All You Need](references/imports/attention-is-all-you-need.bib) (`P081_AttentionIsAllYouNeed`); [YouTube 2016, COLD и RecFlow](references/imports/multi-stage-recommenders.bib) (`P082_YouTubeDNN`, `P083_COLD`, `P084_RecFlow`).
 - [Аудит надёжности всех 84 источников](notes/bibliography-reliability-audit.md) — проверка первичных метаданных, публикационного статуса и допустимых выводов от 1 ноября 2026; без независимой репликации экспериментов.
 - [Черновик семи секций Literature Review](notes/literature-review-draft.md) — краткий текст со ссылками у конкретных механизмов; по результатам аудита и выбору автора используются только источники категории `established`. [План и карта исходного покрытия](notes/introduction-literature-review-plan.md) лежат рядом.
@@ -56,6 +61,21 @@ bash scripts/build-thesis.sh
 ```
 
 PDF находится в `build/latex/thesis.pdf`. `latexmk` автоматически запускает Biber и повторяет LaTeX до согласования ссылок и оглавления. Настройки VS Code и скрипт учитывают Homebrew на Apple Silicon и Intel; менять глобальные настройки редактора не требуется. Служебные файлы, PDF сборки, локальные окружения и кэши исключены через `.gitignore`. Исходные PDF, HTML, таблицы и изображения входят в историю.
+
+## Локальные данные для экспериментов
+
+Подготовка, обучение и оценка выполняются на локальной машине. Облачные вычислительные ресурсы не используются. Требуется Python 3.11+.
+
+```sh
+python3 -m venv .venv
+.venv/bin/python -m pip install -r requirements-data.txt
+.venv/bin/python scripts/prepare_yambda.py --download
+.venv/bin/python scripts/prepare_yambda.py --users 256 --output data/processed/yambda50m-pilot
+.venv/bin/python scripts/check_yambda.py data/processed/yambda50m
+.venv/bin/python -m unittest discover -s tests -v
+```
+
+Первый запуск загружает закреплённый официальный файл Yambda-50M и проверяет SHA-256. Подготовка выполняется локально, по умолчанию в 4 потока с лимитом памяти DuckDB 4 GB. Существующие результаты не перезаписываются: для повторного запуска задайте новый `--output`. Разделение и словари сохраняются в `data/processed/`, параметры и определения полей описаны в [плане](notes/experiment-plan.md). Данные и `.venv` не публикуются. Обучение модели — следующий этап.
 
 ## Происхождение материалов
 

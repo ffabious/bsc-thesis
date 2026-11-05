@@ -1,0 +1,19 @@
+{
+  "source": {
+    "repo": "yandex/yambda",
+    "revision": "dd6f3a19eef5866e346c3270e098baa641a44948",
+    "path": "flat/50m/multi_event.parquet",
+    "bytes": 384465869,
+    "sha256": "b92f6c97277a554c8a7d6cfea900eca51639fd53a3e6c4fa58b82e35fd35804d"
+  },
+  "holdout_days": {
+    "model_valid": 7,
+    "controller_train": 14,
+    "policy_valid": 7,
+    "test": 14
+  },
+  "positive_ratio_gt": 50,
+  "min_history": 1,
+  "min_train_events": 20,
+  "seed": 42
+}

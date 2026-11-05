@@ -1,0 +1,201 @@
+{
+  "source": {
+    "repo": "yandex/yambda",
+    "revision": "dd6f3a19eef5866e346c3270e098baa641a44948",
+    "path": "flat/50m/multi_event.parquet",
+    "bytes": 384465869,
+    "sha256": "b92f6c97277a554c8a7d6cfea900eca51639fd53a3e6c4fa58b82e35fd35804d"
+  },
+  "source_sha256": "b92f6c97277a554c8a7d6cfea900eca51639fd53a3e6c4fa58b82e35fd35804d",
+  "pipeline_sha256": "5c5c2b7f51d76cd286417d2e2b4b62c4403c43b2eac729658304844a18b2c94b",
+  "config": {
+    "source": {
+      "repo": "yandex/yambda",
+      "revision": "dd6f3a19eef5866e346c3270e098baa641a44948",
+      "path": "flat/50m/multi_event.parquet",
+      "bytes": 384465869,
+      "sha256": "b92f6c97277a554c8a7d6cfea900eca51639fd53a3e6c4fa58b82e35fd35804d"
+    },
+    "holdout_days": {
+      "model_valid": 7,
+      "controller_train": 14,
+      "policy_valid": 7,
+      "test": 14
+    },
+    "positive_ratio_gt": 50,
+    "min_history": 1,
+    "min_train_events": 20,
+    "seed": 42
+  },
+  "python": "3.14.8",
+  "duckdb": "2.0.0",
+  "machine": "arm64",
+  "threads": 4,
+  "memory_limit": "4GB",
+  "requested_users": 256,
+  "selected_users": 256,
+  "train_eligible_users": 8454,
+  "candidate_items": 119645,
+  "periods": [
+    {
+      "split": "train",
+      "start": 0,
+      "end": 22371205
+    },
+    {
+      "split": "model_valid",
+      "start": 22371205,
+      "end": 22976005
+    },
+    {
+      "split": "controller_train",
+      "start": 22976005,
+      "end": 24185605
+    },
+    {
+      "split": "policy_valid",
+      "start": 24185605,
+      "end": 24790405
+    },
+    {
+      "split": "test",
+      "start": 24790405,
+      "end": 26000005
+    }
+  ],
+  "source_audit": {
+    "events": 47790449,
+    "users": 10000,
+    "items": 934057,
+    "min_timestamp": 0,
+    "max_timestamp": 26000000,
+    "invalid": 0,
+    "ratios_over_100": 218145,
+    "event_types": [
+      {
+        "event_type": "dislike",
+        "events": 107776
+      },
+      {
+        "event_type": "like",
+        "events": 881456
+      },
+      {
+        "event_type": "listen",
+        "events": 46467212
+      },
+      {
+        "event_type": "undislike",
+        "events": 21033
+      },
+      {
+        "event_type": "unlike",
+        "events": 312972
+      }
+    ]
+  },
+  "splits": [
+    {
+      "split": "train",
+      "events": 1190040,
+      "users": 256,
+      "positives": 761932,
+      "targets": 761770,
+      "unknown_targets": 0,
+      "no_history_positives": 162,
+      "min_timestamp": 5,
+      "max_timestamp": 22371195
+    },
+    {
+      "split": "model_valid",
+      "events": 49443,
+      "users": 216,
+      "positives": 33420,
+      "targets": 29975,
+      "unknown_targets": 3445,
+      "no_history_positives": 0,
+      "min_timestamp": 22371245,
+      "max_timestamp": 22975980
+    },
+    {
+      "split": "controller_train",
+      "events": 90869,
+      "users": 234,
+      "positives": 61712,
+      "targets": 53551,
+      "unknown_targets": 8161,
+      "no_history_positives": 0,
+      "min_timestamp": 22976005,
+      "max_timestamp": 24185585
+    },
+    {
+      "split": "policy_valid",
+      "events": 43620,
+      "users": 221,
+      "positives": 28780,
+      "targets": 23970,
+      "unknown_targets": 4810,
+      "no_history_positives": 0,
+      "min_timestamp": 24185640,
+      "max_timestamp": 24790350
+    },
+    {
+      "split": "test",
+      "events": 86277,
+      "users": 255,
+      "positives": 58259,
+      "targets": 46794,
+      "unknown_targets": 11465,
+      "no_history_positives": 0,
+      "min_timestamp": 24790435,
+      "max_timestamp": 25999935
+    }
+  ],
+  "timestamp_ties": {
+    "groups": 124973,
+    "events": 406581
+  },
+  "user_history_quantiles": [
+    3998.0,
+    13677.5,
+    24597.899999999998
+  ],
+  "files": [
+    {
+      "path": "events/controller_train.parquet",
+      "bytes": 1243412,
+      "sha256": "0bdd39550890853fa334fec6413e06a4427331beac7fb2adab75d5857eeb3bf3"
+    },
+    {
+      "path": "events/model_valid.parquet",
+      "bytes": 670842,
+      "sha256": "07039fb183746a6f4983f2f1e1255de435af39ecf7b7ffa79fadd103630efb07"
+    },
+    {
+      "path": "events/policy_valid.parquet",
+      "bytes": 598409,
+      "sha256": "69bd0389a90d5a356b42b11ff3716ea3553c51fd918db3e237a7e8d45abbfa87"
+    },
+    {
+      "path": "events/test.parquet",
+      "bytes": 1177414,
+      "sha256": "677a77d0a0a8f13ac94b067287560f245ca5926ae95604887f756caf3189b038"
+    },
+    {
+      "path": "events/train.parquet",
+      "bytes": 16231056,
+      "sha256": "58dda08c4bae376563e3e9751a7b16c323a8d8d7875c6af37eb281e32f1af0eb"
+    },
+    {
+      "path": "items.parquet",
+      "bytes": 1246837,
+      "sha256": "54688d0c088ab3f230f83423b13d42fa4087cfbc19d56981d46b8249a65e081b"
+    },
+    {
+      "path": "users.parquet",
+      "bytes": 2374,
+      "sha256": "6f5f1c18d068f822446d71bfbdf2870ceba60bcc51dd6caea4bad60e76144cf5"
+    }
+  ],
+  "elapsed_seconds": 1.53
+}

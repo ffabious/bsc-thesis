@@ -29,6 +29,7 @@ __pycache__/
 /build/
 /dist/
 /thesis/thesis.pdf
+/data/
 
 # LaTeX intermediate files (source PDFs remain tracked)
 *.aux
