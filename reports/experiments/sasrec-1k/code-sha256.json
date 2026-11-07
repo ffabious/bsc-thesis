@@ -1,0 +1,8 @@
+{
+  "scripts/sasrec.py": "bf58b748be07059e713a08440dc6198d5e467b35450177c9fa079c192383dc45",
+  "scripts/run_sasrec.py": "f28e4c6def04826738195a0ac0c97234c529a52ed335efdc2ad21c3213da627e",
+  "scripts/compare_sasrec.py": "cd94d7c7c27362386a2478db3ed8e9ad42c22929cf96851301d94f3e64084031",
+  "tests/test_sasrec.py": "afd1d5f3dba74dcdcb4225df56f6dcd5d60fd70bf18bfda90f67b9fb68dcbcdd",
+  "tests/test_pilot_comparison.py": "ab2e917530b457734f43cac37b921a6fff5bec701215860817cbebd9dbaf9821",
+  "configs/experiments/sasrec-1k-early-stop.json": "3ac6cc82fa82b28c8d5a4b24a787a2f74befbc28b3491a731830904d33bbaefe"
+}

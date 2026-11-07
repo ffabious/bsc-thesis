@@ -1,0 +1,13 @@
+{
+  "same_data_protocol_and_time_boundaries": true,
+  "same_training_config_except_data_path": true,
+  "reference_users_missing_from_1k": 0,
+  "same_comparison_inputs_targets_and_candidates": true,
+  "selected_checkpoint_matches_validation_maximum": true,
+  "stopped_by_validation_patience": true,
+  "epochs_after_best": 2,
+  "old_checkpoint_unchanged": true,
+  "reference_context_sha256": "37a56dae2ec258cb1d2051dc7dbda91ba5a6d5e34d30d694a87e6b11e4cb05e9",
+  "old_checkpoint_sha256": "32c3d3faed81f0a3008ebb9cd90550d9da7c5b26696659aa3fbc1b83aaf2d349",
+  "new_checkpoint_sha256": "3629aef4eecd25211c5c94bf557c08ffc7029eca484b0994ce2c62eab273b570"
+}

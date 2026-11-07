@@ -1,0 +1,44 @@
+{
+  "training_users": 1000,
+  "reference_training_users": 256,
+  "train_examples": 2799860,
+  "reference_train_examples": 739571,
+  "parameters": 15682304,
+  "reference_parameters": 7357888,
+  "training_catalog_items": 244194,
+  "reference_catalog_items": 114125,
+  "completed_epochs": 7,
+  "best_epoch": 5,
+  "training_seconds": 2435.026445374824,
+  "reference_training_seconds": 358.9780459580943,
+  "native_metrics": {
+    "ndcg@10": 0.017326841351556228,
+    "recall@100": 0.16167797487360022
+  },
+  "reference_metrics": {
+    "ndcg@10": 0.022943343275696554,
+    "recall@100": 0.18509767889567064
+  },
+  "matched_metrics": {
+    "ndcg@10": 0.015927851919702782,
+    "recall@100": 0.1687777559012054
+  },
+  "paired_delta": {
+    "ndcg@10": {
+      "difference": -0.007015491355993774,
+      "cluster_bootstrap_95ci": [
+        -0.010232125884737682,
+        -0.0044558106949525835
+      ],
+      "relative_change": -0.3057745888074276
+    },
+    "recall@100": {
+      "difference": -0.016319922994465226,
+      "cluster_bootstrap_95ci": [
+        -0.027951315611980273,
+        -0.005178195506073104
+      ],
+      "relative_change": -0.08816924713390861
+    }
+  }
+}

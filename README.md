@@ -130,6 +130,18 @@ PYTORCH_ENABLE_MPS_FALLBACK=0 .venv/bin/python scripts/run_sasrec.py evaluate --
 
 Запуск начинается с нуля: прежний checkpoint не содержит Adam/RNG state для точного продолжения. Первые пять эпох повторяются в том же запуске, затем обучение продолжается с сохранением optimizer/RNG в памяти. Предыдущие checkpoints и результаты не перезаписываются.
 
+## SASRec на 1 000 пользователей
+
+Пилот увеличен до 1 000 пользователей с тем же train-фильтром и seed 42. Модель и правило остановки прежние. [Данные, обучение и сравнение с 256 пользователями](reports/experiments/sasrec-1k.md).
+
+```sh
+PYTORCH_ENABLE_MPS_FALLBACK=0 .venv/bin/python scripts/run_sasrec.py train --device mps --config configs/experiments/sasrec-1k-early-stop.json --output data/runs/sasrec-1k-early-stop/train-mps
+PYTORCH_ENABLE_MPS_FALLBACK=0 .venv/bin/python scripts/run_sasrec.py evaluate --device mps --config configs/experiments/sasrec-1k-early-stop.json --checkpoint data/runs/sasrec-1k-early-stop/train-mps/best.pt --output data/runs/sasrec-1k-early-stop/evaluation-mps.json
+PYTORCH_ENABLE_MPS_FALLBACK=0 .venv/bin/python scripts/compare_sasrec.py --device mps --checkpoint data/runs/sasrec-1k-early-stop/train-mps/best.pt --reference-evaluation data/runs/sasrec-control-early-stop/evaluation-mps.json --output data/runs/sasrec-1k-early-stop/comparison-256.json
+```
+
+Основное сравнение использует ровно прежние test-события, histories и каталог 114 125 треков, с сопоставлением словарей по item_id. Полная оценка нового каталога 244 194 треков сохраняется отдельно: её метрики относятся к другому набору кандидатов и пользователей. Checkpoints и ranks остаются локальными.
+
 ## Происхождение материалов
 
 Импорт выполнен 20 октября 2026 из `thesis-project-2026-10-20.zip` и двух заметок, уже находившихся в этой папке. Заметки совпали с копиями в архиве и сохранены в одном экземпляре.

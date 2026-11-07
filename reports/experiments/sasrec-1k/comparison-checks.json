@@ -1,0 +1,10 @@
+{
+  "all_reference_item_ids_mapped_exactly": true,
+  "reference_selfcheck_metrics_equal": true,
+  "brute_force_sort_checked_examples": 32,
+  "brute_force_sort_ranks_equal": true,
+  "selfcheck_metrics": {
+    "ndcg@10": 0.022943343275696554,
+    "recall@100": 0.18509767889567064
+  }
+}

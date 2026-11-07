@@ -113,14 +113,26 @@ def sync(device):
 
 
 @torch.inference_mode()
-def ranks(model, x, y, device, batch_size):
+def ranks(model, x, y, device, batch_size, candidates=None):
     model.eval()
     output = []
-    ids = torch.arange(2, model.item.num_embeddings, device=device)
+    if candidates is not None:
+        candidates = np.asarray(candidates, dtype=np.int64)
+        if (candidates.ndim != 1 or not len(candidates) or np.any(np.diff(candidates) <= 0)
+                or candidates[0] < 2 or candidates[-1] >= model.item.num_embeddings):
+            raise ValueError("Candidates must be sorted, unique known item indices")
+        columns = np.searchsorted(candidates, y)
+        if np.any(columns >= len(candidates)) or np.any(candidates[columns] != y):
+            raise ValueError("All targets must belong to the candidate set")
+    ids = (torch.arange(2, model.item.num_embeddings, device=device) if candidates is None
+           else torch.as_tensor(candidates, device=device))
+    vectors = model.item.weight[2:] if candidates is None else model.item(ids)
     for start in range(0, len(y), batch_size):
         sequence, target = batch(x, y, slice(start, start + batch_size), device)
-        scores = model(sequence) @ model.item.weight[2:].T
-        actual = scores.gather(1, (target - 2)[:, None])
+        scores = model(sequence) @ vectors.T
+        column = target - 2 if candidates is None else torch.as_tensor(
+            columns[start:start + batch_size], device=device)
+        actual = scores.gather(1, column[:, None])
         # Deterministic tie break: smaller item index first. PAD/UNK never enter the catalog.
         rank = 1 + (scores > actual).sum(1, dtype=torch.int32)
         rank += ((scores == actual) & (ids[None] < target[:, None])).sum(1, dtype=torch.int32)

@@ -85,6 +85,21 @@ class SASRecTest(unittest.TestCase):
             rank = ranks(model, np.ones((2, 3), dtype=np.int32), np.array([3, 5]), "cpu", 2)
         np.testing.assert_array_equal(rank, [2, 4])
 
+    def test_shared_catalog_uses_only_candidates_and_preserves_ties(self):
+        model = SASRec(4, length=3, dim=2, heads=1, blocks=1, dropout=0)
+        with torch.no_grad():
+            model.item.weight.copy_(torch.tensor([[100., 0], [100., 0], [1., 0],
+                                                  [1., 0], [.5, 0], [-1., 0]]))
+        with patch.object(model, "forward", return_value=torch.tensor([[1., 0], [1., 0]])):
+            rank = ranks(model, np.ones((2, 3), dtype=np.int32), np.array([3, 5]),
+                         "cpu", 2, candidates=[2, 3, 5])
+        np.testing.assert_array_equal(rank, [2, 3])
+        for candidates in ([4, 2], [2, 2], [0, 2], [2, 9]):
+            with self.assertRaisesRegex(ValueError, "Candidates"):
+                ranks(model, np.ones((1, 3), dtype=np.int32), np.array([4]), "cpu", 1, candidates)
+        with self.assertRaisesRegex(ValueError, "targets"):
+            ranks(model, np.ones((1, 3), dtype=np.int32), np.array([5]), "cpu", 1, [2, 4])
+
     @unittest.skipUnless(torch.backends.mps.is_available(), "MPS unavailable")
     def test_cpu_mps_forward_and_backward_agree(self):
         cpu = SASRec(12, length=5, dim=8, heads=2, blocks=2, dropout=0).eval()

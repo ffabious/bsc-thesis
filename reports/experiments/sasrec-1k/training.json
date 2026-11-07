@@ -1,0 +1,144 @@
+{
+  "train_examples": 2799860,
+  "validation_examples": 100809,
+  "initial_validation": {
+    "ndcg@10": 0.04258846958104598,
+    "recall@100": 0.04300211290658572
+  },
+  "mostpop_validation": {
+    "ndcg@10": 0.011260981412621263,
+    "recall@100": 0.056096181888521855
+  },
+  "epochs": [
+    {
+      "epoch": 1,
+      "loss": 0.5179676840984906,
+      "train_seconds": 304.07507574977353,
+      "train_examples_per_second": 9207.791835934731,
+      "validation_seconds": 15.618370790965855,
+      "validation": {
+        "ndcg@10": 0.0304639261821252,
+        "recall@100": 0.16437024472021347
+      },
+      "process_peak_rss_mib": 2469.59375,
+      "mps_tensor_mib": 240.947998046875,
+      "mps_driver_mib": 2075.859375
+    },
+    {
+      "epoch": 2,
+      "loss": 0.29653232661633083,
+      "train_seconds": 299.6241124169901,
+      "train_examples_per_second": 9344.575032410625,
+      "validation_seconds": 15.315352625213563,
+      "validation": {
+        "ndcg@10": 0.03512336624959839,
+        "recall@100": 0.1887629080736839
+      },
+      "process_peak_rss_mib": 2469.59375,
+      "mps_tensor_mib": 240.947998046875,
+      "mps_driver_mib": 2075.859375
+    },
+    {
+      "epoch": 3,
+      "loss": 0.2503453744115777,
+      "train_seconds": 306.46948325028643,
+      "train_examples_per_second": 9135.852517209421,
+      "validation_seconds": 16.76237199967727,
+      "validation": {
+        "ndcg@10": 0.03739774815843114,
+        "recall@100": 0.2028985507246377
+      },
+      "process_peak_rss_mib": 2469.59375,
+      "mps_tensor_mib": 240.947998046875,
+      "mps_driver_mib": 2075.859375
+    },
+    {
+      "epoch": 4,
+      "loss": 0.22718557802890144,
+      "train_seconds": 332.92565429164097,
+      "train_examples_per_second": 8409.86557781858,
+      "validation_seconds": 17.371816458180547,
+      "validation": {
+        "ndcg@10": 0.03761085794952676,
+        "recall@100": 0.20562648176254103
+      },
+      "process_peak_rss_mib": 2469.59375,
+      "mps_tensor_mib": 240.947998046875,
+      "mps_driver_mib": 2075.859375
+    },
+    {
+      "epoch": 5,
+      "loss": 0.2135803665183259,
+      "train_seconds": 315.3379120421596,
+      "train_examples_per_second": 8878.919701940782,
+      "validation_seconds": 17.205197041854262,
+      "validation": {
+        "ndcg@10": 0.039252371501290656,
+        "recall@100": 0.21265958396571735
+      },
+      "process_peak_rss_mib": 2469.59375,
+      "mps_tensor_mib": 240.947998046875,
+      "mps_driver_mib": 2075.859375
+    },
+    {
+      "epoch": 6,
+      "loss": 0.20286237526162024,
+      "train_seconds": 370.72366904234514,
+      "train_examples_per_second": 7552.4177003119585,
+      "validation_seconds": 18.753012458328158,
+      "validation": {
+        "ndcg@10": 0.038827136717783185,
+        "recall@100": 0.21748058209088475
+      },
+      "process_peak_rss_mib": 2469.59375,
+      "mps_tensor_mib": 240.947998046875,
+      "mps_driver_mib": 2075.859375
+    },
+    {
+      "epoch": 7,
+      "loss": 0.193970680676891,
+      "train_seconds": 368.4140309160575,
+      "train_examples_per_second": 7599.7648434783505,
+      "validation_seconds": 18.576516833156347,
+      "validation": {
+        "ndcg@10": 0.03890515903848418,
+        "recall@100": 0.2190280629705681
+      },
+      "process_peak_rss_mib": 2469.59375,
+      "mps_tensor_mib": 240.947998046875,
+      "mps_driver_mib": 2083.859375
+    }
+  ],
+  "parameters": 15682304,
+  "trainable_parameters": 15682304,
+  "best_epoch": 5,
+  "stop_reason": "validation_patience",
+  "elapsed_seconds": 2435.026445374824,
+  "checkpoint_sha256": "3629aef4eecd25211c5c94bf557c08ffc7029eca484b0994ce2c62eab273b570",
+  "config": {
+    "data": "data/processed/yambda50m-1k-audio",
+    "seed": 42,
+    "threads": 4,
+    "length": 50,
+    "dim": 64,
+    "heads": 2,
+    "blocks": 2,
+    "dropout": 0.2,
+    "batch_size": 256,
+    "negatives": 16,
+    "learning_rate": 0.001,
+    "epochs": null,
+    "patience": 2,
+    "eval_batch_size": 256,
+    "benchmark_warmup": 10,
+    "benchmark_steps": 50,
+    "benchmark_repeats": 3
+  },
+  "device": "mps",
+  "torch": "2.15.0",
+  "numpy": "2.5.4",
+  "python": "3.14.8",
+  "macos": "26.6.2",
+  "mps_available": true,
+  "data_manifest_sha256": "6424f7b7b4b4108666d84ec4b69d733c41b7682a90d49dcc497e50e8991bdc39"
+}
