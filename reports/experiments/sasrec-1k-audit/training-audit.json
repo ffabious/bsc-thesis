@@ -1,0 +1,56 @@
+{
+  "256": {
+    "selected_epoch": 4,
+    "optimizer_steps_at_selected_epoch": 11556,
+    "positive_presentations": 2958284,
+    "initial_validation": {
+      "ndcg@10": 0.02233383386428867,
+      "recall@100": 0.02285675297649507
+    },
+    "selected_validation": {
+      "ndcg@10": 0.03515895064819611,
+      "recall@100": 0.24333913280796915
+    },
+    "all_weights_finite": true,
+    "item_norm_quantiles": [
+      0.9114789605140686,
+      1.2035433053970337,
+      1.4253637075424195,
+      1.6009981966018674
+    ],
+    "position_norm_quantiles": [
+      1.573383367061615,
+      2.1867822408676147,
+      2.8857272148132327,
+      3.757271361351011
+    ],
+    "last_position_norm": 4.2644944190979
+  },
+  "1k": {
+    "selected_epoch": 5,
+    "optimizer_steps_at_selected_epoch": 54685,
+    "positive_presentations": 13999300,
+    "initial_validation": {
+      "ndcg@10": 0.04258846958104598,
+      "recall@100": 0.04300211290658572
+    },
+    "selected_validation": {
+      "ndcg@10": 0.039252371501290656,
+      "recall@100": 0.21265958396571735
+    },
+    "all_weights_finite": true,
+    "item_norm_quantiles": [
+      2.381192970275879,
+      2.9124618768692017,
+      3.3033256053924562,
+      3.585914137363434
+    ],
+    "position_norm_quantiles": [
+      6.262776470184326,
+      7.439594268798828,
+      8.656575965881348,
+      10.841375112533566
+    ],
+    "last_position_norm": 11.777997016906738
+  }
+}

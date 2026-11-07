@@ -12,6 +12,8 @@
 | `run_sasrec.py` | Локальные CPU/MPS benchmark, обучение с выбором по model_valid и оценка checkpoint; `epochs: null` оставляет только остановку по validation; поддерживает frozen-аудио и перенос ID-таблицы |
 | `compare_sasrec.py` | Оценка увеличенного пилота на точных inputs/targets и каталоге прежнего пилота; сопоставление item_id и парные пользовательские интервалы |
 | `diagnostics/sage_fd_check.py` | Самостоятельная численная диагностика опубликованного псевдокода SAGE; требует NumPy |
+| `diagnostics/audit_pilot_scale.py` | Проверка общей когорты и строго прошлых histories, естественные prefixes и сегменты качества 256/1k |
+| `diagnostics/audit_pilot_training.py` | Воспроизведение validation/initial model, scoring-абляции и проверка gradient weighting BCE без optimizer updates |
 | `legacy/literature/` | Сборка каталога и HTML-обзоров, добавление источников и прежние проверки |
 | `legacy/conferences/` | Первоначальная сборка и обновление таблицы конференций |
 | `legacy/registry/dcn/` | Историческое добавление DCN V2 |

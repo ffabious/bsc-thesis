@@ -1,0 +1,15 @@
+{
+  "sample_size": 512,
+  "last_token_targets": 128,
+  "max_rank_difference": 1,
+  "different_ranks": 1,
+  "cpu_metrics": {
+    "ndcg@10": 0.05024353041634979,
+    "recall@100": 0.228515625
+  },
+  "mps_metrics": {
+    "ndcg@10": 0.05024353041634979,
+    "recall@100": 0.228515625
+  },
+  "all_weights_finite": true
+}

@@ -1,0 +1,15 @@
+{
+  "split": "model_valid",
+  "examples": 256,
+  "negatives_per_positive": 16,
+  "fixed_logits_and_negatives": true,
+  "optimizer_step_performed": false,
+  "joint_to_current_positive_gradient_factor": 0.058823529411764705,
+  "joint_to_current_each_negative_gradient_factor": 0.9411764705882353,
+  "relative_negative_weight_increase": 16,
+  "current_positive_gradient_l1": 0.07712834601875847,
+  "current_negative_gradient_l1": 0.08755348200795088,
+  "joint_positive_gradient_l1": 0.004536961530515203,
+  "joint_negative_gradient_l1": 0.08240327718395377,
+  "note": "Reduction check on detached logits, CPU float64; not a quality or training-improvement experiment."
+}

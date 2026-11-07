@@ -1,0 +1,68 @@
+test_cached_item_index_cannot_change_source_silently (test_audio_embeddings.AudioEmbeddingTest.test_cached_item_index_cannot_change_source_silently) ... ok
+test_complete_vectors_are_aligned_and_normalized (test_audio_embeddings.AudioEmbeddingTest.test_complete_vectors_are_aligned_and_normalized) ... Extracting fixed audio vectors for /var/folders/9s/6g2qtp2j54d5swdx6zdpfsx00000gn/T/tmp8bmznydc
+ok
+test_missing_vectors_are_rejected_without_fallback (test_audio_embeddings.AudioEmbeddingTest.test_missing_vectors_are_rejected_without_fallback) ... Extracting fixed audio vectors for /var/folders/9s/6g2qtp2j54d5swdx6zdpfsx00000gn/T/tmpv82g7rhg
+ok
+test_only_item_table_transfers_and_stays_frozen (test_item_checkpoint.ItemCheckpointTest.test_only_item_table_transfers_and_stays_frozen) ... ok
+test_rejects_ambiguous_source_and_dimension_mismatch (test_item_checkpoint.ItemCheckpointTest.test_rejects_ambiguous_source_and_dimension_mismatch) ... ok
+test_rejects_changed_source_or_dataset (test_item_checkpoint.ItemCheckpointTest.test_rejects_changed_source_or_dataset) ... ok
+test_identical_predictions_have_zero_paired_difference (test_pilot_comparison.PilotComparisonTest.test_identical_predictions_have_zero_paired_difference) ... ok
+test_mapping_uses_item_ids_and_rejects_missing_tracks (test_pilot_comparison.PilotComparisonTest.test_mapping_uses_item_ids_and_rejects_missing_tracks) ... ok
+test_closed_audio_catalog_filters_all_parts_and_rebuilds_history (test_prepare_yambda.PrepareYambdaTest.test_closed_audio_catalog_filters_all_parts_and_rebuilds_history) ... Preparing 2 users; train ends at relative second 172800
+Written train
+Written model_valid
+Written controller_train
+Written policy_valid
+Written test
+ok
+test_period_boundaries_and_timestamp_groups (test_prepare_yambda.PrepareYambdaTest.test_period_boundaries_and_timestamp_groups) ... Preparing 2 users; train ends at relative second 172800
+Written train
+Written model_valid
+Written controller_train
+Written policy_valid
+Written test
+ok
+test_rejects_bad_timestamps_and_existing_outputs (test_prepare_yambda.PrepareYambdaTest.test_rejects_bad_timestamps_and_existing_outputs) ... ok
+test_rejects_insufficient_time_range (test_prepare_yambda.PrepareYambdaTest.test_rejects_insufficient_time_range) ... ok
+test_sample_depends_only_on_train_users_and_seed (test_prepare_yambda.PrepareYambdaTest.test_sample_depends_only_on_train_users_and_seed) ... Preparing 1 users; train ends at relative second 172800
+Written train
+Written model_valid
+Written controller_train
+Written policy_valid
+Written test
+Preparing 1 users; train ends at relative second 172800
+Written train
+Written model_valid
+Written controller_train
+Written policy_valid
+Written test
+ok
+test_train_only_vocabulary_and_unknown_history (test_prepare_yambda.PrepareYambdaTest.test_train_only_vocabulary_and_unknown_history) ... Preparing 2 users; train ends at relative second 172800
+Written train
+Written model_valid
+Written controller_train
+Written policy_valid
+Written test
+ok
+test_attention_is_causal_and_padding_gradients_are_finite (test_sasrec.SASRecTest.test_attention_is_causal_and_padding_gradients_are_finite) ... ok
+test_cpu_mps_forward_and_backward_agree (test_sasrec.SASRecTest.test_cpu_mps_forward_and_backward_agree) ... ok
+test_frozen_item_vectors_stay_exact_while_ranker_learns (test_sasrec.SASRecTest.test_frozen_item_vectors_stay_exact_while_ranker_learns) ... ok
+test_frozen_projection_cpu_mps_agree (test_sasrec.SASRecTest.test_frozen_projection_cpu_mps_agree) ... ok
+test_full_catalog_rank_excludes_special_tokens_and_breaks_ties (test_sasrec.SASRecTest.test_full_catalog_rank_excludes_special_tokens_and_breaks_ties) ... ok
+test_negative_sampling_excludes_only_the_current_positive (test_sasrec.SASRecTest.test_negative_sampling_excludes_only_the_current_positive) ... ok
+test_prefixes_exclude_current_timestamp_and_cross_split_boundaries (test_sasrec.SASRecTest.test_prefixes_exclude_current_timestamp_and_cross_split_boundaries) ... ok
+test_shared_catalog_uses_only_candidates_and_preserves_ties (test_sasrec.SASRecTest.test_shared_catalog_uses_only_candidates_and_preserves_ties) ... ok
+test_alignment_keeps_reference_users_and_targets_with_expanded_histories (test_scale_audit.ScaleAuditTest.test_alignment_keeps_reference_users_and_targets_with_expanded_histories) ... ok
+test_vector_scoring_ties_and_candidate_norm_ablation (test_scale_audit.ScaleAuditTest.test_vector_scoring_ties_and_candidate_norm_ablation) ... ok
+test_explicit_epoch_limit_still_works (test_training_stop.TrainingStopTest.test_explicit_epoch_limit_still_works) ... {"epoch": 1, "loss": 1.3935312032699585, "train_seconds": 0.000989875290542841, "train_examples_per_second": 2020.4565353916587, "validation_seconds": 2.2416934370994568e-05, "validation": {"ndcg@10": 0.5, "recall@100": 1.0}, "process_peak_rss_mib": 526.890625}
+{"epoch": 2, "loss": 1.3738057613372803, "train_seconds": 0.0006963745690882206, "train_examples_per_second": 2872.0175732704406, "validation_seconds": 2.075033262372017e-05, "validation": {"ndcg@10": 0.6309297535714575, "recall@100": 1.0}, "process_peak_rss_mib": 526.890625}
+ok
+test_no_epoch_limit_stops_on_validation_and_keeps_best (test_training_stop.TrainingStopTest.test_no_epoch_limit_stops_on_validation_and_keeps_best) ... {"epoch": 1, "loss": 1.4115896224975586, "train_seconds": 0.0013938751071691513, "train_examples_per_second": 1434.848782156559, "validation_seconds": 2.0707957446575165e-05, "validation": {"ndcg@10": 1.0, "recall@100": 1.0}, "process_peak_rss_mib": 526.890625}
+{"epoch": 2, "loss": 1.3988134860992432, "train_seconds": 0.0006829998455941677, "train_examples_per_second": 2928.258348667888, "validation_seconds": 1.874985173344612e-05, "validation": {"ndcg@10": 0.6309297535714575, "recall@100": 1.0}, "process_peak_rss_mib": 526.890625}
+{"epoch": 3, "loss": 1.39296555519104, "train_seconds": 0.000632207840681076, "train_examples_per_second": 3163.516602143695, "validation_seconds": 1.7249956727027893e-05, "validation": {"ndcg@10": 0.5, "recall@100": 1.0}, "process_peak_rss_mib": 526.890625}
+ok
+
+----------------------------------------------------------------------
+Ran 26 tests in 0.962s
+
+OK

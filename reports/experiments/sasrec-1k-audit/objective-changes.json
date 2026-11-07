@@ -1,0 +1,18 @@
+{
+  "reference_catalog_items": 114125,
+  "expanded_catalog_items": 244194,
+  "negatives_per_positive": 16,
+  "probability_expanded_negative_in_reference_catalog": 0.46735164398651885,
+  "expected_reference_catalog_negatives_per_positive_old": 16,
+  "expected_reference_catalog_negatives_per_positive_new": 7.477626303784302,
+  "expected_reference_negatives_per_original_positive_across_selected_epochs_old": 64,
+  "expected_reference_negatives_per_original_positive_across_selected_epochs_new": 37.38813151892151,
+  "optimizer_steps_old": 11556,
+  "optimizer_steps_new": 54685,
+  "optimizer_steps_one_epoch": 10937,
+  "adam_weight_decay_default": 0,
+  "qualification": "Expectation for negatives attached to each original-cohort positive; additional-user updates are separate and not counted here.",
+  "expanded_train_positives_in_reference_catalog": 2457311,
+  "expected_total_reference_catalog_negatives_old": 47332544,
+  "expected_total_reference_catalog_negatives_new": 104681646.13694905
+}

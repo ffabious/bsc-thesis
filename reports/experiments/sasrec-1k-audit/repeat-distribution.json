@@ -1,0 +1,44 @@
+[
+  {
+    "split": "model_valid",
+    "cohort": "added_users",
+    "targets": 70362,
+    "last_token_targets": 3606,
+    "last_token_share": 0.05124925385861687
+  },
+  {
+    "split": "model_valid",
+    "cohort": "original_256",
+    "targets": 30447,
+    "last_token_targets": 687,
+    "last_token_share": 0.022563799389102374
+  },
+  {
+    "split": "test",
+    "cohort": "added_users",
+    "targets": 127189,
+    "last_token_targets": 3217,
+    "last_token_share": 0.02529306779674343
+  },
+  {
+    "split": "test",
+    "cohort": "original_256",
+    "targets": 48642,
+    "last_token_targets": 726,
+    "last_token_share": 0.014925373134328358
+  },
+  {
+    "split": "train",
+    "cohort": "added_users",
+    "targets": 2060289,
+    "last_token_targets": 48004,
+    "last_token_share": 0.023299643884911292
+  },
+  {
+    "split": "train",
+    "cohort": "original_256",
+    "targets": 739571,
+    "last_token_targets": 12741,
+    "last_token_share": 0.01722755489330977
+  }
+]

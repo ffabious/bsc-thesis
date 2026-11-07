@@ -1,0 +1,12 @@
+{
+  "description": "Last reference token first, then train MostPop without duplicates; exact same 45711 targets and 114125 candidates",
+  "mostpop": {
+    "ndcg@10": 0.00243086590086716,
+    "recall@100": 0.038524643958784535
+  },
+  "last_plus_mostpop": {
+    "ndcg@10": 0.017738830091648856,
+    "recall@100": 0.052941305156308106
+  },
+  "last_token_only_ndcg_lower_bound": 0.015816761829756512
+}

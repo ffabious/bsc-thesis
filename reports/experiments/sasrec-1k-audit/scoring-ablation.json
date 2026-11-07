@@ -1,0 +1,133 @@
+{
+  "exploratory_not_model_selection": true,
+  "models": {
+    "256": {
+      "cached_state_ranks_verified_on_256_events": true,
+      "mean_query_unit_vector_norm": 0.25469744205474854,
+      "mean_query_last_item_cosine": 0.3214579224586487,
+      "repeat_query_last_item_cosine": 0.3339342474937439,
+      "variants": {
+        "trained": {
+          "all": {
+            "ndcg@10": 0.022943343275696554,
+            "recall@100": 0.18509767889567064
+          },
+          "last_token": {
+            "ndcg@10": 0.39734046605369194,
+            "recall@100": 0.7966804979253111
+          },
+          "other_targets": {
+            "ndcg@10": 0.016926424991520982,
+            "recall@100": 0.17526896061171868
+          }
+        },
+        "initial": {
+          "all": {
+            "ndcg@10": 0.01585050409615936,
+            "recall@100": 0.016473059001115706
+          },
+          "last_token": {
+            "ndcg@10": 1.0,
+            "recall@100": 1.0
+          },
+          "other_targets": {
+            "ndcg@10": 3.428453675514729e-05,
+            "recall@100": 0.0006668444918644973
+          }
+        },
+        "unit_candidate_norm": {
+          "all": {
+            "ndcg@10": 0.018217607997609728,
+            "recall@100": 0.17159983373804993
+          },
+          "last_token": {
+            "ndcg@10": 0.3243929198516127,
+            "recall@100": 0.7330567081604425
+          },
+          "other_targets": {
+            "ndcg@10": 0.013297079179470579,
+            "recall@100": 0.16257668711656442
+          }
+        },
+        "last_token_lookup_query": {
+          "all": {
+            "ndcg@10": 0.007764289721422007,
+            "recall@100": 0.03196167224519263
+          },
+          "last_token": {
+            "ndcg@10": 0.31220264122048985,
+            "recall@100": 0.43568464730290457
+          },
+          "other_targets": {
+            "ndcg@10": 0.0028716755102139945,
+            "recall@100": 0.02547345958922379
+          }
+        }
+      }
+    },
+    "1k": {
+      "cached_state_ranks_verified_on_256_events": true,
+      "mean_query_unit_vector_norm": 0.3233617842197418,
+      "mean_query_last_item_cosine": 0.21155515313148499,
+      "repeat_query_last_item_cosine": 0.2246732860803604,
+      "variants": {
+        "trained": {
+          "all": {
+            "ndcg@10": 0.015927851919702782,
+            "recall@100": 0.1687777559012054
+          },
+          "last_token": {
+            "ndcg@10": 0.1508503633840536,
+            "recall@100": 0.5020746887966805
+          },
+          "other_targets": {
+            "ndcg@10": 0.013759518679978284,
+            "recall@100": 0.16342135680625944
+          }
+        },
+        "initial": {
+          "all": {
+            "ndcg@10": 0.015823347334244797,
+            "recall@100": 0.016538688718251624
+          },
+          "last_token": {
+            "ndcg@10": 1.0,
+            "recall@100": 1.0
+          },
+          "other_targets": {
+            "ndcg@10": 6.691339816483978e-06,
+            "recall@100": 0.0007335289410509469
+          }
+        },
+        "unit_candidate_norm": {
+          "all": {
+            "ndcg@10": 0.012207037715580762,
+            "recall@100": 0.14865130931285686
+          },
+          "last_token": {
+            "ndcg@10": 0.10420259108122495,
+            "recall@100": 0.4190871369294606
+          },
+          "other_targets": {
+            "ndcg@10": 0.010728581569867222,
+            "recall@100": 0.1443051480394772
+          }
+        },
+        "last_token_lookup_query": {
+          "all": {
+            "ndcg@10": 0.006219887524332838,
+            "recall@100": 0.03176478309378487
+          },
+          "last_token": {
+            "ndcg@10": 0.24964064955078372,
+            "recall@100": 0.4190871369294606
+          },
+          "other_targets": {
+            "ndcg@10": 0.0023078840801894216,
+            "recall@100": 0.02554014403841024
+          }
+        }
+      }
+    }
+  }
+}
