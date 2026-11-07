@@ -59,6 +59,29 @@ class SASRecTest(unittest.TestCase):
         for y, values in zip(target, sampled):
             self.assertEqual(set(values), set(range(2, 6)) - {y})
 
+    def test_joint_loss_matches_bce_logits_and_preserves_default(self):
+        model = SASRec(12, length=4, dim=8, heads=2, blocks=1, dropout=0)
+        x = torch.tensor([[0, 2, 3, 4], [2, 5, 6, 7]])
+        y = torch.tensor([5, 8])
+        negative = torch.tensor([[6, 7, 8], [9, 10, 11]])
+        state = model(x)
+        positive = (state * model.item(y)).sum(-1)
+        other = (state[:, None] * model.item(negative)).sum(-1)
+        logits = torch.cat((positive[:, None], other), dim=1)
+        labels = torch.zeros_like(logits)
+        labels[:, 0] = 1
+        expected = torch.nn.functional.binary_cross_entropy_with_logits(logits, labels)
+        actual = loss(model, x, y, negative, "joint_mean")
+        torch.testing.assert_close(actual, expected)
+        left = torch.autograd.grad(actual, tuple(model.parameters()))
+        right = torch.autograd.grad(expected, tuple(model.parameters()))
+        for a, b in zip(left, right):
+            torch.testing.assert_close(a, b, atol=1e-6, rtol=1e-5)
+        separate = torch.nn.functional.softplus(-positive).mean() + torch.nn.functional.softplus(other).mean()
+        torch.testing.assert_close(loss(model, x, y, negative), separate)
+        with self.assertRaisesRegex(ValueError, "Unknown loss reduction"):
+            loss(model, x, y, negative, "invalid")
+
     def test_frozen_item_vectors_stay_exact_while_ranker_learns(self):
         model = SASRec(12, length=4, dim=8, item_dim=16, freeze_items=True,
                        heads=2, blocks=1, dropout=0)
@@ -108,12 +131,16 @@ class SASRecTest(unittest.TestCase):
         y = torch.tensor([5, 9])
         neg = torch.tensor([[6, 7], [10, 11]])
         torch.testing.assert_close(cpu(x), mps(x.to("mps")).cpu(), atol=1e-5, rtol=1e-4)
-        left, right = loss(cpu, x, y, neg), loss(mps, x.to("mps"), y.to("mps"), neg.to("mps"))
-        left.backward()
-        right.backward()
-        torch.testing.assert_close(left, right.cpu(), atol=1e-5, rtol=1e-4)
-        for a, b in zip(cpu.parameters(), mps.parameters()):
-            torch.testing.assert_close(a.grad, b.grad.cpu(), atol=1e-5, rtol=1e-3)
+        for reduction in ("separate_mean", "joint_mean"):
+            cpu.zero_grad(set_to_none=True)
+            mps.zero_grad(set_to_none=True)
+            left = loss(cpu, x, y, neg, reduction)
+            right = loss(mps, x.to("mps"), y.to("mps"), neg.to("mps"), reduction)
+            left.backward()
+            right.backward()
+            torch.testing.assert_close(left, right.cpu(), atol=1e-5, rtol=1e-4)
+            for a, b in zip(cpu.parameters(), mps.parameters()):
+                torch.testing.assert_close(a.grad, b.grad.cpu(), atol=1e-5, rtol=1e-3)
 
     @unittest.skipUnless(torch.backends.mps.is_available(), "MPS unavailable")
     def test_frozen_projection_cpu_mps_agree(self):

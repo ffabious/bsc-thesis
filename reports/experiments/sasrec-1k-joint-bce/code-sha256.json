@@ -1,0 +1,6 @@
+{
+  "scripts/sasrec.py": "3344e8ec4edcca8d91493458dac85bbc299cd0d2000ebc13993787a2e637428a",
+  "scripts/run_sasrec.py": "e61160e998571ca044c5a0f3863d209946220918a786929e2c73da242c8bd15f",
+  "tests/test_sasrec.py": "928220386c5d76e8a27a9fee9972399412a23e4f9da61826e2d1a30dfd98e136",
+  "configs/experiments/sasrec-1k-joint-bce.json": "7eb79472b2846a18c9f3b29cf2bb16a865daab148d80616b27578b9e26d28cef"
+}

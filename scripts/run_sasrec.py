@@ -84,9 +84,9 @@ def optimizer_for(model, config):
                             lr=config["learning_rate"], betas=(0.9, 0.98))
 
 
-def step(model, optimizer, sequence, target, negative):
+def step(model, optimizer, sequence, target, negative, reduction="separate_mean"):
     optimizer.zero_grad(set_to_none=True)
-    value = loss(model, sequence, target, negative)
+    value = loss(model, sequence, target, negative, reduction)
     value.backward()
     torch.nn.utils.clip_grad_norm_(model.parameters(), 5.0)
     optimizer.step()
@@ -98,18 +98,19 @@ def benchmark(config, data, device):
     count = json.loads((data / "manifest.json").read_text())["candidate_items"]
     model = make_model(config, data, count).to(device).train()
     optimizer = optimizer_for(model, config)
+    reduction = config.get("loss_reduction", "separate_mean")
     rng = np.random.default_rng(config["seed"])
     take = rng.choice(len(y), config["batch_size"], replace=False)
     sequence, target = batch(x, y, take, device)
     negative = torch.as_tensor(negatives(y[take], config["negatives"], count, rng), device=device)
     for _ in range(config["benchmark_warmup"]):
-        step(model, optimizer, sequence, target, negative)
+        step(model, optimizer, sequence, target, negative, reduction)
     sync(device)
     timings = []
     for _ in range(config["benchmark_repeats"]):
         started = time.perf_counter()
         for _ in range(config["benchmark_steps"]):
-            value = step(model, optimizer, sequence, target, negative)
+            value = step(model, optimizer, sequence, target, negative, reduction)
         sync(device)
         timings.append((time.perf_counter() - started) / config["benchmark_steps"])
     if not torch.isfinite(value).item():
@@ -121,7 +122,7 @@ def benchmark(config, data, device):
               **memory(device)}
     # Memory snapshots are separate from timed trials; the allocator may retain cached blocks.
     optimizer.zero_grad(set_to_none=True)
-    probe = loss(model, sequence, target, negative)
+    probe = loss(model, sequence, target, negative, reduction)
     sync(device)
     result["memory_after_forward"] = memory(device)
     probe.backward()
@@ -143,6 +144,7 @@ def train(config, data, device, output):
     count = json.loads((data / "manifest.json").read_text())["candidate_items"]
     model = make_model(config, data, count).to(device)
     optimizer = optimizer_for(model, config)
+    reduction = config.get("loss_reduction", "separate_mean")
     frozen_before = item_digest(model) if config.get("freeze_items") else None
     rng = np.random.default_rng(config["seed"])
     initial = metrics(ranks(model, vx, vy, device, config["eval_batch_size"]))
@@ -162,7 +164,7 @@ def train(config, data, device, output):
             indices = order[start:start + config["batch_size"]]
             sequence, target = batch(x, y, indices, device)
             negative = torch.as_tensor(negatives(y[indices], config["negatives"], count, rng), device=device)
-            total += step(model, optimizer, sequence, target, negative) * len(indices)
+            total += step(model, optimizer, sequence, target, negative, reduction) * len(indices)
             if (start // config["batch_size"] + 1) % 500 == 0:
                 print(f"epoch {epoch}, {start + len(indices)}/{len(y)}, "
                       f"loss={total.item() / (start + len(indices)):.4f}", flush=True)

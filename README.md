@@ -144,6 +144,17 @@ PYTORCH_ENABLE_MPS_FALLBACK=0 .venv/bin/python scripts/compare_sasrec.py --devic
 
 Причины ухудшения исследованы в [аудите данных, обучения и сравнения](reports/experiments/sasrec-1k-audit.md); связанные первичные работы и различие нормировок BCE разобраны в [литературной заметке](notes/sasrec-scaling-literature.md). Диагностические скрипты используют готовые checkpoints; отдельный короткий контроль ограничен одной эпохой.
 
+## BCE с общим усреднением на 1 000 пользователей
+
+Меняется только `loss_reduction: joint_mean`: сумма positive и 16 negative ошибок делится на общее число logits. Прежний режим `separate_mean` остаётся default для старых конфигов. Данные, sampler, seed, модель, Adam, clipping и patience 2 сохранены. [Конфигурация](configs/experiments/sasrec-1k-joint-bce.json), [результаты сравнения](reports/experiments/sasrec-1k-joint-bce.md).
+
+```sh
+PYTORCH_ENABLE_MPS_FALLBACK=0 .venv/bin/python scripts/run_sasrec.py train --device mps --config configs/experiments/sasrec-1k-joint-bce.json --output data/runs/sasrec-1k-joint-bce/train-mps
+PYTORCH_ENABLE_MPS_FALLBACK=0 .venv/bin/python scripts/run_sasrec.py evaluate --device mps --config configs/experiments/sasrec-1k-joint-bce.json --checkpoint data/runs/sasrec-1k-joint-bce/train-mps/best.pt --output data/runs/sasrec-1k-joint-bce/evaluation-mps.json
+```
+
+Основное A/B-сравнение использует все те же 175 831 test-targets и каталог из 244 194 треков. Отдельно сохраняется оценка на фиксированной когорте и каталоге прежнего пилота на 256. Выбор checkpoint производится среди обученных эпох по validation NDCG@10, как в контроле.
+
 ## Происхождение материалов
 
 Импорт выполнен 20 октября 2026 из `thesis-project-2026-10-20.zip` и двух заметок, уже находившихся в этой папке. Заметки совпали с копиями в архиве и сохранены в одном экземпляре.

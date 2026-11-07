@@ -100,10 +100,14 @@ def batch(x, y, indices, device):
             torch.as_tensor(y[indices], dtype=torch.long, device=device))
 
 
-def loss(model, x, y, negative):
+def loss(model, x, y, negative, reduction="separate_mean"):
+    if reduction not in ("separate_mean", "joint_mean"):
+        raise ValueError(f"Unknown loss reduction: {reduction}")
     state = model(x)
     positive = (state * model.item(y)).sum(-1)
     other = (state[:, None] * model.item(negative)).sum(-1)
+    if reduction == "joint_mean":
+        return (F.softplus(-positive).sum() + F.softplus(other).sum()) / (positive.numel() + other.numel())
     return F.softplus(-positive).mean() + F.softplus(other).mean()
 
 

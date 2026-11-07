@@ -1,0 +1,46 @@
+{
+  "data": "data/processed/yambda50m-1k-audio",
+  "loss_reduction": "joint_mean",
+  "parameters": 15682304,
+  "completed_epochs": 13,
+  "best_epoch": 11,
+  "training_seconds": 4058.3216164577752,
+  "reference_completed_epochs": 7,
+  "reference_best_epoch": 5,
+  "test_targets": 175831,
+  "catalog_items": 244194,
+  "separate_mean_metrics": {
+    "ndcg@10": 0.017326841351556228,
+    "recall@100": 0.16167797487360022
+  },
+  "joint_mean_metrics": {
+    "ndcg@10": 0.020907991155033837,
+    "recall@100": 0.1943286451194613
+  },
+  "paired_delta": {
+    "ndcg@10": {
+      "difference": 0.003581149803477609,
+      "cluster_bootstrap_95ci": [
+        0.0023417394935006056,
+        0.004861702882668246
+      ],
+      "relative_change": 0.2066822065728653
+    },
+    "recall@100": {
+      "difference": 0.03265067024586108,
+      "cluster_bootstrap_95ci": [
+        0.029248011301308816,
+        0.036380085129053094
+      ],
+      "relative_change": 0.2019487828901083
+    }
+  },
+  "shared_separate_mean": {
+    "ndcg@10": 0.015927851919702782,
+    "recall@100": 0.1687777559012054
+  },
+  "shared_joint_mean": {
+    "ndcg@10": 0.020536215045445897,
+    "recall@100": 0.20347399969372798
+  }
+}
