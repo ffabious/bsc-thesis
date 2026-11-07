@@ -150,8 +150,9 @@ def train(config, data, device, output):
               "mostpop_validation": metrics(most_popular(data, vy)), "epochs": [],
               "parameters": sum(p.numel() for p in model.parameters()),
               "trainable_parameters": sum(p.numel() for p in model.parameters() if p.requires_grad)}
-    best, waiting = -1.0, 0
-    for epoch in range(1, config["epochs"] + 1):
+    best, waiting, epoch = -1.0, 0, 0
+    while config["epochs"] is None or epoch < config["epochs"]:
+        epoch += 1
         model.train()
         order = rng.permutation(len(y))
         total = torch.zeros((), device=device)
@@ -188,7 +189,9 @@ def train(config, data, device, output):
             waiting += 1
         write(output / "training.json", result)
         if waiting >= config["patience"]:
+            result["stop_reason"] = "validation_patience"
             break
+    result.setdefault("stop_reason", "epoch_limit")
     result.update(elapsed_seconds=time.perf_counter() - started,
                   checkpoint_sha256=hashlib.sha256((output / "best.pt").read_bytes()).hexdigest())
     if frozen_before:

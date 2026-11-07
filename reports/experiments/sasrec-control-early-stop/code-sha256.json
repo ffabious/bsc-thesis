@@ -1,0 +1,6 @@
+{
+  "scripts/run_sasrec.py": "f28e4c6def04826738195a0ac0c97234c529a52ed335efdc2ad21c3213da627e",
+  "scripts/sasrec.py": "0acf388707ff2f56431b3b4b542292bf5a0f204d25542b7158320457c699347e",
+  "tests/test_training_stop.py": "8a154259598ce2e19fda97156f8a5902d5634a8fc4b137708f7f5db9c830e74b",
+  "configs/experiments/sasrec-control-early-stop.json": "a00ecab5fce488b3078123c7452370ebedae209430272ed5639633ae49ccfc0e"
+}

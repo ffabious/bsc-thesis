@@ -119,6 +119,17 @@ PYTORCH_ENABLE_MPS_FALLBACK=0 .venv/bin/python scripts/run_sasrec.py evaluate --
 
 Источник в конфиге закреплён по SHA-256 и должен соответствовать завершённому обучению и тому же manifest данных. Для воспроизведения с заново обученным источником обновите путь и `item_checkpoint_sha256` под этот checkpoint и выберите новую output-директорию. Стоимость предварительного обучения учитывается отдельно от нового запуска.
 
+## Контрольный SASRec до остановки по validation
+
+На том же пересобранном пилоте контроль обучается с прежними настройками и seed 42. `epochs: null` снимает лимит эпох; `patience: 2` останавливает запуск после двух эпох без улучшения validation NDCG@10. Test оценивается после выбора checkpoint. [Конфигурация](configs/experiments/sasrec-control-early-stop.json), [результаты](reports/experiments/sasrec-control-early-stop.md).
+
+```sh
+PYTORCH_ENABLE_MPS_FALLBACK=0 .venv/bin/python scripts/run_sasrec.py train --device mps --config configs/experiments/sasrec-control-early-stop.json --output data/runs/sasrec-control-early-stop/train-mps
+PYTORCH_ENABLE_MPS_FALLBACK=0 .venv/bin/python scripts/run_sasrec.py evaluate --device mps --config configs/experiments/sasrec-control-early-stop.json --checkpoint data/runs/sasrec-control-early-stop/train-mps/best.pt --output data/runs/sasrec-control-early-stop/evaluation-mps.json
+```
+
+Запуск начинается с нуля: прежний checkpoint не содержит Adam/RNG state для точного продолжения. Первые пять эпох повторяются в том же запуске, затем обучение продолжается с сохранением optimizer/RNG в памяти. Предыдущие checkpoints и результаты не перезаписываются.
+
 ## Происхождение материалов
 
 Импорт выполнен 20 октября 2026 из `thesis-project-2026-10-20.zip` и двух заметок, уже находившихся в этой папке. Заметки совпали с копиями в архиве и сохранены в одном экземпляре.

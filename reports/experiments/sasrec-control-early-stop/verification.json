@@ -1,0 +1,15 @@
+{
+  "same_config_except_epoch_limit": true,
+  "same_data_manifest": true,
+  "same_test_targets_and_users": true,
+  "historical_checkpoint_unchanged": true,
+  "best_checkpoint_matches_validation_maximum": true,
+  "stopped_by_validation_patience": true,
+  "epochs_after_best": 2,
+  "first_five_epochs_max_absolute_validation_difference": {
+    "ndcg@10": 0.00155452899785255,
+    "recall@100": 0.004366663255210984
+  },
+  "historical_checkpoint_sha256": "41225acd6fb3b8500d81985f29398b761e06f2920851f8b00caf1992abc51f1f",
+  "new_checkpoint_sha256": "32c3d3faed81f0a3008ebb9cd90550d9da7c5b26696659aa3fbc1b83aaf2d349"
+}

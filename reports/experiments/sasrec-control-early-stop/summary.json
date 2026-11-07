@@ -1,0 +1,40 @@
+{
+  "data": "data/processed/yambda50m-pilot-audio",
+  "completed_epochs": 6,
+  "best_epoch": 4,
+  "stop_reason": "validation_patience",
+  "training_seconds": 358.9780459580943,
+  "parameters": 7357888,
+  "train_examples": 739571,
+  "validation_examples": 29313,
+  "test_targets": 45711,
+  "catalog_items": 114125,
+  "old_five_epoch_test": {
+    "ndcg@10": 0.023582249922931647,
+    "recall@100": 0.18995427796372863
+  },
+  "early_stop_test": {
+    "ndcg@10": 0.022943343275696554,
+    "recall@100": 0.18509767889567064
+  },
+  "old_hit@10": 0.04497823281048326,
+  "new_hit@10": 0.04287808186213384,
+  "paired_delta_vs_old": {
+    "ndcg@10": {
+      "difference": -0.0006389066472350871,
+      "cluster_bootstrap_95ci": [
+        -0.0021687949148782204,
+        0.0009647906926132479
+      ],
+      "relative_change": -0.027092692568481902
+    },
+    "recall@100": {
+      "difference": -0.004856599068058016,
+      "cluster_bootstrap_95ci": [
+        -0.009606183896754737,
+        -0.0004966910344461897
+      ],
+      "relative_change": -0.025567200276402025
+    }
+  }
+}
