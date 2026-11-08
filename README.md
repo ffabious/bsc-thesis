@@ -166,6 +166,12 @@ PYTORCH_ENABLE_MPS_FALLBACK=0 .venv/bin/python scripts/run_sasrec.py evaluate --
 
 Все три модели сравниваются на одинаковых 45 711 test-событиях, histories и 114 125 кандидатах. Для 1k переиспользуются сохранённые ранги `data/runs/sasrec-1k-joint-bce/comparison-256.npz`; полная 1k-оценка с другим каталогом в эту таблицу не включается.
 
+Причины оставшейся потери на повторах исследованы в [аудите joint-BCE моделей](reports/experiments/sasrec-joint-repeat-audit.md). Короткий контекст восстанавливает верхние попадания, но при inference ухудшает общий Recall. [Следующий единственный обучающий контроль](notes/sasrec-next-repeat-experiment.md) предложен и пока не запущен.
+
+```sh
+PYTORCH_ENABLE_MPS_FALLBACK=0 .venv/bin/python scripts/diagnostics/audit_joint_repeats.py --device mps --full-validation
+```
+
 ## Происхождение материалов
 
 Импорт выполнен 20 октября 2026 из `thesis-project-2026-10-20.zip` и двух заметок, уже находившихся в этой папке. Заметки совпали с копиями в архиве и сохранены в одном экземпляре.

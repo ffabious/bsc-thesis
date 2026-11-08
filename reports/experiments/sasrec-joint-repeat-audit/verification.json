@@ -1,0 +1,29 @@
+{
+  "base_commit": "acb114a20898c5177d2b060df76e1abf00c7e997",
+  "no_training_or_optimizer_steps": true,
+  "canonical_test_ranks_exactly_match_saved": true,
+  "selected_full_validation_metrics_exactly_reproduced": true,
+  "reference_catalog_items": 114125,
+  "full_validation_catalog_items": 244194,
+  "repeat_events_scored": {
+    "model_valid": 654,
+    "test": 723
+  },
+  "mask_preserves_tensor_length_and_original_positions": true,
+  "cpu_mps_rank_check": "16 evenly spaced test repeats per model; contexts 50, 2, 1; all ranks identical",
+  "code_sha256": {
+    "scripts/diagnostics/audit_joint_repeats.py": "3964bad4438bee1bb9fe8f874c2571e0b234da389a1f2bf53e82910005b94b17",
+    "scripts/diagnostics/audit_pilot_training.py": "71b45c3294553a7c0247e66d4080140af041ad5f57ff210b55475ca8d37784d4",
+    "scripts/diagnostics/audit_pilot_scale.py": "adaf8158a9639aabef148da3261fd0655ac4a995b8f4970c1566a0e2b18d7994",
+    "scripts/sasrec.py": "3344e8ec4edcca8d91493458dac85bbc299cd0d2000ebc13993787a2e637428a",
+    "scripts/compare_sasrec.py": "cd94d7c7c27362386a2478db3ed8e9ad42c22929cf96851301d94f3e64084031"
+  },
+  "checkpoints": {
+    "256": "c23ed5ed1f0d1e7b7be81cead1f350561646990cad6750bb7e354e0a9c2fd990",
+    "1k": "0be4af9f7c6d82052bf249145df8d23ddab78842a9d83e58267210ebd8e39de9"
+  },
+  "data_manifests_sha256": {
+    "256": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c",
+    "1k": "6424f7b7b4b4108666d84ec4b69d733c41b7682a90d49dcc497e50e8991bdc39"
+  }
+}

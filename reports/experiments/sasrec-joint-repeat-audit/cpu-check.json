@@ -1,0 +1,42 @@
+{
+  "256": {
+    "raw": {
+      "examples": 16,
+      "different_ranks": 0,
+      "max_rank_difference": 0,
+      "same_metrics": true
+    },
+    "recent_2_context": {
+      "examples": 16,
+      "different_ranks": 0,
+      "max_rank_difference": 0,
+      "same_metrics": true
+    },
+    "last_only_context": {
+      "examples": 16,
+      "different_ranks": 0,
+      "max_rank_difference": 0,
+      "same_metrics": true
+    }
+  },
+  "1k": {
+    "raw": {
+      "examples": 16,
+      "different_ranks": 0,
+      "max_rank_difference": 0,
+      "same_metrics": true
+    },
+    "recent_2_context": {
+      "examples": 16,
+      "different_ranks": 0,
+      "max_rank_difference": 0,
+      "same_metrics": true
+    },
+    "last_only_context": {
+      "examples": 16,
+      "different_ranks": 0,
+      "max_rank_difference": 0,
+      "same_metrics": true
+    }
+  }
+}
