@@ -1,0 +1,32 @@
+{
+  "only_change_from_256": "loss_reduction: separate_mean -> joint_mean",
+  "only_config_difference_from_1k": "data",
+  "same_reconstructed_initial_weights": true,
+  "initial_state_sha256": "e037d49609ae6e6bec2344bd46af46534df1b6659398ea884ddfce20e791c1e6",
+  "data_manifest_sha256": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c",
+  "parameters": 7357888,
+  "baseline_checkpoints_sha256": {
+    "sasrec-control-early-stop": "32c3d3faed81f0a3008ebb9cd90550d9da7c5b26696659aa3fbc1b83aaf2d349",
+    "sasrec-1k-joint-bce": "0be4af9f7c6d82052bf249145df8d23ddab78842a9d83e58267210ebd8e39de9"
+  },
+  "unchanged_source_sha256": {
+    "scripts/sasrec.py": "3344e8ec4edcca8d91493458dac85bbc299cd0d2000ebc13993787a2e637428a",
+    "scripts/run_sasrec.py": "e61160e998571ca044c5a0f3863d209946220918a786929e2c73da242c8bd15f",
+    "scripts/compare_sasrec.py": "cd94d7c7c27362386a2478db3ed8e9ad42c22929cf96851301d94f3e64084031"
+  },
+  "verified_data_files": 7,
+  "same_initial_validation": true,
+  "same_parameters_as_previous_256": true,
+  "same_test_targets_users_histories_and_candidates": true,
+  "reused_saved_1k_predictions": true,
+  "baseline_checkpoints_unchanged": true,
+  "stopped_by_validation_patience": true,
+  "best_checkpoint_matches_validation_maximum": true,
+  "new_checkpoint_sha256": "c23ed5ed1f0d1e7b7be81cead1f350561646990cad6750bb7e354e0a9c2fd990",
+  "config_and_prediction_files_sha256": {
+    "configs/experiments/sasrec-256-joint-bce.json": "e04abfcb81c63f7baf4cd955c1aad2847eecc95919407a01078164ca6a0ef7ae",
+    "data/runs/sasrec-control-early-stop/evaluation-mps.npz": "9a93f2639ca7b00509754074a9c55155a3047e0ce84575e7722add7c16c62481",
+    "data/runs/sasrec-256-joint-bce/evaluation-mps.npz": "22f3b9caeaf711a25823eca2fb479745acf1074aaf439f3db8b4370788371fb9",
+    "data/runs/sasrec-1k-joint-bce/comparison-256.npz": "16a5a56bb1dd7f33ed55f7209b788f4baa17bb360d7c8b25c7e85e1e7f2ed912"
+  }
+}

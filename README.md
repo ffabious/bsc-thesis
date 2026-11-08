@@ -155,6 +155,17 @@ PYTORCH_ENABLE_MPS_FALLBACK=0 .venv/bin/python scripts/run_sasrec.py evaluate --
 
 Основное A/B-сравнение использует все те же 175 831 test-targets и каталог из 244 194 треков. Отдельно сохраняется оценка на фиксированной когорте и каталоге прежнего пилота на 256. Выбор checkpoint производится среди обученных эпох по validation NDCG@10, как в контроле.
 
+## BCE с общим усреднением на 256 пользователей
+
+Тот же пилот и настройки `sasrec-control-early-stop`, единственное изменение — `loss_reduction: joint_mean`. Обучение локально на MPS до прежнего patience 2 по validation NDCG@10. [Конфигурация](configs/experiments/sasrec-256-joint-bce.json), [сравнение со старым 256 и новым 1k](reports/experiments/sasrec-256-joint-bce.md).
+
+```sh
+PYTORCH_ENABLE_MPS_FALLBACK=0 .venv/bin/python scripts/run_sasrec.py train --device mps --config configs/experiments/sasrec-256-joint-bce.json --output data/runs/sasrec-256-joint-bce/train-mps
+PYTORCH_ENABLE_MPS_FALLBACK=0 .venv/bin/python scripts/run_sasrec.py evaluate --device mps --config configs/experiments/sasrec-256-joint-bce.json --checkpoint data/runs/sasrec-256-joint-bce/train-mps/best.pt --output data/runs/sasrec-256-joint-bce/evaluation-mps.json
+```
+
+Все три модели сравниваются на одинаковых 45 711 test-событиях, histories и 114 125 кандидатах. Для 1k переиспользуются сохранённые ранги `data/runs/sasrec-1k-joint-bce/comparison-256.npz`; полная 1k-оценка с другим каталогом в эту таблицу не включается.
+
 ## Происхождение материалов
 
 Импорт выполнен 20 октября 2026 из `thesis-project-2026-10-20.zip` и двух заметок, уже находившихся в этой папке. Заметки совпали с копиями в архиве и сохранены в одном экземпляре.
