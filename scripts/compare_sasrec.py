@@ -13,7 +13,7 @@ import numpy as np
 import torch
 
 from run_sasrec import ROOT, intervals, model_args, write
-from sasrec import SASRec, examples, metrics, ranks, sync
+from sasrec import SASRec, examples, mask_context, metrics, ranks, sync
 
 
 def item_mapping(reference, data):
@@ -69,6 +69,10 @@ def compare(checkpoint, reference_path, device, output):
     mapping = item_mapping(small, data)
     candidates = mapping[2:]
     context_sha256 = hashlib.sha256(x.tobytes()).hexdigest()
+    keep = saved["config"].get("context_keep", model.length)
+    reference_keep = reference["config"].get("context_keep", model.length)
+    x = mask_context(x, keep)
+    visible_sha256 = hashlib.sha256(x.tobytes()).hexdigest()
     x, mapped_y = mapping[x], mapping[y]
     batch_size = saved["config"]["eval_batch_size"]
     ranks(model, x[:batch_size], mapped_y[:batch_size], device, batch_size, candidates)
@@ -82,7 +86,9 @@ def compare(checkpoint, reference_path, device, output):
               "training_data": str(data.relative_to(ROOT)), "reference_data": str(small.relative_to(ROOT)),
               "training_data_manifest_sha256": trained["data_manifest_sha256"],
               "reference_data_manifest_sha256": reference["data_manifest_sha256"],
-              "reference_context_sha256": context_sha256, "same_inputs_targets_and_candidates": True,
+              "reference_context_sha256": context_sha256, "model_context_sha256": visible_sha256,
+              "reference_context_keep": reference_keep, "model_context_keep": keep,
+              "same_source_events_and_candidates": True, "same_inputs_targets_and_candidates": keep == reference_keep,
               "examples": len(y), "users": int(len(np.unique(users))),
               "training_catalog_items": saved["items"], "comparison_catalog_items": len(candidates),
               "reference_metrics": reference["metrics"], "metrics": metrics(rank),

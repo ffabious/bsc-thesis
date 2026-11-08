@@ -13,7 +13,7 @@ from pathlib import Path
 import numpy as np
 import torch
 
-from sasrec import SASRec, batch, examples, loss, metrics, most_popular, negatives, ranks, sync
+from sasrec import SASRec, batch, examples, loss, mask_context, metrics, most_popular, negatives, ranks, sync
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -35,6 +35,11 @@ def memory(device):
 def model_args(config):
     return {key: config[key] for key in ("length", "dim", "heads", "blocks", "dropout",
                                        "item_dim", "freeze_items") if key in config}
+
+
+def input_examples(data, split, config):
+    x, y, users = examples(data, split, config["length"])
+    return mask_context(x, config.get("context_keep")), y, users
 
 
 def item_digest(model):
@@ -94,7 +99,7 @@ def step(model, optimizer, sequence, target, negative, reduction="separate_mean"
 
 
 def benchmark(config, data, device):
-    x, y, _ = examples(data, "train", config["length"])
+    x, y, _ = input_examples(data, "train", config)
     count = json.loads((data / "manifest.json").read_text())["candidate_items"]
     model = make_model(config, data, count).to(device).train()
     optimizer = optimizer_for(model, config)
@@ -139,8 +144,8 @@ def train(config, data, device, output):
         raise FileExistsError(f"Choose a new training output directory: {output}")
     output.mkdir(parents=True)
     started = time.perf_counter()
-    x, y, _ = examples(data, "train", config["length"])
-    vx, vy, _ = examples(data, "model_valid", config["length"])
+    x, y, _ = input_examples(data, "train", config)
+    vx, vy, _ = input_examples(data, "model_valid", config)
     count = json.loads((data / "manifest.json").read_text())["candidate_items"]
     model = make_model(config, data, count).to(device)
     optimizer = optimizer_for(model, config)
@@ -225,7 +230,9 @@ def evaluate(config, data, device, checkpoint, output):
     model = SASRec(saved["items"], **model_args(saved["config"]))
     model.load_state_dict(saved["weights"])
     model.to(device).eval()
-    x, y, users = examples(data, "test", model.length)
+    if config.get("context_keep") != saved["config"].get("context_keep"):
+        raise ValueError("Evaluation context_keep differs from the checkpoint configuration")
+    x, y, users = input_examples(data, "test", saved["config"])
     # Warm-up is timed separately and uses no labels for optimization.
     warm = min(config["eval_batch_size"], len(y))
     ranks(model, x[:warm], y[:warm], device, config["eval_batch_size"])

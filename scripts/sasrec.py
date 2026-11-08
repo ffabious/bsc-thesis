@@ -64,6 +64,15 @@ class SASRec(nn.Module):
         return self.output_projection(self.encode(sequence)[:, -1])
 
 
+def mask_context(x, keep=None):
+    """Mask early tokens in place, retaining tensor width and position indices."""
+    if keep is not None:
+        if type(keep) is not int or not 1 <= keep <= x.shape[1]:
+            raise ValueError("context_keep must be an integer between 1 and sequence length")
+        x[:, :-keep] = 0
+    return x
+
+
 def examples(data, split, length):
     """One prefix per eligible target; all tied targets share a strict-past prefix."""
     manifest = json.loads((data / "manifest.json").read_text())

@@ -166,11 +166,25 @@ PYTORCH_ENABLE_MPS_FALLBACK=0 .venv/bin/python scripts/run_sasrec.py evaluate --
 
 Все три модели сравниваются на одинаковых 45 711 test-событиях, histories и 114 125 кандидатах. Для 1k переиспользуются сохранённые ранги `data/runs/sasrec-1k-joint-bce/comparison-256.npz`; полная 1k-оценка с другим каталогом в эту таблицу не включается.
 
-Причины оставшейся потери на повторах исследованы в [аудите joint-BCE моделей](reports/experiments/sasrec-joint-repeat-audit.md). Короткий контекст восстанавливает верхние попадания, но при inference ухудшает общий Recall. [Следующий единственный обучающий контроль](notes/sasrec-next-repeat-experiment.md) предложен и пока не запущен.
+Причины оставшейся потери на повторах исследованы в [аудите joint-BCE моделей](reports/experiments/sasrec-joint-repeat-audit.md). Короткий контекст восстанавливает верхние попадания, но при inference ухудшает общий Recall. [Обучающий контроль короткого контекста](notes/sasrec-next-repeat-experiment.md) выполнен для обоих размеров; результаты приведены ниже.
 
 ```sh
 PYTORCH_ENABLE_MPS_FALLBACK=0 .venv/bin/python scripts/diagnostics/audit_joint_repeats.py --device mps --full-validation
 ```
+
+## Обучение с двумя последними событиями
+
+Контроли на 256 и 1 000 пользователей используют `context_keep: 2`: ранние токены маскируются при train, validation и test. `length: 50`, learned positions и остальные настройки сохранены. [Сравнение четырёх моделей](reports/experiments/sasrec-recent-2.md).
+
+```sh
+for pilot_size in 256 1k; do
+  PYTORCH_ENABLE_MPS_FALLBACK=0 .venv/bin/python scripts/run_sasrec.py train --device mps --config "configs/experiments/sasrec-${pilot_size}-recent-2.json" --output "data/runs/sasrec-${pilot_size}-recent-2/train-mps"
+  PYTORCH_ENABLE_MPS_FALLBACK=0 .venv/bin/python scripts/run_sasrec.py evaluate --device mps --config "configs/experiments/sasrec-${pilot_size}-recent-2.json" --checkpoint "data/runs/sasrec-${pilot_size}-recent-2/train-mps/best.pt" --output "data/runs/sasrec-${pilot_size}-recent-2/evaluation-mps.json"
+done
+PYTORCH_ENABLE_MPS_FALLBACK=0 .venv/bin/python scripts/compare_sasrec.py --device mps --checkpoint data/runs/sasrec-1k-recent-2/train-mps/best.pt --reference-evaluation data/runs/sasrec-256-joint-bce/evaluation-mps.json --output data/runs/sasrec-1k-recent-2/comparison-256.json
+```
+
+Сравнение использует одни исходные события, targets и кандидатов; видимый контекст намеренно различается у моделей 50 и 2. `compare_sasrec.py` применяет маску из checkpoint и отражает это в metadata. Полная native-оценка 1k сохраняется отдельно.
 
 ## Происхождение материалов
 

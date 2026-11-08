@@ -1,0 +1,29 @@
+{
+  "256_native": {
+    "examples": 32,
+    "repeat_events": 16,
+    "nonrepeat_events": 16,
+    "different_ranks": 1,
+    "max_rank_difference": 1,
+    "same_metrics": true,
+    "all_checkpoint_weights_finite": true
+  },
+  "1k_native": {
+    "examples": 32,
+    "repeat_events": 16,
+    "nonrepeat_events": 16,
+    "different_ranks": 0,
+    "max_rank_difference": 0,
+    "same_metrics": true,
+    "all_checkpoint_weights_finite": true
+  },
+  "1k_shared": {
+    "examples": 32,
+    "repeat_events": 16,
+    "nonrepeat_events": 16,
+    "different_ranks": 0,
+    "max_rank_difference": 0,
+    "same_metrics": true,
+    "all_checkpoint_weights_finite": true
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "checkpoint_sha256": "4263a3c39dc992a47f2a1dc21f7ed013976306c384c5a1062d2f32f6008e0d39",
+  "checkpoint_epoch": 11,
+  "reference_checkpoint_sha256": "c23ed5ed1f0d1e7b7be81cead1f350561646990cad6750bb7e354e0a9c2fd990",
+  "training_data": "data/processed/yambda50m-1k-audio",
+  "reference_data": "data/processed/yambda50m-pilot-audio",
+  "training_data_manifest_sha256": "6424f7b7b4b4108666d84ec4b69d733c41b7682a90d49dcc497e50e8991bdc39",
+  "reference_data_manifest_sha256": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c",
+  "reference_context_sha256": "37a56dae2ec258cb1d2051dc7dbda91ba5a6d5e34d30d694a87e6b11e4cb05e9",
+  "model_context_sha256": "553eb43f8af307bc09518306994b4d7a4aab519050ded6e5947b142002e669ca",
+  "reference_context_keep": 50,
+  "model_context_keep": 2,
+  "same_source_events_and_candidates": true,
+  "same_inputs_targets_and_candidates": false,
+  "examples": 45711,
+  "users": 244,
+  "training_catalog_items": 244194,
+  "comparison_catalog_items": 114125,
+  "reference_metrics": {
+    "ndcg@10": 0.026804617064151604,
+    "recall@100": 0.2156592505086303
+  },
+  "metrics": {
+    "ndcg@10": 0.022333291893605847,
+    "recall@100": 0.16534313403775897
+  },
+  "cluster_bootstrap_95ci": {
+    "ndcg@10": [
+      0.01823329284728807,
+      0.027345538699070686
+    ],
+    "recall@100": [
+      0.14394592912398002,
+      0.190145750146053
+    ]
+  },
+  "paired_delta": {
+    "ndcg@10": {
+      "difference": -0.004471325170545753,
+      "cluster_bootstrap_95ci": [
+        -0.008089860930332747,
+        -0.0015120980418319827
+      ]
+    },
+    "recall@100": {
+      "difference": -0.05031611647087134,
+      "cluster_bootstrap_95ci": [
+        -0.0642476452019155,
+        -0.037920158634108435
+      ]
+    }
+  },
+  "evaluation_seconds": 3.347567791584879,
+  "device": "mps",
+  "torch": "2.15.0"
+}

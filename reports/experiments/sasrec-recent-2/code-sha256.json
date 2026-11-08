@@ -1,0 +1,9 @@
+{
+  "scripts/sasrec.py": "1f9e561173af0ee28c75c5d413db168da5a119583ba18551cb79750485c03b50",
+  "scripts/run_sasrec.py": "63873c3fceb7a19565922a663b64d6d16fe04019542519a59096a7701a6c582a",
+  "scripts/compare_sasrec.py": "4c58c8aed84a38e760436e4f1e37859eeeff5105b2bd55715281c53ccac5cb50",
+  "tests/test_sasrec.py": "2576ddc4aa9603582b9f3beec64076306d741e23a97ae75a36b046e9406a02cb",
+  "tests/test_training_stop.py": "1e9645432e6d3aece1d0659fc9454730085f03a9400e2f574ecaf0193c286f2d",
+  "configs/experiments/sasrec-256-recent-2.json": "5e21357959e1848c12d93c8823ef34401c2d13a99dfe292519c9c58da3e0d8b2",
+  "configs/experiments/sasrec-1k-recent-2.json": "0eb4aefe9c175b70b480757277a93d27de702c32e0692cfb6df3cb59e9bec766"
+}

@@ -9,7 +9,7 @@ import duckdb
 import numpy as np
 import torch
 
-from scripts.sasrec import SASRec, examples, loss, negatives, ranks
+from scripts.sasrec import SASRec, examples, loss, mask_context, negatives, ranks
 
 
 class SASRecTest(unittest.TestCase):
@@ -51,6 +51,21 @@ class SASRecTest(unittest.TestCase):
         value.backward()
         self.assertTrue(all(torch.isfinite(p.grad).all() for p in model.parameters() if p.grad is not None))
         self.assertTrue(torch.equal(model.item.weight.grad[0], torch.zeros(8)))
+
+    def test_context_mask_hides_prefix_without_shifting_recent_positions(self):
+        x = np.array([[2, 3, 4, 5, 6], [7, 8, 9, 5, 6], [0, 0, 0, 0, 6]], dtype=np.int32)
+        np.testing.assert_array_equal(mask_context(x.copy()), x)
+        short = mask_context(x.copy(), 2)
+        self.assertEqual(short.shape, x.shape)
+        np.testing.assert_array_equal(short[:, -2:], x[:, -2:])
+        self.assertFalse(short[:, :-2].any())
+        model = SASRec(10, length=5, dim=8, heads=2, blocks=1, dropout=0).eval()
+        output = model(torch.as_tensor(short, dtype=torch.long))
+        torch.testing.assert_close(output[0], output[1])
+        self.assertTrue(torch.isfinite(output).all())
+        for keep in (0, -1, 6, 1.5, True):
+            with self.assertRaisesRegex(ValueError, "context_keep"):
+                mask_context(x.copy(), keep)
 
     def test_negative_sampling_excludes_only_the_current_positive(self):
         target = np.array([2, 3, 4, 5])
