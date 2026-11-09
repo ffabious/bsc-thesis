@@ -1,3 +1,4 @@
+import hashlib
 import json
 import sys
 import tempfile
@@ -59,6 +60,29 @@ class TrainingStopTest(unittest.TestCase):
         self.assertEqual(result["stop_reason"], "validation_patience")
         self.assertEqual(saved["config"]["length"], 3)
         self.assertEqual(saved["config"]["context_keep"], 1)
+
+
+    def test_validation_evaluation_uses_no_test_examples(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            config = {"length": 3, "dim": 4, "heads": 1, "blocks": 1,
+                      "dropout": 0, "eval_batch_size": 2, "seed": 42}
+            manifest = root / "manifest.json"
+            manifest.write_text('{"candidate_items": 4}')
+            model = run_sasrec.SASRec(4, **run_sasrec.model_args(config))
+            checkpoint = root / "best.pt"
+            torch.save({"weights": model.state_dict(), "config": config, "items": 4, "epoch": 1}, checkpoint)
+            (root / "training.json").write_text(json.dumps({
+                "checkpoint_sha256": hashlib.sha256(checkpoint.read_bytes()).hexdigest(),
+                "data_manifest_sha256": hashlib.sha256(manifest.read_bytes()).hexdigest()}))
+            arrays = np.array([[0, 2, 3]], dtype=np.int32), np.array([4]), np.array([0])
+            with patch.object(run_sasrec, "examples", return_value=arrays) as read_examples, \
+                 patch.object(run_sasrec, "most_popular", return_value=np.array([2])):
+                result = run_sasrec.evaluate(config, root, "cpu", checkpoint, root / "valid.json", "model_valid")
+            read_examples.assert_called_once_with(root, "model_valid", 3)
+            self.assertEqual(result["split"], "model_valid")
+            with self.assertRaisesRegex(ValueError, "Evaluation split"):
+                run_sasrec.evaluate(config, root, "cpu", checkpoint, root / "invalid.json", "train")
 
 
 if __name__ == "__main__":

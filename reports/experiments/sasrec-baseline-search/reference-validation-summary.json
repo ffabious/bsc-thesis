@@ -1,0 +1,78 @@
+{
+  "split": "model_valid",
+  "examples": 29313,
+  "users": 210,
+  "catalog_items": 114125,
+  "reference": "data/runs/sasrec-baseline-search/reference-validation.json",
+  "context_sha256": "c9ca1ae1bc447635c16f3039018df7026e240b1031737e6b390046c4bdd93ae3",
+  "runs": {
+    "data/runs/sasrec-baseline-search/reference-validation.json": {
+      "checkpoint_sha256": "c23ed5ed1f0d1e7b7be81cead1f350561646990cad6750bb7e354e0a9c2fd990",
+      "config": {
+        "data": "data/processed/yambda50m-pilot-audio",
+        "loss_reduction": "joint_mean",
+        "seed": 42,
+        "threads": 4,
+        "length": 50,
+        "dim": 64,
+        "heads": 2,
+        "blocks": 2,
+        "dropout": 0.2,
+        "batch_size": 256,
+        "negatives": 16,
+        "learning_rate": 0.001,
+        "epochs": null,
+        "patience": 2,
+        "eval_batch_size": 256,
+        "benchmark_warmup": 10,
+        "benchmark_steps": 50,
+        "benchmark_repeats": 3
+      },
+      "metrics": {
+        "ndcg@10": 0.04382538135285383,
+        "recall@100": 0.2902125336881247,
+        "hit@1": 0.018217173267833384
+      },
+      "user_macro": {
+        "ndcg@10": 0.04981591755481623,
+        "recall@100": 0.3217319965648811
+      },
+      "paired_delta": {
+        "ndcg@10": {
+          "difference": 0.0,
+          "cluster_bootstrap_95ci": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@100": {
+          "difference": 0.0,
+          "cluster_bootstrap_95ci": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "segments": {
+        "last_item": {
+          "examples": 654,
+          "ndcg@10": 0.5898401948627643,
+          "recall@100": 0.8746177370030581,
+          "hit@1": 0.4877675840978593
+        },
+        "other_in_window": {
+          "examples": 4733,
+          "ndcg@10": 0.09493665251016077,
+          "recall@100": 0.5292626241284597,
+          "hit@1": 0.027678005493344603
+        },
+        "outside_window": {
+          "examples": 23926,
+          "ndcg@10": 0.018789715783054658,
+          "recall@100": 0.22694976176544346,
+          "hit@1": 0.003510825043885313
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "scripts/sasrec.py": "3fbdfdda496de444ccb0617836be7267398bc209583eb8b9ccffc9a56575f9f8",
+  "scripts/run_sasrec.py": "ac6f27a1bbca0b950e06ff8f035ff2f9ed5d01c38384a5b376b9f541057b70ac",
+  "scripts/compare_sasrec.py": "6b6880cf9b975b5ec177612d923a2978ebe570d6a59b44f755117aae055e3191",
+  "configs/experiments/sasrec-256-joint-bce.json": "e04abfcb81c63f7baf4cd955c1aad2847eecc95919407a01078164ca6a0ef7ae",
+  "configs/experiments/sasrec-256-no-dropout.json": "855d041fb173d314c65b843dfe252a77c04ed9f30571b3d697a1c120bd1f13f0",
+  "configs/experiments/sasrec-256-sampled-ce.json": "6210263a4b9b749983fd4da95464e7fdc7cad55fe24addb51e50816cd76663b1",
+  "data/processed/yambda50m-pilot-audio/manifest.json": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c",
+  "data/runs/sasrec-256-joint-bce/train-mps/best.pt": "c23ed5ed1f0d1e7b7be81cead1f350561646990cad6750bb7e354e0a9c2fd990",
+  "data/runs/sasrec-256-joint-bce/evaluation-mps.json": "4ed70494d360af796bc94a3ff1544a394715ecb8525b6a0bd248c7dbd9da6559",
+  "data/runs/sasrec-256-joint-bce/evaluation-mps.npz": "22f3b9caeaf711a25823eca2fb479745acf1074aaf439f3db8b4370788371fb9"
+}

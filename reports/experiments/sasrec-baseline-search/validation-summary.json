@@ -1,0 +1,283 @@
+{
+  "split": "model_valid",
+  "examples": 29313,
+  "users": 210,
+  "catalog_items": 114125,
+  "reference": "data/runs/sasrec-baseline-search/reference-validation.json",
+  "context_sha256": "c9ca1ae1bc447635c16f3039018df7026e240b1031737e6b390046c4bdd93ae3",
+  "runs": {
+    "data/runs/sasrec-baseline-search/reference-validation.json": {
+      "checkpoint_sha256": "c23ed5ed1f0d1e7b7be81cead1f350561646990cad6750bb7e354e0a9c2fd990",
+      "config": {
+        "data": "data/processed/yambda50m-pilot-audio",
+        "loss_reduction": "joint_mean",
+        "seed": 42,
+        "threads": 4,
+        "length": 50,
+        "dim": 64,
+        "heads": 2,
+        "blocks": 2,
+        "dropout": 0.2,
+        "batch_size": 256,
+        "negatives": 16,
+        "learning_rate": 0.001,
+        "epochs": null,
+        "patience": 2,
+        "eval_batch_size": 256,
+        "benchmark_warmup": 10,
+        "benchmark_steps": 50,
+        "benchmark_repeats": 3
+      },
+      "metrics": {
+        "ndcg@10": 0.04382538135285383,
+        "recall@100": 0.2902125336881247,
+        "hit@1": 0.018217173267833384
+      },
+      "user_macro": {
+        "ndcg@10": 0.04981591755481623,
+        "recall@100": 0.3217319965648811
+      },
+      "paired_delta": {
+        "ndcg@10": {
+          "difference": 0.0,
+          "cluster_bootstrap_95ci": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@100": {
+          "difference": 0.0,
+          "cluster_bootstrap_95ci": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "segments": {
+        "last_item": {
+          "examples": 654,
+          "ndcg@10": 0.5898401948627643,
+          "recall@100": 0.8746177370030581,
+          "hit@1": 0.4877675840978593
+        },
+        "other_in_window": {
+          "examples": 4733,
+          "ndcg@10": 0.09493665251016077,
+          "recall@100": 0.5292626241284597,
+          "hit@1": 0.027678005493344603
+        },
+        "outside_window": {
+          "examples": 23926,
+          "ndcg@10": 0.018789715783054658,
+          "recall@100": 0.22694976176544346,
+          "hit@1": 0.003510825043885313
+        }
+      }
+    },
+    "data/runs/sasrec-256-no-dropout/validation.json": {
+      "checkpoint_sha256": "0357763403da339a961f4b3a828e97749f62a0ce9e42c1bdece7db94143633c9",
+      "config": {
+        "data": "data/processed/yambda50m-pilot-audio",
+        "loss_reduction": "joint_mean",
+        "seed": 42,
+        "threads": 4,
+        "length": 50,
+        "dim": 64,
+        "heads": 2,
+        "blocks": 2,
+        "dropout": 0.0,
+        "batch_size": 256,
+        "negatives": 16,
+        "learning_rate": 0.001,
+        "epochs": null,
+        "patience": 2,
+        "eval_batch_size": 256,
+        "benchmark_warmup": 10,
+        "benchmark_steps": 50,
+        "benchmark_repeats": 3
+      },
+      "metrics": {
+        "ndcg@10": 0.04880503807584809,
+        "recall@100": 0.28390134070207756,
+        "hit@1": 0.02026404666871354
+      },
+      "user_macro": {
+        "ndcg@10": 0.055676011643522295,
+        "recall@100": 0.30994056515638374
+      },
+      "paired_delta": {
+        "ndcg@10": {
+          "difference": 0.004979656722994251,
+          "cluster_bootstrap_95ci": [
+            0.0015572889880258933,
+            0.008448210796324788
+          ]
+        },
+        "recall@100": {
+          "difference": -0.006311192986047146,
+          "cluster_bootstrap_95ci": [
+            -0.013814105066678467,
+            0.0019235614582359753
+          ]
+        }
+      },
+      "segments": {
+        "last_item": {
+          "examples": 654,
+          "ndcg@10": 0.7913195598986171,
+          "recall@100": 0.9525993883792049,
+          "hit@1": 0.6941896024464832
+        },
+        "other_in_window": {
+          "examples": 4733,
+          "ndcg@10": 0.0897928510588502,
+          "recall@100": 0.5140502852313543,
+          "hit@1": 0.01648003380519755
+        },
+        "outside_window": {
+          "examples": 23926,
+          "ndcg@10": 0.02040079933470289,
+          "recall@100": 0.22009529382261975,
+          "hit@1": 0.002591323246677255
+        }
+      }
+    },
+    "data/runs/sasrec-256-d50-h1/validation.json": {
+      "checkpoint_sha256": "04a4a99edf7add4fd961dc0e9a06cd04e9a323b512c5d831dd209ab3c0b80528",
+      "config": {
+        "data": "data/processed/yambda50m-pilot-audio",
+        "loss_reduction": "joint_mean",
+        "seed": 42,
+        "threads": 4,
+        "length": 50,
+        "dim": 50,
+        "heads": 1,
+        "blocks": 2,
+        "dropout": 0.2,
+        "batch_size": 256,
+        "negatives": 16,
+        "learning_rate": 0.001,
+        "epochs": null,
+        "patience": 2,
+        "eval_batch_size": 256,
+        "benchmark_warmup": 10,
+        "benchmark_steps": 50,
+        "benchmark_repeats": 3
+      },
+      "metrics": {
+        "ndcg@10": 0.03898333730838816,
+        "recall@100": 0.27182478763688467,
+        "hit@1": 0.016613789103810596
+      },
+      "user_macro": {
+        "ndcg@10": 0.04519463885792303,
+        "recall@100": 0.2961017208908721
+      },
+      "paired_delta": {
+        "ndcg@10": {
+          "difference": -0.004842044044465676,
+          "cluster_bootstrap_95ci": [
+            -0.007395319798639954,
+            -0.002457295808510886
+          ]
+        },
+        "recall@100": {
+          "difference": -0.018387746051240064,
+          "cluster_bootstrap_95ci": [
+            -0.025026156481072943,
+            -0.012008011804801953
+          ]
+        }
+      },
+      "segments": {
+        "last_item": {
+          "examples": 654,
+          "ndcg@10": 0.514870003802067,
+          "recall@100": 0.8256880733944955,
+          "hit@1": 0.40978593272171254
+        },
+        "other_in_window": {
+          "examples": 4733,
+          "ndcg@10": 0.0827896694350376,
+          "recall@100": 0.48785125713078387,
+          "hit@1": 0.026832875554616522
+        },
+        "outside_window": {
+          "examples": 23926,
+          "ndcg@10": 0.0173096246174955,
+          "recall@100": 0.21395134999582044,
+          "hit@1": 0.0038451893337791525
+        }
+      }
+    },
+    "data/runs/sasrec-256-sampled-ce/validation.json": {
+      "checkpoint_sha256": "2ed282ef4b911c66c4df9df0dcabd41afb6175b6141dcbabfe7457d8e529e44b",
+      "config": {
+        "data": "data/processed/yambda50m-pilot-audio",
+        "loss_reduction": "joint_mean",
+        "seed": 42,
+        "threads": 4,
+        "length": 50,
+        "dim": 64,
+        "heads": 2,
+        "blocks": 2,
+        "dropout": 0.2,
+        "batch_size": 256,
+        "negatives": 16,
+        "learning_rate": 0.001,
+        "epochs": null,
+        "patience": 2,
+        "eval_batch_size": 256,
+        "benchmark_warmup": 10,
+        "benchmark_steps": 50,
+        "benchmark_repeats": 3,
+        "objective": "sampled_ce"
+      },
+      "metrics": {
+        "ndcg@10": 0.040368872293958837,
+        "recall@100": 0.2753727015317436,
+        "hit@1": 0.017023163783986626
+      },
+      "user_macro": {
+        "ndcg@10": 0.048151883337869725,
+        "recall@100": 0.3005657139938299
+      },
+      "paired_delta": {
+        "ndcg@10": {
+          "difference": -0.0034565090588949995,
+          "cluster_bootstrap_95ci": [
+            -0.0063730212144401215,
+            -0.00087507524054995
+          ]
+        },
+        "recall@100": {
+          "difference": -0.014839832156381128,
+          "cluster_bootstrap_95ci": [
+            -0.022039022276454625,
+            -0.008337175813479125
+          ]
+        }
+      },
+      "segments": {
+        "last_item": {
+          "examples": 654,
+          "ndcg@10": 0.6113149225981074,
+          "recall@100": 0.926605504587156,
+          "hit@1": 0.4938837920489297
+        },
+        "other_in_window": {
+          "examples": 4733,
+          "ndcg@10": 0.08272799806545532,
+          "recall@100": 0.5047538559053455,
+          "hit@1": 0.020494401014155925
+        },
+        "outside_window": {
+          "examples": 23926,
+          "ndcg@10": 0.016383063584797,
+          "recall@100": 0.2121959374738778,
+          "hit@1": 0.0033018473627016635
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "sources_unchanged": true,
+  "runs": {
+    "no-dropout": {
+      "stopped_by_validation": true,
+      "best_matches_validation_maximum": true,
+      "same_initial_validation": true,
+      "checkpoint_sha256": "0357763403da339a961f4b3a828e97749f62a0ce9e42c1bdece7db94143633c9"
+    },
+    "sampled-ce": {
+      "stopped_by_validation": true,
+      "best_matches_validation_maximum": true,
+      "same_initial_validation": true,
+      "checkpoint_sha256": "2ed282ef4b911c66c4df9df0dcabd41afb6175b6141dcbabfe7457d8e529e44b"
+    }
+  }
+}

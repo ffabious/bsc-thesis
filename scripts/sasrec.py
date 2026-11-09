@@ -110,12 +110,18 @@ def batch(x, y, indices, device):
             torch.as_tensor(y[indices], dtype=torch.long, device=device))
 
 
-def loss(model, x, y, negative, reduction="separate_mean"):
+def loss(model, x, y, negative, reduction="separate_mean", objective="bce"):
     if reduction not in ("separate_mean", "joint_mean"):
         raise ValueError(f"Unknown loss reduction: {reduction}")
+    if objective not in ("bce", "sampled_ce"):
+        raise ValueError(f"Unknown objective: {objective}")
     state = model(x)
     positive = (state * model.item(y)).sum(-1)
     other = (state[:, None] * model.item(negative)).sum(-1)
+    if objective == "sampled_ce":
+        # Class zero is the positive; sampled candidates keep the existing uniform sampler.
+        logits = torch.cat((positive[:, None], other), dim=1)
+        return F.cross_entropy(logits, torch.zeros(len(y), dtype=torch.long, device=y.device))
     if reduction == "joint_mean":
         return (F.softplus(-positive).sum() + F.softplus(other).sum()) / (positive.numel() + other.numel())
     return F.softplus(-positive).mean() + F.softplus(other).mean()

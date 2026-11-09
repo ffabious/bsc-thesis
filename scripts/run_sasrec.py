@@ -89,9 +89,9 @@ def optimizer_for(model, config):
                             lr=config["learning_rate"], betas=(0.9, 0.98))
 
 
-def step(model, optimizer, sequence, target, negative, reduction="separate_mean"):
+def step(model, optimizer, sequence, target, negative, reduction="separate_mean", objective="bce"):
     optimizer.zero_grad(set_to_none=True)
-    value = loss(model, sequence, target, negative, reduction)
+    value = loss(model, sequence, target, negative, reduction, objective)
     value.backward()
     torch.nn.utils.clip_grad_norm_(model.parameters(), 5.0)
     optimizer.step()
@@ -109,7 +109,7 @@ def benchmark(config, data, device):
         take = rng.integers(len(y), size=config["batch_size"])
         sequence, target = batch(x, y, take, device)
         negative = torch.as_tensor(negatives(y[take], config["negatives"], count, rng), device=device)
-        return step(model, optimizer, sequence, target, negative, reduction)
+        return step(model, optimizer, sequence, target, negative, reduction, config.get("objective", "bce"))
     for _ in range(config["benchmark_warmup"]):
         measured_step()
     sync(device)
@@ -135,7 +135,7 @@ def benchmark(config, data, device):
     take = rng.integers(len(y), size=config["batch_size"])
     sequence, target = batch(x, y, take, device)
     negative = torch.as_tensor(negatives(y[take], config["negatives"], count, rng), device=device)
-    probe = loss(model, sequence, target, negative, reduction)
+    probe = loss(model, sequence, target, negative, reduction, config.get("objective", "bce"))
     sync(device)
     result["memory_after_forward"] = memory(device)
     probe.backward()
@@ -231,7 +231,8 @@ def train(config, data, device, output, resume=False):
             indices = order[start:start + config["batch_size"]]
             sequence, target = batch(x, y, indices, device)
             negative = torch.as_tensor(negatives(y[indices], config["negatives"], count, rng), device=device)
-            total += step(model, optimizer, sequence, target, negative, reduction) * len(indices)
+            total += step(model, optimizer, sequence, target, negative, reduction,
+                          config.get("objective", "bce")) * len(indices)
             cursor = start + len(indices)
             if (start // config["batch_size"] + 1) % 500 == 0:
                 print(f"epoch {epoch}, {start + len(indices)}/{len(y)}, "
@@ -289,7 +290,9 @@ def intervals(rank, users, seed):
     return result
 
 
-def evaluate(config, data, device, checkpoint, output):
+def evaluate(config, data, device, checkpoint, output, split="test"):
+    if split not in ("model_valid", "test"):
+        raise ValueError("Evaluation split must be model_valid or test")
     trained = json.loads(checkpoint.with_name("training.json").read_text())
     if trained["data_manifest_sha256"] != hashlib.sha256((data / "manifest.json").read_bytes()).hexdigest():
         raise ValueError("Evaluation data differs from the training manifest")
@@ -301,7 +304,7 @@ def evaluate(config, data, device, checkpoint, output):
     model.to(device).eval()
     if config.get("context_keep") != saved["config"].get("context_keep"):
         raise ValueError("Evaluation context_keep differs from the checkpoint configuration")
-    x, y, users = input_examples(data, "test", saved["config"])
+    x, y, users = input_examples(data, split, saved["config"])
     # Warm-up is timed separately and uses no labels for optimization.
     warm = min(config["eval_batch_size"], len(y))
     ranks(model, x[:warm], y[:warm], device, config["eval_batch_size"])
@@ -312,7 +315,7 @@ def evaluate(config, data, device, checkpoint, output):
     elapsed = time.perf_counter() - started
     np.savez(output.with_suffix(".npz"), ranks=rank, users=users, targets=y)
     pop = most_popular(data, y)
-    return {"checkpoint_sha256": hashlib.sha256(checkpoint.read_bytes()).hexdigest(),
+    return {"split": split, "checkpoint_sha256": hashlib.sha256(checkpoint.read_bytes()).hexdigest(),
             "checkpoint_epoch": saved["epoch"], "examples": len(y), "users": int(len(np.unique(users))),
             "catalog_items": saved["items"], "metrics": metrics(rank),
             "cluster_bootstrap_95ci": intervals(rank, users, config["seed"]),
@@ -328,8 +331,12 @@ def main():
     parser.add_argument("--config", type=Path, default=ROOT / "configs/experiments/sasrec-pilot.json")
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--checkpoint", type=Path)
+    parser.add_argument("--split", choices=["model_valid", "test"], default="test",
+                        help="Evaluation only; model_valid keeps recipe selection separate from test")
     parser.add_argument("--resume", action="store_true", help="Resume last.pt, including optimizer and RNG states")
     args = parser.parse_args()
+    if args.mode != "evaluate" and args.split != "test":
+        parser.error("--split is only valid for evaluation")
     if args.device == "mps" and not torch.backends.mps.is_available():
         parser.error("MPS is unavailable; CPU fallback is not a valid MPS measurement")
     if os.environ.get("PYTORCH_ENABLE_MPS_FALLBACK", "0") != "0":
@@ -348,7 +355,7 @@ def main():
         if args.checkpoint is None:
             parser.error("evaluate requires --checkpoint")
         args.output.parent.mkdir(parents=True, exist_ok=True)
-        result = evaluate(config, data, args.device, args.checkpoint, args.output)
+        result = evaluate(config, data, args.device, args.checkpoint, args.output, args.split)
     result.update(config=config, device=args.device, torch=torch.__version__, numpy=np.__version__,
                   python=platform.python_version(), macos=platform.mac_ver()[0],
                   mps_available=torch.backends.mps.is_available(),

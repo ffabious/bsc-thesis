@@ -97,6 +97,22 @@ class SASRecTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "Unknown loss reduction"):
             loss(model, x, y, negative, "invalid")
 
+    def test_sampled_ce_matches_explicit_logits_and_gradients(self):
+        model = SASRec(12, length=4, dim=8, heads=2, blocks=1, dropout=0)
+        x, y = torch.tensor([[0, 2, 3, 4], [2, 5, 6, 7]]), torch.tensor([5, 8])
+        negative = torch.tensor([[6, 7, 8], [9, 10, 11]])
+        state = model(x)
+        ids = torch.cat((y[:, None], negative), dim=1)
+        logits = (state[:, None] * model.item(ids)).sum(-1)
+        expected = torch.nn.functional.cross_entropy(logits, torch.zeros(2, dtype=torch.long))
+        actual = loss(model, x, y, negative, "joint_mean", "sampled_ce")
+        torch.testing.assert_close(actual, expected)
+        for a, b in zip(torch.autograd.grad(actual, tuple(model.parameters())),
+                        torch.autograd.grad(expected, tuple(model.parameters()))):
+            torch.testing.assert_close(a, b, atol=1e-6, rtol=1e-5)
+        with self.assertRaisesRegex(ValueError, "Unknown objective"):
+            loss(model, x, y, negative, objective="invalid")
+
     def test_frozen_item_vectors_stay_exact_while_ranker_learns(self):
         model = SASRec(12, length=4, dim=8, item_dim=16, freeze_items=True,
                        heads=2, blocks=1, dropout=0)
@@ -154,11 +170,12 @@ class SASRecTest(unittest.TestCase):
         y = torch.tensor([5, 9])
         neg = torch.tensor([[6, 7], [10, 11]])
         torch.testing.assert_close(cpu(x), mps(x.to("mps")).cpu(), atol=1e-5, rtol=1e-4)
-        for reduction in ("separate_mean", "joint_mean"):
+        for objective, reduction in (("bce", "separate_mean"), ("bce", "joint_mean"),
+                                     ("sampled_ce", "joint_mean")):
             cpu.zero_grad(set_to_none=True)
             mps.zero_grad(set_to_none=True)
-            left = loss(cpu, x, y, neg, reduction)
-            right = loss(mps, x.to("mps"), y.to("mps"), neg.to("mps"), reduction)
+            left = loss(cpu, x, y, neg, reduction, objective)
+            right = loss(mps, x.to("mps"), y.to("mps"), neg.to("mps"), reduction, objective)
             left.backward()
             right.backward()
             torch.testing.assert_close(left, right.cpu(), atol=1e-5, rtol=1e-4)
