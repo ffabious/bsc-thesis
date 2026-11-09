@@ -1,0 +1,9 @@
+{
+  "status": "cancelled_by_user",
+  "operation_created": false,
+  "gpu_allocations": 0,
+  "data_uploaded": false,
+  "empty_temp_directory_removed": true,
+  "local_materials": "data/archive/watt-2026-11-09",
+  "title": "Model Training"
+}

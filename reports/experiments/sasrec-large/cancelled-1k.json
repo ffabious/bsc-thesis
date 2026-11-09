@@ -1,0 +1,18 @@
+{
+  "state": "cancelled_by_user",
+  "long": {
+    "completed_epochs": 0,
+    "checkpoint_epoch": 1,
+    "checkpoint_cursor": 1280000,
+    "checkpoint_elapsed_seconds": 829.0290607088245,
+    "checkpoint": "data/runs/sasrec-1k-large-long/train-mps/last.pt",
+    "test_evaluated": false
+  },
+  "recent": {
+    "training_completed": true,
+    "best_epoch": 3,
+    "epochs": 5,
+    "test_evaluated": false
+  },
+  "auto_resume_enabled": false
+}

@@ -76,6 +76,14 @@ class ScoreBlendTest(unittest.TestCase):
                             configs, x, y, "mps", 2, [0., .5, 1.])
         np.testing.assert_array_equal(cpu, mps)
 
+    def test_native_short_model_sees_only_its_last_two_tokens(self):
+        models = {"long": SASRec(6, length=5, dim=4, heads=1, blocks=1, dropout=0).eval(),
+                  "recent": SASRec(6, length=2, dim=4, heads=1, blocks=1, dropout=0).eval()}
+        x = np.array([[2, 3, 4, 5, 6]], dtype=np.int32)
+        with patch.object(models["recent"], "forward", wraps=models["recent"].forward) as call:
+            blended_ranks(models, {"long": {}, "recent": {}}, x, np.array([7]), "cpu", 1, [0., .5, 1.])
+        np.testing.assert_array_equal(call.call_args.args[0].numpy(), [[5, 6]])
+
 
 if __name__ == "__main__":
     unittest.main()

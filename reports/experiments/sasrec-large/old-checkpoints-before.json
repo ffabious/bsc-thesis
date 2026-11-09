@@ -1,0 +1,6 @@
+{
+  "data/runs/sasrec-256-joint-bce/train-mps/best.pt": "c23ed5ed1f0d1e7b7be81cead1f350561646990cad6750bb7e354e0a9c2fd990",
+  "data/runs/sasrec-256-recent-2/train-mps/best.pt": "c4c25d719e7e18a3dcde498c72a0c8bbbb0bd6ae14dcfce2f4c06f8b8cc75e8d",
+  "data/runs/sasrec-1k-joint-bce/train-mps/best.pt": "0be4af9f7c6d82052bf249145df8d23ddab78842a9d83e58267210ebd8e39de9",
+  "data/runs/sasrec-1k-recent-2/train-mps/best.pt": "4263a3c39dc992a47f2a1dc21f7ed013976306c384c5a1062d2f32f6008e0d39"
+}

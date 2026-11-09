@@ -1,0 +1,79 @@
+--- a/scripts/sasrec.py
++++ b/scripts/sasrec.py
+@@ -124,6 +124,8 @@
+ def sync(device):
+     if device == "mps":
+         torch.mps.synchronize()
++    elif device == "cuda":
++        torch.cuda.synchronize()
+
+
+ @torch.inference_mode()
+--- a/scripts/run_sasrec.py
++++ b/scripts/run_sasrec.py
+@@ -29,6 +29,10 @@
+     if device == "mps":
+         result.update(mps_tensor_mib=torch.mps.current_allocated_memory() / 1024 ** 2,
+                       mps_driver_mib=torch.mps.driver_allocated_memory() / 1024 ** 2)
++    elif device == "cuda":
++        result.update(cuda_tensor_mib=torch.cuda.memory_allocated() / 1024 ** 2,
++                      cuda_reserved_mib=torch.cuda.memory_reserved() / 1024 ** 2,
++                      cuda_peak_tensor_mib=torch.cuda.max_memory_allocated() / 1024 ** 2)
+     return result
+
+
+@@ -192,6 +196,8 @@
+         torch.set_rng_state(saved["torch_rng"])
+         if device == "mps":
+             torch.mps.set_rng_state(saved["mps_rng"])
++        elif device == "cuda":
++            torch.cuda.set_rng_state(saved["cuda_rng"])
+         result = saved["result"]
+         best, waiting, epoch = saved["best"], saved["waiting"], saved["epoch"]
+         elapsed_before, partial_seconds, cursor = saved["elapsed_seconds"], saved["partial_seconds"], saved["cursor"]
+@@ -213,6 +219,7 @@
+             "weights": model.state_dict(), "optimizer": optimizer.state_dict(),
+             "numpy_rng": rng.bit_generator.state, "torch_rng": torch.get_rng_state(),
+             "mps_rng": torch.mps.get_rng_state() if device == "mps" else None,
++            "cuda_rng": torch.cuda.get_rng_state() if device == "cuda" else None,
+             "best": best, "waiting": waiting, "epoch": epoch, "cursor": cursor,
+             "order": torch.from_numpy(order) if order is not None else None,
+             "total_loss": total.item(), "partial_seconds": seconds,
+@@ -324,7 +331,7 @@
+ def main():
+     parser = argparse.ArgumentParser(description=__doc__)
+     parser.add_argument("mode", choices=["benchmark", "train", "evaluate"])
+-    parser.add_argument("--device", choices=["cpu", "mps"], required=True)
++    parser.add_argument("--device", choices=["cpu", "mps", "cuda"], required=True)
+     parser.add_argument("--config", type=Path, default=ROOT / "configs/experiments/sasrec-pilot.json")
+     parser.add_argument("--output", type=Path, required=True)
+     parser.add_argument("--checkpoint", type=Path)
+@@ -332,6 +339,8 @@
+     args = parser.parse_args()
+     if args.device == "mps" and not torch.backends.mps.is_available():
+         parser.error("MPS is unavailable; CPU fallback is not a valid MPS measurement")
++    if args.device == "cuda" and not torch.cuda.is_available():
++        parser.error("CUDA is unavailable")
+     if os.environ.get("PYTORCH_ENABLE_MPS_FALLBACK", "0") != "0":
+         parser.error("Disable PYTORCH_ENABLE_MPS_FALLBACK before benchmarking")
+     config = json.loads(args.config.read_text())
+@@ -340,6 +349,10 @@
+     torch.manual_seed(config["seed"])
+     if args.device == "mps":
+         torch.mps.manual_seed(config["seed"])
++    elif args.device == "cuda":
++        torch.cuda.manual_seed_all(config["seed"])
++        torch.backends.cuda.matmul.allow_tf32 = False
++        torch.backends.cudnn.allow_tf32 = False
+     if args.mode == "benchmark":
+         result = benchmark(config, data, args.device)
+     elif args.mode == "train":
+@@ -353,6 +366,8 @@
+                   python=platform.python_version(), macos=platform.mac_ver()[0],
+                   mps_available=torch.backends.mps.is_available(),
+                   data_manifest_sha256=hashlib.sha256((data / "manifest.json").read_bytes()).hexdigest())
++    if args.device == "cuda":
++        result.update(cuda_version=torch.version.cuda, gpu_name=torch.cuda.get_device_name())
+     destination = args.output / "training.json" if args.mode == "train" else args.output
+     write(destination, result)
+     print(json.dumps(result, indent=2), flush=True)

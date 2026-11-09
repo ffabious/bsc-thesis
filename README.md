@@ -203,6 +203,25 @@ done
 
 `select` читает только `model_valid` и предшествующий train. `evaluate` читает сохранённую selection и не изменяет коэффициент. Скрипт проверяет hashes моделей, воспроизведение validation endpoints и согласованность test endpoints с отдельными моделями. Полные матрицы scores хранятся только для текущего batch; локально сохраняются ranks.
 
+## Увеличенные SASRec на 256 и 1k
+
+Локальный последовательный эксперимент с item embedding 64, hidden 256, четырьмя
+блоками / восемью головами и FFN 1024. Для 256 обе истории, 50 и 2, обучены до
+validation-остановки; 1k отменена пользователем. Прежние данные, OOT, общий BCE и batch 256 сохранены.
+Короткое окно физически имеет длину 2. [Протокол](notes/sasrec-large-pilots.md),
+[замеры и результаты](reports/experiments/sasrec-large.md).
+
+```sh
+PYTORCH_ENABLE_MPS_FALLBACK=0 .venv/bin/python scripts/run_sasrec.py benchmark --device mps --config configs/experiments/sasrec-256-large-long.json --output data/runs/sasrec-256-large-long/benchmark-mps.json
+caffeinate -i .venv/bin/python scripts/run_sasrec_pairs.py
+.venv/bin/python scripts/summarize_sasrec_pairs.py
+```
+
+Для остальных benchmark меняются `256/1k` и `long/recent` в конфигурации и output.
+Orchestration по умолчанию обрабатывает только `256-large`; `last.pt` включает optimizer и RNG,
+индивидуальная train-команда принимает `--resume`. Alpha выбирается по
+validation до test. Отменённые 1k и full-data обучение автоматически не запускаются.
+
 ## Происхождение материалов
 
 Импорт выполнен 20 октября 2026 из `thesis-project-2026-10-20.zip` и двух заметок, уже находившихся в этой папке. Заметки совпали с копиями в архиве и сохранены в одном экземпляре.

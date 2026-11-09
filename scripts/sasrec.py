@@ -10,14 +10,15 @@ from torch.nn import functional as F
 
 
 class Block(nn.Module):
-    def __init__(self, dim, heads, dropout):
+    def __init__(self, dim, heads, dropout, ff_dim=None):
         super().__init__()
         self.heads = heads
         self.norm1 = nn.LayerNorm(dim, eps=1e-8)
         self.norm2 = nn.LayerNorm(dim, eps=1e-8)
         self.attention = nn.MultiheadAttention(dim, heads, dropout=dropout, batch_first=True)
-        self.ff = nn.Sequential(nn.Linear(dim, dim), nn.ReLU(), nn.Dropout(dropout),
-                                nn.Linear(dim, dim), nn.Dropout(dropout))
+        ff_dim = ff_dim or dim
+        self.ff = nn.Sequential(nn.Linear(dim, ff_dim), nn.ReLU(), nn.Dropout(dropout),
+                                nn.Linear(ff_dim, dim), nn.Dropout(dropout))
 
     def forward(self, x, allowed):
         query = self.norm1(x)
@@ -30,7 +31,7 @@ class Block(nn.Module):
 
 class SASRec(nn.Module):
     def __init__(self, items, length=50, dim=64, heads=2, blocks=2, dropout=0.2,
-                 item_dim=None, freeze_items=False):
+                 item_dim=None, freeze_items=False, ff_dim=None):
         super().__init__()
         self.length = length
         item_dim = item_dim or dim
@@ -40,7 +41,7 @@ class SASRec(nn.Module):
         self.output_projection = nn.Linear(dim, item_dim, bias=False) if item_dim != dim else nn.Identity()
         self.position = nn.Embedding(length, dim)
         self.dropout = nn.Dropout(dropout)
-        self.blocks = nn.ModuleList([Block(dim, heads, dropout) for _ in range(blocks)])
+        self.blocks = nn.ModuleList([Block(dim, heads, dropout, ff_dim) for _ in range(blocks)])
         self.norm = nn.LayerNorm(dim, eps=1e-8)
         self.register_buffer("causal", torch.ones(length, length, dtype=torch.bool).tril())
         nn.init.normal_(self.item.weight, std=0.02)

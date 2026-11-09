@@ -68,6 +68,7 @@ def check(root):
             db.read_parquet(str(audio)).create_view("audio_items")
             queries["missing_audio_events"] = """SELECT count(*) FROM events
                 WHERE item_id NOT IN (SELECT item_id FROM audio_items)"""
+        if audio or manifest.get("closed_catalog"):
             queries["unknown_item_tokens"] = "SELECT count(*) FROM events WHERE item_idx < 2"
         result = {name: db.execute(sql).fetchall()[0][0] for name, sql in queries.items()}
         if any(result.values()):

@@ -1,0 +1,13 @@
+{
+  "scripts/sasrec.py": "a0ba555d733fc0094aa0103b6b774875a29356da456f60802e8aa10d1a779cee",
+  "scripts/run_sasrec.py": "0062a74659b0d5886793fbac9a2960d84a82bea0950134f88897c2863497bc65",
+  "scripts/blend_sasrec.py": "78265c7a9d594b3e10c53b8c798d961ee1e28f11bac16cb9e35169f34d5496fd",
+  "scripts/compare_sasrec.py": "6b6880cf9b975b5ec177612d923a2978ebe570d6a59b44f755117aae055e3191",
+  "scripts/run_sasrec_pairs.py": "89b0619381344b1256d0ba9cb8f791ce6d66a433939feca3ffcc27209054f864",
+  "configs/experiments/sasrec-256-large-long.json": "f92c02e2314d45b0d4cd469a0efa6eee76e7033f4c5dba727d4debc8f2015c30",
+  "configs/experiments/sasrec-1k-large-recent.json": "04189f76610407a95856a27bf61205ea46c44974685dee6a14f905791cf8d6dc",
+  "configs/experiments/sasrec-256-large-recent.json": "3e1a11a714e63ff7327d47120534f56b36b75676e68ec6c52ea50c9fe47f8bc0",
+  "configs/experiments/sasrec-1k-large-long.json": "20693ef7b7f6fe70b789c46c05958c3fe6dc87e32a4435a224b21a8671dcbcc1",
+  "configs/experiments/sasrec-large-blend.json": "6b13c59ef42aa8e20a9902cb50b1e8168903ea31736adde23ca90f2425195fe1",
+  "scripts/summarize_sasrec_pairs.py": "ccaba7ab8bda70b2799e3d290484a2eeb3308109c0d1eec4a0590000057422bc"
+}

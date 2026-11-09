@@ -1,0 +1,206 @@
+{
+  "source": {
+    "repo": "yandex/yambda",
+    "revision": "dd6f3a19eef5866e346c3270e098baa641a44948",
+    "path": "flat/50m/multi_event.parquet",
+    "bytes": 384465869,
+    "sha256": "b92f6c97277a554c8a7d6cfea900eca51639fd53a3e6c4fa58b82e35fd35804d"
+  },
+  "source_sha256": "b92f6c97277a554c8a7d6cfea900eca51639fd53a3e6c4fa58b82e35fd35804d",
+  "pipeline_sha256": "deda643f035e5d1e7ef02cf0620e8b9319c3fb995c36b75bdd47681f6962604e",
+  "config": {
+    "source": {
+      "repo": "yandex/yambda",
+      "revision": "dd6f3a19eef5866e346c3270e098baa641a44948",
+      "path": "flat/50m/multi_event.parquet",
+      "bytes": 384465869,
+      "sha256": "b92f6c97277a554c8a7d6cfea900eca51639fd53a3e6c4fa58b82e35fd35804d"
+    },
+    "holdout_days": {
+      "model_valid": 7,
+      "controller_train": 14,
+      "policy_valid": 7,
+      "test": 14
+    },
+    "positive_ratio_gt": 50,
+    "min_history": 1,
+    "min_train_events": 20,
+    "seed": 42
+  },
+  "python": "3.14.8",
+  "duckdb": "2.0.0",
+  "machine": "arm64",
+  "threads": 4,
+  "memory_limit": "4GB",
+  "requested_users": 0,
+  "selected_users": 8454,
+  "closed_audio_catalog": false,
+  "closed_catalog": true,
+  "audio_items": null,
+  "audio_items_sha256": null,
+  "excluded_listens": 600721,
+  "train_eligible_users": 8454,
+  "candidate_items": 782513,
+  "periods": [
+    {
+      "split": "train",
+      "start": 0,
+      "end": 22371205
+    },
+    {
+      "split": "model_valid",
+      "start": 22371205,
+      "end": 22976005
+    },
+    {
+      "split": "controller_train",
+      "start": 22976005,
+      "end": 24185605
+    },
+    {
+      "split": "policy_valid",
+      "start": 24185605,
+      "end": 24790405
+    },
+    {
+      "split": "test",
+      "start": 24790405,
+      "end": 26000005
+    }
+  ],
+  "source_audit": {
+    "events": 47790449,
+    "users": 10000,
+    "items": 934057,
+    "min_timestamp": 0,
+    "max_timestamp": 26000000,
+    "invalid": 0,
+    "ratios_over_100": 218145,
+    "event_types": [
+      {
+        "event_type": "dislike",
+        "events": 107776
+      },
+      {
+        "event_type": "like",
+        "events": 881456
+      },
+      {
+        "event_type": "listen",
+        "events": 46467212
+      },
+      {
+        "event_type": "undislike",
+        "events": 21033
+      },
+      {
+        "event_type": "unlike",
+        "events": 312972
+      }
+    ]
+  },
+  "splits": [
+    {
+      "split": "train",
+      "events": 37749196,
+      "users": 8454,
+      "positives": 23812606,
+      "targets": 23805630,
+      "unknown_targets": 0,
+      "no_history_positives": 6976,
+      "min_timestamp": 0,
+      "max_timestamp": 22371200
+    },
+    {
+      "split": "model_valid",
+      "events": 1330348,
+      "users": 6833,
+      "positives": 845161,
+      "targets": 845161,
+      "unknown_targets": 0,
+      "no_history_positives": 0,
+      "min_timestamp": 22371205,
+      "max_timestamp": 22976000
+    },
+    {
+      "split": "controller_train",
+      "events": 2557708,
+      "users": 7458,
+      "positives": 1628808,
+      "targets": 1628808,
+      "unknown_targets": 0,
+      "no_history_positives": 0,
+      "min_timestamp": 22976005,
+      "max_timestamp": 24185600
+    },
+    {
+      "split": "policy_valid",
+      "events": 1257891,
+      "users": 6930,
+      "positives": 808911,
+      "targets": 808911,
+      "unknown_targets": 0,
+      "no_history_positives": 0,
+      "min_timestamp": 24185605,
+      "max_timestamp": 24790400
+    },
+    {
+      "split": "test",
+      "events": 2474366,
+      "users": 8352,
+      "positives": 1615527,
+      "targets": 1615527,
+      "unknown_targets": 0,
+      "no_history_positives": 0,
+      "min_timestamp": 24790405,
+      "max_timestamp": 25999995
+    }
+  ],
+  "timestamp_ties": {
+    "groups": 4021917,
+    "events": 12638421
+  },
+  "user_history_quantiles": [
+    3443.5,
+    13377.499999999996,
+    23787.639999999992
+  ],
+  "files": [
+    {
+      "path": "events/controller_train.parquet",
+      "bytes": 41975169,
+      "sha256": "b8c6bcebe9d8d3c9d0f549e92efac15bb7500a8811966ee1bbef96c4e6a11664"
+    },
+    {
+      "path": "events/model_valid.parquet",
+      "bytes": 21744288,
+      "sha256": "e32a1c30e1fb56b2bb70a528ae338c49c8e1f2f118c1f837924511e5ff8eb7a1"
+    },
+    {
+      "path": "events/policy_valid.parquet",
+      "bytes": 20670220,
+      "sha256": "599fe2e7d20f3a8e99c9416abae839cc9279ec8290281c049a95969ed441bcbd"
+    },
+    {
+      "path": "events/test.parquet",
+      "bytes": 40308675,
+      "sha256": "db31200bd4178373dfce21f1297af4b7bc66acd2f0bf9ee0ba515e258d536c86"
+    },
+    {
+      "path": "events/train.parquet",
+      "bytes": 609087559,
+      "sha256": "22b9fc2f9a01a11537b871665bb9882061bdd9c0993cf6ca7197f1960ba74193"
+    },
+    {
+      "path": "items.parquet",
+      "bytes": 8298540,
+      "sha256": "5b06d3931b53beaa1b3939a60a374b1cd43a982b003a80326c2d55e709eb1582"
+    },
+    {
+      "path": "users.parquet",
+      "bytes": 65423,
+      "sha256": "b12aa27db7eedb998a46d3e28719f2ba9fdd37a98afd83b4fbd2b83f19027755"
+    }
+  ],
+  "elapsed_seconds": 16.99
+}

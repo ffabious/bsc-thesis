@@ -42,7 +42,7 @@ def paired_intervals(rank, baseline, users, seed):
     return result
 
 
-def compare(checkpoint, reference_path, device, output):
+def compare(checkpoint, reference_path, device, output, allow_different_architecture=False):
     if output.exists() or output.with_suffix(".npz").exists():
         raise FileExistsError(f"Choose a new comparison output: {output}")
     trained = json.loads(checkpoint.with_name("training.json").read_text())
@@ -55,13 +55,13 @@ def compare(checkpoint, reference_path, device, output):
     for meta, folder in ((trained, data), (reference, small)):
         if meta["data_manifest_sha256"] != hashlib.sha256((folder / "manifest.json").read_bytes()).hexdigest():
             raise ValueError("Dataset manifest changed after training/evaluation")
-    if model_args(saved["config"]) != model_args(reference["config"]):
+    if not allow_different_architecture and model_args(saved["config"]) != model_args(reference["config"]):
         raise ValueError("Comparison requires the same architecture")
     torch.set_num_threads(saved["config"]["threads"])
     model = SASRec(saved["items"], **model_args(saved["config"]))
     model.load_state_dict(saved["weights"])
     model.to(device).eval()
-    x, y, users = examples(small, "test", model.length)
+    x, y, users = examples(small, "test", max(model.length, reference["config"]["length"]))
     baseline = np.load(reference_path.with_suffix(".npz"))
     if (not np.array_equal(y, baseline["targets"]) or not np.array_equal(users, baseline["users"])
             or metrics(baseline["ranks"]) != reference["metrics"]):
@@ -70,8 +70,8 @@ def compare(checkpoint, reference_path, device, output):
     candidates = mapping[2:]
     context_sha256 = hashlib.sha256(x.tobytes()).hexdigest()
     keep = saved["config"].get("context_keep", model.length)
-    reference_keep = reference["config"].get("context_keep", model.length)
-    x = mask_context(x, keep)
+    reference_keep = reference["config"].get("context_keep", reference["config"]["length"])
+    x = mask_context(x[:, -model.length:].copy(), keep)
     visible_sha256 = hashlib.sha256(x.tobytes()).hexdigest()
     x, mapped_y = mapping[x], mapping[y]
     batch_size = saved["config"]["eval_batch_size"]
@@ -88,7 +88,10 @@ def compare(checkpoint, reference_path, device, output):
               "reference_data_manifest_sha256": reference["data_manifest_sha256"],
               "reference_context_sha256": context_sha256, "model_context_sha256": visible_sha256,
               "reference_context_keep": reference_keep, "model_context_keep": keep,
-              "same_source_events_and_candidates": True, "same_inputs_targets_and_candidates": keep == reference_keep,
+              "same_source_events_and_candidates": True, "same_visible_item_tokens": keep == reference_keep,
+              "same_inputs_targets_and_candidates": keep == reference_keep and model.length == reference["config"]["length"],
+              "same_architecture": model_args(saved["config"]) == model_args(reference["config"]),
+              "model_config": saved["config"],
               "examples": len(y), "users": int(len(np.unique(users))),
               "training_catalog_items": saved["items"], "comparison_catalog_items": len(candidates),
               "reference_metrics": reference["metrics"], "metrics": metrics(rank),
@@ -107,9 +110,11 @@ if __name__ == "__main__":
     parser.add_argument("--reference-evaluation", type=Path, required=True)
     parser.add_argument("--device", choices=["cpu", "mps"], required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--allow-different-architecture", action="store_true")
     args = parser.parse_args()
     if args.device == "mps" and not torch.backends.mps.is_available():
         parser.error("MPS unavailable")
     if os.environ.get("PYTORCH_ENABLE_MPS_FALLBACK", "0") != "0":
         parser.error("Disable CPU fallback")
-    print(json.dumps(compare(args.checkpoint, args.reference_evaluation, args.device, args.output), indent=2))
+    print(json.dumps(compare(args.checkpoint, args.reference_evaluation, args.device, args.output,
+                             args.allow_different_architecture), indent=2))

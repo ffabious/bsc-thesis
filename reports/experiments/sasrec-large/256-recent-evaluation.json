@@ -1,0 +1,70 @@
+{
+  "checkpoint_sha256": "18b36b4bf41576f51fe9945d264ba758c27a0df581386d40e222ea321c8aaf33",
+  "checkpoint_epoch": 6,
+  "examples": 45711,
+  "users": 244,
+  "catalog_items": 114125,
+  "metrics": {
+    "ndcg@10": 0.005087456478600678,
+    "recall@100": 0.05423202292664785
+  },
+  "cluster_bootstrap_95ci": {
+    "ndcg@10": [
+      0.002818448103158925,
+      0.009195628887579875
+    ],
+    "recall@100": [
+      0.04433957815844859,
+      0.06535123791443812
+    ]
+  },
+  "mostpop_metrics": {
+    "ndcg@10": 0.00243086590086716,
+    "recall@100": 0.038524643958784535
+  },
+  "mostpop_95ci": {
+    "ndcg@10": [
+      0.00176023792132038,
+      0.00325786191934052
+    ],
+    "recall@100": [
+      0.03065632072048257,
+      0.04817228349988799
+    ]
+  },
+  "evaluation_seconds": 4.158796499948949,
+  "examples_per_second": 10991.400997995725,
+  "process_peak_rss_mib": 686.1875,
+  "mps_tensor_mib": 40.179931640625,
+  "mps_driver_mib": 1058.734375,
+  "config": {
+    "data": "data/processed/yambda50m-pilot-audio",
+    "loss_reduction": "joint_mean",
+    "seed": 42,
+    "threads": 4,
+    "length": 2,
+    "item_dim": 64,
+    "dim": 256,
+    "heads": 8,
+    "blocks": 4,
+    "ff_dim": 1024,
+    "dropout": 0.2,
+    "batch_size": 256,
+    "negatives": 16,
+    "learning_rate": 0.001,
+    "epochs": null,
+    "patience": 2,
+    "checkpoint_steps": 5000,
+    "eval_batch_size": 256,
+    "benchmark_warmup": 5,
+    "benchmark_steps": 50,
+    "benchmark_repeats": 2
+  },
+  "device": "mps",
+  "torch": "2.15.0",
+  "numpy": "2.5.4",
+  "python": "3.14.8",
+  "macos": "26.6.2",
+  "mps_available": true,
+  "data_manifest_sha256": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c"
+}

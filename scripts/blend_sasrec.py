@@ -77,10 +77,9 @@ def load_pair(protocol, pilot, device):
         sources[role] = {"run": name, "checkpoint_sha256": digest, "epoch": saved["epoch"],
                          "data_manifest_sha256": trained["data_manifest_sha256"], "items": saved["items"]}
     if (configs["long"]["data"] != configs["recent"]["data"]
-            or configs["long"]["length"] != configs["recent"]["length"]
             or sources["long"]["items"] != sources["recent"]["items"]
-            or configs["long"].get("context_keep", 50) != 50
-            or configs["recent"].get("context_keep") != 2):
+            or configs["long"].get("context_keep", configs["long"]["length"]) != 50
+            or configs["recent"].get("context_keep", configs["recent"]["length"]) != 2):
         raise ValueError("Expected models with histories 50 and 2 in the same vocabulary")
     return models, configs, sources
 
@@ -99,7 +98,7 @@ def blended_ranks(models, configs, x, y, device, batch_size, alphas, candidates=
         end = min(start + batch_size, len(y))
         scores = {}
         for role, model in models.items():
-            view = mask_context(x[start:end].copy(), configs[role].get("context_keep"))
+            view = mask_context(x[start:end, -model.length:].copy(), configs[role].get("context_keep"))
             query = model(torch.as_tensor(view, dtype=torch.long, device=device))
             scores[role] = query @ vectors[role].T
         target = torch.as_tensor(y[start:end], device=device)
@@ -165,17 +164,20 @@ def evaluate(protocol, pilot, device, output):
     alphas = sorted(set([0., alpha, 1.]))
     data = ROOT / configs["long"]["data"]
     scopes = {"native": data}
-    if pilot == "1k":
+    if pilot in ("1k", "1k-large"):
         scopes["shared"] = ROOT / protocol["shared_reference"]
     for scope, reference in scopes.items():
         destination = output / f"{scope}.json"
         if destination.exists():
+            previous = read(destination)
+            if pilot in ("256-large", "1k-large") and previous["selection_sha256"] == selection_hash and previous["sources"] == sources:
+                continue
             raise FileExistsError(f"Evaluation already exists: {destination}")
         x, y, users = examples(reference, "test", configs["long"]["length"])
         last = x[:, -1] == y
         candidates = None
         model_x, model_y = x, y
-        if scope == "shared":
+        if scope != "native":
             mapping = item_mapping(reference, data)
             candidates, model_x, model_y = mapping[2:], mapping[x], mapping[y]
         started = time.perf_counter()
@@ -185,7 +187,8 @@ def evaluate(protocol, pilot, device, output):
         elapsed = time.perf_counter() - started
         endpoints = {}
         for value, role in ((0., "long"), (1., "recent")):
-            source = ROOT / sources[role]["run"] / ("evaluation-mps" if scope == "native" else "comparison-256")
+            comparison = "comparison-256" if scope == "shared" else f"comparison-{scope}"
+            source = ROOT / sources[role]["run"] / ("evaluation-mps" if scope == "native" else comparison)
             saved = np.load(source.with_suffix(".npz"))
             baseline = read(source.with_suffix(".json"))
             actual = rank[alphas.index(value)]
@@ -218,7 +221,7 @@ def evaluate(protocol, pilot, device, output):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("mode", choices=["select", "evaluate"])
-    parser.add_argument("--pilot", choices=["256", "1k"], required=True)
+    parser.add_argument("--pilot", choices=["256", "1k", "256-large", "1k-large"], required=True)
     parser.add_argument("--device", choices=["cpu", "mps"], default="mps")
     parser.add_argument("--config", type=Path, default=ROOT / "configs/experiments/sasrec-score-blend.json")
     parser.add_argument("--output", type=Path, required=True)

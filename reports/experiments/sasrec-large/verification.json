@@ -1,0 +1,25 @@
+{
+  "selection_unchanged_after_test": true,
+  "old_checkpoints_unchanged": true,
+  "same_dataset_as_original": true,
+  "source_hash_comparison": {
+    "scripts/sasrec.py": true,
+    "scripts/run_sasrec.py": true,
+    "scripts/blend_sasrec.py": true,
+    "scripts/compare_sasrec.py": true,
+    "scripts/run_sasrec_pairs.py": false,
+    "configs/experiments/sasrec-256-large-long.json": true,
+    "configs/experiments/sasrec-1k-large-recent.json": true,
+    "configs/experiments/sasrec-256-large-recent.json": true,
+    "configs/experiments/sasrec-1k-large-long.json": true,
+    "configs/experiments/sasrec-large-blend.json": true
+  },
+  "orchestration_change": "after cancellation, scope defaults to 256-large; completed-config guard added; model/training/selection code unchanged",
+  "test_events": 45711,
+  "test_users": 244,
+  "candidate_items": 114125,
+  "default_scope_verified": [
+    "256-large"
+  ],
+  "cancelled_1k_not_resumed": true
+}

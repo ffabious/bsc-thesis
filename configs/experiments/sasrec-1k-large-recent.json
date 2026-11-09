@@ -1,0 +1,23 @@
+{
+  "data": "data/processed/yambda50m-1k-audio",
+  "loss_reduction": "joint_mean",
+  "seed": 42,
+  "threads": 4,
+  "length": 2,
+  "item_dim": 64,
+  "dim": 256,
+  "heads": 8,
+  "blocks": 4,
+  "ff_dim": 1024,
+  "dropout": 0.2,
+  "batch_size": 256,
+  "negatives": 16,
+  "learning_rate": 0.001,
+  "epochs": null,
+  "patience": 2,
+  "checkpoint_steps": 5000,
+  "eval_batch_size": 256,
+  "benchmark_warmup": 5,
+  "benchmark_steps": 50,
+  "benchmark_repeats": 2
+}

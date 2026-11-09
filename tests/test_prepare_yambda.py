@@ -105,6 +105,15 @@ class PrepareYambdaTest(unittest.TestCase):
         self.assertEqual(manifest["candidate_items"], 3)
         self.assertEqual(manifest["excluded_listens"], 3)
 
+    def test_closed_id_catalog_keeps_non_audio_items_and_rebuilds_history(self):
+        output, manifest = self.run_prepare(closed_catalog=True)
+        events = self.db.read_parquet([str(p) for p in (output / 'events').glob('*.parquet')])
+        self.assertEqual(events.filter("item_idx < 2 OR item_id = 99").count("*").fetchall()[0][0], 0)
+        self.assertEqual(events.filter("uid = 1 AND timestamp = 172805").project("history_size").fetchall(), [(6,)])
+        self.assertEqual(manifest["candidate_items"], 4)
+        self.assertTrue(manifest["closed_catalog"])
+        self.assertFalse(manifest["closed_audio_catalog"])
+
 
 if __name__ == "__main__":
     unittest.main()

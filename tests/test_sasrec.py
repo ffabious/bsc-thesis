@@ -114,6 +114,14 @@ class SASRecTest(unittest.TestCase):
         self.assertFalse(torch.equal(model.output_projection.weight, projection))
         self.assertTrue(model.position.weight.requires_grad)
 
+    def test_expanded_ffn_and_trainable_projections_receive_gradients(self):
+        model = SASRec(12, length=3, item_dim=4, dim=8, heads=2, blocks=2, ff_dim=32)
+        loss(model, torch.tensor([[2, 3, 4]]), torch.tensor([5]), torch.tensor([[6, 7]]), "joint_mean").backward()
+        self.assertEqual(model.blocks[0].ff[0].weight.shape, (32, 8))
+        for name, parameter in model.named_parameters():
+            self.assertIsNotNone(parameter.grad, name)
+            self.assertTrue(torch.isfinite(parameter.grad).all(), name)
+
     def test_full_catalog_rank_excludes_special_tokens_and_breaks_ties(self):
         model = SASRec(4, length=3, dim=2, heads=1, blocks=1, dropout=0)
         with torch.no_grad():
@@ -140,7 +148,7 @@ class SASRecTest(unittest.TestCase):
 
     @unittest.skipUnless(torch.backends.mps.is_available(), "MPS unavailable")
     def test_cpu_mps_forward_and_backward_agree(self):
-        cpu = SASRec(12, length=5, dim=8, heads=2, blocks=2, dropout=0).eval()
+        cpu = SASRec(12, length=5, item_dim=4, dim=8, heads=2, blocks=2, ff_dim=32, dropout=0).eval()
         mps = copy.deepcopy(cpu).to("mps")
         x = torch.tensor([[0, 0, 2, 3, 4], [2, 5, 6, 7, 8]])
         y = torch.tensor([5, 9])

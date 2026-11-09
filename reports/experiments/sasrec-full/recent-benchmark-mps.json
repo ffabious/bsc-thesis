@@ -1,0 +1,62 @@
+{
+  "train_step_ms": [
+    62.6815791707486,
+    62.92876251973212,
+    63.0202957894653
+  ],
+  "train_examples_per_second": 4068.092073473206,
+  "parameters": 53273792,
+  "trainable_parameters": 53273792,
+  "process_peak_rss_mib": 3236.078125,
+  "mps_tensor_mib": 816.71923828125,
+  "mps_driver_mib": 2122.78125,
+  "train_examples": 23805630,
+  "batch_size": 256,
+  "timing_includes": "random prefix gathering, negatives, forward, backward, clipping, Adam",
+  "estimated_train_epoch_seconds": 5851.792331650822,
+  "memory_after_forward": {
+    "process_peak_rss_mib": 3236.078125,
+    "mps_tensor_mib": 651.785400390625,
+    "mps_driver_mib": 2122.78125
+  },
+  "memory_after_backward": {
+    "process_peak_rss_mib": 3236.078125,
+    "mps_tensor_mib": 816.756591796875,
+    "mps_driver_mib": 2122.78125
+  },
+  "memory_after_update": {
+    "process_peak_rss_mib": 3236.078125,
+    "mps_tensor_mib": 816.756591796875,
+    "mps_driver_mib": 2122.78125
+  },
+  "config": {
+    "data": "data/processed/yambda50m-closed",
+    "loss_reduction": "joint_mean",
+    "seed": 42,
+    "threads": 4,
+    "length": 2,
+    "item_dim": 64,
+    "dim": 256,
+    "heads": 8,
+    "blocks": 4,
+    "ff_dim": 1024,
+    "dropout": 0.2,
+    "batch_size": 256,
+    "negatives": 16,
+    "learning_rate": 0.001,
+    "epochs": null,
+    "patience": 2,
+    "checkpoint_steps": 5000,
+    "eval_batch_size": 128,
+    "benchmark_warmup": 3,
+    "benchmark_steps": 10,
+    "benchmark_repeats": 3
+  },
+  "device": "mps",
+  "torch": "2.15.0",
+  "numpy": "2.5.4",
+  "python": "3.14.8",
+  "macos": "26.6.2",
+  "mps_available": true,
+  "data_manifest_sha256": "8d4fddfd63e625ca72d6bcb81308b5dbc75068dc3888a2920394a72c933a69b9"
+}

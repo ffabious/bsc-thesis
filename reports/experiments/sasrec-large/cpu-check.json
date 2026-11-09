@@ -1,0 +1,70 @@
+{
+  "examples": 64,
+  "sampling": "16 repeats, 16 non-repeats, 16 nearest rank 10, 16 nearest rank 100; unique union",
+  "sources": {
+    "long": {
+      "run": "data/runs/sasrec-256-large-long",
+      "checkpoint_sha256": "84d63a5b47c92c1a986d6f35e1cceaa661fc2ffdd5af1db7842c29e448c6693c",
+      "epoch": 3,
+      "data_manifest_sha256": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c",
+      "items": 114125
+    },
+    "recent": {
+      "run": "data/runs/sasrec-256-large-recent",
+      "checkpoint_sha256": "18b36b4bf41576f51fe9945d264ba758c27a0df581386d40e222ea321c8aaf33",
+      "epoch": 6,
+      "data_manifest_sha256": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c",
+      "items": 114125
+    }
+  },
+  "checks": [
+    {
+      "alpha": 0.0,
+      "different_ranks": 0,
+      "max_rank_difference": 0,
+      "cpu_metrics": {
+        "ndcg@10": 0.0182535074159007,
+        "recall@100": 0.25,
+        "hit@1": 0.0
+      },
+      "mps_metrics": {
+        "ndcg@10": 0.0182535074159007,
+        "recall@100": 0.25,
+        "hit@1": 0.0
+      },
+      "same_metrics": true
+    },
+    {
+      "alpha": 0.1,
+      "different_ranks": 1,
+      "max_rank_difference": 1,
+      "cpu_metrics": {
+        "ndcg@10": 0.07226620657947197,
+        "recall@100": 0.5,
+        "hit@1": 0.0
+      },
+      "mps_metrics": {
+        "ndcg@10": 0.07226620657947197,
+        "recall@100": 0.5,
+        "hit@1": 0.0
+      },
+      "same_metrics": true
+    },
+    {
+      "alpha": 1.0,
+      "different_ranks": 0,
+      "max_rank_difference": 0,
+      "cpu_metrics": {
+        "ndcg@10": 0.06138187934481213,
+        "recall@100": 0.375,
+        "hit@1": 0.015625
+      },
+      "mps_metrics": {
+        "ndcg@10": 0.06138187934481213,
+        "recall@100": 0.375,
+        "hit@1": 0.015625
+      },
+      "same_metrics": true
+    }
+  ]
+}
