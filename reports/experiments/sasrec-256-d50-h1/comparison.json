@@ -1,0 +1,78 @@
+{
+  "checkpoint_sha256": "04a4a99edf7add4fd961dc0e9a06cd04e9a323b512c5d831dd209ab3c0b80528",
+  "checkpoint_epoch": 5,
+  "reference_checkpoint_sha256": "c23ed5ed1f0d1e7b7be81cead1f350561646990cad6750bb7e354e0a9c2fd990",
+  "training_data": "data/processed/yambda50m-pilot-audio",
+  "reference_data": "data/processed/yambda50m-pilot-audio",
+  "training_data_manifest_sha256": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c",
+  "reference_data_manifest_sha256": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c",
+  "reference_context_sha256": "37a56dae2ec258cb1d2051dc7dbda91ba5a6d5e34d30d694a87e6b11e4cb05e9",
+  "model_context_sha256": "37a56dae2ec258cb1d2051dc7dbda91ba5a6d5e34d30d694a87e6b11e4cb05e9",
+  "reference_context_keep": 50,
+  "model_context_keep": 50,
+  "same_source_events_and_candidates": true,
+  "same_visible_item_tokens": true,
+  "same_inputs_targets_and_candidates": true,
+  "same_architecture": false,
+  "model_config": {
+    "data": "data/processed/yambda50m-pilot-audio",
+    "loss_reduction": "joint_mean",
+    "seed": 42,
+    "threads": 4,
+    "length": 50,
+    "dim": 50,
+    "heads": 1,
+    "blocks": 2,
+    "dropout": 0.2,
+    "batch_size": 256,
+    "negatives": 16,
+    "learning_rate": 0.001,
+    "epochs": null,
+    "patience": 2,
+    "eval_batch_size": 256,
+    "benchmark_warmup": 10,
+    "benchmark_steps": 50,
+    "benchmark_repeats": 3
+  },
+  "examples": 45711,
+  "users": 244,
+  "training_catalog_items": 114125,
+  "comparison_catalog_items": 114125,
+  "reference_metrics": {
+    "ndcg@10": 0.026804617064151604,
+    "recall@100": 0.2156592505086303
+  },
+  "metrics": {
+    "ndcg@10": 0.023453349892706313,
+    "recall@100": 0.20668985583338803
+  },
+  "cluster_bootstrap_95ci": {
+    "ndcg@10": [
+      0.01857037663210034,
+      0.029714110376949744
+    ],
+    "recall@100": [
+      0.18075575979060277,
+      0.23543210599665393
+    ]
+  },
+  "paired_delta": {
+    "ndcg@10": {
+      "difference": -0.0033512671714452896,
+      "cluster_bootstrap_95ci": [
+        -0.005252782336597274,
+        -0.0014945011032226675
+      ]
+    },
+    "recall@100": {
+      "difference": -0.008969394675242283,
+      "cluster_bootstrap_95ci": [
+        -0.015307598047920944,
+        -0.0030783889670104327
+      ]
+    }
+  },
+  "evaluation_seconds": 4.176365207880735,
+  "device": "mps",
+  "torch": "2.15.0"
+}

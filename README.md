@@ -232,6 +232,13 @@ validation до test. Отменённые 1k и full-data обучение ав
 [конфигурация](configs/experiments/sasrec-256-author-params.json),
 [результаты сравнения](reports/experiments/sasrec-256-author-params.md).
 
+## Dim 50 / одна голова с прежним обучением
+
+От успешной 256 joint-BCE меняются только dim 64 → 50 и головы 2 → 1;
+история 50, 16 negatives, общий BCE, batch 256 и dropout 0.2 сохранены.
+[Команды](notes/sasrec-256-d50-h1.md), [результаты](reports/experiments/sasrec-256-d50-h1.md).
+Дальнейшие контроли выбираются по validation в [автономном цикле baseline](notes/sasrec-baseline-search.md).
+
 ## Происхождение материалов
 
 Импорт выполнен 20 октября 2026 из `thesis-project-2026-10-20.zip` и двух заметок, уже находившихся в этой папке. Заметки совпали с копиями в архиве и сохранены в одном экземпляре.

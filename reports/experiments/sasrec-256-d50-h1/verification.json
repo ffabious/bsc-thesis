@@ -1,0 +1,11 @@
+{
+  "same_targets_users_histories_catalog": true,
+  "reference_artifacts_unchanged": true,
+  "training_and_ranking_implementation_commit": "3fa376f4081dbf0015b5fdceba10572afd3f7d06",
+  "only_config_differences_from_baseline": [
+    "dim",
+    "heads"
+  ],
+  "stopped_by_validation_patience": true,
+  "test_ranks_sha256": "7400ad474ecfbb243098abdc0cbc151d5007ea3bce4b5fae505cd244473ef4fe"
+}

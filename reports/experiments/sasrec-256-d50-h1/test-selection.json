@@ -1,0 +1,12 @@
+{
+  "selected_before_test_utc": "2026-11-09T12:07:07.579650+00:00",
+  "checkpoint_sha256": "04a4a99edf7add4fd961dc0e9a06cd04e9a323b512c5d831dd209ab3c0b80528",
+  "best_epoch": 5,
+  "completed_epochs": 7,
+  "best_validation": {
+    "ndcg@10": 0.03898333730838816,
+    "recall@100": 0.27182478763688467
+  },
+  "elapsed_seconds": 381.81405416689813,
+  "sources_unchanged_during_training": true
+}

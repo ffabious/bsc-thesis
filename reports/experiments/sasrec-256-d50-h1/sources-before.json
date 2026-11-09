@@ -1,0 +1,27 @@
+{
+  "config_differences_from_reference": {
+    "heads": [
+      2,
+      1
+    ],
+    "dim": [
+      64,
+      50
+    ]
+  },
+  "verified_data_files": 7,
+  "artifacts_sha256": {
+    "configs/experiments/sasrec-256-d50-h1.json": "9a5954f1c3a84844f63288a8c646b1430187203f6447fa6acf6dae2c75af238a",
+    "configs/experiments/sasrec-256-joint-bce.json": "e04abfcb81c63f7baf4cd955c1aad2847eecc95919407a01078164ca6a0ef7ae",
+    "scripts/sasrec.py": "a0ba555d733fc0094aa0103b6b774875a29356da456f60802e8aa10d1a779cee",
+    "scripts/run_sasrec.py": "0062a74659b0d5886793fbac9a2960d84a82bea0950134f88897c2863497bc65",
+    "scripts/compare_sasrec.py": "6b6880cf9b975b5ec177612d923a2978ebe570d6a59b44f755117aae055e3191",
+    "data/processed/yambda50m-pilot-audio/manifest.json": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c",
+    "data/runs/sasrec-256-joint-bce/train-mps/best.pt": "c23ed5ed1f0d1e7b7be81cead1f350561646990cad6750bb7e354e0a9c2fd990",
+    "data/runs/sasrec-256-joint-bce/evaluation-mps.json": "4ed70494d360af796bc94a3ff1544a394715ecb8525b6a0bd248c7dbd9da6559",
+    "data/runs/sasrec-256-joint-bce/evaluation-mps.npz": "22f3b9caeaf711a25823eca2fb479745acf1074aaf439f3db8b4370788371fb9",
+    "data/runs/sasrec-256-author-params/train-mps/best.pt": "0baed7362375656fa76025827e0f124b3e85c441f6bb03c63d8557c07c97ac6b",
+    "data/runs/sasrec-256-author-params/evaluation-mps.json": "726e80db86682f0022567d91d731042c10f76e7d32ead76df9edd662871a0bd1",
+    "data/runs/sasrec-256-author-params/evaluation-mps.npz": "bba48a4b1f539e5b8b864723ed5321d4841d29ea116d731dbc032c982aa2c787"
+  }
+}
