@@ -1,0 +1,79 @@
+test_cached_item_index_cannot_change_source_silently (test_audio_embeddings.AudioEmbeddingTest.test_cached_item_index_cannot_change_source_silently) ... ok
+test_complete_vectors_are_aligned_and_normalized (test_audio_embeddings.AudioEmbeddingTest.test_complete_vectors_are_aligned_and_normalized) ... Extracting fixed audio vectors for /var/folders/9s/6g2qtp2j54d5swdx6zdpfsx00000gn/T/tmpwc6h70vb
+ok
+test_missing_vectors_are_rejected_without_fallback (test_audio_embeddings.AudioEmbeddingTest.test_missing_vectors_are_rejected_without_fallback) ... Extracting fixed audio vectors for /var/folders/9s/6g2qtp2j54d5swdx6zdpfsx00000gn/T/tmpbrq2xr9l
+ok
+test_only_item_table_transfers_and_stays_frozen (test_item_checkpoint.ItemCheckpointTest.test_only_item_table_transfers_and_stays_frozen) ... ok
+test_rejects_ambiguous_source_and_dimension_mismatch (test_item_checkpoint.ItemCheckpointTest.test_rejects_ambiguous_source_and_dimension_mismatch) ... ok
+test_rejects_changed_source_or_dataset (test_item_checkpoint.ItemCheckpointTest.test_rejects_changed_source_or_dataset) ... ok
+test_identical_predictions_have_zero_paired_difference (test_pilot_comparison.PilotComparisonTest.test_identical_predictions_have_zero_paired_difference) ... ok
+test_mapping_uses_item_ids_and_rejects_missing_tracks (test_pilot_comparison.PilotComparisonTest.test_mapping_uses_item_ids_and_rejects_missing_tracks) ... ok
+test_closed_audio_catalog_filters_all_parts_and_rebuilds_history (test_prepare_yambda.PrepareYambdaTest.test_closed_audio_catalog_filters_all_parts_and_rebuilds_history) ... Preparing 2 users; train ends at relative second 172800
+Written train
+Written model_valid
+Written controller_train
+Written policy_valid
+Written test
+ok
+test_period_boundaries_and_timestamp_groups (test_prepare_yambda.PrepareYambdaTest.test_period_boundaries_and_timestamp_groups) ... Preparing 2 users; train ends at relative second 172800
+Written train
+Written model_valid
+Written controller_train
+Written policy_valid
+Written test
+ok
+test_rejects_bad_timestamps_and_existing_outputs (test_prepare_yambda.PrepareYambdaTest.test_rejects_bad_timestamps_and_existing_outputs) ... ok
+test_rejects_insufficient_time_range (test_prepare_yambda.PrepareYambdaTest.test_rejects_insufficient_time_range) ... ok
+test_sample_depends_only_on_train_users_and_seed (test_prepare_yambda.PrepareYambdaTest.test_sample_depends_only_on_train_users_and_seed) ... Preparing 1 users; train ends at relative second 172800
+Written train
+Written model_valid
+Written controller_train
+Written policy_valid
+Written test
+Preparing 1 users; train ends at relative second 172800
+Written train
+Written model_valid
+Written controller_train
+Written policy_valid
+Written test
+ok
+test_train_only_vocabulary_and_unknown_history (test_prepare_yambda.PrepareYambdaTest.test_train_only_vocabulary_and_unknown_history) ... Preparing 2 users; train ends at relative second 172800
+Written train
+Written model_valid
+Written controller_train
+Written policy_valid
+Written test
+ok
+test_attention_is_causal_and_padding_gradients_are_finite (test_sasrec.SASRecTest.test_attention_is_causal_and_padding_gradients_are_finite) ... ok
+test_context_mask_hides_prefix_without_shifting_recent_positions (test_sasrec.SASRecTest.test_context_mask_hides_prefix_without_shifting_recent_positions) ... ok
+test_cpu_mps_forward_and_backward_agree (test_sasrec.SASRecTest.test_cpu_mps_forward_and_backward_agree) ... ok
+test_frozen_item_vectors_stay_exact_while_ranker_learns (test_sasrec.SASRecTest.test_frozen_item_vectors_stay_exact_while_ranker_learns) ... ok
+test_frozen_projection_cpu_mps_agree (test_sasrec.SASRecTest.test_frozen_projection_cpu_mps_agree) ... ok
+test_full_catalog_rank_excludes_special_tokens_and_breaks_ties (test_sasrec.SASRecTest.test_full_catalog_rank_excludes_special_tokens_and_breaks_ties) ... ok
+test_joint_loss_matches_bce_logits_and_preserves_default (test_sasrec.SASRecTest.test_joint_loss_matches_bce_logits_and_preserves_default) ... ok
+test_negative_sampling_excludes_only_the_current_positive (test_sasrec.SASRecTest.test_negative_sampling_excludes_only_the_current_positive) ... ok
+test_prefixes_exclude_current_timestamp_and_cross_split_boundaries (test_sasrec.SASRecTest.test_prefixes_exclude_current_timestamp_and_cross_split_boundaries) ... ok
+test_shared_catalog_uses_only_candidates_and_preserves_ties (test_sasrec.SASRecTest.test_shared_catalog_uses_only_candidates_and_preserves_ties) ... ok
+test_alignment_keeps_reference_users_and_targets_with_expanded_histories (test_scale_audit.ScaleAuditTest.test_alignment_keeps_reference_users_and_targets_with_expanded_histories) ... ok
+test_vector_scoring_ties_and_candidate_norm_ablation (test_scale_audit.ScaleAuditTest.test_vector_scoring_ties_and_candidate_norm_ablation) ... ok
+test_cpu_and_mps_mixture_ranks_agree (test_score_blend.ScoreBlendTest.test_cpu_and_mps_mixture_ranks_agree) ... ok
+test_grid_uses_each_models_own_vectors_and_mask (test_score_blend.ScoreBlendTest.test_grid_uses_each_models_own_vectors_and_mask) ... ok
+test_normalization_is_invariant_to_query_scale_and_offset (test_score_blend.ScoreBlendTest.test_normalization_is_invariant_to_query_scale_and_offset) ... ok
+test_score_ties_use_item_id (test_score_blend.ScoreBlendTest.test_score_ties_use_item_id) ... ok
+test_selection_uses_ndcg_then_smaller_alpha (test_score_blend.ScoreBlendTest.test_selection_uses_ndcg_then_smaller_alpha) ... ok
+test_explicit_epoch_limit_still_works (test_training_stop.TrainingStopTest.test_explicit_epoch_limit_still_works) ... {"epoch": 1, "loss": 1.41836678981781, "train_seconds": 0.0011783330701291561, "train_examples_per_second": 1697.312967530294, "validation_seconds": 3.845803439617157e-05, "validation": {"ndcg@10": 0.5, "recall@100": 1.0}, "process_peak_rss_mib": 537.6875}
+{"epoch": 2, "loss": 1.3955461978912354, "train_seconds": 0.0007382091134786606, "train_examples_per_second": 2709.2594272853203, "validation_seconds": 2.1582935005426407e-05, "validation": {"ndcg@10": 0.6309297535714575, "recall@100": 1.0}, "process_peak_rss_mib": 537.6875}
+ok
+test_no_epoch_limit_stops_on_validation_and_keeps_best (test_training_stop.TrainingStopTest.test_no_epoch_limit_stops_on_validation_and_keeps_best) ... {"epoch": 1, "loss": 1.4015560150146484, "train_seconds": 0.0007580420933663845, "train_examples_per_second": 2638.3759127652293, "validation_seconds": 1.9624829292297363e-05, "validation": {"ndcg@10": 1.0, "recall@100": 1.0}, "process_peak_rss_mib": 537.6875}
+{"epoch": 2, "loss": 1.3600330352783203, "train_seconds": 0.0007170420140028, "train_examples_per_second": 2789.2368382087443, "validation_seconds": 2.1999701857566833e-05, "validation": {"ndcg@10": 0.6309297535714575, "recall@100": 1.0}, "process_peak_rss_mib": 537.6875}
+{"epoch": 3, "loss": 1.3892297744750977, "train_seconds": 0.0006326250731945038, "train_examples_per_second": 3161.4301815462345, "validation_seconds": 1.6209203749895096e-05, "validation": {"ndcg@10": 0.5, "recall@100": 1.0}, "process_peak_rss_mib": 537.6875}
+ok
+test_recent_context_is_used_in_training_and_validation (test_training_stop.TrainingStopTest.test_recent_context_is_used_in_training_and_validation) ... {"epoch": 1, "loss": 1.40984308719635, "train_seconds": 0.0007154587656259537, "train_examples_per_second": 2795.409178123918, "validation_seconds": 1.758430153131485e-05, "validation": {"ndcg@10": 1.0, "recall@100": 1.0}, "process_peak_rss_mib": 537.6875}
+{"epoch": 2, "loss": 1.3626134395599365, "train_seconds": 0.0006447089836001396, "train_examples_per_second": 3102.1748585411938, "validation_seconds": 1.7957761883735657e-05, "validation": {"ndcg@10": 0.6309297535714575, "recall@100": 1.0}, "process_peak_rss_mib": 537.6875}
+{"epoch": 3, "loss": 1.3858768939971924, "train_seconds": 0.0006230422295629978, "train_examples_per_second": 3210.055282132001, "validation_seconds": 1.6625039279460907e-05, "validation": {"ndcg@10": 0.5, "recall@100": 1.0}, "process_peak_rss_mib": 537.6875}
+ok
+
+----------------------------------------------------------------------
+Ran 34 tests in 2.826s
+
+OK

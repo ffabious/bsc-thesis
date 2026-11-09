@@ -1,0 +1,57 @@
+{
+  "sources": {
+    "256": {
+      "long": {
+        "checkpoint_sha256": "c23ed5ed1f0d1e7b7be81cead1f350561646990cad6750bb7e354e0a9c2fd990",
+        "data_manifest_sha256": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c"
+      },
+      "recent": {
+        "checkpoint_sha256": "c4c25d719e7e18a3dcde498c72a0c8bbbb0bd6ae14dcfce2f4c06f8b8cc75e8d",
+        "data_manifest_sha256": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c"
+      }
+    },
+    "1k": {
+      "long": {
+        "checkpoint_sha256": "0be4af9f7c6d82052bf249145df8d23ddab78842a9d83e58267210ebd8e39de9",
+        "data_manifest_sha256": "6424f7b7b4b4108666d84ec4b69d733c41b7682a90d49dcc497e50e8991bdc39"
+      },
+      "recent": {
+        "checkpoint_sha256": "4263a3c39dc992a47f2a1dc21f7ed013976306c384c5a1062d2f32f6008e0d39",
+        "data_manifest_sha256": "6424f7b7b4b4108666d84ec4b69d733c41b7682a90d49dcc497e50e8991bdc39"
+      }
+    }
+  },
+  "verified_data_files": 14,
+  "base_model_code_unchanged": true,
+  "protocol_sha256": "f5d41b0fd1b86b04b7bf8c62a9309121ca332dc78eaa4687cba8b4a26b78f52c",
+  "test_used_for_selection": false,
+  "selections_fixed_before_test": {
+    "256": {
+      "alpha": 0.6,
+      "sha256": "55d761c6a7f02356791a1b817b8e2ce0e5591daf8e36e386fca439797c365423",
+      "validation_metrics": {
+        "ndcg@10": 0.06178268322280879,
+        "recall@100": 0.3047453348343738,
+        "hit@1": 0.022754409306451062
+      }
+    },
+    "1k": {
+      "alpha": 0.6,
+      "sha256": "0fe1e6c5e34d068a62ac78b80722bf08058ccd2a48f9af260dad02661f56887b",
+      "validation_metrics": {
+        "ndcg@10": 0.055323966950547816,
+        "recall@100": 0.2626947990754794,
+        "hit@1": 0.03253677747026555
+      }
+    }
+  },
+  "test_outputs_absent_at_selection_freeze": true,
+  "no_training_or_optimizer_steps": true,
+  "normalization_uses_labels": false,
+  "normalization": "per_query_population_zscore",
+  "both_selections_unchanged_after_test": true,
+  "old_checkpoints_unchanged": true,
+  "all_test_endpoints_reproduced_exactly": true,
+  "cpu_mps_selected_mixture_spot_check_passed": true,
+  "shared_uses_native_selected_alpha": true
+}

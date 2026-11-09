@@ -1,0 +1,167 @@
+{
+  "pilot": "1k",
+  "scope": "native",
+  "alpha": 0.6,
+  "selection_sha256": "0fe1e6c5e34d068a62ac78b80722bf08058ccd2a48f9af260dad02661f56887b",
+  "sources": {
+    "long": {
+      "run": "data/runs/sasrec-1k-joint-bce",
+      "checkpoint_sha256": "0be4af9f7c6d82052bf249145df8d23ddab78842a9d83e58267210ebd8e39de9",
+      "epoch": 11,
+      "data_manifest_sha256": "6424f7b7b4b4108666d84ec4b69d733c41b7682a90d49dcc497e50e8991bdc39",
+      "items": 244194
+    },
+    "recent": {
+      "run": "data/runs/sasrec-1k-recent-2",
+      "checkpoint_sha256": "4263a3c39dc992a47f2a1dc21f7ed013976306c384c5a1062d2f32f6008e0d39",
+      "epoch": 11,
+      "data_manifest_sha256": "6424f7b7b4b4108666d84ec4b69d733c41b7682a90d49dcc497e50e8991bdc39",
+      "items": 244194
+    }
+  },
+  "examples": 175831,
+  "users": 951,
+  "catalog_items": 244194,
+  "metrics": {
+    "long_50": {
+      "ndcg@10": 0.020907991155033837,
+      "recall@100": 0.1943286451194613,
+      "hit@1": 0.007291092014491188
+    },
+    "recent_2": {
+      "ndcg@10": 0.023332334235117616,
+      "recall@100": 0.15792437056036762,
+      "hit@1": 0.00897452667618338
+    },
+    "blend": {
+      "ndcg@10": 0.027245059446242677,
+      "recall@100": 0.19677986248158744,
+      "hit@1": 0.009901553195966582
+    }
+  },
+  "cluster_bootstrap_95ci": {
+    "long_50": {
+      "ndcg@10": [
+        0.018279707174430962,
+        0.023814734989598848
+      ],
+      "recall@100": [
+        0.18229632163236964,
+        0.20696374559077466
+      ]
+    },
+    "recent_2": {
+      "ndcg@10": [
+        0.020820952256682266,
+        0.026122312314185415
+      ],
+      "recall@100": [
+        0.1468806509992916,
+        0.16973938789321008
+      ]
+    },
+    "blend": {
+      "ndcg@10": [
+        0.024310710457412666,
+        0.030377241472696558
+      ],
+      "recall@100": [
+        0.18407512077765553,
+        0.20987079005934686
+      ]
+    }
+  },
+  "paired_delta_blend_minus": {
+    "long_50": {
+      "ndcg@10": {
+        "difference": 0.006337068291208841,
+        "cluster_bootstrap_95ci": [
+          0.004863786853312999,
+          0.007801916241290898
+        ]
+      },
+      "recall@100": {
+        "difference": 0.0024512173621261324,
+        "cluster_bootstrap_95ci": [
+          -0.000967058584816304,
+          0.005709639522849186
+        ]
+      }
+    },
+    "recent_2": {
+      "ndcg@10": {
+        "difference": 0.003912725211125059,
+        "cluster_bootstrap_95ci": [
+          0.0032495926378658608,
+          0.0046168704966728655
+        ]
+      },
+      "recall@100": {
+        "difference": 0.03885549192121981,
+        "cluster_bootstrap_95ci": [
+          0.03639546495454098,
+          0.041532895247677955
+        ]
+      }
+    }
+  },
+  "segments": {
+    "last_token": {
+      "events": 3943,
+      "metrics": {
+        "long_50": {
+          "ndcg@10": 0.19288262361711092,
+          "recall@100": 0.5954856708090287,
+          "hit@1": 0.12351001775297997
+        },
+        "recent_2": {
+          "ndcg@10": 0.2961451787358005,
+          "recall@100": 0.6444331727111337,
+          "hit@1": 0.21481105757037788
+        },
+        "blend": {
+          "ndcg@10": 0.30258860350677713,
+          "recall@100": 0.7027643925944712,
+          "hit@1": 0.2092315495815369
+        }
+      }
+    },
+    "other_targets": {
+      "events": 171888,
+      "metrics": {
+        "long_50": {
+          "ndcg@10": 0.016963003862157256,
+          "recall@100": 0.18512636135157778,
+          "hit@1": 0.0046251047193521366
+        },
+        "recent_2": {
+          "ndcg@10": 0.01707418331203868,
+          "recall@100": 0.14676417201898911,
+          "hit@1": 0.004252769245089826
+        },
+        "blend": {
+          "ndcg@10": 0.020928855905386495,
+          "recall@100": 0.18517290328586056,
+          "hit@1": 0.005329051475379317
+        }
+      }
+    }
+  },
+  "endpoint_checks": {
+    "long": {
+      "different_ranks": 0,
+      "max_rank_difference": 0,
+      "same_metrics": true
+    },
+    "recent": {
+      "different_ranks": 0,
+      "max_rank_difference": 0,
+      "same_metrics": true
+    }
+  },
+  "diagnostic_scoring_seconds": 99.13802166702226,
+  "device": "mps",
+  "process_peak_rss_mib": 1009.8125,
+  "mps_tensor_mib": 120.4150390625,
+  "mps_driver_mib": 2066.703125
+}

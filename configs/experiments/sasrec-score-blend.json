@@ -1,0 +1,21 @@
+{
+  "alphas": [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0],
+  "selection_metric": "ndcg@10",
+  "tie_break": "smaller_alpha",
+  "score_transform": "per_query_zscore",
+  "epsilon": 1e-8,
+  "batch_size": 256,
+  "threads": 4,
+  "seed": 42,
+  "shared_reference": "data/processed/yambda50m-pilot-audio",
+  "runs": {
+    "256": {
+      "long": "data/runs/sasrec-256-joint-bce",
+      "recent": "data/runs/sasrec-256-recent-2"
+    },
+    "1k": {
+      "long": "data/runs/sasrec-1k-joint-bce",
+      "recent": "data/runs/sasrec-1k-recent-2"
+    }
+  }
+}

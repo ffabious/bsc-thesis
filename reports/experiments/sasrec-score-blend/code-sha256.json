@@ -1,0 +1,8 @@
+{
+  "scripts/blend_sasrec.py": "fec692f15130f6ba317b11eeec51caf7d10b8bf4ed16d2221e91ff2dbaa95314",
+  "tests/test_score_blend.py": "a90b50fb6405f3742ae16fa73ceafb67517d6cde002bc4e09c4c03133378ad06",
+  "configs/experiments/sasrec-score-blend.json": "f5d41b0fd1b86b04b7bf8c62a9309121ca332dc78eaa4687cba8b4a26b78f52c",
+  "scripts/sasrec.py": "1f9e561173af0ee28c75c5d413db168da5a119583ba18551cb79750485c03b50",
+  "scripts/run_sasrec.py": "63873c3fceb7a19565922a663b64d6d16fe04019542519a59096a7701a6c582a",
+  "scripts/compare_sasrec.py": "4c58c8aed84a38e760436e4f1e37859eeeff5105b2bd55715281c53ccac5cb50"
+}

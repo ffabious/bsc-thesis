@@ -186,6 +186,23 @@ PYTORCH_ENABLE_MPS_FALLBACK=0 .venv/bin/python scripts/compare_sasrec.py --devic
 
 Сравнение использует одни исходные события, targets и кандидатов; видимый контекст намеренно различается у моделей 50 и 2. `compare_sasrec.py` применяет маску из checkpoint и отражает это в metadata. Полная native-оценка 1k сохраняется отдельно.
 
+## Смешивание оценок моделей с историей 50 и 2
+
+Готовые joint-BCE модели заморожены. Для каждого запроса scores каждой модели приводятся к среднему 0 и стандартному отклонению 1 по текущему candidate set; нормировка не использует labels. Смесь: `(1-alpha) * z50 + alpha * z2`. Это согласование шкал для ранжирования. [Протокол](configs/experiments/sasrec-score-blend.json), [результаты](reports/experiments/sasrec-score-blend.md).
+
+Для каждого размера пилота alpha выбирается отдельно по максимуму NDCG@10 на полной `model_valid`; сетка 0–1 с шагом 0.1, при равенстве выбирается меньший alpha. Обе selection фиксируются до test. На общей старой когорте 1k используется тот же alpha, который выбран на native validation.
+
+```sh
+for pilot_size in 256 1k; do
+  PYTORCH_ENABLE_MPS_FALLBACK=0 .venv/bin/python scripts/blend_sasrec.py select --pilot "$pilot_size" --device mps --output "data/runs/sasrec-score-blend/$pilot_size"
+done
+for pilot_size in 256 1k; do
+  PYTORCH_ENABLE_MPS_FALLBACK=0 .venv/bin/python scripts/blend_sasrec.py evaluate --pilot "$pilot_size" --device mps --output "data/runs/sasrec-score-blend/$pilot_size"
+done
+```
+
+`select` читает только `model_valid` и предшествующий train. `evaluate` читает сохранённую selection и не изменяет коэффициент. Скрипт проверяет hashes моделей, воспроизведение validation endpoints и согласованность test endpoints с отдельными моделями. Полные матрицы scores хранятся только для текущего batch; локально сохраняются ranks.
+
 ## Происхождение материалов
 
 Импорт выполнен 20 октября 2026 из `thesis-project-2026-10-20.zip` и двух заметок, уже находившихся в этой папке. Заметки совпали с копиями в архиве и сохранены в одном экземпляре.
