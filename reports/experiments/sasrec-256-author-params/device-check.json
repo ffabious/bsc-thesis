@@ -1,0 +1,10 @@
+{
+  "cpu_mps_forward_backward_match": true,
+  "loss": "mean(softplus(-positive) + softplus(negative))",
+  "single_negative": true,
+  "input_output_adapters": "Identity",
+  "weight_decay": 0,
+  "encoder_parameters": 33600,
+  "total_parameters": 5739950,
+  "precision": "FP32"
+}

@@ -1,0 +1,95 @@
+{
+  "reference": "sasrec-256-joint-bce, length 50",
+  "comparison": "sasrec-256-author-params, length 50",
+  "examples": 45711,
+  "users": 244,
+  "catalog_items": 114125,
+  "baseline": {
+    "ndcg@10": 0.026804617064151604,
+    "recall@100": 0.2156592505086303,
+    "hit@1": 0.009385049550436437
+  },
+  "author_params": {
+    "ndcg@10": 0.007814524487703237,
+    "recall@100": 0.08761567237645206,
+    "hit@1": 0.002822077836844523
+  },
+  "paired_delta": {
+    "ndcg@10": {
+      "difference": -0.018990092576448365,
+      "cluster_bootstrap_95ci": [
+        -0.02403891445053857,
+        -0.014572411973131735
+      ],
+      "relative_percent": -70.84634908605221
+    },
+    "recall@100": {
+      "difference": -0.12804357813217826,
+      "cluster_bootstrap_95ci": [
+        -0.15789737311556182,
+        -0.10444696749679491
+      ],
+      "relative_percent": -59.373097991479014
+    }
+  },
+  "bootstrap": {
+    "draws": 2000,
+    "seed": 42,
+    "unit": "whole user",
+    "metric_aggregation": "event-weighted"
+  },
+  "baseline_training": {
+    "best_epoch": 6,
+    "completed_epochs": 8,
+    "seconds": 495.0017997091636,
+    "parameters": 7357888
+  },
+  "author_params_training": {
+    "best_epoch": 5,
+    "completed_epochs": 7,
+    "seconds": 581.2093188753352,
+    "parameters": 5739950,
+    "encoder_parameters": 33600
+  },
+  "segments": {
+    "last_item": {
+      "examples": 723,
+      "baseline": {
+        "ndcg@10": 0.4110601438635772,
+        "recall@100": 0.7869986168741355,
+        "hit@1": 0.2766251728907331
+      },
+      "author_params": {
+        "ndcg@10": 0.035212730821155114,
+        "recall@100": 0.2351313969571231,
+        "hit@1": 0.016597510373443983
+      }
+    },
+    "other_in_window": {
+      "examples": 7268,
+      "baseline": {
+        "ndcg@10": 0.052129991016580314,
+        "recall@100": 0.311915244909191,
+        "hit@1": 0.01747385800770501
+      },
+      "author_params": {
+        "ndcg@10": 0.018617619073110502,
+        "recall@100": 0.13277380297193175,
+        "hit@1": 0.00976884975233902
+      }
+    },
+    "outside_window": {
+      "examples": 37720,
+      "baseline": {
+        "ndcg@10": 0.01455961272262889,
+        "recall@100": 0.1861611876988335,
+        "hit@1": 0.002704135737009544
+      },
+      "author_params": {
+        "ndcg@10": 0.005207796104197782,
+        "recall@100": 0.07608695652173914,
+        "hit@1": 0.0012195121951219512
+      }
+    }
+  }
+}

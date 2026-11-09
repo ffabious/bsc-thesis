@@ -1,0 +1,11 @@
+{
+  "baseline_checkpoint_sha256": "c23ed5ed1f0d1e7b7be81cead1f350561646990cad6750bb7e354e0a9c2fd990",
+  "data_manifest_sha256": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c",
+  "code_sha256": {
+    "configs/experiments/sasrec-256-author-params.json": "f7869538ca08b5e55b1419b5676b5e88510c52189d8701d834ab33562aa525f2",
+    "scripts/sasrec.py": "a0ba555d733fc0094aa0103b6b774875a29356da456f60802e8aa10d1a779cee",
+    "scripts/run_sasrec.py": "0062a74659b0d5886793fbac9a2960d84a82bea0950134f88897c2863497bc65"
+  },
+  "baseline_evaluation_sha256": "4ed70494d360af796bc94a3ff1544a394715ecb8525b6a0bd248c7dbd9da6559",
+  "baseline_ranks_sha256": "22f3b9caeaf711a25823eca2fb479745acf1074aaf439f3db8b4370788371fb9"
+}

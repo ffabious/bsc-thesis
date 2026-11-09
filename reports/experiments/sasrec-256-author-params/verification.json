@@ -1,0 +1,20 @@
+{
+  "verified_data_files": 7,
+  "data_manifest_sha256": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c",
+  "baseline_artifacts_unchanged": true,
+  "training_implementation_unchanged": true,
+  "same_test_targets_users_histories_and_candidates": true,
+  "test_context_sha256": "37a56dae2ec258cb1d2051dc7dbda91ba5a6d5e34d30d694a87e6b11e4cb05e9",
+  "stopped_by_validation_patience": true,
+  "best_checkpoint_matches_validation_maximum": true,
+  "best_checkpoint_selected_before_test": true,
+  "best_checkpoint_sha256": "0baed7362375656fa76025827e0f124b3e85c441f6bb03c63d8557c07c97ac6b",
+  "evaluation_ranks_sha256": "bba48a4b1f539e5b8b864723ed5321d4841d29ea116d731dbc032c982aa2c787",
+  "cpu_rank_spot_check": {
+    "examples": 256,
+    "seed": 42,
+    "exact_rank_matches": 255,
+    "maximum_rank_difference": 1,
+    "same_ndcg10_and_recall100": true
+  }
+}

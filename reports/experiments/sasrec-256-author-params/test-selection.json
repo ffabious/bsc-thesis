@@ -1,0 +1,13 @@
+{
+  "selected_before_test_utc": "2026-11-09T11:45:36.467464+00:00",
+  "checkpoint_sha256": "0baed7362375656fa76025827e0f124b3e85c441f6bb03c63d8557c07c97ac6b",
+  "best_epoch": 5,
+  "completed_epochs": 7,
+  "stop_reason": "validation_patience",
+  "selection_metric": "model_valid ndcg@10",
+  "best_validation": {
+    "ndcg@10": 0.010904455326244157,
+    "recall@100": 0.11834339712755433
+  },
+  "elapsed_seconds": 581.2093188753352
+}
