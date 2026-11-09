@@ -1,0 +1,27 @@
+{
+  "verified_data_files": 14,
+  "sources_and_reference_artifacts_unchanged": true,
+  "same_initial_validation_as_1k_bce": true,
+  "only_data_changes_from_256_full_ce": true,
+  "same_events_users_histories_and_candidates_within_each_comparison": true,
+  "checkpoint_selected_before_test": true,
+  "cpu_mps_spot_checks": {
+    "native": {
+      "examples": 256,
+      "exact_matches": 248,
+      "maximum_rank_difference": 1,
+      "same_ndcg10_and_recall100": true
+    },
+    "shared": {
+      "examples": 256,
+      "exact_matches": 255,
+      "maximum_rank_difference": 1,
+      "same_ndcg10_and_recall100": true
+    }
+  },
+  "comparison_ranks_sha256": {
+    "1k": "ea81f161ad50371dd2a5beeb89d6af89c21aec5cc89205aa27e2ff8b534fe446",
+    "256": "be04e15fb74444cc4b6167c8589419d1b6d2cae51731607a550b5b2f717563c4"
+  },
+  "old_1k_native_and_shared_use_same_checkpoint": true
+}

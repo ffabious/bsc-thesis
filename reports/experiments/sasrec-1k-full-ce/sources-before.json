@@ -1,0 +1,22 @@
+{
+  "only_change_from_256_full_ce": "data",
+  "verified_data_files": 14,
+  "artifacts_sha256": {
+    "configs/experiments/sasrec-1k-full-ce.json": "8468431cf82117df8561b438ca269b23e36afc7ec34819daa1aabd5d43b89270",
+    "configs/experiments/sasrec-256-full-ce.json": "1a592cffe1f9df1b64c81fd27c5ca1ef5615fa8fc1b73ea2585cfdbc36761547",
+    "configs/experiments/sasrec-1k-joint-bce.json": "7eb79472b2846a18c9f3b29cf2bb16a865daab148d80616b27578b9e26d28cef",
+    "scripts/sasrec.py": "0b65c3d8308cce1442450c08c04d4b2ec7dcdb48ee4e2516764aac06a847a19f",
+    "scripts/run_sasrec.py": "ac6f27a1bbca0b950e06ff8f035ff2f9ed5d01c38384a5b376b9f541057b70ac",
+    "scripts/compare_sasrec.py": "6b6880cf9b975b5ec177612d923a2978ebe570d6a59b44f755117aae055e3191",
+    "data/processed/yambda50m-1k-audio/manifest.json": "6424f7b7b4b4108666d84ec4b69d733c41b7682a90d49dcc497e50e8991bdc39",
+    "data/processed/yambda50m-pilot-audio/manifest.json": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c",
+    "data/runs/sasrec-1k-joint-bce/train-mps/best.pt": "0be4af9f7c6d82052bf249145df8d23ddab78842a9d83e58267210ebd8e39de9",
+    "data/runs/sasrec-1k-joint-bce/evaluation-mps.json": "a040260f85d8f85d8b7520e5ad2edae1a13bce7df3086ea95a2800b275e5b373",
+    "data/runs/sasrec-1k-joint-bce/evaluation-mps.npz": "037b219ff90b713ed88779f39ab293c27cc1bf55a8a0180882c6d42130eac700",
+    "data/runs/sasrec-256-full-ce/train-mps/best.pt": "decfa67cb108d71806fec5957e4d425650aa6acb33bd67bf4b71e1d105cc4eb0",
+    "data/runs/sasrec-256-full-ce/evaluation-mps.json": "da1799e397a39517a1f674d6bf3fdaf364afe1df905151caa90367c74fb33e5a",
+    "data/runs/sasrec-256-full-ce/evaluation-mps.npz": "230fc409b0038e66b633f5883ac4424dfa315a0c1e9400a628419a0450935124",
+    "data/runs/sasrec-1k-joint-bce/comparison-256.json": "9f059d548821f0645497bc0bafe71297b9c2769aa023b2c10bce9719aa345bf0",
+    "data/runs/sasrec-1k-joint-bce/comparison-256.npz": "16a5a56bb1dd7f33ed55f7209b788f4baa17bb360d7c8b25c7e85e1e7f2ed912"
+  }
+}
