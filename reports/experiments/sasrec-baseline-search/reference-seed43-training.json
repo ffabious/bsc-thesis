@@ -1,0 +1,201 @@
+{
+  "train_examples": 739571,
+  "validation_examples": 29313,
+  "initial_validation": {
+    "ndcg@10": 0.022310920069593697,
+    "recall@100": 0.023334356770033773
+  },
+  "mostpop_validation": {
+    "ndcg@10": 0.0032306535841508687,
+    "recall@100": 0.04813563947736499
+  },
+  "epochs": [
+    {
+      "epoch": 1,
+      "loss": 0.1648035334842767,
+      "train_seconds": 70.19487383309752,
+      "train_examples_per_second": 10535.96879108978,
+      "validation_seconds": 2.849017874803394,
+      "validation": {
+        "ndcg@10": 0.01731618502379348,
+        "recall@100": 0.14075666086719202
+      },
+      "process_peak_rss_mib": 1030.28125,
+      "mps_tensor_mib": 112.947509765625,
+      "mps_driver_mib": 1051.859375
+    },
+    {
+      "epoch": 2,
+      "loss": 0.09022408556784947,
+      "train_seconds": 70.00634000031278,
+      "train_examples_per_second": 10564.343172299763,
+      "validation_seconds": 2.8632431658916175,
+      "validation": {
+        "ndcg@10": 0.0325450307780857,
+        "recall@100": 0.23013679937229214
+      },
+      "process_peak_rss_mib": 1030.28125,
+      "mps_tensor_mib": 112.947509765625,
+      "mps_driver_mib": 1059.859375
+    },
+    {
+      "epoch": 3,
+      "loss": 0.06715540685917917,
+      "train_seconds": 70.32620487501845,
+      "train_examples_per_second": 10516.293340645108,
+      "validation_seconds": 2.862536458298564,
+      "validation": {
+        "ndcg@10": 0.038765133235235415,
+        "recall@100": 0.25824719407771296
+      },
+      "process_peak_rss_mib": 1030.28125,
+      "mps_tensor_mib": 112.947509765625,
+      "mps_driver_mib": 1059.859375
+    },
+    {
+      "epoch": 4,
+      "loss": 0.05510348228905677,
+      "train_seconds": 67.03295608377084,
+      "train_examples_per_second": 11032.946228356106,
+      "validation_seconds": 2.34711829200387,
+      "validation": {
+        "ndcg@10": 0.04007194328331056,
+        "recall@100": 0.2759526489953263
+      },
+      "process_peak_rss_mib": 1030.28125,
+      "mps_tensor_mib": 112.947509765625,
+      "mps_driver_mib": 1059.859375
+    },
+    {
+      "epoch": 5,
+      "loss": 0.04793874485174513,
+      "train_seconds": 53.6046320409514,
+      "train_examples_per_second": 13796.774118979172,
+      "validation_seconds": 2.189089999999851,
+      "validation": {
+        "ndcg@10": 0.04092093238137834,
+        "recall@100": 0.280489885033944
+      },
+      "process_peak_rss_mib": 1030.28125,
+      "mps_tensor_mib": 112.947509765625,
+      "mps_driver_mib": 1059.859375
+    },
+    {
+      "epoch": 6,
+      "loss": 0.042977892758098955,
+      "train_seconds": 52.50256145792082,
+      "train_examples_per_second": 14086.379396798446,
+      "validation_seconds": 2.209042416885495,
+      "validation": {
+        "ndcg@10": 0.041243262369424195,
+        "recall@100": 0.28700576536007916
+      },
+      "process_peak_rss_mib": 1030.28125,
+      "mps_tensor_mib": 112.947509765625,
+      "mps_driver_mib": 1059.859375
+    },
+    {
+      "epoch": 7,
+      "loss": 0.03923636029367025,
+      "train_seconds": 52.27266220841557,
+      "train_examples_per_second": 14148.3323931593,
+      "validation_seconds": 2.164056417066604,
+      "validation": {
+        "ndcg@10": 0.04165613197181553,
+        "recall@100": 0.2900078463480367
+      },
+      "process_peak_rss_mib": 1030.28125,
+      "mps_tensor_mib": 112.947509765625,
+      "mps_driver_mib": 1059.859375
+    },
+    {
+      "epoch": 8,
+      "loss": 0.03665539559842801,
+      "train_seconds": 52.34654187504202,
+      "train_examples_per_second": 14128.364042947704,
+      "validation_seconds": 2.1696132090874016,
+      "validation": {
+        "ndcg@10": 0.042644895998589526,
+        "recall@100": 0.29481799884010507
+      },
+      "process_peak_rss_mib": 1030.28125,
+      "mps_tensor_mib": 112.947509765625,
+      "mps_driver_mib": 1059.859375
+    },
+    {
+      "epoch": 9,
+      "loss": 0.034505429287722204,
+      "train_seconds": 52.05292516713962,
+      "train_examples_per_second": 14208.058387213985,
+      "validation_seconds": 2.1778624998405576,
+      "validation": {
+        "ndcg@10": 0.04265356815239328,
+        "recall@100": 0.2977859652713813
+      },
+      "process_peak_rss_mib": 1030.28125,
+      "mps_tensor_mib": 112.947509765625,
+      "mps_driver_mib": 1059.859375
+    },
+    {
+      "epoch": 10,
+      "loss": 0.03250566882692804,
+      "train_seconds": 51.63297287514433,
+      "train_examples_per_second": 14323.618393780753,
+      "validation_seconds": 2.1568079171702266,
+      "validation": {
+        "ndcg@10": 0.041445554479373356,
+        "recall@100": 0.29679664312762255
+      },
+      "process_peak_rss_mib": 1030.28125,
+      "mps_tensor_mib": 112.947509765625,
+      "mps_driver_mib": 1059.859375
+    },
+    {
+      "epoch": 11,
+      "loss": 0.031091797537863168,
+      "train_seconds": 67.15652479184791,
+      "train_examples_per_second": 11012.64549189085,
+      "validation_seconds": 2.9210549579001963,
+      "validation": {
+        "ndcg@10": 0.04071960277289705,
+        "recall@100": 0.2991164329819534
+      },
+      "process_peak_rss_mib": 1030.28125,
+      "mps_tensor_mib": 112.947509765625,
+      "mps_driver_mib": 1059.859375
+    }
+  ],
+  "parameters": 7357888,
+  "trainable_parameters": 7357888,
+  "best_epoch": 9,
+  "stop_reason": "validation_patience",
+  "elapsed_seconds": 691.7748110000975,
+  "checkpoint_sha256": "8182f2f8020bed413b576a87faf580cc143387b710bff6900ff801cddcb3b68b",
+  "config": {
+    "data": "data/processed/yambda50m-pilot-audio",
+    "loss_reduction": "joint_mean",
+    "seed": 43,
+    "threads": 4,
+    "length": 50,
+    "dim": 64,
+    "heads": 2,
+    "blocks": 2,
+    "dropout": 0.2,
+    "batch_size": 256,
+    "negatives": 16,
+    "learning_rate": 0.001,
+    "epochs": null,
+    "patience": 2,
+    "eval_batch_size": 256,
+    "benchmark_warmup": 10,
+    "benchmark_steps": 50,
+    "benchmark_repeats": 3
+  },
+  "device": "mps",
+  "torch": "2.15.0",
+  "numpy": "2.5.4",
+  "python": "3.14.8",
+  "macos": "26.6.2",
+  "mps_available": true,
+  "data_manifest_sha256": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c"
+}

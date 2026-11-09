@@ -113,9 +113,12 @@ def batch(x, y, indices, device):
 def loss(model, x, y, negative, reduction="separate_mean", objective="bce"):
     if reduction not in ("separate_mean", "joint_mean"):
         raise ValueError(f"Unknown loss reduction: {reduction}")
-    if objective not in ("bce", "sampled_ce"):
+    if objective not in ("bce", "sampled_ce", "full_ce"):
         raise ValueError(f"Unknown objective: {objective}")
     state = model(x)
+    if objective == "full_ce":
+        # Known items only; retain the same training batches and RNG stream as sampled controls.
+        return F.cross_entropy(state @ model.item.weight[2:].T, y - 2)
     positive = (state * model.item(y)).sum(-1)
     other = (state[:, None] * model.item(negative)).sum(-1)
     if objective == "sampled_ce":

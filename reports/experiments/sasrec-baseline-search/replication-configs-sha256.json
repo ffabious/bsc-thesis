@@ -1,0 +1,4 @@
+{
+  "configs/experiments/sasrec-256-joint-bce-seed43.json": "93f85f649c65bb1b248c92e71f7b581e3b9d27fc8cbb9bcc02506433b7d25f78",
+  "configs/experiments/sasrec-256-full-ce-seed43.json": "6c773e88aa2f498ba643cebb777d39bc116cb8a33e88896024d55d78f4451afa"
+}

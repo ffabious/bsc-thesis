@@ -1,0 +1,147 @@
+{
+  "split": "test",
+  "examples": 45711,
+  "users": 244,
+  "catalog_items": 114125,
+  "reference": "data/runs/sasrec-256-joint-bce-seed43/evaluation-mps.json",
+  "context_sha256": "37a56dae2ec258cb1d2051dc7dbda91ba5a6d5e34d30d694a87e6b11e4cb05e9",
+  "runs": {
+    "data/runs/sasrec-256-joint-bce-seed43/evaluation-mps.json": {
+      "checkpoint_sha256": "8182f2f8020bed413b576a87faf580cc143387b710bff6900ff801cddcb3b68b",
+      "config": {
+        "data": "data/processed/yambda50m-pilot-audio",
+        "loss_reduction": "joint_mean",
+        "seed": 43,
+        "threads": 4,
+        "length": 50,
+        "dim": 64,
+        "heads": 2,
+        "blocks": 2,
+        "dropout": 0.2,
+        "batch_size": 256,
+        "negatives": 16,
+        "learning_rate": 0.001,
+        "epochs": null,
+        "patience": 2,
+        "eval_batch_size": 256,
+        "benchmark_warmup": 10,
+        "benchmark_steps": 50,
+        "benchmark_repeats": 3
+      },
+      "metrics": {
+        "ndcg@10": 0.025632303701901178,
+        "recall@100": 0.21874384721401852,
+        "hit@1": 0.008663122661941327
+      },
+      "user_macro": {
+        "ndcg@10": 0.03420202064663463,
+        "recall@100": 0.22895768998266885
+      },
+      "paired_delta": {
+        "ndcg@10": {
+          "difference": 0.0,
+          "cluster_bootstrap_95ci": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@100": {
+          "difference": 0.0,
+          "cluster_bootstrap_95ci": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "segments": {
+        "last_item": {
+          "examples": 723,
+          "ndcg@10": 0.40831794201371563,
+          "recall@100": 0.7773167358229599,
+          "hit@1": 0.3070539419087137
+        },
+        "other_in_window": {
+          "examples": 7268,
+          "ndcg@10": 0.04638269208530988,
+          "recall@100": 0.3174188222344524,
+          "hit@1": 0.011282333516785911
+        },
+        "outside_window": {
+          "examples": 37720,
+          "ndcg@10": 0.014298911886682291,
+          "recall@100": 0.18902439024390244,
+          "hit@1": 0.0024390243902439024
+        }
+      }
+    },
+    "data/runs/sasrec-256-full-ce-seed43/evaluation-mps.json": {
+      "checkpoint_sha256": "988d4fa810b98ae689e571c64de334a2243518627fec75fc9268bc6a4c931787",
+      "config": {
+        "data": "data/processed/yambda50m-pilot-audio",
+        "loss_reduction": "joint_mean",
+        "seed": 43,
+        "threads": 4,
+        "length": 50,
+        "dim": 64,
+        "heads": 2,
+        "blocks": 2,
+        "dropout": 0.2,
+        "batch_size": 256,
+        "negatives": 16,
+        "learning_rate": 0.001,
+        "epochs": null,
+        "patience": 2,
+        "eval_batch_size": 256,
+        "benchmark_warmup": 2,
+        "benchmark_steps": 5,
+        "benchmark_repeats": 3,
+        "objective": "full_ce"
+      },
+      "metrics": {
+        "ndcg@10": 0.045950040658905164,
+        "recall@100": 0.23204480322023147,
+        "hit@1": 0.01909824768655247
+      },
+      "user_macro": {
+        "ndcg@10": 0.05577627445152609,
+        "recall@100": 0.24095785584483267
+      },
+      "paired_delta": {
+        "ndcg@10": {
+          "difference": 0.020317736957003976,
+          "cluster_bootstrap_95ci": [
+            0.01347937237406489,
+            0.029475810550480916
+          ]
+        },
+        "recall@100": {
+          "difference": 0.013300956006212946,
+          "cluster_bootstrap_95ci": [
+            0.005860108371641794,
+            0.02189787771347928
+          ]
+        }
+      },
+      "segments": {
+        "last_item": {
+          "examples": 723,
+          "ndcg@10": 0.5241433895718691,
+          "recall@100": 0.7786998616874136,
+          "hit@1": 0.41632088520055327
+        },
+        "other_in_window": {
+          "examples": 7268,
+          "ndcg@10": 0.09577199554925299,
+          "recall@100": 0.37658227848101267,
+          "hit@1": 0.033847000550357734
+        },
+        "outside_window": {
+          "examples": 37720,
+          "ndcg@10": 0.0271844054678362,
+          "recall@100": 0.19371686108165428,
+          "hit@1": 0.008642629904559915
+        }
+      }
+    }
+  }
+}

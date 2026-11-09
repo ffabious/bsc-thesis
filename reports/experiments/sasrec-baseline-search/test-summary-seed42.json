@@ -1,0 +1,147 @@
+{
+  "split": "test",
+  "examples": 45711,
+  "users": 244,
+  "catalog_items": 114125,
+  "reference": "data/runs/sasrec-256-joint-bce/evaluation-mps.json",
+  "context_sha256": "37a56dae2ec258cb1d2051dc7dbda91ba5a6d5e34d30d694a87e6b11e4cb05e9",
+  "runs": {
+    "data/runs/sasrec-256-joint-bce/evaluation-mps.json": {
+      "checkpoint_sha256": "c23ed5ed1f0d1e7b7be81cead1f350561646990cad6750bb7e354e0a9c2fd990",
+      "config": {
+        "data": "data/processed/yambda50m-pilot-audio",
+        "loss_reduction": "joint_mean",
+        "seed": 42,
+        "threads": 4,
+        "length": 50,
+        "dim": 64,
+        "heads": 2,
+        "blocks": 2,
+        "dropout": 0.2,
+        "batch_size": 256,
+        "negatives": 16,
+        "learning_rate": 0.001,
+        "epochs": null,
+        "patience": 2,
+        "eval_batch_size": 256,
+        "benchmark_warmup": 10,
+        "benchmark_steps": 50,
+        "benchmark_repeats": 3
+      },
+      "metrics": {
+        "ndcg@10": 0.026804617064151604,
+        "recall@100": 0.2156592505086303,
+        "hit@1": 0.009385049550436437
+      },
+      "user_macro": {
+        "ndcg@10": 0.03552679068763347,
+        "recall@100": 0.22527610426046332
+      },
+      "paired_delta": {
+        "ndcg@10": {
+          "difference": 0.0,
+          "cluster_bootstrap_95ci": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@100": {
+          "difference": 0.0,
+          "cluster_bootstrap_95ci": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "segments": {
+        "last_item": {
+          "examples": 723,
+          "ndcg@10": 0.4110601438635772,
+          "recall@100": 0.7869986168741355,
+          "hit@1": 0.2766251728907331
+        },
+        "other_in_window": {
+          "examples": 7268,
+          "ndcg@10": 0.052129991016580314,
+          "recall@100": 0.311915244909191,
+          "hit@1": 0.01747385800770501
+        },
+        "outside_window": {
+          "examples": 37720,
+          "ndcg@10": 0.01455961272262889,
+          "recall@100": 0.1861611876988335,
+          "hit@1": 0.002704135737009544
+        }
+      }
+    },
+    "data/runs/sasrec-256-full-ce/evaluation-mps.json": {
+      "checkpoint_sha256": "decfa67cb108d71806fec5957e4d425650aa6acb33bd67bf4b71e1d105cc4eb0",
+      "config": {
+        "data": "data/processed/yambda50m-pilot-audio",
+        "loss_reduction": "joint_mean",
+        "seed": 42,
+        "threads": 4,
+        "length": 50,
+        "dim": 64,
+        "heads": 2,
+        "blocks": 2,
+        "dropout": 0.2,
+        "batch_size": 256,
+        "negatives": 16,
+        "learning_rate": 0.001,
+        "epochs": null,
+        "patience": 2,
+        "eval_batch_size": 256,
+        "benchmark_warmup": 2,
+        "benchmark_steps": 5,
+        "benchmark_repeats": 3,
+        "objective": "full_ce"
+      },
+      "metrics": {
+        "ndcg@10": 0.045111020657399345,
+        "recall@100": 0.22941961453479467,
+        "hit@1": 0.018704469383736957
+      },
+      "user_macro": {
+        "ndcg@10": 0.05320728432541357,
+        "recall@100": 0.24029569060011913
+      },
+      "paired_delta": {
+        "ndcg@10": {
+          "difference": 0.018306403593247745,
+          "cluster_bootstrap_95ci": [
+            0.011917824539457677,
+            0.026972829344860134
+          ]
+        },
+        "recall@100": {
+          "difference": 0.01376036402616438,
+          "cluster_bootstrap_95ci": [
+            0.007430695783884781,
+            0.021502397598511316
+          ]
+        }
+      },
+      "segments": {
+        "last_item": {
+          "examples": 723,
+          "ndcg@10": 0.5210936623881477,
+          "recall@100": 0.7966804979253111,
+          "hit@1": 0.40525587828492393
+        },
+        "other_in_window": {
+          "examples": 7268,
+          "ndcg@10": 0.09038783067803537,
+          "recall@100": 0.36529994496422674,
+          "hit@1": 0.030957622454595487
+        },
+        "outside_window": {
+          "examples": 37720,
+          "ndcg@10": 0.027263531123960485,
+          "recall@100": 0.19236479321314953,
+          "hit@1": 0.008934252386002121
+        }
+      }
+    }
+  }
+}

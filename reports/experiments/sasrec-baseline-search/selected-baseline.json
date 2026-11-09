@@ -1,0 +1,60 @@
+{
+  "fixed_before_test_utc": "2026-11-09T13:49:35.192378+00:00",
+  "recipe": "full_ce",
+  "primary_seed": 42,
+  "primary_model": {
+    "config": "configs/experiments/sasrec-256-full-ce.json",
+    "checkpoint": "data/runs/sasrec-256-full-ce/train-mps/best.pt",
+    "checkpoint_sha256": "decfa67cb108d71806fec5957e4d425650aa6acb33bd67bf4b71e1d105cc4eb0",
+    "best_epoch": 4
+  },
+  "replication_model": {
+    "config": "configs/experiments/sasrec-256-full-ce-seed43.json",
+    "checkpoint": "data/runs/sasrec-256-full-ce-seed43/train-mps/best.pt",
+    "checkpoint_sha256": "988d4fa810b98ae689e571c64de334a2243518627fec75fc9268bc6a4c931787",
+    "best_epoch": 4
+  },
+  "reference_models": [
+    {
+      "config": "configs/experiments/sasrec-256-joint-bce.json",
+      "checkpoint": "data/runs/sasrec-256-joint-bce/train-mps/best.pt",
+      "checkpoint_sha256": "c23ed5ed1f0d1e7b7be81cead1f350561646990cad6750bb7e354e0a9c2fd990",
+      "best_epoch": 6
+    },
+    {
+      "config": "configs/experiments/sasrec-256-joint-bce-seed43.json",
+      "checkpoint": "data/runs/sasrec-256-joint-bce-seed43/train-mps/best.pt",
+      "checkpoint_sha256": "8182f2f8020bed413b576a87faf580cc143387b710bff6900ff801cddcb3b68b",
+      "best_epoch": 9
+    }
+  ],
+  "selection_split": "model_valid",
+  "validation": {
+    "42": {
+      "reference": {
+        "ndcg@10": 0.04382538135285383,
+        "recall@100": 0.2902125336881247
+      },
+      "candidate": {
+        "ndcg@10": 0.07208452470010303,
+        "recall@100": 0.3057687715348139
+      }
+    },
+    "43": {
+      "reference": {
+        "ndcg@10": 0.04265356815239328,
+        "recall@100": 0.2977859652713813
+      },
+      "candidate": {
+        "ndcg@10": 0.07194528621275825,
+        "recall@100": 0.30522293862791255
+      }
+    }
+  },
+  "passed_ndcg_gain_and_98percent_recall_guard_on_both_seeds": true,
+  "inference": "One SASRec encoder; recompute all states from the latest 50 events, rank with raw item dot products.",
+  "data": "data/processed/yambda50m-pilot-audio",
+  "catalog_items": 114125,
+  "parameters": 7357888,
+  "trainable_item_embeddings": true
+}

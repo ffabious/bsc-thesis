@@ -1,0 +1,147 @@
+{
+  "split": "model_valid",
+  "examples": 29313,
+  "users": 210,
+  "catalog_items": 114125,
+  "reference": "data/runs/sasrec-256-joint-bce-seed43/validation.json",
+  "context_sha256": "c9ca1ae1bc447635c16f3039018df7026e240b1031737e6b390046c4bdd93ae3",
+  "runs": {
+    "data/runs/sasrec-256-joint-bce-seed43/validation.json": {
+      "checkpoint_sha256": "8182f2f8020bed413b576a87faf580cc143387b710bff6900ff801cddcb3b68b",
+      "config": {
+        "data": "data/processed/yambda50m-pilot-audio",
+        "loss_reduction": "joint_mean",
+        "seed": 43,
+        "threads": 4,
+        "length": 50,
+        "dim": 64,
+        "heads": 2,
+        "blocks": 2,
+        "dropout": 0.2,
+        "batch_size": 256,
+        "negatives": 16,
+        "learning_rate": 0.001,
+        "epochs": null,
+        "patience": 2,
+        "eval_batch_size": 256,
+        "benchmark_warmup": 10,
+        "benchmark_steps": 50,
+        "benchmark_repeats": 3
+      },
+      "metrics": {
+        "ndcg@10": 0.04265356815239328,
+        "recall@100": 0.2977859652713813,
+        "hit@1": 0.01791014225770136
+      },
+      "user_macro": {
+        "ndcg@10": 0.04404753262338784,
+        "recall@100": 0.32354489817555343
+      },
+      "paired_delta": {
+        "ndcg@10": {
+          "difference": 0.0,
+          "cluster_bootstrap_95ci": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@100": {
+          "difference": 0.0,
+          "cluster_bootstrap_95ci": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "segments": {
+        "last_item": {
+          "examples": 654,
+          "ndcg@10": 0.5829314268753186,
+          "recall@100": 0.8883792048929664,
+          "hit@1": 0.4801223241590214
+        },
+        "other_in_window": {
+          "examples": 4733,
+          "ndcg@10": 0.09291535168510869,
+          "recall@100": 0.5438411155715192,
+          "hit@1": 0.023874920769068244
+        },
+        "outside_window": {
+          "examples": 23926,
+          "ndcg@10": 0.01794276228993674,
+          "recall@100": 0.23296831898353257,
+          "hit@1": 0.004095962551199532
+        }
+      }
+    },
+    "data/runs/sasrec-256-full-ce-seed43/validation.json": {
+      "checkpoint_sha256": "988d4fa810b98ae689e571c64de334a2243518627fec75fc9268bc6a4c931787",
+      "config": {
+        "data": "data/processed/yambda50m-pilot-audio",
+        "loss_reduction": "joint_mean",
+        "seed": 43,
+        "threads": 4,
+        "length": 50,
+        "dim": 64,
+        "heads": 2,
+        "blocks": 2,
+        "dropout": 0.2,
+        "batch_size": 256,
+        "negatives": 16,
+        "learning_rate": 0.001,
+        "epochs": null,
+        "patience": 2,
+        "eval_batch_size": 256,
+        "benchmark_warmup": 2,
+        "benchmark_steps": 5,
+        "benchmark_repeats": 3,
+        "objective": "full_ce"
+      },
+      "metrics": {
+        "ndcg@10": 0.07194528621275825,
+        "recall@100": 0.30522293862791255,
+        "hit@1": 0.03145362126019172
+      },
+      "user_macro": {
+        "ndcg@10": 0.08508598672226211,
+        "recall@100": 0.3403031579244544
+      },
+      "paired_delta": {
+        "ndcg@10": {
+          "difference": 0.029291718060364975,
+          "cluster_bootstrap_95ci": [
+            0.020848825158266637,
+            0.040021424592772616
+          ]
+        },
+        "recall@100": {
+          "difference": 0.007436973356531232,
+          "cluster_bootstrap_95ci": [
+            0.00042784555507738395,
+            0.014758590253070704
+          ]
+        }
+      },
+      "segments": {
+        "last_item": {
+          "examples": 654,
+          "ndcg@10": 0.6882494935968616,
+          "recall@100": 0.9021406727828746,
+          "hit@1": 0.573394495412844
+        },
+        "other_in_window": {
+          "examples": 4733,
+          "ndcg@10": 0.17447806466266094,
+          "recall@100": 0.5797591379674625,
+          "hit@1": 0.05768011831819142
+        },
+        "outside_window": {
+          "examples": 23926,
+          "ndcg@10": 0.03481619685253953,
+          "recall@100": 0.23459834489676504,
+          "hit@1": 0.011451976928863997
+        }
+      }
+    }
+  }
+}

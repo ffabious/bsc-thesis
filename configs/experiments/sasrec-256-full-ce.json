@@ -1,0 +1,21 @@
+{
+  "data": "data/processed/yambda50m-pilot-audio",
+  "loss_reduction": "joint_mean",
+  "seed": 42,
+  "threads": 4,
+  "length": 50,
+  "dim": 64,
+  "heads": 2,
+  "blocks": 2,
+  "dropout": 0.2,
+  "batch_size": 256,
+  "negatives": 16,
+  "learning_rate": 0.001,
+  "epochs": null,
+  "patience": 2,
+  "eval_batch_size": 256,
+  "benchmark_warmup": 2,
+  "benchmark_steps": 5,
+  "benchmark_repeats": 3,
+  "objective": "full_ce"
+}

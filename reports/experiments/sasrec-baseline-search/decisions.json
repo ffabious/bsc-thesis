@@ -20,5 +20,48 @@
     "validation_recall100": 0.2753727015317436,
     "conclusion": "Both metrics below reference; this sampled recipe does not replace BCE.",
     "next": "Benchmark full-catalog CE with last-position supervision; train only within declared resource limits."
+  },
+  {
+    "stage": "full_ce_feasibility",
+    "hypothesis": "Limited sampled-CE coverage may hide the benefit of the objective.",
+    "estimated_train_epoch_seconds": 121.37838313632747,
+    "fits_declared_resource_limits": true,
+    "changed_factor_from_sampled_ce": "CE candidate set: sampled 1+16 -> full 114125",
+    "unused_uniform_negatives": "Still drawn to preserve the same batch-order RNG stream; excluded from full CE computation.",
+    "next": "Train full CE until the same validation patience; no sampled-CE-64 run."
+  },
+  {
+    "stage": "full_ce_seed42",
+    "completed_epochs": 6,
+    "best_epoch": 4,
+    "elapsed_seconds": 757.7365698330104,
+    "validation_ndcg10": 0.07208452470010303,
+    "validation_recall100": 0.3057687715348139,
+    "passes_recall_guard": true,
+    "conclusion": "NDCG and Recall improve in every history segment and in user-macro aggregation.",
+    "next": "Paired seed43 repeat of original BCE and full CE; no test before the repeats and final recipe decision."
+  },
+  {
+    "stage": "replication_and_final_test",
+    "full_ce_seed43_validation": {
+      "ndcg@10": 0.07194528621275825,
+      "recall@100": 0.30522293862791255
+    },
+    "passes_predeclared_seed43_recall_guard_and_ndcg_gain": true,
+    "selection": "Full CE; primary seed42; both seed results reported; fixed before test.",
+    "test_two_seed_mean": {
+      "reference": {
+        "ndcg@10": 0.02621846038302639,
+        "recall@100": 0.21720154886132442,
+        "hit@1": 0.009024086106188881
+      },
+      "full_ce": {
+        "ndcg@10": 0.045530530658152255,
+        "recall@100": 0.23073220887751306,
+        "hit@1": 0.018901358535144713
+      }
+    },
+    "conclusion": "Both metrics improve on both test repeats; freeze this fresh-encoder baseline for the next research stage.",
+    "no_hyperparameter_changes_after_test": true
   }
 ]

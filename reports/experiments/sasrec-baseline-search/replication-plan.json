@@ -1,0 +1,10 @@
+{
+  "fixed_before_replication_utc": "2026-11-09T13:23:18.646448+00:00",
+  "candidate": "sasrec-256-full-ce",
+  "reference": "sasrec-256-joint-bce",
+  "replication_seed": 43,
+  "hyperparameter_changes": "none; only seed 42 -> 43 for each recipe",
+  "acceptance": "NDCG gain and Recall >= 0.98 * matched-reference Recall on seed 43; otherwise label the improvement unstable.",
+  "test": "Only after both repeats finish and the recipe is fixed; both seeds are reported, without choosing by test.",
+  "seed42_checkpoint_sha256": "decfa67cb108d71806fec5957e4d425650aa6acb33bd67bf4b71e1d105cc4eb0"
+}

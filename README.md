@@ -239,6 +239,20 @@ validation до test. Отменённые 1k и full-data обучение ав
 [Команды](notes/sasrec-256-d50-h1.md), [результаты](reports/experiments/sasrec-256-d50-h1.md).
 Дальнейшие контроли выбираются по validation в [автономном цикле baseline](notes/sasrec-baseline-search.md).
 
+## Сильный encoder baseline: полный CE
+
+На прежнем 256-пилоте проверены размерности/головы, dropout, sampled CE16 и полный
+CE. Выбран полный CE при исходных dim 64, двух головах/блоках, истории 50 и dropout
+0.2. Средний test двух seed: NDCG@10 0.045531 / Recall@100 0.230732 против
+0.026218 / 0.217202 у BCE. Архитектура и обычный inference сохранены.
+[Отчёт и команды](reports/experiments/sasrec-baseline-search.md),
+[выбранные checkpoint и hashes](reports/experiments/sasrec-baseline-search/selected-baseline.json),
+[основной конфиг](configs/experiments/sasrec-256-full-ce.json).
+
+`run_sasrec.py evaluate --split model_valid` сохраняет validation ranks для отбора
+рецептов; по умолчанию evaluate использует test. `objective` выбирает `bce`,
+`sampled_ce` или `full_ce`; без этого поля сохранено прежнее поведение BCE.
+
 ## Происхождение материалов
 
 Импорт выполнен 20 октября 2026 из `thesis-project-2026-10-20.zip` и двух заметок, уже находившихся в этой папке. Заметки совпали с копиями в архиве и сохранены в одном экземпляре.

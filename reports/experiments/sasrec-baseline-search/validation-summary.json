@@ -278,6 +278,75 @@
           "hit@1": 0.0033018473627016635
         }
       }
+    },
+    "data/runs/sasrec-256-full-ce/validation.json": {
+      "checkpoint_sha256": "decfa67cb108d71806fec5957e4d425650aa6acb33bd67bf4b71e1d105cc4eb0",
+      "config": {
+        "data": "data/processed/yambda50m-pilot-audio",
+        "loss_reduction": "joint_mean",
+        "seed": 42,
+        "threads": 4,
+        "length": 50,
+        "dim": 64,
+        "heads": 2,
+        "blocks": 2,
+        "dropout": 0.2,
+        "batch_size": 256,
+        "negatives": 16,
+        "learning_rate": 0.001,
+        "epochs": null,
+        "patience": 2,
+        "eval_batch_size": 256,
+        "benchmark_warmup": 2,
+        "benchmark_steps": 5,
+        "benchmark_repeats": 3,
+        "objective": "full_ce"
+      },
+      "metrics": {
+        "ndcg@10": 0.07208452470010303,
+        "recall@100": 0.3057687715348139,
+        "hit@1": 0.03141950670351039
+      },
+      "user_macro": {
+        "ndcg@10": 0.08831875029562901,
+        "recall@100": 0.3465234004224882
+      },
+      "paired_delta": {
+        "ndcg@10": {
+          "difference": 0.0282591433472492,
+          "cluster_bootstrap_95ci": [
+            0.021033044987614057,
+            0.03667370174213542
+          ]
+        },
+        "recall@100": {
+          "difference": 0.015556237846689183,
+          "cluster_bootstrap_95ci": [
+            0.007586322194966397,
+            0.024432374456612366
+          ]
+        }
+      },
+      "segments": {
+        "last_item": {
+          "examples": 654,
+          "ndcg@10": 0.6845285552696,
+          "recall@100": 0.9036697247706422,
+          "hit@1": 0.5688073394495413
+        },
+        "other_in_window": {
+          "examples": 4733,
+          "ndcg@10": 0.1768772123271305,
+          "recall@100": 0.5831396577223749,
+          "hit@1": 0.06359602788928798
+        },
+        "outside_window": {
+          "examples": 23926,
+          "ndcg@10": 0.0346138991659071,
+          "recall@100": 0.2345565493605283,
+          "hit@1": 0.01036529298670902
+        }
+      }
     }
   }
 }

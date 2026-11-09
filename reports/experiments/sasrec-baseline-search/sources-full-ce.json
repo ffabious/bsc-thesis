@@ -1,0 +1,8 @@
+{
+  "scripts/sasrec.py": "0b65c3d8308cce1442450c08c04d4b2ec7dcdb48ee4e2516764aac06a847a19f",
+  "scripts/run_sasrec.py": "ac6f27a1bbca0b950e06ff8f035ff2f9ed5d01c38384a5b376b9f541057b70ac",
+  "scripts/compare_sasrec.py": "6b6880cf9b975b5ec177612d923a2978ebe570d6a59b44f755117aae055e3191",
+  "scripts/summarize_sasrec_baseline.py": "598a701ee138623ae5a1b1b82928344337acb4f4f60115de39c0ab5e88a71947",
+  "configs/experiments/sasrec-256-full-ce.json": "1a592cffe1f9df1b64c81fd27c5ca1ef5615fa8fc1b73ea2585cfdbc36761547",
+  "data/processed/yambda50m-pilot-audio/manifest.json": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c"
+}

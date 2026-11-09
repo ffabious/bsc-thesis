@@ -1,0 +1,30 @@
+{
+  "verified_data_files": 7,
+  "full_ce_sources_unchanged": true,
+  "reference_artifacts_unchanged": true,
+  "all_runs_stopped_by_validation": true,
+  "checkpoint_hashes_and_validation_maxima_verified": true,
+  "same_initial_validation_within_each_seed": true,
+  "same_test_events_users_histories_catalog": true,
+  "selected_before_test": true,
+  "intermediate_dropout_and_sampled_ce_not_tested": true,
+  "cpu_mps_spot_checks": {
+    "42": {
+      "examples": 256,
+      "exact_rank_matches": 253,
+      "maximum_rank_difference": 1,
+      "same_ndcg10_and_recall100": true
+    },
+    "43": {
+      "examples": 256,
+      "exact_rank_matches": 255,
+      "maximum_rank_difference": 1,
+      "same_ndcg10_and_recall100": true
+    }
+  },
+  "evaluation_ranks_sha256": {
+    "data/runs/sasrec-256-full-ce/evaluation-mps.npz": "230fc409b0038e66b633f5883ac4424dfa315a0c1e9400a628419a0450935124",
+    "data/runs/sasrec-256-full-ce-seed43/evaluation-mps.npz": "bb020cbdca13322cf4d8b7ebadbf9301515f7d08f52aa45c298d105c9175a1e7",
+    "data/runs/sasrec-256-joint-bce-seed43/evaluation-mps.npz": "277fc43b2fc6558b2fa3c055913ae94844b8f9a832ed39beba7905220513f07e"
+  }
+}

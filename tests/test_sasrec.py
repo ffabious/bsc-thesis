@@ -113,6 +113,23 @@ class SASRecTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "Unknown objective"):
             loss(model, x, y, negative, objective="invalid")
 
+    def test_full_ce_uses_all_known_items_and_excludes_special_tokens(self):
+        model = SASRec(12, length=4, dim=8, heads=2, blocks=1, dropout=0)
+        with torch.no_grad():
+            model.item.weight[1].fill_(1000)
+        x, y = torch.tensor([[0, 2, 3, 4], [2, 5, 6, 7]]), torch.tensor([5, 8])
+        state = model(x)
+        candidates = model.item(torch.arange(2, 14))
+        logits = (state[:, None] * candidates[None]).sum(-1)
+        expected = torch.nn.functional.cross_entropy(logits, y - 2)
+        actual = loss(model, x, y, torch.tensor([[6, 7], [9, 10]]), "joint_mean", "full_ce")
+        torch.testing.assert_close(actual, expected)
+        left = torch.autograd.grad(actual, tuple(model.parameters()))
+        right = torch.autograd.grad(expected, tuple(model.parameters()))
+        for a, b in zip(left, right):
+            torch.testing.assert_close(a, b, atol=1e-6, rtol=1e-5)
+        self.assertFalse(left[0][:2].any())
+
     def test_frozen_item_vectors_stay_exact_while_ranker_learns(self):
         model = SASRec(12, length=4, dim=8, item_dim=16, freeze_items=True,
                        heads=2, blocks=1, dropout=0)
@@ -171,7 +188,7 @@ class SASRecTest(unittest.TestCase):
         neg = torch.tensor([[6, 7], [10, 11]])
         torch.testing.assert_close(cpu(x), mps(x.to("mps")).cpu(), atol=1e-5, rtol=1e-4)
         for objective, reduction in (("bce", "separate_mean"), ("bce", "joint_mean"),
-                                     ("sampled_ce", "joint_mean")):
+                                     ("sampled_ce", "joint_mean"), ("full_ce", "joint_mean")):
             cpu.zero_grad(set_to_none=True)
             mps.zero_grad(set_to_none=True)
             left = loss(cpu, x, y, neg, reduction, objective)
