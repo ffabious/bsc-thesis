@@ -1,0 +1,51 @@
+{
+  "status": "passed",
+  "test_suite": {
+    "tests": 55,
+    "failures": 0,
+    "mps_tests_executed": true
+  },
+  "fresh_and_cpu_oracles": {
+    "controller_train": {
+      "same_fresh_inputs_and_metrics": true,
+      "targets": 52191,
+      "exact_rank_matches": 52190,
+      "maximum_rank_difference": 1
+    },
+    "policy_valid": {
+      "same_fresh_inputs_and_metrics": true,
+      "targets": 23394,
+      "exact_rank_matches": 23394,
+      "maximum_rank_difference": 0
+    },
+    "cpu": {
+      "pairs": 256,
+      "same_metrics": true,
+      "exact_rank_matches": 255,
+      "maximum_rank_difference": 1
+    }
+  },
+  "checkpoint_sha256": "decfa67cb108d71806fec5957e4d425650aa6acb33bd67bf4b71e1d105cc4eb0",
+  "data_manifest_sha256": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c",
+  "frozen_state_sha256": "a6c96cd1d368987ec7b0020eccba36003356ecc223a8ec3226a943837cb47442",
+  "source_hashes_match": true,
+  "data_hashes_match": true,
+  "no_test_event_file_read": true,
+  "schedules_reconstructed": 31,
+  "requests": 92043,
+  "targets": 75585,
+  "policy_target_evaluations": 2343135,
+  "complete_coverage": true,
+  "counts_metrics_cost_pareto_selection_match_raw": true,
+  "csv_rows_checked": 62,
+  "figures_png_svg_valid": true,
+  "local_links_valid": true,
+  "raw_replay_sha256": "4d7a2470b79239e6c18ad28857ea06bc51b65f01fed16fa6c93725b74878e9ee",
+  "raw_results_sha256": "fbfec2f8efddd275db343ec16825cd238476d88dca443ec386454dc7bbece0d6",
+  "plot_source_sha256": "35de1141a2eeb2285ecba71ec87388311027e979acc60330340af4d35cb6a05c",
+  "test_source_sha256": {
+    "tests/test_replay.py": "a4c8a1561ba195cd7630c8d217f2c747ea9f30db61994153df79b6fc4a1ddce7",
+    "tests/test_policies.py": "4d2d7d3349119cba5c4a757880dd5146874b5d1fefa7e63073fb7637847b5321"
+  },
+  "prior_lag_replay_refs_dtype": "int64"
+}

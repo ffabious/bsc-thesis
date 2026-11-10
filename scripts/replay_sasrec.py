@@ -130,7 +130,8 @@ def encode_queries(model, queries, device, batch_size):
 @torch.inference_mode()
 def rank_vectors(model, vectors, refs, targets, device, batch_size):
     width = model.item.num_embeddings
-    keys, inverse = np.unique(refs * width + targets[None], return_inverse=True)
+    # Snapshot IDs may be int32; their product with a full catalog can exceed 2**31.
+    keys, inverse = np.unique(refs.astype(np.int64) * width + targets.astype(np.int64)[None], return_inverse=True)
     states, labels = keys // width, keys % width
     output = np.empty(len(keys), dtype=np.int32)
     ids = torch.arange(2, width, device=device)

@@ -271,6 +271,16 @@ test не читается. На policy_valid минимальный event lag 1
 [Команды и зависимости](notes/sasrec-256-replay.md),
 [отчёт, PNG/SVG и CSV](reports/experiments/sasrec-256-replay.md).
 
+## Refresh-политики на 256 CE
+
+31 on-request политика (always/never, time, events, hybrid OR) проверена на всех
+62 129 CT / 29 914 PV timestamp-группах. Quality–cost frontier включает точные
+счётчики initialization/refresh и измеренные локальные B=1 ветви refresh/write/serve
+и hit/serve. На PV гибрид 2 события OR 5 минут: −18.4% расчётной полной стоимости,
+−8.6% NDCG, −0.9% Recall; настройка выбрана на CT. Fresh/CPU oracle и 55 тестов
+прошли, test не читается. [Протокол](notes/sasrec-256-policies.md),
+[отчёт, PNG/SVG, CSV и ограничения стоимости](reports/experiments/sasrec-256-policies.md).
+
 ## Происхождение материалов
 
 Импорт выполнен 20 октября 2026 из `thesis-project-2026-10-20.zip` и двух заметок, уже находившихся в этой папке. Заметки совпали с копиями в архиве и сохранены в одном экземпляре.

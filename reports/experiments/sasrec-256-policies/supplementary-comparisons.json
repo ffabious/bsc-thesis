@@ -1,0 +1,130 @@
+{
+  "scope": "Descriptive post-replay comparisons; not used for CT policy selection",
+  "comparisons": {
+    "controller_train": [
+      {
+        "policy": "hybrid_2_300",
+        "reference": "events_2",
+        "paired_delta": {
+          "ndcg@10": {
+            "difference": 0.000807635503645937,
+            "cluster_bootstrap_95ci": [
+              3.415862236705278e-05,
+              0.001672956735725314
+            ]
+          },
+          "recall@100": {
+            "difference": -0.000632292924067368,
+            "cluster_bootstrap_95ci": [
+              -0.0025255988755654344,
+              0.001203970228703437
+            ]
+          }
+        }
+      },
+      {
+        "policy": "hybrid_2_300",
+        "reference": "time_300",
+        "paired_delta": {
+          "ndcg@10": {
+            "difference": 0.0023054318485577793,
+            "cluster_bootstrap_95ci": [
+              0.0015281983156855028,
+              0.0031991647280409986
+            ]
+          },
+          "recall@100": {
+            "difference": 0.005690636316606311,
+            "cluster_bootstrap_95ci": [
+              0.002521458540728909,
+              0.009775795848409161
+            ]
+          }
+        }
+      },
+      {
+        "policy": "hybrid_5_1800",
+        "reference": "events_5",
+        "paired_delta": {
+          "ndcg@10": {
+            "difference": 0.00016898216287355698,
+            "cluster_bootstrap_95ci": [
+              -0.0007972061894551885,
+              0.0010956142143071855
+            ]
+          },
+          "recall@100": {
+            "difference": 0.000843057232089824,
+            "cluster_bootstrap_95ci": [
+              -0.0012961568259885255,
+              0.003141887689233613
+            ]
+          }
+        }
+      }
+    ],
+    "policy_valid": [
+      {
+        "policy": "hybrid_2_300",
+        "reference": "events_2",
+        "paired_delta": {
+          "ndcg@10": {
+            "difference": 0.0009779537876875063,
+            "cluster_bootstrap_95ci": [
+              -7.670432080728361e-05,
+              0.0020190369727269763
+            ]
+          },
+          "recall@100": {
+            "difference": 0.002222792168932205,
+            "cluster_bootstrap_95ci": [
+              -0.00015800791648281533,
+              0.004639989465725378
+            ]
+          }
+        }
+      },
+      {
+        "policy": "hybrid_2_300",
+        "reference": "time_300",
+        "paired_delta": {
+          "ndcg@10": {
+            "difference": 0.0014918697237985602,
+            "cluster_bootstrap_95ci": [
+              0.000288975072838038,
+              0.0028199692284937438
+            ]
+          },
+          "recall@100": {
+            "difference": 0.005385996409335727,
+            "cluster_bootstrap_95ci": [
+              0.0020209656124809596,
+              0.009706583177244424
+            ]
+          }
+        }
+      },
+      {
+        "policy": "hybrid_5_1800",
+        "reference": "events_5",
+        "paired_delta": {
+          "ndcg@10": {
+            "difference": 0.0009305467060775362,
+            "cluster_bootstrap_95ci": [
+              -0.0003742164635277238,
+              0.002216144588555127
+            ]
+          },
+          "recall@100": {
+            "difference": -0.00012823800974608873,
+            "cluster_bootstrap_95ci": [
+              -0.0030370392319861773,
+              0.0026933231604552264
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "raw_ranks_sha256": "4d7a2470b79239e6c18ad28857ea06bc51b65f01fed16fa6c93725b74878e9ee"
+}

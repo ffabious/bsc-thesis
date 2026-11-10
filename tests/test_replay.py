@@ -107,6 +107,15 @@ class ReplayTest(unittest.TestCase):
         np.testing.assert_array_equal(actual, [[2,4], [2,4]])
         self.assertEqual(info["unique_state_target_pairs"], 3)
 
+    def test_large_snapshot_catalog_product_does_not_overflow_int32(self):
+        model = SASRec(50000, length=1, dim=2, heads=1, blocks=1, dropout=0).eval()
+        with torch.no_grad():
+            model.item.weight.zero_()
+        refs = np.array([[42948,49999]], dtype=np.int32)
+        targets = np.array([123,49999], dtype=np.int32)
+        actual, _ = rank_vectors(model, torch.zeros(50000,2), refs, targets, "cpu", 2)
+        np.testing.assert_array_equal(actual, [[122,49998]])
+
     @unittest.skipUnless(torch.backends.mps.is_available(), "MPS unavailable")
     def test_cpu_mps_snapshot_ranks_agree(self):
         model = SASRec(12, length=3, dim=8, heads=2, blocks=1, dropout=0).eval()

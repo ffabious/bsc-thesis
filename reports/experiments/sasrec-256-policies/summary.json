@@ -1,0 +1,879 @@
+{
+  "selection": {
+    "source_split": "controller_train",
+    "criterion": "max NDCG, ties Recall then lower estimated cost",
+    "budgets": [
+      {
+        "relative_budget": 0.6,
+        "policy": "hybrid_25_7200"
+      },
+      {
+        "relative_budget": 0.75,
+        "policy": "hybrid_5_1800"
+      },
+      {
+        "relative_budget": 0.9,
+        "policy": "hybrid_2_300"
+      }
+    ]
+  },
+  "splits": {
+    "controller_train": {
+      "requests": 62129,
+      "observed_listens": 76610,
+      "request_users": 232,
+      "targets": 52191,
+      "target_users": 230,
+      "frontiers": {
+        "ndcg@10": [
+          "always",
+          "never",
+          "events_2",
+          "events_5",
+          "events_10",
+          "events_25",
+          "events_50",
+          "time_300",
+          "time_1800",
+          "time_7200",
+          "hybrid_2_300",
+          "hybrid_5_300",
+          "hybrid_5_1800",
+          "hybrid_10_1800",
+          "hybrid_25_7200",
+          "hybrid_25_86400",
+          "hybrid_50_300",
+          "hybrid_50_1800",
+          "hybrid_50_7200"
+        ],
+        "recall@100": [
+          "always",
+          "never",
+          "events_2",
+          "events_5",
+          "events_10",
+          "events_25",
+          "events_50",
+          "time_300",
+          "hybrid_5_300",
+          "hybrid_5_1800",
+          "hybrid_10_300",
+          "hybrid_10_1800",
+          "hybrid_10_7200",
+          "hybrid_10_86400",
+          "hybrid_25_300",
+          "hybrid_25_7200",
+          "hybrid_25_86400",
+          "hybrid_50_300"
+        ]
+      },
+      "selected_and_references": [
+        {
+          "name": "always",
+          "metrics": {
+            "ndcg@10": 0.05666257584298457,
+            "recall@100": 0.265869594374509,
+            "hit@1": 0.022839186832978867
+          },
+          "refreshes": 62129,
+          "initializations": 232,
+          "refresh_fraction": 1.0,
+          "cost": {
+            "estimated_total_ms": 107234.6557490344,
+            "estimated_ms_per_request": 1.7260000281516585,
+            "cost_repeat_estimates_ms_per_request": [
+              1.7249857078403596,
+              1.7260000281516585,
+              1.7270784812757956
+            ],
+            "decision_ms_per_request": 0.0003291297139883827,
+            "refresh_branch_total_ms": 107214.207249034,
+            "hit_branch_total_ms": 0.0
+          },
+          "policy_minus_always": {
+            "ndcg@10": {
+              "difference": 0.0,
+              "cluster_bootstrap_95ci": [
+                0.0,
+                0.0
+              ]
+            },
+            "recall@100": {
+              "difference": 0.0,
+              "cluster_bootstrap_95ci": [
+                0.0,
+                0.0
+              ]
+            }
+          },
+          "relative_quality_percent": {
+            "ndcg@10": 100.00000000000001,
+            "recall@100": 100.0
+          },
+          "relative_cost_percent": 100.0
+        },
+        {
+          "name": "never",
+          "metrics": {
+            "ndcg@10": 0.023463133514177063,
+            "recall@100": 0.16497097200666783,
+            "hit@1": 0.009158667203157632
+          },
+          "refreshes": 232,
+          "initializations": 232,
+          "refresh_fraction": 0.0037341660094319883,
+          "cost": {
+            "estimated_total_ms": 59439.87788611838,
+            "estimated_ms_per_request": 0.9567171189962558,
+            "cost_repeat_estimates_ms_per_request": [
+              0.956130227864225,
+              0.9567171189962558,
+              0.958332940792931
+            ],
+            "decision_ms_per_request": 0.0003275402790918192,
+            "refresh_branch_total_ms": 400.35564843753946,
+            "hit_branch_total_ms": 59019.17248768115
+          },
+          "policy_minus_always": {
+            "ndcg@10": {
+              "difference": -0.03319944232880751,
+              "cluster_bootstrap_95ci": [
+                -0.04591934943877374,
+                -0.022631436514123426
+              ]
+            },
+            "recall@100": {
+              "difference": -0.1008986223678412,
+              "cluster_bootstrap_95ci": [
+                -0.12276187227404524,
+                -0.08137344486378865
+              ]
+            }
+          },
+          "relative_quality_percent": {
+            "ndcg@10": 41.40851905355455,
+            "recall@100": 62.04958201210724
+          },
+          "relative_cost_percent": 55.42972789060649
+        },
+        {
+          "name": "events_2",
+          "metrics": {
+            "ndcg@10": 0.05258107925932316,
+            "recall@100": 0.25952750474219693,
+            "hit@1": 0.020463298269816636
+          },
+          "refreshes": 32981,
+          "initializations": 232,
+          "refresh_fraction": 0.5308471084356742,
+          "cost": {
+            "estimated_total_ms": 84734.77183762065,
+            "estimated_ms_per_request": 1.3638521759181805,
+            "cost_repeat_estimates_ms_per_request": [
+              1.3630391368598878,
+              1.3638521759181805,
+              1.3651836820508179
+            ],
+            "decision_ms_per_request": 0.00044458438089840227,
+            "refresh_branch_total_ms": 56914.3519013728,
+            "hit_branch_total_ms": 27792.79835324701
+          },
+          "policy_minus_always": {
+            "ndcg@10": {
+              "difference": -0.00408149658366141,
+              "cluster_bootstrap_95ci": [
+                -0.0066509974626838084,
+                -0.00204166384201227
+              ]
+            },
+            "recall@100": {
+              "difference": -0.006342089632312084,
+              "cluster_bootstrap_95ci": [
+                -0.008767456264886184,
+                -0.004108447146352954
+              ]
+            }
+          },
+          "relative_quality_percent": {
+            "ndcg@10": 92.79683896656678,
+            "recall@100": 97.61458633611993
+          },
+          "relative_cost_percent": 79.01808538083887
+        },
+        {
+          "name": "events_5",
+          "metrics": {
+            "ndcg@10": 0.04284454745506646,
+            "recall@100": 0.24220651070107874,
+            "hit@1": 0.015998927018068248
+          },
+          "refreshes": 13962,
+          "initializations": 232,
+          "refresh_fraction": 0.22472597337797165,
+          "cost": {
+            "estimated_total_ms": 70048.15815929454,
+            "estimated_ms_per_request": 1.127463151817904,
+            "cost_repeat_estimates_ms_per_request": [
+              1.126781448293813,
+              1.127463151817904,
+              1.1289597744308717
+            ],
+            "decision_ms_per_request": 0.0004314980443955884,
+            "refresh_branch_total_ms": 24093.81708398675,
+            "hit_branch_total_ms": 45927.53253330755
+          },
+          "policy_minus_always": {
+            "ndcg@10": {
+              "difference": -0.013818028387918112,
+              "cluster_bootstrap_95ci": [
+                -0.020740197236904765,
+                -0.008388565122378759
+              ]
+            },
+            "recall@100": {
+              "difference": -0.023663083673430285,
+              "cluster_bootstrap_95ci": [
+                -0.029724995880765572,
+                -0.01817083753929129
+              ]
+            }
+          },
+          "relative_quality_percent": {
+            "ndcg@10": 75.61348353416071,
+            "recall@100": 91.09974055923897
+          },
+          "relative_cost_percent": 65.32231364012684
+        },
+        {
+          "name": "time_300",
+          "metrics": {
+            "ndcg@10": 0.05108328291441131,
+            "recall@100": 0.25320457550152325,
+            "hit@1": 0.019907646912302887
+          },
+          "refreshes": 28673,
+          "initializations": 232,
+          "refresh_fraction": 0.46150750857087675,
+          "cost": {
+            "estimated_total_ms": 81408.02038789983,
+            "estimated_ms_per_request": 1.3103063044294907,
+            "cost_repeat_estimates_ms_per_request": [
+              1.3095230142266234,
+              1.3103063044294907,
+              1.3116752111508692
+            ],
+            "decision_ms_per_request": 0.0004403049783508365,
+            "refresh_branch_total_ms": 49480.16167090331,
+            "hit_branch_total_ms": 31900.503008996566
+          },
+          "policy_minus_always": {
+            "ndcg@10": {
+              "difference": -0.005579292928573253,
+              "cluster_bootstrap_95ci": [
+                -0.008008608902396679,
+                -0.003550568457346578
+              ]
+            },
+            "recall@100": {
+              "difference": -0.012665018872985764,
+              "cluster_bootstrap_95ci": [
+                -0.016987444656798512,
+                -0.008849134056107485
+              ]
+            }
+          },
+          "relative_quality_percent": {
+            "ndcg@10": 90.1534781192549,
+            "recall@100": 95.23637936004613
+          },
+          "relative_cost_percent": 75.91577537995022
+        },
+        {
+          "name": "hybrid_2_300",
+          "metrics": {
+            "ndcg@10": 0.053388714762969094,
+            "recall@100": 0.2588952118181296,
+            "hit@1": 0.021210553543714435
+          },
+          "refreshes": 37611,
+          "initializations": 232,
+          "refresh_fraction": 0.6053694731928729,
+          "cost": {
+            "estimated_total_ms": 88313.05474126147,
+            "estimated_ms_per_request": 1.4214465827755391,
+            "cost_repeat_estimates_ms_per_request": [
+              1.4206015712937035,
+              1.4214465827755391,
+              1.4227378928251053
+            ],
+            "decision_ms_per_request": 0.0004954509971152768,
+            "refresh_branch_total_ms": 64904.208161139206,
+            "hit_branch_total_ms": 23378.064705122484
+          },
+          "policy_minus_always": {
+            "ndcg@10": {
+              "difference": -0.0032738610800154733,
+              "cluster_bootstrap_95ci": [
+                -0.0052158758045945065,
+                -0.0016870878221288625
+              ]
+            },
+            "recall@100": {
+              "difference": -0.006974382556379452,
+              "cluster_bootstrap_95ci": [
+                -0.008752667231223718,
+                -0.005156443968357284
+              ]
+            }
+          },
+          "relative_quality_percent": {
+            "ndcg@10": 94.22218098752245,
+            "recall@100": 97.37676563851255
+          },
+          "relative_cost_percent": 82.35495710262182
+        },
+        {
+          "name": "hybrid_5_1800",
+          "metrics": {
+            "ndcg@10": 0.04301352961794001,
+            "recall@100": 0.24304956793316856,
+            "hit@1": 0.01626717250100592
+          },
+          "refreshes": 16388,
+          "initializations": 232,
+          "refresh_fraction": 0.2637737610455665,
+          "cost": {
+            "estimated_total_ms": 71926.35774702945,
+            "estimated_ms_per_request": 1.157693794315528,
+            "cost_repeat_estimates_ms_per_request": [
+              1.1569953380701596,
+              1.157693794315528,
+              1.1591693552227658
+            ],
+            "decision_ms_per_request": 0.0005108168649117201,
+            "refresh_branch_total_ms": 28280.294683596538,
+            "hit_branch_total_ms": 43614.326522432806
+          },
+          "policy_minus_always": {
+            "ndcg@10": {
+              "difference": -0.013649046225044552,
+              "cluster_bootstrap_95ci": [
+                -0.020797101353507545,
+                -0.007976722809075566
+              ]
+            },
+            "recall@100": {
+              "difference": -0.02282002644134046,
+              "cluster_bootstrap_95ci": [
+                -0.029324326596577972,
+                -0.017097717347283527
+              ]
+            }
+          },
+          "relative_quality_percent": {
+            "ndcg@10": 75.91170888018418,
+            "recall@100": 91.41683482271547
+          },
+          "relative_cost_percent": 67.07379927190853
+        },
+        {
+          "name": "hybrid_25_7200",
+          "metrics": {
+            "ndcg@10": 0.03239038907376214,
+            "recall@100": 0.2048820677894656,
+            "hit@1": 0.012473414956601713
+          },
+          "refreshes": 5434,
+          "initializations": 232,
+          "refresh_fraction": 0.08746318144505787,
+          "cost": {
+            "estimated_total_ms": 63469.758129416645,
+            "estimated_ms_per_request": 1.021580230317833,
+            "cost_repeat_estimates_ms_per_request": [
+              1.0209574168213813,
+              1.021580230317833,
+              1.0231508901222541
+            ],
+            "decision_ms_per_request": 0.0005380605997145835,
+            "refresh_branch_total_ms": 9377.295662110299,
+            "hit_branch_total_ms": 54059.03330030668
+          },
+          "policy_minus_always": {
+            "ndcg@10": {
+              "difference": -0.024272186769222433,
+              "cluster_bootstrap_95ci": [
+                -0.03471084513921233,
+                -0.015472937656489726
+              ]
+            },
+            "recall@100": {
+              "difference": -0.060987526585043396,
+              "cluster_bootstrap_95ci": [
+                -0.07544738800362756,
+                -0.04792623697173391
+              ]
+            }
+          },
+          "relative_quality_percent": {
+            "ndcg@10": 57.16363683062674,
+            "recall@100": 77.06111271259729
+          },
+          "relative_cost_percent": 59.187729644003795
+        }
+      ]
+    },
+    "policy_valid": {
+      "requests": 29914,
+      "observed_listens": 35137,
+      "request_users": 216,
+      "targets": 23394,
+      "target_users": 209,
+      "frontiers": {
+        "ndcg@10": [
+          "always",
+          "never",
+          "events_2",
+          "events_5",
+          "events_10",
+          "events_25",
+          "events_50",
+          "time_300",
+          "time_1800",
+          "time_7200",
+          "hybrid_2_300",
+          "hybrid_2_1800",
+          "hybrid_2_7200",
+          "hybrid_2_86400",
+          "hybrid_5_300",
+          "hybrid_5_1800",
+          "hybrid_5_7200",
+          "hybrid_5_86400",
+          "hybrid_10_300",
+          "hybrid_10_1800",
+          "hybrid_10_7200",
+          "hybrid_25_7200",
+          "hybrid_50_7200"
+        ],
+        "recall@100": [
+          "always",
+          "never",
+          "events_2",
+          "events_5",
+          "events_10",
+          "events_25",
+          "events_50",
+          "time_300",
+          "hybrid_2_300",
+          "hybrid_2_7200",
+          "hybrid_2_86400",
+          "hybrid_5_300",
+          "hybrid_10_300",
+          "hybrid_10_1800",
+          "hybrid_25_300",
+          "hybrid_25_7200"
+        ]
+      },
+      "selected_and_references": [
+        {
+          "name": "always",
+          "metrics": {
+            "ndcg@10": 0.0550929395331777,
+            "recall@100": 0.25220141916730787,
+            "hit@1": 0.02410874583226468
+          },
+          "refreshes": 29914,
+          "initializations": 216,
+          "refresh_fraction": 1.0,
+          "cost": {
+            "estimated_total_ms": 52098.012708194816,
+            "estimated_ms_per_request": 1.7415929901783385,
+            "cost_repeat_estimates_ms_per_request": [
+              1.7532319901785682,
+              1.7406486542337858,
+              1.7415929901783385
+            ],
+            "decision_ms_per_request": 0.000329966737984755,
+            "refresh_branch_total_ms": 52088.14208319474,
+            "hit_branch_total_ms": 0.0
+          },
+          "policy_minus_always": {
+            "ndcg@10": {
+              "difference": 0.0,
+              "cluster_bootstrap_95ci": [
+                0.0,
+                0.0
+              ]
+            },
+            "recall@100": {
+              "difference": 0.0,
+              "cluster_bootstrap_95ci": [
+                0.0,
+                0.0
+              ]
+            }
+          },
+          "relative_quality_percent": {
+            "ndcg@10": 100.0,
+            "recall@100": 100.0
+          },
+          "relative_cost_percent": 100.00000000000001
+        },
+        {
+          "name": "never",
+          "metrics": {
+            "ndcg@10": 0.02367971390189482,
+            "recall@100": 0.15585192784474652,
+            "hit@1": 0.010387278789433189
+          },
+          "refreshes": 216,
+          "initializations": 216,
+          "refresh_fraction": 0.00722069933810256,
+          "cost": {
+            "estimated_total_ms": 28384.88167575271,
+            "estimated_ms_per_request": 0.9488828533714216,
+            "cost_repeat_estimates_ms_per_request": [
+              0.9059962269606654,
+              0.9591971233427615,
+              0.9488828533714216
+            ],
+            "decision_ms_per_request": 0.00032889423014574327,
+            "refresh_branch_total_ms": 376.1128130631164,
+            "hit_branch_total_ms": 27998.930320689014
+          },
+          "policy_minus_always": {
+            "ndcg@10": {
+              "difference": -0.031413225631282876,
+              "cluster_bootstrap_95ci": [
+                -0.04175203399010264,
+                -0.02284175272321077
+              ]
+            },
+            "recall@100": {
+              "difference": -0.09634949132256133,
+              "cluster_bootstrap_95ci": [
+                -0.11857733049236051,
+                -0.07661587455457758
+              ]
+            }
+          },
+          "relative_quality_percent": {
+            "ndcg@10": 42.98139489840541,
+            "recall@100": 61.79661016949152
+          },
+          "relative_cost_percent": 54.48361693705809
+        },
+        {
+          "name": "events_2",
+          "metrics": {
+            "ndcg@10": 0.04939978105059904,
+            "recall@100": 0.24775583482944344,
+            "hit@1": 0.020005129520389842
+          },
+          "refreshes": 15809,
+          "initializations": 216,
+          "refresh_fraction": 0.5284816473891824,
+          "cost": {
+            "estimated_total_ms": 40838.894884853755,
+            "estimated_ms_per_request": 1.3652100984439979,
+            "cost_repeat_estimates_ms_per_request": [
+              1.3509522717041458,
+              1.3696130126995822,
+              1.3652100984439979
+            ],
+            "decision_ms_per_request": 0.000442507421264811,
+            "refresh_branch_total_ms": 27527.62713756855,
+            "hit_branch_total_ms": 13298.030580285491
+          },
+          "policy_minus_always": {
+            "ndcg@10": {
+              "difference": -0.005693158482578653,
+              "cluster_bootstrap_95ci": [
+                -0.008344012987589654,
+                -0.0034899878333492693
+              ]
+            },
+            "recall@100": {
+              "difference": -0.00444558433786441,
+              "cluster_bootstrap_95ci": [
+                -0.007927210311426486,
+                -0.001333847947693507
+              ]
+            }
+          },
+          "relative_quality_percent": {
+            "ndcg@10": 89.66626480485732,
+            "recall@100": 98.23728813559322
+          },
+          "relative_cost_percent": 78.38858482682575
+        },
+        {
+          "name": "events_5",
+          "metrics": {
+            "ndcg@10": 0.040828872763292536,
+            "recall@100": 0.23429084380610413,
+            "hit@1": 0.016542703257245446
+          },
+          "refreshes": 6678,
+          "initializations": 216,
+          "refresh_fraction": 0.2232399545363375,
+          "cost": {
+            "estimated_total_ms": 33547.65147558193,
+            "estimated_ms_per_request": 1.121469929651064,
+            "cost_repeat_estimates_ms_per_request": [
+              1.0904475566535945,
+              1.1293344349436882,
+              1.121469929651064
+            ],
+            "decision_ms_per_request": 0.00043008009627065855,
+            "refresh_branch_total_ms": 11628.154470534682,
+            "hit_branch_total_ms": 21906.631589047407
+          },
+          "policy_minus_always": {
+            "ndcg@10": {
+              "difference": -0.014264066769885161,
+              "cluster_bootstrap_95ci": [
+                -0.02046943301593524,
+                -0.009166894530196715
+              ]
+            },
+            "recall@100": {
+              "difference": -0.017910575361203728,
+              "cluster_bootstrap_95ci": [
+                -0.02420490140721057,
+                -0.01219413800732821
+              ]
+            }
+          },
+          "relative_quality_percent": {
+            "ndcg@10": 74.10908386673549,
+            "recall@100": 92.89830508474576
+          },
+          "relative_cost_percent": 64.39334195621825
+        },
+        {
+          "name": "time_300",
+          "metrics": {
+            "ndcg@10": 0.04888586511448799,
+            "recall@100": 0.24459263058903993,
+            "hit@1": 0.020603573565871593
+          },
+          "refreshes": 13520,
+          "initializations": 216,
+          "refresh_fraction": 0.45196229190345655,
+          "cost": {
+            "estimated_total_ms": 39011.07462797792,
+            "estimated_ms_per_request": 1.304107596041249,
+            "cost_repeat_estimates_ms_per_request": [
+              1.2856471577162816,
+              1.3093782774509,
+              1.304107596041249
+            ],
+            "decision_ms_per_request": 0.00043876750018405987,
+            "refresh_branch_total_ms": 23541.87607691358,
+            "hit_branch_total_ms": 15456.073260063831
+          },
+          "policy_minus_always": {
+            "ndcg@10": {
+              "difference": -0.006207074418689709,
+              "cluster_bootstrap_95ci": [
+                -0.009123168283002907,
+                -0.003719002766437516
+              ]
+            },
+            "recall@100": {
+              "difference": -0.007608788578267932,
+              "cluster_bootstrap_95ci": [
+                -0.012609847562565082,
+                -0.003333409651121999
+              ]
+            }
+          },
+          "relative_quality_percent": {
+            "ndcg@10": 88.73344847582197,
+            "recall@100": 96.98305084745762
+          },
+          "relative_cost_percent": 74.88015876245052
+        },
+        {
+          "name": "hybrid_2_300",
+          "metrics": {
+            "ndcg@10": 0.05037773483828655,
+            "recall@100": 0.24997862699837564,
+            "hit@1": 0.02141574762759682
+          },
+          "refreshes": 17930,
+          "initializations": 216,
+          "refresh_fraction": 0.5993849033897172,
+          "cost": {
+            "estimated_total_ms": 42533.988281354155,
+            "estimated_ms_per_request": 1.4218756529168333,
+            "cost_repeat_estimates_ms_per_request": [
+              1.4115119892053904,
+              1.4254744893507592,
+              1.4218756529168333
+            ],
+            "decision_ms_per_request": 0.0004936122551230062,
+            "refresh_branch_total_ms": 31220.846010285542,
+            "hit_branch_total_ms": 11298.376354068863
+          },
+          "policy_minus_always": {
+            "ndcg@10": {
+              "difference": -0.004715204694891147,
+              "cluster_bootstrap_95ci": [
+                -0.007104690697672433,
+                -0.00270012141945892
+              ]
+            },
+            "recall@100": {
+              "difference": -0.002222792168932205,
+              "cluster_bootstrap_95ci": [
+                -0.0049408807678233075,
+                0.0003124246528931642
+              ]
+            }
+          },
+          "relative_quality_percent": {
+            "ndcg@10": 91.44136302247661,
+            "recall@100": 99.11864406779661
+          },
+          "relative_cost_percent": 81.64224712291897
+        },
+        {
+          "name": "hybrid_5_1800",
+          "metrics": {
+            "ndcg@10": 0.04175941946937007,
+            "recall@100": 0.23416260579635803,
+            "hit@1": 0.017141147302727196
+          },
+          "refreshes": 7798,
+          "initializations": 216,
+          "refresh_fraction": 0.26068061777094337,
+          "cost": {
+            "estimated_total_ms": 34444.336413090256,
+            "estimated_ms_per_request": 1.151445357126772,
+            "cost_repeat_estimates_ms_per_request": [
+              1.1224793078406738,
+              1.1588852668700056,
+              1.151445357126772
+            ],
+            "decision_ms_per_request": 0.0005100886207034738,
+            "refresh_branch_total_ms": 13578.369056787878,
+            "hit_branch_total_ms": 20850.708565302655
+          },
+          "policy_minus_always": {
+            "ndcg@10": {
+              "difference": -0.013333520063807624,
+              "cluster_bootstrap_95ci": [
+                -0.019472089735312476,
+                -0.008293668217612562
+              ]
+            },
+            "recall@100": {
+              "difference": -0.018038813370949817,
+              "cluster_bootstrap_95ci": [
+                -0.0243624995595754,
+                -0.012593133245668848
+              ]
+            }
+          },
+          "relative_quality_percent": {
+            "ndcg@10": 75.79813279743767,
+            "recall@100": 92.84745762711864
+          },
+          "relative_cost_percent": 66.11449194044266
+        },
+        {
+          "name": "hybrid_25_7200",
+          "metrics": {
+            "ndcg@10": 0.031124510385414975,
+            "recall@100": 0.20180388133709498,
+            "hit@1": 0.013165769000598444
+          },
+          "refreshes": 2606,
+          "initializations": 216,
+          "refresh_fraction": 0.0871164003476633,
+          "cost": {
+            "estimated_total_ms": 30299.63278317611,
+            "estimated_ms_per_request": 1.0128913813992149,
+            "cost_repeat_estimates_ms_per_request": [
+              0.9743928029082596,
+              1.0222995947964086,
+              1.0128913813992149
+            ],
+            "decision_ms_per_request": 0.0005427336029856635,
+            "refresh_branch_total_ms": 4537.731439085562,
+            "hit_branch_total_ms": 25745.666011090834
+          },
+          "policy_minus_always": {
+            "ndcg@10": {
+              "difference": -0.023968429147762725,
+              "cluster_bootstrap_95ci": [
+                -0.03437635882624274,
+                -0.015640099507560894
+              ]
+            },
+            "recall@100": {
+              "difference": -0.05039753783021288,
+              "cluster_bootstrap_95ci": [
+                -0.0655193284825791,
+                -0.03682049371062239
+              ]
+            }
+          },
+          "relative_quality_percent": {
+            "ndcg@10": 56.494553837831404,
+            "recall@100": 80.01694915254237
+          },
+          "relative_cost_percent": 58.15890320593764
+        }
+      ]
+    }
+  },
+  "branch_costs": {
+    "controller_train": {
+      "refresh_write_serve": {
+        "repeat_mean_ms": [
+          1.7246565781263712,
+          1.72567089843767,
+          1.726749351561807
+        ],
+        "median_mean_ms": 1.72567089843767,
+        "sample_requests": 384,
+        "sample_refreshes": 384
+      },
+      "cache_hit_serve": {
+        "repeat_mean_ms": [
+          0.9529208984417892,
+          0.9535061874998974,
+          0.9551240234415559
+        ],
+        "median_mean_ms": 0.9535061874998974,
+        "sample_requests": 384,
+        "sample_refreshes": 0
+      }
+    },
+    "policy_valid": {
+      "refresh_write_serve": {
+        "repeat_mean_ms": [
+          1.7529020234405834,
+          1.740318687495801,
+          1.7412630234403537
+        ],
+        "median_mean_ms": 1.7412630234403537,
+        "sample_requests": 384,
+        "sample_refreshes": 384
+      },
+      "cache_hit_serve": {
+        "repeat_mean_ms": [
+          0.8995052109312951,
+          0.953184570313681,
+          0.9427884140578158
+        ],
+        "median_mean_ms": 0.9427884140578158,
+        "sample_requests": 384,
+        "sample_refreshes": 0
+      }
+    }
+  },
+  "maximum_mixed_cost_prediction_error_percent": 2.4836360066002205
+}
