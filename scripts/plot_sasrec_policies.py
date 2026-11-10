@@ -13,6 +13,32 @@ COLORS = {"always": "#b84238", "never": "#555555", "events": "#2864a0", "time": 
 MARKERS = {"always": "*", "never": "X", "events": "o", "time": "s", "hybrid": "^"}
 
 
+def threshold_curves(result, output):
+    fig, axes = plt.subplots(3, 2, figsize=(11.5, 9), sharex="col")
+    for col, family in enumerate(("time", "events")):
+        for color, (split, block) in zip(("#2864a0", "#c36b22"), result["results"].items()):
+            rows = [r for r in block["policies"] if r["family"] == family]
+            x = [r["seconds"] if family == "time" else r["events"] for r in rows]
+            for row, metric in enumerate(("ndcg@10", "recall@100")):
+                axes[row,col].plot(x, [r["metrics"][metric] for r in rows], "o-", color=color, label=split, markersize=4)
+                axes[row,col].axhline(block["policies"][0]["metrics"][metric], color=color, linestyle=":", alpha=.6)
+            axes[2,col].plot(x, [100*r["refresh_fraction"] for r in rows], "o-", color=color, markersize=4)
+        labels = [f"{v//3600}h" if v%3600 == 0 else f"{v//60}m" for v in x] if family == "time" else [str(v) for v in x]
+        for row in range(3):
+            axes[row,col].set_xscale("log")
+            axes[row,col].set_xticks(x, labels, rotation=45, ha="right", fontsize=8)
+            axes[row,col].minorticks_off()
+            axes[row,col].set_ylim(bottom=0)
+            axes[row,col].set_ylabel(("NDCG@10", "Recall@100", "Requests with refresh (%)")[row])
+        axes[0,col].set_title("On-request time TTL" if family == "time" else "Observed-listen threshold")
+        axes[2,col].set_xlabel("Time since previous refresh" if family == "time" else "New listens since previous refresh")
+    fig.suptitle("Frozen SASRec 256 CE — quality and actual refresh frequency", fontsize=14, y=1.01)
+    fig.legend(*axes[0,0].get_legend_handles_labels(), loc="upper center", bbox_to_anchor=(.5,.98), ncol=2, frameon=False)
+    fig.text(.5,-.01,"Dotted quality lines: always. Refresh counts include initialization; no refresh during idle time.",ha="center",fontsize=9)
+    fig.tight_layout(rect=(0,0,1,.95))
+    save(fig,output,"policy-thresholds")
+
+
 def plot_frontiers(result, output, cost_axis):
     fig, axes = plt.subplots(2, 2, figsize=(11.5, 8), sharex="col")
     selected = {r["policy"] for r in result["selection"]["budgets"] if r["policy"]}
@@ -95,8 +121,19 @@ def main():
         for split, branches in result["branch_costs"].items():
             for name,r in branches.items():
                 writer.writerow((split,name,r["median_mean_ms"],json.dumps(r["repeat_mean_ms"])))
+    stats = [{"split":split, "policy":p["name"], "family":p["family"], "event_threshold":p["events"],
+              "time_threshold_seconds":p["seconds"], "requests":p["requests"], "initializations":p["initializations"],
+              "refreshes":p["refreshes"], "subsequent_refreshes":p["subsequent_refreshes"],
+              "refresh_percent":100*p["refresh_fraction"], "hits":p["hits"],
+              "cache_hit_percent":100*(1-p["refresh_fraction"]), "requests_per_refresh":p["requests"]/p["refreshes"]}
+             for split,b in result["results"].items() for p in b["policies"]]
+    with (args.output / "refresh-statistics.csv").open("w",newline="") as file:
+        writer = csv.DictWriter(file,fieldnames=list(stats[0]),lineterminator="\n")
+        writer.writeheader()
+        writer.writerows(stats)
     for axis in ("total","refresh"):
         plot_frontiers(result,args.output,axis)
+    threshold_curves(result,args.output)
 
 
 if __name__ == "__main__":

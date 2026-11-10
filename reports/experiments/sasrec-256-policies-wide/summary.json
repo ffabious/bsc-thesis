@@ -1,0 +1,1404 @@
+{
+  "scope": "Expanded user-requested time/event grid; shared input stream and frozen original cost calibration",
+  "policies": 100,
+  "selection": {
+    "source_split": "controller_train",
+    "criterion": "max NDCG, ties Recall then lower estimated cost",
+    "budgets": [
+      {
+        "relative_budget": 0.6,
+        "policy": "hybrid_60_3600"
+      },
+      {
+        "relative_budget": 0.75,
+        "policy": "hybrid_5_1800"
+      },
+      {
+        "relative_budget": 0.9,
+        "policy": "hybrid_2_300"
+      }
+    ]
+  },
+  "splits": {
+    "controller_train": {
+      "requests": 62129,
+      "observed_listens": 76610,
+      "request_users": 232,
+      "targets": 52191,
+      "target_users": 230,
+      "frontiers": {
+        "ndcg@10": [
+          "always",
+          "never",
+          "events_2",
+          "events_5",
+          "events_10",
+          "events_20",
+          "events_50",
+          "events_60",
+          "events_120",
+          "events_240",
+          "time_300",
+          "time_1800",
+          "time_3600",
+          "time_43200",
+          "hybrid_2_300",
+          "hybrid_5_300",
+          "hybrid_5_1800",
+          "hybrid_10_1800",
+          "hybrid_10_43200",
+          "hybrid_20_3600",
+          "hybrid_20_7200",
+          "hybrid_20_10800",
+          "hybrid_20_43200",
+          "hybrid_20_86400",
+          "hybrid_25_21600",
+          "hybrid_25_86400",
+          "hybrid_50_300",
+          "hybrid_50_1800",
+          "hybrid_50_43200",
+          "hybrid_60_300",
+          "hybrid_60_1800",
+          "hybrid_60_3600",
+          "hybrid_60_43200",
+          "hybrid_120_300",
+          "hybrid_120_1800",
+          "hybrid_120_3600",
+          "hybrid_240_300",
+          "hybrid_240_1800",
+          "hybrid_240_3600",
+          "hybrid_240_43200"
+        ],
+        "recall@100": [
+          "always",
+          "never",
+          "events_2",
+          "events_5",
+          "events_10",
+          "events_20",
+          "events_25",
+          "events_50",
+          "events_60",
+          "events_120",
+          "events_480",
+          "time_300",
+          "hybrid_5_300",
+          "hybrid_5_1800",
+          "hybrid_5_43200",
+          "hybrid_10_300",
+          "hybrid_10_1800",
+          "hybrid_10_3600",
+          "hybrid_10_43200",
+          "hybrid_10_86400",
+          "hybrid_20_300",
+          "hybrid_20_3600",
+          "hybrid_20_7200",
+          "hybrid_20_21600",
+          "hybrid_20_43200",
+          "hybrid_20_86400",
+          "hybrid_25_300",
+          "hybrid_25_3600",
+          "hybrid_25_86400",
+          "hybrid_50_300",
+          "hybrid_50_3600",
+          "hybrid_50_43200",
+          "hybrid_60_300",
+          "hybrid_60_3600",
+          "hybrid_120_300",
+          "hybrid_240_300"
+        ]
+      },
+      "time_and_event_policies": [
+        {
+          "name": "always",
+          "family": "always",
+          "seconds": 0,
+          "events": 0,
+          "refreshes": 62129,
+          "initializations": 232,
+          "subsequent_refreshes": 61897,
+          "hits": 0,
+          "refresh_fraction": 1.0,
+          "metrics": {
+            "ndcg@10": 0.05666257584298457,
+            "recall@100": 0.265869594374509,
+            "hit@1": 0.022839186832978867
+          },
+          "cost": {
+            "estimated_total_ms": 107234.6557490344,
+            "estimated_ms_per_request": 1.7260000281516585,
+            "cost_repeat_estimates_ms_per_request": [
+              1.7249857078403596,
+              1.7260000281516585,
+              1.7270784812757956
+            ],
+            "decision_ms_per_request": 0.0003291297139883827,
+            "refresh_branch_total_ms": 107214.207249034,
+            "hit_branch_total_ms": 0.0
+          },
+          "cache_hit_percent": 0.0,
+          "relative_cost_percent": 100.0
+        },
+        {
+          "name": "never",
+          "family": "never",
+          "seconds": 0,
+          "events": 0,
+          "refreshes": 232,
+          "initializations": 232,
+          "subsequent_refreshes": 0,
+          "hits": 61897,
+          "refresh_fraction": 0.0037341660094319883,
+          "metrics": {
+            "ndcg@10": 0.023463133514177063,
+            "recall@100": 0.16497097200666783,
+            "hit@1": 0.009158667203157632
+          },
+          "cost": {
+            "estimated_total_ms": 59439.87788611838,
+            "estimated_ms_per_request": 0.9567171189962558,
+            "cost_repeat_estimates_ms_per_request": [
+              0.956130227864225,
+              0.9567171189962558,
+              0.958332940792931
+            ],
+            "decision_ms_per_request": 0.0003275402790918192,
+            "refresh_branch_total_ms": 400.35564843753946,
+            "hit_branch_total_ms": 59019.17248768115
+          },
+          "cache_hit_percent": 99.6265833990568,
+          "relative_cost_percent": 55.42972789060649
+        },
+        {
+          "name": "events_2",
+          "family": "events",
+          "seconds": 0,
+          "events": 2,
+          "refreshes": 32981,
+          "initializations": 232,
+          "subsequent_refreshes": 32749,
+          "hits": 29148,
+          "refresh_fraction": 0.5308471084356742,
+          "metrics": {
+            "ndcg@10": 0.05258107925932316,
+            "recall@100": 0.25952750474219693,
+            "hit@1": 0.020463298269816636
+          },
+          "cost": {
+            "estimated_total_ms": 84734.77183762065,
+            "estimated_ms_per_request": 1.3638521759181805,
+            "cost_repeat_estimates_ms_per_request": [
+              1.3630391368598878,
+              1.3638521759181805,
+              1.3651836820508179
+            ],
+            "decision_ms_per_request": 0.00044458438089840227,
+            "refresh_branch_total_ms": 56914.3519013728,
+            "hit_branch_total_ms": 27792.79835324701
+          },
+          "cache_hit_percent": 46.915289156432586,
+          "relative_cost_percent": 79.01808538083887
+        },
+        {
+          "name": "events_5",
+          "family": "events",
+          "seconds": 0,
+          "events": 5,
+          "refreshes": 13962,
+          "initializations": 232,
+          "subsequent_refreshes": 13730,
+          "hits": 48167,
+          "refresh_fraction": 0.22472597337797165,
+          "metrics": {
+            "ndcg@10": 0.04284454745506646,
+            "recall@100": 0.24220651070107874,
+            "hit@1": 0.015998927018068248
+          },
+          "cost": {
+            "estimated_total_ms": 70048.15815929454,
+            "estimated_ms_per_request": 1.127463151817904,
+            "cost_repeat_estimates_ms_per_request": [
+              1.126781448293813,
+              1.127463151817904,
+              1.1289597744308717
+            ],
+            "decision_ms_per_request": 0.0004314980443955884,
+            "refresh_branch_total_ms": 24093.81708398675,
+            "hit_branch_total_ms": 45927.53253330755
+          },
+          "cache_hit_percent": 77.52740266220283,
+          "relative_cost_percent": 65.32231364012684
+        },
+        {
+          "name": "events_10",
+          "family": "events",
+          "seconds": 0,
+          "events": 10,
+          "refreshes": 7260,
+          "initializations": 232,
+          "subsequent_refreshes": 7028,
+          "hits": 54869,
+          "refresh_fraction": 0.11685364322619067,
+          "metrics": {
+            "ndcg@10": 0.03670874913424484,
+            "recall@100": 0.22509628096798298,
+            "hit@1": 0.014427774903719033
+          },
+          "cost": {
+            "estimated_total_ms": 64872.82305858923,
+            "estimated_ms_per_request": 1.0441633224193088,
+            "cost_repeat_estimates_ms_per_request": [
+              1.0435278994962072,
+              1.0441633224193088,
+              1.0457181295136462
+            ],
+            "decision_ms_per_request": 0.0004268752756342591,
+            "refresh_branch_total_ms": 12528.370722657484,
+            "hit_branch_total_ms": 52317.931001931865
+          },
+          "cache_hit_percent": 88.31463567738093,
+          "relative_cost_percent": 60.49613588578465
+        },
+        {
+          "name": "events_20",
+          "family": "events",
+          "seconds": 0,
+          "events": 20,
+          "refreshes": 3767,
+          "initializations": 232,
+          "subsequent_refreshes": 3535,
+          "hits": 58362,
+          "refresh_fraction": 0.0606319110238375,
+          "metrics": {
+            "ndcg@10": 0.031816760102063385,
+            "recall@100": 0.20880994807533865,
+            "hit@1": 0.012607537698070548
+          },
+          "cost": {
+            "estimated_total_ms": 62176.00638928362,
+            "estimated_ms_per_request": 1.000756593366763,
+            "cost_repeat_estimates_ms_per_request": [
+              1.0001452913238849,
+              1.000756593366763,
+              1.0023417254974218
+            ],
+            "decision_ms_per_request": 0.0004325838175393452,
+            "refresh_branch_total_ms": 6500.602274414703,
+            "hit_branch_total_ms": 55648.52811486901
+          },
+          "cache_hit_percent": 93.93680889761626,
+          "relative_cost_percent": 57.98126170591404
+        },
+        {
+          "name": "events_25",
+          "family": "events",
+          "seconds": 0,
+          "events": 25,
+          "refreshes": 3069,
+          "initializations": 232,
+          "subsequent_refreshes": 2837,
+          "hits": 59060,
+          "refresh_fraction": 0.04939722190925333,
+          "metrics": {
+            "ndcg@10": 0.030267036596962806,
+            "recall@100": 0.20127991416144547,
+            "hit@1": 0.011496234983043054
+          },
+          "cost": {
+            "estimated_total_ms": 61639.53825504869,
+            "estimated_ms_per_request": 0.992121847366748,
+            "cost_repeat_estimates_ms_per_request": [
+              0.9915153653566201,
+              0.992121847366748,
+              0.9937130392956754
+            ],
+            "decision_ms_per_request": 0.0004728682901631193,
+            "refresh_branch_total_ms": 5296.083987305209,
+            "hit_branch_total_ms": 56314.075433743936
+          },
+          "cache_hit_percent": 95.06027780907466,
+          "relative_cost_percent": 57.480986743041534
+        },
+        {
+          "name": "events_50",
+          "family": "events",
+          "seconds": 0,
+          "events": 50,
+          "refreshes": 1613,
+          "initializations": 232,
+          "subsequent_refreshes": 1381,
+          "hits": 60516,
+          "refresh_fraction": 0.02596211109143878,
+          "metrics": {
+            "ndcg@10": 0.028642084000325637,
+            "recall@100": 0.18926634860416547,
+            "hit@1": 0.011572876549596673
+          },
+          "cost": {
+            "estimated_total_ms": 60513.91489292415,
+            "estimated_ms_per_request": 0.9740043279776618,
+            "cost_repeat_estimates_ms_per_request": [
+              0.9734079003624966,
+              0.9740043279776618,
+              0.9756081604026909
+            ],
+            "decision_ms_per_request": 0.00045111447150925803,
+            "refresh_branch_total_ms": 2783.507159179962,
+            "hit_branch_total_ms": 57702.380442743786
+          },
+          "cache_hit_percent": 97.40378889085612,
+          "relative_cost_percent": 56.431304292660116
+        },
+        {
+          "name": "events_60",
+          "family": "events",
+          "seconds": 0,
+          "events": 60,
+          "refreshes": 1377,
+          "initializations": 232,
+          "subsequent_refreshes": 1145,
+          "hits": 60752,
+          "refresh_fraction": 0.02216356290943038,
+          "metrics": {
+            "ndcg@10": 0.027601915561787614,
+            "recall@100": 0.18815504588913798,
+            "hit@1": 0.011132187541913356
+          },
+          "cost": {
+            "estimated_total_ms": 60331.63664614226,
+            "estimated_ms_per_request": 0.9710704605923524,
+            "cost_repeat_estimates_ms_per_request": [
+              0.970475662673074,
+              0.9710704605923524,
+              0.9726763418890025
+            ],
+            "decision_ms_per_request": 0.0004503519451435235,
+            "refresh_branch_total_ms": 2376.248827148672,
+            "hit_branch_total_ms": 57927.407902993764
+          },
+          "cache_hit_percent": 97.78364370905696,
+          "relative_cost_percent": 56.26132356627211
+        },
+        {
+          "name": "events_120",
+          "family": "events",
+          "seconds": 0,
+          "events": 120,
+          "refreshes": 757,
+          "initializations": 232,
+          "subsequent_refreshes": 525,
+          "hits": 61372,
+          "refresh_fraction": 0.012184326160086273,
+          "metrics": {
+            "ndcg@10": 0.025358036833230953,
+            "recall@100": 0.17439788469276313,
+            "hit@1": 0.010519055009484394
+          },
+          "cost": {
+            "estimated_total_ms": 59852.45715036102,
+            "estimated_ms_per_request": 0.9633578063442357,
+            "cost_repeat_estimates_ms_per_request": [
+              0.9627672898294057,
+              0.9633578063442357,
+              0.9649690702697205
+            ],
+            "decision_ms_per_request": 0.00044331215696377744,
+            "refresh_branch_total_ms": 1306.3328701173164,
+            "hit_branch_total_ms": 58518.5817392437
+          },
+          "cache_hit_percent": 98.78156738399137,
+          "relative_cost_percent": 55.81447222662434
+        },
+        {
+          "name": "events_240",
+          "family": "events",
+          "seconds": 0,
+          "events": 240,
+          "refreshes": 446,
+          "initializations": 232,
+          "subsequent_refreshes": 214,
+          "hits": 61683,
+          "refresh_fraction": 0.0071786122422701154,
+          "metrics": {
+            "ndcg@10": 0.02411985948986218,
+            "recall@100": 0.16694449234542355,
+            "hit@1": 0.010097526393439481
+          },
+          "cost": {
+            "estimated_total_ms": 59612.5488012602,
+            "estimated_ms_per_request": 0.9594963511606528,
+            "cost_repeat_estimates_ms_per_request": [
+              0.9589079822535381,
+              0.9594963511606528,
+              0.9611103150822142
+            ],
+            "decision_ms_per_request": 0.00044709261376867885,
+            "refresh_branch_total_ms": 769.6492207032009,
+            "hit_branch_total_ms": 58815.12216355617
+          },
+          "cache_hit_percent": 99.28213877577299,
+          "relative_cost_percent": 55.590749450227975
+        },
+        {
+          "name": "events_480",
+          "family": "events",
+          "seconds": 0,
+          "events": 480,
+          "refreshes": 298,
+          "initializations": 232,
+          "subsequent_refreshes": 66,
+          "hits": 61831,
+          "refresh_fraction": 0.004796471856942813,
+          "metrics": {
+            "ndcg@10": 0.023192077297151167,
+            "recall@100": 0.1671360962618076,
+            "hit@1": 0.009388591902818494
+          },
+          "cost": {
+            "estimated_total_ms": 59498.6327570397,
+            "estimated_ms_per_request": 0.9576628105560961,
+            "cost_repeat_estimates_ms_per_request": [
+              0.9570754636616563,
+              0.9576628105560961,
+              0.9592780593632504
+            ],
+            "decision_ms_per_request": 0.0004529567512614417,
+            "refresh_branch_total_ms": 514.2499277344257,
+            "hit_branch_total_ms": 58956.24107930615
+          },
+          "cache_hit_percent": 99.52035281430572,
+          "relative_cost_percent": 55.48451882597241
+        },
+        {
+          "name": "time_300",
+          "family": "time",
+          "seconds": 300,
+          "events": 0,
+          "refreshes": 28673,
+          "initializations": 232,
+          "subsequent_refreshes": 28441,
+          "hits": 33456,
+          "refresh_fraction": 0.46150750857087675,
+          "metrics": {
+            "ndcg@10": 0.05108328291441131,
+            "recall@100": 0.25320457550152325,
+            "hit@1": 0.019907646912302887
+          },
+          "cost": {
+            "estimated_total_ms": 81408.02038789983,
+            "estimated_ms_per_request": 1.3103063044294907,
+            "cost_repeat_estimates_ms_per_request": [
+              1.3095230142266234,
+              1.3103063044294907,
+              1.3116752111508692
+            ],
+            "decision_ms_per_request": 0.0004403049783508365,
+            "refresh_branch_total_ms": 49480.16167090331,
+            "hit_branch_total_ms": 31900.503008996566
+          },
+          "cache_hit_percent": 53.84924914291233,
+          "relative_cost_percent": 75.91577537995022
+        },
+        {
+          "name": "time_1800",
+          "family": "time",
+          "seconds": 1800,
+          "events": 0,
+          "refreshes": 9482,
+          "initializations": 232,
+          "subsequent_refreshes": 9250,
+          "hits": 52647,
+          "refresh_fraction": 0.1526179400923884,
+          "metrics": {
+            "ndcg@10": 0.038138108277225,
+            "recall@100": 0.22415742177770115,
+            "hit@1": 0.014523576861911058
+          },
+          "cost": {
+            "estimated_total_ms": 66588.73554629249,
+            "estimated_ms_per_request": 1.0717818658966425,
+            "cost_repeat_estimates_ms_per_request": [
+              1.0711310989724372,
+              1.0717818658966425,
+              1.0733173823437696
+            ],
+            "decision_ms_per_request": 0.00042949080138765733,
+            "refresh_branch_total_ms": 16362.811458985987,
+            "hit_branch_total_ms": 50199.24025330709
+          },
+          "cache_hit_percent": 84.73820599076116,
+          "relative_cost_percent": 62.09628322221952
+        },
+        {
+          "name": "time_3600",
+          "family": "time",
+          "seconds": 3600,
+          "events": 0,
+          "refreshes": 6423,
+          "initializations": 232,
+          "subsequent_refreshes": 6191,
+          "hits": 55706,
+          "refresh_fraction": 0.10338167361457612,
+          "metrics": {
+            "ndcg@10": 0.03458453057598965,
+            "recall@100": 0.20978712804889732,
+            "hit@1": 0.013776321588013259
+          },
+          "cost": {
+            "estimated_total_ms": 64227.167736534015,
+            "estimated_ms_per_request": 1.033771149326949,
+            "cost_repeat_estimates_ms_per_request": [
+              1.033141506299853,
+              1.033771149326949,
+              1.0353332229702132
+            ],
+            "decision_ms_per_request": 0.00043728170418930255,
+            "refresh_branch_total_ms": 11083.984180665155,
+            "hit_branch_total_ms": 53116.015680869285
+          },
+          "cache_hit_percent": 89.66183263854239,
+          "relative_cost_percent": 59.894040119686174
+        },
+        {
+          "name": "time_7200",
+          "family": "time",
+          "seconds": 7200,
+          "events": 0,
+          "refreshes": 4645,
+          "initializations": 232,
+          "subsequent_refreshes": 4413,
+          "hits": 57484,
+          "refresh_fraction": 0.07476379790436029,
+          "metrics": {
+            "ndcg@10": 0.031695101743903324,
+            "recall@100": 0.19786936444980935,
+            "hit@1": 0.012415933781686497
+          },
+          "cost": {
+            "estimated_total_ms": 62853.42513048725,
+            "estimated_ms_per_request": 1.0116600159424303,
+            "cost_repeat_estimates_ms_per_request": [
+              1.0110426508784138,
+              1.0116600159424303,
+              1.0132375255761266
+            ],
+            "decision_ms_per_request": 0.0004238620451025422,
+            "refresh_branch_total_ms": 8015.741323242977,
+            "hit_branch_total_ms": 54811.3496822441
+          },
+          "cache_hit_percent": 92.52362020956397,
+          "relative_cost_percent": 58.61297795144292
+        },
+        {
+          "name": "time_10800",
+          "family": "time",
+          "seconds": 10800,
+          "events": 0,
+          "refreshes": 3965,
+          "initializations": 232,
+          "subsequent_refreshes": 3733,
+          "hits": 58164,
+          "refresh_fraction": 0.06381882856636997,
+          "metrics": {
+            "ndcg@10": 0.030580427864925923,
+            "recall@100": 0.19191048265026536,
+            "hit@1": 0.011994405165641585
+          },
+          "cost": {
+            "estimated_total_ms": 62329.1900850496,
+            "estimated_ms_per_request": 1.0032221681509377,
+            "cost_repeat_estimates_ms_per_request": [
+              1.0026094988208325,
+              1.0032221681509377,
+              1.0048055813130332
+            ],
+            "decision_ms_per_request": 0.00043733333870192814,
+            "refresh_branch_total_ms": 6842.2851123053615,
+            "hit_branch_total_ms": 55459.73388974403
+          },
+          "cache_hit_percent": 93.618117143363,
+          "relative_cost_percent": 58.12411076408091
+        },
+        {
+          "name": "time_21600",
+          "family": "time",
+          "seconds": 21600,
+          "events": 0,
+          "refreshes": 3038,
+          "initializations": 232,
+          "subsequent_refreshes": 2806,
+          "hits": 59091,
+          "refresh_fraction": 0.048898260071786125,
+          "metrics": {
+            "ndcg@10": 0.02961206189839669,
+            "recall@100": 0.18420800521162653,
+            "hit@1": 0.011841122032534346
+          },
+          "cost": {
+            "estimated_total_ms": 61613.494148009835,
+            "estimated_ms_per_request": 0.9917026533182545,
+            "cost_repeat_estimates_ms_per_request": [
+              0.9910963853783489,
+              0.9917026533182545,
+              0.9932941143786236
+            ],
+            "decision_ms_per_request": 0.0004389549646664001,
+            "refresh_branch_total_ms": 5242.5881894536415,
+            "hit_branch_total_ms": 56343.63412555643
+          },
+          "cache_hit_percent": 95.11017399282139,
+          "relative_cost_percent": 57.45669971861185
+        },
+        {
+          "name": "time_43200",
+          "family": "time",
+          "seconds": 43200,
+          "events": 0,
+          "refreshes": 2238,
+          "initializations": 232,
+          "subsequent_refreshes": 2006,
+          "hits": 59891,
+          "refresh_fraction": 0.036021825556503406,
+          "metrics": {
+            "ndcg@10": 0.028835148386177484,
+            "recall@100": 0.17594987641547394,
+            "hit@1": 0.011802801249257535
+          },
+          "cost": {
+            "estimated_total_ms": 60995.1899212609,
+            "estimated_ms_per_request": 0.9817507109604355,
+            "cost_repeat_estimates_ms_per_request": [
+              0.9811499674133667,
+              0.9817507109604355,
+              0.9833491173483332
+            ],
+            "decision_ms_per_request": 0.00042974094224990333,
+            "refresh_branch_total_ms": 3862.0514707035054,
+            "hit_branch_total_ms": 57106.43907555635
+          },
+          "cache_hit_percent": 96.39781744434966,
+          "relative_cost_percent": 56.880109788397526
+        },
+        {
+          "name": "time_86400",
+          "family": "time",
+          "seconds": 86400,
+          "events": 0,
+          "refreshes": 1689,
+          "initializations": 232,
+          "subsequent_refreshes": 1457,
+          "hits": 60440,
+          "refresh_fraction": 0.027185372370390638,
+          "metrics": {
+            "ndcg@10": 0.026896231677374816,
+            "recall@100": 0.17303749688643635,
+            "hit@1": 0.010978904408806117
+          },
+          "cost": {
+            "estimated_total_ms": 60570.697660955535,
+            "estimated_ms_per_request": 0.9749182774703526,
+            "cost_repeat_estimates_ms_per_request": [
+              0.9743213250378677,
+              0.9749182774703526,
+              0.9765214500892666
+            ],
+            "decision_ms_per_request": 0.00042050477233676007,
+            "refresh_branch_total_ms": 2914.658147461225,
+            "hit_branch_total_ms": 57629.9139724938
+          },
+          "cache_hit_percent": 97.28146276296094,
+          "relative_cost_percent": 56.48425617433938
+        }
+      ]
+    },
+    "policy_valid": {
+      "requests": 29914,
+      "observed_listens": 35137,
+      "request_users": 216,
+      "targets": 23394,
+      "target_users": 209,
+      "frontiers": {
+        "ndcg@10": [
+          "always",
+          "never",
+          "events_2",
+          "events_5",
+          "events_10",
+          "events_20",
+          "events_25",
+          "events_50",
+          "events_60",
+          "events_120",
+          "events_240",
+          "events_480",
+          "time_300",
+          "time_1800",
+          "time_3600",
+          "hybrid_2_300",
+          "hybrid_2_1800",
+          "hybrid_2_7200",
+          "hybrid_2_10800",
+          "hybrid_2_21600",
+          "hybrid_2_86400",
+          "hybrid_5_300",
+          "hybrid_5_3600",
+          "hybrid_5_10800",
+          "hybrid_5_43200",
+          "hybrid_5_86400",
+          "hybrid_10_300",
+          "hybrid_10_1800",
+          "hybrid_10_7200",
+          "hybrid_10_10800",
+          "hybrid_20_3600",
+          "hybrid_20_7200",
+          "hybrid_20_10800",
+          "hybrid_20_21600",
+          "hybrid_25_3600",
+          "hybrid_25_10800",
+          "hybrid_50_3600",
+          "hybrid_120_43200",
+          "hybrid_120_86400"
+        ],
+        "recall@100": [
+          "always",
+          "never",
+          "events_2",
+          "events_5",
+          "events_10",
+          "events_20",
+          "events_25",
+          "events_50",
+          "events_60",
+          "events_120",
+          "events_240",
+          "events_480",
+          "time_300",
+          "time_3600",
+          "hybrid_2_300",
+          "hybrid_2_7200",
+          "hybrid_2_10800",
+          "hybrid_2_21600",
+          "hybrid_2_43200",
+          "hybrid_2_86400",
+          "hybrid_5_300",
+          "hybrid_10_300",
+          "hybrid_10_1800",
+          "hybrid_20_300",
+          "hybrid_20_3600",
+          "hybrid_20_7200",
+          "hybrid_20_10800",
+          "hybrid_20_21600",
+          "hybrid_20_43200",
+          "hybrid_25_300",
+          "hybrid_25_3600",
+          "hybrid_50_43200"
+        ]
+      },
+      "time_and_event_policies": [
+        {
+          "name": "always",
+          "family": "always",
+          "seconds": 0,
+          "events": 0,
+          "refreshes": 29914,
+          "initializations": 216,
+          "subsequent_refreshes": 29698,
+          "hits": 0,
+          "refresh_fraction": 1.0,
+          "metrics": {
+            "ndcg@10": 0.0550929395331777,
+            "recall@100": 0.25220141916730787,
+            "hit@1": 0.02410874583226468
+          },
+          "cost": {
+            "estimated_total_ms": 52098.012708194816,
+            "estimated_ms_per_request": 1.7415929901783385,
+            "cost_repeat_estimates_ms_per_request": [
+              1.7532319901785682,
+              1.7406486542337858,
+              1.7415929901783385
+            ],
+            "decision_ms_per_request": 0.000329966737984755,
+            "refresh_branch_total_ms": 52088.14208319474,
+            "hit_branch_total_ms": 0.0
+          },
+          "cache_hit_percent": 0.0,
+          "relative_cost_percent": 100.00000000000001
+        },
+        {
+          "name": "never",
+          "family": "never",
+          "seconds": 0,
+          "events": 0,
+          "refreshes": 216,
+          "initializations": 216,
+          "subsequent_refreshes": 0,
+          "hits": 29698,
+          "refresh_fraction": 0.00722069933810256,
+          "metrics": {
+            "ndcg@10": 0.02367971390189482,
+            "recall@100": 0.15585192784474652,
+            "hit@1": 0.010387278789433189
+          },
+          "cost": {
+            "estimated_total_ms": 28384.88167575271,
+            "estimated_ms_per_request": 0.9488828533714216,
+            "cost_repeat_estimates_ms_per_request": [
+              0.9059962269606654,
+              0.9591971233427615,
+              0.9488828533714216
+            ],
+            "decision_ms_per_request": 0.00032889423014574327,
+            "refresh_branch_total_ms": 376.1128130631164,
+            "hit_branch_total_ms": 27998.930320689014
+          },
+          "cache_hit_percent": 99.27793006618974,
+          "relative_cost_percent": 54.48361693705809
+        },
+        {
+          "name": "events_2",
+          "family": "events",
+          "seconds": 0,
+          "events": 2,
+          "refreshes": 15809,
+          "initializations": 216,
+          "subsequent_refreshes": 15593,
+          "hits": 14105,
+          "refresh_fraction": 0.5284816473891824,
+          "metrics": {
+            "ndcg@10": 0.04939978105059904,
+            "recall@100": 0.24775583482944344,
+            "hit@1": 0.020005129520389842
+          },
+          "cost": {
+            "estimated_total_ms": 40838.894884853755,
+            "estimated_ms_per_request": 1.3652100984439979,
+            "cost_repeat_estimates_ms_per_request": [
+              1.3509522717041458,
+              1.3696130126995822,
+              1.3652100984439979
+            ],
+            "decision_ms_per_request": 0.000442507421264811,
+            "refresh_branch_total_ms": 27527.62713756855,
+            "hit_branch_total_ms": 13298.030580285491
+          },
+          "cache_hit_percent": 47.151835261081764,
+          "relative_cost_percent": 78.38858482682575
+        },
+        {
+          "name": "events_5",
+          "family": "events",
+          "seconds": 0,
+          "events": 5,
+          "refreshes": 6678,
+          "initializations": 216,
+          "subsequent_refreshes": 6462,
+          "hits": 23236,
+          "refresh_fraction": 0.2232399545363375,
+          "metrics": {
+            "ndcg@10": 0.040828872763292536,
+            "recall@100": 0.23429084380610413,
+            "hit@1": 0.016542703257245446
+          },
+          "cost": {
+            "estimated_total_ms": 33547.65147558193,
+            "estimated_ms_per_request": 1.121469929651064,
+            "cost_repeat_estimates_ms_per_request": [
+              1.0904475566535945,
+              1.1293344349436882,
+              1.121469929651064
+            ],
+            "decision_ms_per_request": 0.00043008009627065855,
+            "refresh_branch_total_ms": 11628.154470534682,
+            "hit_branch_total_ms": 21906.631589047407
+          },
+          "cache_hit_percent": 77.67600454636624,
+          "relative_cost_percent": 64.39334195621825
+        },
+        {
+          "name": "events_10",
+          "family": "events",
+          "seconds": 0,
+          "events": 10,
+          "refreshes": 3475,
+          "initializations": 216,
+          "subsequent_refreshes": 3259,
+          "hits": 26439,
+          "refresh_fraction": 0.11616634351808518,
+          "metrics": {
+            "ndcg@10": 0.03516800319019999,
+            "recall@100": 0.22150978883474395,
+            "hit@1": 0.013678721039582798
+          },
+          "cost": {
+            "estimated_total_ms": 30989.948302729787,
+            "estimated_ms_per_request": 1.0359680518395997,
+            "cost_repeat_estimates_ms_per_request": [
+              0.9990649602282712,
+              1.045046824582847,
+              1.0359680518395997
+            ],
+            "decision_ms_per_request": 0.0004237620177831792,
+            "refresh_branch_total_ms": 6050.889006455229,
+            "hit_branch_total_ms": 24926.38287927459
+          },
+          "cache_hit_percent": 88.38336564819149,
+          "relative_cost_percent": 59.48393555106793
+        },
+        {
+          "name": "events_20",
+          "family": "events",
+          "seconds": 0,
+          "events": 20,
+          "refreshes": 1820,
+          "initializations": 216,
+          "subsequent_refreshes": 1604,
+          "hits": 28094,
+          "refresh_fraction": 0.06084107775623454,
+          "metrics": {
+            "ndcg@10": 0.030776288674945463,
+            "recall@100": 0.2037274514832863,
+            "hit@1": 0.012481832948619305
+          },
+          "cost": {
+            "estimated_total_ms": 29668.74319920136,
+            "estimated_ms_per_request": 0.991801270281519,
+            "cost_repeat_estimates_ms_per_request": [
+              0.9518595931859766,
+              1.0015074587696247,
+              0.991801270281519
+            ],
+            "decision_ms_per_request": 0.0004328004278812149,
+            "refresh_branch_total_ms": 3169.098702661444,
+            "hit_branch_total_ms": 26486.697704540275
+          },
+          "cache_hit_percent": 93.91589222437655,
+          "relative_cost_percent": 56.947936508400794
+        },
+        {
+          "name": "events_25",
+          "family": "events",
+          "seconds": 0,
+          "events": 25,
+          "refreshes": 1483,
+          "initializations": 216,
+          "subsequent_refreshes": 1267,
+          "hits": 28431,
+          "refresh_fraction": 0.04957544962225045,
+          "metrics": {
+            "ndcg@10": 0.03014507292745514,
+            "recall@100": 0.1993673591519193,
+            "hit@1": 0.012781054971360178
+          },
+          "cost": {
+            "estimated_total_ms": 29400.198171839762,
+            "estimated_ms_per_request": 0.9828240346272569,
+            "cost_repeat_estimates_ms_per_request": [
+              0.9422636244149893,
+              0.9926579808833487,
+              0.9828240346272569
+            ],
+            "decision_ms_per_request": 0.0004508827973509698,
+            "refresh_branch_total_ms": 2582.2930637620443,
+            "hit_branch_total_ms": 26804.41740007776
+          },
+          "cache_hit_percent": 95.04245503777496,
+          "relative_cost_percent": 56.432475335503966
+        },
+        {
+          "name": "events_50",
+          "family": "events",
+          "seconds": 0,
+          "events": 50,
+          "refreshes": 806,
+          "initializations": 216,
+          "subsequent_refreshes": 590,
+          "hits": 29108,
+          "refresh_fraction": 0.026943905863475295,
+          "metrics": {
+            "ndcg@10": 0.027442291555193385,
+            "recall@100": 0.18466273403436778,
+            "hit@1": 0.012353594938873216
+          },
+          "cost": {
+            "estimated_total_ms": 28859.41719428776,
+            "estimated_ms_per_request": 0.9647461788556447,
+            "cost_repeat_estimates_ms_per_request": [
+              0.9229427943999858,
+              0.9748367779572163,
+              0.9647461788556447
+            ],
+            "decision_ms_per_request": 0.0004437400882507006,
+            "refresh_branch_total_ms": 1403.4579968929252,
+            "hit_branch_total_ms": 27442.685156394902
+          },
+          "cache_hit_percent": 97.30560941365248,
+          "relative_cost_percent": 55.394468414623965
+        },
+        {
+          "name": "events_60",
+          "family": "events",
+          "seconds": 0,
+          "events": 60,
+          "refreshes": 691,
+          "initializations": 216,
+          "subsequent_refreshes": 475,
+          "hits": 29223,
+          "refresh_fraction": 0.02309955204920773,
+          "metrics": {
+            "ndcg@10": 0.025572722171715755,
+            "recall@100": 0.17906300760878857,
+            "hit@1": 0.009917072753697529
+          },
+          "cost": {
+            "estimated_total_ms": 28767.72449020838,
+            "estimated_ms_per_request": 0.9616809684498355,
+            "cost_repeat_estimates_ms_per_request": [
+              0.9196664436130985,
+              0.9718151644158535,
+              0.9616809684498355
+            ],
+            "decision_ms_per_request": 0.00044814859261701204,
+            "refresh_branch_total_ms": 1203.2127491972844,
+            "hit_branch_total_ms": 27551.10582401155
+          },
+          "cache_hit_percent": 97.69004479507922,
+          "relative_cost_percent": 55.21846802744422
+        },
+        {
+          "name": "events_120",
+          "family": "events",
+          "seconds": 0,
+          "events": 120,
+          "refreshes": 419,
+          "initializations": 216,
+          "subsequent_refreshes": 203,
+          "hits": 29495,
+          "refresh_fraction": 0.014006819549374874,
+          "metrics": {
+            "ndcg@10": 0.024468251615959714,
+            "recall@100": 0.16542703257245447,
+            "hit@1": 0.010344532786184493
+          },
+          "cost": {
+            "estimated_total_ms": 28550.63131245562,
+            "estimated_ms_per_request": 0.9544237250937896,
+            "cost_repeat_estimates_ms_per_request": [
+              0.9119098073557195,
+              0.9646610371218024,
+              0.9544237250937896
+            ],
+            "decision_ms_per_request": 0.00045122126759500943,
+            "refresh_branch_total_ms": 729.5892068215082,
+            "hit_branch_total_ms": 27807.544272635278
+          },
+          "cache_hit_percent": 98.59931804506252,
+          "relative_cost_percent": 54.80176657096311
+        },
+        {
+          "name": "events_240",
+          "family": "events",
+          "seconds": 0,
+          "events": 240,
+          "refreshes": 286,
+          "initializations": 216,
+          "subsequent_refreshes": 70,
+          "hits": 29628,
+          "refresh_fraction": 0.009560740790265428,
+          "metrics": {
+            "ndcg@10": 0.024409079854519303,
+            "recall@100": 0.16243481234504573,
+            "hit@1": 0.010558262802427974
+          },
+          "cost": {
+            "estimated_total_ms": 28444.05764740897,
+            "estimated_ms_per_request": 0.9508610566092455,
+            "cost_repeat_estimates_ms_per_request": [
+              0.90810295043045,
+              0.9611487893587484,
+              0.9508610566092455
+            ],
+            "decision_ms_per_request": 0.0004386337835147864,
+            "refresh_branch_total_ms": 498.00122470394115,
+            "hit_branch_total_ms": 27932.935131704966
+          },
+          "cache_hit_percent": 99.04392592097345,
+          "relative_cost_percent": 54.59720278914752
+        },
+        {
+          "name": "events_480",
+          "family": "events",
+          "seconds": 0,
+          "events": 480,
+          "refreshes": 231,
+          "initializations": 216,
+          "subsequent_refreshes": 15,
+          "hits": 29683,
+          "refresh_fraction": 0.007722136792137461,
+          "metrics": {
+            "ndcg@10": 0.02394570408110422,
+            "recall@100": 0.1615798922800718,
+            "hit@1": 0.010259040779687098
+          },
+          "cost": {
+            "estimated_total_ms": 28399.99100289289,
+            "estimated_ms_per_request": 0.9493879455403119,
+            "cost_repeat_estimates_ms_per_request": [
+              0.9065288591792616,
+              0.9596965289641154,
+              0.9493879455403119
+            ],
+            "decision_ms_per_request": 0.00043360132379562197,
+            "refresh_branch_total_ms": 402.2317584147217,
+            "hit_branch_total_ms": 27984.788494478147
+          },
+          "cache_hit_percent": 99.22778632078625,
+          "relative_cost_percent": 54.51261867120256
+        },
+        {
+          "name": "time_300",
+          "family": "time",
+          "seconds": 300,
+          "events": 0,
+          "refreshes": 13520,
+          "initializations": 216,
+          "subsequent_refreshes": 13304,
+          "hits": 16394,
+          "refresh_fraction": 0.45196229190345655,
+          "metrics": {
+            "ndcg@10": 0.04888586511448799,
+            "recall@100": 0.24459263058903993,
+            "hit@1": 0.020603573565871593
+          },
+          "cost": {
+            "estimated_total_ms": 39011.07462797792,
+            "estimated_ms_per_request": 1.304107596041249,
+            "cost_repeat_estimates_ms_per_request": [
+              1.2856471577162816,
+              1.3093782774509,
+              1.304107596041249
+            ],
+            "decision_ms_per_request": 0.00043876750018405987,
+            "refresh_branch_total_ms": 23541.87607691358,
+            "hit_branch_total_ms": 15456.073260063831
+          },
+          "cache_hit_percent": 54.80377080965435,
+          "relative_cost_percent": 74.88015876245052
+        },
+        {
+          "name": "time_1800",
+          "family": "time",
+          "seconds": 1800,
+          "events": 0,
+          "refreshes": 4495,
+          "initializations": 216,
+          "subsequent_refreshes": 4279,
+          "hits": 25419,
+          "refresh_fraction": 0.1502640903924584,
+          "metrics": {
+            "ndcg@10": 0.03689333111219183,
+            "recall@100": 0.22031290074378046,
+            "hit@1": 0.015388561169530648
+          },
+          "cost": {
+            "estimated_total_ms": 31804.51782129923,
+            "estimated_ms_per_request": 1.0631984295413262,
+            "cost_repeat_estimates_ms_per_request": [
+              1.0281680613099964,
+              1.071890517052093,
+              1.0631984295413262
+            ],
+            "decision_ms_per_request": 0.00042795460316973744,
+            "refresh_branch_total_ms": 7826.97729036439,
+            "hit_branch_total_ms": 23964.73869693562
+          },
+          "cache_hit_percent": 84.97359096075417,
+          "relative_cost_percent": 61.047468354386005
+        },
+        {
+          "name": "time_3600",
+          "family": "time",
+          "seconds": 3600,
+          "events": 0,
+          "refreshes": 3085,
+          "initializations": 216,
+          "subsequent_refreshes": 2869,
+          "hits": 26829,
+          "refresh_fraction": 0.10312896971317778,
+          "metrics": {
+            "ndcg@10": 0.03228852452729874,
+            "recall@100": 0.20813028981790202,
+            "hit@1": 0.013336753013593229
+          },
+          "cost": {
+            "estimated_total_ms": 30679.033121071836,
+            "estimated_ms_per_request": 1.0255744173655088,
+            "cost_repeat_estimates_ms_per_request": [
+              0.987955284461828,
+              1.0348010403447048,
+              1.0255744173655088
+            ],
+            "decision_ms_per_request": 0.00044013949994012303,
+            "refresh_branch_total_ms": 5371.796427313491,
+            "hit_branch_total_ms": 25294.070360757138
+          },
+          "cache_hit_percent": 89.68710302868223,
+          "relative_cost_percent": 58.88714660366716
+        },
+        {
+          "name": "time_7200",
+          "family": "time",
+          "seconds": 7200,
+          "events": 0,
+          "refreshes": 2266,
+          "initializations": 216,
+          "subsequent_refreshes": 2050,
+          "hits": 27648,
+          "refresh_fraction": 0.07575048472287223,
+          "metrics": {
+            "ndcg@10": 0.030388094725249493,
+            "recall@100": 0.193639394716594,
+            "hit@1": 0.013165769000598444
+          },
+          "cost": {
+            "estimated_total_ms": 30024.566290986528,
+            "estimated_ms_per_request": 1.003696138630291,
+            "cost_repeat_estimates_ms_per_request": [
+              0.9645733190126697,
+              1.0132332471049785,
+              1.003696138630291
+            ],
+            "decision_ms_per_request": 0.0004228858728419991,
+            "refresh_branch_total_ms": 3945.7020111158413,
+            "hit_branch_total_ms": 26066.21407187049
+          },
+          "cache_hit_percent": 92.42495152771278,
+          "relative_cost_percent": 57.630924348605284
+        },
+        {
+          "name": "time_10800",
+          "family": "time",
+          "seconds": 10800,
+          "events": 0,
+          "refreshes": 1923,
+          "initializations": 216,
+          "subsequent_refreshes": 1707,
+          "hits": 27991,
+          "refresh_fraction": 0.06428428160727419,
+          "metrics": {
+            "ndcg@10": 0.029436445624469693,
+            "recall@100": 0.19098914251517482,
+            "hit@1": 0.012567324955116697
+          },
+          "cost": {
+            "estimated_total_ms": 29751.012791967256,
+            "estimated_ms_per_request": 0.9945514739575869,
+            "cost_repeat_estimates_ms_per_request": [
+              0.9547989052033582,
+              1.0042186148192753,
+              0.9945514739575869
+            ],
+            "decision_ms_per_request": 0.00043369325396584274,
+            "refresh_branch_total_ms": 3348.4487940758,
+            "hit_branch_total_ms": 26389.59049789232
+          },
+          "cache_hit_percent": 93.57157183927258,
+          "relative_cost_percent": 57.1058496196488
+        },
+        {
+          "name": "time_21600",
+          "family": "time",
+          "seconds": 21600,
+          "events": 0,
+          "refreshes": 1477,
+          "initializations": 216,
+          "subsequent_refreshes": 1261,
+          "hits": 28437,
+          "refresh_fraction": 0.049374874640636494,
+          "metrics": {
+            "ndcg@10": 0.027513238525146096,
+            "recall@100": 0.1823544498589382,
+            "hit@1": 0.011626912883645379
+          },
+          "cost": {
+            "estimated_total_ms": 29394.7297831851,
+            "estimated_ms_per_request": 0.982641230968279,
+            "cost_repeat_estimates_ms_per_request": [
+              0.9420698047361292,
+              0.9924774518433855,
+              0.982641230968279
+            ],
+            "decision_ms_per_request": 0.0004282331684692597,
+            "refresh_branch_total_ms": 2571.8454856214025,
+            "hit_branch_total_ms": 26810.07413056211
+          },
+          "cache_hit_percent": 95.06251253593635,
+          "relative_cost_percent": 56.42197898761966
+        },
+        {
+          "name": "time_43200",
+          "family": "time",
+          "seconds": 43200,
+          "events": 0,
+          "refreshes": 1072,
+          "initializations": 216,
+          "subsequent_refreshes": 856,
+          "hits": 28842,
+          "refresh_fraction": 0.03583606338169419,
+          "metrics": {
+            "ndcg@10": 0.027921550916263697,
+            "recall@100": 0.17260836111823544,
+            "hit@1": 0.01231084893562452
+          },
+          "cost": {
+            "estimated_total_ms": 29071.43585838459,
+            "estimated_ms_per_request": 0.9718337854644845,
+            "cost_repeat_estimates_ms_per_request": [
+              0.9305187778902764,
+              0.9818235431230758,
+              0.9718337854644845
+            ],
+            "decision_ms_per_request": 0.0004311846961625902,
+            "refresh_branch_total_ms": 1866.6339611280591,
+            "hit_branch_total_ms": 27191.903438255522
+          },
+          "cache_hit_percent": 96.41639366183058,
+          "relative_cost_percent": 55.80142955013669
+        },
+        {
+          "name": "time_86400",
+          "family": "time",
+          "seconds": 86400,
+          "events": 0,
+          "refreshes": 835,
+          "initializations": 216,
+          "subsequent_refreshes": 619,
+          "hits": 29079,
+          "refresh_fraction": 0.02791335160794277,
+          "metrics": {
+            "ndcg@10": 0.02734836792467213,
+            "recall@100": 0.1741472172351885,
+            "hit@1": 0.012011626912883645
+          },
+          "cost": {
+            "estimated_total_ms": 28881.883125960045,
+            "estimated_ms_per_request": 0.9654971961609964,
+            "cost_repeat_estimates_ms_per_request": [
+              0.9237470558014356,
+              0.9755768012706642,
+              0.9654971961609964
+            ],
+            "decision_ms_per_request": 0.00042067958147102517,
+            "refresh_branch_total_ms": 1453.9546245726954,
+            "hit_branch_total_ms": 27415.344292387224
+          },
+          "cache_hit_percent": 97.20866483920572,
+          "relative_cost_percent": 55.4375908496353
+        }
+      ]
+    }
+  },
+  "maximum_initial_mixed_cost_difference_percent": 25.797302566076,
+  "maximum_longer_recheck_difference_percent": 7.58180338537845,
+  "maximum_ct_longer_recheck_difference_percent": 1.691987569747544
+}

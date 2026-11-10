@@ -1,0 +1,155 @@
+{
+  "scope": "Longer mixed-workload recheck after noisy initial repetitions; original cost coefficients and CT selection unchanged",
+  "steps_per_repeat": 256,
+  "repeats": 5,
+  "warmup": 20,
+  "checks": {
+    "controller_train": {
+      "always": {
+        "repeat_mean_ms": [
+          1.722268718751252,
+          1.7152783203115973,
+          1.7151289062482533,
+          1.7107827148450383,
+          1.7059166679729287
+        ],
+        "median_mean_ms": 1.7151289062482533,
+        "sample_requests": 1280,
+        "sample_refreshes": 1280,
+        "predicted_sample_ms": 1.72567089843767,
+        "measured_minus_predicted_percent": -0.6108923896764429
+      },
+      "never": {
+        "repeat_mean_ms": [
+          0.9339625624988912,
+          0.9403382148462924,
+          0.9458699570288331,
+          0.9275032578131004,
+          0.9419156874983514
+        ],
+        "median_mean_ms": 0.9403382148462924,
+        "sample_requests": 1280,
+        "sample_refreshes": 5,
+        "predicted_sample_ms": 0.9565224559019981,
+        "measured_minus_predicted_percent": -1.691987569747544
+      },
+      "hybrid_60_3600": {
+        "repeat_mean_ms": [
+          1.0316949882778204,
+          1.0344041328167464,
+          1.0299658203081208,
+          1.0381497382780935,
+          1.04428157422376
+        ],
+        "median_mean_ms": 1.0344041328167464,
+        "sample_requests": 1280,
+        "sample_refreshes": 139,
+        "predicted_sample_ms": 1.037358449078296,
+        "measured_minus_predicted_percent": -0.2847922301278505
+      },
+      "hybrid_5_1800": {
+        "repeat_mean_ms": [
+          1.0772028007792755,
+          1.164929199219955,
+          1.14930126952828,
+          1.177023601563576,
+          1.17138720703025
+        ],
+        "median_mean_ms": 1.164929199219955,
+        "sample_requests": 1280,
+        "sample_refreshes": 357,
+        "predicted_sample_ms": 1.1688677514098855,
+        "measured_minus_predicted_percent": -0.3369544745485342
+      },
+      "hybrid_2_300": {
+        "repeat_mean_ms": [
+          1.4064495468772975,
+          1.3794690742159332,
+          1.4327011718719973,
+          1.4368291015642853,
+          1.430221679683541
+        ],
+        "median_mean_ms": 1.430221679683541,
+        "sample_requests": 1280,
+        "sample_refreshes": 782,
+        "predicted_sample_ms": 1.4252505655884429,
+        "measured_minus_predicted_percent": 0.3487887824865199
+      }
+    },
+    "policy_valid": {
+      "always": {
+        "repeat_mean_ms": [
+          1.8481730117159145,
+          1.7241966132814923,
+          1.7263875312494292,
+          1.7224314765584836,
+          1.7224723320339308
+        ],
+        "median_mean_ms": 1.7241966132814923,
+        "sample_requests": 1280,
+        "sample_refreshes": 1280,
+        "predicted_sample_ms": 1.7412630234403537,
+        "measured_minus_predicted_percent": -0.9801167272903921
+      },
+      "never": {
+        "repeat_mean_ms": [
+          0.9413982734400861,
+          0.9567727851589325,
+          0.9583478203083473,
+          0.9778478203088525,
+          0.9465685234388843
+        ],
+        "median_mean_ms": 0.9567727851589325,
+        "sample_requests": 1280,
+        "sample_refreshes": 16,
+        "predicted_sample_ms": 0.9527693466750975,
+        "measured_minus_predicted_percent": 0.4201896815641648
+      },
+      "hybrid_60_3600": {
+        "repeat_mean_ms": [
+          1.0169728203095474,
+          1.0324109687473992,
+          1.0426464843789063,
+          1.0295680351575243,
+          0.9658767890599051
+        ],
+        "median_mean_ms": 1.0295680351575243,
+        "sample_requests": 1280,
+        "sample_refreshes": 139,
+        "predicted_sample_ms": 1.0294977661704507,
+        "measured_minus_predicted_percent": 0.006825559936363135
+      },
+      "hybrid_5_1800": {
+        "repeat_mean_ms": [
+          1.170353839839322,
+          1.148494628907315,
+          1.1423188476555879,
+          1.1216700859364437,
+          1.162805335937378
+        ],
+        "median_mean_ms": 1.148494628907315,
+        "sample_requests": 1280,
+        "sample_refreshes": 334,
+        "predicted_sample_ms": 1.1511403824435718,
+        "measured_minus_predicted_percent": -0.2298376094356569
+      },
+      "hybrid_2_300": {
+        "repeat_mean_ms": [
+          1.2776741523481405,
+          1.293315105471038,
+          1.3116790390625965,
+          1.3162825507819775,
+          1.2922928046847915
+        ],
+        "median_mean_ms": 1.293315105471038,
+        "sample_requests": 1280,
+        "sample_refreshes": 732,
+        "predicted_sample_ms": 1.3994160812984546,
+        "measured_minus_predicted_percent": -7.58180338537845
+      }
+    }
+  },
+  "torch": "2.15.0",
+  "source_sha256": "dca09a1cdccd7d892651a8e556ffa0ddb3b367955b4756d6f319f8e180138d7d",
+  "raw_replay_sha256": "c1bbe6ae4ba0c4c9f7314aaef02e43f7b59eccf0bdb91ba5700529a869f64687"
+}

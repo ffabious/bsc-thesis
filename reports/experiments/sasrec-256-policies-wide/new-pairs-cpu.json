@@ -1,0 +1,10 @@
+{
+  "scope": "CPU oracle sampled only newly computed state/target pairs, excluding all reference cached pairs",
+  "pairs": 256,
+  "same_metrics": true,
+  "exact_rank_matches": 253,
+  "maximum_rank_difference": 1,
+  "new_unique_state_target_pairs": 264784,
+  "seed": 43,
+  "raw_replay_sha256": "c1bbe6ae4ba0c4c9f7314aaef02e43f7b59eccf0bdb91ba5700529a869f64687"
+}

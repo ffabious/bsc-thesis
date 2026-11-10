@@ -1,0 +1,20 @@
+{
+  "data": "data/processed/yambda50m-pilot-audio",
+  "checkpoint": "data/runs/sasrec-256-full-ce/train-mps/best.pt",
+  "checkpoint_sha256": "decfa67cb108d71806fec5957e4d425650aa6acb33bd67bf4b71e1d105cc4eb0",
+  "splits": ["controller_train", "policy_valid"],
+  "event_thresholds": [2, 5, 10, 20, 25, 50, 60, 120, 240, 480],
+  "time_thresholds_seconds": [300, 1800, 3600, 7200, 10800, 21600, 43200, 86400],
+  "cost_budgets_relative_to_always": [0.6, 0.75, 0.9],
+  "batch_size": 256,
+  "threads": 4,
+  "seed": 42,
+  "benchmark_steps": 128,
+  "benchmark_repeats": 3,
+  "benchmark_warmup": 8,
+  "reference_replay": {
+    "path": "data/runs/sasrec-256-policies",
+    "ranks_sha256": "4d7a2470b79239e6c18ad28857ea06bc51b65f01fed16fa6c93725b74878e9ee",
+    "results_sha256": "fbfec2f8efddd275db343ec16825cd238476d88dca443ec386454dc7bbece0d6"
+  }
+}

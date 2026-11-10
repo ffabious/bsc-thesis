@@ -93,6 +93,27 @@ def load_requests(data, splits, length):
     return result
 
 
+def rank_reusing(model, vectors, refs, targets, device, batch_size, previous=None):
+    if previous is None:
+        return rank_vectors(model, vectors, refs, targets, device, batch_size)
+    old_refs, old_rank = previous
+    width = model.item.num_embeddings
+    old_keys, first = np.unique(old_refs.astype(np.int64) * width + targets[None], return_index=True)
+    old_values = old_rank.ravel()[first]
+    keys, inverse = np.unique(refs.astype(np.int64) * width + targets[None], return_inverse=True)
+    position = np.searchsorted(old_keys, keys).clip(max=len(old_keys) - 1)
+    reused = old_keys[position] == keys
+    result = np.empty(len(keys), dtype=np.int32)
+    result[reused] = old_values[position[reused]]
+    timing = {"scoring_ranking_seconds": 0}
+    if (~reused).any():
+        missing = keys[~reused]
+        new, timing = rank_vectors(model, vectors, (missing // width)[None], missing % width, device, batch_size)
+        result[~reused] = new[0]
+    return result[inverse].reshape(refs.shape), {**timing, "unique_state_target_pairs": len(keys),
+        "reused_state_target_pairs": int(reused.sum()), "computed_state_target_pairs": int((~reused).sum())}
+
+
 def schedule(stream, policy, user_count):
     """Decisions see only user, current clock and strictly past observed-event count."""
     refs = np.empty(len(stream["users"]), dtype=np.int32)
@@ -267,8 +288,35 @@ def main():
     started = time.perf_counter()
     stream = load_requests(data, config["splits"], model.length)
     prepare_seconds = time.perf_counter() - started
+    reference, prior, reference_hashes = None, None, {}
+    if reuse := config.get("reference_replay"):
+        folder = ROOT / reuse["path"]
+        reference_hashes = {str((folder / f).relative_to(ROOT)): reuse[key] for f, key in
+                            (("replay.npz", "ranks_sha256"), ("results.json", "results_sha256"))}
+        if any(digest(ROOT / p) != h for p, h in reference_hashes.items()):
+            raise ValueError("Reference replay changed")
+        reference = json.loads((folder / "results.json").read_text())
+        prior = dict(np.load(folder / "replay.npz"))
+        if (reference["checkpoint_sha256"] != config["checkpoint_sha256"] or
+                reference["data_manifest_sha256"] != digest(data / "manifest.json") or
+                reference["used_data_files_sha256"] != hashes or reference["device"] != args.device or
+                reference["torch"] != torch.__version__ or any(reference["source_sha256"][f] != digest(ROOT / f)
+                    for f in ("scripts/sasrec.py", "scripts/replay_sasrec.py", "scripts/run_sasrec.py"))):
+            raise ValueError("Reference model, data or cost device differs")
+        if any(not np.array_equal(prior[k], v) for k, v in stream.items()):
+            raise ValueError("Reference request/target stream differs")
+    prior_names = [p["name"] for p in reference["policies"]] if reference else []
     refs, refresh, decision_ms = [], [], []
     for policy in choices:
+        r, f = schedule(stream, policy, manifest["selected_users"])
+        if policy["name"] in prior_names:
+            j = prior_names.index(policy["name"])
+            if not (np.array_equal(r, prior["refs"][j]) and np.array_equal(f, prior["refresh"][j])):
+                raise ValueError("Reference schedule differs")
+            decision_ms.append([reference["results"][s]["policies"][j]["cost"]["decision_ms_per_request"] for s in config["splits"]])
+            refs.append(r)
+            refresh.append(f)
+            continue
         trials = []
         for _ in range(config["benchmark_repeats"]):
             trial = []
@@ -279,7 +327,6 @@ def main():
                 schedule(part, policy, manifest["selected_users"])
                 trial.append((time.perf_counter() - started) * 1000 / take.sum())
             trials.append(trial)
-        r, f = schedule(stream, policy, manifest["selected_users"])
         refs.append(r)
         refresh.append(f)
         decision_ms.append(np.median(trials, axis=0).tolist())
@@ -300,7 +347,8 @@ def main():
         take = stream["split_idx"][stream["target_request"]] == index
         targets = stream["targets"][take]
         requests = stream["target_request"][take]
-        rank, timings[split] = rank_vectors(model, vectors, refs[:, requests], targets, args.device, config["batch_size"])
+        previous = (prior["refs"][:, requests], prior["ranks"][:, take]) if prior is not None else None
+        rank, timings[split] = rank_reusing(model, vectors, refs[:, requests], targets, args.device, config["batch_size"], previous)
         x, y, u = examples(data, split, model.length)
         rows = stream["source_row"][take]
         if not (np.array_equal(y[rows], targets) and np.array_equal(u[rows], stream["users"][requests]) and
@@ -312,7 +360,7 @@ def main():
         checks[split] = {"same_fresh_inputs_and_metrics": True, "targets": len(y),
                          "exact_rank_matches": int((oracle == rank[0]).sum()),
                          "maximum_rank_difference": int(np.abs(oracle - rank[0]).max())}
-        costs[split] = branch_costs(model, stream, vectors, index, config, args.device)
+        costs[split] = reference["branch_costs"][split] if reference else branch_costs(model, stream, vectors, index, config, args.device)
         results[split] = summarize_split(stream, rank, refs, refresh, choices, index, costs[split], decision_ms, config["seed"])
         ranked.append((take, rank))
         print(json.dumps({"split": split, "fresh": quality(rank[0]), "frontiers": results[split]["frontiers"]}), flush=True)
@@ -352,6 +400,9 @@ def main():
     for name, checksum in sources.items():
         if digest(ROOT / name) != checksum:
             raise ValueError(f"Source changed during replay: {name}")
+    for name, checksum in reference_hashes.items():
+        if digest(ROOT / name) != checksum:
+            raise ValueError(f"Reference replay changed during extension: {name}")
     np.savez(args.output / "replay.npz", **stream, refs=refs, refresh=refresh, ranks=rank)
     write(args.output / "results.json", {"config": config, "policies": choices, "results": results,
           "branch_costs": costs, "mixed_workload_checks": mixed, "selection": selection, "verification": checks,
@@ -360,6 +411,7 @@ def main():
                                 "unique_snapshots": len(vectors), "scoring": timings},
           "checkpoint_sha256": digest(checkpoint), "data_manifest_sha256": digest(data / "manifest.json"),
           "frozen_state_sha256": before, "used_data_files_sha256": hashes, "source_sha256": sources,
+          "reference_replay_sha256": reference_hashes, "branch_costs_reused": reference is not None,
           "device": args.device, "torch": torch.__version__, "numpy": np.__version__, "duckdb": duckdb.__version__,
           "python": platform.python_version(), "macos": platform.mac_ver()[0], **memory(args.device)})
     print(json.dumps({"selection": selection, "mixed_workload_checks": mixed}), flush=True)

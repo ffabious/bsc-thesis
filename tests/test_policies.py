@@ -12,7 +12,7 @@ import torch
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 
 from replay_sasrec import encode_queries, rank_vectors
-from replay_sasrec_policies import frontier, load_requests, policies, policy_cost, schedule, select_budgets
+from replay_sasrec_policies import frontier, load_requests, policies, policy_cost, rank_reusing, schedule, select_budgets
 from sasrec import SASRec, examples, ranks
 
 
@@ -117,6 +117,23 @@ class PolicyTest(unittest.TestCase):
         self.assertEqual(c["refresh_branch_total_ms"],4)
         self.assertEqual(c["hit_branch_total_ms"],3)
         self.assertEqual(policy_cost(5,5,0,branches)["estimated_total_ms"],10)
+
+    def test_rank_reuse_matches_naive_ranks_and_skips_already_scored_pairs(self):
+        model = SASRec(12,length=3,dim=8,heads=2,blocks=1,dropout=0).eval()
+        x = np.array([[0,2,3],[3,4,5],[6,7,8]],dtype=np.int32)
+        vectors,_ = encode_queries(model,x,"cpu",3)
+        y = np.array([4,9,10])
+        old_refs = np.array([[0,1,1],[0,0,1]],dtype=np.int32)
+        old_rank,_ = rank_vectors(model,vectors,old_refs,y,"cpu",3)
+        refs = np.array([[0,1,2],[1,0,2],[0,1,1]],dtype=np.int32)
+        actual,info = rank_reusing(model,vectors,refs,y,"cpu",3,(old_refs,old_rank))
+        for i,row in enumerate(refs):
+            np.testing.assert_array_equal(actual[i],ranks(model,x[row],y,"cpu",3))
+        self.assertEqual(info["reused_state_target_pairs"],4)
+        self.assertEqual(info["computed_state_target_pairs"],2)
+        reused,all_info = rank_reusing(model,vectors,old_refs,y,"cpu",3,(old_refs,old_rank))
+        np.testing.assert_array_equal(reused,old_rank)
+        self.assertEqual(all_info["computed_state_target_pairs"],0)
 
     def test_frontier_and_ct_budget_selection(self):
         def row(name,cost,ndcg,recall):
