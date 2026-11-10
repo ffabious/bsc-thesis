@@ -1,0 +1,40 @@
+{
+  "runs": {
+    "256": {
+      "long": "data/runs/sasrec-256-full-ce",
+      "recent": "data/runs/sasrec-256-recent-2-full-ce"
+    }
+  },
+  "checkpoint_sha256": {
+    "long": "decfa67cb108d71806fec5957e4d425650aa6acb33bd67bf4b71e1d105cc4eb0",
+    "recent": "48f54252ff8ffae491f686c5fa7b96897b64854dc1cc2c1b847d5b0e74ed127a"
+  },
+  "reference_replay": "data/runs/sasrec-256-policies-wide",
+  "reference_results_sha256": "1954b4fa7e45992a4d4619e849fc7c5bc04d301bcaf3b6233e84061265149cf5",
+  "reference_ranks_sha256": "c1bbe6ae4ba0c4c9f7314aaef02e43f7b59eccf0bdb91ba5700529a869f64687",
+  "splits": [
+    "controller_train",
+    "policy_valid"
+  ],
+  "alphas": [
+    0.0,
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.8,
+    0.9,
+    1.0
+  ],
+  "score_transform": "per_query_zscore",
+  "epsilon": 1e-08,
+  "selection_metric": "ndcg@10",
+  "tie_break": "smaller_alpha",
+  "batch_size": 256,
+  "threads": 4,
+  "seed": 42,
+  "recent_label": "CE"
+}

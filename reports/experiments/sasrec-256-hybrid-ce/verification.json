@@ -1,0 +1,126 @@
+{
+  "quality": {
+    "policies_per_split": 100,
+    "targets": 75585,
+    "ct_alpha_grid_points": 1100,
+    "all_selected_ranks_match_grid": true,
+    "all_metrics_recomputed": true,
+    "all_old_new_paired_intervals_recomputed": true,
+    "same_inputs_candidates_reference": true,
+    "selection_hash_fixed": true,
+    "no_test_event_files_used": true
+  },
+  "training": {
+    "changed": {
+      "objective": {
+        "before": null,
+        "after": "full_ce"
+      }
+    },
+    "initial_validation_identical": true,
+    "same_train_examples": true,
+    "same_validation_examples": true,
+    "same_data_manifest": true,
+    "stop_reason": "validation_patience",
+    "best_epoch": 7,
+    "epochs": 9
+  },
+  "resources": {
+    "profiles": 3,
+    "full_costs_recomputed": true,
+    "refresh_initialization_counts_checked": true,
+    "ct_budget_selection_recomputed": true,
+    "mps_merged_points_per_split": 302,
+    "cpu_points_per_split": 201,
+    "serving_oracles": {
+      "cpu": {
+        "pairs": 32,
+        "same_metrics": true,
+        "exact_rank_matches": 31,
+        "maximum_rank_difference": 1
+      },
+      "mps": {
+        "pairs": 32,
+        "same_metrics": true,
+        "exact_rank_matches": 32,
+        "maximum_rank_difference": 0
+      },
+      "bce-mps": {
+        "pairs": 32,
+        "same_metrics": true,
+        "exact_rank_matches": 32,
+        "maximum_rank_difference": 0
+      }
+    }
+  },
+  "artifacts": {
+    "csv_rows": {
+      "metrics.csv": 200,
+      "alpha-grid.csv": 1100,
+      "frontier.csv": 1006,
+      "resources.csv": 76
+    },
+    "json_and_svg_parse": true,
+    "png_integrity": true,
+    "plots_visually_reviewed": true,
+    "local_report_links_valid": true,
+    "tests_passed": 68,
+    "source_and_data_hashes": {
+      "configs/experiments/sasrec-256-hybrid-ce.json": "4afee6b239628ae0df26407c2bc8ace8b016e7b54b929ed8240fcb1da6314533",
+      "scripts/replay_hybrid_sasrec.py": "75dfb0587a39bf0e0d9427c97dbb5f085596846e24df33b567d49f4ff14f0d75",
+      "scripts/blend_sasrec.py": "78265c7a9d594b3e10c53b8c798d961ee1e28f11bac16cb9e35169f34d5496fd",
+      "scripts/replay_sasrec.py": "cabb273e8d2a838f7966ce3ca98f6bd0b897f83a56651007e88b36b83bcc1fb2",
+      "scripts/sasrec.py": "0b65c3d8308cce1442450c08c04d4b2ec7dcdb48ee4e2516764aac06a847a19f",
+      "scripts/run_sasrec.py": "ac6f27a1bbca0b950e06ff8f035ff2f9ed5d01c38384a5b376b9f541057b70ac",
+      "scripts/compare_sasrec.py": "6b6880cf9b975b5ec177612d923a2978ebe570d6a59b44f755117aae055e3191",
+      "data/runs/sasrec-256-policies-wide/results.json": "1954b4fa7e45992a4d4619e849fc7c5bc04d301bcaf3b6233e84061265149cf5",
+      "data/runs/sasrec-256-policies-wide/replay.npz": "c1bbe6ae4ba0c4c9f7314aaef02e43f7b59eccf0bdb91ba5700529a869f64687",
+      "data/processed/yambda50m-pilot-audio/events/controller_train.parquet": "0791d5cca3fa43078ef3d5239f280c4a1eea34ff8ee6f0ec90504b49f09dbd21",
+      "data/processed/yambda50m-pilot-audio/events/model_valid.parquet": "32980a3fa82dc0f4d716a020af687c72c88110fda111be673a88d1cd35b6604b",
+      "data/processed/yambda50m-pilot-audio/events/policy_valid.parquet": "5bc91cd485b0f828e3ab0102df358cfe28b10e4bf130655657ef5a622e6d0a69",
+      "data/processed/yambda50m-pilot-audio/events/train.parquet": "9beb8bbc92c90ca2dccd9dfeda3b1e4e838b13b0f759f4a3da27c00e68134340",
+      "data/processed/yambda50m-pilot-audio/items.parquet": "cd16fbc24772305d9c5a57bb62a02e2eb4049bb9f62ffcd446be92f76ec0c863",
+      "data/processed/yambda50m-pilot-audio/users.parquet": "27f101f6b67421d0bab7ccc213bd154bbc8f7b9fa92742d53177bb0d7e398332",
+      "data/runs/sasrec-256-hybrid-ce/results.json": "b85376be8ca5547ba5bf31e567b86cc4f4092492dc21c2976ab5b1268ce3213b",
+      "data/runs/sasrec-256-hybrid-ce/selection.json": "066fa1fcc4f62d0cb26aeb384fd42671c2eee7b9a78bd9b100d83062d570b28b",
+      "scripts/profile_sasrec_hybrid.py": "6e70f964c9242184e393545db58ff718af48497bb149221b492d1ecbcfe143f5",
+      "scripts/replay_sasrec_policies.py": "ca104a277dd3215fe0f4794a89fc5749ac20ceb2632e506ae55c432ee53acbc8",
+      "configs/experiments/sasrec-256-hybrid-ce-resources.json": "a4c78b6fbf5d7386ff6d10e1fc728c5f65aba5b24cf13ff0a21a86d5ac04e755",
+      "data/runs/sasrec-256-hybrid/results.json": "e31a2bf00fa5d9b705ad178b7801566b6a78efb67744ca2bb6c8ed494569de79",
+      "data/runs/sasrec-256-hybrid/selection.json": "7395356c65d31f5912dd89272b7a40efb9303dd85d43a81569cf9d76d3622d47",
+      "configs/experiments/sasrec-256-hybrid-bce-resources.json": "d8096188193ccf128f85a1d3afd475d38574ce7cf9b8dcdae184974782e3f817"
+    }
+  },
+  "local_rank_artifacts_sha256": {
+    "data/runs/sasrec-256-hybrid-ce/ranks.npz": "e34b07cbd25693647e9b466b18378831206f24404becd1f82f7871708a624104",
+    "data/runs/sasrec-256-hybrid-ce/controller_train-mixtures.npz": "d64b03a3dda4e4b982453d95d9708c7bf8d46226dd900e3b68cd5f1fe388a61d",
+    "data/runs/sasrec-256-hybrid-ce/policy_valid-mixtures.npz": "b1575ad1c6e0a52f5a8392a22a7de7e058c328e6b42a54ff48f188932e0fe5c8"
+  },
+  "report_artifacts_sha256": {
+    "alpha-grid.csv": "4f1c1ff29efe5519caa8a7589ce3ca0b4e29d9c2efe8e1cd79a2a46eb9f6da2a",
+    "comparison-bce.json": "77f8145fabb1d292465d2615c517a1f865b437f805f68b7f94e470a14ba5655f",
+    "frontier-cpu-data.json": "7cd9ae7d9572ed442e2313c359170804d1da74ac852e7cbbfd3adb9a792f69a3",
+    "frontier-cpu.png": "97d70d9a9e6c1864280343da04e5abde2f2b34947b4d59e83181026f0fa33bd8",
+    "frontier-cpu.svg": "03ad4f167f18ab65a70b5fa9e265aecd648a8ef4a9edeb16403f103afd63ec8b",
+    "frontier-mps-data.json": "bc99adaef177eab10385571e82004cc315f457851db78ac56c48cefccce886ff",
+    "frontier-mps.png": "2473cc9b404ae652c02666f8f915219de236da9e87c328a446518eda2c3a19f4",
+    "frontier-mps.svg": "4044976d2d372eb11a70639c09fdd341c9eca7db0ba93f8f00d95d9b2c831787",
+    "frontier.csv": "ec4a805295cf407249b4340c9857bb5eeb67d927b790925b61143c69db48de04",
+    "hybrid-events.png": "4bd8588e1d6d40c6077829689dcc6daad2b4379820ce39043c49f34e3b2afece",
+    "hybrid-events.svg": "3ae32ba17755ba3a33d23887c7bbcb6e0ea80ca8ae79801fb697a37404f70b61",
+    "hybrid-time.png": "d1a8fe1521240ddb2309cb950bcae58de9c76b25a7cbdfa409b8194e8e09dd02",
+    "hybrid-time.svg": "de2a8fedd7b255a680cff476e682d836807ed4a7fe65cd7cbcd9b5248f3e67b5",
+    "metrics.csv": "026dcf9e095eb7e7ca7b663857ef054e4f13980d6503aebd2632f081ab7c6fd8",
+    "resources-bce-mps.json": "ce6610266b1294b01f7e3809a83ff5ca7e0e2ef33fc47e54e93793bd850126e5",
+    "resources-cpu.json": "7cd9ae7d9572ed442e2313c359170804d1da74ac852e7cbbfd3adb9a792f69a3",
+    "resources-mps.json": "4193e016470479b73934a0e690081d469df76fc3275d1f8bc2b9f62d10f6f9c0",
+    "resources.csv": "01d21d70cd9906c2f83874ef23804aa96662aaddad5b5412b86e80de6ddef795",
+    "results.json": "b85376be8ca5547ba5bf31e567b86cc4f4092492dc21c2976ab5b1268ce3213b",
+    "secondary-hit1.json": "c3e0c944dc9242abf3770ec2662de92f4d1b1f5a7a8b1c33b7f3fbf65a9ea70e",
+    "selection.json": "066fa1fcc4f62d0cb26aeb384fd42671c2eee7b9a78bd9b100d83062d570b28b",
+    "summary.json": "05ee5681fdf4a4c59f967efb27bfb42de84fec110ab7a914cfa80b7cb9495fd9",
+    "tests.txt": "c7e7a6e182ad8b91d0e98a8ab19e00dad350686850cd6ba9320947a330dade24",
+    "training-control.json": "7dcfe24e17110e32c0a34f5a28ca4914fcb146057841edae4d16aa4d92ae5f39",
+    "training.json": "f56dd0762147b436df0130c367840eca08ac8f3d749d1edc666983545eee58a6"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "scope": "Secondary Hit@1 comparisons, not used for alpha selection",
+  "results": {
+    "controller_train": {
+      "fresh_hybrid_vs_long": {
+        "difference": 0.004100323810618689,
+        "cluster_bootstrap_95ci": [
+          0.0013048143536092843,
+          0.007331127580080247
+        ]
+      },
+      "fresh_hybrid_vs_old_hybrid": {
+        "difference": 0.005863079841351957,
+        "cluster_bootstrap_95ci": [
+          0.0018331089834434046,
+          0.01105819993997307
+        ]
+      },
+      "recent_ce_vs_bce": {
+        "difference": 0.010710658925868444,
+        "cluster_bootstrap_95ci": [
+          0.004320466681176008,
+          0.01984730626611412
+        ]
+      }
+    },
+    "policy_valid": {
+      "fresh_hybrid_vs_long": {
+        "difference": 0.004274600324869625,
+        "cluster_bootstrap_95ci": [
+          0.0015631005597429757,
+          0.007666127414582513
+        ]
+      },
+      "fresh_hybrid_vs_old_hybrid": {
+        "difference": 0.007053090536034881,
+        "cluster_bootstrap_95ci": [
+          0.0023929120196018064,
+          0.01304106940168352
+        ]
+      },
+      "recent_ce_vs_bce": {
+        "difference": 0.012268102932375824,
+        "cluster_bootstrap_95ci": [
+          0.005395937908318883,
+          0.020896161876687632
+        ]
+      }
+    }
+  }
+}

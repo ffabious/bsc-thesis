@@ -303,6 +303,23 @@ frontier. Прежние 31 quality/cost точки переиспользова
 [Отчёт и графики](reports/experiments/sasrec-256-hybrid.md),
 [протокол](notes/sasrec-256-hybrid.md).
 
+## Recent full CE и измеренная стоимость смеси на 256
+
+Recent2 переобучена с единственной сменой BCE → full CE: 9 эпох, best 7,
+18.70 мин на MPS. На policy_valid свежая CE50+CE2 смесь (alpha=0.4 с CT)
+даёт **0.063086 / 0.259853 NDCG@10 / Recall@100**. К прежней CE50+BCE2:
+**+8.4% NDCG, −4.9% Recall**; оба парных интервала исключают ноль.
+К fresh long: +14.5% / +3.0%. Прежняя смесь сохраняет лучший Recall.
+
+Полный B=1 serving fresh long / fresh hybrid: CPU **1.04 / 2.37 мс**,
+MPS **1.55 / 2.90 мс**. Masked recent2 пока обрабатывает tensor длины 50
+и не дешевле длинного encoder. Frontier учитывает обе item-таблицы,
+нормировку, смешивание, cache init/refresh/hit и final top-100; CPU и MPS
+показаны отдельно, прежняя BCE-смесь добавлена в MPS-сравнение.
+Test не открыт; 68 тестов, независимые rank-oracles и hashes проверены.
+[Отчёт, ресурсы, графики и CSV](reports/experiments/sasrec-256-hybrid-ce.md),
+[протокол и команды](notes/sasrec-256-hybrid-ce.md).
+
 ## Происхождение материалов
 
 Импорт выполнен 20 октября 2026 из `thesis-project-2026-10-20.zip` и двух заметок, уже находившихся в этой папке. Заметки совпали с копиями в архиве и сохранены в одном экземпляре.

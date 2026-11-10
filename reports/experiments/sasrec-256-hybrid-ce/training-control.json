@@ -1,0 +1,15 @@
+{
+  "changed": {
+    "objective": {
+      "before": null,
+      "after": "full_ce"
+    }
+  },
+  "initial_validation_identical": true,
+  "same_train_examples": true,
+  "same_validation_examples": true,
+  "same_data_manifest": true,
+  "stop_reason": "validation_patience",
+  "best_epoch": 7,
+  "epochs": 9
+}

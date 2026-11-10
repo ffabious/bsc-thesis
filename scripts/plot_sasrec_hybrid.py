@@ -11,6 +11,7 @@ from plot_sasrec_replay import plt,save
 
 def curves(result,output,family):
     fig,axes = plt.subplots(2,2,figsize=(11.5,7.5),sharex=True)
+    recent_label = result["config"].get("recent_label","BCE")
     for row,(split,block) in enumerate(result["results"].items()):
         policies = [p for p in block["policies"] if p["family"] == family]
         x = [p["seconds"] if family == "time" else p["events"] for p in policies]
@@ -18,7 +19,7 @@ def curves(result,output,family):
             ax = axes[row,col]
             ax.plot(x,[p["long_metrics"][metric] for p in policies],"o-",color="#c36b22",label="Cached long CE",markersize=4)
             ax.plot(x,[p["hybrid_metrics"][metric] for p in policies],"o-",color="#26906b",label="Cached long + fresh recent",markersize=4)
-            ax.axhline(block["recent_metrics"][metric],color="#2864a0",linestyle="--",label="Fresh recent-only BCE")
+            ax.axhline(block["recent_metrics"][metric],color="#2864a0",linestyle="--",label=f"Fresh recent-only {recent_label}")
             ax.axhline(block["policies"][0]["long_metrics"][metric],color="#666666",linestyle=":",label="Fresh long CE")
             ax.axhline(block["policies"][0]["hybrid_metrics"][metric],color="#26906b",linestyle=":",label="Fresh hybrid")
             labels = [f"{v//3600}h" if v%3600==0 else f"{v//60}m" for v in x] if family=="time" else [str(v) for v in x]
@@ -30,7 +31,7 @@ def curves(result,output,family):
             ax.set_ylabel("Quality")
             if row==1:
                 ax.set_xlabel("Long-cache on-request TTL" if family=="time" else "Observed listens per long refresh")
-    fig.suptitle("SASRec 256 — cached long CE + fresh recent BCE (2 events)",fontsize=14,y=1.01)
+    fig.suptitle(f"SASRec 256 — cached long CE + fresh recent {recent_label} (2 events)",fontsize=14,y=1.01)
     fig.legend(*axes[0,0].get_legend_handles_labels(),loc="upper center",bbox_to_anchor=(.5,.98),ncol=3,frameon=False,fontsize=9)
     fig.text(.5,-.01,"Per-policy alpha selected on CT and frozen on PV. CT quality is fitted; PV is the evaluation period.",ha="center",fontsize=9)
     fig.tight_layout(rect=(0,0,1,.91))
