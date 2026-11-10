@@ -14,6 +14,7 @@
 | `blend_sasrec.py` | Нормировка scores по кандидатам запроса, выбор веса 50/2 только на validation и отдельная test-оценка замороженной смеси; без обучения |
 | `replay_sasrec.py` / `plot_sasrec_replay.py` | Диагностические fixed-lag fresh/stale snapshots, локальные component costs, кривые и CSV; не actual refresh schedules |
 | `replay_sasrec_policies.py` / `plot_sasrec_policies.py` | Реальные on-request always/never/time/events/OR schedules на CT/PV; paired quality, initialization/refresh counts, измеренные ветви стоимости, frontier и CT-budget selection; test запрещён |
+| `replay_hybrid_sasrec.py` / `plot_sasrec_hybrid.py` | Смесь cached CE50 / fresh BCE2 scores с per-query z-score, alpha на CT для каждой политики и frozen PV evaluation; endpoints, CPU oracle, проверяемый resume mixture grids, CSV и quality curves; test запрещён |
 | `diagnostics/sage_fd_check.py` | Самостоятельная численная диагностика опубликованного псевдокода SAGE; требует NumPy |
 | `diagnostics/audit_pilot_scale.py` | Проверка общей когорты и строго прошлых histories, естественные prefixes и сегменты качества 256/1k |
 | `diagnostics/audit_joint_repeats.py` | Локальные inference-абляции выбранных повторов joint-BCE моделей, tracing encoder и полный validation-контроль короткого контекста; без обучения |

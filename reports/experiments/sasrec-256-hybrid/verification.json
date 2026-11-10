@@ -1,0 +1,43 @@
+{
+  "status": "passed",
+  "test_suite": {
+    "tests": 62,
+    "failures": 0,
+    "mps_tests_executed": true
+  },
+  "oracles": {
+    "controller_train": {
+      "recent_oracle_same_inputs_and_metrics": true,
+      "exact_rank_matches": 52191,
+      "maximum_rank_difference": 0
+    },
+    "policy_valid": {
+      "recent_oracle_same_inputs_and_metrics": true,
+      "exact_rank_matches": 23394,
+      "maximum_rank_difference": 0
+    },
+    "cpu_mixture": {
+      "pairs": 256,
+      "same_metrics": true,
+      "exact_rank_matches": 255,
+      "maximum_rank_difference": 1
+    }
+  },
+  "selection_sha256": "7395356c65d31f5912dd89272b7a40efb9303dd85d43a81569cf9d76d3622d47",
+  "selection_unchanged_through_pv": true,
+  "selection_reproduced_from_saved_ct_grid": true,
+  "checkpoint_data_source_reference_and_reused_grid_hashes_match": true,
+  "no_test_event_file_read": true,
+  "all_100_selected_alphas_strictly_between_endpoints": true,
+  "ct_alpha_points_checked": 1100,
+  "csv_rows_checked": 1300,
+  "all_policy_ranks_and_metrics_match_grids": true,
+  "all_long_metrics_and_refresh_counts_match_reference": true,
+  "figures_png_svg_valid": true,
+  "local_links_valid": true,
+  "raw_ranks_sha256": "90fd3def746dcff0361bf3b3b89fcd2dd4061f072a5476e9fda994cb81e36564",
+  "plot_source_sha256": "04798ffd1de4d1b857e839c1903caf8c78cf5ea6da572733fb82809d14292566",
+  "test_source_sha256": "7c459061ceceb035199c17aa9ed54355c03c3348e119b0b72e2cbf64325b615a",
+  "cost_scope": "Hybrid serving cost not measured; prior long-only cost not transferred",
+  "note": "Final CPU oracle target UInt32 cast fixed; cached MPS grids reused without changing selection or score formula"
+}

@@ -1,0 +1,25 @@
+{
+  "scope": "Secondary Hit@1 analysis, not used for alpha selection",
+  "seed": 42,
+  "bootstrap_draws": 2000,
+  "results": {
+    "controller_train": {
+      "fresh_long_hit@1": 0.022839186832978867,
+      "fresh_hybrid_hit@1": 0.021076430802245597,
+      "hybrid_minus_long": -0.0017627560307332682,
+      "cluster_bootstrap_95ci": [
+        -0.004455642391988982,
+        0.00038895969803133225
+      ]
+    },
+    "policy_valid": {
+      "fresh_long_hit@1": 0.02410874583226468,
+      "fresh_hybrid_hit@1": 0.021330255621099428,
+      "hybrid_minus_long": -0.002778490211165256,
+      "cluster_bootstrap_95ci": [
+        -0.006189552665211471,
+        0.000277016261975758
+      ]
+    }
+  }
+}

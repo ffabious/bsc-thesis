@@ -1,0 +1,135 @@
+{
+  "scope": "Exploratory paired schedule comparisons at the same fixed alpha=0.7; not used for alpha selection",
+  "comparisons": {
+    "controller_train": [
+      {
+        "policy": "time_21600",
+        "reference": "never",
+        "alpha_both": 0.7,
+        "paired_delta": {
+          "ndcg@10": {
+            "difference": 0.00123786251880022,
+            "cluster_bootstrap_95ci": [
+              0.00014469610728835405,
+              0.0024384200925732834
+            ]
+          },
+          "recall@100": {
+            "difference": 0.004234446552087524,
+            "cluster_bootstrap_95ci": [
+              0.001284293495476701,
+              0.007325947736366836
+            ]
+          }
+        }
+      },
+      {
+        "policy": "time_86400",
+        "reference": "never",
+        "alpha_both": 0.7,
+        "paired_delta": {
+          "ndcg@10": {
+            "difference": 0.0005910549917905744,
+            "cluster_bootstrap_95ci": [
+              -0.00028054182163238727,
+              0.0015516623276181892
+            ]
+          },
+          "recall@100": {
+            "difference": 0.0018010768140100783,
+            "cluster_bootstrap_95ci": [
+              -0.0010336874333599399,
+              0.004707112923486889
+            ]
+          }
+        }
+      },
+      {
+        "policy": "time_10800",
+        "reference": "time_86400",
+        "alpha_both": 0.7,
+        "paired_delta": {
+          "ndcg@10": {
+            "difference": 0.0009344611503721373,
+            "cluster_bootstrap_95ci": [
+              0.00031441369608590337,
+              0.0015813366858790736
+            ]
+          },
+          "recall@100": {
+            "difference": 0.0043302485102795505,
+            "cluster_bootstrap_95ci": [
+              0.002180465323540945,
+              0.006522274287372703
+            ]
+          }
+        }
+      }
+    ],
+    "policy_valid": [
+      {
+        "policy": "time_21600",
+        "reference": "never",
+        "alpha_both": 0.7,
+        "paired_delta": {
+          "ndcg@10": {
+            "difference": 0.0016630881112231943,
+            "cluster_bootstrap_95ci": [
+              0.00047412794425781584,
+              0.0030152798685309052
+            ]
+          },
+          "recall@100": {
+            "difference": 0.0037189022826365735,
+            "cluster_bootstrap_95ci": [
+              -0.00032430806386040306,
+              0.00808574225542206
+            ]
+          }
+        }
+      },
+      {
+        "policy": "time_86400",
+        "reference": "never",
+        "alpha_both": 0.7,
+        "paired_delta": {
+          "ndcg@10": {
+            "difference": 0.001148126707739697,
+            "cluster_bootstrap_95ci": [
+              0.00013192494888531308,
+              0.0022479300187331027
+            ]
+          },
+          "recall@100": {
+            "difference": 0.004274600324869625,
+            "cluster_bootstrap_95ci": [
+              0.0006162065279996044,
+              0.008217964926176291
+            ]
+          }
+        }
+      },
+      {
+        "policy": "time_10800",
+        "reference": "time_86400",
+        "alpha_both": 0.7,
+        "paired_delta": {
+          "ndcg@10": {
+            "difference": 0.0007602591098353346,
+            "cluster_bootstrap_95ci": [
+              -2.2244628537866237e-05,
+              0.001561447062802906
+            ]
+          },
+          "recall@100": {
+            "difference": 0.00038471402923826624,
+            "cluster_bootstrap_95ci": [
+              -0.0020438044286314955,
+              0.002786993523935528
+            ]
+          }
+        }
+      }
+    ]
+  }
+}
