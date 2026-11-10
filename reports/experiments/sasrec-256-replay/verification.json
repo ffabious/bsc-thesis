@@ -1,0 +1,111 @@
+{
+  "checkpoint_sha256": "decfa67cb108d71806fec5957e4d425650aa6acb33bd67bf4b71e1d105cc4eb0",
+  "frozen_state_sha256": "a6c96cd1d368987ec7b0020eccba36003356ecc223a8ec3226a943837cb47442",
+  "frozen_state_unchanged_checked_by_runner": true,
+  "causal_cutoffs_checked_for_every_pair": true,
+  "fixed_cohort": {
+    "controller_train": {
+      "all_targets": 52191,
+      "included": 52172,
+      "excluded": 19,
+      "excluded_users": 1,
+      "missing_history_by_lag": {
+        "fresh": 0,
+        "events_1": 0,
+        "events_5": 0,
+        "events_10": 0,
+        "events_25": 2,
+        "events_50": 19,
+        "seconds_300": 0,
+        "seconds_1800": 0,
+        "seconds_7200": 0,
+        "seconds_86400": 0,
+        "seconds_604800": 0
+      }
+    },
+    "policy_valid": {
+      "all_targets": 23394,
+      "included": 23394,
+      "excluded": 0,
+      "excluded_users": 0,
+      "missing_history_by_lag": {
+        "fresh": 0,
+        "events_1": 0,
+        "events_5": 0,
+        "events_10": 0,
+        "events_25": 0,
+        "events_50": 0,
+        "seconds_300": 0,
+        "seconds_1800": 0,
+        "seconds_7200": 0,
+        "seconds_86400": 0,
+        "seconds_604800": 0
+      }
+    }
+  },
+  "fresh_oracle": {
+    "controller_train": {
+      "all_events": 52191,
+      "all_fresh_metrics": {
+        "ndcg@10": 0.05666257584298457,
+        "recall@100": 0.265869594374509,
+        "hit@1": 0.022839186832978867
+      },
+      "covered_fresh_metrics": {
+        "ndcg@10": 0.05668321122098459,
+        "recall@100": 0.265947251399218,
+        "hit@1": 0.02284750440849498
+      },
+      "same_metrics": true,
+      "exact_rank_matches": 52168,
+      "maximum_rank_difference": 1
+    },
+    "policy_valid": {
+      "all_events": 23394,
+      "all_fresh_metrics": {
+        "ndcg@10": 0.0550929395331777,
+        "recall@100": 0.25220141916730787,
+        "hit@1": 0.02410874583226468
+      },
+      "covered_fresh_metrics": {
+        "ndcg@10": 0.0550929395331777,
+        "recall@100": 0.25220141916730787,
+        "hit@1": 0.02410874583226468
+      },
+      "same_metrics": true,
+      "exact_rank_matches": 23394,
+      "maximum_rank_difference": 0
+    }
+  },
+  "cpu_oracle": {
+    "pairs": 256,
+    "same_metrics": true,
+    "exact_rank_matches": 255,
+    "maximum_rank_difference": 1
+  },
+  "used_data_files_sha256": {
+    "events/controller_train.parquet": "0791d5cca3fa43078ef3d5239f280c4a1eea34ff8ee6f0ec90504b49f09dbd21",
+    "events/model_valid.parquet": "32980a3fa82dc0f4d716a020af687c72c88110fda111be673a88d1cd35b6604b",
+    "events/policy_valid.parquet": "5bc91cd485b0f828e3ab0102df358cfe28b10e4bf130655657ef5a622e6d0a69",
+    "events/train.parquet": "9beb8bbc92c90ca2dccd9dfeda3b1e4e838b13b0f759f4a3da27c00e68134340",
+    "items.parquet": "cd16fbc24772305d9c5a57bb62a02e2eb4049bb9f62ffcd446be92f76ec0c863",
+    "users.parquet": "27f101f6b67421d0bab7ccc213bd154bbc8f7b9fa92742d53177bb0d7e398332"
+  },
+  "test_events_not_read": true,
+  "raw_arrays_sha256": "1dab21b794be5fcec665ed8f8176a479e243ec856b561dfad7a91360df1d50c9",
+  "source_sha256": {
+    "scripts/replay_sasrec.py": "2cbbf0110269641e7abb248ac83284fb4010eae475dc6e1bed7f46eb4e3f6ec6",
+    "scripts/sasrec.py": "0b65c3d8308cce1442450c08c04d4b2ec7dcdb48ee4e2516764aac06a847a19f",
+    "scripts/run_sasrec.py": "ac6f27a1bbca0b950e06ff8f035ff2f9ed5d01c38384a5b376b9f541057b70ac",
+    "scripts/compare_sasrec.py": "6b6880cf9b975b5ec177612d923a2978ebe570d6a59b44f755117aae055e3191",
+    "configs/experiments/sasrec-256-replay.json": "42244a46d0fcafac8a7e746ffe84bfd6a32ed8025f3e9d3395501d57cc394d76"
+  },
+  "artifact_source_sha256": {
+    "scripts/plot_sasrec_replay.py": "aec03c8729bd532c203257068282b9313dfbde8c70ccb7d3efb7c9af61bc46d6",
+    "tests/test_replay.py": "5fb382db17bf3c2506efb3b864bc1b0677423c50f10728e98bade28859daedad",
+    "requirements-replay.txt": "f4f03a2a93f6afb244ff1e5351e7c2af8cede9d44a70542fc95ad857d06a45c2"
+  },
+  "tests_passed": 47,
+  "matplotlib": "3.11.2",
+  "png_unchanged_by_svg_whitespace_cleanup": true
+}

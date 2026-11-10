@@ -261,6 +261,16 @@ CE. Выбран полный CE при исходных dim 64, двух гол
 кандидатах 256 новая 1k-модель уступает 256 CE по обеим метрикам.
 [Команды](notes/sasrec-1k-full-ce.md), [результаты и проверки](reports/experiments/sasrec-1k-full-ce.md).
 
+## Replay fresh/stale на 256 CE
+
+Frozen encoder сравнивается на одних событиях controller_train / policy_valid
+при лагах по новым прослушиваниям и времени. Timestamp-группы неделимы;
+test не читается. На policy_valid минимальный event lag 1 снижает NDCG на 21.5%,
+суточный time lag — на 51.5%. Отдельно измерены encoder, scoring, CPU-cache
+и end-to-end cost для batch 1/256. Фиксированный лаг не является refresh-политикой.
+[Команды и зависимости](notes/sasrec-256-replay.md),
+[отчёт, PNG/SVG и CSV](reports/experiments/sasrec-256-replay.md).
+
 ## Происхождение материалов
 
 Импорт выполнен 20 октября 2026 из `thesis-project-2026-10-20.zip` и двух заметок, уже находившихся в этой папке. Заметки совпали с копиями в архиве и сохранены в одном экземпляре.

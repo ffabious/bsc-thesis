@@ -1,0 +1,203 @@
+{
+  "scope": "Fixed-lag quality ablation and separately measured local costs; no refresh-policy frontier.",
+  "policy_valid": [
+    {
+      "condition": "fresh",
+      "metrics": {
+        "ndcg@10": 0.0550929395331777,
+        "recall@100": 0.25220141916730787,
+        "hit@1": 0.02410874583226468
+      },
+      "relative_change_percent": {
+        "ndcg@10": 0.0,
+        "recall@100": 0.0
+      }
+    },
+    {
+      "condition": "events_1",
+      "metrics": {
+        "ndcg@10": 0.043231452195426956,
+        "recall@100": 0.2424553304266051,
+        "hit@1": 0.015773275198768914
+      },
+      "relative_change_percent": {
+        "ndcg@10": -21.529959080523554,
+        "recall@100": -3.8644067796610226
+      }
+    },
+    {
+      "condition": "events_5",
+      "metrics": {
+        "ndcg@10": 0.031145786995868823,
+        "recall@100": 0.21060955800632641,
+        "hit@1": 0.012952038984354963
+      },
+      "relative_change_percent": {
+        "ndcg@10": -43.46682667547187,
+        "recall@100": -16.491525423728813
+      }
+    },
+    {
+      "condition": "events_10",
+      "metrics": {
+        "ndcg@10": 0.028073864617632855,
+        "recall@100": 0.1935539027100966,
+        "hit@1": 0.012139864922629735
+      },
+      "relative_change_percent": {
+        "ndcg@10": -49.04271789540944,
+        "recall@100": -23.254237288135606
+      }
+    },
+    {
+      "condition": "events_25",
+      "metrics": {
+        "ndcg@10": 0.023660524603324948,
+        "recall@100": 0.17525861331965462,
+        "hit@1": 0.009660596734205351
+      },
+      "relative_change_percent": {
+        "ndcg@10": -57.0534358779744,
+        "recall@100": -30.508474576271194
+      }
+    },
+    {
+      "condition": "events_50",
+      "metrics": {
+        "ndcg@10": 0.023420561870738852,
+        "recall@100": 0.1628622723775327,
+        "hit@1": 0.009831580747200136
+      },
+      "relative_change_percent": {
+        "ndcg@10": -57.48899574212285,
+        "recall@100": -35.42372881355933
+      }
+    },
+    {
+      "condition": "seconds_300",
+      "metrics": {
+        "ndcg@10": 0.04543330880587131,
+        "recall@100": 0.24006155424467812,
+        "hit@1": 0.018038813370949817
+      },
+      "relative_change_percent": {
+        "ndcg@10": -17.53333695598004,
+        "recall@100": -4.8135593220339
+      }
+    },
+    {
+      "condition": "seconds_1800",
+      "metrics": {
+        "ndcg@10": 0.030228164405791968,
+        "recall@100": 0.20526630760023937,
+        "hit@1": 0.012481832948619305
+      },
+      "relative_change_percent": {
+        "ndcg@10": -45.132416854271916,
+        "recall@100": -18.61016949152543
+      }
+    },
+    {
+      "condition": "seconds_7200",
+      "metrics": {
+        "ndcg@10": 0.028880647293377613,
+        "recall@100": 0.1835513379499017,
+        "hit@1": 0.012567324955116697
+      },
+      "relative_change_percent": {
+        "ndcg@10": -47.57831486558217,
+        "recall@100": -27.22033898305085
+      }
+    },
+    {
+      "condition": "seconds_86400",
+      "metrics": {
+        "ndcg@10": 0.026731695333103697,
+        "recall@100": 0.16713687270240232,
+        "hit@1": 0.01149867487389929
+      },
+      "relative_change_percent": {
+        "ndcg@10": -51.47890898614056,
+        "recall@100": -33.728813559322035
+      }
+    },
+    {
+      "condition": "seconds_604800",
+      "metrics": {
+        "ndcg@10": 0.019302234812660597,
+        "recall@100": 0.14661879114302812,
+        "hit@1": 0.007395058562024451
+      },
+      "relative_change_percent": {
+        "ndcg@10": -64.96423139477511,
+        "recall@100": -41.864406779661024
+      }
+    }
+  ],
+  "cost": [
+    {
+      "batch_size": 1,
+      "fresh_per_request_ms": 1.4374775000032969,
+      "cache_hit_per_request_ms": 0.8128324999961478,
+      "break_even_R_continuous": 1.3947015344541467,
+      "amortized": [
+        {
+          "predictions_per_refresh": 1,
+          "estimated_per_request_ms": 1.684025839995229
+        },
+        {
+          "predictions_per_refresh": 2,
+          "estimated_per_request_ms": 1.2484291699956884
+        },
+        {
+          "predictions_per_refresh": 5,
+          "estimated_per_request_ms": 0.9870711679959641
+        },
+        {
+          "predictions_per_refresh": 10,
+          "estimated_per_request_ms": 0.8999518339960559
+        },
+        {
+          "predictions_per_refresh": 25,
+          "estimated_per_request_ms": 0.8476802335961111
+        },
+        {
+          "predictions_per_refresh": 50,
+          "estimated_per_request_ms": 0.8302563667961295
+        }
+      ]
+    },
+    {
+      "batch_size": 256,
+      "fresh_per_request_ms": 0.13262942695320135,
+      "cache_hit_per_request_ms": 0.12196186523443231,
+      "break_even_R_continuous": 1.2029721895551757,
+      "amortized": [
+        {
+          "predictions_per_refresh": 1,
+          "estimated_per_request_ms": 0.13479464531247487
+        },
+        {
+          "predictions_per_refresh": 2,
+          "estimated_per_request_ms": 0.1283782552734536
+        },
+        {
+          "predictions_per_refresh": 5,
+          "estimated_per_request_ms": 0.12452842125004082
+        },
+        {
+          "predictions_per_refresh": 10,
+          "estimated_per_request_ms": 0.12324514324223657
+        },
+        {
+          "predictions_per_refresh": 25,
+          "estimated_per_request_ms": 0.12247517643755401
+        },
+        {
+          "predictions_per_refresh": 50,
+          "estimated_per_request_ms": 0.12221852083599316
+        }
+      ]
+    }
+  ]
+}

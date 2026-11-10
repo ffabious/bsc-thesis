@@ -1,0 +1,16 @@
+{
+  "data": "data/processed/yambda50m-pilot-audio",
+  "checkpoint": "data/runs/sasrec-256-full-ce/train-mps/best.pt",
+  "checkpoint_sha256": "decfa67cb108d71806fec5957e4d425650aa6acb33bd67bf4b71e1d105cc4eb0",
+  "splits": ["controller_train", "policy_valid"],
+  "event_lags": [0, 1, 5, 10, 25, 50],
+  "time_lags_seconds": [0, 300, 1800, 7200, 86400, 604800],
+  "batch_size": 256,
+  "threads": 4,
+  "seed": 42,
+  "benchmark_batches": [1, 256],
+  "benchmark_steps": [50, 10],
+  "benchmark_repeats": 3,
+  "benchmark_warmup": 2,
+  "reuse_counts": [1, 2, 5, 10, 25, 50]
+}
