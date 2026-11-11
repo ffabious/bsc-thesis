@@ -93,6 +93,21 @@ def load_student(folder,device):
     return model.to(device).eval().requires_grad_(False),saved["config"]
 
 
+def load_teachers(protocol,device):
+    runs = protocol["teacher"]["runs"]["256"]
+    if "recent" in runs:
+        return load_pair(protocol["teacher"],"256",device)
+    if set(runs)!={"long"} or protocol["fixed_teacher_alpha"]!=0:
+        raise ValueError("Single teacher requires a long model and fixed alpha0")
+    folder = ROOT/runs["long"]/"train-mps";trained = read(folder/"training.json")
+    model,config = load_student(folder,device)
+    if config!=trained["config"] or checksum(ROOT/config["data"]/"manifest.json")!=trained["data_manifest_sha256"]:
+        raise ValueError("Teacher configuration or dataset changed")
+    source = {"run":runs["long"],"checkpoint_sha256":trained["checkpoint_sha256"],"epoch":trained["best_epoch"],
+        "data_manifest_sha256":trained["data_manifest_sha256"],"items":model.item.num_embeddings-2}
+    return {"long":model},{"long":config},{"long":source}
+
+
 def source_hashes(config_path):
     paths = [config_path.resolve()]+[ROOT/"scripts"/p for p in ["distill_sasrec.py","run_sasrec.py","sasrec.py","blend_sasrec.py"]]
     return {str(p.relative_to(ROOT)):checksum(p) for p in paths}
@@ -124,7 +139,7 @@ def run_training(protocol,root,weight,device,config_path,resume):
     used = {p:checksum(data/p) for p in ["manifest.json","events/train.parquet","events/model_valid.parquet","items.parquet","users.parquet"]}
     update = None
     if weight:
-        models,_,sources = load_pair(protocol["teacher"],"256",device)
+        models,_,sources = load_teachers(protocol,device)
         if sources!=teacher_selection["sources"]:raise ValueError("Teacher sources changed")
         update = DistillationStep(Teacher(models,teacher_selection["alpha"],protocol["temperature"]),weight)
     # Teacher setup precedes seeding: control/KD use identical initial dropout and batch RNG.
@@ -175,7 +190,7 @@ def evaluate(protocol,root,device):
     if (root/"evaluation.json").exists():raise FileExistsError("Evaluation already exists")
     selected = lock_selection(protocol,root);selection_hash = checksum(root/"selection.json")
     teacher_selection = read(root/"teacher/selection.json")
-    models,_,sources = load_pair(protocol["teacher"],"256",device)
+    models,_,sources = load_teachers(protocol,device)
     if sources!=teacher_selection["sources"]:raise ValueError("Teacher changed")
     teacher = Teacher(models,teacher_selection["alpha"],protocol["temperature"])
     folder = ROOT/protocol["reference_replay"]
@@ -190,12 +205,15 @@ def evaluate(protocol,root,device):
         model,config = load_student(ROOT/selected[name]["run"],device)
         values[name] = ranks(model,x,y,device,256)
         del model
-    ids = torch.arange(2,models["long"].item.num_embeddings,device=device);parts = []
-    for start in range(0,len(y),256):
-        sequence = torch.as_tensor(x[start:start+256],dtype=torch.long,device=device)
-        target = torch.as_tensor(y[start:start+256],dtype=torch.long,device=device)
-        parts.append(score_ranks(teacher.logits(sequence),ids,target).cpu().numpy())
-    values["teacher"] = np.concatenate(parts)
+    if teacher.alpha==0:
+        values["teacher"] = values["original"]
+    else:
+        ids = torch.arange(2,models["long"].item.num_embeddings,device=device);parts = []
+        for start in range(0,len(y),256):
+            sequence = torch.as_tensor(x[start:start+256],dtype=torch.long,device=device)
+            target = torch.as_tensor(y[start:start+256],dtype=torch.long,device=device)
+            parts.append(score_ranks(teacher.logits(sequence),ids,target).cpu().numpy())
+        values["teacher"] = np.concatenate(parts)
     results = {}
     for idx,split in enumerate(protocol["evaluation_splits"],1):
         take = stream["split_idx"][q]==idx
@@ -221,15 +239,17 @@ def profile(protocol,root,device):
     if destination.exists():raise FileExistsError("Serving profile already exists")
     selected = read(root/"selection.json");selection_hash = checksum(root/"selection.json")
     teacher_selection = read(root/"teacher/selection.json")
-    models,configs,sources = load_pair(protocol["teacher"],"256",device)
+    models,configs,sources = load_teachers(protocol,device)
     alpha = teacher_selection["alpha"]
-    services = {"original":Serving(models,configs,device,2),"teacher":Serving(models,configs,device,2)}
+    recent_width = 2 if "recent" in models else None
+    services = {"original":Serving(models,configs,device,recent_width),"teacher":Serving(models,configs,device,recent_width)}
     for name in ["control","student"]:
         if name=="control" and selected[name]["checkpoint_sha256"]==sources["long"]["checkpoint_sha256"]:
             services[name] = services["original"]
             continue
         model,config = load_student(ROOT/selected[name]["run"],device)
-        services[name] = Serving({"long":model,"recent":models["recent"]},{"long":config,"recent":configs["recent"]},device,2)
+        branches = {**models,"long":model};settings = {**configs,"long":config}
+        services[name] = Serving(branches,settings,device,recent_width)
     if protocol.get("control_run"):
         del services["original"]
     stream = dict(np.load(ROOT/protocol["reference_replay"]/"replay.npz"));pool = np.flatnonzero(stream["split_idx"]==1)

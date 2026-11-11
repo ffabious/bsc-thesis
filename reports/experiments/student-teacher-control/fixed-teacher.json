@@ -1,0 +1,48 @@
+{
+  "pilot": "256",
+  "examples": 29313,
+  "users": 210,
+  "catalog_items": 114125,
+  "alpha": 0.0,
+  "selected_on": "fixed_control_before_training",
+  "curve": [
+    {
+      "alpha": 0.0,
+      "metrics": {
+        "ndcg@10": 0.07208452470010303,
+        "recall@100": 0.3057687715348139,
+        "hit@1": 0.03141950670351039
+      }
+    }
+  ],
+  "sources": {
+    "long": {
+      "run": "data/runs/sasrec-256-full-ce",
+      "checkpoint_sha256": "decfa67cb108d71806fec5957e4d425650aa6acb33bd67bf4b71e1d105cc4eb0",
+      "epoch": 4,
+      "data_manifest_sha256": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c",
+      "items": 114125
+    }
+  },
+  "protocol": {
+    "runs": {
+      "256": {
+        "long": "data/runs/sasrec-256-full-ce"
+      }
+    },
+    "alphas": [
+      0.0
+    ],
+    "score_transform": "raw",
+    "epsilon": 1e-08,
+    "selection_metric": "ndcg@10",
+    "tie_break": "smaller_alpha",
+    "batch_size": 256,
+    "seed": 42,
+    "threads": 4
+  },
+  "endpoint_validation_reproduced": true,
+  "derived_from": "data/runs/sasrec-256-distillation-cold/teacher/selection.json",
+  "derived_from_sha256": "519023f92a12bda0712c18df6a599c575da155e3f4ab91ca0881090f21940f0e",
+  "no_ct_pv_test_events_read": true
+}

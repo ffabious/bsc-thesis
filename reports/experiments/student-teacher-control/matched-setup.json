@@ -1,0 +1,20 @@
+{
+  "same_initializer_rng": true,
+  "same_base_config": true,
+  "same_teacher_temperature_weight": true,
+  "same_teacher_loss_update_ast": [
+    "Teacher",
+    "objectives",
+    "DistillationStep"
+  ],
+  "unchanged_source_files": [
+    "scripts/run_sasrec.py",
+    "scripts/sasrec.py",
+    "scripts/blend_sasrec.py"
+  ],
+  "reference_source_commit": "9435418",
+  "comparison_checkpoint_sha256": "1f1a7dd073aaef8878d633b9c867479fe6ea2c3cd15ff5176b8262ed0bc06f5a",
+  "changed_factor": "teacher alpha0 instead of alpha0.4; only the long CE50 checkpoint is loaded",
+  "no_ct_pv_test_events_read": true,
+  "actual_training_initial_state_rng_verified": true
+}

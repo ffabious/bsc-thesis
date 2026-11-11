@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "new_training_runs": 1,
+  "training_stop_reason": "validation_patience",
+  "epochs": 4,
+  "best_epoch": 2,
+  "same_initialization_rng_as_previous": true,
+  "same_base_config_temperature_weight": true,
+  "teacher_branches": [
+    "long"
+  ],
+  "teacher_raw_logits_verified_targets": 29313,
+  "source_data_checkpoint_hashes_checked": true,
+  "comparison_targets": 104898,
+  "all_overall_and_stratum_paired_intervals_recomputed": true,
+  "csv_json_svg_checks_passed": true,
+  "test_count": 80,
+  "no_test_events_read": true,
+  "checkpoint_sha256": "28445611be332350f3af7bd9a8c9e7131721612a151feb6145e7d9ef6dead2a0"
+}

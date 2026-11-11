@@ -1,0 +1,43 @@
+{
+  "base_config": "configs/experiments/sasrec-256-full-ce.json",
+  "initial_checkpoint": null,
+  "initial_checkpoint_sha256": null,
+  "weights": [
+    1.0
+  ],
+  "temperature": 2.0,
+  "loss": "CE + weight * temperature^2 * KL(teacher || student)",
+  "teacher_scale": "raw CE50 logits",
+  "evaluation_splits": [
+    "controller_train",
+    "policy_valid"
+  ],
+  "reference_replay": "data/runs/sasrec-256-policies-wide",
+  "teacher": {
+    "runs": {
+      "256": {
+        "long": "data/runs/sasrec-256-full-ce"
+      }
+    },
+    "alphas": [
+      0.0
+    ],
+    "score_transform": "raw",
+    "epsilon": 1e-08,
+    "selection_metric": "ndcg@10",
+    "tie_break": "smaller_alpha",
+    "batch_size": 256,
+    "seed": 42,
+    "threads": 4
+  },
+  "control_run": "data/runs/sasrec-256-full-ce/train-mps",
+  "control_checkpoint_sha256": "decfa67cb108d71806fec5957e4d425650aa6acb33bd67bf4b71e1d105cc4eb0",
+  "fixed_teacher_alpha": 0.0,
+  "teacher_selection_source": "data/runs/student-teacher-control/fixed-teacher.json",
+  "teacher_selection_sha256": "9847c74ad43b5db00cf4066f23073658952cd34ca847a26df9a1ac381d0e51c5",
+  "reference_source_commit": "591575aaa759eaa1f489ff92f7020f6bdcc11f11",
+  "reference_source_registry": "reports/experiments/sasrec-baseline-search/sources-full-ce.json",
+  "comparison_run": "data/runs/sasrec-256-distillation-cold/kd-1/train-mps",
+  "comparison_checkpoint_sha256": "1f1a7dd073aaef8878d633b9c867479fe6ea2c3cd15ff5176b8262ed0bc06f5a",
+  "comparison_events": "data/diagnostics/sasrec-256-distillation-audit/events.npz"
+}

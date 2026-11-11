@@ -1,0 +1,50 @@
+{
+  "selected_on": "model_valid",
+  "criterion": "maximum best-epoch NDCG@10; ties smaller nonzero weight",
+  "student": {
+    "weight": 1.0,
+    "run": "data/runs/student-teacher-control/kd-1/train-mps",
+    "best_epoch": 2,
+    "metrics": {
+      "ndcg@10": 0.07219312209866603,
+      "recall@100": 0.32193907140176714
+    },
+    "checkpoint_sha256": "28445611be332350f3af7bd9a8c9e7131721612a151feb6145e7d9ef6dead2a0"
+  },
+  "control": {
+    "weight": 0.0,
+    "run": "data/runs/sasrec-256-full-ce/train-mps",
+    "best_epoch": 4,
+    "metrics": {
+      "ndcg@10": 0.07208452470010303,
+      "recall@100": 0.3057687715348139
+    },
+    "checkpoint_sha256": "decfa67cb108d71806fec5957e4d425650aa6acb33bd67bf4b71e1d105cc4eb0",
+    "reused": true
+  },
+  "candidates": [
+    {
+      "weight": 0.0,
+      "run": "data/runs/sasrec-256-full-ce/train-mps",
+      "best_epoch": 4,
+      "metrics": {
+        "ndcg@10": 0.07208452470010303,
+        "recall@100": 0.3057687715348139
+      },
+      "checkpoint_sha256": "decfa67cb108d71806fec5957e4d425650aa6acb33bd67bf4b71e1d105cc4eb0",
+      "reused": true
+    },
+    {
+      "weight": 1.0,
+      "run": "data/runs/student-teacher-control/kd-1/train-mps",
+      "best_epoch": 2,
+      "metrics": {
+        "ndcg@10": 0.07219312209866603,
+        "recall@100": 0.32193907140176714
+      },
+      "checkpoint_sha256": "28445611be332350f3af7bd9a8c9e7131721612a151feb6145e7d9ef6dead2a0"
+    }
+  ],
+  "teacher_selection_sha256": "9847c74ad43b5db00cf4066f23073658952cd34ca847a26df9a1ac381d0e51c5",
+  "locked_before_holdout_read": true
+}

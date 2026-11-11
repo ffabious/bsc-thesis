@@ -1,0 +1,1 @@
+Same initial state/RNG; teacher raw CE50 logits verified on all 29313 validation targets

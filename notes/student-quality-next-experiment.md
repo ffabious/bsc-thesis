@@ -1,7 +1,9 @@
 # Проверка источника ошибок student
 
-Статус: предложение, training не запускался. Основа:
+Статус: выполнен. [Результаты](../reports/experiments/student-teacher-control.md).
+Основа:
 [разбор качества](../reports/experiments/sasrec-256-distillation-audit.md).
+[Зафиксированный протокол](../configs/experiments/student-teacher-control.json).
 
 ## Вопрос
 
@@ -56,3 +58,39 @@ test оставить для финальной зафиксированной �
 grid, нового CE-контроля или изменений данных/архитектуры. Serving student
 прежний; training использует одну teacher-ветвь вместо двух, фактическое
 время фиксируется по завершении.
+
+## Воспроизведение
+
+Источник alpha0 — сохранённый endpoint прежней model_valid curve; он
+фиксируется до training, без нового поиска. Initializer восстановлен тем же
+скриптом; все29 начальных тензоров и CPU/MPS RNG совпали с прошлым student.
+Teacher logits на всех29313 validation targets точно совпали с raw CE50.
+Проверки не читают CT/PV/test. В training loop state/RNG проверяются ещё раз.
+
+```sh
+mkdir -p data/runs/student-teacher-control
+cp reports/experiments/student-teacher-control/fixed-teacher.json data/runs/student-teacher-control/fixed-teacher.json
+PYTORCH_ENABLE_MPS_FALLBACK=0 .venv/bin/python scripts/check_sasrec_initialization.py --config configs/experiments/student-teacher-control.json --output data/runs/student-teacher-control --device mps
+PYTORCH_ENABLE_MPS_FALLBACK=0 .venv/bin/python scripts/distill_sasrec.py train --weight 1 --config configs/experiments/student-teacher-control.json --output data/runs/student-teacher-control --device mps
+PYTORCH_ENABLE_MPS_FALLBACK=0 .venv/bin/python scripts/distill_sasrec.py evaluate --config configs/experiments/student-teacher-control.json --output data/runs/student-teacher-control --device mps
+PYTORCH_ENABLE_MPS_FALLBACK=0 .venv/bin/python scripts/compare_student_teachers.py --config configs/experiments/student-teacher-control.json --input data/runs/student-teacher-control --output reports/experiments/student-teacher-control --device mps
+```
+
+`fixed-teacher.json` и его SHA закреплены в config; teacher selection и
+initialization proof находятся в локальном output. Данные и checkpoints —
+в игнорируемом `data/`; отчёт, небольшие JSON/CSV и графики — в Git.
+Команды рассчитаны на чистый output: existing training/evaluation не перезаписываются.
+Перед экспортом в output сохраняются `tests.txt`, `teacher-check.json` и
+`matched-setup.json`; опубликованные копии содержат зафиксированные проверки.
+
+## Результат
+
+4 эпохи, best2, trainer16.10мин. Model_valid0.072193 /0.321939.
+PV0.053899 /0.265966 против0.055093 /0.252201 у CE50 и
+0.053961 /0.264512 у прошлого student. К CE50 NDCG−2.17% (CI включает0),
+Recall+5.46% (CI выше0); к прошлому student обе общие CI включают0.
+PV repeat NDCG по точечной оценке вырос0.4924 →0.5185, но остаётся ниже
+CE50 0.5695; на последнем треке после train top10000 остаётся значимая
+условная потеря. Смесь не является необходимым условием этой потери в этом seed.
+80 тестов, matched setup/init/data/checkpoint/source проверки пройдены;
+test закрыт. Следующие варианты автоматически не запускаются.

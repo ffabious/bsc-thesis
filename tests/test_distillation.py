@@ -15,7 +15,7 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"scripts"))
 import run_sasrec
 from blend_sasrec import normalize_scores
 from distill_sasrec import DistillationStep,Teacher,objectives
-from distill_sasrec import lock_selection
+from distill_sasrec import lock_selection,load_teachers
 from sasrec import SASRec
 
 
@@ -54,6 +54,26 @@ class DistillationTest(unittest.TestCase):
         zero,_,_ = objectives(logits,target,logp,0,temperature)
         torch.testing.assert_close(zero,ce)
         torch.testing.assert_close(torch.autograd.grad(zero,logits,retain_graph=True)[0],torch.autograd.grad(ce,logits)[0])
+
+    def test_single_teacher_loads_no_recent_branch_and_uses_raw_ce_logits(self):
+        with tempfile.TemporaryDirectory(dir=Path.cwd()) as tmp:
+            root=Path(tmp);(root/"manifest.json").write_text('{"candidate_items":12}')
+            folder=root/"train-mps";folder.mkdir()
+            config={"data":str(root.relative_to(run_sasrec.ROOT)),"length":3,"dim":8,"heads":2,"blocks":1,"dropout":0}
+            model=SASRec(12,**run_sasrec.model_args(config))
+            torch.save({"weights":model.state_dict(),"config":config,"items":12,"epoch":4},folder/"best.pt")
+            trained={"checkpoint_sha256":hashlib.sha256((folder/"best.pt").read_bytes()).hexdigest(),"config":config,
+                "data_manifest_sha256":hashlib.sha256((root/"manifest.json").read_bytes()).hexdigest(),"best_epoch":4}
+            (folder/"training.json").write_text(json.dumps(trained))
+            protocol={"teacher":{"runs":{"256":{"long":str(root.relative_to(run_sasrec.ROOT))}}},"fixed_teacher_alpha":0}
+            with patch("distill_sasrec.load_pair",side_effect=AssertionError("Unused pair must not load")):
+                models,configs,sources=load_teachers(protocol,"cpu")
+            self.assertEqual(set(models),{"long"});self.assertEqual(set(sources),{"long"})
+            teacher=Teacher(models,0,2);x=torch.tensor([[0,2,3],[4,5,5]])
+            with torch.no_grad():raw=models["long"](x)@models["long"].item.weight[2:].T
+            torch.testing.assert_close(teacher.logits(x),raw,atol=0,rtol=0)
+            torch.testing.assert_close(teacher.targets(x),F.log_softmax(raw/2,dim=1),atol=0,rtol=0)
+            self.assertTrue(all(p.grad is None and not p.requires_grad for p in models["long"].parameters()))
 
     def test_training_updates_student_but_not_teacher(self):
         models = self.models();teacher = Teacher(models,.4)

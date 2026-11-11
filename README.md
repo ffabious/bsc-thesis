@@ -377,10 +377,21 @@ CPU B1 1.33мс, MPS B1 1.87мс. 79 тестов, artifact checks, test зак�
 не объясняют знак. Input-ablation последних двух токенов закрывает60.9%
 repeat-разрыва при прежних весах, но не весь разрыв.
 
-Следующий предложенный контроль — teacher только CE50, T2/lambda1 прежние:
-отделить эффект смеси от самого KD. Training не запускался.
+Контроль с teacher только CE50 выполнен; его результаты приведены ниже.
 [Разбор, срезы, CI и проверки](reports/experiments/sasrec-256-distillation-audit.md),
 [план](notes/student-quality-next-experiment.md).
+
+## Контроль источника знаний student
+
+Один новый student с teacher CE50, alpha0/T2/lambda1, той же случайной
+инициализацией и training recipe. 4 эпохи, best2, **16.10 мин** на локальном MPS;
+готовые CE50 и student со смесью переиспользованы. На PV новый student:
+**0.053899 / 0.265966 NDCG@10 / Recall@100** против 0.055093 / 0.252201 у CE50
+и 0.053961 / 0.264512 у прошлого student. Recall выше CE50 на 5.46%, общий
+NDCG-прирост не подтверждён; отличия от прошлого student по обеим метрикам
+имеют CI, включающие 0. Repeat/tail потеря сохраняется без смеси учителя,
+исходный CE50 остаётся baseline. 80 тестов и artifact checks; test закрыт.
+[Отчёт, срезы, ресурсы и кривые](reports/experiments/student-teacher-control.md).
 
 ## Происхождение материалов
 
