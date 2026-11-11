@@ -19,6 +19,7 @@
 | `check_sasrec_short.py` | Проверка native recent2 против padded50: все CT/PV vectors, sample full-catalog scores, все recent ranks; `--full-replay` пересчитывает все выбранные смеси с прежними alpha |
 | `benchmark_sasrec_short.py` | Парные замеры короткого/padded encoder, recent-only и fresh hybrid на одних CT запросах; CPU/MPS B=1/256, перемешанный порядок, sync, memory stage snapshots |
 | `calibrate_sasrec_hybrids.py` | Сравнительная калибровка CE/BCE в одном MPS-процессе при дрейфе отдельных профилей: чередует все пути, разделяет общий long-контроль и пересчитывает стоимость и mixed-workload checks |
+| `distill_sasrec.py` / `summarize_sasrec_distillation.py` | Учитель CE50+CE2 с alpha на model_valid, matched warm-start CE/KD, полный KL batchmean, выбор weight до CT/PV и парные serving benchmarks; JSON/CSV, training curves и отчёт. `run_sasrec.py` поддерживает `initial_checkpoint` с best epoch0 |
 | `diagnostics/sage_fd_check.py` | Самостоятельная численная диагностика опубликованного псевдокода SAGE; требует NumPy |
 | `diagnostics/audit_pilot_scale.py` | Проверка общей когорты и строго прошлых histories, естественные prefixes и сегменты качества 256/1k |
 | `diagnostics/audit_joint_repeats.py` | Локальные inference-абляции выбранных повторов joint-BCE моделей, tracing encoder и полный validation-контроль короткого контекста; без обучения |

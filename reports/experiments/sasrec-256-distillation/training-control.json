@@ -1,0 +1,117 @@
+{
+  "train_examples": 739571,
+  "validation_examples": 29313,
+  "initial_validation": {
+    "ndcg@10": 0.07208452470010303,
+    "recall@100": 0.3057687715348139
+  },
+  "mostpop_validation": {
+    "ndcg@10": 0.0032306535841508687,
+    "recall@100": 0.04813563947736499
+  },
+  "epochs": [
+    {
+      "epoch": 1,
+      "loss": 7.506845860640831,
+      "train_seconds": 107.9121981250064,
+      "train_examples_per_second": 6853.451350729366,
+      "validation_seconds": 2.240897708994453,
+      "validation": {
+        "ndcg@10": 0.07011663676530719,
+        "recall@100": 0.30249377409340567
+      },
+      "process_peak_rss_mib": 1062.421875,
+      "mps_tensor_mib": 112.947509765625,
+      "mps_driver_mib": 1051.859375
+    },
+    {
+      "epoch": 2,
+      "loss": 7.417356819020757,
+      "train_seconds": 106.95989075000398,
+      "train_examples_per_second": 6914.4704132934285,
+      "validation_seconds": 2.410642333998112,
+      "validation": {
+        "ndcg@10": 0.07027394435111675,
+        "recall@100": 0.30713335380206735
+      },
+      "process_peak_rss_mib": 1062.421875,
+      "mps_tensor_mib": 112.947509765625,
+      "mps_driver_mib": 1051.859375
+    }
+  ],
+  "parameters": 7357888,
+  "trainable_parameters": 7357888,
+  "best_epoch": 0,
+  "initial_rng_sha256": "c5a719718632366fe2c3e2fcd92a180f68024744d37242b863031064a5949ddb",
+  "initial_mps_rng_sha256": "e2154b738f044d3de9adc61c357cb4149a2998ffdae0e1de525fe8957d878d91",
+  "stop_reason": "validation_patience",
+  "elapsed_seconds": 223.03211712499615,
+  "checkpoint_sha256": "2c2f4a2828fbee32927b64624cfd11d3a93d594fd7736662030b162266851cd3",
+  "config": {
+    "data": "data/processed/yambda50m-pilot-audio",
+    "loss_reduction": "joint_mean",
+    "seed": 42,
+    "threads": 4,
+    "length": 50,
+    "dim": 64,
+    "heads": 2,
+    "blocks": 2,
+    "dropout": 0.2,
+    "batch_size": 256,
+    "negatives": 16,
+    "learning_rate": 0.001,
+    "epochs": null,
+    "patience": 2,
+    "eval_batch_size": 256,
+    "benchmark_warmup": 2,
+    "benchmark_steps": 5,
+    "benchmark_repeats": 3,
+    "objective": "full_ce",
+    "initial_checkpoint": "data/runs/sasrec-256-full-ce/train-mps/best.pt",
+    "initial_checkpoint_sha256": "decfa67cb108d71806fec5957e4d425650aa6acb33bd67bf4b71e1d105cc4eb0",
+    "distillation_weight": 0.0,
+    "distillation_temperature": 2.0,
+    "teacher_alpha": 0.4,
+    "teacher_selection_sha256": "519023f92a12bda0712c18df6a599c575da155e3f4ab91ca0881090f21940f0e",
+    "experiment_protocol_sha256": "e844d57a181153dd5ff554746ed1f0c18fa6bc07107c0e6765ca33dd27fd3f84"
+  },
+  "device": "mps",
+  "torch": "2.15.0",
+  "numpy": "2.5.4",
+  "python": "3.14.8",
+  "macos": "26.6.2",
+  "data_manifest_sha256": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c",
+  "source_sha256": {
+    "configs/experiments/sasrec-256-distillation.json": "e844d57a181153dd5ff554746ed1f0c18fa6bc07107c0e6765ca33dd27fd3f84",
+    "scripts/distill_sasrec.py": "96ebf503511ae4ec26d45da9394ade8fcde20006e612ff7bfeceddef425adc81",
+    "scripts/run_sasrec.py": "6f6ed286c384fec544ed12f5e868e0c311d86f798e74ff625f1a154502019f97",
+    "scripts/sasrec.py": "5ec315e46a0bb529ef035badca261ef5a10206ecc9668f63d499a699352c6165",
+    "scripts/blend_sasrec.py": "78265c7a9d594b3e10c53b8c798d961ee1e28f11bac16cb9e35169f34d5496fd"
+  },
+  "used_data_files_sha256": {
+    "manifest.json": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c",
+    "events/train.parquet": "9beb8bbc92c90ca2dccd9dfeda3b1e4e838b13b0f759f4a3da27c00e68134340",
+    "events/model_valid.parquet": "32980a3fa82dc0f4d716a020af687c72c88110fda111be673a88d1cd35b6604b",
+    "items.parquet": "cd16fbc24772305d9c5a57bb62a02e2eb4049bb9f62ffcd446be92f76ec0c863",
+    "users.parquet": "27f101f6b67421d0bab7ccc213bd154bbc8f7b9fa92742d53177bb0d7e398332"
+  },
+  "teacher_sources": {
+    "long": {
+      "run": "data/runs/sasrec-256-full-ce",
+      "checkpoint_sha256": "decfa67cb108d71806fec5957e4d425650aa6acb33bd67bf4b71e1d105cc4eb0",
+      "epoch": 4,
+      "data_manifest_sha256": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c",
+      "items": 114125
+    },
+    "recent": {
+      "run": "data/runs/sasrec-256-recent-2-full-ce",
+      "checkpoint_sha256": "48f54252ff8ffae491f686c5fa7b96897b64854dc1cc2c1b847d5b0e74ed127a",
+      "epoch": 7,
+      "data_manifest_sha256": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c",
+      "items": 114125
+    }
+  },
+  "no_holdout_events_read": true,
+  "setup_seconds": 0.010645874994224869,
+  "total_run_seconds": 223.11105458300153
+}

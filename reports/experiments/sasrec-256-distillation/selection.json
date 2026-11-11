@@ -1,0 +1,58 @@
+{
+  "selected_on": "model_valid",
+  "criterion": "maximum best-epoch NDCG@10; ties smaller nonzero weight",
+  "student": {
+    "weight": 0.25,
+    "run": "data/runs/sasrec-256-distillation/kd-0.25/train-mps",
+    "best_epoch": 0,
+    "metrics": {
+      "ndcg@10": 0.07208452470010303,
+      "recall@100": 0.3057687715348139
+    },
+    "checkpoint_sha256": "a3e295b9da4ac6fa9f4229a28119994113ab3e60e3322b2c3045084f08949590"
+  },
+  "control": {
+    "weight": 0.0,
+    "run": "data/runs/sasrec-256-distillation/control/train-mps",
+    "best_epoch": 0,
+    "metrics": {
+      "ndcg@10": 0.07208452470010303,
+      "recall@100": 0.3057687715348139
+    },
+    "checkpoint_sha256": "2c2f4a2828fbee32927b64624cfd11d3a93d594fd7736662030b162266851cd3"
+  },
+  "candidates": [
+    {
+      "weight": 0.0,
+      "run": "data/runs/sasrec-256-distillation/control/train-mps",
+      "best_epoch": 0,
+      "metrics": {
+        "ndcg@10": 0.07208452470010303,
+        "recall@100": 0.3057687715348139
+      },
+      "checkpoint_sha256": "2c2f4a2828fbee32927b64624cfd11d3a93d594fd7736662030b162266851cd3"
+    },
+    {
+      "weight": 0.25,
+      "run": "data/runs/sasrec-256-distillation/kd-0.25/train-mps",
+      "best_epoch": 0,
+      "metrics": {
+        "ndcg@10": 0.07208452470010303,
+        "recall@100": 0.3057687715348139
+      },
+      "checkpoint_sha256": "a3e295b9da4ac6fa9f4229a28119994113ab3e60e3322b2c3045084f08949590"
+    },
+    {
+      "weight": 1.0,
+      "run": "data/runs/sasrec-256-distillation/kd-1/train-mps",
+      "best_epoch": 0,
+      "metrics": {
+        "ndcg@10": 0.07208452470010303,
+        "recall@100": 0.3057687715348139
+      },
+      "checkpoint_sha256": "8fc98f2eff70336226532b44db30708424ca5b4b049f4e6c465136f177d049a5"
+    }
+  ],
+  "teacher_selection_sha256": "519023f92a12bda0712c18df6a599c575da155e3f4ab91ca0881090f21940f0e",
+  "locked_before_holdout_read": true
+}

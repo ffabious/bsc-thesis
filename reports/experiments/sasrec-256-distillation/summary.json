@@ -1,0 +1,227 @@
+{
+  "teacher_alpha": 0.4,
+  "distillation_weight": 0.25,
+  "temperature": 2,
+  "training": {
+    "control": {
+      "epochs": 2,
+      "best_epoch": 0,
+      "validation": {
+        "ndcg@10": 0.07208452470010303,
+        "recall@100": 0.3057687715348139
+      },
+      "last_validation": {
+        "ndcg@10": 0.07027394435111675,
+        "recall@100": 0.30713335380206735
+      },
+      "elapsed_seconds": 223.03211712499615,
+      "total_run_seconds": 223.11105458300153,
+      "peak_rss_mib": 1062.421875,
+      "maximum_saved_mps_driver_mib": 1051.859375
+    },
+    "kd-0.25": {
+      "epochs": 2,
+      "best_epoch": 0,
+      "validation": {
+        "ndcg@10": 0.07208452470010303,
+        "recall@100": 0.3057687715348139
+      },
+      "last_validation": {
+        "ndcg@10": 0.07122557645313767,
+        "recall@100": 0.30866850885272745
+      },
+      "elapsed_seconds": 665.0772602920042,
+      "total_run_seconds": 665.4676560840016,
+      "peak_rss_mib": 1078.703125,
+      "maximum_saved_mps_driver_mib": 2075.890625
+    },
+    "kd-1": {
+      "epochs": 2,
+      "best_epoch": 0,
+      "validation": {
+        "ndcg@10": 0.07208452470010303,
+        "recall@100": 0.3057687715348139
+      },
+      "last_validation": {
+        "ndcg@10": 0.07160695672231161,
+        "recall@100": 0.31399037969501586
+      },
+      "elapsed_seconds": 687.8646019160078,
+      "total_run_seconds": 688.2800702920067,
+      "peak_rss_mib": 1080.21875,
+      "maximum_saved_mps_driver_mib": 2075.890625
+    }
+  },
+  "validation_acceptance_guard": false,
+  "policy_valid": {
+    "original": {
+      "ndcg@10": 0.0550929395331777,
+      "recall@100": 0.25220141916730787,
+      "hit@1": 0.02410874583226468
+    },
+    "control": {
+      "ndcg@10": 0.0550929395331777,
+      "recall@100": 0.25220141916730787,
+      "hit@1": 0.02410874583226468
+    },
+    "student": {
+      "ndcg@10": 0.0550929395331777,
+      "recall@100": 0.25220141916730787,
+      "hit@1": 0.02410874583226468
+    },
+    "teacher": {
+      "ndcg@10": 0.06308604878523298,
+      "recall@100": 0.2598529537488245,
+      "hit@1": 0.02838334615713431
+    }
+  },
+  "student_minus_control": {
+    "ndcg@10": {
+      "difference": 0.0,
+      "cluster_bootstrap_95ci": [
+        0.0,
+        0.0
+      ]
+    },
+    "recall@100": {
+      "difference": 0.0,
+      "cluster_bootstrap_95ci": [
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "serving": [
+    {
+      "device": "cpu",
+      "batch_size": 1,
+      "model": "original",
+      "median_ms_per_request": 1.2186949843453476,
+      "min_repeat": 1.2099951171649082,
+      "max_repeat": 1.2851116562160314
+    },
+    {
+      "device": "cpu",
+      "batch_size": 1,
+      "model": "teacher",
+      "median_ms_per_request": 2.6492044219139643,
+      "min_repeat": 2.640240234427438,
+      "max_repeat": 2.6947815703124434
+    },
+    {
+      "device": "cpu",
+      "batch_size": 1,
+      "model": "control",
+      "median_ms_per_request": 1.2330266874869267,
+      "min_repeat": 1.21235449228152,
+      "max_repeat": 1.2911712265122333
+    },
+    {
+      "device": "cpu",
+      "batch_size": 1,
+      "model": "student",
+      "median_ms_per_request": 1.215838210896436,
+      "min_repeat": 1.210447586004193,
+      "max_repeat": 1.2408281249918218
+    },
+    {
+      "device": "cpu",
+      "batch_size": 256,
+      "model": "original",
+      "median_ms_per_request": 0.0992389526359716,
+      "min_repeat": 0.09680739355388823,
+      "max_repeat": 0.09968514013536378
+    },
+    {
+      "device": "cpu",
+      "batch_size": 256,
+      "model": "teacher",
+      "median_ms_per_request": 0.44955940771984615,
+      "min_repeat": 0.4472113852571624,
+      "max_repeat": 0.45141774462820194
+    },
+    {
+      "device": "cpu",
+      "batch_size": 256,
+      "model": "control",
+      "median_ms_per_request": 0.09861464452853852,
+      "min_repeat": 0.09723425293373111,
+      "max_repeat": 0.1001946206073967
+    },
+    {
+      "device": "cpu",
+      "batch_size": 256,
+      "model": "student",
+      "median_ms_per_request": 0.09859197997741376,
+      "min_repeat": 0.09665999316865737,
+      "max_repeat": 0.09895711279028774
+    },
+    {
+      "device": "mps",
+      "batch_size": 1,
+      "model": "original",
+      "median_ms_per_request": 1.9261634140548267,
+      "min_repeat": 1.8986946640779934,
+      "max_repeat": 1.9410136718533977
+    },
+    {
+      "device": "mps",
+      "batch_size": 1,
+      "model": "teacher",
+      "median_ms_per_request": 3.720999671827485,
+      "min_repeat": 3.653285476502788,
+      "max_repeat": 3.8365934218518305
+    },
+    {
+      "device": "mps",
+      "batch_size": 1,
+      "model": "control",
+      "median_ms_per_request": 1.950308273421797,
+      "min_repeat": 1.884150062437584,
+      "max_repeat": 2.0596513671762295
+    },
+    {
+      "device": "mps",
+      "batch_size": 1,
+      "model": "student",
+      "median_ms_per_request": 1.9081800155618112,
+      "min_repeat": 1.8963942110303833,
+      "max_repeat": 1.9217656249566062
+    },
+    {
+      "device": "mps",
+      "batch_size": 256,
+      "model": "original",
+      "median_ms_per_request": 0.1626952919977498,
+      "min_repeat": 0.1625358481476269,
+      "max_repeat": 0.17899304199175958
+    },
+    {
+      "device": "mps",
+      "batch_size": 256,
+      "model": "teacher",
+      "median_ms_per_request": 0.28913606738001363,
+      "min_repeat": 0.2807123613308704,
+      "max_repeat": 0.3225986938417691
+    },
+    {
+      "device": "mps",
+      "batch_size": 256,
+      "model": "control",
+      "median_ms_per_request": 0.16218361425757166,
+      "min_repeat": 0.16090285253511638,
+      "max_repeat": 0.18753704834040263
+    },
+    {
+      "device": "mps",
+      "batch_size": 256,
+      "model": "student",
+      "median_ms_per_request": 0.16344042968086114,
+      "min_repeat": 0.1619001464874259,
+      "max_repeat": 0.18064044189003425
+    }
+  ],
+  "no_test_events_read": true,
+  "all_best_checkpoints_retain_initial_weights": true,
+  "total_additional_training_minutes": 26.280979682650166
+}

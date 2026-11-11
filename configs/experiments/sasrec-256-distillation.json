@@ -1,0 +1,27 @@
+{
+  "base_config": "configs/experiments/sasrec-256-full-ce.json",
+  "initial_checkpoint": "data/runs/sasrec-256-full-ce/train-mps/best.pt",
+  "initial_checkpoint_sha256": "decfa67cb108d71806fec5957e4d425650aa6acb33bd67bf4b71e1d105cc4eb0",
+  "weights": [0.0, 0.25, 1.0],
+  "temperature": 2.0,
+  "loss": "CE + weight * temperature^2 * KL(teacher || student)",
+  "teacher_scale": "per-query zscore mixture, rescaled by long logit population std",
+  "evaluation_splits": ["controller_train", "policy_valid"],
+  "reference_replay": "data/runs/sasrec-256-policies-wide",
+  "teacher": {
+    "runs": {
+      "256": {
+        "long": "data/runs/sasrec-256-full-ce",
+        "recent": "data/runs/sasrec-256-recent-2-full-ce"
+      }
+    },
+    "alphas": [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0],
+    "score_transform": "per_query_zscore",
+    "epsilon": 1e-8,
+    "selection_metric": "ndcg@10",
+    "tie_break": "smaller_alpha",
+    "batch_size": 256,
+    "seed": 42,
+    "threads": 4
+  }
+}

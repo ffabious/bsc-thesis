@@ -48,6 +48,18 @@ def item_digest(model):
 
 def make_model(config, data, items):
     model = SASRec(items, **model_args(config))
+    if config.get("initial_checkpoint"):
+        path = ROOT / config["initial_checkpoint"]
+        trained = json.loads(path.with_name("training.json").read_text())
+        digest = hashlib.sha256(path.read_bytes()).hexdigest()
+        if digest != config["initial_checkpoint_sha256"] or digest != trained["checkpoint_sha256"]:
+            raise ValueError("Initial checkpoint checksum mismatch")
+        saved = torch.load(path, map_location="cpu", weights_only=True)
+        if (saved["items"] != items or model_args(saved["config"]) != model_args(config)
+                or saved["config"].get("context_keep") != config.get("context_keep")
+                or trained["data_manifest_sha256"] != hashlib.sha256((data / "manifest.json").read_bytes()).hexdigest()):
+            raise ValueError("Initial checkpoint architecture/context/data differ")
+        model.load_state_dict(saved["weights"])
     if config.get("freeze_items"):
         if bool(config.get("item_checkpoint")) == bool(config.get("item_features")):
             raise ValueError("Choose exactly one frozen item source: checkpoint or features")
@@ -164,7 +176,7 @@ def save_checkpoint(path, value):
     temporary.replace(path)
 
 
-def train(config, data, device, output, resume=False):
+def train(config, data, device, output, resume=False, update=None):
     if output.exists() and not resume:
         raise FileExistsError(f"Choose a new training output directory: {output}")
     output.mkdir(parents=True, exist_ok=resume)
@@ -205,6 +217,14 @@ def train(config, data, device, output, resume=False):
                   "mostpop_validation": metrics(most_popular(data, vy)), "epochs": [],
                   "parameters": sum(p.numel() for p in model.parameters()),
                   "trainable_parameters": sum(p.numel() for p in model.parameters() if p.requires_grad)}
+        if config.get("initial_checkpoint"):
+            best = initial["ndcg@10"]
+            result["best_epoch"] = 0
+            result["initial_rng_sha256"] = hashlib.sha256(torch.get_rng_state().numpy().tobytes()).hexdigest()
+            if device == "mps":
+                result["initial_mps_rng_sha256"] = hashlib.sha256(torch.mps.get_rng_state().numpy().tobytes()).hexdigest()
+            save_checkpoint(output / "best.pt", {"weights": {k: v.cpu() for k, v in model.state_dict().items()},
+                            "config": config, "items": count, "epoch": 0})
 
     def save_progress(seconds):
         sync(device)
@@ -231,8 +251,8 @@ def train(config, data, device, output, resume=False):
             indices = order[start:start + config["batch_size"]]
             sequence, target = batch(x, y, indices, device)
             negative = torch.as_tensor(negatives(y[indices], config["negatives"], count, rng), device=device)
-            total += step(model, optimizer, sequence, target, negative, reduction,
-                          config.get("objective", "bce")) * len(indices)
+            total += (update or step)(model, optimizer, sequence, target, negative, reduction,
+                                      config.get("objective", "bce")) * len(indices)
             cursor = start + len(indices)
             if (start // config["batch_size"] + 1) % 500 == 0:
                 print(f"epoch {epoch}, {start + len(indices)}/{len(y)}, "
@@ -252,6 +272,8 @@ def train(config, data, device, output, resume=False):
                "train_examples_per_second": len(y) / train_seconds,
                "validation_seconds": time.perf_counter() - validation_start,
                "validation": quality, **memory(device)}
+        if update is not None:
+            row["loss_components"] = update.summary()
         result["epochs"].append(row)
         print(json.dumps(row), flush=True)
         if quality["ndcg@10"] > best:

@@ -1,0 +1,86 @@
+{
+  "result": "PASS",
+  "teacher_alpha": 0.4,
+  "selected_weight": 0.25,
+  "training": {
+    "control": {
+      "epochs": 2,
+      "best_epoch": 0,
+      "initial_state_sha256": "a6c96cd1d368987ec7b0020eccba36003356ecc223a8ec3226a943837cb47442",
+      "best_state_sha256": "a6c96cd1d368987ec7b0020eccba36003356ecc223a8ec3226a943837cb47442",
+      "last_state_changed": true,
+      "checkpoint_sha256": "2c2f4a2828fbee32927b64624cfd11d3a93d594fd7736662030b162266851cd3"
+    },
+    "kd-0.25": {
+      "epochs": 2,
+      "best_epoch": 0,
+      "initial_state_sha256": "a6c96cd1d368987ec7b0020eccba36003356ecc223a8ec3226a943837cb47442",
+      "best_state_sha256": "a6c96cd1d368987ec7b0020eccba36003356ecc223a8ec3226a943837cb47442",
+      "last_state_changed": true,
+      "checkpoint_sha256": "a3e295b9da4ac6fa9f4229a28119994113ab3e60e3322b2c3045084f08949590"
+    },
+    "kd-1": {
+      "epochs": 2,
+      "best_epoch": 0,
+      "initial_state_sha256": "a6c96cd1d368987ec7b0020eccba36003356ecc223a8ec3226a943837cb47442",
+      "best_state_sha256": "a6c96cd1d368987ec7b0020eccba36003356ecc223a8ec3226a943837cb47442",
+      "last_state_changed": true,
+      "checkpoint_sha256": "8fc98f2eff70336226532b44db30708424ca5b4b049f4e6c465136f177d049a5"
+    }
+  },
+  "same_initial_validation_and_rng": true,
+  "teacher_checkpoints_unchanged": true,
+  "only_train_model_valid_used_during_training": true,
+  "selection_locked_before_ct_pv": true,
+  "all_quality_metrics_and_paired_ci_recomputed": true,
+  "single_model_structure_unchanged": true,
+  "tests_passed": 77,
+  "training_source_snapshot_verified": true,
+  "training_math_ast_unchanged_after_path_fix": true,
+  "no_test_events_read": true,
+  "csv_rows": {
+    "training.csv": 9,
+    "metrics.csv": 8,
+    "serving.csv": 16
+  },
+  "source_and_data_sha256": {
+    "configs/experiments/sasrec-256-distillation.json": "e844d57a181153dd5ff554746ed1f0c18fa6bc07107c0e6765ca33dd27fd3f84",
+    "scripts/distill_sasrec.py": {
+      "training_sha256": "96ebf503511ae4ec26d45da9394ade8fcde20006e612ff7bfeceddef425adc81",
+      "current_sha256": "d60b16f185fd3765be5f85b55d9f66f19f680e81a61531f9b53d591083a0deea",
+      "training_snapshot": "training-source/distill_sasrec.py"
+    },
+    "scripts/run_sasrec.py": "6f6ed286c384fec544ed12f5e868e0c311d86f798e74ff625f1a154502019f97",
+    "scripts/sasrec.py": "5ec315e46a0bb529ef035badca261ef5a10206ecc9668f63d499a699352c6165",
+    "scripts/blend_sasrec.py": "78265c7a9d594b3e10c53b8c798d961ee1e28f11bac16cb9e35169f34d5496fd",
+    "data/processed/yambda50m-pilot-audio/manifest.json": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c",
+    "data/processed/yambda50m-pilot-audio/events/train.parquet": "9beb8bbc92c90ca2dccd9dfeda3b1e4e838b13b0f759f4a3da27c00e68134340",
+    "data/processed/yambda50m-pilot-audio/events/model_valid.parquet": "32980a3fa82dc0f4d716a020af687c72c88110fda111be673a88d1cd35b6604b",
+    "data/processed/yambda50m-pilot-audio/items.parquet": "cd16fbc24772305d9c5a57bb62a02e2eb4049bb9f62ffcd446be92f76ec0c863",
+    "data/processed/yambda50m-pilot-audio/users.parquet": "27f101f6b67421d0bab7ccc213bd154bbc8f7b9fa92742d53177bb0d7e398332"
+  },
+  "evaluation_ranks_sha256": "5f6f3854fa71ba367fb43a0e6bfecc163301e5d8b15c81d074b8423a7ff6960b",
+  "report_artifacts_sha256": {
+    "evaluation.json": "0823789b5104e1481e28c27ec66991afa05463e5b8b136b2360d723bc894d1ca",
+    "metrics.csv": "8c5a8c7e791b63b3ff0d3f43acf9e4aa35be91bbe522d901f79f0889a95674ed",
+    "selection.json": "91b59766b736fada11f497724756e306db60ca32130000876cba5f4542e5744c",
+    "serving-cpu.json": "63240272ebc362f49516ecaa5229a514d68362292ba4f1100b006481ff9ad5a2",
+    "serving-mps.json": "94571221e62bf8feeecf19c238ffa756a6d05e0f5e7a747de8a8c137a074a754",
+    "serving.csv": "1935889541fee9f8fc66b072b181d8281e5a592c4ffa09feb89fc27e2332d619",
+    "serving.png": "47f071588720d7dc4b20b94bd032cdf2b6713cdc49e248dc5ce4c669cfa0ddbd",
+    "serving.svg": "0a1be876de91116f63ff62fb7e4caf05d4b2fad8b14c17756f3bc9b5d1e20409",
+    "source-history.json": "aaa34d6669246edc22cc8ba9f239f106bf51e52ff8facdeabe32b55a6d45139a",
+    "summary.json": "a9d7d80796a083b96b887cc27a859281237bf7c0a8558e6e3acf7ecde5558ac9",
+    "teacher-check.json": "b799cc7d49aff04fca8665d76dd373b02acc179567d3c9c3a0113375f8fddef9",
+    "teacher-selection.json": "519023f92a12bda0712c18df6a599c575da155e3f4ab91ca0881090f21940f0e",
+    "tests-before-training.txt": "e409fafc7ef7909b8739d1356eccf473fb8d3fba9d9eef8f994558ea36db59a8",
+    "tests.txt": "ebc54aa210a32b455dc8e73ddf9573f2471066357b3443d5f54232896e691e4c",
+    "training-control.json": "08dc077307c57a323eaebe722faa4109b54db825306fa4df15a3409eae66e344",
+    "training-kd-0.25.json": "2cf25de6ea5e13a34d80e95e5fb86c6ef06e832cf78575653d6cdf54d5020fe2",
+    "training-kd-1.json": "bbcfad8019c0cd076fc9dd70ee3905c9f57d389c3dc609b15ec62cc7ce266d77",
+    "training-source/distill_sasrec.py": "96ebf503511ae4ec26d45da9394ade8fcde20006e612ff7bfeceddef425adc81",
+    "training.csv": "8d6b2ddd4fa80e5365ca9e90b2019815c56bfd03a68d7caa39ac952858448f77",
+    "validation.png": "f681432285e16f3e0b36054eb502209462a1b4f72148d263265c7295668df381",
+    "validation.svg": "00c40273ee70b46a5daa7de2df02b27c2670049f7367fbe83f215ccbf2ecfc3b"
+  }
+}

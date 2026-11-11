@@ -1,0 +1,11 @@
+{
+  "source": "scripts/distill_sasrec.py",
+  "training_source_sha256": "96ebf503511ae4ec26d45da9394ade8fcde20006e612ff7bfeceddef425adc81",
+  "snapshot": "training-source/distill_sasrec.py",
+  "post_training_changes": [
+    "Resolve output folder before exporting a repository-relative path",
+    "Name the training data-read flag explicitly as CT/PV/test exclusion"
+  ],
+  "training_math_changed": false,
+  "evaluation_failure_before_holdout_read": true
+}

@@ -1,0 +1,31 @@
+{
+  "examples": 29313,
+  "alpha": 0.4,
+  "selected_teacher_metrics": {
+    "ndcg@10": 0.08194587630729379,
+    "recall@100": 0.3127622556544878,
+    "hit@1": 0.03541090983522669
+  },
+  "same_selected_metrics": true,
+  "exact_rank_matches": 29205,
+  "max_rank_delta": 1,
+  "sample_initial_ce": 8.548558235168457,
+  "sample_initial_kl_t2": 0.38680917024612427,
+  "teacher_selection_sha256": "519023f92a12bda0712c18df6a599c575da155e3f4ab91ca0881090f21940f0e",
+  "sources": {
+    "long": {
+      "run": "data/runs/sasrec-256-full-ce",
+      "checkpoint_sha256": "decfa67cb108d71806fec5957e4d425650aa6acb33bd67bf4b71e1d105cc4eb0",
+      "epoch": 4,
+      "data_manifest_sha256": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c",
+      "items": 114125
+    },
+    "recent": {
+      "run": "data/runs/sasrec-256-recent-2-full-ce",
+      "checkpoint_sha256": "48f54252ff8ffae491f686c5fa7b96897b64854dc1cc2c1b847d5b0e74ed127a",
+      "epoch": 7,
+      "data_manifest_sha256": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c",
+      "items": 114125
+    }
+  }
+}

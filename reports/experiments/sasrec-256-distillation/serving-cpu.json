@@ -1,0 +1,286 @@
+{
+  "measurements": {
+    "1": {
+      "original": {
+        "repeat_mean_ms_per_request": [
+          1.2186949843453476,
+          1.218771812432351,
+          1.2851116562160314,
+          1.2099951171649082,
+          1.214131507708771
+        ],
+        "median_ms_per_request": 1.2186949843453476
+      },
+      "teacher": {
+        "repeat_mean_ms_per_request": [
+          2.6607376249785375,
+          2.6947815703124434,
+          2.6492044219139643,
+          2.647797851523137,
+          2.640240234427438
+        ],
+        "median_ms_per_request": 2.6492044219139643
+      },
+      "control": {
+        "repeat_mean_ms_per_request": [
+          1.2330266874869267,
+          1.213797195305233,
+          1.2911712265122333,
+          1.2430556640765644,
+          1.21235449228152
+        ],
+        "median_ms_per_request": 1.2330266874869267
+      },
+      "student": {
+        "repeat_mean_ms_per_request": [
+          1.2403385391053234,
+          1.215838210896436,
+          1.2408281249918218,
+          1.2149804687169308,
+          1.210447586004193
+        ],
+        "median_ms_per_request": 1.215838210896436
+      }
+    },
+    "256": {
+      "original": {
+        "repeat_mean_ms_per_request": [
+          0.09968514013536378,
+          0.0992389526359716,
+          0.09680739355388823
+        ],
+        "median_ms_per_request": 0.0992389526359716
+      },
+      "teacher": {
+        "repeat_mean_ms_per_request": [
+          0.4472113852571624,
+          0.45141774462820194,
+          0.44955940771984615
+        ],
+        "median_ms_per_request": 0.44955940771984615
+      },
+      "control": {
+        "repeat_mean_ms_per_request": [
+          0.09723425293373111,
+          0.1001946206073967,
+          0.09861464452853852
+        ],
+        "median_ms_per_request": 0.09861464452853852
+      },
+      "student": {
+        "repeat_mean_ms_per_request": [
+          0.09665999316865737,
+          0.09895711279028774,
+          0.09859197997741376
+        ],
+        "median_ms_per_request": 0.09859197997741376
+      }
+    }
+  },
+  "memory_probes": {
+    "1": {
+      "original": {
+        "before": {
+          "process_peak_rss_mib": 447.765625
+        },
+        "stages": [
+          {
+            "stage": "long_encode_or_lookup",
+            "process_peak_rss_mib": 447.78125
+          },
+          {
+            "stage": "long_scores",
+            "process_peak_rss_mib": 447.78125
+          },
+          {
+            "stage": "top100_cpu_result",
+            "process_peak_rss_mib": 447.78125
+          }
+        ]
+      },
+      "teacher": {
+        "before": {
+          "process_peak_rss_mib": 447.78125
+        },
+        "stages": [
+          {
+            "stage": "long_encode_or_lookup",
+            "process_peak_rss_mib": 447.78125
+          },
+          {
+            "stage": "long_scores",
+            "process_peak_rss_mib": 447.78125
+          },
+          {
+            "stage": "recent_encode",
+            "process_peak_rss_mib": 447.78125
+          },
+          {
+            "stage": "recent_scores",
+            "process_peak_rss_mib": 447.78125
+          },
+          {
+            "stage": "normalized_and_mixed",
+            "process_peak_rss_mib": 447.78125
+          },
+          {
+            "stage": "top100_cpu_result",
+            "process_peak_rss_mib": 447.78125
+          }
+        ]
+      },
+      "control": {
+        "before": {
+          "process_peak_rss_mib": 447.78125
+        },
+        "stages": [
+          {
+            "stage": "long_encode_or_lookup",
+            "process_peak_rss_mib": 447.78125
+          },
+          {
+            "stage": "long_scores",
+            "process_peak_rss_mib": 447.78125
+          },
+          {
+            "stage": "top100_cpu_result",
+            "process_peak_rss_mib": 447.78125
+          }
+        ]
+      },
+      "student": {
+        "before": {
+          "process_peak_rss_mib": 447.78125
+        },
+        "stages": [
+          {
+            "stage": "long_encode_or_lookup",
+            "process_peak_rss_mib": 447.78125
+          },
+          {
+            "stage": "long_scores",
+            "process_peak_rss_mib": 447.78125
+          },
+          {
+            "stage": "top100_cpu_result",
+            "process_peak_rss_mib": 447.78125
+          }
+        ]
+      }
+    },
+    "256": {
+      "original": {
+        "before": {
+          "process_peak_rss_mib": 1048.53125
+        },
+        "stages": [
+          {
+            "stage": "long_encode_or_lookup",
+            "process_peak_rss_mib": 1048.53125
+          },
+          {
+            "stage": "long_scores",
+            "process_peak_rss_mib": 1048.53125
+          },
+          {
+            "stage": "top100_cpu_result",
+            "process_peak_rss_mib": 1048.53125
+          }
+        ]
+      },
+      "teacher": {
+        "before": {
+          "process_peak_rss_mib": 1048.53125
+        },
+        "stages": [
+          {
+            "stage": "long_encode_or_lookup",
+            "process_peak_rss_mib": 1048.53125
+          },
+          {
+            "stage": "long_scores",
+            "process_peak_rss_mib": 1048.53125
+          },
+          {
+            "stage": "recent_encode",
+            "process_peak_rss_mib": 1048.53125
+          },
+          {
+            "stage": "recent_scores",
+            "process_peak_rss_mib": 1048.53125
+          },
+          {
+            "stage": "normalized_and_mixed",
+            "process_peak_rss_mib": 1048.53125
+          },
+          {
+            "stage": "top100_cpu_result",
+            "process_peak_rss_mib": 1048.53125
+          }
+        ]
+      },
+      "control": {
+        "before": {
+          "process_peak_rss_mib": 1048.53125
+        },
+        "stages": [
+          {
+            "stage": "long_encode_or_lookup",
+            "process_peak_rss_mib": 1048.53125
+          },
+          {
+            "stage": "long_scores",
+            "process_peak_rss_mib": 1048.53125
+          },
+          {
+            "stage": "top100_cpu_result",
+            "process_peak_rss_mib": 1048.53125
+          }
+        ]
+      },
+      "student": {
+        "before": {
+          "process_peak_rss_mib": 1048.53125
+        },
+        "stages": [
+          {
+            "stage": "long_encode_or_lookup",
+            "process_peak_rss_mib": 1048.53125
+          },
+          {
+            "stage": "long_scores",
+            "process_peak_rss_mib": 1048.53125
+          },
+          {
+            "stage": "top100_cpu_result",
+            "process_peak_rss_mib": 1048.53125
+          }
+        ]
+      }
+    }
+  },
+  "selection_sha256": "91b59766b736fada11f497724756e306db60ca32130000876cba5f4542e5744c",
+  "teacher_alpha": 0.4,
+  "device": "cpu",
+  "teacher_sources": {
+    "long": {
+      "run": "data/runs/sasrec-256-full-ce",
+      "checkpoint_sha256": "decfa67cb108d71806fec5957e4d425650aa6acb33bd67bf4b71e1d105cc4eb0",
+      "epoch": 4,
+      "data_manifest_sha256": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c",
+      "items": 114125
+    },
+    "recent": {
+      "run": "data/runs/sasrec-256-recent-2-full-ce",
+      "checkpoint_sha256": "48f54252ff8ffae491f686c5fa7b96897b64854dc1cc2c1b847d5b0e74ed127a",
+      "epoch": 7,
+      "data_manifest_sha256": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c",
+      "items": 114125
+    }
+  },
+  "parameters_single": 7357888,
+  "timing_scope": "complete fresh serving: token preparation/transfers, encode, catalog scoring, optional zscore/mix, final top100 CPU result",
+  "memory_scope": "common benchmark process holds original/control/student/recent models; stage snapshots are not deployment peaks",
+  "no_test_events_read": true,
+  "process_peak_rss_mib": 1048.546875
+}
