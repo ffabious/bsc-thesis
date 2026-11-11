@@ -1,0 +1,85 @@
+{
+  "checks": {
+    "atol": 2e-05,
+    "rtol": 0.0001,
+    "input_width": 2,
+    "positions": [
+      48,
+      49
+    ],
+    "request_vectors": {
+      "pairs": 92043,
+      "max_abs_error": 0.0
+    },
+    "catalog_scores": {
+      "requests": 256,
+      "candidates": 114125,
+      "max_abs_error": 0.0
+    },
+    "normalized_scores_max_abs_error": 0.0,
+    "controller_train": {
+      "recent": {
+        "pairs": 52191,
+        "exact_matches": 51149,
+        "maximum_rank_difference": 22,
+        "metric_difference": {
+          "ndcg@10": 0.0,
+          "recall@100": 0.0,
+          "hit@1": 0.0
+        }
+      }
+    },
+    "policy_valid": {
+      "recent": {
+        "pairs": 23394,
+        "exact_matches": 22834,
+        "maximum_rank_difference": 70,
+        "metric_difference": {
+          "ndcg@10": 0.0,
+          "recall@100": 0.0,
+          "hit@1": 0.0
+        }
+      }
+    }
+  },
+  "device": "cpu",
+  "sources": {
+    "long": {
+      "run": "data/runs/sasrec-256-full-ce",
+      "checkpoint_sha256": "decfa67cb108d71806fec5957e4d425650aa6acb33bd67bf4b71e1d105cc4eb0",
+      "epoch": 4,
+      "data_manifest_sha256": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c",
+      "items": 114125
+    },
+    "recent": {
+      "run": "data/runs/sasrec-256-recent-2-full-ce",
+      "checkpoint_sha256": "48f54252ff8ffae491f686c5fa7b96897b64854dc1cc2c1b847d5b0e74ed127a",
+      "epoch": 7,
+      "data_manifest_sha256": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c",
+      "items": 114125
+    }
+  },
+  "source_sha256": {
+    "data/runs/sasrec-256-hybrid-ce/results.json": "b85376be8ca5547ba5bf31e567b86cc4f4092492dc21c2976ab5b1268ce3213b",
+    "data/runs/sasrec-256-hybrid-ce/selection.json": "066fa1fcc4f62d0cb26aeb384fd42671c2eee7b9a78bd9b100d83062d570b28b",
+    "data/runs/sasrec-256-hybrid-ce/ranks.npz": "e34b07cbd25693647e9b466b18378831206f24404becd1f82f7871708a624104",
+    "data/runs/sasrec-256-policies-wide/replay.npz": "c1bbe6ae4ba0c4c9f7314aaef02e43f7b59eccf0bdb91ba5700529a869f64687",
+    "data/runs/sasrec-256-policies-wide/results.json": "1954b4fa7e45992a4d4619e849fc7c5bc04d301bcaf3b6233e84061265149cf5",
+    "scripts/check_sasrec_short.py": "fb1ba10c22581d42152360d4661fb3aed83f1d2a9575092cfad26dbc9d9597cd",
+    "scripts/sasrec.py": "5ec315e46a0bb529ef035badca261ef5a10206ecc9668f63d499a699352c6165",
+    "scripts/profile_sasrec_hybrid.py": "8d8ce09a9acd498729c255046d88e9dfa5deb6db2de779c9154ebe2abc6c63ea",
+    "scripts/replay_hybrid_sasrec.py": "75dfb0587a39bf0e0d9427c97dbb5f085596846e24df33b567d49f4ff14f0d75",
+    "scripts/replay_sasrec.py": "cabb273e8d2a838f7966ce3ca98f6bd0b897f83a56651007e88b36b83bcc1fb2",
+    "scripts/blend_sasrec.py": "78265c7a9d594b3e10c53b8c798d961ee1e28f11bac16cb9e35169f34d5496fd"
+  },
+  "data_files_sha256": {
+    "events/controller_train.parquet": "0791d5cca3fa43078ef3d5239f280c4a1eea34ff8ee6f0ec90504b49f09dbd21",
+    "events/model_valid.parquet": "32980a3fa82dc0f4d716a020af687c72c88110fda111be673a88d1cd35b6604b",
+    "events/policy_valid.parquet": "5bc91cd485b0f828e3ab0102df358cfe28b10e4bf130655657ef5a622e6d0a69",
+    "events/train.parquet": "9beb8bbc92c90ca2dccd9dfeda3b1e4e838b13b0f759f4a3da27c00e68134340",
+    "items.parquet": "cd16fbc24772305d9c5a57bb62a02e2eb4049bb9f62ffcd446be92f76ec0c863",
+    "users.parquet": "27f101f6b67421d0bab7ccc213bd154bbc8f7b9fa92742d53177bb0d7e398332"
+  },
+  "no_test_events_read": true,
+  "process_peak_rss_mib": 1526.78125
+}

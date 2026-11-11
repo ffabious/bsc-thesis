@@ -1,0 +1,45 @@
+{
+  "hybrid_run": "data/runs/sasrec-256-hybrid-bce-short",
+  "reference_replay": "data/runs/sasrec-256-policies-wide",
+  "batch_sizes": [
+    1,
+    256
+  ],
+  "steps": [
+    128,
+    8
+  ],
+  "repeats": [
+    5,
+    3
+  ],
+  "warmup": [
+    16,
+    2
+  ],
+  "mixed_steps": 128,
+  "mixed_repeats": 3,
+  "mixed_policies": [
+    "always",
+    "never",
+    "time_1800",
+    "time_3600",
+    "time_21600",
+    "time_86400",
+    "events_10",
+    "events_60",
+    "events_480"
+  ],
+  "cost_budgets_relative_to_fresh_long": [
+    0.6,
+    0.8,
+    1.0,
+    1.25,
+    1.5,
+    2.0,
+    2.5
+  ],
+  "threads": 4,
+  "seed": 42,
+  "recent_input_length": 2
+}

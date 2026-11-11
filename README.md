@@ -320,6 +320,21 @@ Test не открыт; 68 тестов, независимые rank-oracles и 
 [Отчёт, ресурсы, графики и CSV](reports/experiments/sasrec-256-hybrid-ce.md),
 [протокол и команды](notes/sasrec-256-hybrid-ce.md).
 
+## Native recent2 inference
+
+Recent получает настоящий tensor длины 2 с прежними learned positions 48/49;
+checkpoints и alpha сохранены. На всех CT/PV targets и 100 политиках обеих
+смесей NDCG/Recall/Hit@1 совпали с padded50. CPU vectors точны побитово,
+MPS — в допусках FP32. 71 тест пройден, test не открыт.
+
+Парный batch256-контроль: encoder быстрее **11.9× CPU / 2.8× MPS**, полная
+смесь — только **1.07× / 1.03×**. При B=1 recent-only на CPU быстрее на 7.4%,
+на MPS медленнее на 8.3%; общего ускорения hybrid B=1 нет. Полный frontier
+пересчитан, CE/BCE MPS paths чередуются в одном процессе из-за дрейфа отдельных
+замеров; близкие cost-точки требуют осторожной интерпретации.
+[Отчёт, память, paired timings и frontier](reports/experiments/sasrec-256-short-inference.md),
+[команды](notes/sasrec-256-short-inference.md).
+
 ## Происхождение материалов
 
 Импорт выполнен 20 октября 2026 из `thesis-project-2026-10-20.zip` и двух заметок, уже находившихся в этой папке. Заметки совпали с копиями в архиве и сохранены в одном экземпляре.

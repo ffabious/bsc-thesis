@@ -1,0 +1,348 @@
+{
+  "config": {
+    "hybrid_run": "data/runs/sasrec-256-hybrid-ce-short",
+    "reference_replay": "data/runs/sasrec-256-policies-wide",
+    "batch_sizes": [
+      1,
+      256
+    ],
+    "steps": [
+      128,
+      8
+    ],
+    "repeats": [
+      5,
+      3
+    ],
+    "warmup": [
+      16,
+      2
+    ],
+    "mixed_steps": 128,
+    "mixed_repeats": 3,
+    "mixed_policies": [
+      "always",
+      "never",
+      "time_1800",
+      "time_3600",
+      "time_21600",
+      "time_86400",
+      "events_10",
+      "events_60",
+      "events_480"
+    ],
+    "cost_budgets_relative_to_fresh_long": [
+      0.6,
+      0.8,
+      1.0,
+      1.25,
+      1.5,
+      2.0,
+      2.5
+    ],
+    "threads": 4,
+    "seed": 42,
+    "recent_input_length": 2
+  },
+  "device": "mps",
+  "sources": {
+    "long": {
+      "run": "data/runs/sasrec-256-full-ce",
+      "checkpoint_sha256": "decfa67cb108d71806fec5957e4d425650aa6acb33bd67bf4b71e1d105cc4eb0",
+      "epoch": 4,
+      "data_manifest_sha256": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c",
+      "items": 114125
+    },
+    "recent": {
+      "run": "data/runs/sasrec-256-recent-2-full-ce",
+      "checkpoint_sha256": "48f54252ff8ffae491f686c5fa7b96897b64854dc1cc2c1b847d5b0e74ed127a",
+      "epoch": 7,
+      "data_manifest_sha256": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c",
+      "items": 114125
+    }
+  },
+  "measurements": {
+    "1": {
+      "short_encoder": {
+        "repeat_mean_ms_per_request": [
+          1.4132242812365803,
+          1.2132929687140859,
+          1.25630110937891,
+          1.2426601562083306,
+          1.224424476617969
+        ],
+        "median_ms_per_request": 1.2426601562083306
+      },
+      "short_recent": {
+        "repeat_mean_ms_per_request": [
+          2.1790553437313065,
+          2.012149734355262,
+          2.055812499975218,
+          2.042198242293125,
+          2.1028323594691756
+        ],
+        "median_ms_per_request": 2.055812499975218
+      },
+      "short_hybrid": {
+        "repeat_mean_ms_per_request": [
+          3.5573642577446662,
+          3.5734876328206155,
+          3.5755276641111777,
+          3.5962454452374004,
+          3.5500166014799106
+        ],
+        "median_ms_per_request": 3.5734876328206155
+      },
+      "padded_encoder": {
+        "repeat_mean_ms_per_request": [
+          1.2727294922569854,
+          1.1066067734191165,
+          1.124080078056977,
+          1.078792320413413,
+          1.0952750625392582
+        ],
+        "median_ms_per_request": 1.1066067734191165
+      },
+      "padded_recent": {
+        "repeat_mean_ms_per_request": [
+          1.9045966796511493,
+          1.8635371093296271,
+          1.8656819686384551,
+          1.9095377577968975,
+          1.898138992260101
+        ],
+        "median_ms_per_request": 1.898138992260101
+      },
+      "padded_hybrid": {
+        "repeat_mean_ms_per_request": [
+          3.4949026719459653,
+          3.491598632763271,
+          3.394257812487922,
+          3.4102460937219803,
+          3.464081703214106
+        ],
+        "median_ms_per_request": 3.464081703214106
+      }
+    },
+    "256": {
+      "short_encoder": {
+        "repeat_mean_ms_per_request": [
+          0.005583027828492959,
+          0.006172485356614743,
+          0.0053340253884925914
+        ],
+        "median_ms_per_request": 0.005583027828492959
+      },
+      "short_recent": {
+        "repeat_mean_ms_per_request": [
+          0.15044346093873173,
+          0.1487691650368106,
+          0.1493664145542084
+        ],
+        "median_ms_per_request": 0.1493664145542084
+      },
+      "short_hybrid": {
+        "repeat_mean_ms_per_request": [
+          0.27832948828176995,
+          0.2729036254862649,
+          0.2719988608390622
+        ],
+        "median_ms_per_request": 0.2729036254862649
+      },
+      "padded_encoder": {
+        "repeat_mean_ms_per_request": [
+          0.016036967288357573,
+          0.01576979589401617,
+          0.015511250488486894
+        ],
+        "median_ms_per_request": 0.01576979589401617
+      },
+      "padded_recent": {
+        "repeat_mean_ms_per_request": [
+          0.159394937988111,
+          0.15802449511426175,
+          0.16317120361009074
+        ],
+        "median_ms_per_request": 0.159394937988111
+      },
+      "padded_hybrid": {
+        "repeat_mean_ms_per_request": [
+          0.28225844335594275,
+          0.2806731367144266,
+          0.2884906206048754
+        ],
+        "median_ms_per_request": 0.28225844335594275
+      }
+    }
+  },
+  "memory_probes": {
+    "1": {
+      "short": [
+        {
+          "stage": "long_encode_or_lookup",
+          "process_peak_rss_mib": 558.6875,
+          "mps_tensor_mib": 56.42724609375,
+          "mps_driver_mib": 1034.71875
+        },
+        {
+          "stage": "long_scores",
+          "process_peak_rss_mib": 558.6875,
+          "mps_tensor_mib": 56.86279296875,
+          "mps_driver_mib": 1034.71875
+        },
+        {
+          "stage": "recent_encode",
+          "process_peak_rss_mib": 558.6875,
+          "mps_tensor_mib": 56.85107421875,
+          "mps_driver_mib": 1034.71875
+        },
+        {
+          "stage": "recent_scores",
+          "process_peak_rss_mib": 558.6875,
+          "mps_tensor_mib": 57.28662109375,
+          "mps_driver_mib": 1034.71875
+        },
+        {
+          "stage": "normalized_and_mixed",
+          "process_peak_rss_mib": 558.6875,
+          "mps_tensor_mib": 57.72216796875,
+          "mps_driver_mib": 1034.71875
+        },
+        {
+          "stage": "top100_cpu_result",
+          "process_peak_rss_mib": 558.6875,
+          "mps_tensor_mib": 56.8505859375,
+          "mps_driver_mib": 1034.71875
+        }
+      ],
+      "padded": [
+        {
+          "stage": "long_encode_or_lookup",
+          "process_peak_rss_mib": 558.6875,
+          "mps_tensor_mib": 56.42724609375,
+          "mps_driver_mib": 1034.71875
+        },
+        {
+          "stage": "long_scores",
+          "process_peak_rss_mib": 558.6875,
+          "mps_tensor_mib": 56.86279296875,
+          "mps_driver_mib": 1034.71875
+        },
+        {
+          "stage": "recent_encode",
+          "process_peak_rss_mib": 558.6875,
+          "mps_tensor_mib": 56.86279296875,
+          "mps_driver_mib": 1034.71875
+        },
+        {
+          "stage": "recent_scores",
+          "process_peak_rss_mib": 558.6875,
+          "mps_tensor_mib": 57.29833984375,
+          "mps_driver_mib": 1034.71875
+        },
+        {
+          "stage": "normalized_and_mixed",
+          "process_peak_rss_mib": 558.6875,
+          "mps_tensor_mib": 57.73388671875,
+          "mps_driver_mib": 1034.71875
+        },
+        {
+          "stage": "top100_cpu_result",
+          "process_peak_rss_mib": 558.6875,
+          "mps_tensor_mib": 56.8505859375,
+          "mps_driver_mib": 1034.71875
+        }
+      ]
+    },
+    "256": {
+      "short": [
+        {
+          "stage": "long_encode_or_lookup",
+          "process_peak_rss_mib": 569.328125,
+          "mps_tensor_mib": 59.5400390625,
+          "mps_driver_mib": 1042.734375
+        },
+        {
+          "stage": "long_scores",
+          "process_peak_rss_mib": 569.328125,
+          "mps_tensor_mib": 171.5400390625,
+          "mps_driver_mib": 1042.734375
+        },
+        {
+          "stage": "recent_encode",
+          "process_peak_rss_mib": 569.328125,
+          "mps_tensor_mib": 168.5400390625,
+          "mps_driver_mib": 1042.734375
+        },
+        {
+          "stage": "recent_scores",
+          "process_peak_rss_mib": 569.328125,
+          "mps_tensor_mib": 280.5400390625,
+          "mps_driver_mib": 1042.734375
+        },
+        {
+          "stage": "normalized_and_mixed",
+          "process_peak_rss_mib": 569.328125,
+          "mps_tensor_mib": 392.5400390625,
+          "mps_driver_mib": 1042.734375
+        },
+        {
+          "stage": "top100_cpu_result",
+          "process_peak_rss_mib": 569.328125,
+          "mps_tensor_mib": 168.4150390625,
+          "mps_driver_mib": 1042.734375
+        }
+      ],
+      "padded": [
+        {
+          "stage": "long_encode_or_lookup",
+          "process_peak_rss_mib": 569.328125,
+          "mps_tensor_mib": 59.5400390625,
+          "mps_driver_mib": 1042.734375
+        },
+        {
+          "stage": "long_scores",
+          "process_peak_rss_mib": 569.328125,
+          "mps_tensor_mib": 171.5400390625,
+          "mps_driver_mib": 1042.734375
+        },
+        {
+          "stage": "recent_encode",
+          "process_peak_rss_mib": 569.328125,
+          "mps_tensor_mib": 171.5400390625,
+          "mps_driver_mib": 1042.734375
+        },
+        {
+          "stage": "recent_scores",
+          "process_peak_rss_mib": 569.328125,
+          "mps_tensor_mib": 283.5400390625,
+          "mps_driver_mib": 1042.734375
+        },
+        {
+          "stage": "normalized_and_mixed",
+          "process_peak_rss_mib": 569.328125,
+          "mps_tensor_mib": 395.5400390625,
+          "mps_driver_mib": 1042.734375
+        },
+        {
+          "stage": "top100_cpu_result",
+          "process_peak_rss_mib": 569.328125,
+          "mps_tensor_mib": 168.4150390625,
+          "mps_driver_mib": 1042.734375
+        }
+      ]
+    }
+  },
+  "alpha": 0.4,
+  "no_test_events_read": true,
+  "source_sha256": {
+    "scripts/benchmark_sasrec_short.py": "2f9286423d666515555d3b61c2488c3153617ee1c768e235a78fd2bab1914a95",
+    "scripts/profile_sasrec_hybrid.py": "8d8ce09a9acd498729c255046d88e9dfa5deb6db2de779c9154ebe2abc6c63ea",
+    "scripts/sasrec.py": "5ec315e46a0bb529ef035badca261ef5a10206ecc9668f63d499a699352c6165",
+    "data/runs/sasrec-256-policies-wide/replay.npz": "c1bbe6ae4ba0c4c9f7314aaef02e43f7b59eccf0bdb91ba5700529a869f64687",
+    "configs/experiments/sasrec-256-hybrid-ce-short.json": "7417c65bc0b7f8d2181ec37066407e3ad4e71041b7fb54419cb7e6025d813101"
+  },
+  "process_peak_rss_mib": 665.03125,
+  "mps_tensor_mib": 56.4150390625,
+  "mps_driver_mib": 1042.734375
+}

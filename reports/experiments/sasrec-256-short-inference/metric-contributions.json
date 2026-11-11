@@ -1,0 +1,26 @@
+{
+  "ce": {
+    "recent": {
+      "changed_at_top10": 0,
+      "crossed_recall100": 0,
+      "changed_hit1": 0
+    },
+    "hybrid": {
+      "changed_at_top10": 0,
+      "crossed_recall100": 0,
+      "changed_hit1": 0
+    }
+  },
+  "bce": {
+    "recent": {
+      "changed_at_top10": 0,
+      "crossed_recall100": 0,
+      "changed_hit1": 0
+    },
+    "hybrid": {
+      "changed_at_top10": 0,
+      "crossed_recall100": 0,
+      "changed_hit1": 0
+    }
+  }
+}

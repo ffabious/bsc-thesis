@@ -1,0 +1,12 @@
+{
+  "ce": {
+    "exact": 32,
+    "max_delta": 0,
+    "same_metrics": true
+  },
+  "bce": {
+    "exact": 32,
+    "max_delta": 0,
+    "same_metrics": true
+  }
+}

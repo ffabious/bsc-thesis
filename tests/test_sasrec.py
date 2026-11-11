@@ -74,6 +74,21 @@ class SASRecTest(unittest.TestCase):
         for y, values in zip(target, sampled):
             self.assertEqual(set(values), set(range(2, 6)) - {y})
 
+    def test_short_suffix_preserves_positions_padding_and_scores(self):
+        model = SASRec(12,length=5,dim=8,item_dim=4,heads=2,blocks=2,dropout=0).eval()
+        for width in (1,2,4,5):
+            x = torch.tensor([[0,0,0,0,0],[0,0,0,0,3],[0,0,1,1,1],[3,4,4,5,5]])
+            x[:, :-width] = 0
+            with torch.inference_mode():
+                full = model.encode(x)[:, -width:]
+                short = model.encode(x[:, -width:])
+                torch.testing.assert_close(short,full,atol=1e-6,rtol=1e-5)
+                torch.testing.assert_close(model(x[:, -width:])@model.item.weight[2:].T,
+                                           model(x)@model.item.weight[2:].T,atol=1e-6,rtol=1e-5)
+        for width in (0,6):
+            with self.assertRaisesRegex(ValueError,"Sequence width"):
+                model(torch.zeros((1,width),dtype=torch.long))
+
     def test_joint_loss_matches_bce_logits_and_preserves_default(self):
         model = SASRec(12, length=4, dim=8, heads=2, blocks=1, dropout=0)
         x = torch.tensor([[0, 2, 3, 4], [2, 5, 6, 7]])

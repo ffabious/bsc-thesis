@@ -1,0 +1,2091 @@
+{
+  "checks": {
+    "atol": 2e-05,
+    "rtol": 0.0001,
+    "input_width": 2,
+    "positions": [
+      48,
+      49
+    ],
+    "request_vectors": {
+      "pairs": 92043,
+      "max_abs_error": 3.337860107421875e-06
+    },
+    "catalog_scores": {
+      "requests": 256,
+      "candidates": 114125,
+      "max_abs_error": 9.5367431640625e-06
+    },
+    "normalized_scores_max_abs_error": 4.291534423828125e-06,
+    "controller_train": {
+      "recent": {
+        "pairs": 52191,
+        "exact_matches": 51888,
+        "maximum_rank_difference": 2,
+        "metric_difference": {
+          "ndcg@10": 0.0,
+          "recall@100": 0.0,
+          "hit@1": 0.0
+        }
+      },
+      "hybrid": {
+        "always": {
+          "pairs": 52191,
+          "exact_matches": 52117,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "never": {
+          "pairs": 52191,
+          "exact_matches": 52019,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "events_2": {
+          "pairs": 52191,
+          "exact_matches": 52116,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "events_5": {
+          "pairs": 52191,
+          "exact_matches": 52109,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "events_10": {
+          "pairs": 52191,
+          "exact_matches": 52027,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "events_20": {
+          "pairs": 52191,
+          "exact_matches": 52044,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "events_25": {
+          "pairs": 52191,
+          "exact_matches": 52032,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "events_50": {
+          "pairs": 52191,
+          "exact_matches": 52023,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "events_60": {
+          "pairs": 52191,
+          "exact_matches": 52020,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "events_120": {
+          "pairs": 52191,
+          "exact_matches": 52013,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "events_240": {
+          "pairs": 52191,
+          "exact_matches": 52025,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "events_480": {
+          "pairs": 52191,
+          "exact_matches": 52022,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "time_300": {
+          "pairs": 52191,
+          "exact_matches": 52085,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "time_1800": {
+          "pairs": 52191,
+          "exact_matches": 52075,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "time_3600": {
+          "pairs": 52191,
+          "exact_matches": 52032,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "time_7200": {
+          "pairs": 52191,
+          "exact_matches": 52013,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "time_10800": {
+          "pairs": 52191,
+          "exact_matches": 52004,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "time_21600": {
+          "pairs": 52191,
+          "exact_matches": 52000,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "time_43200": {
+          "pairs": 52191,
+          "exact_matches": 52013,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "time_86400": {
+          "pairs": 52191,
+          "exact_matches": 52010,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_2_300": {
+          "pairs": 52191,
+          "exact_matches": 52113,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_2_1800": {
+          "pairs": 52191,
+          "exact_matches": 52114,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_2_3600": {
+          "pairs": 52191,
+          "exact_matches": 52114,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_2_7200": {
+          "pairs": 52191,
+          "exact_matches": 52112,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_2_10800": {
+          "pairs": 52191,
+          "exact_matches": 52113,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_2_21600": {
+          "pairs": 52191,
+          "exact_matches": 52112,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_2_43200": {
+          "pairs": 52191,
+          "exact_matches": 52112,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_2_86400": {
+          "pairs": 52191,
+          "exact_matches": 52112,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_5_300": {
+          "pairs": 52191,
+          "exact_matches": 52088,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_5_1800": {
+          "pairs": 52191,
+          "exact_matches": 52101,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_5_3600": {
+          "pairs": 52191,
+          "exact_matches": 52104,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_5_7200": {
+          "pairs": 52191,
+          "exact_matches": 52107,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_5_10800": {
+          "pairs": 52191,
+          "exact_matches": 52105,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_5_21600": {
+          "pairs": 52191,
+          "exact_matches": 52105,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_5_43200": {
+          "pairs": 52191,
+          "exact_matches": 52099,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_5_86400": {
+          "pairs": 52191,
+          "exact_matches": 52110,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_10_300": {
+          "pairs": 52191,
+          "exact_matches": 52086,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_10_1800": {
+          "pairs": 52191,
+          "exact_matches": 52074,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_10_3600": {
+          "pairs": 52191,
+          "exact_matches": 52036,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_10_7200": {
+          "pairs": 52191,
+          "exact_matches": 52030,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_10_10800": {
+          "pairs": 52191,
+          "exact_matches": 52036,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_10_21600": {
+          "pairs": 52191,
+          "exact_matches": 52035,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_10_43200": {
+          "pairs": 52191,
+          "exact_matches": 52025,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_10_86400": {
+          "pairs": 52191,
+          "exact_matches": 52065,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_20_300": {
+          "pairs": 52191,
+          "exact_matches": 52086,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_20_1800": {
+          "pairs": 52191,
+          "exact_matches": 52072,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_20_3600": {
+          "pairs": 52191,
+          "exact_matches": 52036,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_20_7200": {
+          "pairs": 52191,
+          "exact_matches": 52013,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_20_10800": {
+          "pairs": 52191,
+          "exact_matches": 52012,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_20_21600": {
+          "pairs": 52191,
+          "exact_matches": 52022,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_20_43200": {
+          "pairs": 52191,
+          "exact_matches": 52032,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_20_86400": {
+          "pairs": 52191,
+          "exact_matches": 52042,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_25_300": {
+          "pairs": 52191,
+          "exact_matches": 52085,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_25_1800": {
+          "pairs": 52191,
+          "exact_matches": 52076,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_25_3600": {
+          "pairs": 52191,
+          "exact_matches": 52034,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_25_7200": {
+          "pairs": 52191,
+          "exact_matches": 52032,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_25_10800": {
+          "pairs": 52191,
+          "exact_matches": 52043,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_25_21600": {
+          "pairs": 52191,
+          "exact_matches": 52044,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_25_43200": {
+          "pairs": 52191,
+          "exact_matches": 52040,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_25_86400": {
+          "pairs": 52191,
+          "exact_matches": 52031,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_50_300": {
+          "pairs": 52191,
+          "exact_matches": 52085,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_50_1800": {
+          "pairs": 52191,
+          "exact_matches": 52074,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_50_3600": {
+          "pairs": 52191,
+          "exact_matches": 52033,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_50_7200": {
+          "pairs": 52191,
+          "exact_matches": 52020,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_50_10800": {
+          "pairs": 52191,
+          "exact_matches": 52012,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_50_21600": {
+          "pairs": 52191,
+          "exact_matches": 52005,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_50_43200": {
+          "pairs": 52191,
+          "exact_matches": 52004,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_50_86400": {
+          "pairs": 52191,
+          "exact_matches": 52036,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_60_300": {
+          "pairs": 52191,
+          "exact_matches": 52085,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_60_1800": {
+          "pairs": 52191,
+          "exact_matches": 52074,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_60_3600": {
+          "pairs": 52191,
+          "exact_matches": 52033,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_60_7200": {
+          "pairs": 52191,
+          "exact_matches": 52032,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_60_10800": {
+          "pairs": 52191,
+          "exact_matches": 52003,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_60_21600": {
+          "pairs": 52191,
+          "exact_matches": 52016,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_60_43200": {
+          "pairs": 52191,
+          "exact_matches": 52017,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_60_86400": {
+          "pairs": 52191,
+          "exact_matches": 52016,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_120_300": {
+          "pairs": 52191,
+          "exact_matches": 52085,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_120_1800": {
+          "pairs": 52191,
+          "exact_matches": 52074,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_120_3600": {
+          "pairs": 52191,
+          "exact_matches": 52031,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_120_7200": {
+          "pairs": 52191,
+          "exact_matches": 52033,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_120_10800": {
+          "pairs": 52191,
+          "exact_matches": 52003,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_120_21600": {
+          "pairs": 52191,
+          "exact_matches": 51998,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_120_43200": {
+          "pairs": 52191,
+          "exact_matches": 52008,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_120_86400": {
+          "pairs": 52191,
+          "exact_matches": 52005,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_240_300": {
+          "pairs": 52191,
+          "exact_matches": 52085,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_240_1800": {
+          "pairs": 52191,
+          "exact_matches": 52075,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_240_3600": {
+          "pairs": 52191,
+          "exact_matches": 52032,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_240_7200": {
+          "pairs": 52191,
+          "exact_matches": 52013,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_240_10800": {
+          "pairs": 52191,
+          "exact_matches": 52004,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_240_21600": {
+          "pairs": 52191,
+          "exact_matches": 51999,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_240_43200": {
+          "pairs": 52191,
+          "exact_matches": 52012,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_240_86400": {
+          "pairs": 52191,
+          "exact_matches": 52007,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_480_300": {
+          "pairs": 52191,
+          "exact_matches": 52085,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_480_1800": {
+          "pairs": 52191,
+          "exact_matches": 52075,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_480_3600": {
+          "pairs": 52191,
+          "exact_matches": 52032,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_480_7200": {
+          "pairs": 52191,
+          "exact_matches": 52013,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_480_10800": {
+          "pairs": 52191,
+          "exact_matches": 52004,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_480_21600": {
+          "pairs": 52191,
+          "exact_matches": 52000,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_480_43200": {
+          "pairs": 52191,
+          "exact_matches": 52013,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_480_86400": {
+          "pairs": 52191,
+          "exact_matches": 52010,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        }
+      }
+    },
+    "policy_valid": {
+      "recent": {
+        "pairs": 23394,
+        "exact_matches": 23265,
+        "maximum_rank_difference": 2,
+        "metric_difference": {
+          "ndcg@10": 0.0,
+          "recall@100": 0.0,
+          "hit@1": 0.0
+        }
+      },
+      "hybrid": {
+        "always": {
+          "pairs": 23394,
+          "exact_matches": 23358,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "never": {
+          "pairs": 23394,
+          "exact_matches": 23310,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "events_2": {
+          "pairs": 23394,
+          "exact_matches": 23363,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "events_5": {
+          "pairs": 23394,
+          "exact_matches": 23352,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "events_10": {
+          "pairs": 23394,
+          "exact_matches": 23305,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "events_20": {
+          "pairs": 23394,
+          "exact_matches": 23317,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "events_25": {
+          "pairs": 23394,
+          "exact_matches": 23316,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "events_50": {
+          "pairs": 23394,
+          "exact_matches": 23304,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "events_60": {
+          "pairs": 23394,
+          "exact_matches": 23308,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "events_120": {
+          "pairs": 23394,
+          "exact_matches": 23313,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "events_240": {
+          "pairs": 23394,
+          "exact_matches": 23322,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "events_480": {
+          "pairs": 23394,
+          "exact_matches": 23314,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "time_300": {
+          "pairs": 23394,
+          "exact_matches": 23333,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "time_1800": {
+          "pairs": 23394,
+          "exact_matches": 23330,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "time_3600": {
+          "pairs": 23394,
+          "exact_matches": 23314,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "time_7200": {
+          "pairs": 23394,
+          "exact_matches": 23301,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "time_10800": {
+          "pairs": 23394,
+          "exact_matches": 23308,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "time_21600": {
+          "pairs": 23394,
+          "exact_matches": 23305,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "time_43200": {
+          "pairs": 23394,
+          "exact_matches": 23312,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "time_86400": {
+          "pairs": 23394,
+          "exact_matches": 23301,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_2_300": {
+          "pairs": 23394,
+          "exact_matches": 23361,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_2_1800": {
+          "pairs": 23394,
+          "exact_matches": 23361,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_2_3600": {
+          "pairs": 23394,
+          "exact_matches": 23356,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_2_7200": {
+          "pairs": 23394,
+          "exact_matches": 23359,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_2_10800": {
+          "pairs": 23394,
+          "exact_matches": 23356,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_2_21600": {
+          "pairs": 23394,
+          "exact_matches": 23356,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_2_43200": {
+          "pairs": 23394,
+          "exact_matches": 23357,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_2_86400": {
+          "pairs": 23394,
+          "exact_matches": 23358,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_5_300": {
+          "pairs": 23394,
+          "exact_matches": 23335,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_5_1800": {
+          "pairs": 23394,
+          "exact_matches": 23353,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_5_3600": {
+          "pairs": 23394,
+          "exact_matches": 23352,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_5_7200": {
+          "pairs": 23394,
+          "exact_matches": 23347,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_5_10800": {
+          "pairs": 23394,
+          "exact_matches": 23348,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_5_21600": {
+          "pairs": 23394,
+          "exact_matches": 23343,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_5_43200": {
+          "pairs": 23394,
+          "exact_matches": 23341,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_5_86400": {
+          "pairs": 23394,
+          "exact_matches": 23348,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_10_300": {
+          "pairs": 23394,
+          "exact_matches": 23334,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_10_1800": {
+          "pairs": 23394,
+          "exact_matches": 23330,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_10_3600": {
+          "pairs": 23394,
+          "exact_matches": 23317,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_10_7200": {
+          "pairs": 23394,
+          "exact_matches": 23315,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_10_10800": {
+          "pairs": 23394,
+          "exact_matches": 23309,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_10_21600": {
+          "pairs": 23394,
+          "exact_matches": 23313,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_10_43200": {
+          "pairs": 23394,
+          "exact_matches": 23307,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_10_86400": {
+          "pairs": 23394,
+          "exact_matches": 23333,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_20_300": {
+          "pairs": 23394,
+          "exact_matches": 23334,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_20_1800": {
+          "pairs": 23394,
+          "exact_matches": 23333,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_20_3600": {
+          "pairs": 23394,
+          "exact_matches": 23308,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_20_7200": {
+          "pairs": 23394,
+          "exact_matches": 23317,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_20_10800": {
+          "pairs": 23394,
+          "exact_matches": 23321,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_20_21600": {
+          "pairs": 23394,
+          "exact_matches": 23317,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_20_43200": {
+          "pairs": 23394,
+          "exact_matches": 23312,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_20_86400": {
+          "pairs": 23394,
+          "exact_matches": 23320,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_25_300": {
+          "pairs": 23394,
+          "exact_matches": 23334,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_25_1800": {
+          "pairs": 23394,
+          "exact_matches": 23333,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_25_3600": {
+          "pairs": 23394,
+          "exact_matches": 23309,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_25_7200": {
+          "pairs": 23394,
+          "exact_matches": 23314,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_25_10800": {
+          "pairs": 23394,
+          "exact_matches": 23318,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_25_21600": {
+          "pairs": 23394,
+          "exact_matches": 23323,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_25_43200": {
+          "pairs": 23394,
+          "exact_matches": 23321,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_25_86400": {
+          "pairs": 23394,
+          "exact_matches": 23315,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_50_300": {
+          "pairs": 23394,
+          "exact_matches": 23333,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_50_1800": {
+          "pairs": 23394,
+          "exact_matches": 23332,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_50_3600": {
+          "pairs": 23394,
+          "exact_matches": 23313,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_50_7200": {
+          "pairs": 23394,
+          "exact_matches": 23301,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_50_10800": {
+          "pairs": 23394,
+          "exact_matches": 23306,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_50_21600": {
+          "pairs": 23394,
+          "exact_matches": 23308,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_50_43200": {
+          "pairs": 23394,
+          "exact_matches": 23306,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_50_86400": {
+          "pairs": 23394,
+          "exact_matches": 23307,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_60_300": {
+          "pairs": 23394,
+          "exact_matches": 23333,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_60_1800": {
+          "pairs": 23394,
+          "exact_matches": 23332,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_60_3600": {
+          "pairs": 23394,
+          "exact_matches": 23313,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_60_7200": {
+          "pairs": 23394,
+          "exact_matches": 23314,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_60_10800": {
+          "pairs": 23394,
+          "exact_matches": 23310,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_60_21600": {
+          "pairs": 23394,
+          "exact_matches": 23306,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_60_43200": {
+          "pairs": 23394,
+          "exact_matches": 23304,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_60_86400": {
+          "pairs": 23394,
+          "exact_matches": 23297,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_120_300": {
+          "pairs": 23394,
+          "exact_matches": 23333,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_120_1800": {
+          "pairs": 23394,
+          "exact_matches": 23330,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_120_3600": {
+          "pairs": 23394,
+          "exact_matches": 23314,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_120_7200": {
+          "pairs": 23394,
+          "exact_matches": 23315,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_120_10800": {
+          "pairs": 23394,
+          "exact_matches": 23309,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_120_21600": {
+          "pairs": 23394,
+          "exact_matches": 23306,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_120_43200": {
+          "pairs": 23394,
+          "exact_matches": 23309,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_120_86400": {
+          "pairs": 23394,
+          "exact_matches": 23306,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_240_300": {
+          "pairs": 23394,
+          "exact_matches": 23333,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_240_1800": {
+          "pairs": 23394,
+          "exact_matches": 23330,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_240_3600": {
+          "pairs": 23394,
+          "exact_matches": 23314,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_240_7200": {
+          "pairs": 23394,
+          "exact_matches": 23301,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_240_10800": {
+          "pairs": 23394,
+          "exact_matches": 23308,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_240_21600": {
+          "pairs": 23394,
+          "exact_matches": 23305,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_240_43200": {
+          "pairs": 23394,
+          "exact_matches": 23312,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_240_86400": {
+          "pairs": 23394,
+          "exact_matches": 23303,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_480_300": {
+          "pairs": 23394,
+          "exact_matches": 23333,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_480_1800": {
+          "pairs": 23394,
+          "exact_matches": 23330,
+          "maximum_rank_difference": 1,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_480_3600": {
+          "pairs": 23394,
+          "exact_matches": 23314,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_480_7200": {
+          "pairs": 23394,
+          "exact_matches": 23301,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_480_10800": {
+          "pairs": 23394,
+          "exact_matches": 23308,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_480_21600": {
+          "pairs": 23394,
+          "exact_matches": 23305,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_480_43200": {
+          "pairs": 23394,
+          "exact_matches": 23312,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        },
+        "hybrid_480_86400": {
+          "pairs": 23394,
+          "exact_matches": 23301,
+          "maximum_rank_difference": 2,
+          "metric_difference": {
+            "ndcg@10": 0.0,
+            "recall@100": 0.0,
+            "hit@1": 0.0
+          }
+        }
+      }
+    }
+  },
+  "device": "mps",
+  "sources": {
+    "long": {
+      "run": "data/runs/sasrec-256-full-ce",
+      "checkpoint_sha256": "decfa67cb108d71806fec5957e4d425650aa6acb33bd67bf4b71e1d105cc4eb0",
+      "epoch": 4,
+      "data_manifest_sha256": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c",
+      "items": 114125
+    },
+    "recent": {
+      "run": "data/runs/sasrec-256-recent-2",
+      "checkpoint_sha256": "c4c25d719e7e18a3dcde498c72a0c8bbbb0bd6ae14dcfce2f4c06f8b8cc75e8d",
+      "epoch": 14,
+      "data_manifest_sha256": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c",
+      "items": 114125
+    }
+  },
+  "source_sha256": {
+    "data/runs/sasrec-256-hybrid/results.json": "e31a2bf00fa5d9b705ad178b7801566b6a78efb67744ca2bb6c8ed494569de79",
+    "data/runs/sasrec-256-hybrid/selection.json": "7395356c65d31f5912dd89272b7a40efb9303dd85d43a81569cf9d76d3622d47",
+    "data/runs/sasrec-256-hybrid/ranks.npz": "90fd3def746dcff0361bf3b3b89fcd2dd4061f072a5476e9fda994cb81e36564",
+    "data/runs/sasrec-256-policies-wide/replay.npz": "c1bbe6ae4ba0c4c9f7314aaef02e43f7b59eccf0bdb91ba5700529a869f64687",
+    "data/runs/sasrec-256-policies-wide/results.json": "1954b4fa7e45992a4d4619e849fc7c5bc04d301bcaf3b6233e84061265149cf5",
+    "scripts/check_sasrec_short.py": "fb1ba10c22581d42152360d4661fb3aed83f1d2a9575092cfad26dbc9d9597cd",
+    "scripts/sasrec.py": "5ec315e46a0bb529ef035badca261ef5a10206ecc9668f63d499a699352c6165",
+    "scripts/profile_sasrec_hybrid.py": "8d8ce09a9acd498729c255046d88e9dfa5deb6db2de779c9154ebe2abc6c63ea",
+    "scripts/replay_hybrid_sasrec.py": "75dfb0587a39bf0e0d9427c97dbb5f085596846e24df33b567d49f4ff14f0d75",
+    "scripts/replay_sasrec.py": "cabb273e8d2a838f7966ce3ca98f6bd0b897f83a56651007e88b36b83bcc1fb2",
+    "scripts/blend_sasrec.py": "78265c7a9d594b3e10c53b8c798d961ee1e28f11bac16cb9e35169f34d5496fd"
+  },
+  "data_files_sha256": {
+    "events/controller_train.parquet": "0791d5cca3fa43078ef3d5239f280c4a1eea34ff8ee6f0ec90504b49f09dbd21",
+    "events/model_valid.parquet": "32980a3fa82dc0f4d716a020af687c72c88110fda111be673a88d1cd35b6604b",
+    "events/policy_valid.parquet": "5bc91cd485b0f828e3ab0102df358cfe28b10e4bf130655657ef5a622e6d0a69",
+    "events/train.parquet": "9beb8bbc92c90ca2dccd9dfeda3b1e4e838b13b0f759f4a3da27c00e68134340",
+    "items.parquet": "cd16fbc24772305d9c5a57bb62a02e2eb4049bb9f62ffcd446be92f76ec0c863",
+    "users.parquet": "27f101f6b67421d0bab7ccc213bd154bbc8f7b9fa92742d53177bb0d7e398332"
+  },
+  "no_test_events_read": true,
+  "process_peak_rss_mib": 1770.453125,
+  "mps_tensor_mib": 101.4169921875,
+  "mps_driver_mib": 2069.734375
+}

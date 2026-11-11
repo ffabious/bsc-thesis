@@ -21,8 +21,17 @@ from sasrec import mask_context,metrics,sync
 
 
 class Serving:
-    def __init__(self,models,configs,device):
+    def __init__(self,models,configs,device,recent_input_length=None):
         self.models,self.configs,self.device = models,configs,device
+        if recent_input_length is not None and (type(recent_input_length) is not int or
+                recent_input_length!=configs["recent"].get("context_keep")):
+            raise ValueError("Short recent input must match the checkpoint context_keep")
+        self.recent_input_length = recent_input_length
+
+    def inputs(self,role,queries):
+        if role=="recent" and self.recent_input_length is not None:
+            queries = queries[:, -self.recent_input_length:]
+        return mask_context(queries.copy(),self.configs[role].get("context_keep"))
 
     def mark(self,trace,name):
         if trace is not None:
@@ -31,7 +40,7 @@ class Serving:
 
     @torch.inference_mode()
     def encode(self,role,queries):
-        x = mask_context(queries.copy(),self.configs[role].get("context_keep"))
+        x = self.inputs(role,queries)
         return self.models[role](torch.as_tensor(x,dtype=torch.long,device=self.device))
 
     @torch.inference_mode()
@@ -188,7 +197,7 @@ def main():
     sources_used = {str(p.relative_to(ROOT)):checksum(p) for p in (run/"results.json",run/"selection.json",folder/"replay.npz",
         folder/"results.json",ROOT/"scripts/profile_sasrec_hybrid.py",ROOT/"scripts/replay_hybrid_sasrec.py",
         ROOT/"scripts/blend_sasrec.py",ROOT/"scripts/sasrec.py",ROOT/"scripts/replay_sasrec_policies.py",args.config.resolve())}
-    service = Serving(models,configs,args.device)
+    service = Serving(models,configs,args.device,config.get("recent_input_length"))
     def state_digest(model):
         value = hashlib.sha256()
         for name,tensor in model.state_dict().items():
@@ -200,7 +209,7 @@ def main():
                  for batch,steps,repeat in zip(config["batch_sizes"],config["steps"],config["repeats"])]
     chosen = np.unique(np.concatenate([d.ravel() for d in draw_sets]))
     lookup = np.full(len(stream["users"]),-1,dtype=np.int64);lookup[chosen] = np.arange(len(chosen))
-    vectors = {role:encode_queries(m,mask_context(stream["queries"][chosen].copy(),configs[role].get("context_keep")),args.device,256)[0]
+    vectors = {role:encode_queries(m,service.inputs(role,stream["queries"][chosen]),args.device,256)[0]
                for role,m in models.items()}
     alphas = sorted({p["alpha"] for p in selection["policies"] if 0<p["alpha"]<1})
     fresh_alpha = selection["policies"][0]["alpha"]
@@ -295,6 +304,7 @@ def main():
         "selected_input_windows":len(chosen),"parameters":{k:sum(p.numel() for p in m.parameters()) for k,m in models.items()},
         "logical_cache_bytes":256*64*4,"source_sha256":sources_used,"torch":torch.__version__,"numpy":np.__version__,
         "frozen_state_sha256":states_before,"no_test_events_read":True,
+        "input_widths":{role:service.inputs(role,stream["queries"][:1]).shape[1] for role in models},
         "python":platform.python_version(),"macos":platform.mac_ver()[0],**memory(args.device)})
 
 

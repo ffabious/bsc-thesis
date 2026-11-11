@@ -57,6 +57,26 @@ class HybridServingTest(unittest.TestCase):
         for row in result.numpy():
             self.assertEqual(set(row),set(range(12)))
 
+    def test_short_recent_reaches_attention_with_only_two_tokens(self):
+        short = Serving(self.models,self.configs,"cpu",recent_input_length=2)
+        x = np.array([[0,0,0],[0,0,3],[4,1,1],[4,5,5]],dtype=np.int32)
+        shapes = []
+        hook = self.models["recent"].blocks[0].attention.register_forward_pre_hook(
+            lambda module,args:shapes.append(tuple(args[0].shape)))
+        cache = self.service.encode("long",x).numpy().copy()
+        try:
+            for alpha in (0,.5,1):
+                expected = self.service.scores(x,cache.copy(),False,alpha)
+                shapes.clear()
+                actual = short.scores(x,cache.copy(),False,alpha)
+                torch.testing.assert_close(actual,expected,atol=1e-6,rtol=1e-5)
+                self.assertEqual(shapes,[] if alpha==0 else [(4,2,8)])
+        finally:
+            hook.remove()
+        for width in (1,3,True):
+            with self.assertRaisesRegex(ValueError,"context_keep"):
+                Serving(self.models,self.configs,"cpu",recent_input_length=width)
+
     def test_cost_charges_refreshes_and_skips_unused_long_or_cache_writes(self):
         series = lambda v:{"repeat_mean_ms_per_request":[v,v,v]}
         paths = {"long_direct":series(1),"long_refresh":series(2),"long_hit":series(.5),
@@ -76,6 +96,17 @@ class HybridServingTest(unittest.TestCase):
         mps = other.scores(self.x[:2],b,True,.5)
         torch.testing.assert_close(cpu,mps.cpu(),atol=1e-5,rtol=1e-4)
         np.testing.assert_allclose(a,b,atol=1e-5,rtol=1e-4)
+
+    @unittest.skipUnless(torch.backends.mps.is_available(),"MPS unavailable")
+    def test_short_recent_mps_matches_padded_reference(self):
+        models = {r:copy.deepcopy(m).to("mps") for r,m in self.models.items()}
+        full = Serving(models,self.configs,"mps")
+        short = Serving(models,self.configs,"mps",recent_input_length=2)
+        x = np.array([[0,0,0],[0,0,3],[4,1,1],[4,5,5]],dtype=np.int32)
+        cache = full.encode("long",x).cpu().numpy()
+        for alpha in (0,.5,1):
+            a,b = full.scores(x,cache.copy(),False,alpha),short.scores(x,cache.copy(),False,alpha)
+            torch.testing.assert_close(a,b,atol=1e-5,rtol=1e-4)
 
 
 if __name__=="__main__":

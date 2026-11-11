@@ -15,7 +15,10 @@ from replay_sasrec_policies import frontier
 def merge_bce(current,previous):
     if current["device"]!=previous["device"] or current["sources"]["long"]!=previous["sources"]["long"]:
         raise ValueError("Comparison requires the same device and long checkpoint/data")
-    result = {**current,"model_label":"CE50+CE2 / CE50+BCE2","results":{},"calibration":{}}
+    label = "CE50+CE2 / CE50+BCE2"
+    if current["config"].get("recent_input_length") is not None:
+        label += f", recent input length {current['config']['recent_input_length']}"
+    result = {**current,"model_label":label,"results":{},"calibration":{}}
     for split,b in current["results"].items():
         prior = previous["results"][split]
         same = {p["name"]:p for p in b["points"] if p["family"]=="long"}
@@ -91,6 +94,9 @@ def main():
     args = parser.parse_args()
     args.output.mkdir(parents=True,exist_ok=True)
     results = [json.loads(p.read_text()) for p in args.input]
+    for result in results:
+        if result["config"].get("recent_input_length") is not None:
+            result["model_label"] = f"CE50 + CE2, recent input length {result['config']['recent_input_length']}"
     if args.bce_reference:
         previous = json.loads(args.bce_reference.read_text())
         matches = [i for i,r in enumerate(results) if r["device"]==previous["device"]]

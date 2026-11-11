@@ -50,13 +50,17 @@ class SASRec(nn.Module):
             self.item.weight[0].zero_()
 
     def encode(self, sequence):
+        width = sequence.shape[1]
+        if not 1 <= width <= self.length:
+            raise ValueError("Sequence width must be between 1 and the trained length")
         valid = sequence != 0
-        allowed = self.causal[None] & valid[:, None, :]
+        allowed = self.causal[None, -width:, -width:] & valid[:, None, :]
         # Padding queries see themselves, avoiding all-masked softmax rows and NaN gradients.
         allowed = allowed | (~valid[:, :, None] & torch.eye(
-            self.length, device=sequence.device, dtype=torch.bool)[None])
+            width, device=sequence.device, dtype=torch.bool)[None])
         x = self.input_projection(self.item(sequence)) * math.sqrt(self.position.embedding_dim)
-        x = self.dropout(x + self.position.weight[None]) * valid[:, :, None]
+        # Short inputs retain their original right-aligned learned positions.
+        x = self.dropout(x + self.position.weight[None, -width:]) * valid[:, :, None]
         for block in self.blocks:
             x = block(x, allowed) * valid[:, :, None]
         return self.norm(x) * valid[:, :, None]
