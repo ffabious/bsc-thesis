@@ -1,0 +1,132 @@
+{
+  "no_training": true,
+  "no_test_events_read": true,
+  "source_events_sha256": "13954afe820dbb674dce40cae5baebef1ff91890b5a72931331f99de671ba14c",
+  "source_sha256": "360e04c2c71df5c1b3621edf46b382a86d164c8b8fdad504d89d2a8ca6efa64e",
+  "interpretation": "Input ablation of frozen history50 models; not a retrained or deployable repeat detector",
+  "splits": {
+    "model_valid": {
+      "targets": 654,
+      "models": {
+        "control": {
+          "ndcg@10": 0.6845285552696,
+          "recall@100": 0.9036697247706422,
+          "hit@1": 0.5688073394495413
+        },
+        "student": {
+          "ndcg@10": 0.66038026031498,
+          "recall@100": 0.8776758409785933,
+          "hit@1": 0.5458715596330275
+        },
+        "control_short": {
+          "ndcg@10": 0.6261867013536793,
+          "recall@100": 0.8562691131498471,
+          "hit@1": 0.5076452599388379
+        },
+        "student_short": {
+          "ndcg@10": 0.6980288150859979,
+          "recall@100": 0.9036697247706422,
+          "hit@1": 0.5657492354740061
+        }
+      },
+      "student_minus_control_short": {
+        "ndcg@10": {
+          "difference": 0.07184211373231861,
+          "cluster_bootstrap_95ci": [
+            0.04042958041730862,
+            0.13609684859216256
+          ]
+        },
+        "recall@100": {
+          "difference": 0.047400611620795105,
+          "cluster_bootstrap_95ci": [
+            0.016088666902404528,
+            0.10732811185870474
+          ]
+        }
+      }
+    },
+    "controller_train": {
+      "targets": 882,
+      "models": {
+        "control": {
+          "ndcg@10": 0.5530474968946912,
+          "recall@100": 0.8106575963718821,
+          "hit@1": 0.4342403628117914
+        },
+        "student": {
+          "ndcg@10": 0.5055165109357608,
+          "recall@100": 0.7596371882086168,
+          "hit@1": 0.3979591836734694
+        },
+        "control_short": {
+          "ndcg@10": 0.44380431190235764,
+          "recall@100": 0.753968253968254,
+          "hit@1": 0.31405895691609975
+        },
+        "student_short": {
+          "ndcg@10": 0.549976012653707,
+          "recall@100": 0.7868480725623582,
+          "hit@1": 0.42403628117913833
+        }
+      },
+      "student_minus_control_short": {
+        "ndcg@10": {
+          "difference": 0.10617170075134945,
+          "cluster_bootstrap_95ci": [
+            0.07430872597541822,
+            0.14761165070170906
+          ]
+        },
+        "recall@100": {
+          "difference": 0.032879818594104306,
+          "cluster_bootstrap_95ci": [
+            0.009578099254173902,
+            0.06327620239437264
+          ]
+        }
+      }
+    },
+    "policy_valid": {
+      "targets": 415,
+      "models": {
+        "control": {
+          "ndcg@10": 0.5695006660864097,
+          "recall@100": 0.7951807228915663,
+          "hit@1": 0.472289156626506
+        },
+        "student": {
+          "ndcg@10": 0.4924361313440775,
+          "recall@100": 0.7542168674698795,
+          "hit@1": 0.40240963855421685
+        },
+        "control_short": {
+          "ndcg@10": 0.4679205142477482,
+          "recall@100": 0.7180722891566265,
+          "hit@1": 0.35180722891566263
+        },
+        "student_short": {
+          "ndcg@10": 0.5393364074436129,
+          "recall@100": 0.7783132530120482,
+          "hit@1": 0.42409638554216866
+        }
+      },
+      "student_minus_control_short": {
+        "ndcg@10": {
+          "difference": 0.07141589319586472,
+          "cluster_bootstrap_95ci": [
+            0.04093361484865895,
+            0.1074144146731184
+          ]
+        },
+        "recall@100": {
+          "difference": 0.060240963855421686,
+          "cluster_bootstrap_95ci": [
+            0.02153475935828877,
+            0.10397730285835498
+          ]
+        }
+      }
+    }
+  }
+}

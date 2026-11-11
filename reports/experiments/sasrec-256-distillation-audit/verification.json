@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "model_valid_metrics_reproduced": true,
+  "targets": 104898,
+  "same_ct_pv_queries_users_targets_event_ids": true,
+  "checkpoint_data_source_hashes_unchanged": true,
+  "partition_additivity_checked": true,
+  "rank_transitions_checked": true,
+  "native2_matches_padded2_cpu_models": 2,
+  "native2_examples_each": 16,
+  "context_probe_targets": 1951,
+  "source_hashes": {
+    "data/runs/sasrec-256-distillation-cold/selection.json": "83807ccbef1aad93427923acd14218dc84ab77a2d279154f985f89b8001c4f4c",
+    "data/runs/sasrec-256-distillation-cold/evaluation-ranks.npz": "3933abd49bc7b37b1172bc61386cc3b27dd195c7abfb7d445dfc0e87d6355055",
+    "data/processed/yambda50m-pilot-audio/manifest.json": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c",
+    "scripts/diagnostics/audit_cold_distillation.py": "e5a6b429843dbc1c3df11d6d204329ee1d4db3b1ef4b0a17b20a040f7d6aecee",
+    "data/runs/sasrec-256-full-ce/train-mps/best.pt": "decfa67cb108d71806fec5957e4d425650aa6acb33bd67bf4b71e1d105cc4eb0",
+    "data/runs/sasrec-256-distillation-cold/kd-1/train-mps/best.pt": "1f1a7dd073aaef8878d633b9c867479fe6ea2c3cd15ff5176b8262ed0bc06f5a"
+  },
+  "no_training": true,
+  "no_test_events_read": true
+}

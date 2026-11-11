@@ -24,6 +24,7 @@
 | `diagnostics/sage_fd_check.py` | Самостоятельная численная диагностика опубликованного псевдокода SAGE; требует NumPy |
 | `diagnostics/audit_pilot_scale.py` | Проверка общей когорты и строго прошлых histories, естественные prefixes и сегменты качества 256/1k |
 | `diagnostics/audit_joint_repeats.py` | Локальные inference-абляции выбранных повторов joint-BCE моделей, tracing encoder и полный validation-контроль короткого контекста; без обучения |
+| `diagnostics/audit_cold_distillation.py` / `check_student_context.py` / `summarize_student_quality.py` | Разбор student/CE50/teacher на model_valid и сохранённых CT/PV: типы истории, популярность, пользователи, rank transitions, paired CI и input-ablation длинного контекста. Готовые веса, без test |
 | `diagnostics/audit_pilot_training.py` | Воспроизведение validation/initial model, scoring-абляции и проверка gradient weighting BCE без optimizer updates |
 | `legacy/literature/` | Сборка каталога и HTML-обзоров, добавление источников и прежние проверки |
 | `legacy/conferences/` | Первоначальная сборка и обновление таблицы конференций |

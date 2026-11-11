@@ -1,0 +1,739 @@
+{
+  "source_events_sha256": "13954afe820dbb674dce40cae5baebef1ff91890b5a72931331f99de671ba14c",
+  "source_context_sha256": "26c3c8f9bada25cdc041558a9deb7f82e4c18d0920281fe293090ae6e07360ca",
+  "source_sha256": "fb481ccccc46edf1bd8a512fdf103fd4a4b1334a32d19be6e00b9c2c5d50f063",
+  "cross_segments": [
+    {
+      "split": "model_valid",
+      "history": "last_item",
+      "popularity": "top_1000",
+      "targets": 289,
+      "ndcg_delta": 0.020753616124068223,
+      "ndcg_contribution": 0.00020461211953248445,
+      "control_ndcg": 0.8572216582331798,
+      "student_ndcg": 0.877975274357248,
+      "teacher_ndcg": 0.9643374550368029
+    },
+    {
+      "split": "model_valid",
+      "history": "last_item",
+      "popularity": "1001_to_10000",
+      "targets": 242,
+      "ndcg_delta": -0.03445212575199554,
+      "ndcg_contribution": -0.00028442719721566954,
+      "control_ndcg": 0.6715589935368522,
+      "student_ndcg": 0.6371068677848567,
+      "teacher_ndcg": 0.905586289382642
+    },
+    {
+      "split": "model_valid",
+      "history": "last_item",
+      "popularity": "over_10000",
+      "targets": 123,
+      "ndcg_delta": -0.10937695551377524,
+      "ndcg_contribution": -0.0004589556008663172,
+      "control_ndcg": 0.30428731285374994,
+      "student_ndcg": 0.1949103573399747,
+      "teacher_ndcg": 0.24365226364319248
+    },
+    {
+      "split": "model_valid",
+      "history": "second_last_only",
+      "popularity": "top_1000",
+      "targets": 108,
+      "ndcg_delta": 0.04355620002505446,
+      "ndcg_contribution": 0.00016047724909445919,
+      "control_ndcg": 0.25641685353825294,
+      "student_ndcg": 0.2999730535633074,
+      "teacher_ndcg": 0.4707041569810978
+    },
+    {
+      "split": "model_valid",
+      "history": "second_last_only",
+      "popularity": "1001_to_10000",
+      "targets": 161,
+      "ndcg_delta": -0.0026206160222878422,
+      "ndcg_contribution": -1.4393585767009265e-05,
+      "control_ndcg": 0.2495979485798513,
+      "student_ndcg": 0.24697733255756343,
+      "teacher_ndcg": 0.44974699121881834
+    },
+    {
+      "split": "model_valid",
+      "history": "second_last_only",
+      "popularity": "over_10000",
+      "targets": 102,
+      "ndcg_delta": 0.015072496378804331,
+      "ndcg_contribution": 5.2447536268482984e-05,
+      "control_ndcg": 0.056191517277001606,
+      "student_ndcg": 0.07126401365580592,
+      "teacher_ndcg": 0.08526917222256654
+    },
+    {
+      "split": "model_valid",
+      "history": "earlier_in_window",
+      "popularity": "top_1000",
+      "targets": 1122,
+      "ndcg_delta": 0.015881930093089767,
+      "ndcg_contribution": 0.0006079052149028322,
+      "control_ndcg": 0.20096232947371298,
+      "student_ndcg": 0.21684425956680276,
+      "teacher_ndcg": 0.2176770759530075
+    },
+    {
+      "split": "model_valid",
+      "history": "earlier_in_window",
+      "popularity": "1001_to_10000",
+      "targets": 1935,
+      "ndcg_delta": -0.006186418693422131,
+      "ndcg_contribution": -0.0004083758118163212,
+      "control_ndcg": 0.20573044923397593,
+      "student_ndcg": 0.1995440305405538,
+      "teacher_ndcg": 0.19414905591987203
+    },
+    {
+      "split": "model_valid",
+      "history": "earlier_in_window",
+      "popularity": "over_10000",
+      "targets": 1305,
+      "ndcg_delta": -0.010913243548880087,
+      "ndcg_contribution": -0.0004858521076412688,
+      "control_ndcg": 0.10726579949526258,
+      "student_ndcg": 0.09635255594638248,
+      "teacher_ndcg": 0.0890147616099449
+    },
+    {
+      "split": "model_valid",
+      "history": "outside_window",
+      "popularity": "top_1000",
+      "targets": 4707,
+      "ndcg_delta": 0.01097219920919961,
+      "ndcg_contribution": 0.0017618852276362897,
+      "control_ndcg": 0.0384093911960057,
+      "student_ndcg": 0.04938159040520531,
+      "teacher_ndcg": 0.0577938850516839
+    },
+    {
+      "split": "model_valid",
+      "history": "outside_window",
+      "popularity": "1001_to_10000",
+      "targets": 8677,
+      "ndcg_delta": 0.004012113715734958,
+      "ndcg_contribution": 0.0011876338386187777,
+      "control_ndcg": 0.05323307484974724,
+      "student_ndcg": 0.0572451885654822,
+      "teacher_ndcg": 0.0664796393647209
+    },
+    {
+      "split": "model_valid",
+      "history": "outside_window",
+      "popularity": "over_10000",
+      "targets": 10542,
+      "ndcg_delta": -0.003748138485273462,
+      "ndcg_contribution": -0.001347964244934085,
+      "control_ndcg": 0.01759398184525114,
+      "student_ndcg": 0.013845843359977678,
+      "teacher_ndcg": 0.0149275330196642
+    },
+    {
+      "split": "controller_train",
+      "history": "last_item",
+      "popularity": "top_1000",
+      "targets": 235,
+      "ndcg_delta": 0.04066131372160436,
+      "ndcg_contribution": 0.00018308537342792865,
+      "control_ndcg": 0.6590087269382792,
+      "student_ndcg": 0.6996700406598835,
+      "teacher_ndcg": 0.9118957859352809
+    },
+    {
+      "split": "controller_train",
+      "history": "last_item",
+      "popularity": "1001_to_10000",
+      "targets": 336,
+      "ndcg_delta": -0.06555983247649613,
+      "ndcg_contribution": -0.0004220670941752927,
+      "control_ndcg": 0.6934627789689657,
+      "student_ndcg": 0.6279029464924696,
+      "teacher_ndcg": 0.9007355518354729
+    },
+    {
+      "split": "controller_train",
+      "history": "last_item",
+      "popularity": "over_10000",
+      "targets": 311,
+      "ndcg_delta": -0.09469335893328268,
+      "ndcg_contribution": -0.0005642665330852238,
+      "control_ndcg": 0.32127764532813385,
+      "student_ndcg": 0.22658428639485112,
+      "teacher_ndcg": 0.2977250890408019
+    },
+    {
+      "split": "controller_train",
+      "history": "second_last_only",
+      "popularity": "top_1000",
+      "targets": 187,
+      "ndcg_delta": 0.06094089146181096,
+      "ndcg_contribution": 0.0002183508019267431,
+      "control_ndcg": 0.2879842361292018,
+      "student_ndcg": 0.34892512759101285,
+      "teacher_ndcg": 0.5143323491666755
+    },
+    {
+      "split": "controller_train",
+      "history": "second_last_only",
+      "popularity": "1001_to_10000",
+      "targets": 298,
+      "ndcg_delta": 0.04607159228521345,
+      "ndcg_contribution": 0.00026305942597370445,
+      "control_ndcg": 0.26181865463892123,
+      "student_ndcg": 0.3078902469241346,
+      "teacher_ndcg": 0.4603083008252866
+    },
+    {
+      "split": "controller_train",
+      "history": "second_last_only",
+      "popularity": "over_10000",
+      "targets": 276,
+      "ndcg_delta": -0.012245964773334363,
+      "ndcg_contribution": -6.475994476902694e-05,
+      "control_ndcg": 0.05976047573971365,
+      "student_ndcg": 0.047514510966379285,
+      "teacher_ndcg": 0.057401879603553196
+    },
+    {
+      "split": "controller_train",
+      "history": "earlier_in_window",
+      "popularity": "top_1000",
+      "targets": 2022,
+      "ndcg_delta": 0.008021646969267354,
+      "ndcg_contribution": 0.00031077714877773165,
+      "control_ndcg": 0.1631442714991333,
+      "student_ndcg": 0.1711659184684007,
+      "teacher_ndcg": 0.16747984222778628
+    },
+    {
+      "split": "controller_train",
+      "history": "earlier_in_window",
+      "popularity": "1001_to_10000",
+      "targets": 3291,
+      "ndcg_delta": 0.0054211169478587656,
+      "ndcg_contribution": 0.00034183855215273127,
+      "control_ndcg": 0.14169835183020107,
+      "student_ndcg": 0.14711946877805984,
+      "teacher_ndcg": 0.13088182000409548
+    },
+    {
+      "split": "controller_train",
+      "history": "earlier_in_window",
+      "popularity": "over_10000",
+      "targets": 3352,
+      "ndcg_delta": -0.0022194975551646902,
+      "ndcg_contribution": -0.0001425486349162124,
+      "control_ndcg": 0.05290507862413968,
+      "student_ndcg": 0.050685581068975,
+      "teacher_ndcg": 0.042452167282594246
+    },
+    {
+      "split": "controller_train",
+      "history": "outside_window",
+      "popularity": "top_1000",
+      "targets": 7617,
+      "ndcg_delta": 0.009652600852607364,
+      "ndcg_contribution": 0.0014087459656705235,
+      "control_ndcg": 0.04273009076625779,
+      "student_ndcg": 0.05238269161886515,
+      "teacher_ndcg": 0.06230405539625107
+    },
+    {
+      "split": "controller_train",
+      "history": "outside_window",
+      "popularity": "1001_to_10000",
+      "targets": 15271,
+      "ndcg_delta": 0.0038793176452702784,
+      "ndcg_contribution": 0.001135081906093434,
+      "control_ndcg": 0.04945031743499124,
+      "student_ndcg": 0.05332963508026153,
+      "teacher_ndcg": 0.05878334098294546
+    },
+    {
+      "split": "controller_train",
+      "history": "outside_window",
+      "popularity": "over_10000",
+      "targets": 18995,
+      "ndcg_delta": -0.0024139979811064983,
+      "ndcg_contribution": -0.0008785785221804129,
+      "control_ndcg": 0.014053381716687411,
+      "student_ndcg": 0.011639383735580914,
+      "teacher_ndcg": 0.012485193012067393
+    },
+    {
+      "split": "policy_valid",
+      "history": "last_item",
+      "popularity": "top_1000",
+      "targets": 93,
+      "ndcg_delta": 0.028259300119391997,
+      "ndcg_contribution": 0.00011234140852797538,
+      "control_ndcg": 0.6952878125177523,
+      "student_ndcg": 0.7235471126371443,
+      "teacher_ndcg": 0.9144628523026663
+    },
+    {
+      "split": "policy_valid",
+      "history": "last_item",
+      "popularity": "1001_to_10000",
+      "targets": 169,
+      "ndcg_delta": -0.06517556699654875,
+      "ndcg_contribution": -0.00047083315475834566,
+      "control_ndcg": 0.7064790957700233,
+      "student_ndcg": 0.6413035287734745,
+      "teacher_ndcg": 0.902401793627138
+    },
+    {
+      "split": "policy_valid",
+      "history": "last_item",
+      "popularity": "over_10000",
+      "targets": 153,
+      "ndcg_delta": -0.1542171634428403,
+      "ndcg_contribution": -0.001008601607538453,
+      "control_ndcg": 0.34173884102336677,
+      "student_ndcg": 0.18752167758052646,
+      "teacher_ndcg": 0.3053058806089087
+    },
+    {
+      "split": "policy_valid",
+      "history": "second_last_only",
+      "popularity": "top_1000",
+      "targets": 78,
+      "ndcg_delta": -0.003511723967561299,
+      "ndcg_contribution": -1.1708748801820182e-05,
+      "control_ndcg": 0.41102461644265914,
+      "student_ndcg": 0.4075128924750978,
+      "teacher_ndcg": 0.5942640421710121
+    },
+    {
+      "split": "policy_valid",
+      "history": "second_last_only",
+      "popularity": "1001_to_10000",
+      "targets": 93,
+      "ndcg_delta": 0.05744210293221,
+      "ndcg_contribution": 0.00022835408962535393,
+      "control_ndcg": 0.16553660653632135,
+      "student_ndcg": 0.22297870946853135,
+      "teacher_ndcg": 0.39014951576081064
+    },
+    {
+      "split": "policy_valid",
+      "history": "second_last_only",
+      "popularity": "over_10000",
+      "targets": 118,
+      "ndcg_delta": -0.0007290488926448385,
+      "ndcg_contribution": -3.6773433073476507e-06,
+      "control_ndcg": 0.03631129966879325,
+      "student_ndcg": 0.03558225077614841,
+      "teacher_ndcg": 0.03963285984000707
+    },
+    {
+      "split": "policy_valid",
+      "history": "earlier_in_window",
+      "popularity": "top_1000",
+      "targets": 853,
+      "ndcg_delta": -0.01828006720794442,
+      "ndcg_contribution": -0.0006665340398553728,
+      "control_ndcg": 0.17271177491774362,
+      "student_ndcg": 0.1544317077097992,
+      "teacher_ndcg": 0.17767970398796504
+    },
+    {
+      "split": "policy_valid",
+      "history": "earlier_in_window",
+      "popularity": "1001_to_10000",
+      "targets": 1478,
+      "ndcg_delta": -0.0014527324083321595,
+      "ndcg_contribution": -9.178158927566606e-05,
+      "control_ndcg": 0.14120743488260426,
+      "student_ndcg": 0.1397547024742721,
+      "teacher_ndcg": 0.13356710896553056
+    },
+    {
+      "split": "policy_valid",
+      "history": "earlier_in_window",
+      "popularity": "over_10000",
+      "targets": 1504,
+      "ndcg_delta": -0.0002992642922706077,
+      "ndcg_contribution": -1.9239698024065744e-05,
+      "control_ndcg": 0.032589141490547674,
+      "student_ndcg": 0.03228987719827707,
+      "teacher_ndcg": 0.027901038219843348
+    },
+    {
+      "split": "policy_valid",
+      "history": "outside_window",
+      "popularity": "top_1000",
+      "targets": 3110,
+      "ndcg_delta": 0.00754400177227682,
+      "ndcg_contribution": 0.001002900124466996,
+      "control_ndcg": 0.04117208390342821,
+      "student_ndcg": 0.048716085675705026,
+      "teacher_ndcg": 0.058548318337059445
+    },
+    {
+      "split": "policy_valid",
+      "history": "outside_window",
+      "popularity": "1001_to_10000",
+      "targets": 7081,
+      "ndcg_delta": 0.0037692775100608214,
+      "ndcg_contribution": 0.0011409016862759971,
+      "control_ndcg": 0.04822619293923898,
+      "student_ndcg": 0.0519954704492998,
+      "teacher_ndcg": 0.0592573386152672
+    },
+    {
+      "split": "policy_valid",
+      "history": "outside_window",
+      "popularity": "over_10000",
+      "targets": 8664,
+      "ndcg_delta": -0.003627878014463347,
+      "ndcg_contribution": -0.0013435896006373615,
+      "control_ndcg": 0.014564316534678564,
+      "student_ndcg": 0.010936438520215218,
+      "teacher_ndcg": 0.012885096796725923
+    }
+  ],
+  "paired_stratum_intervals": {
+    "model_valid": {
+      "last_item": {
+        "ndcg@10": {
+          "difference": -0.024148294954620127,
+          "cluster_bootstrap_95ci": [
+            -0.0909209262398547,
+            0.010432138338473762
+          ]
+        },
+        "recall@100": {
+          "difference": -0.02599388379204893,
+          "cluster_bootstrap_95ci": [
+            -0.07365551671060604,
+            -0.0019870741250245924
+          ]
+        }
+      },
+      "second_last_only": {
+        "ndcg@10": {
+          "difference": 0.01568610526618755,
+          "cluster_bootstrap_95ci": [
+            -0.025079296608068947,
+            0.04910217459990766
+          ]
+        },
+        "recall@100": {
+          "difference": 0.05121293800539083,
+          "cluster_bootstrap_95ci": [
+            0.008216401332839688,
+            0.09920337988342466
+          ]
+        }
+      },
+      "earlier_in_window": {
+        "ndcg@10": {
+          "difference": -0.001924112205092531,
+          "cluster_bootstrap_95ci": [
+            -0.009959477948224039,
+            0.0059572903207149395
+          ]
+        },
+        "recall@100": {
+          "difference": 0.009399358092618064,
+          "cluster_bootstrap_95ci": [
+            -0.007580111875654337,
+            0.026692091206718293
+          ]
+        }
+      },
+      "outside_window": {
+        "ndcg@10": {
+          "difference": 0.001962148979243582,
+          "cluster_bootstrap_95ci": [
+            0.00015874074095429872,
+            0.0039214458715172784
+          ]
+        },
+        "recall@100": {
+          "difference": 0.010657861740366129,
+          "cluster_bootstrap_95ci": [
+            0.005002594363130804,
+            0.016276369232845936
+          ]
+        }
+      },
+      "last_item_over_10000": {
+        "ndcg@10": {
+          "difference": -0.10937695551377524,
+          "cluster_bootstrap_95ci": [
+            -0.16230612350466775,
+            -0.06037908954307063
+          ]
+        },
+        "recall@100": {
+          "difference": -0.12195121951219512,
+          "cluster_bootstrap_95ci": [
+            -0.24110524891774893,
+            -0.025210084033613446
+          ]
+        }
+      }
+    },
+    "policy_valid": {
+      "last_item": {
+        "ndcg@10": {
+          "difference": -0.07706453474233217,
+          "cluster_bootstrap_95ci": [
+            -0.12824565214429648,
+            -0.030507400433871738
+          ]
+        },
+        "recall@100": {
+          "difference": -0.04096385542168675,
+          "cluster_bootstrap_95ci": [
+            -0.08231958590190298,
+            -0.006665198237885471
+          ]
+        }
+      },
+      "second_last_only": {
+        "ndcg@10": {
+          "difference": 0.017239354096517848,
+          "cluster_bootstrap_95ci": [
+            -0.011578945977830383,
+            0.042423739089139975
+          ]
+        },
+        "recall@100": {
+          "difference": 0.05190311418685121,
+          "cluster_bootstrap_95ci": [
+            0.003231327647770532,
+            0.10116977786534008
+          ]
+        }
+      },
+      "earlier_in_window": {
+        "ndcg@10": {
+          "difference": -0.004743188871829601,
+          "cluster_bootstrap_95ci": [
+            -0.013988429165240653,
+            0.004002206656822523
+          ]
+        },
+        "recall@100": {
+          "difference": 0.0018252933507170795,
+          "cluster_bootstrap_95ci": [
+            -0.011640812131805529,
+            0.015753939797612294
+          ]
+        }
+      },
+      "outside_window": {
+        "ndcg@10": {
+          "difference": 0.0009928488169297872,
+          "cluster_bootstrap_95ci": [
+            -0.0006916517931085857,
+            0.0027896897878021774
+          ]
+        },
+        "recall@100": {
+          "difference": 0.015009281357730045,
+          "cluster_bootstrap_95ci": [
+            0.008725061458582331,
+            0.02151377872461127
+          ]
+        }
+      },
+      "last_item_over_10000": {
+        "ndcg@10": {
+          "difference": -0.1542171634428403,
+          "cluster_bootstrap_95ci": [
+            -0.23131229963126984,
+            -0.09191671188530322
+          ]
+        },
+        "recall@100": {
+          "difference": -0.1568627450980392,
+          "cluster_bootstrap_95ci": [
+            -0.23684210526315788,
+            -0.09638331102186526
+          ]
+        }
+      }
+    }
+  },
+  "common_user_weight_checks": {
+    "model_valid": {
+      "common_users": 191,
+      "macro_delta": 0.0012622793142168765,
+      "own_event_weights": 0.0012201221666771713,
+      "other_period_user_weights": 0.0006616179384753626
+    },
+    "policy_valid": {
+      "common_users": 191,
+      "macro_delta": -0.003093177759221803,
+      "own_event_weights": -0.0015725881272794415,
+      "other_period_user_weights": -0.0013594269007392724
+    }
+  },
+  "pv_counts": {
+    "all": {
+      "control": {
+        "top1": 564,
+        "top100": 5900
+      },
+      "student": {
+        "top1": 535,
+        "top100": 6188
+      },
+      "teacher": {
+        "top1": 664,
+        "top100": 6079
+      }
+    },
+    "last_item": {
+      "control": {
+        "top1": 196,
+        "top100": 330
+      },
+      "student": {
+        "top1": 167,
+        "top100": 313
+      },
+      "teacher": {
+        "top1": 256,
+        "top100": 339
+      }
+    },
+    "outside_window": {
+      "control": {
+        "top1": 212,
+        "top100": 3711
+      },
+      "student": {
+        "top1": 213,
+        "top100": 3994
+      },
+      "teacher": {
+        "top1": 245,
+        "top100": 3965
+      }
+    }
+  },
+  "context_short_minus_long": {
+    "model_valid": {
+      "control": {
+        "ndcg@10": {
+          "difference": -0.05834185391592082,
+          "cluster_bootstrap_95ci": [
+            -0.15918868776801545,
+            -0.01018862933470904
+          ]
+        },
+        "recall@100": {
+          "difference": -0.047400611620795105,
+          "cluster_bootstrap_95ci": [
+            -0.11299557848194547,
+            -0.017234973277692398
+          ]
+        }
+      },
+      "student": {
+        "ndcg@10": {
+          "difference": 0.037648554771017896,
+          "cluster_bootstrap_95ci": [
+            -0.0018921538901323647,
+            0.10444409958143333
+          ]
+        },
+        "recall@100": {
+          "difference": 0.02599388379204893,
+          "cluster_bootstrap_95ci": [
+            -0.005109018943900429,
+            0.07839313324460796
+          ]
+        }
+      }
+    },
+    "controller_train": {
+      "control": {
+        "ndcg@10": {
+          "difference": -0.1092431849923337,
+          "cluster_bootstrap_95ci": [
+            -0.16743224805367965,
+            -0.05545288748769735
+          ]
+        },
+        "recall@100": {
+          "difference": -0.05668934240362812,
+          "cluster_bootstrap_95ci": [
+            -0.08925790885683933,
+            -0.03046862065397351
+          ]
+        }
+      },
+      "student": {
+        "ndcg@10": {
+          "difference": 0.044459501717946125,
+          "cluster_bootstrap_95ci": [
+            -0.009348352407263056,
+            0.11421841556266767
+          ]
+        },
+        "recall@100": {
+          "difference": 0.027210884353741496,
+          "cluster_bootstrap_95ci": [
+            -0.003419139245719546,
+            0.06794388727028233
+          ]
+        }
+      }
+    },
+    "policy_valid": {
+      "control": {
+        "ndcg@10": {
+          "difference": -0.10158015183866148,
+          "cluster_bootstrap_95ci": [
+            -0.16751397141626373,
+            -0.043529290251275006
+          ]
+        },
+        "recall@100": {
+          "difference": -0.07710843373493977,
+          "cluster_bootstrap_95ci": [
+            -0.12114014251781473,
+            -0.03910154551232733
+          ]
+        }
+      },
+      "student": {
+        "ndcg@10": {
+          "difference": 0.04690027609953542,
+          "cluster_bootstrap_95ci": [
+            0.005417088213465253,
+            0.09442078788786924
+          ]
+        },
+        "recall@100": {
+          "difference": 0.024096385542168676,
+          "cluster_bootstrap_95ci": [
+            -0.008972705121117185,
+            0.06366176330117489
+          ]
+        }
+      }
+    }
+  },
+  "exploratory": true,
+  "ci_scope": "2000 whole-user resamples per stratum; conditional, pointwise, not adjusted for slice exploration",
+  "definitions": {
+    "popularity": "train positive-listen count, descending; ties by item_idx",
+    "history": "last item / second-last excluding last / positions 3..50 excluding last two / absent from window"
+  },
+  "no_training": true,
+  "no_test_events_read": true
+}
