@@ -1,0 +1,177 @@
+{
+  "teacher_alpha": 0.4,
+  "temperature": 2.0,
+  "weight": 1.0,
+  "initialization_verified": true,
+  "parameters_single": 7357888,
+  "training": {
+    "control": {
+      "reused": true,
+      "epochs": 6,
+      "best_epoch": 4,
+      "validation": {
+        "ndcg@10": 0.07208452470010303,
+        "recall@100": 0.3057687715348139
+      },
+      "elapsed_seconds": 757.7365698330104,
+      "full_run_seconds": null,
+      "train_seconds": 736.7363447481766,
+      "peak_rss_mib": 1033.71875,
+      "max_saved_mps_tensor_mib": 112.947509765625,
+      "max_saved_mps_driver_mib": 1051.859375
+    },
+    "student": {
+      "reused": false,
+      "epochs": 8,
+      "best_epoch": 6,
+      "validation": {
+        "ndcg@10": 0.07305951733791569,
+        "recall@100": 0.315934909425852
+      },
+      "elapsed_seconds": 2816.4509499580017,
+      "full_run_seconds": 2816.8706142080046,
+      "train_seconds": 2790.0462145429774,
+      "peak_rss_mib": 1083.8125,
+      "max_saved_mps_tensor_mib": 169.36279296875,
+      "max_saved_mps_driver_mib": 2075.890625
+    }
+  },
+  "validation_acceptance_guard": true,
+  "policy_valid": {
+    "control": {
+      "ndcg@10": 0.0550929395331777,
+      "recall@100": 0.25220141916730787,
+      "hit@1": 0.02410874583226468
+    },
+    "student": {
+      "ndcg@10": 0.053961471059875595,
+      "recall@100": 0.2645122681029324,
+      "hit@1": 0.02286911173805249
+    },
+    "teacher": {
+      "ndcg@10": 0.06308604878523298,
+      "recall@100": 0.2598529537488245,
+      "hit@1": 0.02838334615713431
+    }
+  },
+  "student_minus_control": {
+    "ndcg@10": {
+      "difference": -0.0011314684733021102,
+      "cluster_bootstrap_95ci": [
+        -0.0035191529620905173,
+        0.0010058736243271583
+      ]
+    },
+    "recall@100": {
+      "difference": 0.01231084893562452,
+      "cluster_bootstrap_95ci": [
+        0.00707340793722888,
+        0.017717585943054965
+      ]
+    }
+  },
+  "serving": [
+    {
+      "device": "cpu",
+      "batch_size": 1,
+      "model": "teacher",
+      "median_ms_per_request": 2.8943209608769394,
+      "min_repeat": 2.821721351551787,
+      "max_repeat": 2.966201171943794
+    },
+    {
+      "device": "cpu",
+      "batch_size": 1,
+      "model": "control",
+      "median_ms_per_request": 1.3436041640488838,
+      "min_repeat": 1.316830078167186,
+      "max_repeat": 1.4059765625233922
+    },
+    {
+      "device": "cpu",
+      "batch_size": 1,
+      "model": "student",
+      "median_ms_per_request": 1.3344947891482661,
+      "min_repeat": 1.308106445321755,
+      "max_repeat": 1.4002086641085043
+    },
+    {
+      "device": "cpu",
+      "batch_size": 256,
+      "model": "teacher",
+      "median_ms_per_request": 0.4576711425769986,
+      "min_repeat": 0.45673254394529295,
+      "max_repeat": 0.4720819907220175
+    },
+    {
+      "device": "cpu",
+      "batch_size": 256,
+      "model": "control",
+      "median_ms_per_request": 0.10298803710639959,
+      "min_repeat": 0.0989100952182298,
+      "max_repeat": 0.10420214843520625
+    },
+    {
+      "device": "cpu",
+      "batch_size": 256,
+      "model": "student",
+      "median_ms_per_request": 0.10339908837408984,
+      "min_repeat": 0.09899304198768277,
+      "max_repeat": 0.10549863672082438
+    },
+    {
+      "device": "mps",
+      "batch_size": 1,
+      "model": "teacher",
+      "median_ms_per_request": 3.633171226624654,
+      "min_repeat": 3.535940429742368,
+      "max_repeat": 4.010939125009827
+    },
+    {
+      "device": "mps",
+      "batch_size": 1,
+      "model": "control",
+      "median_ms_per_request": 1.8695865937843337,
+      "min_repeat": 1.8478831328820888,
+      "max_repeat": 1.9564648437153664
+    },
+    {
+      "device": "mps",
+      "batch_size": 1,
+      "model": "student",
+      "median_ms_per_request": 1.8667643203116313,
+      "min_repeat": 1.8472721405942139,
+      "max_repeat": 1.8729475938243922
+    },
+    {
+      "device": "mps",
+      "batch_size": 256,
+      "model": "teacher",
+      "median_ms_per_request": 0.2827605590809412,
+      "min_repeat": 0.2780991616191386,
+      "max_repeat": 0.29445871972200166
+    },
+    {
+      "device": "mps",
+      "batch_size": 256,
+      "model": "control",
+      "median_ms_per_request": 0.16438584374611764,
+      "min_repeat": 0.1630519204098846,
+      "max_repeat": 0.16457078076115295
+    },
+    {
+      "device": "mps",
+      "batch_size": 256,
+      "model": "student",
+      "median_ms_per_request": 0.16451090478142305,
+      "min_repeat": 0.16188108300951853,
+      "max_repeat": 0.16476987695313028
+    }
+  ],
+  "new_training_runs": 1,
+  "no_test_events_read": true,
+  "policy_valid_supported_improvements": {
+    "ndcg@10": false,
+    "recall@100": true
+  }
+}

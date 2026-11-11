@@ -1,0 +1,230 @@
+{
+  "measurements": {
+    "1": {
+      "teacher": {
+        "repeat_mean_ms_per_request": [
+          2.8943209608769394,
+          2.966201171943794,
+          2.821721351551787,
+          2.8694833985127843,
+          2.9228916015426876
+        ],
+        "median_ms_per_request": 2.8943209608769394
+      },
+      "control": {
+        "repeat_mean_ms_per_request": [
+          1.328112304690876,
+          1.368903968682389,
+          1.316830078167186,
+          1.4059765625233922,
+          1.3436041640488838
+        ],
+        "median_ms_per_request": 1.3436041640488838
+      },
+      "student": {
+        "repeat_mean_ms_per_request": [
+          1.3261223984954995,
+          1.4002086641085043,
+          1.308106445321755,
+          1.34629264061914,
+          1.3344947891482661
+        ],
+        "median_ms_per_request": 1.3344947891482661
+      }
+    },
+    "256": {
+      "teacher": {
+        "repeat_mean_ms_per_request": [
+          0.4576711425769986,
+          0.45673254394529295,
+          0.4720819907220175
+        ],
+        "median_ms_per_request": 0.4576711425769986
+      },
+      "control": {
+        "repeat_mean_ms_per_request": [
+          0.0989100952182298,
+          0.10298803710639959,
+          0.10420214843520625
+        ],
+        "median_ms_per_request": 0.10298803710639959
+      },
+      "student": {
+        "repeat_mean_ms_per_request": [
+          0.10339908837408984,
+          0.09899304198768277,
+          0.10549863672082438
+        ],
+        "median_ms_per_request": 0.10339908837408984
+      }
+    }
+  },
+  "memory_probes": {
+    "1": {
+      "teacher": {
+        "before": {
+          "process_peak_rss_mib": 419.0
+        },
+        "stages": [
+          {
+            "stage": "long_encode_or_lookup",
+            "process_peak_rss_mib": 419.046875
+          },
+          {
+            "stage": "long_scores",
+            "process_peak_rss_mib": 419.046875
+          },
+          {
+            "stage": "recent_encode",
+            "process_peak_rss_mib": 419.046875
+          },
+          {
+            "stage": "recent_scores",
+            "process_peak_rss_mib": 419.046875
+          },
+          {
+            "stage": "normalized_and_mixed",
+            "process_peak_rss_mib": 419.046875
+          },
+          {
+            "stage": "top100_cpu_result",
+            "process_peak_rss_mib": 419.046875
+          }
+        ]
+      },
+      "control": {
+        "before": {
+          "process_peak_rss_mib": 419.046875
+        },
+        "stages": [
+          {
+            "stage": "long_encode_or_lookup",
+            "process_peak_rss_mib": 419.046875
+          },
+          {
+            "stage": "long_scores",
+            "process_peak_rss_mib": 419.046875
+          },
+          {
+            "stage": "top100_cpu_result",
+            "process_peak_rss_mib": 419.046875
+          }
+        ]
+      },
+      "student": {
+        "before": {
+          "process_peak_rss_mib": 419.046875
+        },
+        "stages": [
+          {
+            "stage": "long_encode_or_lookup",
+            "process_peak_rss_mib": 419.046875
+          },
+          {
+            "stage": "long_scores",
+            "process_peak_rss_mib": 419.046875
+          },
+          {
+            "stage": "top100_cpu_result",
+            "process_peak_rss_mib": 419.046875
+          }
+        ]
+      }
+    },
+    "256": {
+      "teacher": {
+        "before": {
+          "process_peak_rss_mib": 1025.203125
+        },
+        "stages": [
+          {
+            "stage": "long_encode_or_lookup",
+            "process_peak_rss_mib": 1025.203125
+          },
+          {
+            "stage": "long_scores",
+            "process_peak_rss_mib": 1025.203125
+          },
+          {
+            "stage": "recent_encode",
+            "process_peak_rss_mib": 1025.203125
+          },
+          {
+            "stage": "recent_scores",
+            "process_peak_rss_mib": 1025.203125
+          },
+          {
+            "stage": "normalized_and_mixed",
+            "process_peak_rss_mib": 1025.203125
+          },
+          {
+            "stage": "top100_cpu_result",
+            "process_peak_rss_mib": 1025.203125
+          }
+        ]
+      },
+      "control": {
+        "before": {
+          "process_peak_rss_mib": 1025.203125
+        },
+        "stages": [
+          {
+            "stage": "long_encode_or_lookup",
+            "process_peak_rss_mib": 1025.203125
+          },
+          {
+            "stage": "long_scores",
+            "process_peak_rss_mib": 1025.203125
+          },
+          {
+            "stage": "top100_cpu_result",
+            "process_peak_rss_mib": 1025.203125
+          }
+        ]
+      },
+      "student": {
+        "before": {
+          "process_peak_rss_mib": 1025.203125
+        },
+        "stages": [
+          {
+            "stage": "long_encode_or_lookup",
+            "process_peak_rss_mib": 1025.203125
+          },
+          {
+            "stage": "long_scores",
+            "process_peak_rss_mib": 1025.203125
+          },
+          {
+            "stage": "top100_cpu_result",
+            "process_peak_rss_mib": 1025.203125
+          }
+        ]
+      }
+    }
+  },
+  "selection_sha256": "83807ccbef1aad93427923acd14218dc84ab77a2d279154f985f89b8001c4f4c",
+  "teacher_alpha": 0.4,
+  "device": "cpu",
+  "teacher_sources": {
+    "long": {
+      "run": "data/runs/sasrec-256-full-ce",
+      "checkpoint_sha256": "decfa67cb108d71806fec5957e4d425650aa6acb33bd67bf4b71e1d105cc4eb0",
+      "epoch": 4,
+      "data_manifest_sha256": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c",
+      "items": 114125
+    },
+    "recent": {
+      "run": "data/runs/sasrec-256-recent-2-full-ce",
+      "checkpoint_sha256": "48f54252ff8ffae491f686c5fa7b96897b64854dc1cc2c1b847d5b0e74ed127a",
+      "epoch": 7,
+      "data_manifest_sha256": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c",
+      "items": 114125
+    }
+  },
+  "parameters_single": 7357888,
+  "timing_scope": "complete fresh serving: token preparation/transfers, encode, catalog scoring, optional zscore/mix, final top100 CPU result",
+  "memory_scope": "common process holds all compared models; ready control shares the teacher long branch; snapshots are not deployment peaks",
+  "no_test_events_read": true,
+  "process_peak_rss_mib": 1025.203125
+}

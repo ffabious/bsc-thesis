@@ -1,0 +1,51 @@
+{
+  "base_config": "configs/experiments/sasrec-256-full-ce.json",
+  "initial_checkpoint": null,
+  "initial_checkpoint_sha256": null,
+  "weights": [
+    1.0
+  ],
+  "temperature": 2.0,
+  "loss": "CE + weight * temperature^2 * KL(teacher || student)",
+  "teacher_scale": "per-query zscore mixture, rescaled by long logit population std",
+  "evaluation_splits": [
+    "controller_train",
+    "policy_valid"
+  ],
+  "reference_replay": "data/runs/sasrec-256-policies-wide",
+  "teacher": {
+    "runs": {
+      "256": {
+        "long": "data/runs/sasrec-256-full-ce",
+        "recent": "data/runs/sasrec-256-recent-2-full-ce"
+      }
+    },
+    "alphas": [
+      0.0,
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9,
+      1.0
+    ],
+    "score_transform": "per_query_zscore",
+    "epsilon": 1e-08,
+    "selection_metric": "ndcg@10",
+    "tie_break": "smaller_alpha",
+    "batch_size": 256,
+    "seed": 42,
+    "threads": 4
+  },
+  "control_run": "data/runs/sasrec-256-full-ce/train-mps",
+  "control_checkpoint_sha256": "decfa67cb108d71806fec5957e4d425650aa6acb33bd67bf4b71e1d105cc4eb0",
+  "fixed_teacher_alpha": 0.4,
+  "teacher_selection_source": "data/runs/sasrec-256-distillation/teacher/selection.json",
+  "teacher_selection_sha256": "519023f92a12bda0712c18df6a599c575da155e3f4ab91ca0881090f21940f0e",
+  "reference_source_commit": "591575aaa759eaa1f489ff92f7020f6bdcc11f11",
+  "reference_source_registry": "reports/experiments/sasrec-baseline-search/sources-full-ce.json"
+}

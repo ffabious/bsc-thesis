@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "initialization_tensors": 29,
+  "initial_validation_targets": 29313,
+  "training_epochs": 8,
+  "best_epoch": 6,
+  "training_stop_reason": "validation_patience",
+  "student_checkpoint_sha256": "1f1a7dd073aaef8878d633b9c867479fe6ea2c3cd15ff5176b8262ed0bc06f5a",
+  "control_checkpoint_unchanged": true,
+  "source_data_hashes_unchanged": true,
+  "paired_quality_intervals_recomputed": true,
+  "same_catalog_targets": 75585,
+  "cpu_mps_profile_cases": 12,
+  "no_test_events_read": true
+}

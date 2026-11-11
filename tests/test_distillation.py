@@ -108,6 +108,42 @@ class DistillationTest(unittest.TestCase):
             self.assertTrue(selected["locked_before_holdout_read"])
             self.assertTrue((run_sasrec.ROOT/selected["student"]["run"]).is_absolute())
 
+    def test_ready_control_reused_without_a_new_control_training(self):
+        with tempfile.TemporaryDirectory(dir=Path.cwd()) as tmp:
+            root=Path(tmp);(root/"teacher").mkdir();(root/"teacher/selection.json").write_text("{}")
+            for name,weight in [("ready-control",0),("kd-1",1)]:
+                folder=root/name/"train-mps";folder.mkdir(parents=True);(folder/"best.pt").write_bytes(b"checkpoint")
+                data={"stop_reason":"validation_patience","config":{} if weight==0 else {"distillation_weight":weight},
+                    "best_epoch":1,"initial_validation":{"ndcg@10":.01,"recall@100":.02},
+                    "epochs":[{"validation":{"ndcg@10":.1,"recall@100":.2}}],
+                    "checkpoint_sha256":hashlib.sha256((folder/"best.pt").read_bytes()).hexdigest()}
+                (folder/"training.json").write_text(json.dumps(data))
+            protocol={"weights":[1],"control_run":str((root/"ready-control/train-mps").relative_to(run_sasrec.ROOT)),
+                      "control_checkpoint_sha256":hashlib.sha256(b"checkpoint").hexdigest()}
+            selected=lock_selection(protocol,root)
+            self.assertTrue(selected["control"]["reused"])
+            self.assertEqual(len(selected["candidates"]),2)
+            self.assertEqual(selected["student"]["weight"],1)
+
+    def test_cold_state_rng_guard_does_not_enable_warm_epoch_zero(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);(root/"manifest.json").write_text('{"candidate_items":4}')
+            config={"length":3,"dim":8,"heads":2,"blocks":1,"dropout":0,"seed":42,"batch_size":2,
+                    "negatives":2,"learning_rate":.001,"eval_batch_size":2,"epochs":None,"patience":2,"objective":"full_ce"}
+            torch.manual_seed(42);model=SASRec(4,**run_sasrec.model_args(config))
+            config.update(expected_initial_state_sha256=run_sasrec.state_digest(model),
+                          expected_initial_rng_sha256=hashlib.sha256(torch.get_rng_state().numpy().tobytes()).hexdigest())
+            arrays=np.array([[0,2,3],[0,3,4]],dtype=np.int32),np.array([4,5]),np.array([0,1])
+            with patch.object(run_sasrec,"examples",return_value=arrays),patch.object(run_sasrec,"most_popular",return_value=np.array([2,3])):
+                torch.manual_seed(42)
+                with patch.object(run_sasrec,"ranks",side_effect=[np.array([r,r]) for r in [1,2,3,4]]):
+                    result=run_sasrec.train(config,root,"cpu",root/"trained")
+                self.assertEqual(result["best_epoch"],1)
+                self.assertEqual(result["initial_state_sha256"],config["expected_initial_state_sha256"])
+                config["expected_initial_state_sha256"]="wrong";torch.manual_seed(42)
+                with self.assertRaisesRegex(ValueError,"Initial model state differs"):
+                    run_sasrec.train(config,root,"cpu",root/"bad")
+
     @unittest.skipUnless(torch.backends.mps.is_available(),"MPS unavailable")
     def test_cpu_mps_distillation_gradients_agree(self):
         models = self.models();student = copy.deepcopy(models["long"]).requires_grad_(True)

@@ -46,6 +46,13 @@ def item_digest(model):
     return hashlib.sha256(model.item.weight.detach().cpu().numpy().tobytes()).hexdigest()
 
 
+def state_digest(model):
+    value = hashlib.sha256()
+    for name,tensor in model.state_dict().items():
+        value.update(name.encode());value.update(tensor.detach().cpu().contiguous().numpy().tobytes())
+    return value.hexdigest()
+
+
 def make_model(config, data, items):
     model = SASRec(items, **model_args(config))
     if config.get("initial_checkpoint"):
@@ -186,6 +193,9 @@ def train(config, data, device, output, resume=False, update=None):
     vx, vy, _ = input_examples(data, "model_valid", config)
     count = json.loads((data / "manifest.json").read_text())["candidate_items"]
     model = make_model(config, data, count).to(device)
+    initial_state = state_digest(model) if config.get("expected_initial_state_sha256") else None
+    if initial_state is not None and initial_state != config["expected_initial_state_sha256"]:
+        raise ValueError("Initial model state differs from the restored CE control")
     optimizer = optimizer_for(model, config)
     reduction = config.get("loss_reduction", "separate_mean")
     frozen_before = item_digest(model) if config.get("freeze_items") else None
@@ -217,12 +227,18 @@ def train(config, data, device, output, resume=False, update=None):
                   "mostpop_validation": metrics(most_popular(data, vy)), "epochs": [],
                   "parameters": sum(p.numel() for p in model.parameters()),
                   "trainable_parameters": sum(p.numel() for p in model.parameters() if p.requires_grad)}
-        if config.get("initial_checkpoint"):
-            best = initial["ndcg@10"]
-            result["best_epoch"] = 0
+        if config.get("initial_checkpoint") or initial_state is not None:
             result["initial_rng_sha256"] = hashlib.sha256(torch.get_rng_state().numpy().tobytes()).hexdigest()
             if device == "mps":
                 result["initial_mps_rng_sha256"] = hashlib.sha256(torch.mps.get_rng_state().numpy().tobytes()).hexdigest()
+            for key in ("initial_rng_sha256","initial_mps_rng_sha256"):
+                if config.get("expected_"+key) and result.get(key) != config["expected_"+key]:
+                    raise ValueError(f"Initial RNG differs from CE control: {key}")
+            if initial_state is not None:
+                result["initial_state_sha256"] = initial_state
+        if config.get("initial_checkpoint"):
+            best = initial["ndcg@10"]
+            result["best_epoch"] = 0
             save_checkpoint(output / "best.pt", {"weights": {k: v.cpu() for k, v in model.state_dict().items()},
                             "config": config, "items": count, "epoch": 0})
 

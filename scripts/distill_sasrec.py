@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Select a teacher on model_valid, warm-start CE/KD students, compare frozen models."""
+"""Select a teacher, train CE/KD students and compare frozen models."""
 
 import argparse
 import hashlib
@@ -107,11 +107,20 @@ def run_training(protocol,root,weight,device,config_path,resume):
     teacher_selection = read(root/"teacher/selection.json")
     if teacher_selection["protocol"]!=protocol["teacher"]:raise ValueError("Teacher protocol changed")
     selection_hash = checksum(root/"teacher/selection.json")
-    config = {**read(ROOT/protocol["base_config"]),"initial_checkpoint":protocol["initial_checkpoint"],
-        "initial_checkpoint_sha256":protocol["initial_checkpoint_sha256"],"distillation_weight":weight,
+    config = {**read(ROOT/protocol["base_config"]),"initial_checkpoint":protocol.get("initial_checkpoint"),
+        "initial_checkpoint_sha256":protocol.get("initial_checkpoint_sha256"),"distillation_weight":weight,
         "distillation_temperature":protocol["temperature"],"teacher_alpha":teacher_selection["alpha"],
         "teacher_selection_sha256":selection_hash,"experiment_protocol_sha256":checksum(config_path)}
     hashes = source_hashes(config_path);data = ROOT/config["data"]
+    if protocol.get("control_run"):
+        audit = read(root/"initialization.json")
+        if audit["control_checkpoint_sha256"]!=protocol["control_checkpoint_sha256"] or teacher_selection["alpha"]!=protocol["fixed_teacher_alpha"]:
+            raise ValueError("Initialization reference or fixed alpha differs")
+        config.update(expected_initial_state_sha256=audit["initial_state_sha256"],
+            expected_initial_rng_sha256=audit["initial_rng_sha256"],
+            expected_initial_mps_rng_sha256=audit["initial_mps_rng_sha256"])
+        check_hashes(audit["current_source_sha256"]);hashes.update(audit["current_source_sha256"])
+        hashes[str((root/"initialization.json").resolve().relative_to(ROOT))] = checksum(root/"initialization.json")
     used = {p:checksum(data/p) for p in ["manifest.json","events/train.parquet","events/model_valid.parquet","items.parquet","users.parquet"]}
     update = None
     if weight:
@@ -141,6 +150,12 @@ def lock_selection(protocol,root):
     path = root/"selection.json"
     if path.exists():raise FileExistsError("Model selection already locked")
     rows = []
+    if protocol.get("control_run"):
+        folder = ROOT/protocol["control_run"];r = read(folder/"training.json")
+        if checksum(folder/"best.pt")!=protocol["control_checkpoint_sha256"] or r["checkpoint_sha256"]!=protocol["control_checkpoint_sha256"]:
+            raise ValueError("Ready CE control changed")
+        rows.append({"weight":0.0,"run":protocol["control_run"],"best_epoch":r["best_epoch"],"metrics":validation(r),
+            "checkpoint_sha256":r["checkpoint_sha256"],"reused":True})
     for weight in protocol["weights"]:
         folder = root/label(weight)/"train-mps";r = read(folder/"training.json")
         if (r["stop_reason"]!="validation_patience" or r["config"]["distillation_weight"]!=weight or
@@ -169,6 +184,9 @@ def evaluate(protocol,root,device):
     q = stream["target_request"];x = stream["queries"][q];y = stream["targets"].astype(np.int64);users = stream["users"][q]
     values = {"original":stream["ranks"][0]}
     for name in ["control","student"]:
+        if name=="control" and selected[name]["checkpoint_sha256"]==sources["long"]["checkpoint_sha256"]:
+            values[name] = values["original"]
+            continue
         model,config = load_student(ROOT/selected[name]["run"],device)
         values[name] = ranks(model,x,y,device,256)
         del model
@@ -193,6 +211,7 @@ def evaluate(protocol,root,device):
     np.savez_compressed(root/"evaluation-ranks.npz",**values,targets=y,users=users,split_idx=stream["split_idx"][q])
     write(root/"evaluation.json",{"selection_sha256":selection_hash,"selection":selected,"teacher_alpha":teacher.alpha,
         "results":results,"catalog_items":sources["long"]["items"],"sources":sources,"device":device,"no_test_events_read":True,
+        "reused_control_ranks":bool(selected["control"].get("reused")),
         "reference_sha256":{str((folder/p).relative_to(ROOT)):checksum(folder/p) for p in ["replay.npz","results.json"]}})
 
 
@@ -206,8 +225,13 @@ def profile(protocol,root,device):
     alpha = teacher_selection["alpha"]
     services = {"original":Serving(models,configs,device,2),"teacher":Serving(models,configs,device,2)}
     for name in ["control","student"]:
+        if name=="control" and selected[name]["checkpoint_sha256"]==sources["long"]["checkpoint_sha256"]:
+            services[name] = services["original"]
+            continue
         model,config = load_student(ROOT/selected[name]["run"],device)
         services[name] = Serving({"long":model,"recent":models["recent"]},{"long":config,"recent":configs["recent"]},device,2)
+    if protocol.get("control_run"):
+        del services["original"]
     stream = dict(np.load(ROOT/protocol["reference_replay"]/"replay.npz"));pool = np.flatnonzero(stream["split_idx"]==1)
     measurements,probes = {},{}
     for batch,steps,repeats,warmup in [(1,128,5,16),(256,8,3,2)]:
@@ -234,7 +258,7 @@ def profile(protocol,root,device):
     write(destination,{"measurements":measurements,"memory_probes":probes,"selection_sha256":selection_hash,
         "teacher_alpha":alpha,"device":device,"teacher_sources":sources,"parameters_single":sum(p.numel() for p in models["long"].parameters()),
         "timing_scope":"complete fresh serving: token preparation/transfers, encode, catalog scoring, optional zscore/mix, final top100 CPU result",
-        "memory_scope":"common benchmark process holds original/control/student/recent models; stage snapshots are not deployment peaks",
+        "memory_scope":"common process holds all compared models; ready control shares the teacher long branch; snapshots are not deployment peaks",
         "no_test_events_read":True,**memory(device)})
 
 
@@ -249,7 +273,7 @@ def main():
     args = parser.parse_args();protocol = read(args.config)
     if os.environ.get("PYTORCH_ENABLE_MPS_FALLBACK","0")!="0":parser.error("Disable CPU fallback")
     if args.device=="mps" and not torch.backends.mps.is_available():parser.error("MPS unavailable")
-    if args.weight not in protocol["weights"]:parser.error("Weight not in the fixed grid")
+    if args.mode=="train" and args.weight not in protocol["weights"]:parser.error("Weight not in the fixed grid")
     torch.set_num_threads(protocol["teacher"]["threads"])
     if args.mode=="teacher":select(protocol["teacher"],"256",args.device,args.output/"teacher")
     elif args.mode=="train":run_training(protocol,args.output,args.weight,args.device,args.config,args.resume)

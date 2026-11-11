@@ -351,6 +351,22 @@ CE-дообучения. 77 тестов и artifact checks пройдены, te
 [Отчёт, кривые и стоимость](reports/experiments/sasrec-256-distillation.md),
 [протокол и команды](notes/sasrec-256-distillation.md).
 
+## Student с нуля на 256
+
+Фиксированные alpha=0.4, T=2, lambda=1; один новый локальный KD run,
+готовый CE50 переиспользован. Начальные 29 тензоров и validation ranks
+совпали с восстановленной CE50-инициализацией; state/RNG guard пройден
+в фактическом training loop. 8 эпох, best6, **46.94 мин** против исторических
+12.63 мин CE50. На model_valid обе метрики выше контроля.
+
+На PV student даёт **0.053961 / 0.264512 NDCG@10 / Recall@100**:
+**−2.05% / +4.88%** к CE50. NDCG CI включает ноль, Recall CI выше нуля;
+перенос выигрыша NDCG не подтверждён. Fresh serving практически одинаков:
+CPU B1 1.33мс, MPS B1 1.87мс. 79 тестов, artifact checks, test закрыт.
+Исходные cache/frontier результаты продолжают относиться к CE50.
+[Отчёт, CI, кривые и ресурсы](reports/experiments/sasrec-256-distillation-cold.md),
+[протокол и команды](notes/sasrec-256-distillation-cold.md).
+
 ## Происхождение материалов
 
 Импорт выполнен 20 октября 2026 из `thesis-project-2026-10-20.zip` и двух заметок, уже находившихся в этой папке. Заметки совпали с копиями в архиве и сохранены в одном экземпляре.

@@ -1,0 +1,292 @@
+{
+  "measurements": {
+    "1": {
+      "teacher": {
+        "repeat_mean_ms_per_request": [
+          3.535940429742368,
+          3.633171226624654,
+          4.010939125009827,
+          3.7496344374403634,
+          3.5725374297044254
+        ],
+        "median_ms_per_request": 3.633171226624654
+      },
+      "control": {
+        "repeat_mean_ms_per_request": [
+          1.879749351587634,
+          1.8493128281988902,
+          1.8478831328820888,
+          1.9564648437153664,
+          1.8695865937843337
+        ],
+        "median_ms_per_request": 1.8695865937843337
+      },
+      "student": {
+        "repeat_mean_ms_per_request": [
+          1.8472721405942139,
+          1.8729475938243922,
+          1.8673326796943002,
+          1.8491386717869318,
+          1.8667643203116313
+        ],
+        "median_ms_per_request": 1.8667643203116313
+      }
+    },
+    "256": {
+      "teacher": {
+        "repeat_mean_ms_per_request": [
+          0.29445871972200166,
+          0.2827605590809412,
+          0.2780991616191386
+        ],
+        "median_ms_per_request": 0.2827605590809412
+      },
+      "control": {
+        "repeat_mean_ms_per_request": [
+          0.16438584374611764,
+          0.16457078076115295,
+          0.1630519204098846
+        ],
+        "median_ms_per_request": 0.16438584374611764
+      },
+      "student": {
+        "repeat_mean_ms_per_request": [
+          0.16476987695313028,
+          0.16188108300951853,
+          0.16451090478142305
+        ],
+        "median_ms_per_request": 0.16451090478142305
+      }
+    }
+  },
+  "memory_probes": {
+    "1": {
+      "teacher": {
+        "before": {
+          "process_peak_rss_mib": 568.140625,
+          "mps_tensor_mib": 84.62255859375,
+          "mps_driver_mib": 1034.71875
+        },
+        "stages": [
+          {
+            "stage": "long_encode_or_lookup",
+            "process_peak_rss_mib": 568.140625,
+            "mps_tensor_mib": 84.634765625,
+            "mps_driver_mib": 1034.71875
+          },
+          {
+            "stage": "long_scores",
+            "process_peak_rss_mib": 568.140625,
+            "mps_tensor_mib": 85.0703125,
+            "mps_driver_mib": 1034.71875
+          },
+          {
+            "stage": "recent_encode",
+            "process_peak_rss_mib": 568.140625,
+            "mps_tensor_mib": 85.05859375,
+            "mps_driver_mib": 1034.71875
+          },
+          {
+            "stage": "recent_scores",
+            "process_peak_rss_mib": 568.140625,
+            "mps_tensor_mib": 85.494140625,
+            "mps_driver_mib": 1034.71875
+          },
+          {
+            "stage": "normalized_and_mixed",
+            "process_peak_rss_mib": 568.140625,
+            "mps_tensor_mib": 85.9296875,
+            "mps_driver_mib": 1034.71875
+          },
+          {
+            "stage": "top100_cpu_result",
+            "process_peak_rss_mib": 568.140625,
+            "mps_tensor_mib": 85.05810546875,
+            "mps_driver_mib": 1034.71875
+          }
+        ]
+      },
+      "control": {
+        "before": {
+          "process_peak_rss_mib": 568.140625,
+          "mps_tensor_mib": 84.62255859375,
+          "mps_driver_mib": 1034.71875
+        },
+        "stages": [
+          {
+            "stage": "long_encode_or_lookup",
+            "process_peak_rss_mib": 568.140625,
+            "mps_tensor_mib": 84.634765625,
+            "mps_driver_mib": 1034.71875
+          },
+          {
+            "stage": "long_scores",
+            "process_peak_rss_mib": 568.140625,
+            "mps_tensor_mib": 85.0703125,
+            "mps_driver_mib": 1034.71875
+          },
+          {
+            "stage": "top100_cpu_result",
+            "process_peak_rss_mib": 568.140625,
+            "mps_tensor_mib": 85.05810546875,
+            "mps_driver_mib": 1034.71875
+          }
+        ]
+      },
+      "student": {
+        "before": {
+          "process_peak_rss_mib": 568.140625,
+          "mps_tensor_mib": 84.62255859375,
+          "mps_driver_mib": 1034.71875
+        },
+        "stages": [
+          {
+            "stage": "long_encode_or_lookup",
+            "process_peak_rss_mib": 568.140625,
+            "mps_tensor_mib": 84.634765625,
+            "mps_driver_mib": 1034.71875
+          },
+          {
+            "stage": "long_scores",
+            "process_peak_rss_mib": 568.140625,
+            "mps_tensor_mib": 85.0703125,
+            "mps_driver_mib": 1034.71875
+          },
+          {
+            "stage": "top100_cpu_result",
+            "process_peak_rss_mib": 568.140625,
+            "mps_tensor_mib": 85.05810546875,
+            "mps_driver_mib": 1034.71875
+          }
+        ]
+      }
+    },
+    "256": {
+      "teacher": {
+        "before": {
+          "process_peak_rss_mib": 578.71875,
+          "mps_tensor_mib": 84.62255859375,
+          "mps_driver_mib": 1042.734375
+        },
+        "stages": [
+          {
+            "stage": "long_encode_or_lookup",
+            "process_peak_rss_mib": 578.71875,
+            "mps_tensor_mib": 87.74755859375,
+            "mps_driver_mib": 1042.734375
+          },
+          {
+            "stage": "long_scores",
+            "process_peak_rss_mib": 578.71875,
+            "mps_tensor_mib": 199.74755859375,
+            "mps_driver_mib": 1042.734375
+          },
+          {
+            "stage": "recent_encode",
+            "process_peak_rss_mib": 578.71875,
+            "mps_tensor_mib": 196.74755859375,
+            "mps_driver_mib": 1042.734375
+          },
+          {
+            "stage": "recent_scores",
+            "process_peak_rss_mib": 578.71875,
+            "mps_tensor_mib": 308.74755859375,
+            "mps_driver_mib": 1042.734375
+          },
+          {
+            "stage": "normalized_and_mixed",
+            "process_peak_rss_mib": 578.71875,
+            "mps_tensor_mib": 420.74755859375,
+            "mps_driver_mib": 1042.734375
+          },
+          {
+            "stage": "top100_cpu_result",
+            "process_peak_rss_mib": 578.71875,
+            "mps_tensor_mib": 196.62255859375,
+            "mps_driver_mib": 1042.734375
+          }
+        ]
+      },
+      "control": {
+        "before": {
+          "process_peak_rss_mib": 578.71875,
+          "mps_tensor_mib": 84.62255859375,
+          "mps_driver_mib": 1042.734375
+        },
+        "stages": [
+          {
+            "stage": "long_encode_or_lookup",
+            "process_peak_rss_mib": 578.71875,
+            "mps_tensor_mib": 87.74755859375,
+            "mps_driver_mib": 1042.734375
+          },
+          {
+            "stage": "long_scores",
+            "process_peak_rss_mib": 578.71875,
+            "mps_tensor_mib": 199.74755859375,
+            "mps_driver_mib": 1042.734375
+          },
+          {
+            "stage": "top100_cpu_result",
+            "process_peak_rss_mib": 578.71875,
+            "mps_tensor_mib": 196.62255859375,
+            "mps_driver_mib": 1042.734375
+          }
+        ]
+      },
+      "student": {
+        "before": {
+          "process_peak_rss_mib": 578.71875,
+          "mps_tensor_mib": 84.62255859375,
+          "mps_driver_mib": 1042.734375
+        },
+        "stages": [
+          {
+            "stage": "long_encode_or_lookup",
+            "process_peak_rss_mib": 578.71875,
+            "mps_tensor_mib": 87.74755859375,
+            "mps_driver_mib": 1042.734375
+          },
+          {
+            "stage": "long_scores",
+            "process_peak_rss_mib": 578.71875,
+            "mps_tensor_mib": 199.74755859375,
+            "mps_driver_mib": 1042.734375
+          },
+          {
+            "stage": "top100_cpu_result",
+            "process_peak_rss_mib": 578.71875,
+            "mps_tensor_mib": 196.62255859375,
+            "mps_driver_mib": 1042.734375
+          }
+        ]
+      }
+    }
+  },
+  "selection_sha256": "83807ccbef1aad93427923acd14218dc84ab77a2d279154f985f89b8001c4f4c",
+  "teacher_alpha": 0.4,
+  "device": "mps",
+  "teacher_sources": {
+    "long": {
+      "run": "data/runs/sasrec-256-full-ce",
+      "checkpoint_sha256": "decfa67cb108d71806fec5957e4d425650aa6acb33bd67bf4b71e1d105cc4eb0",
+      "epoch": 4,
+      "data_manifest_sha256": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c",
+      "items": 114125
+    },
+    "recent": {
+      "run": "data/runs/sasrec-256-recent-2-full-ce",
+      "checkpoint_sha256": "48f54252ff8ffae491f686c5fa7b96897b64854dc1cc2c1b847d5b0e74ed127a",
+      "epoch": 7,
+      "data_manifest_sha256": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c",
+      "items": 114125
+    }
+  },
+  "parameters_single": 7357888,
+  "timing_scope": "complete fresh serving: token preparation/transfers, encode, catalog scoring, optional zscore/mix, final top100 CPU result",
+  "memory_scope": "common process holds all compared models; ready control shares the teacher long branch; snapshots are not deployment peaks",
+  "no_test_events_read": true,
+  "process_peak_rss_mib": 578.71875,
+  "mps_tensor_mib": 84.62255859375,
+  "mps_driver_mib": 1042.734375
+}
