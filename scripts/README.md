@@ -13,6 +13,7 @@
 | `compare_sasrec.py` | Оценка на исходных событиях/targets и каталоге прежнего пилота; сопоставление item_id, входная маска checkpoint и парные пользовательские интервалы |
 | `blend_sasrec.py` | Нормировка scores по кандидатам запроса, выбор веса 50/2 только на validation и отдельная test-оценка замороженной смеси; без обучения |
 | `replay_sasrec.py` / `plot_sasrec_replay.py` | Диагностические fixed-lag fresh/stale snapshots, локальные component costs, кривые и CSV; не actual refresh schedules |
+| `replay_encoder_pairs.py` | Frozen CE/student42/43 на исходных fixed-lag snapshots; reuse CE42, fresh alignment, CPU oracle, own staleness loss и парная разница потерь, JSON/CSV/PNG/SVG. Без обучения, test и serving benchmark |
 | `replay_sasrec_policies.py` / `plot_sasrec_policies.py` | Реальные on-request always/never/time/events/OR schedules на CT/PV; paired quality, initialization/refresh counts, измеренные ветви стоимости, frontier и CT-budget selection; test запрещён |
 | `replay_hybrid_sasrec.py` / `plot_sasrec_hybrid.py` | Смесь cached long / fresh recent scores с per-query z-score, alpha на CT для каждой политики и frozen PV evaluation; endpoints, CPU oracle, проверяемый resume mixture grids, CSV и quality curves; test запрещён |
 | `profile_sasrec_hybrid.py` / `plot_sasrec_frontier.py` | Полные CPU/MPS serving paths long/recent/hybrid, B=1/256, память, реальные refresh counts и смешанные workload checks; CT-budget selection и frontier по измеренной полной стоимости, включая прежнюю BCE-смесь |

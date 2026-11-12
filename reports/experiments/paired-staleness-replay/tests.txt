@@ -1,0 +1,15 @@
+test_cached_vectors_match_naive_recomputation_for_every_lag (tests.test_replay.ReplayTest.test_cached_vectors_match_naive_recomputation_for_every_lag) ... ok
+test_cpu_mps_snapshot_ranks_agree (tests.test_replay.ReplayTest.test_cpu_mps_snapshot_ranks_agree) ... ok
+test_cutoffs_keep_timestamp_groups_whole_and_time_uses_strict_past (tests.test_replay.ReplayTest.test_cutoffs_keep_timestamp_groups_whole_and_time_uses_strict_past) ... ok
+test_future_events_do_not_change_controller_train_snapshots (tests.test_replay.ReplayTest.test_future_events_do_not_change_controller_train_snapshots) ... ok
+test_large_snapshot_catalog_product_does_not_overflow_int32 (tests.test_replay.ReplayTest.test_large_snapshot_catalog_product_does_not_overflow_int32) ... ok
+test_loader_uses_one_fixed_cohort_and_matches_existing_fresh_inputs (tests.test_replay.ReplayTest.test_loader_uses_one_fixed_cohort_and_matches_existing_fresh_inputs) ... ok
+test_ranking_excludes_special_tokens_and_preserves_tie_order (tests.test_replay.ReplayTest.test_ranking_excludes_special_tokens_and_preserves_tie_order) ... ok
+test_fresh_advantage_alone_is_not_lower_staleness_loss (tests.test_staleness_comparison.StalenessComparisonTest.test_fresh_advantage_alone_is_not_lower_staleness_loss) ... ok
+test_positive_loss_reduction_means_student_keeps_more_quality (tests.test_staleness_comparison.StalenessComparisonTest.test_positive_loss_reduction_means_student_keeps_more_quality) ... ok
+test_user_bootstrap_preserves_event_weighting (tests.test_staleness_comparison.StalenessComparisonTest.test_user_bootstrap_preserves_event_weighting) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.640s
+
+OK

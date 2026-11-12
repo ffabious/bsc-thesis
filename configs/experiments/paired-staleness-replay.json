@@ -1,0 +1,48 @@
+{
+  "reference_replay": "data/runs/sasrec-256-replay",
+  "reference_arrays_sha256": "1dab21b794be5fcec665ed8f8176a479e243ec856b561dfad7a91360df1d50c9",
+  "fresh_comparison": "data/runs/paired-seed-repeat/comparison-ranks.npz",
+  "fresh_features": "data/diagnostics/sasrec-256-distillation-audit/events.npz",
+  "splits": [
+    "controller_train",
+    "policy_valid"
+  ],
+  "event_lags": [
+    0,
+    1,
+    5,
+    10,
+    25,
+    50
+  ],
+  "time_lags_seconds": [
+    0,
+    300,
+    1800,
+    7200,
+    86400,
+    604800
+  ],
+  "threads": 4,
+  "batch_size": 256,
+  "seed": 42,
+  "models": {
+    "ce42": {
+      "run": "data/runs/sasrec-256-full-ce/train-mps",
+      "checkpoint_sha256": "decfa67cb108d71806fec5957e4d425650aa6acb33bd67bf4b71e1d105cc4eb0"
+    },
+    "student42": {
+      "run": "data/runs/student-temperature-control/kd-1/train-mps",
+      "checkpoint_sha256": "a95907c5399293783574d398183cce5605d426ec569a27aa86319d19e8601e16"
+    },
+    "ce43": {
+      "run": "data/runs/paired-seed-repeat/ce50/train-mps",
+      "checkpoint_sha256": "3582a7335b1e822f6140f5183ea055891987698e076cfab24fd483b3cd08db6b"
+    },
+    "student43": {
+      "run": "data/runs/paired-seed-repeat/student/kd-1/train-mps",
+      "checkpoint_sha256": "a6549493817b3d7f475e13ce6706a1f7f35ab31b8dbe5a5f476293b55613fc21"
+    }
+  },
+  "fresh_arrays_sha256": "377f574be2713a71a6fa4fa297f1cc87f96d0235e8c0339e06c5341695fd7891"
+}

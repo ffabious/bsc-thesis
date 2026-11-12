@@ -1,0 +1,41 @@
+{
+  "passed": true,
+  "tests": 10,
+  "new_training_runs": 0,
+  "new_full_replays": 3,
+  "reused_ce42_ranks_exact": true,
+  "same_events_targets_users_cutoffs_and_catalog": true,
+  "source_data_checkpoint_hashes_checked": true,
+  "all_models_frozen": true,
+  "fresh_metrics_reproduce_saved_comparison": true,
+  "ct_targets": 52172,
+  "pv_targets": 23394,
+  "conditions": 11,
+  "catalog_items": 114125,
+  "independently_recomputed_paired_intervals": 352,
+  "quality_csv_rows": 88,
+  "comparison_csv_rows": 88,
+  "cpu_oracle_new_models": {
+    "student42": {
+      "pairs": 256,
+      "same_metrics": true,
+      "exact_rank_matches": 255,
+      "maximum_rank_difference": 1
+    },
+    "ce43": {
+      "pairs": 256,
+      "same_metrics": true,
+      "exact_rank_matches": 250,
+      "maximum_rank_difference": 1
+    },
+    "student43": {
+      "pairs": 256,
+      "same_metrics": true,
+      "exact_rank_matches": 253,
+      "maximum_rank_difference": 2
+    }
+  },
+  "old_cpu_oracle_reused_for_ce42": true,
+  "no_test_events_read": true,
+  "all_json_svg_valid": true
+}
