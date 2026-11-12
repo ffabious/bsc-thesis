@@ -1,0 +1,26 @@
+{
+  "pid": 10428,
+  "started_utc": "2026-11-12T07:16:31.500222+00:00",
+  "resumed_from_epoch": 2,
+  "discarded_partial_epoch": 3,
+  "command": [
+    "/usr/bin/caffeinate",
+    "-i",
+    "/Users/k-greshnov/Documents/thesis/.venv/bin/python",
+    "scripts/distill_sasrec.py",
+    "train",
+    "--weight",
+    "1",
+    "--config",
+    "configs/experiments/paired-repeat-student.json",
+    "--output",
+    "data/runs/paired-seed-repeat/student",
+    "--device",
+    "mps",
+    "--resume"
+  ],
+  "preserved_completed_epochs_equal": true,
+  "completed_epochs_before_resume": 2,
+  "saved_elapsed_seconds_before_resume": 546.7113501249987,
+  "uninterrupted_trajectory_bitwise_equivalence_claimed": false
+}

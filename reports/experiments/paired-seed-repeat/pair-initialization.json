@@ -1,0 +1,16 @@
+{
+  "all_saved_initial_tensors_equal": true,
+  "tensors": 29,
+  "seed": 43,
+  "initial_state_sha256": "c2b81edc118ebecfe0f3bcf09fd334b68adbb4a41abefe6ca6afbe5757e79b6a",
+  "initial_rng_sha256": "bc711f10401292bb9a52f19c5ab7c03f6076b92edfd3ac97ad62d2f01f900d2d",
+  "initial_mps_rng_sha256": "3ae08432bd01cff575f3951d51736064f023735a9efe020b9f9b6821c7b4ef00",
+  "ce_actual_initialization_verified": true,
+  "student_expected_initialization_verified": true,
+  "learning_ast_matches_seed42": true,
+  "initial_checkpoint_sha256": "71deea15413ce22d0fc6e8e176ba5687ca537f0dbbefdd082e352fc976bf281e",
+  "teacher_checkpoint_sha256": "3582a7335b1e822f6140f5183ea055891987698e076cfab24fd483b3cd08db6b",
+  "student_actual_initialization_verified": true,
+  "method": "Direct comparison with saved seed43 random weights, plus independent legacy-source regeneration",
+  "initial_checkpoint": "data/runs/paired-seed-repeat/initial.pt"
+}

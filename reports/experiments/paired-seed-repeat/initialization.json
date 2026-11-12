@@ -1,0 +1,41 @@
+{
+  "control_run": "data/runs/paired-seed-repeat/ce50/train-mps",
+  "control_checkpoint_sha256": "3582a7335b1e822f6140f5183ea055891987698e076cfab24fd483b3cd08db6b",
+  "control_last_sha256": "bc23f24b296af8b29fe7727bf08ed5b4e446272d4e3b8dc36409bbdc333dd850",
+  "reference_source_commit": "591575aaa759eaa1f489ff92f7020f6bdcc11f11",
+  "archived_source_sha256": {
+    "scripts/sasrec.py": "0b65c3d8308cce1442450c08c04d4b2ec7dcdb48ee4e2516764aac06a847a19f",
+    "scripts/run_sasrec.py": "ac6f27a1bbca0b950e06ff8f035ff2f9ed5d01c38384a5b376b9f541057b70ac"
+  },
+  "same_all_tensors": true,
+  "tensors": 29,
+  "parameters": 7357888,
+  "initial_state_sha256": "c2b81edc118ebecfe0f3bcf09fd334b68adbb4a41abefe6ca6afbe5757e79b6a",
+  "initial_rng_sha256": "bc711f10401292bb9a52f19c5ab7c03f6076b92edfd3ac97ad62d2f01f900d2d",
+  "initial_mps_rng_sha256": "3ae08432bd01cff575f3951d51736064f023735a9efe020b9f9b6821c7b4ef00",
+  "matches_saved_control_cpu_rng": true,
+  "initial_validation": {
+    "ndcg@10": 0.022310920069593697,
+    "recall@100": 0.023334356770033773
+  },
+  "reference_initial_validation": {
+    "ndcg@10": 0.022310920069593697,
+    "recall@100": 0.023334356770033773
+  },
+  "initial_rank_exact_matches": 29313,
+  "initial_rank_max_delta": 0,
+  "validation_examples": 29313,
+  "teacher_selection_sha256": "a11ea8bc6167091d895add3bc1d61da3920e13f888241ec8c5c972c439de3ec2",
+  "data_manifest_sha256": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c",
+  "torch": "2.15.0",
+  "numpy": "2.5.4",
+  "python": "3.14.8",
+  "device": "mps",
+  "current_source_sha256": {
+    "scripts/check_sasrec_initialization.py": "8ddc9439afb9bd09518fc314aafcb212c214799acd5341ab9879340cef02268f",
+    "scripts/sasrec.py": "5ec315e46a0bb529ef035badca261ef5a10206ecc9668f63d499a699352c6165",
+    "scripts/run_sasrec.py": "816de7ff8dd80bd38fe97c86c3f92814cad1a6f8215d2c85c28bb4edd5beaba3"
+  },
+  "no_ct_pv_test_events_read": true,
+  "method": "CE initial checkpoint was not saved; restored from archived source/config/seed and checked against saved CPU RNG and initial validation"
+}

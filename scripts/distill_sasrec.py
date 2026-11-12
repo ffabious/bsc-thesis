@@ -195,18 +195,19 @@ def evaluate(protocol,root,device):
     teacher = Teacher(models,teacher_selection["alpha"],protocol["temperature"])
     folder = ROOT/protocol["reference_replay"]
     stream = dict(np.load(folder/"replay.npz"));reference = read(folder/"results.json")
-    if sources["long"]["checkpoint_sha256"]!=reference["checkpoint_sha256"]:raise ValueError("Replay checkpoint differs")
+    if sources["long"]["data_manifest_sha256"]!=reference["data_manifest_sha256"]:
+        raise ValueError("Replay dataset/vocabulary differs")
     q = stream["target_request"];x = stream["queries"][q];y = stream["targets"].astype(np.int64);users = stream["users"][q]
     values = {"original":stream["ranks"][0]}
     for name in ["control","student"]:
-        if name=="control" and selected[name]["checkpoint_sha256"]==sources["long"]["checkpoint_sha256"]:
+        if selected[name]["checkpoint_sha256"]==reference["checkpoint_sha256"]:
             values[name] = values["original"]
             continue
         model,config = load_student(ROOT/selected[name]["run"],device)
         values[name] = ranks(model,x,y,device,256)
         del model
-    if teacher.alpha==0:
-        values["teacher"] = values["original"]
+    if teacher.alpha==0 and sources["long"]["checkpoint_sha256"]==selected["control"]["checkpoint_sha256"]:
+        values["teacher"] = values["control"]
     else:
         ids = torch.arange(2,models["long"].item.num_embeddings,device=device);parts = []
         for start in range(0,len(y),256):
@@ -229,7 +230,8 @@ def evaluate(protocol,root,device):
     np.savez_compressed(root/"evaluation-ranks.npz",**values,targets=y,users=users,split_idx=stream["split_idx"][q])
     write(root/"evaluation.json",{"selection_sha256":selection_hash,"selection":selected,"teacher_alpha":teacher.alpha,
         "results":results,"catalog_items":sources["long"]["items"],"sources":sources,"device":device,"no_test_events_read":True,
-        "reused_control_ranks":bool(selected["control"].get("reused")),
+        "reused_control_ranks":selected["control"]["checkpoint_sha256"]==reference["checkpoint_sha256"],
+        "reference_checkpoint_sha256":reference["checkpoint_sha256"],
         "reference_sha256":{str((folder/p).relative_to(ROOT)):checksum(folder/p) for p in ["replay.npz","results.json"]}})
 
 

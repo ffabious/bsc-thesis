@@ -1,0 +1,26 @@
+{
+  "seed": 43,
+  "initial": {
+    "state": "c2b81edc118ebecfe0f3bcf09fd334b68adbb4a41abefe6ca6afbe5757e79b6a",
+    "cpu_rng": "bc711f10401292bb9a52f19c5ab7c03f6076b92edfd3ac97ad62d2f01f900d2d",
+    "mps_rng": "3ae08432bd01cff575f3951d51736064f023735a9efe020b9f9b6821c7b4ef00"
+  },
+  "initial_checkpoint_sha256": "71deea15413ce22d0fc6e8e176ba5687ca537f0dbbefdd082e352fc976bf281e",
+  "tensors": 29,
+  "parameters": 7357888,
+  "source_sha256": {
+    "scripts/run_sasrec.py": "816de7ff8dd80bd38fe97c86c3f92814cad1a6f8215d2c85c28bb4edd5beaba3",
+    "scripts/sasrec.py": "5ec315e46a0bb529ef035badca261ef5a10206ecc9668f63d499a699352c6165",
+    "configs/experiments/paired-repeat-ce50.json": "e9d0bb0a579ce1fc41f26d491a977894967eecb06785a6931ffa22c8e849e006"
+  },
+  "used_data_files_sha256": {
+    "manifest.json": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c",
+    "events/train.parquet": "9beb8bbc92c90ca2dccd9dfeda3b1e4e838b13b0f759f4a3da27c00e68134340",
+    "events/model_valid.parquet": "32980a3fa82dc0f4d716a020af687c72c88110fda111be673a88d1cd35b6604b",
+    "items.parquet": "cd16fbc24772305d9c5a57bb62a02e2eb4049bb9f62ffcd446be92f76ec0c863",
+    "users.parquet": "27f101f6b67421d0bab7ccc213bd154bbc8f7b9fa92742d53177bb0d7e398332"
+  },
+  "torch": "2.15.0",
+  "numpy": "2.5.4",
+  "no_ct_pv_test_events_read": true
+}

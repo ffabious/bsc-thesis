@@ -1,0 +1,40 @@
+{
+  "base_config": "configs/experiments/paired-repeat-ce50.json",
+  "initial_checkpoint": null,
+  "initial_checkpoint_sha256": null,
+  "weights": [
+    1.0
+  ],
+  "temperature": 1.0,
+  "loss": "CE + weight * temperature^2 * KL(teacher || student)",
+  "teacher_scale": "raw CE50 logits",
+  "evaluation_splits": [
+    "controller_train",
+    "policy_valid"
+  ],
+  "reference_replay": "data/runs/sasrec-256-policies-wide",
+  "teacher": {
+    "runs": {
+      "256": {
+        "long": "data/runs/paired-seed-repeat/ce50"
+      }
+    },
+    "alphas": [
+      0.0
+    ],
+    "score_transform": "raw",
+    "epsilon": 1e-08,
+    "selection_metric": "ndcg@10",
+    "tie_break": "smaller_alpha",
+    "batch_size": 256,
+    "seed": 43,
+    "threads": 4
+  },
+  "control_run": "data/runs/paired-seed-repeat/ce50/train-mps",
+  "control_checkpoint_sha256": "3582a7335b1e822f6140f5183ea055891987698e076cfab24fd483b3cd08db6b",
+  "fixed_teacher_alpha": 0.0,
+  "teacher_selection_source": "data/runs/paired-seed-repeat/student/fixed-teacher.json",
+  "teacher_selection_sha256": "a11ea8bc6167091d895add3bc1d61da3920e13f888241ec8c5c972c439de3ec2",
+  "reference_source_commit": "591575aaa759eaa1f489ff92f7020f6bdcc11f11",
+  "reference_source_registry": "reports/experiments/sasrec-baseline-search/sources-full-ce.json"
+}

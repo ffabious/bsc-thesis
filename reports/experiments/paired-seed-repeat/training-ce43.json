@@ -1,0 +1,165 @@
+{
+  "train_examples": 739571,
+  "validation_examples": 29313,
+  "initial_validation": {
+    "ndcg@10": 0.022310920069593697,
+    "recall@100": 0.023334356770033773
+  },
+  "mostpop_validation": {
+    "ndcg@10": 0.0032306535841508687,
+    "recall@100": 0.04813563947736499
+  },
+  "epochs": [
+    {
+      "epoch": 1,
+      "loss": 9.02745104932454,
+      "train_seconds": 129.87894979098928,
+      "train_examples_per_second": 5694.309980102024,
+      "validation_seconds": 2.7171654170088004,
+      "validation": {
+        "ndcg@10": 0.05976482581093035,
+        "recall@100": 0.27114249650325795
+      },
+      "process_peak_rss_mib": 1067.03125,
+      "mps_tensor_mib": 112.947509765625,
+      "mps_driver_mib": 1051.859375
+    },
+    {
+      "epoch": 2,
+      "loss": 7.695699263491943,
+      "train_seconds": 128.36642525001662,
+      "train_examples_per_second": 5761.405278362726,
+      "validation_seconds": 2.783194709016243,
+      "validation": {
+        "ndcg@10": 0.07036079449227862,
+        "recall@100": 0.30477944939105517
+      },
+      "process_peak_rss_mib": 1067.03125,
+      "mps_tensor_mib": 112.947509765625,
+      "mps_driver_mib": 1051.859375
+    },
+    {
+      "epoch": 3,
+      "loss": 7.480211500991791,
+      "train_seconds": 128.99887316700188,
+      "train_examples_per_second": 5733.158607072108,
+      "validation_seconds": 2.7197439589945134,
+      "validation": {
+        "ndcg@10": 0.07203203012795116,
+        "recall@100": 0.3125234537577184
+      },
+      "process_peak_rss_mib": 1067.03125,
+      "mps_tensor_mib": 112.947509765625,
+      "mps_driver_mib": 1051.859375
+    },
+    {
+      "epoch": 4,
+      "loss": 7.419761591517244,
+      "train_seconds": 131.13780879200203,
+      "train_examples_per_second": 5639.64738173287,
+      "validation_seconds": 2.8625330420036335,
+      "validation": {
+        "ndcg@10": 0.07194190463005855,
+        "recall@100": 0.3075427284822434
+      },
+      "process_peak_rss_mib": 1067.03125,
+      "mps_tensor_mib": 112.947509765625,
+      "mps_driver_mib": 1051.859375
+    },
+    {
+      "epoch": 5,
+      "loss": 7.405992798527795,
+      "train_seconds": 129.78328433301067,
+      "train_examples_per_second": 5698.507352474886,
+      "validation_seconds": 2.8106999580049887,
+      "validation": {
+        "ndcg@10": 0.07244757060901587,
+        "recall@100": 0.3142291815917852
+      },
+      "process_peak_rss_mib": 1067.03125,
+      "mps_tensor_mib": 112.947509765625,
+      "mps_driver_mib": 1051.859375
+    },
+    {
+      "epoch": 6,
+      "loss": 7.4052119404357395,
+      "train_seconds": 131.12581508400035,
+      "train_examples_per_second": 5640.163224352308,
+      "validation_seconds": 2.752507583005354,
+      "validation": {
+        "ndcg@10": 0.0701792794527921,
+        "recall@100": 0.30655340633848466
+      },
+      "process_peak_rss_mib": 1067.03125,
+      "mps_tensor_mib": 112.947509765625,
+      "mps_driver_mib": 1051.859375
+    },
+    {
+      "epoch": 7,
+      "loss": 7.406835178772559,
+      "train_seconds": 131.4457689159899,
+      "train_examples_per_second": 5626.4344307094225,
+      "validation_seconds": 2.953588625008706,
+      "validation": {
+        "ndcg@10": 0.07007219703696188,
+        "recall@100": 0.306996895575342
+      },
+      "process_peak_rss_mib": 1067.03125,
+      "mps_tensor_mib": 112.947509765625,
+      "mps_driver_mib": 1051.859375
+    }
+  ],
+  "parameters": 7357888,
+  "trainable_parameters": 7357888,
+  "initial_rng_sha256": "bc711f10401292bb9a52f19c5ab7c03f6076b92edfd3ac97ad62d2f01f900d2d",
+  "initial_mps_rng_sha256": "3ae08432bd01cff575f3951d51736064f023735a9efe020b9f9b6821c7b4ef00",
+  "initial_state_sha256": "c2b81edc118ebecfe0f3bcf09fd334b68adbb4a41abefe6ca6afbe5757e79b6a",
+  "best_epoch": 5,
+  "stop_reason": "validation_patience",
+  "elapsed_seconds": 935.360581667017,
+  "checkpoint_sha256": "3582a7335b1e822f6140f5183ea055891987698e076cfab24fd483b3cd08db6b",
+  "config": {
+    "data": "data/processed/yambda50m-pilot-audio",
+    "loss_reduction": "joint_mean",
+    "seed": 43,
+    "threads": 4,
+    "length": 50,
+    "dim": 64,
+    "heads": 2,
+    "blocks": 2,
+    "dropout": 0.2,
+    "batch_size": 256,
+    "negatives": 16,
+    "learning_rate": 0.001,
+    "epochs": null,
+    "patience": 2,
+    "eval_batch_size": 256,
+    "benchmark_warmup": 2,
+    "benchmark_steps": 5,
+    "benchmark_repeats": 3,
+    "objective": "full_ce",
+    "expected_initial_state_sha256": "c2b81edc118ebecfe0f3bcf09fd334b68adbb4a41abefe6ca6afbe5757e79b6a",
+    "expected_initial_rng_sha256": "bc711f10401292bb9a52f19c5ab7c03f6076b92edfd3ac97ad62d2f01f900d2d",
+    "expected_initial_mps_rng_sha256": "3ae08432bd01cff575f3951d51736064f023735a9efe020b9f9b6821c7b4ef00"
+  },
+  "device": "mps",
+  "torch": "2.15.0",
+  "numpy": "2.5.4",
+  "python": "3.14.8",
+  "macos": "26.6.2",
+  "mps_available": true,
+  "data_manifest_sha256": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c",
+  "source_sha256": {
+    "scripts/run_sasrec.py": "816de7ff8dd80bd38fe97c86c3f92814cad1a6f8215d2c85c28bb4edd5beaba3",
+    "scripts/sasrec.py": "5ec315e46a0bb529ef035badca261ef5a10206ecc9668f63d499a699352c6165",
+    "configs/experiments/paired-repeat-ce50.json": "e9d0bb0a579ce1fc41f26d491a977894967eecb06785a6931ffa22c8e849e006"
+  },
+  "used_data_files_sha256": {
+    "manifest.json": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c",
+    "events/train.parquet": "9beb8bbc92c90ca2dccd9dfeda3b1e4e838b13b0f759f4a3da27c00e68134340",
+    "events/model_valid.parquet": "32980a3fa82dc0f4d716a020af687c72c88110fda111be673a88d1cd35b6604b",
+    "items.parquet": "cd16fbc24772305d9c5a57bb62a02e2eb4049bb9f62ffcd446be92f76ec0c863",
+    "users.parquet": "27f101f6b67421d0bab7ccc213bd154bbc8f7b9fa92742d53177bb0d7e398332"
+  },
+  "no_ct_pv_test_events_read": true
+}

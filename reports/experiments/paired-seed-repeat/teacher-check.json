@@ -1,0 +1,13 @@
+{
+  "teacher_branches": [
+    "long"
+  ],
+  "temperature": 1,
+  "target_probability_check_examples": 32,
+  "t1_targets_exactly_raw_log_softmax": true,
+  "teacher_checkpoint_sha256": "3582a7335b1e822f6140f5183ea055891987698e076cfab24fd483b3cd08db6b",
+  "teacher_best_epoch": 5,
+  "model_valid_targets": 29313,
+  "teacher_validation_reproduced": true,
+  "no_ct_pv_test_events_read": true
+}

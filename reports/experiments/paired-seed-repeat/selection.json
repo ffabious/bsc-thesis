@@ -1,0 +1,50 @@
+{
+  "selected_on": "model_valid",
+  "criterion": "maximum best-epoch NDCG@10; ties smaller nonzero weight",
+  "student": {
+    "weight": 1.0,
+    "run": "data/runs/paired-seed-repeat/student/kd-1/train-mps",
+    "best_epoch": 9,
+    "metrics": {
+      "ndcg@10": 0.07649688983327166,
+      "recall@100": 0.3310476580356838
+    },
+    "checkpoint_sha256": "a6549493817b3d7f475e13ce6706a1f7f35ab31b8dbe5a5f476293b55613fc21"
+  },
+  "control": {
+    "weight": 0.0,
+    "run": "data/runs/paired-seed-repeat/ce50/train-mps",
+    "best_epoch": 5,
+    "metrics": {
+      "ndcg@10": 0.07244757060901587,
+      "recall@100": 0.3142291815917852
+    },
+    "checkpoint_sha256": "3582a7335b1e822f6140f5183ea055891987698e076cfab24fd483b3cd08db6b",
+    "reused": true
+  },
+  "candidates": [
+    {
+      "weight": 0.0,
+      "run": "data/runs/paired-seed-repeat/ce50/train-mps",
+      "best_epoch": 5,
+      "metrics": {
+        "ndcg@10": 0.07244757060901587,
+        "recall@100": 0.3142291815917852
+      },
+      "checkpoint_sha256": "3582a7335b1e822f6140f5183ea055891987698e076cfab24fd483b3cd08db6b",
+      "reused": true
+    },
+    {
+      "weight": 1.0,
+      "run": "data/runs/paired-seed-repeat/student/kd-1/train-mps",
+      "best_epoch": 9,
+      "metrics": {
+        "ndcg@10": 0.07649688983327166,
+        "recall@100": 0.3310476580356838
+      },
+      "checkpoint_sha256": "a6549493817b3d7f475e13ce6706a1f7f35ab31b8dbe5a5f476293b55613fc21"
+    }
+  ],
+  "teacher_selection_sha256": "a11ea8bc6167091d895add3bc1d61da3920e13f888241ec8c5c972c439de3ec2",
+  "locked_before_holdout_read": true
+}

@@ -15,7 +15,7 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"scripts"))
 import run_sasrec
 from blend_sasrec import normalize_scores
 from distill_sasrec import DistillationStep,Teacher,objectives
-from distill_sasrec import lock_selection,load_teachers
+from distill_sasrec import lock_selection,load_teachers,evaluate
 from sasrec import SASRec
 
 
@@ -147,6 +147,33 @@ class DistillationTest(unittest.TestCase):
             self.assertTrue(selected["control"]["reused"])
             self.assertEqual(len(selected["candidates"]),2)
             self.assertEqual(selected["student"]["weight"],1)
+
+    def test_replay_scores_new_control_instead_of_aliasing_reference_seed(self):
+        with tempfile.TemporaryDirectory(dir=Path.cwd()) as tmp:
+            root=Path(tmp);reference=root/"reference";reference.mkdir();(root/"teacher").mkdir()
+            source={"long":{"checkpoint_sha256":"ce43","data_manifest_sha256":"same-data","items":4}}
+            (root/"teacher/selection.json").write_text(json.dumps({"alpha":0,"sources":source}))
+            selected={"control":{"run":"control","checkpoint_sha256":"ce43","reused":True},
+                      "student":{"run":"student","checkpoint_sha256":"student43"}}
+            (root/"selection.json").write_text(json.dumps(selected))
+            np.savez(reference/"replay.npz",queries=np.array([[0,2,3],[2,3,4],[3,4,5],[0,2,5]]),
+                target_request=np.arange(4),targets=np.array([4,5,2,3]),users=np.array([0,1,0,1]),
+                split_idx=np.array([1,1,2,2]),ranks=np.array([[9,8,7,6]]))
+            (reference/"results.json").write_text(json.dumps({"checkpoint_sha256":"ce42","data_manifest_sha256":"same-data"}))
+            protocol={"reference_replay":str(reference.relative_to(run_sasrec.ROOT)),"temperature":1,
+                      "evaluation_splits":["controller_train","policy_valid"]}
+            model=SASRec(4,length=3,dim=8,heads=2,blocks=1,dropout=0)
+            with patch("distill_sasrec.lock_selection",return_value=selected), \
+                 patch("distill_sasrec.load_teachers",return_value=({"long":model},{},source)), \
+                 patch("distill_sasrec.load_student",return_value=(model,{})), \
+                 patch("distill_sasrec.ranks",side_effect=[np.array([4,3,2,1]),np.array([3,2,1,1])]) as scoring:
+                evaluate(protocol,root,"cpu")
+            saved=dict(np.load(root/"evaluation-ranks.npz"))
+            np.testing.assert_array_equal(saved["original"],[9,8,7,6])
+            np.testing.assert_array_equal(saved["control"],[4,3,2,1])
+            np.testing.assert_array_equal(saved["teacher"],saved["control"])
+            self.assertEqual(scoring.call_count,2)
+            self.assertFalse(json.loads((root/"evaluation.json").read_text())["reused_control_ranks"])
 
     def test_cold_state_rng_guard_does_not_enable_warm_epoch_zero(self):
         with tempfile.TemporaryDirectory() as tmp:

@@ -1,0 +1,46 @@
+{
+  "pilot": "256",
+  "alpha": 0.0,
+  "selected_on": "fixed_CE_control_before_student_training",
+  "examples": 29313,
+  "users": 210,
+  "catalog_items": 114125,
+  "curve": [
+    {
+      "alpha": 0.0,
+      "metrics": {
+        "ndcg@10": 0.07244757060901587,
+        "recall@100": 0.3142291815917852,
+        "hit@1": 0.03141950670351039
+      }
+    }
+  ],
+  "sources": {
+    "long": {
+      "run": "data/runs/paired-seed-repeat/ce50",
+      "checkpoint_sha256": "3582a7335b1e822f6140f5183ea055891987698e076cfab24fd483b3cd08db6b",
+      "epoch": 5,
+      "data_manifest_sha256": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c",
+      "items": 114125
+    }
+  },
+  "protocol": {
+    "runs": {
+      "256": {
+        "long": "data/runs/paired-seed-repeat/ce50"
+      }
+    },
+    "alphas": [
+      0.0
+    ],
+    "score_transform": "raw",
+    "epsilon": 1e-08,
+    "selection_metric": "ndcg@10",
+    "tie_break": "smaller_alpha",
+    "batch_size": 256,
+    "seed": 43,
+    "threads": 4
+  },
+  "endpoint_validation_reproduced": true,
+  "no_ct_pv_test_events_read": true
+}

@@ -1,0 +1,58 @@
+{
+  "passed": true,
+  "tests": 81,
+  "source_data_checkpoint_hashes_verified": true,
+  "same_recipe_except_seed_and_teacher_provenance": true,
+  "learning_ast_matches_seed42": [
+    "Teacher",
+    "objectives",
+    "DistillationStep",
+    "run_training"
+  ],
+  "ce_math_ast_matches_original": {
+    "run_sasrec.py": [
+      "step",
+      "optimizer_for",
+      "input_examples",
+      "model_args"
+    ],
+    "sasrec.py": [
+      "loss",
+      "examples",
+      "negatives",
+      "batch",
+      "ranks",
+      "metrics"
+    ]
+  },
+  "saved_random_initializer_all_tensors_equal": 29,
+  "actual_ce_student_state_cpu_mps_rng_equal": true,
+  "both_new_runs_validation_patience_stop": true,
+  "full_trainable_parameters": 7357888,
+  "events": 104898,
+  "catalog_items": 114125,
+  "paired_user_ci_independently_recomputed": 12,
+  "csv_rows": {
+    "metrics.csv": 12,
+    "effects.csv": 6,
+    "segments.csv": 24,
+    "training.csv": 32,
+    "users.csv": 649,
+    "days.csv": 28
+  },
+  "cpu_oracle": {
+    "ce43": {
+      "examples": 128,
+      "exact_matches": 127,
+      "max_rank_delta": 1,
+      "metrics_equal": true
+    },
+    "student43": {
+      "examples": 128,
+      "exact_matches": 128,
+      "max_rank_delta": 0,
+      "metrics_equal": true
+    }
+  },
+  "no_test_events_read": true
+}
