@@ -1,0 +1,29 @@
+{
+  "same_initial_state_rng_as_t2": true,
+  "teacher_branches": [
+    "long"
+  ],
+  "temperature": 1,
+  "t1_targets_exactly_raw_log_softmax": true,
+  "target_probability_check_examples": 32,
+  "sources": {
+    "long": {
+      "run": "data/runs/sasrec-256-full-ce",
+      "checkpoint_sha256": "decfa67cb108d71806fec5957e4d425650aa6acb33bd67bf4b71e1d105cc4eb0",
+      "epoch": 4,
+      "data_manifest_sha256": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c",
+      "items": 114125
+    }
+  },
+  "raw_validation_check_reused_from": "data/runs/student-teacher-control/teacher-check.json",
+  "raw_validation_check_sha256": "4bc273d4e33f44179a406669bcd84e9599c2a5a74e0da2310e0eab213d777504",
+  "all_logits_exactly_raw_ce50": true,
+  "model_valid_targets": 29313,
+  "metrics": {
+    "ndcg@10": 0.07208452470010303,
+    "recall@100": 0.3057687715348139,
+    "hit@1": 0.03141950670351039
+  },
+  "teacher_selection_sha256": "9847c74ad43b5db00cf4066f23073658952cd34ca847a26df9a1ac381d0e51c5",
+  "no_ct_pv_test_events_read": true
+}

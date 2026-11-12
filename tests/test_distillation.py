@@ -44,16 +44,17 @@ class DistillationTest(unittest.TestCase):
             torch.testing.assert_close(Teacher(models,0).logits(x),models["long"](x)@models["long"].item.weight[2:].T)
 
     def test_loss_and_gradients_match_explicit_kl_and_zero_weight_ce(self):
-        logits = torch.randn(3,5,requires_grad=True);target = torch.tensor([2,4,6]);temperature = 2
-        logp = F.log_softmax(torch.randn(3,5)/temperature,dim=1)
-        actual,ce,kd = objectives(logits,target,logp,.25,temperature)
-        expected_kd = (logp.exp()*(logp-F.log_softmax(logits/temperature,dim=1))).sum()/3*temperature**2
-        expected = F.cross_entropy(logits,target-2)+.25*expected_kd
-        torch.testing.assert_close(actual,expected);torch.testing.assert_close(kd,expected_kd)
-        torch.testing.assert_close(torch.autograd.grad(actual,logits,retain_graph=True)[0],torch.autograd.grad(expected,logits,retain_graph=True)[0])
-        zero,_,_ = objectives(logits,target,logp,0,temperature)
-        torch.testing.assert_close(zero,ce)
-        torch.testing.assert_close(torch.autograd.grad(zero,logits,retain_graph=True)[0],torch.autograd.grad(ce,logits)[0])
+        for temperature in [1,2]:
+            logits = torch.randn(3,5,requires_grad=True);target = torch.tensor([2,4,6])
+            logp = F.log_softmax(torch.randn(3,5)/temperature,dim=1)
+            actual,ce,kd = objectives(logits,target,logp,.25,temperature)
+            expected_kd = (logp.exp()*(logp-F.log_softmax(logits/temperature,dim=1))).sum()/3*temperature**2
+            expected = F.cross_entropy(logits,target-2)+.25*expected_kd
+            torch.testing.assert_close(actual,expected);torch.testing.assert_close(kd,expected_kd)
+            torch.testing.assert_close(torch.autograd.grad(actual,logits,retain_graph=True)[0],torch.autograd.grad(expected,logits,retain_graph=True)[0])
+            zero,_,_ = objectives(logits,target,logp,0,temperature)
+            torch.testing.assert_close(zero,ce)
+            torch.testing.assert_close(torch.autograd.grad(zero,logits,retain_graph=True)[0],torch.autograd.grad(ce,logits)[0])
 
     def test_single_teacher_loads_no_recent_branch_and_uses_raw_ce_logits(self):
         with tempfile.TemporaryDirectory(dir=Path.cwd()) as tmp:
@@ -69,10 +70,12 @@ class DistillationTest(unittest.TestCase):
             with patch("distill_sasrec.load_pair",side_effect=AssertionError("Unused pair must not load")):
                 models,configs,sources=load_teachers(protocol,"cpu")
             self.assertEqual(set(models),{"long"});self.assertEqual(set(sources),{"long"})
-            teacher=Teacher(models,0,2);x=torch.tensor([[0,2,3],[4,5,5]])
-            with torch.no_grad():raw=models["long"](x)@models["long"].item.weight[2:].T
-            torch.testing.assert_close(teacher.logits(x),raw,atol=0,rtol=0)
-            torch.testing.assert_close(teacher.targets(x),F.log_softmax(raw/2,dim=1),atol=0,rtol=0)
+            x=torch.tensor([[0,2,3],[4,5,5]])
+            for temperature in [1,2]:
+                teacher=Teacher(models,0,temperature)
+                with torch.no_grad():raw=models["long"](x)@models["long"].item.weight[2:].T
+                torch.testing.assert_close(teacher.logits(x),raw,atol=0,rtol=0)
+                torch.testing.assert_close(teacher.targets(x),F.log_softmax(raw/temperature,dim=1),atol=0,rtol=0)
             self.assertTrue(all(p.grad is None and not p.requires_grad for p in models["long"].parameters()))
 
     def test_training_updates_student_but_not_teacher(self):

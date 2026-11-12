@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "new_training_runs": 1,
+  "epochs": 4,
+  "best_epoch": 2,
+  "selected_updates": 5778,
+  "same_initialization_rng_training_source_and_base_config": true,
+  "temperature_changed_from": 2,
+  "temperature_changed_to": 1,
+  "alpha": 0,
+  "lambda": 1,
+  "teacher_branches": [
+    "long"
+  ],
+  "t1_teacher_probability_check_examples": 32,
+  "reference_ranks_checkpoint_alignment_checked": true,
+  "source_data_checkpoint_hashes_checked": true,
+  "comparison_targets": 104898,
+  "all_overall_and_stratum_paired_intervals_recomputed": true,
+  "csv_json_svg_checks_passed": true,
+  "test_count": 80,
+  "no_test_events_read": true,
+  "checkpoint_sha256": "a95907c5399293783574d398183cce5605d426ec569a27aa86319d19e8601e16"
+}

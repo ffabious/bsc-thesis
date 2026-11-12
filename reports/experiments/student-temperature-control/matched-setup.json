@@ -1,0 +1,12 @@
+{
+  "same_base_config": true,
+  "same_training_source_bytes": true,
+  "same_teacher_checkpoint": true,
+  "same_alpha_weight": true,
+  "changed_factor": "temperature 2 -> 1, including the unchanged formula T^2 scaling",
+  "reference_run": "data/runs/student-teacher-control/kd-1/train-mps",
+  "reference_checkpoint_sha256": "28445611be332350f3af7bd9a8c9e7131721612a151feb6145e7d9ef6dead2a0",
+  "no_new_holdout_predictions_before_selection": true,
+  "same_initialization_rng_as_t2": true,
+  "actual_training_initial_state_rng_verified": true
+}

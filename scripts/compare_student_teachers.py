@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Compare the frozen CE50-teacher student with CE50 and the mixture student."""
+"""Compare a frozen student with CE50 and a saved reference student."""
 
 import argparse
 import csv
@@ -18,7 +18,7 @@ from replay_sasrec import quality
 from run_sasrec import ROOT,write
 from sasrec import ranks
 
-MODELS=["ce50","mixture_student","ce50_student"]
+MODELS=["ce50","reference_student","student"]
 
 
 def read(path):
@@ -30,9 +30,9 @@ def describe(values,users,mask,total,intervals=True):
     measures={k:quality(v) for k,v in selected.items()}
     result={"targets":int(mask.sum()),"users":int(len(np.unique(users[mask]))),"metrics":measures,"new_minus":{}}
     for base in MODELS[:2]:
-        delta={k:measures["ce50_student"][k]-measures[base][k] for k in ["ndcg@10","recall@100","hit@1"]}
+        delta={k:measures["student"][k]-measures[base][k] for k in ["ndcg@10","recall@100","hit@1"]}
         result["new_minus"][base]={"delta":delta,"ndcg_contribution":delta["ndcg@10"]*int(mask.sum())/total}
-        if intervals:result["new_minus"][base]["paired"]=paired_intervals(selected["ce50_student"],selected[base],users[mask],42)
+        if intervals:result["new_minus"][base]["paired"]=paired_intervals(selected["student"],selected[base],users[mask],42)
     return result
 
 
@@ -47,30 +47,48 @@ def main():
     if out.exists():parser.error("Comparison output already exists")
     protocol=read(args.config);selection=read(root/"selection.json");evaluation=read(root/"evaluation.json")
     assert selection["locked_before_holdout_read"] and evaluation["selection_sha256"]==checksum(root/"selection.json")
-    folders={"ce50":ROOT/protocol["control_run"],"mixture_student":ROOT/protocol["comparison_run"],
-             "ce50_student":ROOT/selection["student"]["run"]}
+    folders={"ce50":ROOT/protocol["control_run"],"reference_student":ROOT/protocol["comparison_run"],
+             "student":ROOT/selection["student"]["run"]}
     runs={k:read(p/"training.json") for k,p in folders.items()}
     for name,folder in folders.items():assert checksum(folder/"best.pt")==runs[name]["checkpoint_sha256"]
-    assert runs["mixture_student"]["checkpoint_sha256"]==protocol["comparison_checkpoint_sha256"]
-    assert runs["ce50_student"]["stop_reason"]=="validation_patience"
-    assert runs["ce50_student"]["config"]["teacher_alpha"]==0 and runs["mixture_student"]["config"]["teacher_alpha"]==.4
+    assert runs["reference_student"]["checkpoint_sha256"]==protocol["comparison_checkpoint_sha256"]
+    assert runs["student"]["stop_reason"]=="validation_patience"
+    assert runs["student"]["config"]["teacher_alpha"]==0 and runs["reference_student"]["config"]["teacher_alpha"]==protocol.get("comparison_alpha",.4)
+    assert runs["student"]["config"]["distillation_temperature"]==protocol["temperature"]
+    assert runs["reference_student"]["config"]["distillation_temperature"]==protocol.get("comparison_temperature",2)
+    assert runs["student"]["config"]["distillation_weight"]==runs["reference_student"]["config"]["distillation_weight"]==1
     for key in runs["ce50"]["config"]:
-        assert runs["ce50_student"]["config"][key]==runs["mixture_student"]["config"][key]==runs["ce50"]["config"][key],key
+        assert runs["student"]["config"][key]==runs["reference_student"]["config"][key]==runs["ce50"]["config"][key],key
     for key in ["initial_state_sha256","initial_rng_sha256","initial_mps_rng_sha256"]:
-        assert runs["ce50_student"][key]==runs["mixture_student"][key],key
+        assert runs["student"][key]==runs["reference_student"][key],key
     torch.set_num_threads(protocol["teacher"]["threads"])
     cache=ROOT/protocol["comparison_events"]
     assert checksum(cache)==read(ROOT/"reports/experiments/sasrec-256-distillation-audit/additional-slices.json")["source_events_sha256"]
     v=dict(np.load(cache));mv=v["split_idx"]==0;later=~mv;fresh=dict(np.load(root/"evaluation-ranks.npz"))
     for key in ["targets","users","split_idx"]:assert np.array_equal(v[key][later],fresh[key]),key
     assert np.array_equal(v["control"][later],fresh["control"]) and np.array_equal(fresh["teacher"],fresh["control"])
-    model,_=load_student(folders["ce50_student"],args.device)
+    reference_rank=v["student"];reference_paths=[]
+    if protocol.get("comparison_ranks"):
+        path=ROOT/protocol["comparison_ranks"];reference=dict(np.load(path))
+        for key in ["targets","users","event_ids","split_idx"]:assert np.array_equal(reference[key],v[key]),key
+        previous_selection=read(path.parent/"selection.json")
+        assert previous_selection["student"]["checkpoint_sha256"]==protocol["comparison_checkpoint_sha256"]
+        previous_eval=read(path.parent/"evaluation.json")
+        assert previous_eval["selection_sha256"]==checksum(path.parent/"selection.json")
+        reference_rank=reference[protocol["comparison_rank_key"]]
+        previous_raw=dict(np.load(path.parent/"evaluation-ranks.npz"))
+        assert np.array_equal(reference_rank[later],previous_raw["student"])
+        reference_paths=[path,path.parent/"selection.json",path.parent/"evaluation.json",path.parent/"evaluation-ranks.npz"]
+    model,_=load_student(folders["student"],args.device)
     new=np.empty(len(mv),dtype=np.int32);new[mv]=ranks(model,v["queries"][mv],v["targets"][mv],args.device,256)
     new[later]=fresh["student"]
-    values={"ce50":v["control"],"mixture_student":v["student"],"ce50_student":new}
+    values={"ce50":v["control"],"reference_student":reference_rank,"student":new}
     for name,r in runs.items():
         actual=quality(values[name][mv]);assert all(actual[k]==val for k,val in validation(r).items()),name
-    result={"splits":{},"fixed_teacher_alpha":0,"temperature":2,"weight":1,"selection_sha256":checksum(root/"selection.json"),
+    labels=["CE50 (reused)",protocol.get("reference_label","Mixture-teacher student (reused)"),protocol.get("student_label","CE50-teacher student")]
+    result={"splits":{},"model_labels":dict(zip(MODELS,labels)),"fixed_teacher_alpha":protocol["fixed_teacher_alpha"],
+        "temperature":protocol["temperature"],"reference_temperature":runs["reference_student"]["config"]["distillation_temperature"],
+        "weight":selection["student"]["weight"],"selection_sha256":checksum(root/"selection.json"),
         "no_test_events_read":True,"no_new_baseline_training":True,"seed":42,"ci_scope":"2000 whole-user, event-weighted, pointwise, exploratory; no training variance"}
     data=ROOT/runs["ce50"]["config"]["data"];periods=read(data/"manifest.json")["periods"]
     segment_rows=[];metric_rows=[];user_rows=[];day_rows=[]
@@ -105,12 +123,12 @@ def main():
             if field=="user_idx":block["user_macro_delta"]={base:float(np.mean([r[f"new_minus_{base}"] for r in current])) for base in MODELS[:2]}
         result["splits"][split]=block
         metric_rows.extend({"split":split,"model":name,**block["all"]["metrics"][name]} for name in MODELS)
-    result["training"]={name:{"reused":name!="ce50_student","epochs":len(r["epochs"]),"best_epoch":r["best_epoch"],
+    result["training"]={name:{"reused":name!="student","epochs":len(r["epochs"]),"best_epoch":r["best_epoch"],
         "validation":validation(r),"elapsed_seconds":r["elapsed_seconds"],"parameters":r["parameters"],
         "peak_rss_mib":max(e["process_peak_rss_mib"] for e in r["epochs"]),
         "max_saved_mps_driver_mib":max(e["mps_driver_mib"] for e in r["epochs"])} for name,r in runs.items()}
     result["source_sha256"]={str(p.resolve().relative_to(ROOT)):checksum(p) for p in [Path(__file__),args.config,cache,
-        root/"selection.json",root/"evaluation-ranks.npz"]+[folder/"best.pt" for folder in folders.values()]}
+        root/"selection.json",root/"evaluation-ranks.npz"]+reference_paths+[folder/"best.pt" for folder in folders.values()]}
     out.mkdir(parents=True);write(out/"comparison.json",result)
     np.savez_compressed(root/"comparison-ranks.npz",**values,targets=v["targets"],users=v["users"],event_ids=v["event_ids"],split_idx=v["split_idx"])
     curves=[]
@@ -124,10 +142,10 @@ def main():
             writer=csv.DictWriter(f,fieldnames=list(rows[0]),lineterminator="\n");writer.writeheader();writer.writerows(rows)
     for name,source in [("protocol.json",args.config),("initialization.json",root/"initialization.json"),
             ("teacher-check.json",root/"teacher-check.json"),("matched-setup.json",root/"matched-setup.json"),("fixed-teacher.json",root/"fixed-teacher.json"),
-            ("selection.json",root/"selection.json"),("evaluation.json",root/"evaluation.json"),("training.json",folders["ce50_student"]/"training.json"),
+            ("selection.json",root/"selection.json"),("evaluation.json",root/"evaluation.json"),("training.json",folders["student"]/"training.json"),
             ("tests.txt",root/"tests.txt")]:shutil.copyfile(source,out/name)
     plt.rcParams.update({"axes.spines.top":False,"axes.spines.right":False,"axes.grid":True,"grid.alpha":.2})
-    fig,axes=plt.subplots(1,2,figsize=(10,3.7));labels=["CE50 (reused)","Mixture-teacher student (reused)","CE50-teacher student"]
+    fig,axes=plt.subplots(1,2,figsize=(10,3.7))
     for ax,metric in zip(axes,["ndcg@10","recall@100"]):
         for (name,r),label,color in zip(runs.items(),labels,["#c36b22","#8653a6","#26906b"]):
             vals=[r["initial_validation"]]+[e["validation"] for e in r["epochs"]]

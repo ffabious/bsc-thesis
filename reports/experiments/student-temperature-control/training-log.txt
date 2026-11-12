@@ -1,0 +1,25 @@
+epoch 1, 128000/739571, loss=12.5210
+epoch 1, 256000/739571, loss=11.4274
+epoch 1, 384000/739571, loss=10.6631
+epoch 1, 512000/739571, loss=10.1455
+epoch 1, 640000/739571, loss=9.7778
+{"epoch": 1, "loss": 9.560490473531276, "train_seconds": 272.7659113749978, "train_examples_per_second": 2711.376198997388, "validation_seconds": 2.4609698340063915, "validation": {"ndcg@10": 0.0679675653379375, "recall@100": 0.31388803602497184}, "process_peak_rss_mib": 1079.046875, "mps_tensor_mib": 141.1552734375, "mps_driver_mib": 2075.859375, "loss_components": {"ce": 8.292177200317383, "kl_t2": 1.268311619758606, "weighted_kl_t2": 1.268311619758606}}
+epoch 2, 128000/739571, loss=7.9007
+epoch 2, 256000/739571, loss=7.9060
+epoch 2, 384000/739571, loss=7.9037
+epoch 2, 512000/739571, loss=7.8891
+epoch 2, 640000/739571, loss=7.8758
+{"epoch": 2, "loss": 7.86775644258631, "train_seconds": 221.07902941698558, "train_examples_per_second": 3345.278844177785, "validation_seconds": 2.3895684580202214, "validation": {"ndcg@10": 0.07346262711418419, "recall@100": 0.32593047453348345}, "process_peak_rss_mib": 1079.046875, "mps_tensor_mib": 141.1552734375, "mps_driver_mib": 2075.859375, "loss_components": {"ce": 7.201035022735596, "kl_t2": 0.6667307019233704, "weighted_kl_t2": 0.6667307019233704}}
+epoch 3, 128000/739571, loss=7.5923
+epoch 3, 256000/739571, loss=7.6428
+epoch 3, 384000/739571, loss=7.6639
+epoch 3, 512000/739571, loss=7.6801
+epoch 3, 640000/739571, loss=7.6859
+{"epoch": 3, "loss": 7.6887479363036135, "train_seconds": 234.0142172909982, "train_examples_per_second": 3160.367812526273, "validation_seconds": 2.5649402080161963, "validation": {"ndcg@10": 0.07344529263640344, "recall@100": 0.3314911472725412}, "process_peak_rss_mib": 1079.046875, "mps_tensor_mib": 141.1552734375, "mps_driver_mib": 2075.859375, "loss_components": {"ce": 7.066051959991455, "kl_t2": 0.6226914525032043, "weighted_kl_t2": 0.6226914525032043}}
+epoch 4, 128000/739571, loss=7.6596
+epoch 4, 256000/739571, loss=7.7132
+epoch 4, 384000/739571, loss=7.7372
+epoch 4, 512000/739571, loss=7.7339
+epoch 4, 640000/739571, loss=7.7007
+{"epoch": 4, "loss": 7.622728581840013, "train_seconds": 238.88233554101316, "train_examples_per_second": 3095.9635350393028, "validation_seconds": 2.463680040993495, "validation": {"ndcg@10": 0.07074500469914503, "recall@100": 0.3055640841947259}, "process_peak_rss_mib": 1079.046875, "mps_tensor_mib": 141.1552734375, "mps_driver_mib": 2075.859375, "loss_components": {"ce": 7.0051798820495605, "kl_t2": 0.6175292730331421, "weighted_kl_t2": 0.6175292730331421}}
+{"run": "kd-1", "best_epoch": 2, "epochs": 4, "validation": {"ndcg@10": 0.07346262711418419, "recall@100": 0.32593047453348345}, "elapsed_seconds": 981.0348432080064}

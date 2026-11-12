@@ -1,0 +1,1 @@
+Verified all 29 initial tensors and 29313 validation targets; CE control can be reused

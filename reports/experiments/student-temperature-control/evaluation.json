@@ -1,0 +1,411 @@
+{
+  "selection_sha256": "5d56bf728a29931c3ff6df80bd9b6fc14323d214c7c9caa89dd7718278f29221",
+  "selection": {
+    "selected_on": "model_valid",
+    "criterion": "maximum best-epoch NDCG@10; ties smaller nonzero weight",
+    "student": {
+      "weight": 1.0,
+      "run": "data/runs/student-temperature-control/kd-1/train-mps",
+      "best_epoch": 2,
+      "metrics": {
+        "ndcg@10": 0.07346262711418419,
+        "recall@100": 0.32593047453348345
+      },
+      "checkpoint_sha256": "a95907c5399293783574d398183cce5605d426ec569a27aa86319d19e8601e16"
+    },
+    "control": {
+      "weight": 0.0,
+      "run": "data/runs/sasrec-256-full-ce/train-mps",
+      "best_epoch": 4,
+      "metrics": {
+        "ndcg@10": 0.07208452470010303,
+        "recall@100": 0.3057687715348139
+      },
+      "checkpoint_sha256": "decfa67cb108d71806fec5957e4d425650aa6acb33bd67bf4b71e1d105cc4eb0",
+      "reused": true
+    },
+    "candidates": [
+      {
+        "weight": 0.0,
+        "run": "data/runs/sasrec-256-full-ce/train-mps",
+        "best_epoch": 4,
+        "metrics": {
+          "ndcg@10": 0.07208452470010303,
+          "recall@100": 0.3057687715348139
+        },
+        "checkpoint_sha256": "decfa67cb108d71806fec5957e4d425650aa6acb33bd67bf4b71e1d105cc4eb0",
+        "reused": true
+      },
+      {
+        "weight": 1.0,
+        "run": "data/runs/student-temperature-control/kd-1/train-mps",
+        "best_epoch": 2,
+        "metrics": {
+          "ndcg@10": 0.07346262711418419,
+          "recall@100": 0.32593047453348345
+        },
+        "checkpoint_sha256": "a95907c5399293783574d398183cce5605d426ec569a27aa86319d19e8601e16"
+      }
+    ],
+    "teacher_selection_sha256": "9847c74ad43b5db00cf4066f23073658952cd34ca847a26df9a1ac381d0e51c5",
+    "locked_before_holdout_read": true
+  },
+  "teacher_alpha": 0.0,
+  "results": {
+    "controller_train": {
+      "targets": 52191,
+      "users": 230,
+      "metrics": {
+        "original": {
+          "ndcg@10": 0.05666257584298457,
+          "recall@100": 0.265869594374509,
+          "hit@1": 0.022839186832978867
+        },
+        "control": {
+          "ndcg@10": 0.05666257584298457,
+          "recall@100": 0.265869594374509,
+          "hit@1": 0.022839186832978867
+        },
+        "student": {
+          "ndcg@10": 0.05790938992115632,
+          "recall@100": 0.28481922170489166,
+          "hit@1": 0.02188116725105861
+        },
+        "teacher": {
+          "ndcg@10": 0.05666257584298457,
+          "recall@100": 0.265869594374509,
+          "hit@1": 0.022839186832978867
+        }
+      },
+      "student_minus": {
+        "original": {
+          "ndcg@10": {
+            "difference": 0.0012468140781717557,
+            "cluster_bootstrap_95ci": [
+              -0.0002672022827169671,
+              0.002931656330312713
+            ]
+          },
+          "recall@100": {
+            "difference": 0.018949627330382635,
+            "cluster_bootstrap_95ci": [
+              0.015053022064476425,
+              0.022831120407810792
+            ]
+          }
+        },
+        "control": {
+          "ndcg@10": {
+            "difference": 0.0012468140781717557,
+            "cluster_bootstrap_95ci": [
+              -0.0002672022827169671,
+              0.002931656330312713
+            ]
+          },
+          "recall@100": {
+            "difference": 0.018949627330382635,
+            "cluster_bootstrap_95ci": [
+              0.015053022064476425,
+              0.022831120407810792
+            ]
+          }
+        },
+        "teacher": {
+          "ndcg@10": {
+            "difference": 0.0012468140781717557,
+            "cluster_bootstrap_95ci": [
+              -0.0002672022827169671,
+              0.002931656330312713
+            ]
+          },
+          "recall@100": {
+            "difference": 0.018949627330382635,
+            "cluster_bootstrap_95ci": [
+              0.015053022064476425,
+              0.022831120407810792
+            ]
+          }
+        }
+      },
+      "control_minus_original": {
+        "ndcg@10": {
+          "difference": 0.0,
+          "cluster_bootstrap_95ci": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@100": {
+          "difference": 0.0,
+          "cluster_bootstrap_95ci": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "strata": {
+        "last_item": {
+          "targets": 882,
+          "metrics": {
+            "original": {
+              "ndcg@10": 0.5530474968946912,
+              "recall@100": 0.8106575963718821,
+              "hit@1": 0.4342403628117914
+            },
+            "control": {
+              "ndcg@10": 0.5530474968946912,
+              "recall@100": 0.8106575963718821,
+              "hit@1": 0.4342403628117914
+            },
+            "student": {
+              "ndcg@10": 0.5023694718583442,
+              "recall@100": 0.7743764172335601,
+              "hit@1": 0.38095238095238093
+            },
+            "teacher": {
+              "ndcg@10": 0.5530474968946912,
+              "recall@100": 0.8106575963718821,
+              "hit@1": 0.4342403628117914
+            }
+          }
+        },
+        "other_in_window": {
+          "targets": 9426,
+          "metrics": {
+            "original": {
+              "ndcg@10": 0.11902330988067854,
+              "recall@100": 0.45523021430086996,
+              "hit@1": 0.038722681943560364
+            },
+            "control": {
+              "ndcg@10": 0.11902330988067854,
+              "recall@100": 0.45523021430086996,
+              "hit@1": 0.038722681943560364
+            },
+            "student": {
+              "ndcg@10": 0.12378132454892338,
+              "recall@100": 0.4672183322724379,
+              "hit@1": 0.04148100997241672
+            },
+            "teacher": {
+              "ndcg@10": 0.11902330988067854,
+              "recall@100": 0.45523021430086996,
+              "hit@1": 0.038722681943560364
+            }
+          }
+        },
+        "outside_window": {
+          "targets": 41883,
+          "metrics": {
+            "original": {
+              "ndcg@10": 0.03217474595002302,
+              "recall@100": 0.21178043597641047,
+              "hit@1": 0.010600959816632047
+            },
+            "control": {
+              "ndcg@10": 0.03217474595002302,
+              "recall@100": 0.21178043597641047,
+              "hit@1": 0.010600959816632047
+            },
+            "student": {
+              "ndcg@10": 0.0337248126924494,
+              "recall@100": 0.23345987632213547,
+              "hit@1": 0.009908554783563736
+            },
+            "teacher": {
+              "ndcg@10": 0.03217474595002302,
+              "recall@100": 0.21178043597641047,
+              "hit@1": 0.010600959816632047
+            }
+          }
+        }
+      }
+    },
+    "policy_valid": {
+      "targets": 23394,
+      "users": 209,
+      "metrics": {
+        "original": {
+          "ndcg@10": 0.0550929395331777,
+          "recall@100": 0.25220141916730787,
+          "hit@1": 0.02410874583226468
+        },
+        "control": {
+          "ndcg@10": 0.0550929395331777,
+          "recall@100": 0.25220141916730787,
+          "hit@1": 0.02410874583226468
+        },
+        "student": {
+          "ndcg@10": 0.05575001817598127,
+          "recall@100": 0.2720355646747029,
+          "hit@1": 0.022356159699068137
+        },
+        "teacher": {
+          "ndcg@10": 0.0550929395331777,
+          "recall@100": 0.25220141916730787,
+          "hit@1": 0.02410874583226468
+        }
+      },
+      "student_minus": {
+        "original": {
+          "ndcg@10": {
+            "difference": 0.0006570786428035763,
+            "cluster_bootstrap_95ci": [
+              -0.0015748388074202167,
+              0.002869064491197395
+            ]
+          },
+          "recall@100": {
+            "difference": 0.019834145507395057,
+            "cluster_bootstrap_95ci": [
+              0.015338472362045115,
+              0.024301668313448897
+            ]
+          }
+        },
+        "control": {
+          "ndcg@10": {
+            "difference": 0.0006570786428035763,
+            "cluster_bootstrap_95ci": [
+              -0.0015748388074202167,
+              0.002869064491197395
+            ]
+          },
+          "recall@100": {
+            "difference": 0.019834145507395057,
+            "cluster_bootstrap_95ci": [
+              0.015338472362045115,
+              0.024301668313448897
+            ]
+          }
+        },
+        "teacher": {
+          "ndcg@10": {
+            "difference": 0.0006570786428035763,
+            "cluster_bootstrap_95ci": [
+              -0.0015748388074202167,
+              0.002869064491197395
+            ]
+          },
+          "recall@100": {
+            "difference": 0.019834145507395057,
+            "cluster_bootstrap_95ci": [
+              0.015338472362045115,
+              0.024301668313448897
+            ]
+          }
+        }
+      },
+      "control_minus_original": {
+        "ndcg@10": {
+          "difference": 0.0,
+          "cluster_bootstrap_95ci": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@100": {
+          "difference": 0.0,
+          "cluster_bootstrap_95ci": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "strata": {
+        "last_item": {
+          "targets": 415,
+          "metrics": {
+            "original": {
+              "ndcg@10": 0.5695006660864097,
+              "recall@100": 0.7951807228915663,
+              "hit@1": 0.472289156626506
+            },
+            "control": {
+              "ndcg@10": 0.5695006660864097,
+              "recall@100": 0.7951807228915663,
+              "hit@1": 0.472289156626506
+            },
+            "student": {
+              "ndcg@10": 0.5080135832586405,
+              "recall@100": 0.7614457831325301,
+              "hit@1": 0.41686746987951806
+            },
+            "teacher": {
+              "ndcg@10": 0.5695006660864097,
+              "recall@100": 0.7951807228915663,
+              "hit@1": 0.472289156626506
+            }
+          }
+        },
+        "other_in_window": {
+          "targets": 4124,
+          "metrics": {
+            "original": {
+              "ndcg@10": 0.11076172633715592,
+              "recall@100": 0.45077594568380214,
+              "hit@1": 0.037827352085354024
+            },
+            "control": {
+              "ndcg@10": 0.11076172633715592,
+              "recall@100": 0.45077594568380214,
+              "hit@1": 0.037827352085354024
+            },
+            "student": {
+              "ndcg@10": 0.11370391413608416,
+              "recall@100": 0.45805043646944715,
+              "hit@1": 0.03903976721629486
+            },
+            "teacher": {
+              "ndcg@10": 0.11076172633715592,
+              "recall@100": 0.45077594568380214,
+              "hit@1": 0.037827352085354024
+            }
+          }
+        },
+        "outside_window": {
+          "targets": 18855,
+          "metrics": {
+            "original": {
+              "ndcg@10": 0.03159480729773896,
+              "recall@100": 0.1968178202068417,
+              "hit@1": 0.011243701935826042
+            },
+            "control": {
+              "ndcg@10": 0.03159480729773896,
+              "recall@100": 0.1968178202068417,
+              "hit@1": 0.011243701935826042
+            },
+            "student": {
+              "ndcg@10": 0.03311988046986789,
+              "recall@100": 0.2205780959957571,
+              "hit@1": 0.010023866348448688
+            },
+            "teacher": {
+              "ndcg@10": 0.03159480729773896,
+              "recall@100": 0.1968178202068417,
+              "hit@1": 0.011243701935826042
+            }
+          }
+        }
+      }
+    }
+  },
+  "catalog_items": 114125,
+  "sources": {
+    "long": {
+      "run": "data/runs/sasrec-256-full-ce",
+      "checkpoint_sha256": "decfa67cb108d71806fec5957e4d425650aa6acb33bd67bf4b71e1d105cc4eb0",
+      "epoch": 4,
+      "data_manifest_sha256": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c",
+      "items": 114125
+    }
+  },
+  "device": "mps",
+  "no_test_events_read": true,
+  "reused_control_ranks": true,
+  "reference_sha256": {
+    "data/runs/sasrec-256-policies-wide/replay.npz": "c1bbe6ae4ba0c4c9f7314aaef02e43f7b59eccf0bdb91ba5700529a869f64687",
+    "data/runs/sasrec-256-policies-wide/results.json": "1954b4fa7e45992a4d4619e849fc7c5bc04d301bcaf3b6233e84061265149cf5"
+  }
+}
