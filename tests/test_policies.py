@@ -1,4 +1,5 @@
 import copy
+import hashlib
 import json
 import sys
 import tempfile
@@ -12,7 +13,7 @@ import torch
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 
 from replay_sasrec import encode_queries, rank_vectors
-from replay_sasrec_policies import frontier, load_requests, policies, policy_cost, rank_reusing, schedule, select_budgets
+from replay_sasrec_policies import frontier, load_requests, load_schedule_reference, policies, policy_cost, rank_reusing, schedule, select_budgets
 from sasrec import SASRec, examples, ranks
 
 
@@ -147,6 +148,22 @@ class PolicyTest(unittest.TestCase):
             {"relative_budget":.75,"policy":"a"}])
         with self.assertRaises(ValueError):
             policies({"event_thresholds":[0],"time_thresholds_seconds":[15]})
+
+    def test_schedule_reuse_does_not_load_foreign_weights_ranks_or_costs(self):
+        with tempfile.TemporaryDirectory(dir=Path.cwd()) as tmp:
+            folder=Path(tmp);choices=policies({"event_thresholds":[2],"time_thresholds_seconds":[15]})
+            stream={"users":np.array([0,0]),"timestamp":np.array([10,20])}
+            refs=np.array([[0,1],[0,0],[0,0],[0,0],[0,0]])
+            # Object ranks deliberately cannot be loaded with allow_pickle=False.
+            np.savez(folder/"replay.npz",**stream,refs=refs,refresh=refs==np.arange(2),ranks=np.array([object()],dtype=object))
+            (folder/"results.json").write_text(json.dumps({"checkpoint_sha256":"foreign-model","policies":choices,
+                "data_manifest_sha256":"same-data","used_data_files_sha256":{},"branch_costs":"do not reuse"}))
+            checksum=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+            config={"path":str(folder.relative_to(Path.cwd())),"replay_sha256":checksum(folder/"replay.npz"),"results_sha256":checksum(folder/"results.json")}
+            reused,_=load_schedule_reference(config,stream,choices,"same-data",{})
+            self.assertEqual(set(reused),{"refs","refresh"});np.testing.assert_array_equal(reused["refs"],refs)
+            with self.assertRaisesRegex(ValueError,"data or policies"):
+                load_schedule_reference(config,stream,choices,"different-data",{})
 
     @unittest.skipUnless(torch.backends.mps.is_available(), "MPS unavailable")
     def test_policy_rank_oracle_cpu_mps(self):

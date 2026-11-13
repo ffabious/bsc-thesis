@@ -434,6 +434,24 @@ fresh-преимущества student исчезает.10тестов и352 н�
 [Отчёт, кривые и сравнение потерь](reports/experiments/paired-staleness-replay.md),
 [протокол и команды](notes/paired-staleness-replay.md).
 
+## Student43: политики и learned controller
+
+На прежних100 политиках построен student43 quality–cost frontier;
+измерения MPS B=1 включают cache/write/scoring, CPU decisions и initializations.
+CT budgets60/75/90% выбрали50events/1h,5events/30m,2events/5m. PV costs
+**59.94%/66.94%/82.09%**, NDCG **0.033800/0.044054/0.053455**.
+Recall student выше CE42 в этих трёх политиках, NDCG CI выше0 в90%-точке.
+
+CPU ridge controller обучен на493808 stale contexts первых10 дней CT;
+пороги выбраны на последних4. Он добавил две NDCG-точки относительно
+дискретной сетки, но Recall ниже, а к справочному ожиданию CT-выбранных
+смесей при близкой стоимости все NDCG CI включают0. Общий выигрыш
+контроллера пока не подтверждён. Совместная interleaved калибровка снизила
+mixed cost error до2.12%, веса модели сохранены.23теста и824 парных CI
+проверены, test закрыт.
+[Отчёт и фронтир](reports/experiments/student43-maintenance.md),
+[протокол](notes/student43-maintenance.md).
+
 ## Происхождение материалов
 
 Импорт выполнен 20 октября 2026 из `thesis-project-2026-10-20.zip` и двух заметок, уже находившихся в этой папке. Заметки совпали с копиями в архиве и сохранены в одном экземпляре.

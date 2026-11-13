@@ -1,0 +1,48 @@
+{
+  "data": "data/processed/yambda50m-pilot-audio",
+  "checkpoint": "data/runs/paired-seed-repeat/student/kd-1/train-mps/best.pt",
+  "checkpoint_sha256": "a6549493817b3d7f475e13ce6706a1f7f35ab31b8dbe5a5f476293b55613fc21",
+  "splits": [
+    "controller_train",
+    "policy_valid"
+  ],
+  "event_thresholds": [
+    2,
+    5,
+    10,
+    20,
+    25,
+    50,
+    60,
+    120,
+    240,
+    480
+  ],
+  "time_thresholds_seconds": [
+    300,
+    1800,
+    3600,
+    7200,
+    10800,
+    21600,
+    43200,
+    86400
+  ],
+  "cost_budgets_relative_to_always": [
+    0.6,
+    0.75,
+    0.9
+  ],
+  "batch_size": 256,
+  "threads": 4,
+  "seed": 42,
+  "benchmark_steps": 128,
+  "benchmark_repeats": 3,
+  "benchmark_warmup": 8,
+  "model_label": "Student43 T1 \u2014 pilot256",
+  "reference_schedule": {
+    "path": "data/runs/sasrec-256-policies-wide",
+    "replay_sha256": "c1bbe6ae4ba0c4c9f7314aaef02e43f7b59eccf0bdb91ba5700529a869f64687",
+    "results_sha256": "1954b4fa7e45992a4d4619e849fc7c5bc04d301bcaf3b6233e84061265149cf5"
+  }
+}

@@ -13,6 +13,10 @@ COLORS = {"always": "#b84238", "never": "#555555", "events": "#2864a0", "time": 
 MARKERS = {"always": "*", "never": "X", "events": "o", "time": "s", "hybrid": "^"}
 
 
+def model_label(result):
+    return result["config"].get("model_label","Frozen SASRec 256 CE")
+
+
 def threshold_curves(result, output):
     fig, axes = plt.subplots(3, 2, figsize=(11.5, 9), sharex="col")
     for col, family in enumerate(("time", "events")):
@@ -32,10 +36,10 @@ def threshold_curves(result, output):
             axes[row,col].set_ylabel(("NDCG@10", "Recall@100", "Requests with refresh (%)")[row])
         axes[0,col].set_title("On-request time TTL" if family == "time" else "Observed-listen threshold")
         axes[2,col].set_xlabel("Time since previous refresh" if family == "time" else "New listens since previous refresh")
-    fig.suptitle("Frozen SASRec 256 CE — quality and actual refresh frequency", fontsize=14, y=1.01)
+    fig.suptitle(f"{model_label(result)} — quality and actual refresh frequency", fontsize=14, y=1.01)
     fig.legend(*axes[0,0].get_legend_handles_labels(), loc="upper center", bbox_to_anchor=(.5,.98), ncol=2, frameon=False)
     fig.text(.5,-.01,"Dotted quality lines: always. Refresh counts include initialization; no refresh during idle time.",ha="center",fontsize=9)
-    fig.tight_layout(rect=(0,0,1,.95))
+    fig.tight_layout(rect=(0,.04,1,.95))
     save(fig,output,"policy-thresholds")
 
 
@@ -75,12 +79,12 @@ def plot_frontiers(result, output, cost_axis):
                 ax.set_xlabel("Estimated local ms/request / always" if cost_axis == "total" else "Refreshes / requests (initialization included)")
     handles, labels = axes[0,0].get_legend_handles_labels()
     fig.legend(handles, labels, loc="upper center", bbox_to_anchor=(.5,.98), ncol=5, frameon=False)
-    fig.suptitle("Frozen SASRec 256 CE — actual on-request refresh policies", fontsize=14, y=1.01)
+    fig.suptitle(f"{model_label(result)} — actual on-request refresh policies", fontsize=14, y=1.01)
     text = "Dashed: point-estimate Pareto frontier. Rings: CT-selected policies, carried unchanged to PV."
     if cost_axis == "total":
         text += "\nCost = measured B=1 refresh/write/serve and hit/serve branches × exact replay counts + CPU decisions."
     fig.text(.5,-.01,text,ha="center",fontsize=9)
-    fig.tight_layout(rect=(0,0,1,.95))
+    fig.tight_layout(rect=(0,.05,1,.95))
     save(fig,output,f"frontier-{cost_axis}")
 
 

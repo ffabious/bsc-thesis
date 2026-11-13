@@ -1,0 +1,28 @@
+test_cached_policy_ranks_match_naive_fresh_recomputation_of_selected_windows (tests.test_policies.PolicyTest.test_cached_policy_ranks_match_naive_fresh_recomputation_of_selected_windows) ... ok
+test_cost_counts_paid_initialization_without_double_charging_refresh (tests.test_policies.PolicyTest.test_cost_counts_paid_initialization_without_double_charging_refresh) ... ok
+test_exact_schedules_include_initialization_and_reset_at_split (tests.test_policies.PolicyTest.test_exact_schedules_include_initialization_and_reset_at_split) ... ok
+test_frontier_and_ct_budget_selection (tests.test_policies.PolicyTest.test_frontier_and_ct_budget_selection) ... ok
+test_labels_and_future_items_do_not_change_past_decisions (tests.test_policies.PolicyTest.test_labels_and_future_items_do_not_change_past_decisions) ... ok
+test_policy_rank_oracle_cpu_mps (tests.test_policies.PolicyTest.test_policy_rank_oracle_cpu_mps) ... ok
+test_rank_reuse_matches_naive_ranks_and_skips_already_scored_pairs (tests.test_policies.PolicyTest.test_rank_reuse_matches_naive_ranks_and_skips_already_scored_pairs) ... ok
+test_schedule_reuse_does_not_load_foreign_weights_ranks_or_costs (tests.test_policies.PolicyTest.test_schedule_reuse_does_not_load_foreign_weights_ranks_or_costs) ... ok
+test_stream_keeps_nonpositive_requests_and_whole_groups (tests.test_policies.PolicyTest.test_stream_keeps_nonpositive_requests_and_whole_groups) ... ok
+test_cached_vectors_match_naive_recomputation_for_every_lag (tests.test_replay.ReplayTest.test_cached_vectors_match_naive_recomputation_for_every_lag) ... ok
+test_cpu_mps_snapshot_ranks_agree (tests.test_replay.ReplayTest.test_cpu_mps_snapshot_ranks_agree) ... ok
+test_cutoffs_keep_timestamp_groups_whole_and_time_uses_strict_past (tests.test_replay.ReplayTest.test_cutoffs_keep_timestamp_groups_whole_and_time_uses_strict_past) ... ok
+test_future_events_do_not_change_controller_train_snapshots (tests.test_replay.ReplayTest.test_future_events_do_not_change_controller_train_snapshots) ... ok
+test_large_snapshot_catalog_product_does_not_overflow_int32 (tests.test_replay.ReplayTest.test_large_snapshot_catalog_product_does_not_overflow_int32) ... ok
+test_loader_uses_one_fixed_cohort_and_matches_existing_fresh_inputs (tests.test_replay.ReplayTest.test_loader_uses_one_fixed_cohort_and_matches_existing_fresh_inputs) ... ok
+test_ranking_excludes_special_tokens_and_preserves_tie_order (tests.test_replay.ReplayTest.test_ranking_excludes_special_tokens_and_preserves_tie_order) ... ok
+test_closed_loop_initializes_and_resets_cache_without_using_labels (tests.test_refresh_controller.RefreshControllerTest.test_closed_loop_initializes_and_resets_cache_without_using_labels) ... ok
+test_cost_uses_complete_controller_specific_branches_without_double_charge (tests.test_refresh_controller.RefreshControllerTest.test_cost_uses_complete_controller_specific_branches_without_double_charge) ... ok
+test_ct_mixture_matches_cost_and_can_improve_discrete_grid (tests.test_refresh_controller.RefreshControllerTest.test_ct_mixture_matches_cost_and_can_improve_discrete_grid) ... ok
+test_future_groups_do_not_change_earlier_features (tests.test_refresh_controller.RefreshControllerTest.test_future_groups_do_not_change_earlier_features) ... ok
+test_training_keeps_zero_reward_requests_and_deduplicates_states (tests.test_refresh_controller.RefreshControllerTest.test_training_keeps_zero_reward_requests_and_deduplicates_states) ... ok
+test_vectorized_training_and_measured_scalar_features_match (tests.test_refresh_controller.RefreshControllerTest.test_vectorized_training_and_measured_scalar_features_match) ... ok
+test_weighted_ridge_recovers_linear_prediction (tests.test_refresh_controller.RefreshControllerTest.test_weighted_ridge_recovers_linear_prediction) ... ok
+
+----------------------------------------------------------------------
+Ran 23 tests in 0.554s
+
+OK

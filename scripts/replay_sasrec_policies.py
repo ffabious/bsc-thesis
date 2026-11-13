@@ -114,6 +114,23 @@ def rank_reusing(model, vectors, refs, targets, device, batch_size, previous=Non
         "reused_state_target_pairs": int(reused.sum()), "computed_state_target_pairs": int((~reused).sum())}
 
 
+def load_schedule_reference(config, stream, choices, manifest_hash, data_hashes):
+    """Reuse model-independent schedules; never load another model's ranks or costs."""
+    folder=ROOT/config["path"]
+    hashes={str((folder/f).relative_to(ROOT)):config[key] for f,key in
+            [("replay.npz","replay_sha256"),("results.json","results_sha256")]}
+    if any(hashlib.sha256((ROOT/p).read_bytes()).hexdigest()!=h for p,h in hashes.items()):
+        raise ValueError("Schedule reference changed")
+    result=json.loads((folder/"results.json").read_text())
+    if result["data_manifest_sha256"]!=manifest_hash or result["used_data_files_sha256"]!=data_hashes or result["policies"]!=choices:
+        raise ValueError("Schedule reference data or policies differ")
+    with np.load(folder/"replay.npz") as saved:
+        if any(not np.array_equal(saved[k],v) for k,v in stream.items()):
+            raise ValueError("Schedule reference request/target stream differs")
+        schedules={k:saved[k] for k in ["refs","refresh"]}
+    return schedules,hashes
+
+
 def schedule(stream, policy, user_count):
     """Decisions see only user, current clock and strictly past observed-event count."""
     refs = np.empty(len(stream["users"]), dtype=np.int32)
@@ -289,6 +306,10 @@ def main():
     stream = load_requests(data, config["splits"], model.length)
     prepare_seconds = time.perf_counter() - started
     reference, prior, reference_hashes = None, None, {}
+    schedule_prior=None
+    if reuse:=config.get("reference_schedule"):
+        if config.get("reference_replay"):raise ValueError("Choose ranks/cost or schedule-only reuse")
+        schedule_prior,reference_hashes=load_schedule_reference(reuse,stream,choices,digest(data/"manifest.json"),hashes)
     if reuse := config.get("reference_replay"):
         folder = ROOT / reuse["path"]
         reference_hashes = {str((folder / f).relative_to(ROOT)): reuse[key] for f, key in
@@ -307,8 +328,12 @@ def main():
             raise ValueError("Reference request/target stream differs")
     prior_names = [p["name"] for p in reference["policies"]] if reference else []
     refs, refresh, decision_ms = [], [], []
-    for policy in choices:
+    for j,policy in enumerate(choices):
         r, f = schedule(stream, policy, manifest["selected_users"])
+        if schedule_prior is not None:
+            if not np.array_equal(r,schedule_prior["refs"][j]) or not np.array_equal(f,schedule_prior["refresh"][j]):
+                raise ValueError("Saved schedule differs from the current policy")
+            r,f=schedule_prior["refs"][j],schedule_prior["refresh"][j]
         if policy["name"] in prior_names:
             j = prior_names.index(policy["name"])
             if not (np.array_equal(r, prior["refs"][j]) and np.array_equal(f, prior["refresh"][j])):
@@ -412,6 +437,7 @@ def main():
           "checkpoint_sha256": digest(checkpoint), "data_manifest_sha256": digest(data / "manifest.json"),
           "frozen_state_sha256": before, "used_data_files_sha256": hashes, "source_sha256": sources,
           "reference_replay_sha256": reference_hashes, "branch_costs_reused": reference is not None,
+          "schedules_reused":schedule_prior is not None,"foreign_model_ranks_reused":False,
           "device": args.device, "torch": torch.__version__, "numpy": np.__version__, "duckdb": duckdb.__version__,
           "python": platform.python_version(), "macos": platform.mac_ver()[0], **memory(args.device)})
     print(json.dumps({"selection": selection, "mixed_workload_checks": mixed}), flush=True)

@@ -1,0 +1,7 @@
+{
+  "initial_additive_max_error_percent": 46.22124818940036,
+  "final_joint_max_error_percent": 2.117133359100931,
+  "regressor_identical_before_after": true,
+  "policy_valid_quality_not_used_to_recalibrate_cost_or_choose_thresholds": true,
+  "correction": "Interleaved complete CPU-controller/MPS and plain branches; CPU not added twice"
+}
