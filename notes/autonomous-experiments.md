@@ -87,3 +87,9 @@ H7 завершён: [отчёт](../reports/experiments/final-user-holdout.md).
 не используется снова для выбора/проверки новых вариантов. Следующий H8
 восполняет исходную optional ветку H2 про отсутствующие content признаки;
 это отдельный development-only эксперимент, не post-test retuning модели H7.
+
+H8 [протокол](content-controller.md):4 поля,1505 параметров, один seed42;
+gate≥1% MSE до replay. Static normalized ID table/log train counts отдельно
+учитываются в CPU памяти. Trajectories проходят один раз; три повтора
+complete branch/mixed cost benchmark сохраняются, лишний standalone CPU
+timer отключён, поскольку он больше не входит в primary cost.

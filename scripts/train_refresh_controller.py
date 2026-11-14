@@ -16,11 +16,12 @@ from benchmark_refresh_controller import coupled_branches,measure_cases
 from distill_sasrec import load_student
 from controller_horizon import replace_gain
 from list_cache import list_ranks
+from content_refresh_features import CONTENT_FEATURES,ContentFeatures
 from refresh_controller import HistoryFeatures,fit_ridge,predict_matrix,rollout,training_examples
 from mlp_refresh_controller import fit_mlp
 from replay_sasrec import encode_queries,quality
 from replay_sasrec_policies import frontier,policy_cost,rank_reusing,select_budgets
-from run_sasrec import ROOT,state_digest,write
+from run_sasrec import ROOT,memory,state_digest,write
 from sasrec import ranks
 
 
@@ -40,6 +41,8 @@ def region_rows(names,rank,target_ids,refresh,region,stream,decisions,branches):
 
 
 def measured_rollout(stream,features,model,threshold,start,end,repeats):
+    if not repeats:
+        return rollout(stream,features,model,threshold,start,end),{"separately_timed":False,"cpu_in_complete_serving_measurements":True}
     rollout(stream,features,model,threshold,start,end)  # Warm the CPU path.
     trials=[];saved=None
     for _ in range(repeats):
@@ -93,11 +96,26 @@ def main():
     with duckdb.connect(config={"threads":config["threads"],"memory_limit":"512MB"}) as db:
         prefix=db.execute("SELECT user_idx,timestamp FROM read_parquet(?) WHERE timestamp>=? AND timestamp<? ORDER BY user_idx,timestamp",
             [str(data/"events/model_valid.parquet"),period["start"]-86400,period["start"]]).fetchnumpy()
-    features=HistoryFeatures(stream,prefix["user_idx"],prefix["timestamp"])
+    feature_started=time.perf_counter()
+    if config.get("features")=="content4":
+        assert config["learner"]=="mlp" and config["feature_names"]==CONTENT_FEATURES
+        checkpoint=ROOT/baseline["config"]["checkpoint"];assert checksum(checkpoint)==baseline["checkpoint_sha256"]
+        saved=torch.load(checkpoint,map_location="cpu",weights_only=True);embeddings=saved["weights"]["item.weight"].numpy()
+        with duckdb.connect(config={"threads":2,"memory_limit":"256MB"}) as db:
+            population=db.execute("SELECT item_idx,train_events FROM read_parquet(?)",[str(data/"items.parquet")]).fetchnumpy()
+        counts=np.zeros(len(embeddings));counts[population["item_idx"]]=population["train_events"]
+        features=ContentFeatures(stream,prefix["user_idx"],prefix["timestamp"],embeddings,counts);del saved,embeddings,counts
+    else:features=HistoryFeatures(stream,prefix["user_idx"],prefix["timestamp"])
+    feature_info={"kind":config.get("features","age_activity8"),"setup_seconds":time.perf_counter()-feature_started,"additional_static_cpu_bytes":getattr(features,"static_cpu_bytes",0)}
     hashes={str((data/p).relative_to(ROOT)):h for p,h in baseline["used_data_files_sha256"].items()}
     sources=[args.config.resolve(),Path(__file__).resolve(),ROOT/"scripts/refresh_controller.py",base/"results.json",base/"replay.npz",
         ROOT/"scripts/replay_sasrec_policies.py",ROOT/"scripts/replay_sasrec.py",ROOT/"scripts/sasrec.py",ROOT/"scripts/run_sasrec.py",ROOT/"scripts/benchmark_refresh_controller.py",ROOT/"scripts/mlp_refresh_controller.py",
         ROOT/baseline["config"]["checkpoint"],data/"manifest.json"]
+    if config.get("features")=="content4":sources.append(ROOT/"scripts/content_refresh_features.py")
+    validation_reference=None
+    if reference:=config.get("validation_reference"):
+        path=ROOT/reference["path"];assert checksum(path)==reference["sha256"]
+        validation_reference=read(path);sources.append(path)
     labels=None
     if config.get("training_labels"):
         path=ROOT/config["training_labels"]
@@ -134,6 +152,20 @@ def main():
         "weighted_negative_gain_fraction":float(np.average(rows["gain"]<0,weights=rows["weights"])),"elapsed_seconds":time.perf_counter()-started}
     description={k:controller[k] for k in ["kind","parameters","best_epoch","epochs"]} if controller.get("kind")=="mlp" else controller
     print(json.dumps({"fit":fit_info,"model":description,"candidates":choices}),flush=True);del x,prediction
+    validation_gate=None
+    if validation_reference is not None:
+        reference_prediction=predict_matrix(validation_reference,vx[:,:len(validation_reference["features"])])
+        reference_mse=float(np.average((reference_prediction-early_rows["gain"])**2,weights=early_rows["weights"]))
+        new_mse=float(np.average((predict_matrix(controller,vx)-early_rows["gain"])**2,weights=early_rows["weights"]))
+        improvement=1-new_mse/reference_mse
+        validation_gate={"reference_mse":reference_mse,"new_mse":new_mse,"relative_improvement":improvement,
+            "minimum_relative_improvement":reference["minimum_relative_improvement"],"passed":improvement>=reference["minimum_relative_improvement"]}
+        write(args.output/"validation-gate.json",validation_gate);print(json.dumps({"validation_gate":validation_gate}),flush=True)
+        if not validation_gate["passed"]:
+            for path,h in hashes.items():assert checksum(ROOT/path)==h,path
+            write(args.output/"probe.json",{"config":config,"fit":fit_info,"validation_gate":validation_gate,"feature_info":feature_info,
+                "source_sha256":hashes,"replay_performed":False,"policy_valid_predictions_not_evaluated":True,"memory":memory("cpu")})
+            return
     ct_refs=[];ct_updates=[];ct_before=[];decision=[]
     for choice in choices:
         state,timing=measured_rollout(stream,features,controller,choice["threshold"],0,ct_end,config["decision_repeats"])
@@ -226,7 +258,7 @@ def main():
     if top100 is not None:
         inside=oracle<=100;assert np.array_equal(inside,all_ranks[p,t]<=100)
         oracle_info={"pairs":256,"same_metrics":True,"same_top100_membership":True,"max_top100_rank_delta":int(np.abs(oracle[inside]-all_ranks[p,t][inside]).max(initial=0))}
-    result={"config":config,"model":controller,"fit":fit_info,"selection":selection,"selection_sha256":selection_hash,
+    result={"config":config,"model":controller,"fit":fit_info,"feature_info":feature_info,"validation_gate":validation_gate,"memory":memory(args.device),"selection":selection,"selection_sha256":selection_hash,
         "policy_selection_sha256":policy_selection_hash,"results":summary,"calibration":calibrations,
         "decision_costs":{"controller_train":{c["name"]:d for c,d in zip(choices,decision)},"policy_valid":dict(zip(names,pv_decisions))},
         "mixed_workload_checks":mixed,"checkpoint_sha256":baseline["checkpoint_sha256"],"frozen_state_unchanged":True,

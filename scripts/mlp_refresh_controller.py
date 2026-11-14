@@ -39,7 +39,7 @@ def fit_mlp(x,y,weights,vx,vy,vweights,config):
         if waiting>=config["patience"]:break
     model.load_state_dict(selected)
     layers=[{"weight":layer.weight.detach().numpy().tolist(),"bias":layer.bias.detach().numpy().tolist()} for layer in model if isinstance(layer,nn.Linear)]
-    result={"kind":"mlp","features":FEATURES,"feature_mean":mean.tolist(),"feature_scale":scale.tolist(),"layers":layers,
+    result={"kind":"mlp","features":config.get("feature_names",FEATURES),"feature_mean":mean.tolist(),"feature_scale":scale.tolist(),"layers":layers,
         "model_seed":config["model_seed"],"best_epoch":best_epoch,"epochs":len(history),"parameters":sum(p.numel() for p in model.parameters())}
     check=np.linspace(0,len(vx)-1,min(len(vx),512),dtype=int)
     with torch.no_grad():expected=model(valid[check])[:,0].numpy()

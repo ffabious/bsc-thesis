@@ -1,0 +1,54 @@
+{
+  "policy_replay": "data/runs/ce1k-top100-policies",
+  "policy_results_sha256": "528a5c73a850f1b6a3097aeccf0e154567d3f789ba4233ab6c72d975931753a1",
+  "policy_arrays_sha256": "1455d1a4ffa0c532a706b4273ecdcb03d61c81dc85975a0d570ca2aa93e6d5ed",
+  "fit_days": 8,
+  "ridge": 0.001,
+  "threshold_quantiles": [
+    0,
+    0.1,
+    0.25,
+    0.5,
+    0.75,
+    0.9,
+    0.95,
+    0.99,
+    1.0
+  ],
+  "budgets": [
+    0.6,
+    0.75,
+    0.9
+  ],
+  "decision_repeats": 0,
+  "benchmark_steps": 128,
+  "benchmark_repeats": 3,
+  "benchmark_warmup": 8,
+  "threads": 4,
+  "seed": 42,
+  "early_stop_days": 2,
+  "learner": "mlp",
+  "model_seed": 42,
+  "max_epochs": 100,
+  "patience": 5,
+  "features": "content4",
+  "feature_names": [
+    "log_new_events",
+    "log_age_seconds",
+    "log_activity_1h",
+    "log_activity_24h",
+    "log_last_gap",
+    "log_history",
+    "events_x_activity",
+    "age_x_activity",
+    "latest_matches_cached",
+    "latest_in_cached50",
+    "latest_cached_cosine",
+    "latest_log_train_count"
+  ],
+  "validation_reference": {
+    "path": "data/runs/controller-mlp-ce1k/model.json",
+    "sha256": "c1bc36ce3ccf9ce063e0e6705fe39f681cc5669a9451a6430c807ca5517fbcab",
+    "minimum_relative_improvement": 0.01
+  }
+}
