@@ -29,7 +29,8 @@
 | H4. При статичном полном каталоге можно кэшировать top100 вместе с user vector | Проверить эквивалентность рекомендаций и метрик, измерить refresh/list-hit и память, перепостроить costs существующих политик | Новый режим применим только при неизменном каталоге/items/context. Сценарий сменных candidate sets сохраняет vector-cache benchmark | Выполнен:218 metric rows совпадают, events3 PV cost−51%; прямые парные замеры109 политик, additive probe отвергнут |
 | H5. Выводы сохраняются на1к и другом encoder seed | Готовые student42 и CE1k; grid106, immediate MLP42 с CT8/2/4. Top100 evaluation для используемых метрик, без нового обучения SASRec | Сравнивать потери относительно own fresh и собственные cost budgets, не сырые метрики разных каталогов | Выполнен: общий выигрыш MLP не подтвердился; CE1k NDCG/Recall CI к expected mixtures ниже0 в обеих точках. Top100 cost effect повторился |
 | H6. Точная KV-переиспользуемость несовместима с текущими sliding/right-aligned learned positions | Маленький CPU эксперимент append/reindex/eviction с контролем фиксированных позиций; записать условия эквивалентности | Закрыть технический риск main plan без разработки новой serving-инфраструктуры | Выполнен:70 ожидаемых исходов; fixed append совпадает, right-aligned/eviction reuse нет; основной refresh полностью пересчитывает encoder |
-| H7. Финальный test нельзя считать полностью независимым от поиска encoder | Аудит уже опубликованных test evaluations; выбрать untouched user cohort по train, исключив development users; зафиксировать checkpoints/controllers/policies до оценки | Разделить повторное чтение старого test и новую user-holdout проверку. Не улучшать модель по итоговому holdout | Протокол фиксируется до outcomes:256 из7443 train-eligible вне1000 development uid; CE1k, fixed MLP/106 rules |
+| H7. Финальный test нельзя считать полностью независимым от поиска encoder | Аудит уже опубликованных test evaluations; выбрать untouched user cohort по train, исключив development users; зафиксировать checkpoints/controllers/policies до оценки | Разделить повторное чтение старого test и новую user-holdout проверку. Не улучшать модель по итоговому holdout | Выполнен:freeze b590e78 до outcomes,40638 targets/58383 requests. High-mode controller NDCG97.5% CI ниже0, Recall CI ниже0 в обеих точках; refit нет |
+| H8. Age/activity features не видят содержимое новых действий | Один CE1k MLP с4 cheap content features: latest==cached latest, latest in cached50, cosine frozen item embeddings, log train popularity latest. Те же labels/CT8/2/4; минимум1% early MSE улучшения к готовому8-feature MLP до дорогого replay | Если gate не пройден — остановить до PV. Если пройден — CT-selected closed loop/cost/PV; никакой оценки или настройки на уже открытом user holdout | Следующий development эксперимент; scope/criterion зафиксированы до обучения |
 
 После каждой проверки: обновить эту очередь, основной план, отчёт, checks и Git.
 Не объявлять все идеи исчерпанными, пока остаются конкретные обязательные или
@@ -79,3 +80,10 @@ H7 protocol: [правила](final-user-holdout.md). Выбор256 uid неза
 воспроизведён DuckDB SHA256-sort; overlap0. Новые event files ещё не
 читались. Сначала commit/push протокола, затем retokenization по frozen
 CE1k vocabulary и однократная итоговая оценка без refit/tuning.
+
+H7 завершён: [отчёт](../reports/experiments/final-user-holdout.md).
+Данные1.28с, replay123.29с,23 теста,228 независимо сверенных intervals,
+216 paired direct serving cases. Первая frozen series закрыта; user-holdout
+не используется снова для выбора/проверки новых вариантов. Следующий H8
+восполняет исходную optional ветку H2 про отсутствующие content признаки;
+это отдельный development-only эксперимент, не post-test retuning модели H7.

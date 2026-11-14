@@ -1,0 +1,129 @@
+{
+  "selected_users": 256,
+  "candidate_items": 244194,
+  "periods": [
+    {
+      "split": "train",
+      "start": 0,
+      "end": 22371205
+    },
+    {
+      "split": "model_valid",
+      "start": 22371205,
+      "end": 22976005
+    },
+    {
+      "split": "controller_train",
+      "start": 22976005,
+      "end": 24185605
+    },
+    {
+      "split": "policy_valid",
+      "start": 24185605,
+      "end": 24790405
+    },
+    {
+      "split": "test",
+      "start": 24790405,
+      "end": 26000005
+    }
+  ],
+  "files": [
+    {
+      "path": "events/controller_train.parquet",
+      "bytes": 751231,
+      "sha256": "7dfe5862d3d3fba517179d3d412afab3aec93cd627119747b861878e0e6a896e"
+    },
+    {
+      "path": "events/model_valid.parquet",
+      "bytes": 388990,
+      "sha256": "177d9b69e68acf4fc6568c12b181e3a72ee40379e95fc0acf701902dc9b77812"
+    },
+    {
+      "path": "events/policy_valid.parquet",
+      "bytes": 398543,
+      "sha256": "253b07beb5a268f4e8d8e3fbd785bd6fd660737efbc8d896769c1430fffd2446"
+    },
+    {
+      "path": "events/test.parquet",
+      "bytes": 706073,
+      "sha256": "a14c072ef71d5d37471d225d1759ddb0e42f3e27da0d86b4add7b4a5ca70e335"
+    },
+    {
+      "path": "events/train.parquet",
+      "bytes": 12365104,
+      "sha256": "b555c801fc59911ddb4553b9b3cfc48afdbd08efe5c11ce2df35d85e8da73e9f"
+    },
+    {
+      "path": "items.parquet",
+      "bytes": 2569054,
+      "sha256": "c5eeef19cb0e374ad107e38f67c905e1545ec65a389037a63d1c8ff5c23c93a5"
+    },
+    {
+      "path": "users.parquet",
+      "bytes": 2387,
+      "sha256": "b8b22e48e6ac5bd6b7dee90f195c07347680d7d3f489d5bcdeef5f7597ab9df9"
+    }
+  ],
+  "coverage": {
+    "train": {
+      "listens": 1157393,
+      "users": 256,
+      "unknown_history_items": 87727,
+      "positive_with_history": 701892,
+      "unknown_positive_with_history": 46311,
+      "targets": 655581,
+      "known_positive_fraction": 0.9340197637243337
+    },
+    "model_valid": {
+      "listens": 38785,
+      "users": 203,
+      "unknown_history_items": 2882,
+      "positive_with_history": 23250,
+      "unknown_positive_with_history": 1572,
+      "targets": 21678,
+      "known_positive_fraction": 0.9323870967741935
+    },
+    "controller_train": {
+      "listens": 76877,
+      "users": 219,
+      "unknown_history_items": 5702,
+      "positive_with_history": 47718,
+      "unknown_positive_with_history": 3239,
+      "targets": 44479,
+      "known_positive_fraction": 0.9321220503793118
+    },
+    "policy_valid": {
+      "listens": 39534,
+      "users": 207,
+      "unknown_history_items": 3736,
+      "positive_with_history": 24086,
+      "unknown_positive_with_history": 2249,
+      "targets": 21837,
+      "known_positive_fraction": 0.9066262559163
+    },
+    "test": {
+      "listens": 70632,
+      "users": 249,
+      "unknown_history_items": 6688,
+      "positive_with_history": 44779,
+      "unknown_positive_with_history": 4141,
+      "targets": 40638,
+      "known_positive_fraction": 0.9075236159807052
+    }
+  },
+  "freeze_commit": "b590e789872656c61476694ee779049ca29fd959",
+  "protocol_sha256": "b116953b53ba18ff73478630a8282a6e2cb2ded8d57f2a0a50f3f29a7a4fa98a",
+  "source_pool": "data/processed/yambda50m-audio",
+  "vocabulary_reference": "data/processed/yambda50m-1k-audio",
+  "vocabulary_unchanged": true,
+  "weights_or_thresholds_updated": false,
+  "source_sha256": {
+    "scripts/prepare_user_holdout.py": "db30619541d5206396856a4bb928a368efc6c469e1f744e474ecbd75d203a96a",
+    "scripts/final_holdout.py": "ea5ea487ed0f75e2e692615d3ee50149a2e57c99abe9a10dae4e02f2d620b8ae",
+    "data/processed/yambda50m-audio/manifest.json": "97fc882110fd1f40e9972a410d49066a6ba60e2938c8ea79b0c1dc25a8815086",
+    "data/runs/final-user-holdout/protocol.json": "b116953b53ba18ff73478630a8282a6e2cb2ded8d57f2a0a50f3f29a7a4fa98a",
+    "data/runs/final-user-holdout/selected-users.csv": "2ee158e4f5a47c02c7f6f4656c85dc7150238b2cf5038bbad27e61459b3bb0dd"
+  },
+  "elapsed_seconds": 1.2756656249985099
+}

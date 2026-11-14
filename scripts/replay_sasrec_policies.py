@@ -37,6 +37,11 @@ def policies(config):
 def load_requests(data, splits, length):
     if splits != ["controller_train", "policy_valid"]:
         raise ValueError("Policy replay requires controller_train then policy_valid; test is forbidden")
+    return request_stream(data,splits,length)
+
+
+def request_stream(data,splits,length):
+    """Build strict-past requests; final-test callers must verify their frozen protocol."""
     manifest = json.loads((data / "manifest.json").read_text())
     names = [p["split"] for p in manifest["periods"]]
     files = [str(data / "events" / f"{s}.parquet") for s in names[:names.index(splits[-1]) + 1]]

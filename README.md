@@ -507,6 +507,17 @@ Maintenance-серия test не читает, но ранний поиск enco
 и возможность untouched user-holdout; старый test не называется полностью
 независимой проверкой всей исследовательской цепочки.
 
+## Зафиксированная user-holdout проверка
+
+До новых outcomes коммитомb590e78 выбраны256 users вне1000 development uid;
+frozen CE1k/MLP/policies.40638 targets, coverage90.75%,58383 requests.
+High-mode controller уступил simple hybrid по primary NDCG с97.5% CI ниже0;
+secondary Recall ниже в обеих точках. Static-list hybrid даёт точечные99.4%
+fresh NDCG при59.7% always cost; это не non-inferiority claim.
+23 теста,228 независимых bootstrap checks,216 paired serving cases.
+[Отчёт H7](reports/experiments/final-user-holdout.md),
+[frozen protocol](notes/final-user-holdout.md).
+
 ## Происхождение материалов
 
 Импорт выполнен 20 октября 2026 из `thesis-project-2026-10-20.zip` и двух заметок, уже находившихся в этой папке. Заметки совпали с копиями в архиве и сохранены в одном экземпляре.
