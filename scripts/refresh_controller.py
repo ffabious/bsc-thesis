@@ -8,6 +8,33 @@ FEATURES=["log_new_events","log_age_seconds","log_activity_1h","log_activity_24h
           "log_last_gap","log_history","events_x_activity","age_x_activity"]
 
 
+def make_predictor(model):
+    if model.get("kind")=="mlp":
+        mean=np.array(model["feature_mean"]);scale=np.array(model["feature_scale"])
+        layers=[(np.array(p["weight"],dtype=np.float32),np.array(p["bias"],dtype=np.float32)) for p in model["layers"]]
+        def predict(row):
+            x=((row-mean)/scale).astype(np.float32)
+            for i,(weight,bias) in enumerate(layers):
+                x=x@weight.T+bias
+                if i<len(layers)-1:x=np.maximum(x,0)
+            return x.item()
+        return predict
+    coefficients=np.array(model["coefficients"])
+    return lambda row:float(row@coefficients+model["intercept"])
+
+
+def predict_matrix(model,x):
+    if model.get("kind")!="mlp":return x@model["coefficients"]+model["intercept"]
+    result=[]
+    for start in range(0,len(x),8192):
+        values=((x[start:start+8192]-model["feature_mean"])/model["feature_scale"]).astype(np.float32)
+        for i,layer in enumerate(model["layers"]):
+            values=values@np.array(layer["weight"],dtype=np.float32).T+np.array(layer["bias"],dtype=np.float32)
+            if i<len(model["layers"])-1:values=np.maximum(values,0)
+        result.append(values[:,0])
+    return np.concatenate(result).astype(float)
+
+
 class HistoryFeatures:
     def __init__(self,stream,prefix_users,prefix_times):
         self.stream=stream;self.times={};self.static=np.empty((len(stream["users"]),4))
@@ -70,12 +97,12 @@ def rollout(stream,features,model,threshold,start=0,end=None):
     end=len(stream["users"]) if end is None else end
     refs=np.empty(end-start,dtype=np.int32);refresh=np.empty(end-start,dtype=bool)
     before=np.empty(end-start,dtype=np.int32);cached=np.full(int(stream["users"].max())+1,-1,dtype=np.int32)
-    coefficients=np.array(model["coefficients"]);current_split=-1
+    predict=make_predictor(model);current_split=-1
     for pos,i in enumerate(range(start,end)):
         split=int(stream["split_idx"][i]);user=int(stream["users"][i])
         if split!=current_split:cached.fill(-1);current_split=split
         previous=int(cached[user]);before[pos]=previous
-        update=previous<0 or float(features.row(i,previous)@coefficients+model["intercept"])>threshold
+        update=previous<0 or predict(features.row(i,previous))>threshold
         if update:cached[user]=i
         refs[pos],refresh[pos]=cached[user],update
     return refs,refresh,before

@@ -462,6 +462,15 @@ Events3 почти повторяет средний ridge по NDCG (CI раз�
 points ridge исчез. [Отчёт H1](reports/experiments/student43-dense-policies.md),
 [автономная очередь](notes/autonomous-experiments.md).
 
+## Нелинейный контроллер
+
+MLP1377 параметров с CT8/2/4 и двумя seed снижает early-validation MSE
+относительно matched ridge на1.3–1.5%. На PV point estimates выше ridge,
+но общий quality–cost выигрыш перед простыми политиками не подтверждён:
+все NDCG CI к CT-selected cost-matched mixtures включают0.18 CPU/MPS
+тестов и60 независимых CI проверены, encoder сохранён, test закрыт.
+[Отчёт H2](reports/experiments/controller-models.md).
+
 ## Происхождение материалов
 
 Импорт выполнен 20 октября 2026 из `thesis-project-2026-10-20.zip` и двух заметок, уже находившихся в этой папке. Заметки совпали с копиями в архиве и сохранены в одном экземпляре.

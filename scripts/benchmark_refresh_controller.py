@@ -6,12 +6,13 @@ import numpy as np
 import torch
 
 from sasrec import sync
+from refresh_controller import make_predictor
 
 
 @torch.inference_mode()
 def measure_cases(model,vectors,stream,features,controller,cases,config,device):
     n=config["benchmark_steps"]*config["benchmark_repeats"];rng=np.random.default_rng(config["seed"])
-    table=model.item.weight[2:].T;coefficients=np.array(controller["coefficients"])
+    table=model.item.weight[2:].T;predict=make_predictor(controller)
     operations=[];metadata={};trials={c["name"]:[] for c in cases}
     def prepare(case):
         take=rng.choice(case["pool"],n,replace=True)
@@ -20,7 +21,7 @@ def measure_cases(model,vectors,stream,features,controller,cases,config,device):
             i=take[k];update=bool(case["refresh"][i])
             if "threshold" in case:
                 previous=int(case["before"][i])
-                actual=previous<0 or float(features.row(i,previous)@coefficients+controller["intercept"])>case["threshold"]
+                actual=previous<0 or predict(features.row(i,previous))>case["threshold"]
                 assert actual==update
             if update:
                 query=model(torch.as_tensor(stream["queries"][i:i+1],dtype=torch.long,device=device));cache[k:k+1]=query.cpu().numpy()

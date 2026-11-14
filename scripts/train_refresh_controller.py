@@ -14,7 +14,8 @@ import torch
 from blend_sasrec import checksum
 from benchmark_refresh_controller import coupled_branches,measure_cases
 from distill_sasrec import load_student
-from refresh_controller import HistoryFeatures,fit_ridge,rollout,training_examples
+from refresh_controller import HistoryFeatures,fit_ridge,predict_matrix,rollout,training_examples
+from mlp_refresh_controller import fit_mlp
 from replay_sasrec import encode_queries,quality
 from replay_sasrec_policies import frontier,policy_cost,rank_reusing,select_budgets
 from run_sasrec import ROOT,state_digest,write
@@ -83,34 +84,42 @@ def main():
     assert checksum(base/"results.json")==config["policy_results_sha256"] and checksum(base/"replay.npz")==config["policy_arrays_sha256"]
     stream=dict(np.load(base/"replay.npz"));data=ROOT/baseline["config"]["data"]
     periods=read(data/"manifest.json")["periods"];period=next(p for p in periods if p["split"]=="controller_train")
-    cutoff=period["start"]+config["fit_days"]*86400;ct=stream["split_idx"]==1;ct_end=int(ct.sum())
+    fit_cutoff=period["start"]+config["fit_days"]*86400
+    cutoff=fit_cutoff+config.get("early_stop_days",0)*86400;ct=stream["split_idx"]==1;ct_end=int(ct.sum())
     assert np.array_equal(np.flatnonzero(ct),np.arange(ct_end)) and cutoff<period["end"]
-    fit=ct&(stream["timestamp"]<cutoff);valid=ct&~fit
+    fit=ct&(stream["timestamp"]<fit_cutoff);early=ct&(stream["timestamp"]>=fit_cutoff)&(stream["timestamp"]<cutoff);valid=ct&(stream["timestamp"]>=cutoff)
     with duckdb.connect(config={"threads":config["threads"],"memory_limit":"512MB"}) as db:
         prefix=db.execute("SELECT user_idx,timestamp FROM read_parquet(?) WHERE timestamp>=? AND timestamp<? ORDER BY user_idx,timestamp",
             [str(data/"events/model_valid.parquet"),period["start"]-86400,period["start"]]).fetchnumpy()
     features=HistoryFeatures(stream,prefix["user_idx"],prefix["timestamp"])
     hashes={str((data/p).relative_to(ROOT)):h for p,h in baseline["used_data_files_sha256"].items()}
     sources=[args.config.resolve(),Path(__file__).resolve(),ROOT/"scripts/refresh_controller.py",base/"results.json",base/"replay.npz",
-        ROOT/"scripts/replay_sasrec_policies.py",ROOT/"scripts/replay_sasrec.py",ROOT/"scripts/sasrec.py",ROOT/"scripts/run_sasrec.py",ROOT/"scripts/benchmark_refresh_controller.py",
+        ROOT/"scripts/replay_sasrec_policies.py",ROOT/"scripts/replay_sasrec.py",ROOT/"scripts/sasrec.py",ROOT/"scripts/run_sasrec.py",ROOT/"scripts/benchmark_refresh_controller.py",ROOT/"scripts/mlp_refresh_controller.py",
         ROOT/baseline["config"]["checkpoint"],data/"manifest.json"]
     hashes.update({str(p.relative_to(ROOT)):checksum(p) for p in sources})
     for p,h in hashes.items():assert checksum(ROOT/p)==h,p
     started=time.perf_counter();rows=training_examples(stream,stream["ranks"],stream["refs"],fit)
     x=features.matrix(rows["requests"],rows["previous"])
-    controller=fit_ridge(x,rows["gain"],rows["weights"],config["ridge"])
-    prediction=x@controller["coefficients"]+controller["intercept"];order=np.argsort(prediction)
+    training=None
+    if config.get("learner")=="mlp":
+        early_rows=training_examples(stream,stream["ranks"],stream["refs"],early)
+        vx=features.matrix(early_rows["requests"],early_rows["previous"])
+        controller,training=fit_mlp(x,rows["gain"],rows["weights"],vx,early_rows["gain"],early_rows["weights"],config)
+    else:controller=fit_ridge(x,rows["gain"],rows["weights"],config["ridge"])
+    prediction=predict_matrix(controller,x);order=np.argsort(prediction)
     thresholds=np.interp(config["threshold_quantiles"],np.cumsum(rows["weights"][order])/rows["weights"].sum(),prediction[order])
     choices=[]
     for quantile,threshold in zip(config["threshold_quantiles"],thresholds):
         if not any(c["threshold"]==float(threshold) for c in choices):
             choices.append({"name":f"controller_q{round(100*quantile):03d}","threshold":float(threshold),"fit_quantile":quantile})
     args.output.mkdir(parents=True);write(args.output/"model.json",controller)
+    if training:write(args.output/"model-training.json",training)
     np.savez_compressed(args.output/"training-examples.npz",**rows)
-    fit_info={"cutoff":cutoff,"fit_requests":int(fit.sum()),"tuning_requests":int(valid.sum()),"contexts":len(x),
+    fit_info={"cutoff":cutoff,"fit_cutoff":fit_cutoff,"early_stop_requests":int(early.sum()),"fit_requests":int(fit.sum()),"tuning_requests":int(valid.sum()),"contexts":len(x),
         "weighted_requests":float(rows["weights"].sum()),"weighted_positive_gain_fraction":float(np.average(rows["gain"]>0,weights=rows["weights"])),
         "weighted_negative_gain_fraction":float(np.average(rows["gain"]<0,weights=rows["weights"])),"elapsed_seconds":time.perf_counter()-started}
-    print(json.dumps({"fit":fit_info,"model":controller,"candidates":choices}),flush=True);del x,prediction
+    description={k:controller[k] for k in ["kind","parameters","best_epoch","epochs"]} if controller.get("kind")=="mlp" else controller
+    print(json.dumps({"fit":fit_info,"model":description,"candidates":choices}),flush=True);del x,prediction
     ct_refs=[];ct_updates=[];ct_before=[];decision=[]
     for choice in choices:
         state,timing=measured_rollout(stream,features,controller,choice["threshold"],0,ct_end,config["decision_repeats"])
