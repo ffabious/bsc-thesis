@@ -1,0 +1,26 @@
+{
+  "splits": [
+    "controller_train",
+    "policy_valid"
+  ],
+  "cost_budgets_relative_to_always": [
+    0.6,
+    0.75,
+    0.9
+  ],
+  "batch_size": 256,
+  "threads": 4,
+  "seed": 42,
+  "benchmark_steps": 128,
+  "benchmark_repeats": 3,
+  "benchmark_warmup": 8,
+  "data": "data/processed/yambda50m-1k-audio",
+  "checkpoint": "data/runs/sasrec-1k-full-ce/train-mps/best.pt",
+  "checkpoint_sha256": "dcb3b56d459928e44b4e18264f76a4f707c2203595ff91e7d130133fe9c994af",
+  "output": "data/runs/ce1k-top100-policies",
+  "top100_cache": "data/runs/ce1k-top100-policies/top100.npy",
+  "grid_reference": {
+    "path": "data/runs/student43-dense-reference/results.json",
+    "sha256": "38a04ef0fa830ab41a80122719a128c063cffec9d5672469bb52e8b27350f8d1"
+  }
+}

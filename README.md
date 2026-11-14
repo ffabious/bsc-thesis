@@ -494,6 +494,19 @@ append без eviction совпадает, текущий right-aligned/sliding 
 позициях. Основной refresh выполняет полный пересчёт; дешёвый exact KV update
 не заявляется. [Отчёт H6](reports/experiments/kv-reuse-feasibility.md).
 
+## Переносимость refresh-политик
+
+На student42 и CE1k повторён grid106 и matched MLP с CT8/2/4. Общий
+выигрыш controller не подтвердился; на1к обе NDCG/Recall CI к CT-selected
+cost-matched expected mixtures ниже0. Top100-кэш повторил экономию:
+PV events3 на1к1.960→0.895мс.21 тест,64 независимых CI,88 paired serving
+cases. [Отчёт H5](reports/experiments/policy-transfer.md).
+
+Maintenance-серия test не читает, но ранний поиск encoder уже открывал
+этот split. Перед итоговой оценкой отдельно фиксируется аудит этой истории
+и возможность untouched user-holdout; старый test не называется полностью
+независимой проверкой всей исследовательской цепочки.
+
 ## Происхождение материалов
 
 Импорт выполнен 20 октября 2026 из `thesis-project-2026-10-20.zip` и двух заметок, уже находившихся в этой папке. Заметки совпали с копиями в архиве и сохранены в одном экземпляре.

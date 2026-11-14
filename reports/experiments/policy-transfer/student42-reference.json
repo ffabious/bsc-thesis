@@ -1,0 +1,70 @@
+{
+  "config": {
+    "splits": [
+      "controller_train",
+      "policy_valid"
+    ],
+    "cost_budgets_relative_to_always": [
+      0.6,
+      0.75,
+      0.9
+    ],
+    "batch_size": 256,
+    "threads": 4,
+    "seed": 42,
+    "benchmark_steps": 128,
+    "benchmark_repeats": 3,
+    "benchmark_warmup": 8,
+    "data": "data/processed/yambda50m-pilot-audio",
+    "checkpoint": "data/runs/student-temperature-control/kd-1/train-mps/best.pt",
+    "checkpoint_sha256": "a95907c5399293783574d398183cce5605d426ec569a27aa86319d19e8601e16",
+    "output": "data/runs/student42-top100-policies",
+    "top100_cache": "data/runs/student42-top100-policies/top100.npy",
+    "grid_reference": {
+      "path": "data/runs/student43-dense-reference/results.json",
+      "sha256": "38a04ef0fa830ab41a80122719a128c063cffec9d5672469bb52e8b27350f8d1"
+    }
+  },
+  "source_sha256": {
+    "configs/experiments/top100-policies-student42.json": "2a41f39d626f7d840cadcc232585de4677c4a11dbac98aec662d3d357cd1f937",
+    "scripts/prepare_top100_policies.py": "d8b121556361658cb5e6f7bcee43895c9445e6ef45d8bb663a8c985d4c6080ab",
+    "data/runs/student43-dense-reference/results.json": "38a04ef0fa830ab41a80122719a128c063cffec9d5672469bb52e8b27350f8d1",
+    "data/runs/student-temperature-control/kd-1/train-mps/best.pt": "a95907c5399293783574d398183cce5605d426ec569a27aa86319d19e8601e16",
+    "data/processed/yambda50m-pilot-audio/manifest.json": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c",
+    "scripts/list_cache.py": "7ae46b560db12bfee9510600a11fd1411fea480efc48c5130fad1d64805598a5",
+    "scripts/replay_sasrec_policies.py": "9284a8fbe388813004af85a2a9756cdb317cfc42fdf81652d034a67ada41d1da",
+    "scripts/replay_sasrec.py": "cabb273e8d2a838f7966ce3ca98f6bd0b897f83a56651007e88b36b83bcc1fb2",
+    "scripts/sasrec.py": "5ec315e46a0bb529ef035badca261ef5a10206ecc9668f63d499a699352c6165",
+    "scripts/run_sasrec.py": "816de7ff8dd80bd38fe97c86c3f92814cad1a6f8215d2c85c28bb4edd5beaba3",
+    "scripts/distill_sasrec.py": "a9ec9abc1d7063e6943903b5a55706503d56f07c423f8968c08e0aed26896f9f"
+  },
+  "used_data_files_sha256": {
+    "events/controller_train.parquet": "0791d5cca3fa43078ef3d5239f280c4a1eea34ff8ee6f0ec90504b49f09dbd21",
+    "events/model_valid.parquet": "32980a3fa82dc0f4d716a020af687c72c88110fda111be673a88d1cd35b6604b",
+    "events/policy_valid.parquet": "5bc91cd485b0f828e3ab0102df358cfe28b10e4bf130655657ef5a622e6d0a69",
+    "events/train.parquet": "9beb8bbc92c90ca2dccd9dfeda3b1e4e838b13b0f759f4a3da27c00e68134340",
+    "items.parquet": "cd16fbc24772305d9c5a57bb62a02e2eb4049bb9f62ffcd446be92f76ec0c863",
+    "users.parquet": "27f101f6b67421d0bab7ccc213bd154bbc8f7b9fa92742d53177bb0d7e398332"
+  },
+  "data_manifest_sha256": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c",
+  "checkpoint_sha256": "a95907c5399293783574d398183cce5605d426ec569a27aa86319d19e8601e16",
+  "rank_scope": "Exact top100 positions; all other ranks are the outside-top100 sentinel 1000000; not valid for MRR or full-rank analysis",
+  "cpu_oracle": {
+    "pairs": 256,
+    "same_metrics": true,
+    "same_top100_membership": true,
+    "max_top100_rank_delta": 0
+  },
+  "execution": {
+    "encoding_seconds": 1.1829848749912344,
+    "scoring_seconds": 11.588415666017681,
+    "total_seconds": 38.8989225840196
+  },
+  "memory": {
+    "process_peak_rss_mib": 1161.53125,
+    "mps_tensor_mib": 111.70751953125,
+    "mps_driver_mib": 1032.703125
+  },
+  "top100_cache_sha256": "d1f33909fbee42fbd7bb090264be034867458d295c097c2cdcfebbc91dab2f10",
+  "replay_sha256": "08ca0cb80b8b8dd81827626173864ed325ff15229b71787b8fc5c3c4cb8fa32f"
+}

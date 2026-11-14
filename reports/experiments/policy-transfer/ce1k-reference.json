@@ -1,0 +1,70 @@
+{
+  "config": {
+    "splits": [
+      "controller_train",
+      "policy_valid"
+    ],
+    "cost_budgets_relative_to_always": [
+      0.6,
+      0.75,
+      0.9
+    ],
+    "batch_size": 256,
+    "threads": 4,
+    "seed": 42,
+    "benchmark_steps": 128,
+    "benchmark_repeats": 3,
+    "benchmark_warmup": 8,
+    "data": "data/processed/yambda50m-1k-audio",
+    "checkpoint": "data/runs/sasrec-1k-full-ce/train-mps/best.pt",
+    "checkpoint_sha256": "dcb3b56d459928e44b4e18264f76a4f707c2203595ff91e7d130133fe9c994af",
+    "output": "data/runs/ce1k-top100-policies",
+    "top100_cache": "data/runs/ce1k-top100-policies/top100.npy",
+    "grid_reference": {
+      "path": "data/runs/student43-dense-reference/results.json",
+      "sha256": "38a04ef0fa830ab41a80122719a128c063cffec9d5672469bb52e8b27350f8d1"
+    }
+  },
+  "source_sha256": {
+    "configs/experiments/top100-policies-ce1k.json": "874c685d6d6ee0d29d5b4e2fc549a0875ca5d3dcfaef8109feb30c867dc30176",
+    "scripts/prepare_top100_policies.py": "d8b121556361658cb5e6f7bcee43895c9445e6ef45d8bb663a8c985d4c6080ab",
+    "data/runs/student43-dense-reference/results.json": "38a04ef0fa830ab41a80122719a128c063cffec9d5672469bb52e8b27350f8d1",
+    "data/runs/sasrec-1k-full-ce/train-mps/best.pt": "dcb3b56d459928e44b4e18264f76a4f707c2203595ff91e7d130133fe9c994af",
+    "data/processed/yambda50m-1k-audio/manifest.json": "6424f7b7b4b4108666d84ec4b69d733c41b7682a90d49dcc497e50e8991bdc39",
+    "scripts/list_cache.py": "7ae46b560db12bfee9510600a11fd1411fea480efc48c5130fad1d64805598a5",
+    "scripts/replay_sasrec_policies.py": "9284a8fbe388813004af85a2a9756cdb317cfc42fdf81652d034a67ada41d1da",
+    "scripts/replay_sasrec.py": "cabb273e8d2a838f7966ce3ca98f6bd0b897f83a56651007e88b36b83bcc1fb2",
+    "scripts/sasrec.py": "5ec315e46a0bb529ef035badca261ef5a10206ecc9668f63d499a699352c6165",
+    "scripts/run_sasrec.py": "816de7ff8dd80bd38fe97c86c3f92814cad1a6f8215d2c85c28bb4edd5beaba3",
+    "scripts/distill_sasrec.py": "a9ec9abc1d7063e6943903b5a55706503d56f07c423f8968c08e0aed26896f9f"
+  },
+  "used_data_files_sha256": {
+    "events/controller_train.parquet": "ea9b931d48f531beba65bbebc419062976e35a200102b24672f33e7a373a9271",
+    "events/model_valid.parquet": "31c9538499d2edc5d7373cca2b9e600e2900a77fe268286eacc3318ce178bf7b",
+    "events/policy_valid.parquet": "497ef4dc6ae65f59b15752017deb8b8ccdfa088200f4db5d806e39e6c355d14b",
+    "events/train.parquet": "1fbed0eb0a2128aa66736a9d0c5bb4383d21e4c2472b76739015c47bbb8637e3",
+    "items.parquet": "c5eeef19cb0e374ad107e38f67c905e1545ec65a389037a63d1c8ff5c23c93a5",
+    "users.parquet": "f138396410bb3041178170ea1db85ac7998671e62fb8a7112235b14196b776be"
+  },
+  "data_manifest_sha256": "6424f7b7b4b4108666d84ec4b69d733c41b7682a90d49dcc497e50e8991bdc39",
+  "checkpoint_sha256": "dcb3b56d459928e44b4e18264f76a4f707c2203595ff91e7d130133fe9c994af",
+  "rank_scope": "Exact top100 positions; all other ranks are the outside-top100 sentinel 1000000; not valid for MRR or full-rank analysis",
+  "cpu_oracle": {
+    "pairs": 256,
+    "same_metrics": true,
+    "same_top100_membership": true,
+    "max_top100_rank_delta": 0
+  },
+  "execution": {
+    "encoding_seconds": 4.074953917006496,
+    "scoring_seconds": 104.69351383397589,
+    "total_seconds": 207.99941354099428
+  },
+  "memory": {
+    "process_peak_rss_mib": 2827.328125,
+    "mps_tensor_mib": 320.20751953125,
+    "mps_driver_mib": 2056.703125
+  },
+  "top100_cache_sha256": "c3d7afc56d2380a38aac95c88228c507385716c3c42bec8bf72fba66ccd27a12",
+  "replay_sha256": "1455d1a4ffa0c532a706b4273ecdcb03d61c81dc85975a0d570ca2aa93e6d5ed"
+}

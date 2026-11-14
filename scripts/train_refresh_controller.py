@@ -15,6 +15,7 @@ from blend_sasrec import checksum
 from benchmark_refresh_controller import coupled_branches,measure_cases
 from distill_sasrec import load_student
 from controller_horizon import replace_gain
+from list_cache import list_ranks
 from refresh_controller import HistoryFeatures,fit_ridge,predict_matrix,rollout,training_examples
 from mlp_refresh_controller import fit_mlp
 from replay_sasrec import encode_queries,quality
@@ -102,6 +103,11 @@ def main():
         path=ROOT/config["training_labels"]
         assert checksum(path)==config["training_labels_sha256"]
         labels=dict(np.load(path));sources += [path,ROOT/"scripts/controller_horizon.py"]
+    top100=None
+    if baseline["config"].get("top100_cache"):
+        path=ROOT/baseline["config"]["top100_cache"]
+        assert checksum(path)==baseline["top100_cache_sha256"]
+        top100=np.load(path);sources += [path,ROOT/"scripts/list_cache.py"]
     hashes.update({str(p.relative_to(ROOT)):checksum(p) for p in sources})
     for p,h in hashes.items():assert checksum(ROOT/p)==h,p
     started=time.perf_counter();rows=training_examples(stream,stream["ranks"],stream["refs"],fit)
@@ -138,8 +144,12 @@ def main():
     assert before_state==baseline["frozen_state_sha256"]
     vectors,encoding=encode_queries(model,stream["queries"],args.device,baseline["config"]["batch_size"])
     ct_targets=np.flatnonzero(ct[stream["target_request"]]);pv_targets=np.flatnonzero(~ct[stream["target_request"]])
-    ct_ranks,ct_scoring=rank_reusing(model,vectors,ct_refs[:,stream["target_request"][ct_targets]],stream["targets"][ct_targets],args.device,256,
-        (stream["refs"][:,stream["target_request"][ct_targets]],stream["ranks"][:,ct_targets]))
+    if top100 is None:
+        ct_ranks,ct_scoring=rank_reusing(model,vectors,ct_refs[:,stream["target_request"][ct_targets]],stream["targets"][ct_targets],args.device,256,
+            (stream["refs"][:,stream["target_request"][ct_targets]],stream["ranks"][:,ct_targets]))
+    else:
+        ct_ranks=list_ranks(top100,ct_refs[:,stream["target_request"][ct_targets]],stream["targets"][ct_targets])
+        ct_scoring={"source":"precomputed exact-top100 lists","additional_model_scoring":False}
     ct_calibration=coupled_branches(model,vectors,stream,features,controller,[c["name"] for c in choices],
         [c["threshold"] for c in choices],ct_refs,ct_updates,ct_before,np.flatnonzero(ct),config,args.device)
     candidate_rows=region_rows([c["name"] for c in choices],ct_ranks,ct_targets,ct_updates,valid,stream,
@@ -179,8 +189,12 @@ def main():
     assert np.all(stream["users"][refs]==stream["users"][None])
     assert np.all(stream["split_idx"][refs]==stream["split_idx"][None])
     assert np.all(stream["last_input_timestamp"][refs]<stream["timestamp"][None])
-    pv_ranks,pv_scoring=rank_reusing(model,vectors,refs[:,stream["target_request"][pv_targets]],stream["targets"][pv_targets],args.device,256,
-        (stream["refs"][:,stream["target_request"][pv_targets]],stream["ranks"][:,pv_targets]))
+    if top100 is None:
+        pv_ranks,pv_scoring=rank_reusing(model,vectors,refs[:,stream["target_request"][pv_targets]],stream["targets"][pv_targets],args.device,256,
+            (stream["refs"][:,stream["target_request"][pv_targets]],stream["ranks"][:,pv_targets]))
+    else:
+        pv_ranks=list_ranks(top100,refs[:,stream["target_request"][pv_targets]],stream["targets"][pv_targets])
+        pv_scoring={"source":"precomputed exact-top100 lists","additional_model_scoring":False}
     all_ranks=np.empty((len(names),len(stream["targets"])),dtype=np.int32);all_ranks[:,ct_targets]=ct_ranks[indices];all_ranks[:,pv_targets]=pv_ranks
     thresholds=[choices[j]["threshold"] for j in indices]
     pv_calibration=coupled_branches(model,vectors,stream,features,controller,names,thresholds,refs,updates,before,np.flatnonzero(~ct),config,args.device)
@@ -208,11 +222,15 @@ def main():
         mixed_workload_checks={s:{k:v for k,v in b["cases"].items() if k.startswith("simple/")} for s,b in mixed.items()},
         cost_recalibrated_with_controller=True,cost_recalibration_source_sha256=hashes,selection_sha256=policy_selection_hash)
     write(args.output/"policy-results.json",repriced)
+    oracle_info={"pairs":256,"same_metrics":True,"exact_ranks":int((oracle==all_ranks[p,t]).sum()),"max_rank_delta":int(np.abs(oracle-all_ranks[p,t]).max())}
+    if top100 is not None:
+        inside=oracle<=100;assert np.array_equal(inside,all_ranks[p,t]<=100)
+        oracle_info={"pairs":256,"same_metrics":True,"same_top100_membership":True,"max_top100_rank_delta":int(np.abs(oracle[inside]-all_ranks[p,t][inside]).max(initial=0))}
     result={"config":config,"model":controller,"fit":fit_info,"selection":selection,"selection_sha256":selection_hash,
         "policy_selection_sha256":policy_selection_hash,"results":summary,"calibration":calibrations,
         "decision_costs":{"controller_train":{c["name"]:d for c,d in zip(choices,decision)},"policy_valid":dict(zip(names,pv_decisions))},
         "mixed_workload_checks":mixed,"checkpoint_sha256":baseline["checkpoint_sha256"],"frozen_state_unchanged":True,
-        "cpu_oracle":{"pairs":256,"same_metrics":True,"exact_ranks":int((oracle==all_ranks[p,t]).sum()),"max_rank_delta":int(np.abs(oracle-all_ranks[p,t]).max())},
+        "cpu_oracle":oracle_info,"rank_scope":baseline.get("rank_scope","Full catalog ranks"),
         "execution":{"encode_seconds":encoding,"ct_scoring":ct_scoring,"pv_scoring":pv_scoring},"source_sha256":hashes,
         "replay_sha256":checksum(args.output/"replay.npz"),"total_seconds":time.perf_counter()-started,
         "no_test_events_read":True,"policy_valid_not_used_for_training_or_selection":True,

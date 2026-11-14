@@ -27,8 +27,9 @@
 | H2. Линейная модель и только возраст/активность ограничивают benefit predictor | Небольшой CPU MLP на8 исходных признаках, matched ridge; при необходимости один вариант с дешёвыми history-признаками. CT8/2/4 fit/early-stop/tuning, фиксированный PV | Требуются supervised validation и closed-loop quality/cost, включая новую CPU latency. Не выбирать по PV | Выполнен: MLP снижает MSE на1.3–1.5%; обе инициализации выше ridge по point estimates, но NDCG CI к CT cost-matched mixture включают0 |
 | H3. Метка немедленной пользы слишком разрежена и не учитывает будущие запросы | Один короткий фиксированный горизонт5 запросов, отдельно внутри fit и early-validation boundary; тот же MLP42 и causal features | Сравнить closed-loop CT/PV с immediate MLP42, ridge и плотной сеткой; не подбирать горизонт по PV | Выполнен: ненулевые labels8.9%→22.2%, общий quality–cost выигрыш не подтверждён; следующие горизонты не перебираем |
 | H4. При статичном полном каталоге можно кэшировать top100 вместе с user vector | Проверить эквивалентность рекомендаций и метрик, измерить refresh/list-hit и память, перепостроить costs существующих политик | Новый режим применим только при неизменном каталоге/items/context. Сценарий сменных candidate sets сохраняет vector-cache benchmark | Выполнен:218 metric rows совпадают, events3 PV cost−51%; прямые парные замеры109 политик, additive probe отвергнут |
-| H5. Выводы сохраняются на1к и другом encoder seed | Готовые student42 и CE1k; grid106, immediate MLP42 с CT8/2/4. Top100 evaluation для используемых метрик, без нового обучения SASRec | Сравнивать потери относительно own fresh и собственные cost budgets, не сырые метрики разных каталогов | В работе: bases готовы38.90/208.00с,343738 requests на1к; matched controllers |
+| H5. Выводы сохраняются на1к и другом encoder seed | Готовые student42 и CE1k; grid106, immediate MLP42 с CT8/2/4. Top100 evaluation для используемых метрик, без нового обучения SASRec | Сравнивать потери относительно own fresh и собственные cost budgets, не сырые метрики разных каталогов | Выполнен: общий выигрыш MLP не подтвердился; CE1k NDCG/Recall CI к expected mixtures ниже0 в обеих точках. Top100 cost effect повторился |
 | H6. Точная KV-переиспользуемость несовместима с текущими sliding/right-aligned learned positions | Маленький CPU эксперимент append/reindex/eviction с контролем фиксированных позиций; записать условия эквивалентности | Закрыть технический риск main plan без разработки новой serving-инфраструктуры | Выполнен:70 ожидаемых исходов; fixed append совпадает, right-aligned/eviction reuse нет; основной refresh полностью пересчитывает encoder |
+| H7. Финальный test нельзя считать полностью независимым от поиска encoder | Аудит уже опубликованных test evaluations; выбрать untouched user cohort по train, исключив development users; зафиксировать checkpoints/controllers/policies до оценки | Разделить повторное чтение старого test и новую user-holdout проверку. Не улучшать модель по итоговому holdout | Следующий обязательный этап main plan |
 
 После каждой проверки: обновить эту очередь, основной план, отчёт, checks и Git.
 Не объявлять все идеи исчерпанными, пока остаются конкретные обязательные или
@@ -65,3 +66,11 @@ H6 выполнен в CPU-паузе после подготовки1к, до c
 frozen student43, atol/rtol1e−5. Upper-layer cached context при eviction
 даёт несовпадение даже с фиксированными позициями. Не измеряем speedup
 некорректного update и не добавляем production KV инфраструктуру.
+
+H5 завершён: [отчёт](../reports/experiments/policy-transfer.md).MLP student42
+best21/26,44.94с; CE1k best2/7,101.09с.21 тест,64 независимых CI,
+88 paired serving checks. Код top100-only evaluation явно сохраняет
+sentinel вне100, без заявления full ranks. Далее H7 — аудит test,
+поскольку ранние baseline-search отчёты уже используют старый test.
+Фраза «test закрыт» в H1–H6 относится к текущим maintenance executions,
+а не к неиспользованию этого split во всей истории проекта.
