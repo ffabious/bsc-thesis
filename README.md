@@ -476,6 +476,16 @@ MLP1377 параметров с CT8/2/4 и двумя seed снижает early-
 дополнительные горизонты не перебираем.19 тестов,128 независимых проверок
 метки,36 парных CI, test закрыт. [Отчёт H3](reports/experiments/controller-horizon.md).
 
+## Статичный каталог: кэш готового top100
+
+Все218 metric rows106 простых политик и3 фиксированных MLP-порогов
+совпадают с прежним replay. Прямые парные B=1 замеры дают PV events3
+1.418→0.695мс, TTL30мин1.242→0.290мс. Payload vector+list1056B/user.
+Top100-cache включается как baseline для fixed-full-catalog long-only
+сценария; сменные candidates/downstream features требуют отдельного
+vector-cache serving-контракта.21 тест и436 workload cases проверены,
+test закрыт. [Отчёт H4](reports/experiments/static-list-cache.md).
+
 ## Происхождение материалов
 
 Импорт выполнен 20 октября 2026 из `thesis-project-2026-10-20.zip` и двух заметок, уже находившихся в этой папке. Заметки совпали с копиями в архиве и сохранены в одном экземпляре.

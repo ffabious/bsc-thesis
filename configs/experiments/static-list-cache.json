@@ -1,0 +1,19 @@
+{
+  "policy_replay": "data/runs/student43-dense-reference",
+  "policy_results_sha256": "38a04ef0fa830ab41a80122719a128c063cffec9d5672469bb52e8b27350f8d1",
+  "policy_arrays_sha256": "f992f1eaaffe21c08fbebef85ac45ccd9bc138abc2030ab87a9069c956a38950",
+  "threads": 4,
+  "controller": "data/runs/controller-mlp42",
+  "controller_results_sha256": "34bd239468b95a4a134d36e48df8dfe365038915f74b0da73b5048a5e94367e5",
+  "controller_arrays_sha256": "0bca88f5a8b591805983e59f79a69501650d9944d1af3075a235539cbcd120f3",
+  "output": "data/runs/static-list-cache",
+  "benchmark_steps": 128,
+  "benchmark_repeats": 3,
+  "benchmark_warmup": 8,
+  "seed": 42,
+  "budgets": [
+    0.6,
+    0.75,
+    0.9
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "same_quality_rows": 218,
+  "canonical_rank_checks": 768,
+  "paired_workload_cases": 436,
+  "max_sample_refresh_fraction_error": 0.001287685367005298,
+  "all_direct_cost_means_checked": true,
+  "frozen_ct_selection_on_pv": true,
+  "historical_probe_source_snapshot_verified": true,
+  "existing_output_guard_preserves_rank_and_result_files": true,
+  "restored_rank_file_matches_original_sha256": true,
+  "no_test_events_read": true,
+  "source_sha256": {
+    "scripts/report_list_cache.py": "4baf219eb1a144e222355282f8880022c5a5be5d361467119b3aab3eb3406f23",
+    "data/runs/static-list-cache/equivalence.json": "161a6f4061971b7c42c695390016ba92230883bd2939a1d9b3687f4430cda554",
+    "data/runs/static-list-cache/benchmark-direct.json": "4f85dc0960169f7c6d059e70298902d05ea32206e958c2c9395c7cf7da2d9f71",
+    "data/runs/static-list-cache/benchmark.json": "2fc02bc96c6f62fec56d74e39e6c1a4b85fd9a106f6d981fa0460d69f2dd9c4a",
+    "data/runs/static-list-cache/initial-benchmark-driver.py": "208ae90de44e53b6237449ae4e6af9332bf4491ac57baee904a4b58fe2e77bda"
+  }
+}
