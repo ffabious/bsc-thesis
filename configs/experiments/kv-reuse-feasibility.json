@@ -1,0 +1,8 @@
+{
+  "checkpoint": "data/runs/paired-seed-repeat/student/kd-1/train-mps/best.pt",
+  "checkpoint_sha256": "a6549493817b3d7f475e13ce6706a1f7f35ab31b8dbe5a5f476293b55613fc21",
+  "seeds": [0, 1, 2, 42, 43],
+  "atol": 0.00001,
+  "rtol": 0.00001,
+  "output": "reports/experiments/kv-reuse-feasibility"
+}

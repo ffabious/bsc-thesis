@@ -486,6 +486,14 @@ Top100-cache включается как baseline для fixed-full-catalog long
 vector-cache serving-контракта.21 тест и436 workload cases проверены,
 test закрыт. [Отчёт H4](reports/experiments/static-list-cache.md).
 
+## KV reuse: проверка условий
+
+70 CPU-проверок на реальных frozen SASRec weights подтвердили: fixed-position
+append без eviction совпадает, текущий right-aligned/sliding reuse — нет.
+После eviction второй слой сохраняет удалённый контекст даже при фиксированных
+позициях. Основной refresh выполняет полный пересчёт; дешёвый exact KV update
+не заявляется. [Отчёт H6](reports/experiments/kv-reuse-feasibility.md).
+
 ## Происхождение материалов
 
 Импорт выполнен 20 октября 2026 из `thesis-project-2026-10-20.zip` и двух заметок, уже находившихся в этой папке. Заметки совпали с копиями в архиве и сохранены в одном экземпляре.
