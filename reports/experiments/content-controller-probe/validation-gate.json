@@ -1,0 +1,7 @@
+{
+  "reference_mse": 0.014937259749168397,
+  "new_mse": 0.014919180361459486,
+  "relative_improvement": 0.0012103550458723022,
+  "minimum_relative_improvement": 0.01,
+  "passed": false
+}

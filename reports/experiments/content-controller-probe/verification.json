@@ -1,0 +1,20 @@
+{
+  "same_training_requests_states_labels_weights": true,
+  "validation_gate_matches_independent_torch_curves": true,
+  "best_epoch_restored": true,
+  "parameters": 1505,
+  "features": 12,
+  "no_new_pv_replay_or_serving": true,
+  "previous_user_holdout_not_an_input": true,
+  "source_sha256": {
+    "scripts/report_content_probe.py": "0f7997f1436a8a25faeaa5b21377e8ea38ee9af30ba9cb75f4bbc2a667050f65",
+    "data/runs/controller-content4-ce1k/probe.json": "a3d0b47fac2aa20bfee7f1796cf02b1489d2eafb994fcff53f6b4fbadafdc4a8",
+    "data/runs/controller-content4-ce1k/model.json": "486638f75cf4d4c0a1ed8ddbd4862eacf18b6810564547484614545bf0399bb7",
+    "data/runs/controller-content4-ce1k/model-training.json": "a9295b00514b4de144387091f110718a0cb79fd3d45173e8f1e7a7f55fe812ff",
+    "data/runs/controller-content4-ce1k/validation-gate.json": "93abfc41ed7dfe633b16909d02d09683e9238e102cd14168d45aeed60f70105b",
+    "data/runs/controller-content4-ce1k/training-examples.npz": "37ff39687000d8e964bf9b23ccb118b88f3dd50416cb743d8da1bfa7db8f2896",
+    "data/runs/controller-mlp-ce1k/model.json": "c1bc36ce3ccf9ce063e0e6705fe39f681cc5669a9451a6430c807ca5517fbcab",
+    "data/runs/controller-mlp-ce1k/model-training.json": "b98460c16f26f23eaf09d1e48b44cbf22d5aac02ec92c6763ee72aa80d4b4b0c",
+    "data/runs/controller-mlp-ce1k/training-examples.npz": "37ff39687000d8e964bf9b23ccb118b88f3dd50416cb743d8da1bfa7db8f2896"
+  }
+}

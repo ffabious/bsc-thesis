@@ -103,7 +103,9 @@ causal user/time refs, frozen weights и guard повторного evaluation,
 качества относительно development PV нельзя приписывать только времени,
 масштабу или контроллеру. Warm histories содержат UNK, targets ограничены
 frozen vocabulary. Общие items и временные факторы могут связывать users;
-user bootstrap их не устраняет. Runtime локальный MPS serial B=1,
+user bootstrap их не устраняет. Logged histories фиксированы: поведение
+пользователя в ответ на изменённые рекомендации здесь не моделируется.
+Runtime локальный MPS serial B=1,
 не datacenter throughput, и timing noise не включён в quality CI.
 Точные positions хранятся только в top100; MRR не оценивается.
 

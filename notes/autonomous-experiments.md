@@ -30,7 +30,7 @@
 | H5. Выводы сохраняются на1к и другом encoder seed | Готовые student42 и CE1k; grid106, immediate MLP42 с CT8/2/4. Top100 evaluation для используемых метрик, без нового обучения SASRec | Сравнивать потери относительно own fresh и собственные cost budgets, не сырые метрики разных каталогов | Выполнен: общий выигрыш MLP не подтвердился; CE1k NDCG/Recall CI к expected mixtures ниже0 в обеих точках. Top100 cost effect повторился |
 | H6. Точная KV-переиспользуемость несовместима с текущими sliding/right-aligned learned positions | Маленький CPU эксперимент append/reindex/eviction с контролем фиксированных позиций; записать условия эквивалентности | Закрыть технический риск main plan без разработки новой serving-инфраструктуры | Выполнен:70 ожидаемых исходов; fixed append совпадает, right-aligned/eviction reuse нет; основной refresh полностью пересчитывает encoder |
 | H7. Финальный test нельзя считать полностью независимым от поиска encoder | Аудит уже опубликованных test evaluations; выбрать untouched user cohort по train, исключив development users; зафиксировать checkpoints/controllers/policies до оценки | Разделить повторное чтение старого test и новую user-holdout проверку. Не улучшать модель по итоговому holdout | Выполнен:freeze b590e78 до outcomes,40638 targets/58383 requests. High-mode controller NDCG97.5% CI ниже0, Recall CI ниже0 в обеих точках; refit нет |
-| H8. Age/activity features не видят содержимое новых действий | Один CE1k MLP с4 cheap content features: latest==cached latest, latest in cached50, cosine frozen item embeddings, log train popularity latest. Те же labels/CT8/2/4; минимум1% early MSE улучшения к готовому8-feature MLP до дорогого replay | Если gate не пройден — остановить до PV. Если пройден — CT-selected closed loop/cost/PV; никакой оценки или настройки на уже открытом user holdout | Следующий development эксперимент; scope/criterion зафиксированы до обучения |
+| H8. Age/activity features не видят содержимое новых действий | Один CE1k MLP с4 cheap content features: latest==cached latest, latest in cached50, cosine frozen item embeddings, log train popularity latest. Те же labels/CT8/2/4; минимум1% early MSE улучшения к готовому8-feature MLP до дорогого replay | Если gate не пройден — остановить до PV. Если пройден — CT-selected closed loop/cost/PV; никакой оценки или настройки на уже открытом user holdout | Выполнен: MSE улучшение0.121%<1%; gate остановил вариант до нового replay/serving, не вывод о NDCG |
 
 После каждой проверки: обновить эту очередь, основной план, отчёт, checks и Git.
 Не объявлять все идеи исчерпанными, пока остаются конкретные обязательные или
@@ -93,3 +93,11 @@ gate≥1% MSE до replay. Static normalized ID table/log train counts отде�
 учитываются в CPU памяти. Trajectories проходят один раз; три повтора
 complete branch/mixed cost benchmark сохраняются, лишний standalone CPU
 timer отключён, поскольку он больше не входит в primary cost.
+
+H8 завершён: [отчёт](../reports/experiments/content-controller-probe.md).
+Best2/7, CPU fit1.59с,25 релевантных CPU/MPS тестов. Supervised improvement
+не достигла заранее заданного gate; новых PV/test результатов нет.
+Восемь проверок текущей очереди закрыты. [Индекс серии](../reports/experiments/autonomous-series.md)
+и [синтез для диплома](experimental-synthesis.md) фиксируют ответы, границы
+выводов и условия отдельного будущего исследования; текущий holdout закрыт
+для новых решений.

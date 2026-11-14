@@ -518,6 +518,14 @@ fresh NDCG при59.7% always cost; это не non-inferiority claim.
 [Отчёт H7](reports/experiments/final-user-holdout.md),
 [frozen protocol](notes/final-user-holdout.md).
 
+## Итог автономной серии
+
+Проверены8 обоснованных гипотез: плотность правил, MLP, future labels,
+static top100 cache, переносимость, KV correctness, user-holdout и item cues.
+Последний probe улучшил MSE на0.121% при gate1% и остановлен до replay.
+25 релевантных CPU/MPS тестов прошли. [Единый индекс](reports/experiments/autonomous-series.md),
+[выводы для экспериментальной главы](notes/experimental-synthesis.md).
+
 ## Происхождение материалов
 
 Импорт выполнен 20 октября 2026 из `thesis-project-2026-10-20.zip` и двух заметок, уже находившихся в этой папке. Заметки совпали с копиями в архиве и сохранены в одном экземпляре.

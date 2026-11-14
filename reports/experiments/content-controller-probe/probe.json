@@ -1,0 +1,110 @@
+{
+  "config": {
+    "policy_replay": "data/runs/ce1k-top100-policies",
+    "policy_results_sha256": "528a5c73a850f1b6a3097aeccf0e154567d3f789ba4233ab6c72d975931753a1",
+    "policy_arrays_sha256": "1455d1a4ffa0c532a706b4273ecdcb03d61c81dc85975a0d570ca2aa93e6d5ed",
+    "fit_days": 8,
+    "ridge": 0.001,
+    "threshold_quantiles": [
+      0,
+      0.1,
+      0.25,
+      0.5,
+      0.75,
+      0.9,
+      0.95,
+      0.99,
+      1.0
+    ],
+    "budgets": [
+      0.6,
+      0.75,
+      0.9
+    ],
+    "decision_repeats": 0,
+    "benchmark_steps": 128,
+    "benchmark_repeats": 3,
+    "benchmark_warmup": 8,
+    "threads": 4,
+    "seed": 42,
+    "early_stop_days": 2,
+    "learner": "mlp",
+    "model_seed": 42,
+    "max_epochs": 100,
+    "patience": 5,
+    "features": "content4",
+    "feature_names": [
+      "log_new_events",
+      "log_age_seconds",
+      "log_activity_1h",
+      "log_activity_24h",
+      "log_last_gap",
+      "log_history",
+      "events_x_activity",
+      "age_x_activity",
+      "latest_matches_cached",
+      "latest_in_cached50",
+      "latest_cached_cosine",
+      "latest_log_train_count"
+    ],
+    "validation_reference": {
+      "path": "data/runs/controller-mlp-ce1k/model.json",
+      "sha256": "c1bc36ce3ccf9ce063e0e6705fe39f681cc5669a9451a6430c807ca5517fbcab",
+      "minimum_relative_improvement": 0.01
+    }
+  },
+  "fit": {
+    "cutoff": 23840005,
+    "fit_cutoff": 23667205,
+    "early_stop_requests": 30916,
+    "fit_requests": 133945,
+    "tuning_requests": 65619,
+    "contexts": 1468108,
+    "weighted_requests": 133110.0,
+    "weighted_positive_gain_fraction": 0.036226089365249334,
+    "weighted_negative_gain_fraction": 0.016281797424105154,
+    "elapsed_seconds": 3.4983373330323957
+  },
+  "validation_gate": {
+    "reference_mse": 0.014937259749168397,
+    "new_mse": 0.014919180361459486,
+    "relative_improvement": 0.0012103550458723022,
+    "minimum_relative_improvement": 0.01,
+    "passed": false
+  },
+  "feature_info": {
+    "kind": "content4",
+    "setup_seconds": 0.16214604204287753,
+    "additional_static_cpu_bytes": 64467744
+  },
+  "source_sha256": {
+    "data/processed/yambda50m-1k-audio/events/controller_train.parquet": "ea9b931d48f531beba65bbebc419062976e35a200102b24672f33e7a373a9271",
+    "data/processed/yambda50m-1k-audio/events/model_valid.parquet": "31c9538499d2edc5d7373cca2b9e600e2900a77fe268286eacc3318ce178bf7b",
+    "data/processed/yambda50m-1k-audio/events/policy_valid.parquet": "497ef4dc6ae65f59b15752017deb8b8ccdfa088200f4db5d806e39e6c355d14b",
+    "data/processed/yambda50m-1k-audio/events/train.parquet": "1fbed0eb0a2128aa66736a9d0c5bb4383d21e4c2472b76739015c47bbb8637e3",
+    "data/processed/yambda50m-1k-audio/items.parquet": "c5eeef19cb0e374ad107e38f67c905e1545ec65a389037a63d1c8ff5c23c93a5",
+    "data/processed/yambda50m-1k-audio/users.parquet": "f138396410bb3041178170ea1db85ac7998671e62fb8a7112235b14196b776be",
+    "configs/experiments/controller-content4-ce1k.json": "110d433a9e31ac9d32ffd47fba0a5cd4e83b5e8d3d99293a23c6e66afaea2c79",
+    "scripts/train_refresh_controller.py": "df4e99c700470af10f0bcbac53356ab64400675e40a75ed75be13dd19a8ce117",
+    "scripts/refresh_controller.py": "b335feac8fd1e70e1b3eddba0578cd47692804b647d6c97dae72fe5836197c69",
+    "data/runs/ce1k-top100-policies/results.json": "528a5c73a850f1b6a3097aeccf0e154567d3f789ba4233ab6c72d975931753a1",
+    "data/runs/ce1k-top100-policies/replay.npz": "1455d1a4ffa0c532a706b4273ecdcb03d61c81dc85975a0d570ca2aa93e6d5ed",
+    "scripts/replay_sasrec_policies.py": "8a3423515fa37a176701136f4667301ff96b650a9891bfefd59186ffb25d3a39",
+    "scripts/replay_sasrec.py": "cabb273e8d2a838f7966ce3ca98f6bd0b897f83a56651007e88b36b83bcc1fb2",
+    "scripts/sasrec.py": "5ec315e46a0bb529ef035badca261ef5a10206ecc9668f63d499a699352c6165",
+    "scripts/run_sasrec.py": "816de7ff8dd80bd38fe97c86c3f92814cad1a6f8215d2c85c28bb4edd5beaba3",
+    "scripts/benchmark_refresh_controller.py": "68a9bd25276811f0fecee4cb51ac1943cb5dda7ba3e6580c2c0f524adec0d62c",
+    "scripts/mlp_refresh_controller.py": "1a1256307045ec7d4c2826d58a8ed707ca78893977599ec07b1d04ed81351470",
+    "data/runs/sasrec-1k-full-ce/train-mps/best.pt": "dcb3b56d459928e44b4e18264f76a4f707c2203595ff91e7d130133fe9c994af",
+    "data/processed/yambda50m-1k-audio/manifest.json": "6424f7b7b4b4108666d84ec4b69d733c41b7682a90d49dcc497e50e8991bdc39",
+    "scripts/content_refresh_features.py": "70b6ec04daae6685d26b242b6b13e8b3110f17604619d3d758358d3f6c8c32e4",
+    "data/runs/controller-mlp-ce1k/model.json": "c1bc36ce3ccf9ce063e0e6705fe39f681cc5669a9451a6430c807ca5517fbcab",
+    "data/runs/ce1k-top100-policies/top100.npy": "c3d7afc56d2380a38aac95c88228c507385716c3c42bec8bf72fba66ccd27a12",
+    "scripts/list_cache.py": "7ae46b560db12bfee9510600a11fd1411fea480efc48c5130fad1d64805598a5"
+  },
+  "replay_performed": false,
+  "policy_valid_predictions_not_evaluated": true,
+  "memory": {
+    "process_peak_rss_mib": 2915.0
+  }
+}

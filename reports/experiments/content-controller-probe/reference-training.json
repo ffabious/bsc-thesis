@@ -1,0 +1,44 @@
+{
+  "epochs": [
+    {
+      "epoch": 1,
+      "fit_mse": 0.016901903955870847,
+      "validation_mse": 0.015081139585036837
+    },
+    {
+      "epoch": 2,
+      "fit_mse": 0.016485049309995104,
+      "validation_mse": 0.01493725932105913
+    },
+    {
+      "epoch": 3,
+      "fit_mse": 0.01646555598368268,
+      "validation_mse": 0.014948178030232821
+    },
+    {
+      "epoch": 4,
+      "fit_mse": 0.016458136389145048,
+      "validation_mse": 0.014944190663228477
+    },
+    {
+      "epoch": 5,
+      "fit_mse": 0.016448185305135626,
+      "validation_mse": 0.014959111549888375
+    },
+    {
+      "epoch": 6,
+      "fit_mse": 0.01644614213145386,
+      "validation_mse": 0.014940846618873063
+    },
+    {
+      "epoch": 7,
+      "fit_mse": 0.016438528283281864,
+      "validation_mse": 0.014950003531852996
+    }
+  ],
+  "best_epoch": 2,
+  "best_validation_mse": 0.01493725932105913,
+  "elapsed_seconds": 1.6089274589903653,
+  "stop_reason": "validation_patience",
+  "torch_numpy_max_prediction_delta": 5.960464477539063e-08
+}
