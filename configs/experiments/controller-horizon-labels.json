@@ -1,0 +1,10 @@
+{
+  "policy_replay": "data/runs/student43-dense-reference",
+  "policy_results_sha256": "38a04ef0fa830ab41a80122719a128c063cffec9d5672469bb52e8b27350f8d1",
+  "policy_arrays_sha256": "f992f1eaaffe21c08fbebef85ac45ccd9bc138abc2030ab87a9069c956a38950",
+  "fit_days": 8,
+  "early_stop_days": 2,
+  "horizon_requests": 5,
+  "threads": 4,
+  "output": "data/runs/controller-horizon-labels"
+}

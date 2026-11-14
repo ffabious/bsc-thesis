@@ -14,6 +14,7 @@ import torch
 from blend_sasrec import checksum
 from benchmark_refresh_controller import coupled_branches,measure_cases
 from distill_sasrec import load_student
+from controller_horizon import replace_gain
 from refresh_controller import HistoryFeatures,fit_ridge,predict_matrix,rollout,training_examples
 from mlp_refresh_controller import fit_mlp
 from replay_sasrec import encode_queries,quality
@@ -96,13 +97,20 @@ def main():
     sources=[args.config.resolve(),Path(__file__).resolve(),ROOT/"scripts/refresh_controller.py",base/"results.json",base/"replay.npz",
         ROOT/"scripts/replay_sasrec_policies.py",ROOT/"scripts/replay_sasrec.py",ROOT/"scripts/sasrec.py",ROOT/"scripts/run_sasrec.py",ROOT/"scripts/benchmark_refresh_controller.py",ROOT/"scripts/mlp_refresh_controller.py",
         ROOT/baseline["config"]["checkpoint"],data/"manifest.json"]
+    labels=None
+    if config.get("training_labels"):
+        path=ROOT/config["training_labels"]
+        assert checksum(path)==config["training_labels_sha256"]
+        labels=dict(np.load(path));sources += [path,ROOT/"scripts/controller_horizon.py"]
     hashes.update({str(p.relative_to(ROOT)):checksum(p) for p in sources})
     for p,h in hashes.items():assert checksum(ROOT/p)==h,p
     started=time.perf_counter();rows=training_examples(stream,stream["ranks"],stream["refs"],fit)
+    if labels is not None:rows=replace_gain(rows,labels,"fit")
     x=features.matrix(rows["requests"],rows["previous"])
     training=None
     if config.get("learner")=="mlp":
         early_rows=training_examples(stream,stream["ranks"],stream["refs"],early)
+        if labels is not None:early_rows=replace_gain(early_rows,labels,"early")
         vx=features.matrix(early_rows["requests"],early_rows["previous"])
         controller,training=fit_mlp(x,rows["gain"],rows["weights"],vx,early_rows["gain"],early_rows["weights"],config)
     else:controller=fit_ridge(x,rows["gain"],rows["weights"],config["ridge"])

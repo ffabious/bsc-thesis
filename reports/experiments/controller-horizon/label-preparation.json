@@ -1,0 +1,68 @@
+{
+  "config": {
+    "policy_replay": "data/runs/student43-dense-reference",
+    "policy_results_sha256": "38a04ef0fa830ab41a80122719a128c063cffec9d5672469bb52e8b27350f8d1",
+    "policy_arrays_sha256": "f992f1eaaffe21c08fbebef85ac45ccd9bc138abc2030ab87a9069c956a38950",
+    "fit_days": 8,
+    "early_stop_days": 2,
+    "horizon_requests": 5,
+    "threads": 4,
+    "output": "data/runs/controller-horizon-labels"
+  },
+  "plan": {
+    "unique_pairs": 544710,
+    "reused_pairs": 412065,
+    "new_pairs": 132645,
+    "contexts": {
+      "fit": 402350,
+      "early": 106902
+    },
+    "horizon": 5,
+    "fit_end": 23667205,
+    "early_end": 23840005
+  },
+  "statistics": {
+    "fit": {
+      "weighted_positive_fraction": 0.14477859658758627,
+      "weighted_negative_fraction": 0.07725873488117807,
+      "mean_gain": 0.012549562705790588,
+      "short_horizon_contexts": 8252
+    },
+    "early": {
+      "weighted_positive_fraction": 0.12743021295498982,
+      "weighted_negative_fraction": 0.06706309415431214,
+      "mean_gain": 0.01214524448723527,
+      "short_horizon_contexts": 6867
+    }
+  },
+  "source_sha256": {
+    "configs/experiments/controller-horizon-labels.json": "06c0153fc884995efe88b86932c567d69ee9107414723df22e89e0d9ad9d94ee",
+    "scripts/prepare_controller_horizon.py": "ee18eecbd28d446b13b9fa6750c8496b1ff232b988d2539e6618e3745c802f9f",
+    "data/runs/student43-dense-reference/results.json": "38a04ef0fa830ab41a80122719a128c063cffec9d5672469bb52e8b27350f8d1",
+    "data/runs/student43-dense-reference/replay.npz": "f992f1eaaffe21c08fbebef85ac45ccd9bc138abc2030ab87a9069c956a38950",
+    "data/runs/paired-seed-repeat/student/kd-1/train-mps/best.pt": "a6549493817b3d7f475e13ce6706a1f7f35ab31b8dbe5a5f476293b55613fc21",
+    "data/processed/yambda50m-pilot-audio/manifest.json": "3886a18e00a67842c8de482056ba72cf6d445e221b262929f3abe063792f006c",
+    "scripts/controller_horizon.py": "6bd045d442d910ded72738481c509d32cf3303086b9743c8c275954d6255f0aa",
+    "scripts/refresh_controller.py": "b335feac8fd1e70e1b3eddba0578cd47692804b647d6c97dae72fe5836197c69",
+    "scripts/replay_sasrec.py": "cabb273e8d2a838f7966ce3ca98f6bd0b897f83a56651007e88b36b83bcc1fb2",
+    "scripts/sasrec.py": "5ec315e46a0bb529ef035badca261ef5a10206ecc9668f63d499a699352c6165",
+    "scripts/distill_sasrec.py": "a9ec9abc1d7063e6943903b5a55706503d56f07c423f8968c08e0aed26896f9f"
+  },
+  "label_sha256": "6438270c1dd6ab0fd81d6c386e5f362edf533e265991bb9109d3ac45012b6ac2",
+  "execution": {
+    "encoding_seconds": 0.600490000040736,
+    "scoring": {
+      "unique_state_target_pairs": 132645,
+      "scoring_ranking_seconds": 9.474690667004324
+    },
+    "total_seconds": 12.013256584003102
+  },
+  "cpu_oracle": {
+    "same_metrics": true,
+    "exact_ranks": 253,
+    "max_rank_delta": 1
+  },
+  "labels_only_ct_fit_and_early": true,
+  "no_test_events_read": true,
+  "target_definition": "Mean of summed positive-target NDCG rewards over current and next four same-user requests, holding each compared snapshot fixed; truncated at region end"
+}

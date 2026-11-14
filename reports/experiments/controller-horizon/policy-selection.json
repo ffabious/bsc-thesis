@@ -1,0 +1,18 @@
+{
+  "source_split": "controller_train",
+  "criterion": "max NDCG, ties Recall then lower estimated cost",
+  "budgets": [
+    {
+      "relative_budget": 0.6,
+      "policy": "hybrid_50_3600"
+    },
+    {
+      "relative_budget": 0.75,
+      "policy": "events_3"
+    },
+    {
+      "relative_budget": 0.9,
+      "policy": "time_180"
+    }
+  ]
+}
