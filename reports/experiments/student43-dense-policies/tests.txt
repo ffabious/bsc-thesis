@@ -1,0 +1,14 @@
+test_cached_policy_ranks_match_naive_fresh_recomputation_of_selected_windows (tests.test_policies.PolicyTest.test_cached_policy_ranks_match_naive_fresh_recomputation_of_selected_windows) ... ok
+test_cost_counts_paid_initialization_without_double_charging_refresh (tests.test_policies.PolicyTest.test_cost_counts_paid_initialization_without_double_charging_refresh) ... ok
+test_exact_schedules_include_initialization_and_reset_at_split (tests.test_policies.PolicyTest.test_exact_schedules_include_initialization_and_reset_at_split) ... ok
+test_frontier_and_ct_budget_selection (tests.test_policies.PolicyTest.test_frontier_and_ct_budget_selection) ... ok
+test_labels_and_future_items_do_not_change_past_decisions (tests.test_policies.PolicyTest.test_labels_and_future_items_do_not_change_past_decisions) ... ok
+test_policy_rank_oracle_cpu_mps (tests.test_policies.PolicyTest.test_policy_rank_oracle_cpu_mps) ... ok
+test_rank_reuse_matches_naive_ranks_and_skips_already_scored_pairs (tests.test_policies.PolicyTest.test_rank_reuse_matches_naive_ranks_and_skips_already_scored_pairs) ... ok
+test_schedule_reuse_does_not_load_foreign_weights_ranks_or_costs (tests.test_policies.PolicyTest.test_schedule_reuse_does_not_load_foreign_weights_ranks_or_costs) ... ok
+test_stream_keeps_nonpositive_requests_and_whole_groups (tests.test_policies.PolicyTest.test_stream_keeps_nonpositive_requests_and_whole_groups) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.345s
+
+OK

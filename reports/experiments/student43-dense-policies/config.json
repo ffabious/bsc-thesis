@@ -1,0 +1,50 @@
+{
+  "policy_replay": "data/runs/student43-policies",
+  "controller": "data/runs/student43-controller-calibrated",
+  "output": "data/runs/student43-dense-policies",
+  "report": "reports/experiments/student43-dense-policies",
+  "checkpoint_sha256": "a6549493817b3d7f475e13ce6706a1f7f35ab31b8dbe5a5f476293b55613fc21",
+  "threads": 4,
+  "splits": [
+    "controller_train",
+    "policy_valid"
+  ],
+  "policies": [
+    {
+      "name": "events_3",
+      "family": "events",
+      "events": 3,
+      "seconds": 0
+    },
+    {
+      "name": "events_4",
+      "family": "events",
+      "events": 4,
+      "seconds": 0
+    },
+    {
+      "name": "time_180",
+      "family": "time",
+      "events": 0,
+      "seconds": 180
+    },
+    {
+      "name": "time_240",
+      "family": "time",
+      "events": 0,
+      "seconds": 240
+    },
+    {
+      "name": "hybrid_3_300",
+      "family": "hybrid",
+      "events": 3,
+      "seconds": 300
+    },
+    {
+      "name": "hybrid_4_300",
+      "family": "hybrid",
+      "events": 4,
+      "seconds": 300
+    }
+  ]
+}

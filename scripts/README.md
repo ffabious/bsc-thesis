@@ -15,6 +15,7 @@
 | `replay_sasrec.py` / `plot_sasrec_replay.py` | Диагностические fixed-lag fresh/stale snapshots, локальные component costs, кривые и CSV; не actual refresh schedules |
 | `replay_encoder_pairs.py` | Frozen CE/student42/43 на исходных fixed-lag snapshots; reuse CE42, fresh alignment, CPU oracle, own staleness loss и парная разница потерь, JSON/CSV/PNG/SVG. Без обучения, test и serving benchmark |
 | `replay_sasrec_policies.py` / `plot_sasrec_policies.py` | Реальные on-request always/never/time/events/OR schedules на CT/PV; paired quality, initialization/refresh counts, измеренные ветви стоимости, frontier и CT-budget selection; test запрещён |
+| `extend_refresh_grid.py` | Заранее заданные простые правила в разрывах сетки, reuse старых ranks, общая fixed cost calibration, CT-only comparator и парные сравнения контроллера |
 | `refresh_controller.py` / `train_refresh_controller.py` | CPU ridge immediate-gain controller: strict-past features, request-balanced labels, CT10/4 chronological fit/tuning, fixed PV replay, complete cost accounting; без обучения энкодера и test |
 | `benchmark_refresh_controller.py` | Совместные interleaved B=1 plain/controller hit/refresh и mixed workloads: CPU признаки/решение внутри MPS pipeline, без двойного начисления CPU |
 | `report_student_maintenance.py` | Сравнение student43/CE42 на100 политиках, CT-selected controllers и matched simple baselines; ожидание CT-выбранных смесей, paired CI, CSV и общий frontier |

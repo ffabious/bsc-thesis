@@ -452,6 +452,16 @@ mixed cost error до2.12%, веса модели сохранены.23тест�
 [Отчёт и фронтир](reports/experiments/student43-maintenance.md),
 [протокол](notes/student43-maintenance.md).
 
+## Проверка плотности простой сетки
+
+Шесть дополнительных правил проверены на student43 за7.62с с переиспользованием
+рангов и общей cost calibration. TTL3мин даёт PV NDCG0.055940 при83.20%
+стоимости always и по point estimates доминирует дорогой ridge-контроллер.
+Events3 почти повторяет средний ridge по NDCG (CI разницы включает0),
+при меньших расходах и лучшем Recall. Один из двух новых NDCG frontier
+points ridge исчез. [Отчёт H1](reports/experiments/student43-dense-policies.md),
+[автономная очередь](notes/autonomous-experiments.md).
+
 ## Происхождение материалов
 
 Импорт выполнен 20 октября 2026 из `thesis-project-2026-10-20.zip` и двух заметок, уже находившихся в этой папке. Заметки совпали с копиями в архиве и сохранены в одном экземпляре.

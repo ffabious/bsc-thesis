@@ -1,0 +1,130 @@
+{
+  "source": "CT last four days",
+  "selected": [
+    {
+      "budget": 0.6,
+      "controller": "controller_q090",
+      "simple": "events_20",
+      "ct_tuning": {
+        "name": "events_20",
+        "metrics": {
+          "ndcg@10": 0.03701774383272305,
+          "recall@100": 0.22437673130193905,
+          "hit@1": 0.015944868589960137
+        },
+        "requests": 18016,
+        "targets": 14801,
+        "refreshes": 1040,
+        "refresh_fraction": 0.05772646536412078,
+        "cost": {
+          "estimated_total_ms": 17477.66303985284,
+          "estimated_ms_per_request": 0.9701189520344604,
+          "cost_repeat_estimates_ms_per_request": [
+            0.9704864091168659,
+            0.9694832659426545,
+            0.9965134882301608
+          ],
+          "decision_ms_per_request": 0.00042920642579162495,
+          "refresh_branch_total_ms": 1747.9992968947045,
+          "hit_branch_total_ms": 15721.931159991072
+        }
+      }
+    },
+    {
+      "budget": 0.75,
+      "controller": "controller_q050",
+      "simple": "events_3",
+      "ct_tuning": {
+        "name": "events_3",
+        "metrics": {
+          "ndcg@10": 0.054528886321967215,
+          "recall@100": 0.2748462941693129,
+          "hit@1": 0.023174109857442064
+        },
+        "requests": 18016,
+        "targets": 14801,
+        "refreshes": 6491,
+        "refresh_fraction": 0.36029085257548843,
+        "cost": {
+          "estimated_total_ms": 21591.852117673207,
+          "estimated_ms_per_request": 1.198482022517385,
+          "cost_repeat_estimates_ms_per_request": [
+            1.1987314889920977,
+            1.1945144855732395,
+            1.3726426232969722
+          ],
+          "decision_ms_per_request": 0.0004646032286980611,
+          "refresh_branch_total_ms": 10909.868688599545,
+          "hit_branch_total_ms": 10673.613137305438
+        }
+      }
+    },
+    {
+      "budget": 0.9,
+      "controller": "controller_q025",
+      "simple": "time_180",
+      "ct_tuning": {
+        "name": "time_180",
+        "metrics": {
+          "ndcg@10": 0.06144985473823158,
+          "recall@100": 0.280791838389298,
+          "hit@1": 0.027498142017431254
+        },
+        "requests": 18016,
+        "targets": 14801,
+        "refreshes": 11408,
+        "refresh_fraction": 0.633214920071048,
+        "cost": {
+          "estimated_total_ms": 25302.685101830837,
+          "estimated_ms_per_request": 1.4044563222597044,
+          "cost_repeat_estimates_ms_per_request": [
+            1.4045993569204334,
+            1.3974833348218962,
+            1.7119072806909097
+          ],
+          "decision_ms_per_request": 0.000479047626191166,
+          "refresh_branch_total_ms": 19174.207672091143,
+          "hit_branch_total_ms": 6119.846907706233
+        }
+      }
+    }
+  ],
+  "policies": [
+    {
+      "name": "events_3",
+      "family": "events",
+      "events": 3,
+      "seconds": 0
+    },
+    {
+      "name": "events_4",
+      "family": "events",
+      "events": 4,
+      "seconds": 0
+    },
+    {
+      "name": "time_180",
+      "family": "time",
+      "events": 0,
+      "seconds": 180
+    },
+    {
+      "name": "time_240",
+      "family": "time",
+      "events": 0,
+      "seconds": 240
+    },
+    {
+      "name": "hybrid_3_300",
+      "family": "hybrid",
+      "events": 3,
+      "seconds": 300
+    },
+    {
+      "name": "hybrid_4_300",
+      "family": "hybrid",
+      "events": 4,
+      "seconds": 300
+    }
+  ]
+}

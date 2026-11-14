@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "tests": 9,
+  "new_policies": 6,
+  "total_grid": 106,
+  "independent_paired_ci": 12,
+  "source_checkpoint_hashes_checked": true,
+  "causal_user_split_alignment": true,
+  "cpu_oracle": {
+    "same_metrics": true,
+    "exact_ranks": 252,
+    "max_rank_delta": 1
+  },
+  "ct_only_comparator_selection": true,
+  "same_fixed_cost_calibration": true,
+  "no_test_events_read": true
+}
