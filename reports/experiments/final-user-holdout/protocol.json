@@ -1,0 +1,825 @@
+{
+  "config": {
+    "pool_data": "data/processed/yambda50m-audio",
+    "model_data": "data/processed/yambda50m-1k-audio",
+    "exclude_user_datasets": [
+      "data/processed/yambda50m-pilot",
+      "data/processed/yambda50m-pilot-audio",
+      "data/processed/yambda50m-1k-audio"
+    ],
+    "users": 256,
+    "cohort_seed": 20261114,
+    "checkpoint": "data/runs/sasrec-1k-full-ce/train-mps/best.pt",
+    "checkpoint_sha256": "dcb3b56d459928e44b4e18264f76a4f707c2203595ff91e7d130133fe9c994af",
+    "controller": "data/runs/controller-mlp-ce1k",
+    "grid": "data/runs/student43-dense-reference/results.json",
+    "output": "data/runs/final-user-holdout",
+    "report": "reports/experiments/final-user-holdout",
+    "bootstrap_seed": 42,
+    "bootstrap_repeats": 2000,
+    "benchmark_steps": 128,
+    "benchmark_repeats": 3,
+    "benchmark_warmup": 8,
+    "threads": 4
+  },
+  "source_sha256": {
+    "configs/experiments/final-user-holdout.json": "bb81bab0c1246ee499274edd8462029fed5b487d553bc4e9a6fcdee42be79570",
+    "scripts/freeze_user_holdout.py": "938dbfb9e49b717a11933d485dc5f399a49f1ee47886318761e2b1ab954d42c0",
+    "data/runs/sasrec-1k-full-ce/train-mps/best.pt": "dcb3b56d459928e44b4e18264f76a4f707c2203595ff91e7d130133fe9c994af",
+    "data/processed/yambda50m-audio/manifest.json": "97fc882110fd1f40e9972a410d49066a6ba60e2938c8ea79b0c1dc25a8815086",
+    "data/processed/yambda50m-audio/users.parquet": "38faf84ff49dee59ed829ddaf09a6f7a55baeb31ac860f7244c4f6daf0ea9ea0",
+    "data/processed/yambda50m-1k-audio/manifest.json": "6424f7b7b4b4108666d84ec4b69d733c41b7682a90d49dcc497e50e8991bdc39",
+    "data/processed/yambda50m-1k-audio/items.parquet": "c5eeef19cb0e374ad107e38f67c905e1545ec65a389037a63d1c8ff5c23c93a5",
+    "data/runs/student43-dense-reference/results.json": "38a04ef0fa830ab41a80122719a128c063cffec9d5672469bb52e8b27350f8d1",
+    "data/processed/yambda50m-pilot/users.parquet": "6f5f1c18d068f822446d71bfbdf2870ceba60bcc51dd6caea4bad60e76144cf5",
+    "data/processed/yambda50m-pilot-audio/users.parquet": "27f101f6b67421d0bab7ccc213bd154bbc8f7b9fa92742d53177bb0d7e398332",
+    "data/processed/yambda50m-1k-audio/users.parquet": "f138396410bb3041178170ea1db85ac7998671e62fb8a7112235b14196b776be",
+    "data/runs/controller-mlp-ce1k/results.json": "9ba6f4c4186cf9af43998404d5dd9a75d5d7f8fe3aff9494436667144b304611",
+    "data/runs/controller-mlp-ce1k/model.json": "c1bc36ce3ccf9ce063e0e6705fe39f681cc5669a9451a6430c807ca5517fbcab",
+    "data/runs/controller-mlp-ce1k/selection.json": "4358fdb26564c9558745e66776dcc93e6f4bdc3a46f5eeda645ff63df3930c43",
+    "data/runs/controller-mlp-ce1k/policy-selection.json": "2bf73aeedd59c714c776cd42e9782eb5dd0eab81da669b1246ecce9c190f5f9d"
+  },
+  "cohort": {
+    "users": 256,
+    "eligible_outside_development": 7443,
+    "excluded_development_users": 1000,
+    "overlap": 0,
+    "selection": "sha256(seed:uid), ascending digest; train_events>=20; no holdout activity/labels used",
+    "selected_users_sha256": "2ee158e4f5a47c02c7f6f4656c85dc7150238b2cf5038bbad27e61459b3bb0dd"
+  },
+  "completed_training_audit": {
+    "data/processed/yambda50m-pilot-audio": [
+      "data/runs/paired-seed-repeat/ce50/train-mps/training.json",
+      "data/runs/paired-seed-repeat/student/kd-1/train-mps/training.json",
+      "data/runs/sasrec-256-author-params/train-mps/training.json",
+      "data/runs/sasrec-256-d50-h1/train-mps/training.json",
+      "data/runs/sasrec-256-distillation/control/train-mps/training.json",
+      "data/runs/sasrec-256-distillation/kd-0.25/train-mps/training.json",
+      "data/runs/sasrec-256-distillation/kd-1/train-mps/training.json",
+      "data/runs/sasrec-256-distillation-cold/kd-1/train-mps/training.json",
+      "data/runs/sasrec-256-full-ce/train-mps/training.json",
+      "data/runs/sasrec-256-full-ce-seed43/train-mps/training.json",
+      "data/runs/sasrec-256-joint-bce/train-mps/training.json",
+      "data/runs/sasrec-256-joint-bce-seed43/train-mps/training.json",
+      "data/runs/sasrec-256-large-long/train-mps/training.json",
+      "data/runs/sasrec-256-large-recent/train-mps/training.json",
+      "data/runs/sasrec-256-no-dropout/train-mps/training.json",
+      "data/runs/sasrec-256-recent-2/train-mps/training.json",
+      "data/runs/sasrec-256-recent-2-full-ce/train-mps/training.json",
+      "data/runs/sasrec-256-sampled-ce/train-mps/training.json",
+      "data/runs/sasrec-audio-baseline/train-mps/training.json",
+      "data/runs/sasrec-control-early-stop/train-mps/training.json",
+      "data/runs/sasrec-frozen-audio/train-mps/training.json",
+      "data/runs/sasrec-frozen-id/train-mps/training.json",
+      "data/runs/student-teacher-control/kd-1/train-mps/training.json",
+      "data/runs/student-temperature-control/kd-1/train-mps/training.json"
+    ],
+    "data/processed/yambda50m-1k-audio": [
+      "data/runs/sasrec-1k-early-stop/train-mps/training.json",
+      "data/runs/sasrec-1k-full-ce/train-mps/training.json",
+      "data/runs/sasrec-1k-joint-bce/train-mps/training.json",
+      "data/runs/sasrec-1k-large-recent/train-mps/training.json",
+      "data/runs/sasrec-1k-one-epoch/train-mps/training.json",
+      "data/runs/sasrec-1k-recent-2/train-mps/training.json"
+    ],
+    "data/processed/yambda50m-pilot": [
+      "data/runs/sasrec-pilot/train-mps/training.json"
+    ]
+  },
+  "selection_metadata_sha256": {
+    "data/runs/paired-seed-repeat/ce50/train-mps/training.json": "2d18a078ede476b5eeb940adfb2197738ff7392022a5697082bbb9824895456e",
+    "data/runs/paired-seed-repeat/student/kd-1/train-mps/training.json": "174d58018f30d3c9b667bea99323c0930720e4b9fe65a37950625f0e4780b5a7",
+    "data/runs/sasrec-1k-early-stop/train-mps/training.json": "f3777a24ccb441e2d9d8ef2bb237173a920d0327c2dea2549a509c0923113cb8",
+    "data/runs/sasrec-1k-full-ce/train-mps/training.json": "1d8f6e6b2b5916b8ddaaed1dc71098ca3d832b4927300444069a9a499d08f1fd",
+    "data/runs/sasrec-1k-joint-bce/train-mps/training.json": "0f45cce9660bf1c15eac1d20c051d449c745d0b3767c6d287eb05f73f0fdd019",
+    "data/runs/sasrec-1k-large-recent/train-mps/training.json": "ffa8e3d22bf01b914adf4d03ccdcbe2312a3a2b680eb01ea11bf42a0e49fd95b",
+    "data/runs/sasrec-1k-one-epoch/train-mps/training.json": "1d3a1535f271f7cd7e137198e368932e022a66ba1400c4bca238ca5e481e5a41",
+    "data/runs/sasrec-1k-recent-2/train-mps/training.json": "3d97373961da07700098c2c4dd91b42e93d642d34e00fa08d1b8ac659dbc1702",
+    "data/runs/sasrec-256-author-params/train-mps/training.json": "e50e51074499eee309879a5a725a21c5ce0f20aa077a71d99eeabba54ceb7c9e",
+    "data/runs/sasrec-256-d50-h1/train-mps/training.json": "ed67b571e8a26bf3d2b6c02f1b0b4410cd227ac4fca300f2bc653464745ac3bb",
+    "data/runs/sasrec-256-distillation/control/train-mps/training.json": "08dc077307c57a323eaebe722faa4109b54db825306fa4df15a3409eae66e344",
+    "data/runs/sasrec-256-distillation/kd-0.25/train-mps/training.json": "2cf25de6ea5e13a34d80e95e5fb86c6ef06e832cf78575653d6cdf54d5020fe2",
+    "data/runs/sasrec-256-distillation/kd-1/train-mps/training.json": "bbcfad8019c0cd076fc9dd70ee3905c9f57d389c3dc609b15ec62cc7ce266d77",
+    "data/runs/sasrec-256-distillation-cold/kd-1/train-mps/training.json": "8875f4eca535953b1fd2985e8be02cbc12c1c907dfa5b66f01f0a04c045ad48f",
+    "data/runs/sasrec-256-full-ce/train-mps/training.json": "21f0827b73bb0a61ab3851dc130ba8e2ccaf8a98c4ee6d0c1b21823d24632910",
+    "data/runs/sasrec-256-full-ce-seed43/train-mps/training.json": "81b32d7cdc494302bf9b63ac06ea75b5c31f5e24eacb094224e56414801bf736",
+    "data/runs/sasrec-256-joint-bce/train-mps/training.json": "471d6a538cb6cab4bfa29a2b25acecee7b7d3b28c456838b7143501132e3f72b",
+    "data/runs/sasrec-256-joint-bce-seed43/train-mps/training.json": "6e9d75551b3ef56fd56b6ad6543bc8341b96a9c21e840012ebecca1040e17e29",
+    "data/runs/sasrec-256-large-long/train-mps/training.json": "65169ec54641d8858bcd020fa5936235331548095d1e4bceda2722d09ef9bdc1",
+    "data/runs/sasrec-256-large-recent/train-mps/training.json": "a4b4b02bf8d4bf0931839a973200d0bcc129f13c1d41a05a81eb376bb28cfd17",
+    "data/runs/sasrec-256-no-dropout/train-mps/training.json": "eb0d2ccea1747b13f5ff78e26adc6243b4167edba685e54ff8df94ad58fa5ac9",
+    "data/runs/sasrec-256-recent-2/train-mps/training.json": "f4052234d17fc8570c244ce9500765d89526431c7702fcc21331a82a6bafb982",
+    "data/runs/sasrec-256-recent-2-full-ce/train-mps/training.json": "f56dd0762147b436df0130c367840eca08ac8f3d749d1edc666983545eee58a6",
+    "data/runs/sasrec-256-sampled-ce/train-mps/training.json": "143af726fee1603ee1c4601e9a29eeb77316e0d5648b4546be5ff7c94a57883f",
+    "data/runs/sasrec-audio-baseline/train-mps/training.json": "121dc0a29a466a4bc13d7247d33dd8b6e9fabf92d30bff105e3a370be2094e9f",
+    "data/runs/sasrec-control-early-stop/train-mps/training.json": "0acd87d2dc3bb32d1d9f1c91c2ff732107b17d84e8a8b2f33487ba1d6a95cc74",
+    "data/runs/sasrec-frozen-audio/train-mps/training.json": "a4db15d2c0427a0a45379386b09a0c3be5625cd1f56d9001e93d50ffa2945500",
+    "data/runs/sasrec-frozen-id/train-mps/training.json": "db58538c91aa5dc97a6abda0e4eb76d27907fcd8e8f81e8ec69d04891b977e3f",
+    "data/runs/sasrec-pilot/train-mps/training.json": "312e6ce439fda1e7da590618264bc7fd3e58c35112fbf7991f5b1f8effe13271",
+    "data/runs/student-teacher-control/kd-1/train-mps/training.json": "fc65914e7730febce980d22dc63741f29efa76e4818b33740acbd63b0911d8d8",
+    "data/runs/student-temperature-control/kd-1/train-mps/training.json": "0ee4b234bc7547fcc6065694fbfa36bac6f58a062842a55c58c5384509fffb36"
+  },
+  "periods": [
+    {
+      "split": "train",
+      "start": 0,
+      "end": 22371205
+    },
+    {
+      "split": "model_valid",
+      "start": 22371205,
+      "end": 22976005
+    },
+    {
+      "split": "controller_train",
+      "start": 22976005,
+      "end": 24185605
+    },
+    {
+      "split": "policy_valid",
+      "start": 24185605,
+      "end": 24790405
+    },
+    {
+      "split": "test",
+      "start": 24790405,
+      "end": 26000005
+    }
+  ],
+  "candidate_items": 244194,
+  "policies": [
+    {
+      "name": "always",
+      "family": "always",
+      "events": 0,
+      "seconds": 0
+    },
+    {
+      "name": "never",
+      "family": "never",
+      "events": 0,
+      "seconds": 0
+    },
+    {
+      "name": "events_2",
+      "family": "events",
+      "events": 2,
+      "seconds": 0
+    },
+    {
+      "name": "events_5",
+      "family": "events",
+      "events": 5,
+      "seconds": 0
+    },
+    {
+      "name": "events_10",
+      "family": "events",
+      "events": 10,
+      "seconds": 0
+    },
+    {
+      "name": "events_20",
+      "family": "events",
+      "events": 20,
+      "seconds": 0
+    },
+    {
+      "name": "events_25",
+      "family": "events",
+      "events": 25,
+      "seconds": 0
+    },
+    {
+      "name": "events_50",
+      "family": "events",
+      "events": 50,
+      "seconds": 0
+    },
+    {
+      "name": "events_60",
+      "family": "events",
+      "events": 60,
+      "seconds": 0
+    },
+    {
+      "name": "events_120",
+      "family": "events",
+      "events": 120,
+      "seconds": 0
+    },
+    {
+      "name": "events_240",
+      "family": "events",
+      "events": 240,
+      "seconds": 0
+    },
+    {
+      "name": "events_480",
+      "family": "events",
+      "events": 480,
+      "seconds": 0
+    },
+    {
+      "name": "time_300",
+      "family": "time",
+      "events": 0,
+      "seconds": 300
+    },
+    {
+      "name": "time_1800",
+      "family": "time",
+      "events": 0,
+      "seconds": 1800
+    },
+    {
+      "name": "time_3600",
+      "family": "time",
+      "events": 0,
+      "seconds": 3600
+    },
+    {
+      "name": "time_7200",
+      "family": "time",
+      "events": 0,
+      "seconds": 7200
+    },
+    {
+      "name": "time_10800",
+      "family": "time",
+      "events": 0,
+      "seconds": 10800
+    },
+    {
+      "name": "time_21600",
+      "family": "time",
+      "events": 0,
+      "seconds": 21600
+    },
+    {
+      "name": "time_43200",
+      "family": "time",
+      "events": 0,
+      "seconds": 43200
+    },
+    {
+      "name": "time_86400",
+      "family": "time",
+      "events": 0,
+      "seconds": 86400
+    },
+    {
+      "name": "hybrid_2_300",
+      "family": "hybrid",
+      "events": 2,
+      "seconds": 300
+    },
+    {
+      "name": "hybrid_2_1800",
+      "family": "hybrid",
+      "events": 2,
+      "seconds": 1800
+    },
+    {
+      "name": "hybrid_2_3600",
+      "family": "hybrid",
+      "events": 2,
+      "seconds": 3600
+    },
+    {
+      "name": "hybrid_2_7200",
+      "family": "hybrid",
+      "events": 2,
+      "seconds": 7200
+    },
+    {
+      "name": "hybrid_2_10800",
+      "family": "hybrid",
+      "events": 2,
+      "seconds": 10800
+    },
+    {
+      "name": "hybrid_2_21600",
+      "family": "hybrid",
+      "events": 2,
+      "seconds": 21600
+    },
+    {
+      "name": "hybrid_2_43200",
+      "family": "hybrid",
+      "events": 2,
+      "seconds": 43200
+    },
+    {
+      "name": "hybrid_2_86400",
+      "family": "hybrid",
+      "events": 2,
+      "seconds": 86400
+    },
+    {
+      "name": "hybrid_5_300",
+      "family": "hybrid",
+      "events": 5,
+      "seconds": 300
+    },
+    {
+      "name": "hybrid_5_1800",
+      "family": "hybrid",
+      "events": 5,
+      "seconds": 1800
+    },
+    {
+      "name": "hybrid_5_3600",
+      "family": "hybrid",
+      "events": 5,
+      "seconds": 3600
+    },
+    {
+      "name": "hybrid_5_7200",
+      "family": "hybrid",
+      "events": 5,
+      "seconds": 7200
+    },
+    {
+      "name": "hybrid_5_10800",
+      "family": "hybrid",
+      "events": 5,
+      "seconds": 10800
+    },
+    {
+      "name": "hybrid_5_21600",
+      "family": "hybrid",
+      "events": 5,
+      "seconds": 21600
+    },
+    {
+      "name": "hybrid_5_43200",
+      "family": "hybrid",
+      "events": 5,
+      "seconds": 43200
+    },
+    {
+      "name": "hybrid_5_86400",
+      "family": "hybrid",
+      "events": 5,
+      "seconds": 86400
+    },
+    {
+      "name": "hybrid_10_300",
+      "family": "hybrid",
+      "events": 10,
+      "seconds": 300
+    },
+    {
+      "name": "hybrid_10_1800",
+      "family": "hybrid",
+      "events": 10,
+      "seconds": 1800
+    },
+    {
+      "name": "hybrid_10_3600",
+      "family": "hybrid",
+      "events": 10,
+      "seconds": 3600
+    },
+    {
+      "name": "hybrid_10_7200",
+      "family": "hybrid",
+      "events": 10,
+      "seconds": 7200
+    },
+    {
+      "name": "hybrid_10_10800",
+      "family": "hybrid",
+      "events": 10,
+      "seconds": 10800
+    },
+    {
+      "name": "hybrid_10_21600",
+      "family": "hybrid",
+      "events": 10,
+      "seconds": 21600
+    },
+    {
+      "name": "hybrid_10_43200",
+      "family": "hybrid",
+      "events": 10,
+      "seconds": 43200
+    },
+    {
+      "name": "hybrid_10_86400",
+      "family": "hybrid",
+      "events": 10,
+      "seconds": 86400
+    },
+    {
+      "name": "hybrid_20_300",
+      "family": "hybrid",
+      "events": 20,
+      "seconds": 300
+    },
+    {
+      "name": "hybrid_20_1800",
+      "family": "hybrid",
+      "events": 20,
+      "seconds": 1800
+    },
+    {
+      "name": "hybrid_20_3600",
+      "family": "hybrid",
+      "events": 20,
+      "seconds": 3600
+    },
+    {
+      "name": "hybrid_20_7200",
+      "family": "hybrid",
+      "events": 20,
+      "seconds": 7200
+    },
+    {
+      "name": "hybrid_20_10800",
+      "family": "hybrid",
+      "events": 20,
+      "seconds": 10800
+    },
+    {
+      "name": "hybrid_20_21600",
+      "family": "hybrid",
+      "events": 20,
+      "seconds": 21600
+    },
+    {
+      "name": "hybrid_20_43200",
+      "family": "hybrid",
+      "events": 20,
+      "seconds": 43200
+    },
+    {
+      "name": "hybrid_20_86400",
+      "family": "hybrid",
+      "events": 20,
+      "seconds": 86400
+    },
+    {
+      "name": "hybrid_25_300",
+      "family": "hybrid",
+      "events": 25,
+      "seconds": 300
+    },
+    {
+      "name": "hybrid_25_1800",
+      "family": "hybrid",
+      "events": 25,
+      "seconds": 1800
+    },
+    {
+      "name": "hybrid_25_3600",
+      "family": "hybrid",
+      "events": 25,
+      "seconds": 3600
+    },
+    {
+      "name": "hybrid_25_7200",
+      "family": "hybrid",
+      "events": 25,
+      "seconds": 7200
+    },
+    {
+      "name": "hybrid_25_10800",
+      "family": "hybrid",
+      "events": 25,
+      "seconds": 10800
+    },
+    {
+      "name": "hybrid_25_21600",
+      "family": "hybrid",
+      "events": 25,
+      "seconds": 21600
+    },
+    {
+      "name": "hybrid_25_43200",
+      "family": "hybrid",
+      "events": 25,
+      "seconds": 43200
+    },
+    {
+      "name": "hybrid_25_86400",
+      "family": "hybrid",
+      "events": 25,
+      "seconds": 86400
+    },
+    {
+      "name": "hybrid_50_300",
+      "family": "hybrid",
+      "events": 50,
+      "seconds": 300
+    },
+    {
+      "name": "hybrid_50_1800",
+      "family": "hybrid",
+      "events": 50,
+      "seconds": 1800
+    },
+    {
+      "name": "hybrid_50_3600",
+      "family": "hybrid",
+      "events": 50,
+      "seconds": 3600
+    },
+    {
+      "name": "hybrid_50_7200",
+      "family": "hybrid",
+      "events": 50,
+      "seconds": 7200
+    },
+    {
+      "name": "hybrid_50_10800",
+      "family": "hybrid",
+      "events": 50,
+      "seconds": 10800
+    },
+    {
+      "name": "hybrid_50_21600",
+      "family": "hybrid",
+      "events": 50,
+      "seconds": 21600
+    },
+    {
+      "name": "hybrid_50_43200",
+      "family": "hybrid",
+      "events": 50,
+      "seconds": 43200
+    },
+    {
+      "name": "hybrid_50_86400",
+      "family": "hybrid",
+      "events": 50,
+      "seconds": 86400
+    },
+    {
+      "name": "hybrid_60_300",
+      "family": "hybrid",
+      "events": 60,
+      "seconds": 300
+    },
+    {
+      "name": "hybrid_60_1800",
+      "family": "hybrid",
+      "events": 60,
+      "seconds": 1800
+    },
+    {
+      "name": "hybrid_60_3600",
+      "family": "hybrid",
+      "events": 60,
+      "seconds": 3600
+    },
+    {
+      "name": "hybrid_60_7200",
+      "family": "hybrid",
+      "events": 60,
+      "seconds": 7200
+    },
+    {
+      "name": "hybrid_60_10800",
+      "family": "hybrid",
+      "events": 60,
+      "seconds": 10800
+    },
+    {
+      "name": "hybrid_60_21600",
+      "family": "hybrid",
+      "events": 60,
+      "seconds": 21600
+    },
+    {
+      "name": "hybrid_60_43200",
+      "family": "hybrid",
+      "events": 60,
+      "seconds": 43200
+    },
+    {
+      "name": "hybrid_60_86400",
+      "family": "hybrid",
+      "events": 60,
+      "seconds": 86400
+    },
+    {
+      "name": "hybrid_120_300",
+      "family": "hybrid",
+      "events": 120,
+      "seconds": 300
+    },
+    {
+      "name": "hybrid_120_1800",
+      "family": "hybrid",
+      "events": 120,
+      "seconds": 1800
+    },
+    {
+      "name": "hybrid_120_3600",
+      "family": "hybrid",
+      "events": 120,
+      "seconds": 3600
+    },
+    {
+      "name": "hybrid_120_7200",
+      "family": "hybrid",
+      "events": 120,
+      "seconds": 7200
+    },
+    {
+      "name": "hybrid_120_10800",
+      "family": "hybrid",
+      "events": 120,
+      "seconds": 10800
+    },
+    {
+      "name": "hybrid_120_21600",
+      "family": "hybrid",
+      "events": 120,
+      "seconds": 21600
+    },
+    {
+      "name": "hybrid_120_43200",
+      "family": "hybrid",
+      "events": 120,
+      "seconds": 43200
+    },
+    {
+      "name": "hybrid_120_86400",
+      "family": "hybrid",
+      "events": 120,
+      "seconds": 86400
+    },
+    {
+      "name": "hybrid_240_300",
+      "family": "hybrid",
+      "events": 240,
+      "seconds": 300
+    },
+    {
+      "name": "hybrid_240_1800",
+      "family": "hybrid",
+      "events": 240,
+      "seconds": 1800
+    },
+    {
+      "name": "hybrid_240_3600",
+      "family": "hybrid",
+      "events": 240,
+      "seconds": 3600
+    },
+    {
+      "name": "hybrid_240_7200",
+      "family": "hybrid",
+      "events": 240,
+      "seconds": 7200
+    },
+    {
+      "name": "hybrid_240_10800",
+      "family": "hybrid",
+      "events": 240,
+      "seconds": 10800
+    },
+    {
+      "name": "hybrid_240_21600",
+      "family": "hybrid",
+      "events": 240,
+      "seconds": 21600
+    },
+    {
+      "name": "hybrid_240_43200",
+      "family": "hybrid",
+      "events": 240,
+      "seconds": 43200
+    },
+    {
+      "name": "hybrid_240_86400",
+      "family": "hybrid",
+      "events": 240,
+      "seconds": 86400
+    },
+    {
+      "name": "hybrid_480_300",
+      "family": "hybrid",
+      "events": 480,
+      "seconds": 300
+    },
+    {
+      "name": "hybrid_480_1800",
+      "family": "hybrid",
+      "events": 480,
+      "seconds": 1800
+    },
+    {
+      "name": "hybrid_480_3600",
+      "family": "hybrid",
+      "events": 480,
+      "seconds": 3600
+    },
+    {
+      "name": "hybrid_480_7200",
+      "family": "hybrid",
+      "events": 480,
+      "seconds": 7200
+    },
+    {
+      "name": "hybrid_480_10800",
+      "family": "hybrid",
+      "events": 480,
+      "seconds": 10800
+    },
+    {
+      "name": "hybrid_480_21600",
+      "family": "hybrid",
+      "events": 480,
+      "seconds": 21600
+    },
+    {
+      "name": "hybrid_480_43200",
+      "family": "hybrid",
+      "events": 480,
+      "seconds": 43200
+    },
+    {
+      "name": "hybrid_480_86400",
+      "family": "hybrid",
+      "events": 480,
+      "seconds": 86400
+    },
+    {
+      "name": "events_3",
+      "family": "events",
+      "events": 3,
+      "seconds": 0
+    },
+    {
+      "name": "events_4",
+      "family": "events",
+      "events": 4,
+      "seconds": 0
+    },
+    {
+      "name": "time_180",
+      "family": "time",
+      "events": 0,
+      "seconds": 180
+    },
+    {
+      "name": "time_240",
+      "family": "time",
+      "events": 0,
+      "seconds": 240
+    },
+    {
+      "name": "hybrid_3_300",
+      "family": "hybrid",
+      "events": 3,
+      "seconds": 300
+    },
+    {
+      "name": "hybrid_4_300",
+      "family": "hybrid",
+      "events": 4,
+      "seconds": 300
+    }
+  ],
+  "controllers": [
+    {
+      "ct_budget": 0.75,
+      "name": "controller_q075",
+      "threshold": 0.018529653549194336,
+      "matched_simple": "events_10",
+      "expected_mixture": {
+        "left": "events_10",
+        "right": "events_4",
+        "right_probability": 0.045604169029388415,
+        "ct_ndcg": 0.02845051396512476,
+        "ct_cost_ms": 1.5845767076744461
+      }
+    },
+    {
+      "ct_budget": 0.9,
+      "name": "controller_q025",
+      "threshold": 0.00671705394418387,
+      "matched_simple": "hybrid_2_300",
+      "expected_mixture": {
+        "left": "events_2",
+        "right": "time_180",
+        "right_probability": 0.8158598050623986,
+        "ct_ndcg": 0.03610924625029634,
+        "ct_cost_ms": 1.945662978304508
+      }
+    }
+  ],
+  "controller_model_sha256": "c1bc36ce3ccf9ce063e0e6705fe39f681cc5669a9451a6430c807ca5517fbcab",
+  "vocabulary_sha256": "c5eeef19cb0e374ad107e38f67c905e1545ec65a389037a63d1c8ff5c23c93a5",
+  "primary_analysis": "Two NDCG@10 controller-minus-fixed-simple comparisons at CT budgets75/90%; user-cluster bootstrap97.5% per comparison (Bonferroni over two primary comparisons)",
+  "secondary_analysis": "Recall@100/Hit@1, paired fresh losses, fixed CT expected-mixture references and descriptive full-grid frontier; pointwise95% CI where reported",
+  "histories": "All closed-audio listens retained; fixed CE1k vocabulary, unseen items=UNK; current timestamp group excluded; cached state reset at test start",
+  "target": "Positive listens played_ratio_pct>50 with strict past and known CE1k item; coverage of excluded unknown targets reported",
+  "no_refit_or_policy_selection_on_new_users": true,
+  "new_user_test_events_read": false,
+  "old_test_limitation": "Earlier encoder experiments read test on development users; old test is not an untouched end-to-end holdout. New cohort is user-disjoint, with warm histories and frozen item vocabulary."
+}

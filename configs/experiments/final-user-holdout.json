@@ -1,0 +1,23 @@
+{
+  "pool_data": "data/processed/yambda50m-audio",
+  "model_data": "data/processed/yambda50m-1k-audio",
+  "exclude_user_datasets": [
+    "data/processed/yambda50m-pilot",
+    "data/processed/yambda50m-pilot-audio",
+    "data/processed/yambda50m-1k-audio"
+  ],
+  "users": 256,
+  "cohort_seed": 20261114,
+  "checkpoint": "data/runs/sasrec-1k-full-ce/train-mps/best.pt",
+  "checkpoint_sha256": "dcb3b56d459928e44b4e18264f76a4f707c2203595ff91e7d130133fe9c994af",
+  "controller": "data/runs/controller-mlp-ce1k",
+  "grid": "data/runs/student43-dense-reference/results.json",
+  "output": "data/runs/final-user-holdout",
+  "report": "reports/experiments/final-user-holdout",
+  "bootstrap_seed": 42,
+  "bootstrap_repeats": 2000,
+  "benchmark_steps": 128,
+  "benchmark_repeats": 3,
+  "benchmark_warmup": 8,
+  "threads": 4
+}

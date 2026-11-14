@@ -1,0 +1,8 @@
+{
+  "users": 256,
+  "independent_duckdb_sha256_selection_matches": true,
+  "all_source_and_training_metadata_hashes": true,
+  "development_uid_overlap": 0,
+  "new_user_event_files_read": false,
+  "protocol_sha256": "b116953b53ba18ff73478630a8282a6e2cb2ded8d57f2a0a50f3f29a7a4fa98a"
+}
